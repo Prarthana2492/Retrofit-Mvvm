@@ -146,8 +146,7 @@ public class UpdateAccDetailsFragment extends Fragment {
                 transaction.replace(R.id.frame_layout, selectedFragment);
                 selectedFragment.setArguments(bundle);
                 transaction.commit();
-     /*   Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI); // to go to gallery
-        startActivityForResult(i, 100); // on activity method will execute*/
+
             }
         });
 
@@ -157,11 +156,7 @@ public class UpdateAccDetailsFragment extends Fragment {
 
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-              /*  selectedFragment = HomeMenuFragment.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
-                // transaction.addToBackStack("looking");
-                transaction.commit();*/
+
             }
         });
 
@@ -210,15 +205,6 @@ public class UpdateAccDetailsFragment extends Fragment {
 
 
 
-
-
-       // profile_passwrd.setFilters(new InputFilter[]{EMOJI_FILTER});
-
-        // profile_name.setFilters(new InputFilter[]{EMOJI_FILTER});
-
-
-        // Adding textWatcher to name
-
         final InputFilter filter1 = new InputFilter() {
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
                 String filtered = "";
@@ -237,29 +223,7 @@ public class UpdateAccDetailsFragment extends Fragment {
         profile_passwrd.setFilters(new InputFilter[] {filter1,new InputFilter.LengthFilter(12) });
 
 
-        //   profile_passwrd.setFilters(new InputFilter[] {filter1,new InputFilter.LengthFilter(12) });
-        //  profile_mail.setFilters(new InputFilter[] {filter1,new InputFilter.LengthFilter(50) });
-        // profile_name.setFilters(new InputFilter[] {filter1,new InputFilter.LengthFilter(30) });
 
-
-
-//        final InputFilter filter11 = new InputFilter() {
-//            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-//                //String filtered = "";
-//                for (int i = start; i < end; i++) {
-//                    char character = source.charAt(i);
-//                    if (Character.isWhitespace(source.charAt(i))) {
-//                        if (dstart == 0)
-//                            return "";
-//                    }
-//                }
-//                return null;
-//            }
-//
-//        };
-//
-//
-//        profile_name.setFilters(new InputFilter[] {filter11,new InputFilter.LengthFilter(30) });
 
         try{
 
@@ -416,8 +380,9 @@ public class UpdateAccDetailsFragment extends Fragment {
             public void onClick(View view) {
                 //   System.out.println("nnbchcxbhchvcvccgcv"+profile_passwrd.getText().toString());
                 if(profile_name.getText().toString().equals("")) {
+                    int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, toast_name, Snackbar.LENGTH_LONG);
+                            .make(linearLayout, toast_name, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -431,8 +396,9 @@ public class UpdateAccDetailsFragment extends Fragment {
                     }
                     snackbar.show();
                 } else if(profile_name.getText().toString().length()<2) {
+                    int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, toast_minimum_toast, Snackbar.LENGTH_LONG);
+                            .make(linearLayout, toast_minimum_toast, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -445,16 +411,18 @@ public class UpdateAccDetailsFragment extends Fragment {
                     }
                     snackbar.show();
                 }else if(profile_phone.getText().toString().equals("")) {
+                    int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, toast_new_mobile, Snackbar.LENGTH_LONG);
+                            .make(linearLayout, toast_new_mobile, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
                     tv.setTextColor(Color.WHITE);
                     snackbar.show();
                 }else if(profile_phone.getText().toString().length()<10) {
+                    int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, toast_mobile, Snackbar.LENGTH_LONG);
+                            .make(linearLayout, toast_mobile, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -468,8 +436,9 @@ public class UpdateAccDetailsFragment extends Fragment {
                     snackbar.show();
 
                 }else if((!profile_passwrd.getText().toString().equals("")&&(profile_passwrd.getText().toString().length()<6))){
+                    int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, toast_passwrd, Snackbar.LENGTH_LONG);
+                            .make(linearLayout, toast_passwrd, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -481,22 +450,16 @@ public class UpdateAccDetailsFragment extends Fragment {
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
                     snackbar.show();
-                    // imageUpload(filePath);
-                    //  uploadImage(bitmap);
+
                 } else  {
-                    // imageUpload(filePath);
+
                     uploadImage(getResizedBitmap(bitmap,100,100));
                 }
-                // update_profile_details();
-                //     uploadImage(b);*/
+
             }
         });
 
-      /*  SharedPreferences myPrefrence = getActivity().getPreferences(MODE_PRIVATE);
-        String imageS = myPrefrence.getString("imagePreferance", "");
-        if(!imageS.equals("")) imageB = decodeToBase64(imageS);
-        prod_img.setImageBitmap(imageB);
-*/
+
         return view;
     }
     public static InputFilter EMOJI_FILTER = new InputFilter() {
@@ -548,9 +511,9 @@ public class UpdateAccDetailsFragment extends Fragment {
                 bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
 
                 prod_img.setImageBitmap(bitmap);
-
+                int duration = 1000;
                 Snackbar snackbar = Snackbar
-                        .make(linearLayout, "Your Changed Your Profile Photo", Snackbar.LENGTH_LONG);
+                        .make(linearLayout, "Your Changed Your Profile Photo", duration);
                 View snackbarView = snackbar.getView();
                 TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                 tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -607,9 +570,9 @@ public class UpdateAccDetailsFragment extends Fragment {
                         // sessionManager.save_name(userObject.getString("FullName"),userObject.getString("PhoneNo"),userObject.getString("ProfilePic"));
 
 
-
+                        int duration = 1000;
                         Snackbar snackbar = Snackbar
-                                .make(linearLayout, "Profile Details Updated Successfully", Snackbar.LENGTH_LONG);
+                                .make(linearLayout, "Profile Details Updated Successfully", duration);
                         View snackbarView = snackbar.getView();
                         TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                         tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));

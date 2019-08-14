@@ -27,14 +27,13 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
     Fragment selectedFragment;
 
     public LinearLayout linearLayout;
-   public static LinearLayout next_arw;
     public static String first;
     public static CardView cardView;
     public static String brandId;
     public AddBrandAdapter(Activity activity, List<AddTractorBean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
-//        session=new SessionManager(activity);
+
 
     }
 
@@ -50,14 +49,11 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
 
         public MyViewHolder(View view) {
             super(view);
-            //agri_text=view.findViewById(R.id.store_agri);
-           // item_2=view.findViewById(R.id.item_2);
             prod_price=view.findViewById(R.id.prod_price);
             image=view.findViewById(R.id.prod_img);
             item=view.findViewById(R.id.item);
 
-            //linearLayout=view.findViewById(R.id.dialog_list);
-            //confirmbutton=view.findViewById(R.id.delivery2);
+
         }
 
     }
@@ -73,7 +69,7 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final AddTractorBean products = productList.get(position);
-      //holder.agri_text.setText(products.getAgri_text());
+
         holder.prod_price.setText(products.getProd_name());
 
 
@@ -87,11 +83,7 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
                 }
                 productList.get(position).setSelected(true);
                 notifyDataSetChanged();
-//                selectedFragment = AddHpFragment.newInstance();
-//                FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.frame_layout, selectedFragment);
-//                transaction.addToBackStack("brand");
-//                transaction.commit();
+
             }
         });
 

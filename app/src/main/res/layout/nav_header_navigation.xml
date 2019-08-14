@@ -135,50 +135,6 @@
       </LinearLayout>
 
 
-      <LinearLayout
-          android:id="@+id/your_farms_tab"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:orientation="vertical"
-          android:layout_weight="30"
-          android:gravity="center"
-          android:background="#000"
-          >
-
-
-         <TextView
-             android:id="@+id/farm_count"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text=""
-             android:textSize="16dp"
-             android:gravity="center"
-             android:paddingBottom="5dp"
-             android:textColor="#fff"
-             />
-
-         <!--<ImageView-->
-             <!--android:layout_width="25dp"-->
-             <!--android:layout_height="25dp"-->
-             <!--android:paddingBottom="5dp"-->
-
-             <!--android:src="@drawable/target"-->
-             <!--/>-->
-
-         <TextView
-             android:id="@+id/your_farms_tab1"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Farms"
-             android:textSize="14dp"
-             android:layout_marginTop="2dp"
-             android:gravity="center"
-             android:fontFamily="@font/segoeui"
-             android:textColor="#fff"
-             />
-
-      </LinearLayout>
-
 
       <LinearLayout
           android:id="@+id/nw_request"
@@ -344,69 +300,16 @@
 
 
 
-      <!--<TextView-->
-       <!--android:id="@+id/home"-->
-       <!--android:layout_width="match_parent"-->
-       <!--android:layout_height="wrap_content"-->
-       <!--android:text="Create New Request"-->
-          <!--android:drawableLeft="@drawable/ic_plus"-->
-          <!--android:drawablePadding="10dp"-->
-       <!--android:layout_marginTop="15dp"-->
-       <!--android:textSize="16dp"-->
-       <!--android:fontFamily="@font/segoeui"-->
-       <!--android:textColor="#000"-->
-       <!--/>-->
-
-
-      <!--<TextView-->
-          <!--android:id="@+id/your_requests"-->
-          <!--android:layout_width="match_parent"-->
-          <!--android:layout_height="wrap_content"-->
-          <!--android:text="Your Requests"-->
-          <!--android:layout_marginTop="20dp"-->
-          <!--android:textSize="16dp"-->
-          <!--android:drawableLeft="@drawable/ic_quote"-->
-          <!--android:drawablePadding="10dp"-->
-          <!--android:fontFamily="@font/segoeui"-->
-          <!--android:textColor="#000"-->
-          <!--/>-->
-
-
-      <!--<TextView-->
-          <!--android:id="@+id/connections"-->
-          <!--android:layout_width="match_parent"-->
-          <!--android:layout_height="wrap_content"-->
-          <!--android:text="Connections"-->
-          <!--android:layout_marginTop="20dp"-->
-          <!--android:textSize="16dp"-->
-          <!--android:drawableLeft="@drawable/ic_network"-->
-          <!--android:drawablePadding="10dp"-->
-          <!--android:fontFamily="@font/segoeui"-->
-          <!--android:textColor="#000"-->
-          <!--/>-->
-
-      <!--<TextView-->
-          <!--android:id="@+id/invitation"-->
-          <!--android:layout_width="match_parent"-->
-          <!--android:layout_height="wrap_content"-->
-          <!--android:text="Invitations"-->
-          <!--android:layout_marginTop="20dp"-->
-          <!--android:textSize="16dp"-->
-          <!--android:drawableLeft="@drawable/ic_invitation"-->
-          <!--android:drawablePadding="10dp"-->
-          <!--android:fontFamily="@font/segoeui"-->
-          <!--android:textColor="#000"-->
-          <!--/>-->
 
 
       <TextView
-          android:id="@+id/list_farm"
+          android:id="@+id/ur_rqst"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:text="List Your Farm"
+          android:text="Your Request"
           android:layout_marginTop="30dp"
           android:textSize="17dp"
-          android:drawableLeft="@drawable/ic_field"
+          android:drawableLeft="@drawable/ic_plus_black"
           android:drawablePadding="10dp"
           android:fontFamily="@font/segoeui"
           android:textColor="#000"

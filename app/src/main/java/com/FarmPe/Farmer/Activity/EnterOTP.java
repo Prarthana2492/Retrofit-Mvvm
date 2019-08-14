@@ -40,11 +40,10 @@ import org.json.JSONObject;
 
 public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener{
     TextView submit,otp_title,otp_text;
-    LinearLayout close;
-    String otp;
+
     EditText otpedittext;
     public  static String sessionId,otp_get_text,toast_otp,toast_invalid_otp,toast_internet,toast_nointernet;
-    public static String contact;
+
     BroadcastReceiver receiver;
     Vibrator vibe;
     TextView resendotp;
@@ -52,7 +51,7 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
     LinearLayout linearLayout;
     private Context mContext=EnterOTP.this;
     private static final int REQUEST=1;
-    Fragment selectedFragment;
+
     SessionManager sessionManager;
     LinearLayout left_arrow;
 
@@ -82,7 +81,8 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
             if(connectivity_check) {
                 message = "Good! Connected to Internet";
                 color = Color.WHITE;
-                Snackbar snackbar = Snackbar.make(linearLayout,toast_internet, Snackbar.LENGTH_LONG);
+                int duration=1000;
+                Snackbar snackbar = Snackbar.make(linearLayout,toast_internet, duration);
                 View sbView = snackbar.getView();
                 TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
                 textView.setBackgroundColor(ContextCompat.getColor(EnterOTP.this,R.color.orange));
@@ -96,17 +96,17 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
 
                 snackbar.show();
 
-                //setting connectivity to false only on executing "Good! Connected to Internet"
+
                 connectivity_check=false;
             }
 
         } else {
             message = "No Internet Connection";
             color = Color.RED;
-            //setting connectivity to true only on executing "Sorry! Not connected to internet"
+
             connectivity_check=true;
-            // Snackbar snackbar = Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_LONG);
-            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), toast_nointernet, Snackbar.LENGTH_LONG);
+            int duration=1000;
+            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), toast_nointernet, duration);
             View sb = snackbar.getView();
             TextView textView = (TextView) sb.findViewById(android.support.design.R.id.snackbar_text);
             textView.setBackgroundColor(ContextCompat.getColor(EnterOTP.this, R.color.orange));
@@ -120,10 +120,7 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
 
 
             snackbar.show();
-          /*  View sbView = snackbar.getView();
-            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
-            textView.setTextColor(color);
-            snackbar.show();*/
+
         }
     }
 
@@ -142,7 +139,7 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
         intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
         connectivityReceiver = new ConnectivityReceiver();
         registerReceiver(connectivityReceiver, intentFilter);
-        // register connection status listener
+
         MyApplication.getInstance().setConnectivityListener(this);
 
     }
@@ -164,13 +161,13 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
 
         setContentView(R.layout.otp_layout);
         vibe = (Vibrator) getApplication().getSystemService(Context.VIBRATOR_SERVICE);
-        // name_back=findViewById(R.id.name_back);
+
         submit=findViewById(R.id.otp_submit);
         otp_title=findViewById(R.id.thank);
         otpedittext=findViewById(R.id.otp);
         otp_text=findViewById(R.id.thanktu);
         linearLayout=findViewById(R.id.main_layout);
-       // close=findViewById(R.id.arrow_thank_u);
+
         left_arrow=findViewById(R.id.left_arow);
 
 
@@ -205,7 +202,7 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
                                 if (status==2){
                                     Snackbar snackbar = Snackbar
                                             .make(linearLayout,Message, Snackbar.LENGTH_LONG);
-                                    //snackbar.setActionTextColor(R.color.colorAccent);
+
                                     View snackbarView = snackbar.getView();
                                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                                     tv.setBackgroundColor(ContextCompat.getColor(EnterOTP.this,R.color.orange));
@@ -246,8 +243,7 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
             }
         });
         sessionManager = new SessionManager(this);
-        // sessionManager.getRegId("lng_object");
-        // System.out.println("llllllllllll" + sessionManager.getRegId("lng_object"));
+
 
         try {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
@@ -267,19 +263,9 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
         } catch (JSONException e) {
             e.printStackTrace();
         }
-//
-//        if (checkAndRequestPermissions()) {
-//            // carry on the normal flow, as the case of  permissions  granted.
-//        }
 
         System.out.println("qwertyuio"+sessionId);
-      /*  close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               *//* Intent intent=new Intent(EnterOTP.this,SignUp.class);
-                startActivity(intent);*//*
-            }
-        });*/
+
 
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -312,19 +298,18 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
             }
         };
 
-//System.out.println("qwertyuisdfgh"+SignUp.contact);
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 otp_get_text=otpedittext.getText().toString();
                 System.out.println("entered_otp"+otp_get_text);
-               /* Intent intent=new Intent(EnterOTP.this,Login.class);
-                startActivity(intent);*/
+
 
                 if (otp_get_text.equals("")){
-                   // otp_get_text.requestFocus();
+                    int duration=1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout,toast_otp, Snackbar.LENGTH_LONG);
+                            .make(linearLayout,toast_otp, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(EnterOTP.this,R.color.orange));
@@ -341,7 +326,7 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
                     JSONObject postjsonObject = new JSONObject();
                     JSONObject postjsonObject1 = new JSONObject();
                     try {
-                        //   postjsonObject.put("PhoneNo", Sign_In.phoneNo);
+
                         postjsonObject.put("PhoneNo",SignUpActivity.contact);
                         postjsonObject1.put("objUser",postjsonObject);
                         System.out.println("ffffffffffffff"+postjsonObject1);
@@ -358,11 +343,11 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
                                     String message=response.getString("Message");
 
                                     if (status.equals("0")){
-                                       // Toast.makeText(EnterOTP.this,"User Registered Successfully",Toast.LENGTH_SHORT).show();
 
 
+                                        int duration=1000;
                                         Snackbar snackbar = Snackbar
-                                                .make(linearLayout, "User Registered Successfully", Snackbar.LENGTH_LONG);
+                                                .make(linearLayout, "User Registered Successfully", duration);
                                         View snackbarView = snackbar.getView();
                                         TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                                         tv.setBackgroundColor(ContextCompat.getColor(EnterOTP.this,R.color.orange));
@@ -379,11 +364,7 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
 
                                        Intent intent=new Intent(EnterOTP.this, LandingPageActivity.class);
                                         startActivity(intent);
-                                  /*  selectedFragment = TabLayoutFragmentTrending.newInstance();
-                                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                                    transaction.replace(R.id.frame_layout,selectedFragment);
-                                    //transaction.addToBackStack("trending");
-                                    transaction.commit();*/
+
                                     }
                                     else {
                                         Toast.makeText(EnterOTP.this,"OTP has not verified",Toast.LENGTH_SHORT).show();
@@ -397,12 +378,13 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-// here ur calling URL
+
 
                 }else{
-                 //   Toast.makeText(EnterOTP.this,"Incorrect OTP",Toast.LENGTH_SHORT).show();
+
+                    int duration=1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout,toast_invalid_otp, Snackbar.LENGTH_LONG);
+                            .make(linearLayout,toast_invalid_otp, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(EnterOTP.this,R.color.orange));
@@ -422,41 +404,18 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
 
     @Override
     public void onBackPressed() {
-        //System.exit(0);
+
 
         Intent intent=new Intent(EnterOTP.this,SignUpActivity.class);
         startActivity(intent);
         finish();
     }
 
-//    private  boolean checkAndRequestPermissions() {
-//
-//        if (Build.VERSION.SDK_INT >= 23) {
-//            String[] PERMISSIONS = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.READ_SMS};
-//            if (!hasPermissions(mContext, PERMISSIONS)) {
-//                ActivityCompat.requestPermissions((Activity) mContext, PERMISSIONS, REQUEST);
-//            } else {
-//                //do here
-//            }
-//        } else {
-//            //do here
-//        }
-//        return true;
-//    }
-//    private static boolean hasPermissions(Context context, String... permissions) {
-//        if (context != null && permissions != null) {
-//            for (String permission : permissions) {
-//                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
-//                    return false;
-//                }
-//            }
-//        }
-//        return true;
-//    }
+
 
     public void setupUI(View view) {
 
-        //Set up touch listener for non-text box views to hide keyboard.
+
         if(!(view instanceof EditText)) {
 
             view.setOnTouchListener(new View.OnTouchListener() {
@@ -469,7 +428,7 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
             });
         }
 
-        //If a layout container, iterate over children and seed recursion.
+
         if (view instanceof ViewGroup) {
 
             for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
@@ -482,8 +441,6 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
     }
 
     public static void hideSoftKeyboard(Activity activity) {
- /*InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);*/
 
         InputMethodManager inputManager = (InputMethodManager)
                 activity.getSystemService(

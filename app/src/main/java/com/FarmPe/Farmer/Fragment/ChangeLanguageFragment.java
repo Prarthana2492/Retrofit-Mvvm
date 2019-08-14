@@ -32,12 +32,11 @@ public class ChangeLanguageFragment extends Fragment {
     private RecyclerView recyclerView;
     private SelectLanguageAdapter mAdapter;
     SessionManager sessionManager;
-    boolean doubleBackToExitPressedOnce = false;
     LinearLayout back_feed;
     public static   JSONObject lngObject;
 
    public static TextView lang_title;
-    private Context context;
+
 
 
 

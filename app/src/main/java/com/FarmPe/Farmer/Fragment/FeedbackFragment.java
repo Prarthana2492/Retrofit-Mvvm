@@ -150,77 +150,7 @@ public class FeedbackFragment extends Fragment {
         });
 
 
-        /*feedback_type.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-
-                final Dialog dialog = new Dialog(getActivity());
-                dialog.setContentView(R.layout.feedback_title_popup);
-                final TextView app_suggest = (TextView) dialog.findViewById(R.id.tractor);
-                final TextView app_technical = (TextView) dialog.findViewById(R.id.bus);
-
-                final TextView others = (TextView)dialog.findViewById(R.id.othrs) ;
-                ImageView image = (ImageView) dialog.findViewById(R.id.close_popup);
-
-                final TextView popuptxt = (TextView)dialog.findViewById(R.id.popup_heading) ;
-
-
-                try {
-                    lngObject = new JSONObject(sessionManager.getRegId("language"));
-                    popuptxt.setText(lngObject.getString("FeedbackType"));
-                    others.setText(lngObject.getString("Others"));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-
-
-                image.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-
-
-                app_suggest.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        feedback_type.setText(app_suggest.getText().toString());
-                        // gettingAddress("Home");
-                        dialog.dismiss();
-                    }
-                });
-
-                app_technical.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        feedback_type.setText(app_technical.getText().toString());
-                        dialog.dismiss();
-                        //   gettingAddress("Barn");
-
-                    }
-                });
-
-
-
-                others.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        feedback_type.setText(others.getText().toString());
-                        dialog.dismiss();
-                        // gettingAddress("Others");
-
-
-                    }
-                });
-
-                dialog.show();
-
-
-            }
-        });*/
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -228,8 +158,9 @@ public class FeedbackFragment extends Fragment {
 
                 if((fdType.getCheckedRadioButtonId()==-1)&& feedback_title.getText().toString().equals("")&& feedback_description.getText().toString().equals("")){
                     //Toast.makeText(getActivity(), "Select Feedback Type", Toast.LENGTH_SHORT).show();
+                    int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, enterallfields, Snackbar.LENGTH_LONG);
+                            .make(linearLayout, enterallfields, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -243,8 +174,9 @@ public class FeedbackFragment extends Fragment {
 
                 }else if((fdType.getCheckedRadioButtonId()==-1)){
                     //Toast.makeText(getActivity(), "Select Feedback Type", Toast.LENGTH_SHORT).show();
+                    int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, feedtype, Snackbar.LENGTH_LONG);
+                            .make(linearLayout, feedtype, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -257,9 +189,9 @@ public class FeedbackFragment extends Fragment {
                     snackbar.show();
 
                 }else if(feedback_title.getText().toString().equals("")) {
-
+                    int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, fedback_title, Snackbar.LENGTH_LONG);
+                            .make(linearLayout, fedback_title, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -273,9 +205,9 @@ public class FeedbackFragment extends Fragment {
 
 
                 }else if(feedback_description.getText().toString().equals("")){
-
+                    int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, feeddesc, Snackbar.LENGTH_LONG);
+                            .make(linearLayout, feeddesc, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -431,8 +363,9 @@ public class FeedbackFragment extends Fragment {
 
                         if(!(status.equals("0"))){
                             //Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
+                            int duration = 1000;
                             Snackbar snackbar = Snackbar
-                                    .make(linearLayout, fd_sucess, Snackbar.LENGTH_LONG);
+                                    .make(linearLayout, fd_sucess, duration);
                             View snackbarView = snackbar.getView();
                             TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                             tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -452,8 +385,9 @@ public class FeedbackFragment extends Fragment {
                         }else{
 
                            // Toast.makeText(getActivity(),"Your Feedback not Submitted ",Toast.LENGTH_SHORT).show();
+                            int duration = 1000;
                             Snackbar snackbar = Snackbar
-                                    .make(linearLayout, fd_failure, Snackbar.LENGTH_LONG);
+                                    .make(linearLayout, fd_failure, duration);
                             View snackbarView = snackbar.getView();
                             TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                             tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));

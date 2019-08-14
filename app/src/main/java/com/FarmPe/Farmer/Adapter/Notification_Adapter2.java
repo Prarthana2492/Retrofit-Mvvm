@@ -30,14 +30,14 @@ public class Notification_Adapter2 extends RecyclerView.Adapter<Notification_Ada
     Boolean isTouched = false;
 
     public LinearLayout linearLayout;
-    public static LinearLayout next_arw;
+
 
     public static String first;
     public static CardView cardView;
     public Notification_Adapter2(Activity activity, List<Notification_recy_bean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
-//        session=new SessionManager(activity);
+
 
     }
 
@@ -53,13 +53,11 @@ public class Notification_Adapter2 extends RecyclerView.Adapter<Notification_Ada
             super(view);
             prod_price=view.findViewById(R.id.prod_price);
             prod_name=view.findViewById(R.id.prod_name);
-            duration=view.findViewById(R.id.duration);
             image=view.findViewById(R.id.image);
             actninfo=view.findViewById(R.id.actninfo);
             switch1=view.findViewById(R.id.switch1);
 
-            //linearLayout=view.findViewById(R.id.dialog_list);
-            //confirmbutton=view.findViewById(R.id.delivery2);
+
         }
 
     }
@@ -76,18 +74,7 @@ public class Notification_Adapter2 extends RecyclerView.Adapter<Notification_Ada
         final Notification_recy_bean products = productList.get(position);
 
         holder.actninfo.setText(products.getNoti_txt());
-        /*if (Notification_Recyc_Fragment.list.get(position).equals(products.getNoti_id())){
-            holder.actninfo.setText(products.getNoti_txt());
-            holder.switch1.setChecked(true);
-            FirebaseMessaging.getInstance().subscribeToTopic(products.getNoti_code());
 
-
-        }else {
-            holder.actninfo.setText(products.getNoti_txt());
-            holder.switch1.setChecked(false);
-
-
-        }*/
 
         holder.switch1.setOnTouchListener(new View.OnTouchListener() {
             @Override

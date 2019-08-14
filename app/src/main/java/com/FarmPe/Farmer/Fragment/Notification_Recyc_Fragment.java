@@ -72,20 +72,12 @@ public class Notification_Recyc_Fragment extends Fragment {
         sessionManager = new SessionManager(getActivity());
         try {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
-            //  toolbar_title.setText(lngObject.getString("Notifications"));
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
 
-//        switchCompat.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//
-//
-//            }
-//        });
 
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,7 +110,7 @@ public class Notification_Recyc_Fragment extends Fragment {
             }
         });
 
-//
+
 
         newOrderBeansList.clear();
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
@@ -138,7 +130,7 @@ public class Notification_Recyc_Fragment extends Fragment {
 
         notification_status();
 
-         // enable_all();
+
 
           enable_all.setVisibility(View.GONE);
 

@@ -74,12 +74,7 @@ LinearLayout back_feed;
         sessionManager = new SessionManager(getActivity());
         profile_name = view.findViewById(R.id.profile_name);
         profile_phone = view.findViewById(R.id.profile_phone);
-       // userid=sessionManager.getRegId("userId");
-      //  Bundle bundle = getArguments();
-      //  String value = this.getArguments().getString("image");
-       // String image = bundle.getString("image");
-       // Bitmap bitmap = decodeImage(image);
-       // imgFullImage.setImageBitmap(bitmap);
+
         cam.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NewApi")
             @Override
@@ -114,11 +109,8 @@ LinearLayout back_feed;
                     // transaction.addToBackStack("looking");
                     transaction.commit();
                 }
-               /* selectedFragment = HomeMenuFragment.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
-                transaction.commit();
-*/
+
+
             }
         });
         try{
@@ -153,16 +145,6 @@ LinearLayout back_feed;
                                 .crossFade()
                                 .error(R.drawable.avatarmale)
                                 .into(imgFullImage);
-/*
-
-
-                        Glide.with(getActivity()).load(ProfileImage)
-
-                                .thumbnail(0.5f)
-                                .crossFade()
-                                .error(R.drawable.avatarmale)
-                                .into(prod_img1);
-*/
 
 
 

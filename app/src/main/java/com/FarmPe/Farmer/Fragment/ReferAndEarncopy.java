@@ -41,11 +41,9 @@ import java.util.List;
 public class ReferAndEarncopy extends Fragment {
     Fragment selectedFragment;
 
-    LinearLayout back, more, whatsapp, insta, facebook, back_feed, twitter,message;
+    LinearLayout more, whatsapp, insta, facebook, back_feed, twitter,message;
     public static String status;
-    Intent intent;
     private ArrayAdapter<AgriBean> arrayAdapter;
-    private ListView listView;
     String packageName;
     SessionManager sessionManager;
     JSONObject lngObject;
@@ -105,6 +103,25 @@ public class ReferAndEarncopy extends Fragment {
 
             }
         });
+
+
+        try {
+            lngObject = new JSONObject(sessionManager.getRegId("language"));
+           // referearntxt.setText(lngObject.getString("Refer"));
+            // winuptxt.setText(lngObject.getString("Winupto1000"));
+            // getscratchtxt.setText(lngObject.getString("Getascratchcardmin100cashbackonyourfriendsfirstappsharing"));
+            //copyhereurltxt.setText(lngObject.getString("ClickHeretoCopyURL"));
+            // wallet_blnctxtt.setText(lngObject.getString("WalletBalance"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+
+
+
 
         Resources resources = getResources();
         PackageManager pm = getActivity().getPackageManager();
@@ -331,17 +348,6 @@ public class ReferAndEarncopy extends Fragment {
             }
         });
 
-
-        try {
-            lngObject = new JSONObject(sessionManager.getRegId("language"));
-           // referearntxt.setText(lngObject.getString("Refer_Earn"));
-           // winuptxt.setText(lngObject.getString("Winupto1000"));
-           // getscratchtxt.setText(lngObject.getString("Getascratchcardmin100cashbackonyourfriendsfirstappsharing"));
-            //copyhereurltxt.setText(lngObject.getString("ClickHeretoCopyURL"));
-           // wallet_blnctxtt.setText(lngObject.getString("WalletBalance"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
 
         return view;

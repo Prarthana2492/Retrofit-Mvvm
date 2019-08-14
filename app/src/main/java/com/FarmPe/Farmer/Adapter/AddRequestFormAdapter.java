@@ -29,8 +29,7 @@ public class AddRequestFormAdapter extends RecyclerView.Adapter<AddRequestFormAd
     public static CardView cardView;
     public AddRequestFormAdapter(Activity activity, List<FarmsImageBean> moviesList) {
         this.productList = moviesList;
-        this.activity=activity;
-//        session=new SessionManager(activity);
+
 
     }
 
@@ -46,14 +45,12 @@ public class AddRequestFormAdapter extends RecyclerView.Adapter<AddRequestFormAd
 
         public MyViewHolder(View view) {
             super(view);
-            //agri_text=view.findViewById(R.id.store_agri);
-           // item_2=view.findViewById(R.id.item_2);
+
             prod_price=view.findViewById(R.id.prod_price);
             image=view.findViewById(R.id.prod_img);
             item=view.findViewById(R.id.item);
 
-            //linearLayout=view.findViewById(R.id.dialog_list);
-            //confirmbutton=view.findViewById(R.id.delivery2);
+
         }
 
     }
@@ -69,19 +66,10 @@ public class AddRequestFormAdapter extends RecyclerView.Adapter<AddRequestFormAd
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final FarmsImageBean products = productList.get(position);
-      //holder.agri_text.setText(products.getAgri_text());
+
         holder.prod_price.setText(products.getProd_price());
 
-     /*   holder.item.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectedFragment = AddModelFragment.newInstance();
-                FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.first_full_frame, selectedFragment);
-                transaction.commit();
-            }
-        });
-*/
+
         Glide.with(activity).load(products.getImage())
 
                 .thumbnail(0.5f)

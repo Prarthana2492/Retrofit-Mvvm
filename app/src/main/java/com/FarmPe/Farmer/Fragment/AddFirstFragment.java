@@ -16,6 +16,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,7 +46,7 @@ public class AddFirstFragment extends Fragment {
     TextView continue_button;
     public static String tracter_title = "";
     Fragment selectedFragment;
-
+ImageView b_arrow;
 
 
 
@@ -61,12 +62,13 @@ public class AddFirstFragment extends Fragment {
         continue_button=view.findViewById(R.id.continue_button);
         back_feed=view.findViewById(R.id.back_feed);
         linearLayout=view.findViewById(R.id.linearLayout);
-
+        b_arrow=view.findViewById(R.id.b_arrow);
 
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                HomeMenuFragment.onBack_status="no_request";
+                b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
                 selectedFragment = HomeMenuFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.add(R.id.frame_layout, selectedFragment);
@@ -82,9 +84,9 @@ public class AddFirstFragment extends Fragment {
 
                 if (AddFirstAdapter.looinkgId==null){
 
-
+                    int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Please choose any option", Snackbar.LENGTH_LONG);
+                            .make(linearLayout, "Please choose any option", duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -96,7 +98,7 @@ public class AddFirstFragment extends Fragment {
                     }
 
                     snackbar.show();
-                //    Toast.makeText(getActivity(),"Please Select any option",Toast.LENGTH_LONG).show();
+
 
                 }else {
 
@@ -118,6 +120,8 @@ public class AddFirstFragment extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
+                    HomeMenuFragment.onBack_status="no_request";
+
                     selectedFragment = HomeMenuFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.add(R.id.frame_layout, selectedFragment);
@@ -136,36 +140,12 @@ public class AddFirstFragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager_farm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-      /*  AddTractorBean img1=new AddTractorBean(R.drawable.tractor_green,"Tractor Price","");
-        newOrderBeansList.add(img1);
 
-        AddTractorBean img2=new AddTractorBean(R.drawable.gyrovator,"Implements Price","");
-        newOrderBeansList.add(img2);
-
-        AddTractorBean img3=new AddTractorBean(R.drawable.tractor_green,"Accessories Price","");
-        newOrderBeansList.add(img3);
-
-        AddTractorBean img4=new AddTractorBean(R.drawable.tractor_red,"JCB Price","");
-        newOrderBeansList.add(img4);
-
-        AddTractorBean img5=new AddTractorBean(R.drawable.tractor_red,"Agriculture Finance","");
-        newOrderBeansList.add(img5);
-
-        AddTractorBean img6=new AddTractorBean(R.drawable.tractor_red,"Agriculture Insurance","");
-        newOrderBeansList.add(img6);
-        newOrderBeansList.add(img6);
-        newOrderBeansList.add(img6);
-        newOrderBeansList.add(img6);
-        newOrderBeansList.add(img6);
-
-        farmadapter=new AddFirstAdapter(getActivity(),newOrderBeansList);
-        recyclerView.setAdapter(farmadapter);*/
         return view;
     }
 
     private void AddLookigFor() {
-//        Bundle bundle=getArguments();
-//        String looking_id=bundle.getString("looking_first_id");
+
         try {
             newOrderBeansList.clear();
 
@@ -199,13 +179,6 @@ public class AddFirstFragment extends Fragment {
                             AddTractorBean crops = new AddTractorBean(LookingForDetailsIcon, getPrice,lookingForId,false);
                             newOrderBeansList.add(crops);
 
-                          /*  if(!latts.equals("") | !langgs.equals("")) {
-
-                                CropListBean crops = new CropListBean(cropName, crop_variety, location, crop_grade,
-                                        crop_quantity, crop_uom, crop_price, id, farmerId,
-                                        UserName,latts,langgs,CropImg,category);
-                                newOrderBeansList.add(crops);
-                            }*/
                         }
                         farmadapter=new AddFirstAdapter(getActivity(),newOrderBeansList);
                         recyclerView.setAdapter(farmadapter);

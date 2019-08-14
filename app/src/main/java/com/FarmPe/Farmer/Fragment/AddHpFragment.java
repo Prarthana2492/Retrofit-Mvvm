@@ -16,6 +16,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -44,7 +45,7 @@ public class AddHpFragment extends Fragment {
     LinearLayout back_feed,linearLayout;
     Fragment selectedFragment;
 
-
+ImageView b_arrow;
     public static AddHpFragment newInstance() {
         AddHpFragment fragment = new AddHpFragment();
         return fragment;
@@ -59,10 +60,11 @@ public class AddHpFragment extends Fragment {
         continue_button=view.findViewById(R.id.continue_button);
         linearLayout=view.findViewById(R.id.linearLayout);
         toolbar_title.setText("Select HP");
-
+        b_arrow=view.findViewById(R.id.b_arrow);
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("second", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
@@ -88,8 +90,9 @@ public class AddHpFragment extends Fragment {
             public void onClick(View view) {
 
                 if(AddHpAdapter.hp_model == null){
+                    int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Please choose any option", Snackbar.LENGTH_LONG);
+                            .make(linearLayout, "Please choose any option", duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -123,31 +126,6 @@ public class AddHpFragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager_farm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        /*AddTractorBean img1=new AddTractorBean(R.drawable.tractor_green,"UPTO 20HP","");
-        newOrderBeansList.add(img1);
-
-        AddTractorBean img2=new AddTractorBean(R.drawable.gyrovator,"21-30 HP","");
-        newOrderBeansList.add(img2);
-
-        AddTractorBean img3=new AddTractorBean(R.drawable.ceat_tyre,"31-40 HP","");
-        newOrderBeansList.add(img3);
-
-        AddTractorBean img4=new AddTractorBean(R.drawable.jcb,"41-50 HP","");
-        newOrderBeansList.add(img4);
-
-        AddTractorBean img5=new AddTractorBean(R.drawable.tractor_red,"51-60 HP","");
-        newOrderBeansList.add(img5);
-
-        AddTractorBean img6=new AddTractorBean(R.drawable.jcb,"60 HP","");
-        newOrderBeansList.add(img6);
-        newOrderBeansList.add(img6);
-        newOrderBeansList.add(img6);
-       *//* newOrderBeansList.add(img6);
-        newOrderBeansList.add(img6);*//*
-
-
-        farmadapter=new AddHpAdapter(getActivity(),newOrderBeansList);
-        recyclerView.setAdapter(farmadapter);*/
 
         return view;
     }
@@ -160,11 +138,7 @@ public class AddHpFragment extends Fragment {
             JSONObject userRequestjsonObject = new JSONObject();
              userRequestjsonObject.put("LookingForDetailsId", AddFirstAdapter.looinkgId);
 
-/*
 
-            JSONObject postjsonObject = new JSONObject();
-             postjsonObject.put("objCropDetails", userRequestjsonObject);
-*/
 
             System.out.println("postObj"+userRequestjsonObject.toString());
 

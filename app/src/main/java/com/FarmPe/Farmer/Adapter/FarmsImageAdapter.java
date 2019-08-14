@@ -36,10 +36,8 @@ public class FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.My
     Fragment selectedFragment;
     JSONObject lngObject;
     public LinearLayout linearLayout;
-    public static LinearLayout next_arw;
     public static String first,looking_forId,model_id,timeline,looking_for,address;
-    SessionManager session;
-    boolean flag;
+    SessionManager session;;
     public static CardView cardView;
 
     public FarmsImageAdapter(Activity activity, List<FarmsImageBean> moviesList) {
@@ -52,24 +50,19 @@ public class FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.My
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public ImageView image,short_list_image,image_looking,edit;
+        public ImageView image,image_looking,edit;
         public TextView prod_price,prod_name,duration,farmer_name,location,connect;
-        public LinearLayout shortlist_layout;
+
 
         public  LinearLayout linear_looking_main;
 
 
         public MyViewHolder(View view) {
             super(view);
-            //agri_text=view.findViewById(R.id.store_agri);
-           // item_2=view.findViewById(R.id.item_2);
+
             prod_price=view.findViewById(R.id.prod_price);
             prod_name=view.findViewById(R.id.prod_name);
-            duration=view.findViewById(R.id.duration);
-            farmer_name=view.findViewById(R.id.farmer_name);
             linear_looking_main=view.findViewById(R.id.linear_looking_main);
-
-
             image_looking=view.findViewById(R.id.image_looking);
             edit=view.findViewById(R.id.edit);
 
@@ -92,12 +85,10 @@ public class FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.My
         final FarmsImageBean products = productList.get(position);
 
         try {
-            //holder.agri_text.setText(products.getAgri_text());
+
             holder.prod_price.setText(products.getProd_price());
             holder.prod_name.setText(products.getModelname() + " " + products.getHp());
-            //   holder.duration.setText(products.getDuration());
-            // holder.farmer_name.setText(products.getFarmer_name());
-            // holder.location.setText(products.getLocation());
+
 
             looking_forId = products.getId();
             model_id = products.getModelname();
@@ -114,7 +105,6 @@ System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"+products.ge
             public void onClick(View v) {
                 looking_forId=products.getId();
 
-          //      edit_request();
 
                 selectedFragment = Edit_Looking_For_Fragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
@@ -156,19 +146,6 @@ System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"+products.ge
         }
 
 
-//
-//        holder.shortlist_layout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (flag==false){
-//                   holder.short_list_image.setImageResource(R.drawable.ic_star_filled);
-//                    flag=true;
-//                }else{
-//                    holder.short_list_image.setImageResource(R.drawable.ic_star);
-//                    flag=false;
-//                }
-//            }
-//        });
 
 
         try {
@@ -181,35 +158,7 @@ System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"+products.ge
         }
     }
 
-   /* private void edit_request() {
-        try{
 
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("UserId",session.getRegId("userId"));
-            jsonObject.put("ModelId",model_id);
-            jsonObject.put("PurchaseTimeline",timeline);
-            jsonObject.put("LookingForFinance","yes");
-            jsonObject.put("AddressId",address);
-            jsonObject.put("IsAgreed","true");
-            jsonObject.put("LookingForDetailsId",looking_forId);
-
-
-            Crop_Post.crop_posting(activity, Urls.Edit_Request, jsonObject, new VoleyJsonObjectCallback() {
-                @Override
-                public void onSuccessResponse(JSONObject result) {
-                    System.out.print("11111eeeee" + result);
-
-                }
-            });
-
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-
-    }
-*/
     @Override
     public int getItemCount() {
         System.out.println("lengthhhhhhh"+productList.size());

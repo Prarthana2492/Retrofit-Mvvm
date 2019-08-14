@@ -49,7 +49,6 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
     DatabaseHelper myDb;
     TextInputLayout conf_pass_txt,passwd_txt;
     String passwrd_toast,passwrd_length_toast,confirm_passwrd_toast,pass_not_matching_toast,toast_internet,toast_nointernet;
-    TextInputLayout passwd1_text_input,conf_pass_textinput;
     String forgot_username,localize_text;
 
     public static boolean connectivity_check;
@@ -74,7 +73,9 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
             if(connectivity_check) {
                 message = "Good! Connected to Internet";
                 color = Color.WHITE;
-                Snackbar snackbar = Snackbar.make(linearLayout,toast_internet, Snackbar.LENGTH_LONG);
+
+                int duration=1000;
+                Snackbar snackbar = Snackbar.make(linearLayout,toast_internet,duration);
                 View sbView = snackbar.getView();
                 TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
                 textView.setBackgroundColor(ContextCompat.getColor(ResetPasswordNew.this,R.color.orange));
@@ -87,17 +88,18 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
                 }
                 snackbar.show();
 
-                //setting connectivity to false only on executing "Good! Connected to Internet"
+
                 connectivity_check=false;
             }
 
         } else {
             message = "No Internet Connection";
             color = Color.RED;
-            //setting connectivity to true only on executing "Sorry! Not connected to internet"
+
             connectivity_check=true;
-            // Snackbar snackbar = Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_LONG);
-            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), toast_nointernet, Snackbar.LENGTH_LONG);
+
+            int duration=1000;
+            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), toast_nointernet,duration);
             View sb = snackbar.getView();
             TextView textView = (TextView) sb.findViewById(android.support.design.R.id.snackbar_text);
             textView.setBackgroundColor(ContextCompat.getColor(ResetPasswordNew.this, R.color.orange));
@@ -112,10 +114,6 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
 
             snackbar.show();
 
-          /*  View sbView = snackbar.getView();
-            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
-            textView.setTextColor(color);
-            snackbar.show();*/
         }
     }
 
@@ -130,7 +128,7 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
         intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
         connectivityReceiver = new ConnectivityReceiver();
         registerReceiver(connectivityReceiver, intentFilter);
-        // register connection status listener
+
         MyApplication.getInstance().setConnectivityListener(this);
 
     }
@@ -157,11 +155,10 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
 
         setupUI(linearLayout);
 
-        // next=findViewById(R.id.next);
+
 
         sessionManager = new SessionManager(this);
-       // sessionManager.getRegId("lng_object");
-        //System.out.println("llllllllllll" + sessionManager.getRegId("lng_object"));
+
         JSONObject lngObject;
 
 
@@ -200,7 +197,7 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
 
 
 
-       // passwd.setFilters(new InputFilter[]{EMOJI_FILTER});
+
 
         final InputFilter filter = new InputFilter() {
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
@@ -226,8 +223,10 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
                 final String password = passwd.getText().toString();
                 final String confirmP = conf_pass.getText().toString();
                 if (password.equals("")) {
+
+                    int duration=1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, passwrd_toast, Snackbar.LENGTH_LONG);
+                            .make(linearLayout, passwrd_toast, duration);
                     View snackbarView=snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(ResetPasswordNew.this,R.color.orange));
@@ -238,13 +237,14 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
                     snackbar.show();
-                    //Toast.makeText(ResetPassword.this, "Enter The Password", Toast.LENGTH_LONG).show();
-                    // passwrd.setError("Enter The Password");
+
 
                 }else if (password.contains(" ")) {
                     passwd.requestFocus();
+
+                    int duration=1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Password should not contain spaces", Snackbar.LENGTH_LONG);
+                            .make(linearLayout, "Password should not contain spaces", duration);
                     View snackbarView=snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(ResetPasswordNew.this,R.color.orange));
@@ -259,8 +259,10 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
 
                 else if (password.length()<6){
                     passwd.requestFocus();
+
+                    int duration=1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, passwrd_length_toast, Snackbar.LENGTH_LONG);
+                            .make(linearLayout, passwrd_length_toast,duration);
                     View snackbarView=snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(ResetPasswordNew.this,R.color.orange));
@@ -271,14 +273,15 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
                     snackbar.show();
-                    //Toast.makeText(ResetPassword.this, "Enter Minimum 6 Characters", Toast.LENGTH_LONG).show();
-                    // passwrd.setError("Enter Minimum 6 Character");
+
 
                 }
                 else if (confirmP.equals("")) {
                     conf_pass.requestFocus();
+
+                    int duration=1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, confirm_passwrd_toast, Snackbar.LENGTH_LONG);
+                            .make(linearLayout, confirm_passwrd_toast,duration);
                     View snackbarView=snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(ResetPasswordNew.this,R.color.orange));
@@ -289,13 +292,13 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
                     snackbar.show();
-                    //Toast.makeText(ResetPassword.this, "Confirm Your Password", Toast.LENGTH_LONG).show();
-                    // confpass.setError("Confirm Your Password");
 
 
                 }else if (!(password.equals(confirmP))){
+
+                    int duration=1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, pass_not_matching_toast, Snackbar.LENGTH_LONG);
+                            .make(linearLayout, pass_not_matching_toast,duration);
                     View snackbarView=snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(ResetPasswordNew.this,R.color.orange));
@@ -306,8 +309,6 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
                     snackbar.show();
-                    //Toast.makeText(ResetPassword.this, "Password Not Matching", Toast.LENGTH_LONG).show();
-                    // Snackbar snackbar=Snackbar.make(v,"Password Not Matching",Snackbar.LENGTH_LONG);
 
                 }
                 else
@@ -342,7 +343,7 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
                                         System.out.println("sttrenewwwwwwwrenewwwwwwwrenewwwwwww"+status);
                                         if (status.equals("1")){
 
-                                            //sessionManager.createLoginSession(password, ForgotPassword.forgot_mob_no);
+
                                             System.out.println("qwertyuioaaa" + password + ForgotPasswordNew.forgot_mob_no);
                                             if (myDb.isEmailExists(ForgotPasswordNew.mob_trim)){
                                                 myDb.updateContact(ForgotPasswordNew.mob_trim,conf_pass.getText().toString().trim());
@@ -351,13 +352,7 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
                                             Toast.makeText(ResetPasswordNew.this, message, Toast.LENGTH_SHORT).show();
                                             Intent intent=new Intent(ResetPasswordNew.this, LoginActivity.class);
                                             startActivity(intent);
-                                           /* if (LoginFragment.rememberMe.isChecked()) {
 
-                                                if (!myDb.isEmailExists(ForgotPasswordNew.forgot_mob_no)) {
-                                                    AddData(ForgotPassword.forgot_mob_no, password);
-                                                }
-
-                                            }*/
 
                                         }else {
                                             Toast.makeText(ResetPasswordNew.this, "Password not Updated", Toast.LENGTH_SHORT).show();
@@ -484,7 +479,7 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
 
     public void setupUI(View view) {
 
-        //Set up touch listener for non-text box views to hide keyboard.
+
         if(!(view instanceof EditText)) {
 
             view.setOnTouchListener(new View.OnTouchListener() {
@@ -497,7 +492,7 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
             });
         }
 
-        //If a layout container, iterate over children and seed recursion.
+
         if (view instanceof ViewGroup) {
 
             for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
@@ -510,8 +505,6 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
     }
 
     public static void hideSoftKeyboard(Activity activity) {
- /*InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);*/
 
         InputMethodManager inputManager = (InputMethodManager)
                 activity.getSystemService(

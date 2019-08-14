@@ -206,15 +206,7 @@ public class You_Address_Fragment extends Fragment {
                     }
                 });
 
-               /* barn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        select_address_type.setText(barn.getText().toString());
-                        dialog.dismiss();
-                        gettingAddress("Barn");
 
-                    }
-                });*/
 
                 ware_house.setOnClickListener(new View.OnClickListener() {
                     @Override

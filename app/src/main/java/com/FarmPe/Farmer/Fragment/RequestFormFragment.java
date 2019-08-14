@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -51,7 +52,6 @@ public class RequestFormFragment extends Fragment {
     RadioGroup radioGroup,radioGroup_finance;
     RadioButton radioButton,finance_yes,finance_no,radioButton1;
     LinearLayout back_feed,address_layout;
-   // CheckBox check_box;
     SessionManager sessionManager;
     View view;
     String addId;
@@ -65,36 +65,23 @@ public class RequestFormFragment extends Fragment {
     Add_New_Address_Bean add_new_address_bean;
     TextView whenPurchase, lookingForFinance;
     JSONArray get_address_array;
-
+    String pickUPFrom;
+    ImageView b_arrow;
     public static RequestFormFragment newInstance() {
         RequestFormFragment fragment = new RequestFormFragment();
         return fragment;
     }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-      //  view = inflater.inflate(R.layout.request_form, container, false);
-
-
-        //Inflate the layout for this fragment or reuse the existing one
         final View view = getView() != null ? getView() :
                 inflater.inflate(R.layout.request_form, container, false);
-
-
-
-
-
-
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
-      //  check_box=view.findViewById(R.id.check_box);
+        b_arrow=view.findViewById(R.id.b_arrow);
         whenPurchase = view.findViewById(R.id.whenPurchase);
-
         whenPurchase.setText("When are you planning to purchase "+ AddFirstFragment.tracter_title+"?");
         lookingForFinance = view.findViewById(R.id.lookingForFinance);
         lookingForFinance.setText("Are you looking for finance / loan for "+AddFirstFragment.tracter_title+" purchase?");
-
         address_layout=view.findViewById(R.id.address_layout);
         radioGroup=view.findViewById(R.id.radio_group_time);
         radioGroup_finance=view.findViewById(R.id.radioGroup_finance);
@@ -103,52 +90,26 @@ public class RequestFormFragment extends Fragment {
         linearLayout=view.findViewById(R.id.linearLayout);
         toolbar_title.setText("Request for Quotation");
         sessionManager=new SessionManager(getActivity());
-
         Bundle bundle=getArguments();
         if (bundle==null){
             gettingAddress();
-
         }else{
             finance_selected=bundle.getInt("selected_id2");
             time_selected=bundle.getInt("selected_id_time1");
-            //  gettingAddress();
-
-            // System.out.println("tiiiiimmmee"+time_selected);
             addId=bundle.getString("add_id");
             String stret_name=bundle.getString("streetname");
             address_text.setText(stret_name);
             radioGroup.check(bundle.getInt("selected_id_time1"));
             radioGroup_finance.check(finance_selected);
-
         }
-
-        //check_box.setText("I agree that by clicking 'Request for "+AddFirstFragment.tracter_title+"' button, I am explicitly soliciting a call from FarmPe Farmer App users on my 'Mobile' in order to assist me with my "+AddFirstFragment.tracter_title+" purchase.");
-
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("fourth", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
-
-//        view.setFocusableInTouchMode(true);
-////        view.requestFocus();
-////        view.setOnKeyListener(new View.OnKeyListener() {
-////
-////
-////            @Override
-////            public boolean onKey(View v, int keyCode, KeyEvent event) {
-////                if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-////                    FragmentManager fm = getActivity().getSupportFragmentManager();
-////                    fm.popBackStack("fourth", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-////
-////
-////                    return true;
-////                }
-////                return false;
-////            }
-////        });
 
 
         view.setFocusableInTouchMode(true);
@@ -188,8 +149,9 @@ public class RequestFormFragment extends Fragment {
                         String str = address_text.getText().toString();
                         if ((radioGroup.getCheckedRadioButtonId() == -1) && address_text.getText().toString().equals("") && radioGroup_finance.getCheckedRadioButtonId() == -1) {
                          //1aq   Toast.makeText(getActivity(), "Select All Fields", Toast.LENGTH_SHORT).show();
+                            int duration = 1000;
                             Snackbar snackbar = Snackbar
-                                    .make(linearLayout,"Select All Fields", Snackbar.LENGTH_LONG);
+                                    .make(linearLayout,"Select All Fields", duration);
                             View snackbarView = snackbar.getView();
                             TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                             tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -204,9 +166,9 @@ public class RequestFormFragment extends Fragment {
                             snackbar.show();
 
                         } else if ((radioGroup.getCheckedRadioButtonId() == -1)) {
-
+                            int duration = 1000;
                             Snackbar snackbar = Snackbar
-                                    .make(linearLayout,"Select Timeline", Snackbar.LENGTH_LONG);
+                                    .make(linearLayout,"Select Timeline", duration);
                             View snackbarView = snackbar.getView();
                             TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                             tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -222,8 +184,9 @@ public class RequestFormFragment extends Fragment {
 
                         } else if (str.equalsIgnoreCase("")) {
                             //Toast.makeText(getActivity(), "Select Your Address", Toast.LENGTH_SHORT).show();
+                            int duration = 1000;
                             Snackbar snackbar = Snackbar
-                                    .make(linearLayout,"Select Your Address", Snackbar.LENGTH_LONG);
+                                    .make(linearLayout,"Select Your Address", duration);
                             View snackbarView = snackbar.getView();
                             TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                             tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -240,8 +203,9 @@ public class RequestFormFragment extends Fragment {
 
                         else if((radioGroup_finance.getCheckedRadioButtonId()==-1)) {
 
+                            int duration = 1000;
                             Snackbar snackbar = Snackbar
-                                    .make(linearLayout,"Select finance", Snackbar.LENGTH_LONG);
+                                    .make(linearLayout,"Select finance",duration);
                             View snackbarView = snackbar.getView();
                             TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                             tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -263,10 +227,7 @@ public class RequestFormFragment extends Fragment {
                     }
                 });
 
-              /*  selectedFragment = HomeMenuFragment.newInstance();
-                FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
-                transaction.commit();*/
+
 
 
         radioGroup_finance.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -292,17 +253,7 @@ public class RequestFormFragment extends Fragment {
             }
         });
 
-       /* final String value =
-                ((RadioButton)view.findViewById(radioGroup.getCheckedRadioButtonId()))
-                        .getText().toString();*/
 
-
-       /* radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-               // Toast.makeText(getBaseContext(), value, Toast.LENGTH_SHORT).show();
-                System.out.println("valueee"+value);
-            }
-        });*/
 
         return view;
     }
@@ -328,9 +279,7 @@ public class RequestFormFragment extends Fragment {
             userRequestjsonObject.put("LookingForDetailsId", AddFirstAdapter.looinkgId);
 
 
-          /*  JSONObject postjsonObject = new JSONObject();
-            postjsonObject.put("objCropDetails", userRequestjsonObject);
-*/
+
 
             System.out.println("postObj"+userRequestjsonObject.toString());
 
@@ -347,10 +296,10 @@ public class RequestFormFragment extends Fragment {
                         String message=result.getString("Message");
 
 
-                       // Toast.makeText(getActivity(), "Your Request Added Successfully", Toast.LENGTH_SHORT).show();
 
+                        int duration = 1000;
                         Snackbar snackbar = Snackbar
-                                .make(linearLayout,"Your Request Added Successfully", Snackbar.LENGTH_LONG);
+                                .make(linearLayout,"Your Request Added Successfully", duration);
                         View snackbarView = snackbar.getView();
                         TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                         tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -364,9 +313,7 @@ public class RequestFormFragment extends Fragment {
 
                         snackbar.show();
 
-                        //back = "add_back";
 
-                       // HomeMenuFragment.onBack_status = "looking_frg";
 
                         selectedFragment = HomeMenuFragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -392,7 +339,7 @@ public class RequestFormFragment extends Fragment {
         try{
             final JSONObject jsonObject = new JSONObject();
             jsonObject.put("UserId",sessionManager.getRegId("userId"));
-            // jsonObject.put("PickUpFrom",pickUPFrom);
+             jsonObject.put("PickUpFrom",pickUPFrom);
             System.out.println("aaaaaaaaaaaaadddd" + sessionManager.getRegId("userId"));
 
             Crop_Post.crop_posting(getActivity(), Urls.Get_New_Address, jsonObject, new VoleyJsonObjectCallback() {
@@ -422,6 +369,7 @@ public class RequestFormFragment extends Fragment {
 
                         // item_list = String.valueOf(new_address_beanArrayList.size());
                         //  address_list.setText(item_list+" " + ad_list );
+
 
 
                         // mAdapter.notifyDataSetChanged();

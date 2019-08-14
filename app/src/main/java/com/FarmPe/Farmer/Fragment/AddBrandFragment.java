@@ -16,6 +16,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -44,7 +45,7 @@ public class AddBrandFragment extends Fragment {
     TextView toolbar_title;
     LinearLayout back_feed,linearLayout;
     TextView continue_button;
-
+ImageView b_arrow;
 
 
     public static AddBrandFragment newInstance() {
@@ -60,12 +61,13 @@ public class AddBrandFragment extends Fragment {
         back_feed=view.findViewById(R.id.back_feed);
         continue_button=view.findViewById(R.id.continue_button);
         linearLayout=view.findViewById(R.id.linearLayout);
-
+        b_arrow=view.findViewById(R.id.b_arrow);
         toolbar_title.setText("Select Brand");
 
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("first", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
@@ -91,9 +93,9 @@ public class AddBrandFragment extends Fragment {
             public void onClick(View view) {
 
                 if(AddBrandAdapter.brandId == null){
-
+                    int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Please choose any option", Snackbar.LENGTH_LONG);
+                            .make(linearLayout, "Please choose any option", duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -126,38 +128,11 @@ public class AddBrandFragment extends Fragment {
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager_farm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-/*
-        AddTractorBean img1=new AddTractorBean(R.drawable.tractor_green,"Mahindra Tractors","");
-        newOrderBeansList.add(img1);
-
-        AddTractorBean img2=new AddTractorBean(R.drawable.gyrovator,"Sonalika","");
-        newOrderBeansList.add(img2);
-
-        AddTractorBean img3=new AddTractorBean(R.drawable.ceat_tyre,"Eicher Tractors","");
-        newOrderBeansList.add(img3);
-
-        AddTractorBean img4=new AddTractorBean(R.drawable.jcb,"John Deere","");
-        newOrderBeansList.add(img4);
-
-        AddTractorBean img5=new AddTractorBean(R.drawable.tractor_red,"Escorts","");
-        newOrderBeansList.add(img5);
-
-        AddTractorBean img6=new AddTractorBean(R.drawable.jcb,"Swaraj","");
-        newOrderBeansList.add(img6);
-        newOrderBeansList.add(img6);
-        newOrderBeansList.add(img6);
-       *//* newOrderBeansList.add(img6);
-        newOrderBeansList.add(img6);*//*
-
-      *//*  recyclerView.setAdapter(farmadapter);*//*
-        farmadapter=new AddBrandAdapter(getActivity(),newOrderBeansList);
-        recyclerView.setAdapter(farmadapter);*/
         return view;
     }
 
     private void BrandList() {
-        /*Bundle bundle=getArguments();
-        String lookingForId=bundle.getString("looinkgId");*/
+
 
         try {
             newOrderBeansList.clear();
@@ -168,8 +143,6 @@ public class AddBrandFragment extends Fragment {
             System.out.println("sdfsdfsdf" + AddFirstAdapter.looinkgId );
 
             JSONObject postjsonObject = new JSONObject();
-            // postjsonObject.put("objCropDetails", userRequestjsonObject);
-
             System.out.println("postObj"+userRequestjsonObject.toString());
 
             Login_post.login_posting(getActivity(), Urls.GetBrandList,userRequestjsonObject,new VoleyJsonObjectCallback() {
@@ -192,13 +165,7 @@ public class AddBrandFragment extends Fragment {
                            AddTractorBean crops = new AddTractorBean(BrandIcon, brand_name,id,false);
                            newOrderBeansList.add(crops);
 
-                          /*  if(!latts.equals("") | !langgs.equals("")) {
 
-                                CropListBean crops = new CropListBean(cropName, crop_variety, location, crop_grade,
-                                        crop_quantity, crop_uom, crop_price, id, farmerId,
-                                        UserName,latts,langgs,CropImg,category);
-                                newOrderBeansList.add(crops);
-                            }*/
                         }
                         farmadapter=new AddBrandAdapter(getActivity(),newOrderBeansList);
                         recyclerView.setAdapter(farmadapter);

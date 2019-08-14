@@ -8,9 +8,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.FarmPe.Farmer.Activity.LandingPageActivity;
-import com.FarmPe.Farmer.Adapter.AddPhotoAdapter;
+//import com.FarmPe.Farmer.Adapter.AddPhotoAdapter;
 import com.FarmPe.Farmer.Bean.AddPhotoBean;
-import com.FarmPe.Farmer.Fragment.ListYourFarmsFive;
+//import com.FarmPe.Farmer.Fragment.ListYourFarmsFive;
 import com.FarmPe.Farmer.Volly_class.PackageManagerUtils;
 import com.FarmPe.Farmer.volleypost.VolleyMultipartRequest;
 import com.android.volley.AuthFailureError;
@@ -213,8 +213,8 @@ public class G_Vision_Controller {
                 if (result.equals("APPROVE")){
                     if (currentStatus.equals("farm")){
                         AddPhotoBean img1=new AddPhotoBean( scaled_bitmap);
-                        AddPhotoAdapter.productList.add(0,img1);
-                        ListYourFarmsFive.farmadapter.notifyDataSetChanged();
+                       // AddPhotoAdapter.productList.add(0,img1);
+                       // ListYourFarmsFive.farmadapter.notifyDataSetChanged();
                     }else {
 
 

@@ -1,6 +1,5 @@
 package com.FarmPe.Farmer.Activity;
 
-import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
@@ -17,9 +16,7 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.FarmPe.Farmer.Adapter.AddHpAdapter;
 import com.FarmPe.Farmer.Bean.FarmsImageBean;
-import com.FarmPe.Farmer.Fragment.HomeMenuFragment;
 import com.FarmPe.Farmer.Fragment.PrivacyPolicyFragment;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
@@ -34,15 +31,15 @@ public class Privacy_Activity extends AppCompatActivity implements ConnectivityR
 
     public static List<FarmsImageBean> newOrderBeansList = new ArrayList<>();
     public static RecyclerView recyclerView;
-    public static AddHpAdapter farmadapter;
+
     TextView toolbar_title;
     NestedScrollView profile_view;
     Fragment selectedFragment;
     String toast_internet,toast_nointernet;
     JSONObject lngObject;
     SessionManager sessionManager;
-    LinearLayout back_feed,next_layout,main_layout;
-    CheckBox check_box;
+    LinearLayout back_feed,main_layout;
+
 
 
     public static boolean connectivity_check;
@@ -68,30 +65,29 @@ public class Privacy_Activity extends AppCompatActivity implements ConnectivityR
             if(connectivity_check) {
                 message = "Good! Connected to Internet";
                 color = Color.WHITE;
-                Snackbar snackbar = Snackbar.make(main_layout,toast_internet, Snackbar.LENGTH_LONG);
+
+                int duration=1000;
+                Snackbar snackbar = Snackbar.make(main_layout,toast_internet, duration);
                 View sbView = snackbar.getView();
                 TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
                 textView.setBackgroundColor(ContextCompat.getColor(Privacy_Activity.this,R.color.orange));
                 textView.setTextColor(Color.WHITE);
                 snackbar.show();
 
-                //setting connectivity to false only on executing "Good! Connected to Internet"
+
                 connectivity_check=false;
             }
 
         } else {
             message = "No Internet Connection";
             color = Color.RED;
-            //setting connectivity to true only on executing "Sorry! Not connected to internet"
+
+            int duration=1000;
             connectivity_check=true;
-            // Snackbar snackbar = Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_LONG);
-            Snackbar.make(findViewById(android.R.id.content),toast_nointernet, Snackbar.LENGTH_LONG).show();
+
+            Snackbar.make(findViewById(android.R.id.content),toast_nointernet, duration).show();
 
 
-          /*  View sbView = snackbar.getView();
-            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
-            textView.setTextColor(color);
-            snackbar.show();*/
         }
     }
 
@@ -104,7 +100,7 @@ public class Privacy_Activity extends AppCompatActivity implements ConnectivityR
         connectivityReceiver = new ConnectivityReceiver();
         registerReceiver(connectivityReceiver, intentFilter);
         MyApplication.getInstance().setConnectivityListener(this);
-        // register connection status listener
+
 
     }
 
@@ -120,24 +116,13 @@ public class Privacy_Activity extends AppCompatActivity implements ConnectivityR
         back_feed=findViewById(R.id.back_feed);
         main_layout=findViewById(R.id.main_layout);
         toolbar_title=findViewById(R.id.toolbar_title);
-        profile_view=findViewById(R.id.profile_view);
-        //  check_box=findViewById(R.id.check_box);
-        next_layout=findViewById(R.id.next_layout);
+;
+
 
         profile_view.setVisibility(View.GONE);
 
 
-        // check_box.setText("I agree that by clicking 'Request for Tractor Price' button, I am explicitly soliciting a call from Xohri App users on my 'Mobile' in order to assist me with my tractor purchase.");
 
-
-//
-//        back_feed.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent=new Intent(Privacy_Activity.this,FarmerUser.class);
-//                startActivity(intent);
-//            }
-//        });
 
 
         try {

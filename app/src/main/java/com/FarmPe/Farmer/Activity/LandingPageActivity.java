@@ -37,10 +37,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.FarmPe.Farmer.Adapter.AddPhotoAdapter;
+
 import com.FarmPe.Farmer.Bean.AddPhotoBean;
 import com.FarmPe.Farmer.Fragment.HomeMenuFragment;
-import com.FarmPe.Farmer.Fragment.ListYourFarmsFive;
+
 import com.FarmPe.Farmer.G_Vision_Controller;
 import com.FarmPe.Farmer.GpsService;
 import com.FarmPe.Farmer.R;
@@ -73,11 +73,10 @@ import java.util.ArrayList;
 
 
 public class LandingPageActivity extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener{
-    public static TextView name,variety,loc,grade,quantity,uom,price,add_cart,prof_name,buy_now;
+    public static TextView name,price;
     Fragment selectedFragment = null;
     public static ImageView cart_img;
-    public static BottomSheetBehavior mBottomSheetBehavior6;
-    View Profile;
+
     JSONObject lngObject;
     String toast_internet,toast_nointernet;
     CoordinatorLayout coordinate_layout;
@@ -125,7 +124,9 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
             if(connectivity_check) {
                 message = "Good! Connected to Internet";
                 color = Color.WHITE;
-                Snackbar snackbar = Snackbar.make(coordinate_layout,toast_internet, Snackbar.LENGTH_LONG);
+
+                int duration=1000;
+                Snackbar snackbar = Snackbar.make(coordinate_layout,toast_internet, duration);
                 View sbView = snackbar.getView();
                 TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
                 textView.setBackgroundColor(ContextCompat.getColor(LandingPageActivity.this,R.color.orange));
@@ -137,17 +138,18 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
                 }
                 snackbar.show();
 
-                //setting connectivity to false only on executing "Good! Connected to Internet"
+
                 connectivity_check=false;
             }
 
         } else {
             message = "No Internet Connection";
             color = Color.RED;
-            //setting connectivity to true only on executing "Sorry! Not connected to internet"
+
             connectivity_check=true;
-            // Snackbar snackbar = Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_LONG);
-            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), toast_nointernet, Snackbar.LENGTH_LONG);
+
+            int duration=1000;
+            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), toast_nointernet, duration);
             View sb = snackbar.getView();
             TextView textView = (TextView) sb.findViewById(android.support.design.R.id.snackbar_text);
             textView.setBackgroundColor(ContextCompat.getColor(LandingPageActivity.this, R.color.orange));
@@ -162,10 +164,7 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
 
             snackbar.show();
 
-          /*  View sbView = snackbar.getView();
-            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
-            textView.setTextColor(color);
-            snackbar.show();*/
+
         }
     }
 
@@ -181,7 +180,6 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
         connectivityReceiver = new ConnectivityReceiver();
         registerReceiver(connectivityReceiver, intentFilter);
         MyApplication.getInstance().setConnectivityListener(this);
-        // register connection status listener
 
 
     }
@@ -198,20 +196,16 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
 
 
 
-        if (requestCode == 200) {
+        if (requestCode == 100&& resultCode == RESULT_OK && data != null) {
             try {
                 final Uri imageUri = data.getData();
                 final InputStream imageStream =getContentResolver().openInputStream(imageUri);
                 selectedImage = BitmapFactory.decodeStream(imageStream);
-                //profile_image.setImageBitmap(selectedImage);
-                AddPhotoBean img1=new AddPhotoBean( selectedImage);
+           AddPhotoBean img1=new AddPhotoBean( selectedImage);
                 if (!(selectedImage==null)){
                     g_vision_controller.callCloudVision(selectedImage,this,"farm");
 
 
-                   //  callCloudVision(  scaleBitmapDown(selectedImage,MAX_DIMENSION));
-                  //  AddPhotoAdapter.productList.add(0,img1);
-                   // ListYourFarmsFive.farmadapter.notifyDataSetChanged();
 
 
                 }else {
@@ -236,12 +230,9 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test);
         checkConnection();
-        name=findViewById(R.id.selling_item_name);
+
         coordinate_layout=findViewById(R.id.coordinator);
-        price=findViewById(R.id.price);
-        add_cart=findViewById(R.id.add_cart);
-        buy_now=findViewById(R.id.buy_now);
-        cart_img=findViewById(R.id.cart_img);
+
 
         sessionManager = new SessionManager(this);
         activity= this;
@@ -278,34 +269,6 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
         transaction.replace(R.id.frame_layout, selectedFragment);
         transaction.commit();
 
-        Profile = findViewById(R.id.profile_view);
-
-        mBottomSheetBehavior6 = BottomSheetBehavior.from(Profile);
-
-        mBottomSheetBehavior6.setPeekHeight(0);
-
-        mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_COLLAPSED);
-
-        mBottomSheetBehavior6.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-            @Override
-            public void onStateChanged(View bottomSheet, int newState) {
-                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
-
-                }
-                else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
-                }
-                else if (newState == BottomSheetBehavior.STATE_HIDDEN) {
-
-                }
-            }
-
-
-            @Override
-            public void onSlide(View bottomSheet, float slideOffset) {
-            }
-
-        });
-
     }
 
 
@@ -315,36 +278,6 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
         super.onBackPressed();
     }
 
-//
-//    @Override
-//    public void onBackPressed() {
-//        if (doubleBackToExitPressedOnce) {
-//
-//            Intent intent = new Intent(Intent.ACTION_MAIN);
-//            intent.addCategory(Intent.CATEGORY_HOME);
-//            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
-//            startActivity(intent);
-//            activity.finish();
-//            System.exit(0);                    }
-//
-//        doubleBackToExitPressedOnce = true;
-//        Snackbar snackbar = Snackbar
-//                .make(coordinate_layout,toast_click_back, Snackbar.LENGTH_LONG);
-//        View snackbarView = snackbar.getView();
-//        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-//        tv.setBackgroundColor(ContextCompat.getColor(LandingPageActivity.this,R.color.orange));
-//        tv.setTextColor(Color.WHITE);
-//        snackbar.show();
-//        new Handler().postDelayed(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                doubleBackToExitPressedOnce=false;
-//            }
-//        }, 3000);
-//
-//    }
-//
 
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {

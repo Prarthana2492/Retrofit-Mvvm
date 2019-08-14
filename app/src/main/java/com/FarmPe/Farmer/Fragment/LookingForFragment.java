@@ -66,8 +66,8 @@ public class LookingForFragment extends Fragment {
       // System.out.println("bbbbbbbbbbbbbbbbbbbb"+ "+1-333-444-5678".replaceAll("\\d{4}(?=\\d)", "*"));
 
 
-        LookingForList();
 
+        LookingForList();
 
 
 
@@ -105,66 +105,14 @@ public class LookingForFragment extends Fragment {
             }
         });
 
-/*
-
-        FarmsImageBean img1=new FarmsImageBean(R.drawable.tractor_green,"Tractor Price","Mahindra Jivo 225 DL 20HP","","Immediately","Jagdish Kumar","Rampura Bahjoi","");
-        newOrderBeansList.add(img1);
-
-        FarmsImageBean img2=new FarmsImageBean(R.drawable.gyrovator,"Tractor Implements Price","Mahindra Jivo 225 DL 20HP","","1 Month","Jagdish Kumar","Rampura Bahjoi","");
-        newOrderBeansList.add(img2);
-
-        FarmsImageBean img3=new FarmsImageBean(R.drawable.tractor_green,"Tractor Price","Mahindra Jivo 225 DL 20HP","","Immediately","Jagdish Kumar","Rampura Bahjoi","");
-        newOrderBeansList.add(img3);
-
-        FarmsImageBean img4=new FarmsImageBean(R.drawable.tractor_red,"Tractor Price","Mahindra Jivo 225 DL 20HP","","Immediately","Jagdish Kumar","Rampura Bahjoi","");
-        newOrderBeansList.add(img4);
-        newOrderBeansList.add(img4);
-        newOrderBeansList.add(img4);
-        newOrderBeansList.add(img4);
-        newOrderBeansList.add(img4);
-
-
-        farmadapter=new FarmsImageAdapter(getActivity(),newOrderBeansList);
-        recyclerView.setAdapter(farmadapter);
-*/
-
-//
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//
-//                searchView.clearFocus();
-//                System.out.println("lknkknknknknknknknnk");
-//             /*   if(list.contains(query)){
-//                    adapter.getFilter().filter(query);
-//                }else{
-//                    Toast.makeText(MainActivity.this, "No Match found",Toast.LENGTH_LONG).show();
-//                }*/
-//                return false;
-//
-//            }
-//
-//            @RequiresApi(api = Build.VERSION_CODES.N)
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                // back_feed.setVisibility(View.GONE);
-//                //title.setVisibility(View.GONE);
-//                System.out.println("lknkknknknknknknknnk"+newText);
-//                sorting(newText);
-//
-//
-//                return false;
-//            }
-//        });
-
 
         return view;
     }
     private void LookingForList() {
 
-        try{
+        try {
             final JSONObject jsonObject = new JSONObject();
-            jsonObject.put("UserId",sessionManager.getRegId("userId"));
+            jsonObject.put("UserId", sessionManager.getRegId("userId"));
             System.out.println("aaaaaaaaaaaaadddd" + sessionManager.getRegId("userId"));
 
             Crop_Post.crop_posting(getActivity(), Urls.YourRequest, jsonObject, new VoleyJsonObjectCallback() {
@@ -202,28 +150,10 @@ public class LookingForFragment extends Fragment {
                                 location = city + ", " + state;
 
 
-
-
-                         /*   if (city.equals("")){
-                                location="Bangalore"+", "+state;
-                            }else{
-                                location=city+", "+state;
-                            }
-
-*/
                                 System.out.println("madelslistt" + newOrderBeansList.size());
 
                                 FarmsImageBean crops = new FarmsImageBean(image, "Tractor Price", model, hp_range, purchaseTimeline, name, location, id);
                                 newOrderBeansList.add(crops);
-
-
-                          /*  if(!latts.equals("") | !langgs.equals("")) {
-
-                                CropListBean crops = new CropListBean(cropName, crop_variety, location, crop_grade,
-                                        crop_quantity, crop_uom, crop_price, id, farmerId,
-                                        UserName,latts,langgs,CropImg,category);
-                                newOrderBeansList.add(crops);
-                            }*/
 
 
                             }
@@ -244,110 +174,9 @@ public class LookingForFragment extends Fragment {
             });
 
 
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-
-
-
-
-/*
-
-        try {
-            newOrderBeansList.clear();
-
-            JSONObject userRequestjsonObject = new JSONObject();
-
-
-          */
-/*  JSONObject postjsonObject = new JSONObject();
-            postjsonObject.put("objCropDetails", userRequestjsonObject);
-*//*
-
-            System.out.println("postObj"+userRequestjsonObject.toString());
-
-            Login_post.login_posting(getActivity(), Urls.GetLookingForList,userRequestjsonObject,new VoleyJsonObjectCallback() {
-                @Override
-                public void onSuccessResponse(JSONObject result) {
-                    System.out.println("cropsresult"+result);
-                    JSONArray cropsListArray=null;
-                    try {
-                        cropsListArray=result.getJSONArray("LookingForList");
-                        System.out.println("e     e e ddd"+cropsListArray.length());
-                        for (int i=0;i<cropsListArray.length();i++){
-                            JSONObject jsonObject1=cropsListArray.getJSONObject(i);
-                            JSONObject jsonObject2=jsonObject1.getJSONObject("Address");
-
-
-                            String model=jsonObject1.getString("Model");
-                            String purchaseTimeline=jsonObject1.getString("PurchaseTimeline");
-                            String image=jsonObject1.getString("ModelImage");
-                            String id=jsonObject1.getString("CreatedBy");
-                            String name=jsonObject2.getString("Name");
-                            String city=jsonObject2.getString("City");
-                            String state=jsonObject2.getString("State");
-                            String hp_range=jsonObject1.getString("HorsePowerRange");
-
-                            if (city.equals("")){
-                                 location="Bangalore"+", "+state;
-                            }else{
-                                 location=city+", "+state;
-                            }
-
-
-
-                            System.out.println("madelslistt"+newOrderBeansList.size());
-
-                            FarmsImageBean crops = new FarmsImageBean(image,"Tractor Price",model,hp_range,purchaseTimeline,name,location,id);
-                            newOrderBeansList.add(crops);
-
-
-
-                          */
-/*  if(!latts.equals("") | !langgs.equals("")) {
-
-                                CropListBean crops = new CropListBean(cropName, crop_variety, location, crop_grade,
-                                        crop_quantity, crop_uom, crop_price, id, farmerId,
-                                        UserName,latts,langgs,CropImg,category);
-                                newOrderBeansList.add(crops);
-                            }*//*
-
-                        }
-                        farmadapter=new FarmsImageAdapter(getActivity(),newOrderBeansList);
-                        recyclerView.setAdapter(farmadapter);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
         } catch (Exception e) {
             e.printStackTrace();
         }
-*/
-
     }
-
-
-//    public  void sorting(String filter_text){
-//
-//        searchresultAraaylist.clear();
-//        for (FarmsImageBean composeMsgOrderSecondBean: newOrderBeansList) {
-//            System.out.println("llllllllllllllll"+composeMsgOrderSecondBean.getProd_price());
-//            final String text = composeMsgOrderSecondBean.getProd_price().toLowerCase();
-//            final String text1 = composeMsgOrderSecondBean.getModelname().toLowerCase();
-//            final String text2 = composeMsgOrderSecondBean.getFarmer_name().toLowerCase();
-//            final String text3 = composeMsgOrderSecondBean.getLocation().toLowerCase();
-//
-//            if (text.contains(filter_text)||text1.contains(filter_text)||text2.contains(filter_text)||text3.contains(filter_text)){
-//
-//                searchresultAraaylist.add(composeMsgOrderSecondBean);
-//            }
-//        }
-//
-//        farmadapter=new FarmsImageAdapter(getActivity(),searchresultAraaylist);
-//        recyclerView.setAdapter(farmadapter);
-//
-//    }
 
 }

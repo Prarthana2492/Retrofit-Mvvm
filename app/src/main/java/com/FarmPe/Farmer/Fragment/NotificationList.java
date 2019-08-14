@@ -61,11 +61,7 @@ public class NotificationList extends Fragment {
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack ("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-              /*else if(getArguments().getString("navigation_from").equals("setting")){
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-                }*/
             }
         });
 
@@ -81,13 +77,6 @@ public class NotificationList extends Fragment {
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack ("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-                    /* else if(getArguments().getString("navigation_from").equals("setting")){
-                        FragmentManager fm = getActivity().getSupportFragmentManager();
-                        fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-                    }*/
-                   /* FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);*/
 
 
                     return true;
@@ -103,8 +92,7 @@ public class NotificationList extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager_farm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-       /* newOrderBeansList.add(img6);
-        newOrderBeansList.add(img6);*/
+
 
 
         farmadapter=new NotificationListAdapter(getActivity(),newOrderBeansList);
@@ -148,12 +136,7 @@ public class NotificationList extends Fragment {
                             String model=jsonObject1.getString("NotificationText");
 
 
-                         /*   if (city.equals("")){
-                                location="Bangalore"+", "+state;
-                            }else{
-                                location=city+", "+state;
-                            }
-*/
+
 
 
                             System.out.println("madelslistt"+newOrderBeansList.size());
@@ -161,21 +144,7 @@ public class NotificationList extends Fragment {
                             newOrderBeansList.add(img1);
 
 
-                            //FarmsImageBean crops = new FarmsImageBean(image,"Tractor Price",model,hp_range,purchaseTimeline,name,location,id);
-                          //  newOrderBeansList.add(crops);
-
-
-
-                          /*  if(!latts.equals("") | !langgs.equals("")) {
-
-                                CropListBean crops = new CropListBean(cropName, crop_variety, location, crop_grade,
-                                        crop_quantity, crop_uom, crop_price, id, farmerId,
-                                        UserName,latts,langgs,CropImg,category);
-                                newOrderBeansList.add(crops);
-                            }*/
                         }
-                       // farmadapter=new NotificationAdapter(getActivity(),newOrderBeansList);
-                       // recyclerView.setAdapter(farmadapter);
 
                         farmadapter=new NotificationListAdapter(getActivity(),newOrderBeansList);
                         recyclerView.setAdapter(farmadapter);

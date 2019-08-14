@@ -12,6 +12,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -26,7 +27,7 @@ public class No_Request_Fragment extends Fragment {
     TextView make_request;
     LinearLayout back_feed1;
     Fragment selectedFragment = null;
-
+ImageView b_arrow;
 
     public static No_Request_Fragment newInstance() {
         No_Request_Fragment fragment = new No_Request_Fragment();
@@ -39,25 +40,20 @@ public class No_Request_Fragment extends Fragment {
 
         make_request = view.findViewById(R.id.make_requesttttt);
         back_feed1 = view.findViewById(R.id.back_feed1);
-
+        b_arrow=view.findViewById(R.id.b_arrow);
 
 
         back_feed1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
                 HomeMenuFragment.onBack_status = "no_request";
 
                 selectedFragment = HomeMenuFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
                 transaction.commit();
-               // HomeMenuFragment.drawer.openDrawer(Gravity.START);//
 
-                 /*else if(getArguments().getString("navigation_from").equals("setting")){
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-                }*/
             }
         });
 
@@ -74,7 +70,6 @@ public class No_Request_Fragment extends Fragment {
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_layout, selectedFragment);
                     transaction.commit();
-                   // HomeMenuFragment.drawer.openDrawer(Gravity.START);//
 
                     return true;
                 }

@@ -23,8 +23,7 @@ import com.FarmPe.Farmer.R;
 
 import java.util.List;
 
-public class
-AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyViewHolder>  {
+public class AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyViewHolder>  {
     private List<AddTractorBean> productList;
     Activity activity;
     Fragment selectedFragment;
@@ -36,7 +35,7 @@ AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyViewHolder>  {
     public AddFirstAdapter(Activity activity, List<AddTractorBean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
-//        session=new SessionManager(activity);
+
 
     }
 
@@ -52,14 +51,11 @@ AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyViewHolder>  {
 
         public MyViewHolder(View view) {
             super(view);
-            //agri_text=view.findViewById(R.id.store_agri);
-            // item_2=view.findViewById(R.id.item_2);
+
             prod_price=view.findViewById(R.id.prod_price);
             image=view.findViewById(R.id.prod_img);
             item=view.findViewById(R.id.item);
 
-            //linearLayout=view.findViewById(R.id.dialog_list);
-            //confirmbutton=view.findViewById(R.id.delivery2);
         }
 
     }
@@ -75,7 +71,7 @@ AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyViewHolder>  {
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final AddTractorBean products = productList.get(position);
-        //holder.agri_text.setText(products.getAgri_text());
+
         holder.prod_price.setText(products.getProd_name());
 
         purchase_tractor=products.getProd_name();
@@ -107,11 +103,7 @@ AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyViewHolder>  {
                 }
                 productList.get(position).setSelected(true);
                 notifyDataSetChanged();
-              /*  selectedFragment = AddBrandFragment.newInstance();
-                FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
-                transaction.addToBackStack("first");
-                transaction.commit();*/
+
             }
         });
 

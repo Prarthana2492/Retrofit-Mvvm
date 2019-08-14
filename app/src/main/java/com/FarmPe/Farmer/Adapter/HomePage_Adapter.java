@@ -56,7 +56,7 @@ public class HomePage_Adapter extends RecyclerView.Adapter<HomePage_Adapter.MyVi
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final AddTractorBean2 products = productList.get(position);
-        //holder.image.setImageResource(products.getImage());
+
 
         System.out.println("dddiiiijgh" + products.getImage());
 

@@ -31,12 +31,11 @@ import java.util.Date;
 import java.util.List;
 
 public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAdapter.MyViewHolder>  {
+
     private List<SelectLanguageBean> productList;
     SelectLanguageBean selectLanguageBean;
     Activity activity;
-    JSONArray lng_array;
     Fragment selectedFragment;
-    Date o_date;
     SessionManager sessionManager;
     public static int selected_position=0;
 
@@ -93,22 +92,18 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
         else {
             if (sessionManager.getRegId("language_name").equals(products.getVendor())) {
                 holder.right_img.setImageResource(R.drawable.ic_verified_filled_grey_white);
-                //  holder.lng_rad_but.setBackgroundColor(Color.GREEN);
+
 
             } else {
 
                 holder.right_img.setImageResource(R.drawable.filled_grey_circle);
 
-          //            holder.right_img.setImageResource(R.drawable.v);
 
-                //  holder.lng_rad_but.setBackgroundColor(Color.WHITE);
             }
         }
         holder.language_name.setText(products.getVendor());
 
-       /* System.out.println("11111lng" + Urls.IMAGE_ROOT_URL + products.getImageicon() );
-        String farmpe =  Urls.IMAGE_ROOT_URL + products.getImageicon().replace("\\","//");
-        System.out.println("11111lngfff" + farmpe );*/
+
 
 
        System.out.println("fsddsd" +products.getImageicon());

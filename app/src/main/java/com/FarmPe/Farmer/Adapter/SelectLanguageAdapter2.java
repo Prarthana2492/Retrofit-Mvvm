@@ -31,9 +31,9 @@ public class SelectLanguageAdapter2 extends RecyclerView.Adapter<SelectLanguageA
 
 
     Fragment selectedFragment;
-    Date o_date;
+
     SessionManager sessionManager;
-    public static int selected_position=0;
+
 
 
 

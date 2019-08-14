@@ -39,8 +39,7 @@ import android.widget.Toast;
 import com.FarmPe.Farmer.Activity.LandingPageActivity;
 import com.FarmPe.Farmer.Activity.LoginActivity;
 import com.FarmPe.Farmer.Adapter.AddFirstAdapter;
-import com.FarmPe.Farmer.Adapter.AddPhotoAdapter;
-import com.FarmPe.Farmer.Adapter.List_Farm_Adapter2;
+
 import com.FarmPe.Farmer.Bean.AddPhotoBean;
 import com.FarmPe.Farmer.volleypost.VolleyMultipartRequest;
 import com.android.volley.AuthFailureError;
@@ -87,8 +86,8 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
     String mob_no;
     String userid;
     Bitmap bitmap;
-  public static  TextView home,settings,list_farm,farm_count,request_count,your_addrss,notifictn_count;
-    public static TextView your_farms,user_name_menu,phone_no;
+    public static  TextView home,settings,farm_count,request_count,your_addrss,notifictn_count;
+    public static TextView ur_request,user_name_menu,phone_no;
     View looking_view,farms_view,farmer_view;
     RelativeLayout notification_bell;
     JSONObject lngObject;
@@ -116,7 +115,6 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
         menu=view.findViewById(R.id.menu);
         home = view.findViewById(R.id.home);
         phone_no = view.findViewById(R.id.phone_no);
-        your_farms_tab = view.findViewById(R.id.your_farms_tab);
         your_request = view.findViewById(R.id.your_request);
         nw_request = view.findViewById(R.id.nw_request);
         farmer_title = view.findViewById(R.id.farmer_title);
@@ -126,22 +124,17 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
         settings=view.findViewById(R.id.settings);
         prod_img=view.findViewById(R.id.prod_img);
         prod_img1=view.findViewById(R.id.prod_img1);
-        farm_count=view.findViewById(R.id.farm_count);
         request_count=view.findViewById(R.id.request_count);
+        ur_request=view.findViewById(R.id.ur_rqst);
 
-
-        looking_view=view.findViewById(R.id.looking_view);
-        farms_view=view.findViewById(R.id.farms_view);
-        farmer_view=view.findViewById(R.id.farmer_view);
 
 
         your_addrss=view.findViewById(R.id.your_addrss);
 
-        list_farm=view.findViewById(R.id.list_farm);
 
 
- //    farm_count.setText(FarmPe_Logo_Fragment.farmlist_count.getText().toString());
- //    request_count.setText(FarmPe_Logo_Fragment.reqst_count.getText().toString());
+
+
 
         plus_sign_add=view.findViewById(R.id.plus_sign_add);
         user_name_menu=view.findViewById(R.id.user_name_menu);
@@ -188,15 +181,12 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
 
             }
         });
-
-
-
-        your_farms_tab.setOnClickListener(new View.OnClickListener() {
+        ur_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 drawer.closeDrawers();
-                selectedFragment = FarmsHomePageFragment.newInstance();
+
+                selectedFragment = LookingForFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.first_full_frame, selectedFragment);
                 transaction.addToBackStack("home");
@@ -204,6 +194,8 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
 
             }
         });
+
+
 
         your_addrss.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -330,14 +322,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
             transaction.commit();
 
         }
-        else if(onBack_status.equals("farms")){
 
-            selectedFragment = FarmsHomePageFragment.newInstance();
-            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.first_full_frame, selectedFragment);
-            transaction.commit();
-
-        }
 
       else{
 
@@ -377,111 +362,11 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
                 transaction.addToBackStack("home");
                 transaction.commit();
 
-                //                selectedFragment = AddFirstLookingFor.newInstance();
-//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.frame_layout, selectedFragment);
-//                transaction.addToBackStack("home");
-//                transaction.commit();
-            }
-        });
-
-//        home.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                selectedFragment = AddFirstLookingFor.newInstance();
-//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.frame_layout, selectedFragment);
-//                transaction.addToBackStack("home");
-//                transaction.commit();
-//                drawer.closeDrawers();
-//
-//            }
-//        });
-
-//        if(RequestFormFragment.back == "add_back"){
-//
-//            selectedFragment = LookingForFragment.newInstance();
-//            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//            transaction.replace(R.id.first_full_frame, selectedFragment);
-//            transaction.commit();
-//
-//        }
-
-
-
-//        your_requests.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//
-//
-//                    selectedFragment = LookingForFragment.newInstance();
-//                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                    transaction.replace(R.id.first_full_frame, selectedFragment);
-//                    transaction.addToBackStack("home");
-//                    transaction.commit();
-//                    drawer.closeDrawers();
-//
-//
-//            }
-//        });
-
-
-//        connections.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                selectedFragment = ConnectionsFragment.newInstance();
-//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.frame_layout, selectedFragment);
-//                transaction.addToBackStack("home");
-//                transaction.commit();
-//            }
-//        });
-//
-//
-
-//        invitation.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                selectedFragment = InvitationsLeadsFragment.newInstance();
-//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.frame_layout, selectedFragment);
-//                transaction.addToBackStack("home");
-//                transaction.commit();
-//                drawer.closeDrawers();
-//
-//            }
-//        });
-
-
-
-        list_farm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                selectedFragment = ListYourFarmsFour.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
-                 transaction.addToBackStack("list_farm1");
-                 transaction.commit();
-                 drawer.closeDrawers();
-
-                 //                Bundle bundle = new Bundle();
-//                bundle.putInt("RB_S", 0);
-//                selectedFragment = ListYourFarms.newInstance();
-//                selectedFragment.setArguments(bundle);
-//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.frame_layout, selectedFragment);
-//                transaction.addToBackStack("list_farm");
-//                transaction.commit();
-                drawer.closeDrawers();
 
             }
         });
+
+
 
         notification_bell.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -616,23 +501,6 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
         }
 
 
-
-      /*  if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
-
-            //getting the image Uri
-            Uri imageUri = data.getData();
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
-
-                prod_img1.setImageBitmap(bitmap);
-                prod_img.setImageBitmap(bitmap);
-                uploadImage(getResizedBitmap(bitmap,100,100));
-                Toast.makeText(getActivity(),"Your Changed Your Profile Photo", Toast.LENGTH_SHORT).show();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }*/
     }
 
 
@@ -657,11 +525,6 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
                         Log.e(TAG,"afaeftagsbillvalue"+response);
                         progressDialog.dismiss();
 
-//                        Toast.makeText(getActivity(),"Profile Details Updated Successfully", Toast.LENGTH_SHORT).show();
-//                        selectedFragment = SettingFragment.newInstance();
-//                        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-//                        ft.replace(R.id.frame_layout,selectedFragment);
-//                        ft.commit();
                     }
                 },
                 new Response.ErrorListener() {

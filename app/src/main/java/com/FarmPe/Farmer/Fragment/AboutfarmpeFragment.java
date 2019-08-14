@@ -23,19 +23,15 @@ import org.json.JSONObject;
 
 public class AboutfarmpeFragment extends Fragment {
     Fragment selectedFragment;
-    TextView first_text, second_text;
-    LinearLayout back, more, whatsapp, insta, facebook, back_feed, twitter;
+    LinearLayout back_feed;
     public static String status;
     Intent intent;
     private ArrayAdapter<AgriBean> arrayAdapter;
-    private ListView listView;
-    String packageName;
     SessionManager sessionManager;
 
     public static String refer_code;
     JSONObject lngObject;
-    TextView editText,privacypolicytxt,privacypolicytxt1,second_textttxt,privacypolicytxt2,privacypolicytxt3,second_t,second_tx;
-    private Context context;
+    TextView  privacypolicytxt;
     WebView terms;
     public static AboutfarmpeFragment newInstance() {
         AboutfarmpeFragment fragment = new AboutfarmpeFragment();

@@ -47,14 +47,14 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
     Activity activity;
     Fragment selectedFragment = null;
     String status,message,status1,message1;
-    Date o_date;
+
     SessionManager sessionManager;
     public static TextView name,variety,loc,grade,quantity,uom,price,edit;
     public static String add_id;
     public static CardView cardView;
     JSONObject lngObject;
     LinearLayout linearLayout;
-    String deleted,addlist ;
+    String deleted ;
 
 
     public You_Address_Adapter(List<Add_New_Address_Bean> moviesList, Activity activity) {
@@ -69,7 +69,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
         TextView name,mobile_no,street_addrss,landmrk,city_1,edit_1,delete_1,default_1,default_add,area_district;
         LinearLayout add_new_adress;
-        View view1;
+
 
         public MyViewHolder(View view) {
             super(view);
@@ -78,7 +78,6 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
             name = view.findViewById(R.id.name1);
             mobile_no= view.findViewById(R.id.mobile_no1);
             street_addrss= view.findViewById(R.id.street_address1);
-            // landmrk= view.findViewById(R.id.landmark1);
             city_1= view.findViewById(R.id.city_1);
             edit_1= view.findViewById(R.id.edit_1);
             delete_1 = view.findViewById(R.id.delete_1);
@@ -86,7 +85,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
             default_add = view.findViewById(R.id.default_add);
             linearLayout = view.findViewById(R.id.bottom_sheet1);
             area_district = view.findViewById(R.id.districttt);
-            //  view1 = view.findViewById(R.id.view1);
+
 
             add_new_adress = view.findViewById(R.id.linear_frame);
 
@@ -116,7 +115,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
             holder.default_add.setVisibility(View.VISIBLE);
             holder.default_1.setVisibility(View.GONE);
-            // holder.view1.setVisibility(View.GONE);
+
 
         }else{
 
@@ -222,7 +221,6 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                     delete_text.setText(lngObject.getString("Areyousureyouwanttoremovetheaddress"));
                     popupheading.setText(lngObject.getString("Removeaddress"));
 
-                    // addlist=lngObject.getString("addressesareaddedin");
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -250,10 +248,9 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
                                         if(status.equals("1")){
 
-                                            // Toast.makeText(activity,message, Toast.LENGTH_SHORT).show();
-
+                                            int duration = 1000;
                                             Snackbar snackbar = Snackbar
-                                                    .make(linearLayout, deleted, Snackbar.LENGTH_LONG);
+                                                    .make(linearLayout, deleted, duration);
                                             View snackbarView = snackbar.getView();
                                             TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                                             tv.setBackgroundColor(ContextCompat.getColor(activity,R.color.orange));
@@ -267,26 +264,27 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
                                             snackbar.show();
 
+                                        }
 
 
-                                            productList.remove(position);
-                                            notifyDataSetChanged();
+                                        productList.remove(position);
+                                        notifyDataSetChanged();
 
 
-                                            if(productList.size()<=1){
-                                                You_Address_Fragment.address_list.setText(productList.size() + " Address is added");
+                                        if(productList.size()<=1){
+                                            You_Address_Fragment.address_list.setText(productList.size() + " Address is added");
 
 
 
-                                            }else{
+                                        }else{
 
-                                                You_Address_Fragment.address_list.setText(productList.size() + " Addresses are added");
-
-
-                                            }
+                                            You_Address_Fragment.address_list.setText(productList.size() + " Addresses are added");
 
 
                                         }
+
+
+
 
                                     }catch (Exception e){
                                         e.printStackTrace();
@@ -334,11 +332,9 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                                 message1 = result.getString("Message");
 
                                 if(status1.equals("1")){
-
-                               //     Toast.makeText(activity,message1, Toast.LENGTH_SHORT).show();
-
+                                    int duration = 1000;
                                     Snackbar snackbar = Snackbar
-                                            .make(linearLayout, message1, Snackbar.LENGTH_LONG);
+                                            .make(linearLayout, message1, duration);
                                     View snackbarView = snackbar.getView();
                                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                                     tv.setBackgroundColor(ContextCompat.getColor(activity,R.color.orange));
@@ -349,6 +345,8 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                                     } else {
                                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                                     }
+
+                                    snackbar.show();
 
 
                                     selectedFragment = You_Address_Fragment.newInstance();

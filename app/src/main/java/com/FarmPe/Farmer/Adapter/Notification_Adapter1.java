@@ -34,7 +34,6 @@ public class Notification_Adapter1 extends RecyclerView.Adapter<Notification_Ada
     Activity activity;
     Fragment selectedFragment;
     public LinearLayout linearLayout;
-    public static LinearLayout next_arw;
     public static String first;
     public static CardView cardView;
     Boolean isTouched = false;
@@ -61,8 +60,7 @@ public class Notification_Adapter1 extends RecyclerView.Adapter<Notification_Ada
             image=view.findViewById(R.id.image);
             switch1=view.findViewById(R.id.switch1);
 
-            //linearLayout=view.findViewById(R.id.dialog_list);
-            //confirmbutton=view.findViewById(R.id.delivery2);
+
         }
 
     }
@@ -127,49 +125,6 @@ public class Notification_Adapter1 extends RecyclerView.Adapter<Notification_Ada
 
             }
         });
-
-      /*  if (Notification_Recyc_Fragment.list.get(position).equals(products.getNoti_id())){
-            holder.actninfo.setText(products.getNoti_txt());
-            holder.switch1.setChecked(true);
-            FirebaseMessaging.getInstance().subscribeToTopic(products.getNoti_code());
-
-        }else {
-            holder.actninfo.setText(products.getNoti_txt());
-            holder.switch1.setChecked(false);
-
-
-        }*/
-
-//
-//        JSONObject jsonObject = null;
-//        try{
-//
-//           jsonObject = new JSONObject();
-//
-//
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//
-//
-//        Crop_Post.crop_posting(activity, Urls.GET_NOTIFICATION, jsonObject, new VoleyJsonObjectCallback() {
-//                @Override
-//                public void onSuccessResponse(JSONObject result) {
-//                    System.out.println("ffffffnn" + result);
-//
-//                    try{
-//
-//                    }catch (Exception e){
-//                        e.printStackTrace();
-//                    }
-//
-//                }
-//            });
-//
-//
-
-
-
 
 
     }

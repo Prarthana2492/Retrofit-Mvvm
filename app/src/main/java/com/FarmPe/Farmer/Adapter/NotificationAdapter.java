@@ -25,13 +25,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     Fragment selectedFragment;
 
     public LinearLayout linearLayout;
-   public static LinearLayout next_arw;
     public static String first;
     public static CardView cardView;
     public NotificationAdapter(Activity activity, List<Notification_Home_Bean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
-//        session=new SessionManager(activity);
+
 
     }
 
@@ -47,11 +46,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             super(view);
             prod_price=view.findViewById(R.id.prod_price);
             prod_name=view.findViewById(R.id.prod_name);
-            duration=view.findViewById(R.id.duration);
             image=view.findViewById(R.id.image);
-
-            //linearLayout=view.findViewById(R.id.dialog_list);
-            //confirmbutton=view.findViewById(R.id.delivery2);
         }
 
     }
@@ -70,17 +65,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         final Notification_Home_Bean products = productList.get(position);
 
         holder.prod_name.setText(products.getNotiftn_mess());
-//        holder.prod_price.setText(products.getProd_price());
-//        holder.prod_name.setText(products.getModelname()+" "+products.getHp());
-//        holder.duration.setText(products.getDuration());
-
-//
-//        Glide.with(activity).load(products.getImage())
-//
-//                .thumbnail(0.5f)
-//                .crossFade()
-//                .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                .into(holder.image);
 
 
     }

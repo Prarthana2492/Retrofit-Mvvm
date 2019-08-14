@@ -39,7 +39,7 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
 
    LinearLayout back_thank_u;
    TextView thanktu_submit,otp_text,thank_title,resend_otp;
-   EditText enter_otp,otp_forgot_pass;
+   EditText enter_otp;
     JSONObject lngObject;
     public  static String toast_otp,toast_invalid_otp,toast_internet,toast_nointernet;
     public  static String otp_get_text,sessionId;
@@ -76,7 +76,9 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
             if(connectivity_check) {
                 message = "Good! Connected to Internet";
                 color = Color.WHITE;
-                Snackbar snackbar = Snackbar.make(linearLayout,toast_internet, Snackbar.LENGTH_LONG);
+
+                int duration=1000;
+                Snackbar snackbar = Snackbar.make(linearLayout,toast_internet, duration);
                 View sbView = snackbar.getView();
                 TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
                 textView.setBackgroundColor(ContextCompat.getColor(Thank_U_New.this,R.color.orange));
@@ -88,23 +90,24 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
                 }
                 snackbar.show();
 
-                //setting connectivity to false only on executing "Good! Connected to Internet"
+
                 connectivity_check=false;
             }
 
         } else {
             message = "No Internet Connection";
             color = Color.RED;
-            //setting connectivity to true only on executing "Sorry! Not connected to internet"
-            connectivity_check=true;
-            // Snackbar snackbar = Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_LONG);
-            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), toast_nointernet, Snackbar.LENGTH_LONG);
+
+            connectivity_check = true;
+
+            int duration=1000;
+            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), toast_nointernet,duration);
             View sb = snackbar.getView();
             TextView textView = (TextView) sb.findViewById(android.support.design.R.id.snackbar_text);
             textView.setBackgroundColor(ContextCompat.getColor(Thank_U_New.this, R.color.orange));
             textView.setTextColor(Color.WHITE);
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             } else {
                 textView.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -114,10 +117,6 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
             snackbar.show();
 
 
-          /*  View sbView = snackbar.getView();
-            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
-            textView.setTextColor(color);
-            snackbar.show();*/
         }
     }
 
@@ -134,7 +133,6 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
         connectivityReceiver = new ConnectivityReceiver();
         registerReceiver(connectivityReceiver, intentFilter);
         MyApplication.getInstance().setConnectivityListener(this);
-        // register connection status listener
 
 
     }
@@ -163,8 +161,6 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
         sessionId= getIntent().getStringExtra("otp_forgot");
         sessionManager = new SessionManager(this);
 
-      //  sessionManager.getRegId("lng_object");
-       // System.out.println("llllllllllll" + sessionManager.getRegId("lng_object"));
 
 
 
@@ -186,11 +182,7 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
             e.printStackTrace();
         }
 
-//
-//        if (checkAndRequestPermissions()) {
-//            // carry on the normal flow, as the case of  permissions  granted.
-//        }
-//       // next=findViewById(R.id.next);
+
 
         back_thank_u.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -204,7 +196,7 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
         ReadSms.bindListener(new SmsListener() {
             @Override
             public void messageReceived(String messageText) { // autofetching
-                //ed.setText(messageText);
+
                 System.out.println("autofetch_msg"+messageText);
                 enter_otp.setText(messageText);
 
@@ -236,9 +228,11 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
                                 int  status= result.getInt("Status");
 
                                 if (status==1){
+
+                                    int duration=1000;
                                     Snackbar snackbar = Snackbar
-                                            .make(linearLayout,Message, Snackbar.LENGTH_LONG);
-                                    //snackbar.setActionTextColor(R.color.colorAccent);
+                                            .make(linearLayout,Message,duration);
+
                                     View snackbarView = snackbar.getView();
                                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                                     tv.setBackgroundColor(ContextCompat.getColor(Thank_U_New.this,R.color.orange));
@@ -250,9 +244,11 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
                                     }
                                     snackbar.show();
                                 }else  if (status==2){
+
+                                    int duration=1000;
                                     Snackbar snackbar = Snackbar
-                                            .make(linearLayout,toast_number_exceeded, Snackbar.LENGTH_LONG);
-                                    //snackbar.setActionTextColor(R.color.colorAccent);
+                                            .make(linearLayout,toast_number_exceeded,duration);
+
                                     View snackbarView = snackbar.getView();
                                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                                     tv.setBackgroundColor(ContextCompat.getColor(Thank_U_New.this,R.color.orange));
@@ -289,8 +285,10 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
             public void onClick(View v) {
                 otp_get_text=enter_otp.getText().toString();
                 if (otp_get_text.equals("")){
+
+                    int duration=1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout,toast_otp, Snackbar.LENGTH_LONG);
+                            .make(linearLayout,toast_otp,duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(Thank_U_New.this,R.color.orange));
@@ -310,8 +308,10 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
                         Intent intent=new Intent(Thank_U_New.this,ResetPasswordNew.class);
                         startActivity(intent);
                     }else{
+
+                        int duration=1000;
                         Snackbar snackbar = Snackbar
-                                .make(linearLayout,toast_invalid_otp, Snackbar.LENGTH_LONG);
+                                .make(linearLayout,toast_invalid_otp,duration);
                         View snackbarView = snackbar.getView();
                         TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                         tv.setBackgroundColor(ContextCompat.getColor(Thank_U_New.this,R.color.orange));
@@ -332,7 +332,7 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
 
     @Override
     public void onBackPressed() {
-        //System.exit(0);
+
 
         Intent intent=new Intent(Thank_U_New.this,LoginActivity.class);
         startActivity(intent);
@@ -340,33 +340,11 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
     }
 
 
-//    private  boolean checkAndRequestPermissions() {
-//
-//        if (Build.VERSION.SDK_INT >= 23) {
-//            String[] PERMISSIONS = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.READ_SMS};
-//            if (!hasPermissions(mContext, PERMISSIONS)) {
-//                ActivityCompat.requestPermissions((Activity) mContext, PERMISSIONS, REQUEST);
-//            } else {
-//                //do here
-//            }
-//        } else {
-//            //do here
-//        }
-//        return true;
-//    }
-//    private static boolean hasPermissions(Context context, String... permissions) {
-//        if (context != null && permissions != null) {
-//            for (String permission : permissions) {
-//                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
-//                    return false;
-//                }
-//            }
-//        }
-//        return true;
-//    }
+
+
     public void setupUI(View view) {
 
-        //Set up touch listener for non-text box views to hide keyboard.
+
         if(!(view instanceof EditText)) {
 
             view.setOnTouchListener(new View.OnTouchListener() {
@@ -379,7 +357,7 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
             });
         }
 
-        //If a layout container, iterate over children and seed recursion.
+
         if (view instanceof ViewGroup) {
 
             for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
@@ -392,8 +370,7 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
     }
 
     public static void hideSoftKeyboard(Activity activity) {
- /*InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);*/
+
 
         InputMethodManager inputManager = (InputMethodManager)
                 activity.getSystemService(

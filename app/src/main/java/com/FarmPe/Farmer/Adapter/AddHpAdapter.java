@@ -35,7 +35,7 @@ public class AddHpAdapter extends RecyclerView.Adapter<AddHpAdapter.MyViewHolder
     public AddHpAdapter(Activity activity, List<AddTractorBean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
-//        session=new SessionManager(activity);
+
 
     }
 
@@ -50,14 +50,11 @@ public class AddHpAdapter extends RecyclerView.Adapter<AddHpAdapter.MyViewHolder
 
         public MyViewHolder(View view) {
             super(view);
-            //agri_text=view.findViewById(R.id.store_agri);
-           // item_2=view.findViewById(R.id.item_2);
+
             prod_price=view.findViewById(R.id.prod_price);
             image=view.findViewById(R.id.prod_img);
             item=view.findViewById(R.id.item);
 
-            //linearLayout=view.findViewById(R.id.dialog_list);
-            //confirmbutton=view.findViewById(R.id.delivery2);
         }
 
     }
@@ -73,15 +70,14 @@ public class AddHpAdapter extends RecyclerView.Adapter<AddHpAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final AddTractorBean products = productList.get(position);
-      //holder.agri_text.setText(products.getAgri_text());
+
         holder.prod_price.setText(products.getProd_name());
 
 
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Bundle bundle=new Bundle();
-//                bundle.putString("hpId",products.getId());
+
                 hp_model = products.getId();
 
 
@@ -90,12 +86,7 @@ public class AddHpAdapter extends RecyclerView.Adapter<AddHpAdapter.MyViewHolder
                 }
                 productList.get(position).setSelected(true);
                 notifyDataSetChanged();
-//                selectedFragment = AddModelFragment.newInstance();
-//                FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.frame_layout, selectedFragment);
-//                transaction.addToBackStack("hp");
-//                selectedFragment.setArguments(bundle);
-//                transaction.commit();
+
             }
         });
 

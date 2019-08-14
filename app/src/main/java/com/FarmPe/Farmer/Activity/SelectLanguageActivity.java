@@ -37,7 +37,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
         super.onStart();
         System.out.println("loginonStart");
         sessionManager = new SessionManager(getApplicationContext()); //check
-       // sessionManager.checkLogin();
+
 
     }
 
@@ -45,16 +45,10 @@ public class SelectLanguageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_language_layout);
-        //select_lang=findViewById(R.id.select_lang);
+
         recyclerView =findViewById(R.id.recycler_view1);
 
-        /*select_lang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(SelectLanguageActivity.this,WelcomeActivity.class);
-                startActivity(intent);
-            }
-        });*/
+
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -74,7 +68,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("statussssss"+result);
-                    JSONObject jsonObject;
+
                     try {
                         JSONArray jsonArray=result.getJSONArray("LanguagesList");
                         for (int i=0;i<jsonArray.length();i++){
@@ -97,7 +91,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             this.finishAffinity();
 

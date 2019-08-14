@@ -16,6 +16,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.FarmPe.Farmer.Adapter.AddBrandAdapter;
@@ -43,7 +44,7 @@ public class AddModelFragment extends Fragment {
     Fragment selectedFragment = null;
     TextView toolbar_title,continue_button;
     LinearLayout back_feed,linearLayout;
-
+ImageView b_arrow;
 
 
     public static AddModelFragment newInstance() {
@@ -60,11 +61,11 @@ public class AddModelFragment extends Fragment {
         linearLayout=view.findViewById(R.id.linearLayout);
         continue_button=view.findViewById(R.id.continue_button);
         toolbar_title.setText("Select Model");
-
-
+        b_arrow=view.findViewById(R.id.b_arrow);
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("third", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
@@ -90,9 +91,9 @@ public class AddModelFragment extends Fragment {
             public void onClick(View view) {
 
                 if(AddModelAdapter.tractor_id == null){
-
+                    int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Please choose any option", Snackbar.LENGTH_LONG);
+                            .make(linearLayout, "Please choose any option", duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -123,31 +124,7 @@ public class AddModelFragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager_farm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-       /* AddTractorBean img1=new AddTractorBean(R.drawable.tractor_green,"Yuvraj 215 NXT","");
-        newOrderBeansList.add(img1);
 
-        AddTractorBean img2=new AddTractorBean(R.drawable.gyrovator,"Jivo 225 DI","");
-        newOrderBeansList.add(img2);
-
-        AddTractorBean img3=new AddTractorBean(R.drawable.ceat_tyre,"Jivo 225 DI","");
-        newOrderBeansList.add(img3);
-
-        AddTractorBean img4=new AddTractorBean(R.drawable.jcb,"Jivo 225 DI","");
-        newOrderBeansList.add(img4);
-
-        AddTractorBean img5=new AddTractorBean(R.drawable.tractor_red,"Jivo 225 DI","");
-        newOrderBeansList.add(img5);
-
-        AddTractorBean img6=new AddTractorBean(R.drawable.jcb,"Jivo 225 DI","");
-        newOrderBeansList.add(img6);
-        newOrderBeansList.add(img6);
-        newOrderBeansList.add(img6);
-       *//* newOrderBeansList.add(img6);
-        newOrderBeansList.add(img6);*//*
-
-
-        farmadapter=new AddModelAdapter(getActivity(),newOrderBeansList);
-        recyclerView.setAdapter(farmadapter);*/
 
         return view;
     }
@@ -183,13 +160,7 @@ public class AddModelFragment extends Fragment {
                             AddTractorBean crops = new AddTractorBean(image, model,id,false);
                             newOrderBeansList.add(crops);
 
-                          /*  if(!latts.equals("") | !langgs.equals("")) {
 
-                                CropListBean crops = new CropListBean(cropName, crop_variety, location, crop_grade,
-                                        crop_quantity, crop_uom, crop_price, id, farmerId,
-                                        UserName,latts,langgs,CropImg,category);
-                                newOrderBeansList.add(crops);
-                            }*/
                         }
 
                         farmadapter=new AddModelAdapter(getActivity(),newOrderBeansList);

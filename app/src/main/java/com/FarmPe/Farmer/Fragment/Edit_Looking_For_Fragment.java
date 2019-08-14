@@ -91,7 +91,6 @@ public class Edit_Looking_For_Fragment extends Fragment {
     public static AddHpAdapter farmadapter;
     SessionManager sessionManager;
     public static String back;
-    ImageView tractor_img;
     TextView toolbar_title,update_btn_txt,brand;
     JSONObject lngObject;
     JSONArray edit_req_array;
@@ -103,7 +102,7 @@ public class Edit_Looking_For_Fragment extends Fragment {
     EditText profile_name,profile_phone,profile_mail,profile_passwrd;
     RadioButton month_1,month_2,month_3,month_4,finance_yes,finance_no;
     CircleImageView prod_img;
-
+ImageView b_arrow;
     TextView farmer_name,farmer_phone,farmer_email,farmer_loc,delete_req,hp_power,address_text,request;
     LinearLayout back_feed;
     Fragment selectedFragment;
@@ -123,14 +122,14 @@ public class Edit_Looking_For_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.farmers_detail_page, container, false);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-
+        b_arrow=view.findViewById(R.id.b_arrow);
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
-        farmer_name=view.findViewById(R.id.farmer_name);
+       // farmer_name=view.findViewById(R.id.farmer_name);
         farmer_phone=view.findViewById(R.id.phone_no);
-        farmer_email=view.findViewById(R.id.email);
+       // farmer_email=view.findViewById(R.id.email);
         brand=view.findViewById(R.id.brand);
-        farmer_loc=view.findViewById(R.id.loc);
+       // farmer_loc=view.findViewById(R.id.loc);
         prod_img=view.findViewById(R.id.prod_img);
         hp_power=view.findViewById(R.id.hp_power);
         delete_req=view.findViewById(R.id.delete_req);
@@ -140,13 +139,13 @@ public class Edit_Looking_For_Fragment extends Fragment {
         month_4=view.findViewById(R.id.month_4);
         finance_yes=view.findViewById(R.id.finance_yes);
         finance_no=view.findViewById(R.id.finance_no);
-        tractor_img=view.findViewById(R.id.tractor_img);
+       // tractor_img=view.findViewById(R.id.tractor_img);
 
         linearLayout=view.findViewById(R.id.linearLayout);
         address_text=view.findViewById(R.id.address_text);
         sessionManager = new SessionManager(getActivity());
 
-        request=view.findViewById(R.id.request);
+        request=view.findViewById(R.id.update_rqt);
         radio_group_time=view.findViewById(R.id.radio_group_time);
         radioGroup_finance=view.findViewById(R.id.radioGroup_finance);
         address=view.findViewById(R.id.address_layout);
@@ -176,17 +175,12 @@ public class Edit_Looking_For_Fragment extends Fragment {
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
                 HomeMenuFragment.onBack_status = "looking_frg";
-
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("looking1", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-            /*    selectedFragment = HomeMenuFragment.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
-                // transaction.addToBackStack("looking");
-                transaction.commit();*/
+
             }
         });
 
@@ -214,31 +208,34 @@ public class Edit_Looking_For_Fragment extends Fragment {
 
 
 
-request.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        update_profile_details();
-    }
-});
+            request.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    update_profile_details();
+                }
+            });
 
 
 
 
-address.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        Bundle bundle = new Bundle();
-        bundle.putString("navigation_from", "edit_lokng_frg");
-        bundle.putString("looking_forId",lookingfordetails_id);
-        bundle.putString("modelId", modelid);
-        selectedFragment = Add_New_Address_Fragment.newInstance();
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, selectedFragment);
-        selectedFragment.setArguments(bundle);
-        transaction.addToBackStack("edit");
-        transaction.commit();
-    }
-});
+        address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("navigation_from", "edit_lokng_frg");
+                bundle.putString("looking_forId",lookingfordetails_id);
+                bundle.putString("modelId", modelid);
+                selectedFragment = Add_New_Address_Fragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                selectedFragment.setArguments(bundle);
+                transaction.addToBackStack("edit");
+                transaction.commit();
+            }
+        });
+
+
+
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -318,65 +315,6 @@ address.setOnClickListener(new View.OnClickListener() {
         });
 
 
-
-//        try{
-//
-//            JSONObject jsonObject = new JSONObject();
-//            JSONObject post_object = new JSONObject();
-//
-//            jsonObject.put("Id", FarmsImageAdapter.looking_forId);
-//            post_object.put("objUser",jsonObject);
-//            System.out.println("ggpgpgpg" + post_object);
-//
-//
-//            Crop_Post.crop_posting(getActivity(), Urls.Get_Profile_Details, post_object, new VoleyJsonObjectCallback() {
-//                @Override
-//                public void onSuccessResponse(JSONObject result) {
-//                    System.out.println("ggpgpgpg" + result);
-//
-//                    try{
-//
-//                        JSONObject jsonObject1 = result.getJSONObject("user");
-//                        String ProfileName1 = jsonObject1.getString("FullName");
-//                        System.out.println("11111" + jsonObject1.getString("FullName"));
-//                        String ProfilePhone = jsonObject1.getString("MaskedPhoneNo");
-//                        String ProfileEmail = jsonObject1.getString("EmailId");
-//                        String ProfileImage = jsonObject1.getString("ProfilePic");
-//                        System.out.println("11111" + ProfileName1);
-//
-//
-//
-//                        farmer_name.setText(ProfileName1);
-//                        farmer_phone.setText(ProfilePhone);
-//                        farmer_email.setText(ProfileEmail);
-//
-//
-//                        Glide.with(getActivity()).load(ProfileImage)
-//
-//                                .thumbnail(0.5f)
-//                                //  .crossFade()
-//                                .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                                .error(R.drawable.avatarmale)
-//                                .into(prod_img);
-//
-//
-//                    }catch (Exception e){
-//                        e.printStackTrace();
-//                    }
-//
-//                }
-//            });
-
-
-
-
-
-
-      /*  SharedPreferences myPrefrence = getActivity().getPreferences(MODE_PRIVATE);
-        String imageS = myPrefrence.getString("imagePreferance", "");
-        if(!imageS.equals("")) imageB = decodeToBase64(imageS);
-        prod_img.setImageBitmap(imageB);
-*/
         return view;
     }
 
@@ -505,9 +443,9 @@ address.setOnClickListener(new View.OnClickListener() {
 
 
                         if(status.equals("1")){
-
+                            int duration = 1000;
                             Snackbar snackbar = Snackbar
-                                    .make(linearLayout,message, Snackbar.LENGTH_LONG);
+                                    .make(linearLayout,message, duration);
                             View snackbarView = snackbar.getView();
                             TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                             tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -589,11 +527,7 @@ address.setOnClickListener(new View.OnClickListener() {
             }
         }
     };
-    private Bitmap decodeToBase64(String input) {
 
-        byte[] decodedByte = Base64.decode(input, 0);
-        return BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
-    }
 
 
     @Override
@@ -620,108 +554,13 @@ address.setOnClickListener(new View.OnClickListener() {
     }
 
 
-    public byte[] getFileDataFromDrawable(Bitmap bitmap) {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-
-        bitmap.compress(Bitmap.CompressFormat.PNG, 80, byteArrayOutputStream);
-
-        return byteArrayOutputStream.toByteArray();
 
 
 
-        //System.out.println("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj"+byteArrayOutputStream.toByteArray());
-
-    }
-
-    private void uploadImage(final Bitmap bitmap){
-        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST,Urls.Update_Profile_Details,
-                new Response.Listener<NetworkResponse>(){
-                    @Override
-                    public void onResponse(NetworkResponse response) {
-                        //Toast.makeText(getActivity(), obj.getString("message"), Toast.LENGTH_SHORT).show();
-                        //  String resultResponse = new String(response.data);
-                        selectedImage=null;
-
-                        Toast.makeText(getActivity(),toast_update, Toast.LENGTH_SHORT).show();
-                        selectedFragment = SettingFragment.newInstance();
-                        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                        ft.replace(R.id.frame_layout,selectedFragment);
-                        ft.commit();
-
-                    }
-                },
-
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }) {
-            /*
-             *pass files using below method
-             * */
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                //  params.put("UserId",sessionManager.getRegId("userId") );
-
-                params.put("UserId",sessionManager.getRegId("userId"));
-                params.put("FullName",profile_name.getText().toString());
-                params.put("PhoneNo",profile_phone.getText().toString());
-                params.put("EmailId",profile_mail.getText().toString());
-                params.put("Password",profile_passwrd.getText().toString());
-                Log.e(TAG,"afaeftagsparams"+params);
-                return params;
-            }
-
-
-            @Override
-            protected Map<String, DataPart> getByteData() {
-                Map<String, DataPart> params = new HashMap<>();
-                long imagename = System.currentTimeMillis();
-                // params.put("File", new DataPart(imagename + ".png", getFileDataFromDrawable(bitmap)));
-                Log.e(TAG,"Imhereafaeftagsparams Imhereafaeftagsparams "+bitmap);
-
-                if (bitmap==null){
-
-                }else {
-                    params.put("File", new DataPart(imagename + ".png", getFileDataFromDrawable(bitmap)));
-
-                }
-                Log.e(TAG,"Imhereafaeftagsparams "+params);
-                return params;
-            }
-        };
-        //adding the request to volley
-        Volley.newRequestQueue(getActivity()).add(volleyMultipartRequest);
-    }
-
-
-    private String encodeToBase64(Bitmap image) {
-
-        Bitmap immage = image;
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        immage.compress(Bitmap.CompressFormat.PNG, 100, baos);
-        byte[] b = baos.toByteArray();
-        String imageEncoded = Base64.encodeToString(b, Base64.DEFAULT);
-
-        Log.d("Image Log:", imageEncoded);
-        return imageEncoded;
-    }
 
     private void update_profile_details() {
 
 
-        /*{
-            "Id":2,
-                "UserId":1,
-                "ModelId":2,
-                "PurchaseTimeline":"Immediately",
-                "LookingForFinance":"True",
-                "AddressId":1,
-                "IsAgreed":"True",
-                "LookingForDetailsId":1
-        }*/
 
 
         try{
@@ -750,9 +589,9 @@ address.setOnClickListener(new View.OnClickListener() {
 
 
                         if(!(status.equals("0"))){
-
+                            int duration = 1000;
                             Snackbar snackbar = Snackbar
-                                    .make(linearLayout,message, Snackbar.LENGTH_LONG);
+                                    .make(linearLayout,message, duration);
                             View snackbarView = snackbar.getView();
                             TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                             tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -793,40 +632,7 @@ address.setOnClickListener(new View.OnClickListener() {
             e.printStackTrace();
         }
 
-
-
-
-
-
-
-
 }
-
-
-
-
-    public static void hideSoftKeyboard(Activity activity) {
-        /*InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);*/
-
-        InputMethodManager inputManager = (InputMethodManager)
-                activity.getSystemService(
-                        Context.INPUT_METHOD_SERVICE);
-        View focusedView = activity.getCurrentFocus();
-
-        if (focusedView != null) {
-
-            try {
-                assert inputManager != null;
-                inputManager.hideSoftInputFromWindow(focusedView.getWindowToken(),
-                        InputMethodManager.HIDE_NOT_ALWAYS);
-            } catch (AssertionError e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-
 
 }
 

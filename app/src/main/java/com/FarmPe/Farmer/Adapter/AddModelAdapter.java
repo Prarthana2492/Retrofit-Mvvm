@@ -33,7 +33,6 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
     public AddModelAdapter(Activity activity, List<AddTractorBean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
-//        session=new SessionManager(activity);
 
     }
 
@@ -49,13 +48,12 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
         public MyViewHolder(View view) {
             super(view);
-            //agri_text=view.findViewById(R.id.store_agri);
+
             item=view.findViewById(R.id.item);
             prod_price=view.findViewById(R.id.prod_price);
             image=view.findViewById(R.id.prod_img);
 
-            //linearLayout=view.findViewById(R.id.dialog_list);
-            //confirmbutton=view.findViewById(R.id.delivery2);
+
         }
 
     }
@@ -71,7 +69,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final AddTractorBean products = productList.get(position);
-      //holder.agri_text.setText(products.getAgri_text());
+
         holder.prod_price.setText(products.getProd_name());
         System.out.println("nammmmm"+products.getProd_name());
 
@@ -85,11 +83,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
                 }
                 productList.get(position).setSelected(true);
                 notifyDataSetChanged();
-//                selectedFragment = RequestFormFragment.newInstance();
-//                FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.frame_layout, selectedFragment);
-//                transaction.addToBackStack("model");
-//                transaction.commit();
+
             }
         });
 

@@ -24,13 +24,12 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
     Fragment selectedFragment;
 
     public LinearLayout linearLayout;
-    public static LinearLayout next_arw;
     public static String first;
     public static CardView cardView;
     public NotificationListAdapter(Activity activity, List<NotificationBean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
-//        session=new SessionManager(activity);
+
 
     }
 
@@ -44,13 +43,11 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
 
         public MyViewHolder(View view) {
             super(view);
-            //agri_text=view.findViewById(R.id.store_agri);
+
             noti_layout=view.findViewById(R.id.noti_layout);
             notification=view.findViewById(R.id.noti_text);
             view_text=view.findViewById(R.id.view_text);
 
-            //linearLayout=view.findViewById(R.id.dialog_list);
-            //confirmbutton=view.findViewById(R.id.delivery2);
         }
 
     }
@@ -66,7 +63,7 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final NotificationBean products = productList.get(position);
-        //holder.agri_text.setText(products.getAgri_text());
+
         holder.notification.setText(products.getNotification());
 
         holder.view_text.setOnClickListener(new View.OnClickListener() {
@@ -75,21 +72,11 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
                 holder.noti_layout.setBackgroundColor(Color.parseColor("#ffffff"));
                 holder.notification.setTextColor(Color.parseColor("#000000"));
                 holder.view_text.setVisibility(View.INVISIBLE);
-                /*selectedFragment = AddModelFragment.newInstance();
-                FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
-                transaction.addToBackStack("hp");
-                transaction.commit();*/
+
             }
         });
 
-    /*    Glide.with(activity).load(products.getImage())
 
-                .thumbnail(0.5f)
-                .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(holder.image);
-*/
 
     }
 

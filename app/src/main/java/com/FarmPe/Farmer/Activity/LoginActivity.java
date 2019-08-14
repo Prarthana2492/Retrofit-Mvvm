@@ -60,7 +60,7 @@ import java.util.List;
 
 
 public class LoginActivity extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener{
-     public static TextView register, log_in, forgot_pass,new_farmpe,mob_text_signin;
+     public static TextView  log_in, forgot_pass,new_farmpe;
      public static EditText mobile_no, pass;
      public static String mobile,loc_text;
      public String status,userId;
@@ -82,17 +82,17 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
         super.onStop();
     }
 
-     LinearLayout back_xlogin;
+
      LinearLayout coordinatorLayout;
      public static CheckBox remember_me;
      DatabaseHelper myDb;
      public static boolean connectivity_check;
      public static boolean isEng = false;
      public static  String password,mob_toast,mobile_string,pass_toast,toast_invalid,toast_click_back,toast_internet,toast_nointernet;
-     EditText spn_localize;
+
      public static   JSONObject lngObject;
      JSONArray lng_array;
-     Snackbar snackbar;
+
      String mob_no;
      SessionManager sessionManager;
      public static  Dialog dialog;
@@ -113,7 +113,9 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
             if(connectivity_check) {
                 message = "Good! Connected to Internet";
                 color = Color.WHITE;
-                Snackbar snackbar = Snackbar.make(coordinatorLayout,toast_internet, Snackbar.LENGTH_LONG);
+
+                int duration=1000;
+                Snackbar snackbar = Snackbar.make(coordinatorLayout,toast_internet, duration);
                 View sbView2 = snackbar.getView();
                 TextView textView = (TextView) sbView2.findViewById(android.support.design.R.id.snackbar_text);
                 textView.setBackgroundColor(ContextCompat.getColor(LoginActivity.this,R.color.orange));
@@ -126,7 +128,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                 snackbar.show();
 
 
-                //setting connectivity to false only on executing "Good! Connected to Internet"
+
                 connectivity_check=false;
             }
 
@@ -135,7 +137,8 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
             color = Color.RED;
             connectivity_check=true;
 
-            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), toast_nointernet, Snackbar.LENGTH_LONG);
+            int duration=1000;
+            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), toast_nointernet, duration);
             View sb = snackbar.getView();
             TextView textView = (TextView) sb.findViewById(android.support.design.R.id.snackbar_text);
             textView.setBackgroundColor(ContextCompat.getColor(LoginActivity.this, R.color.orange));
@@ -148,15 +151,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
             }
 
             snackbar.show();
-            //setting connectivity to true only on executing "Sorry! Not connected to internet"
 
-            // Snackbar snackbar = Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_LONG);
-           // Snackbar.make(findViewById(android.R.id.content), toast_nointernet, Snackbar.LENGTH_LONG).show();
-
-          /*  View sbView = snackbar.getView();
-            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
-            textView.setTextColor(color);
-            snackbar.show();*/
         }
     }
 
@@ -168,7 +163,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
         intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
         connectivityReceiver = new ConnectivityReceiver();
         registerReceiver(connectivityReceiver, intentFilter);
-        // register connection status listener
+
         MyApplication.getInstance().setConnectivityListener(this);
 
     }
@@ -197,7 +192,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
         new_farmpe = findViewById(R.id.new_farmpe);
 
         pass = findViewById(R.id.pass);
-        //back_xlogin = view.findViewById(R.id.arrow_layout);
+
         coordinatorLayout =findViewById(R.id.main_layou1);
         remember_me = findViewById(R.id.remember_me);
         loc_text="+91";
@@ -226,43 +221,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
             change_lang.setText(sessionManager.getRegId("language_name"));
 
         }
-       // if(sessionManager.getLanguage())
 
-
-//
-//        final InputFilter EMOJI_FILTER = new InputFilter() {
-//            @Override
-//
-//            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-//                for (int index = start; index < end; index++) {
-//                    int type = Character.getType(source.charAt(index));
-//                    if (type == Character.SURROGATE) {
-//                        return "";
-//                    }
-//                }
-//                return null;
-//            }
-//        };
-//
-//
-//        pass.setFilters(new InputFilter[]{EMOJI_FILTER});
-//
-//        final InputFilter filter = new InputFilter() {
-//            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-//                String filtered = "";
-//                for (int i = start; i < end; i++) {
-//                    char character = source.charAt(i);
-//                    if (!Character.isWhitespace(character)) {
-//                        filtered += character;
-//                    }
-//                }
-//                return filtered;
-//            }
-//        };
-//
-//        pass.setFilters(new InputFilter[] {filter,new InputFilter.LengthFilter(12) });
-        // sessionManager = new SessionManager(this);
-        // sessionManager.getRegId("lng_object");
 
         pass.setFilters(new InputFilter[] {EMOJI_FILTER1,new InputFilter.LengthFilter(12) });
 
@@ -279,8 +238,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
 
                 System.out.println("llllllllllllkkkkkkkkkkkkkkk" +lngObject.getString("EnterPhoneNo"));
 
-                //  createaccount.setHint(lngObject.getString("Createanaccount"));
-                //mob_text_signin.setHint(lngObject.getString("Signintoyouraccount"));
+
 
                 text_mobile.setHint(lngObject.getString("PhoneNo"));
                 text_pass.setHint(lngObject.getString("Password"));
@@ -288,11 +246,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                 forgot_pass.setText(lngObject.getString("ForgotPassword") + "?");
                 log_in.setText(lngObject.getString("Login"));
                 welcome_back.setText(lngObject.getString("Login"));
-               /* createaccount.setText(lngObject.getString(" " + "SignUp"));
-                new_farmpe.setText(lngObject.getString("NewtoFarmPe") + "?");*/
 
-                // popup_heading.setText(lngObject.getString("ChangeLanguage"));
-                // farmPe_title.setText(lngObject.getString("FarmPe"));
                 newfarmpelng=lngObject.getString("NewtoFarmPe");
                 signuplng = lngObject.getString("SignUp");
 
@@ -413,13 +367,6 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
 
 
 
-//                SelectLanguageBean bean = new SelectLanguageBean("English", 1, "");
-//                newOrderBeansList.add(bean);
-//
-//                SelectLanguageBean bean1 = new SelectLanguageBean("Hindi", 2, "");
-//                newOrderBeansList.add(bean1);
-
-
 
 
 
@@ -462,8 +409,9 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                 if (mobile_string.equals("")) {
                     mobile_no.requestFocus();
 
+                    int duration=1000;
                     Snackbar snackbar = Snackbar
-                            .make(coordinatorLayout, mob_toast, Snackbar.LENGTH_LONG);
+                            .make(coordinatorLayout, mob_toast, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(LoginActivity.this,R.color.orange));
@@ -475,34 +423,15 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                     }
 
                     snackbar.show();
-//                    snackbar = Snackbar
-//                            .make(coordinatorLayout,toast_mob, Snackbar.LENGTH_LONG);
 
-                    //snackbar.setActionTextColor(R.color.colorAccent);
-//                    View snackbarView = snackbar.getView();
-//                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-//                    tv.setTextColor(Color.RED);
-//                    //tv.setText("abc");
-//                    snackbar.show();
-                    //  Toast.makeText(LoginActivity.this, "Enter Your Mobile Number", Toast.LENGTH_LONG).show();
-//
-//                }else if (loc_text == null) {
-//                    snackbar = Snackbar
-//                            .make(coordinatorLayout, "Please select country code", Snackbar.LENGTH_LONG);
-//
-//                    //snackbar.setActionTextColor(R.color.colorAccent);
-//                    View snackbarView = snackbar.getView();
-//                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-//                    tv.setTextColor(Color.RED);
-//                    //tv.setText("abc");
-//                    snackbar.show();
 
 
                 } else if (password.equals("")) {
                     pass.requestFocus();
 
+                    int duration=1000;
                     Snackbar snackbar = Snackbar
-                            .make(coordinatorLayout, pass_toast, Snackbar.LENGTH_LONG);
+                            .make(coordinatorLayout, pass_toast, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(LoginActivity.this,R.color.orange));
@@ -520,8 +449,9 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                 } else if (password.contains(" ")) {
                     pass.requestFocus();
 
+                    int duration=1000;
                     Snackbar snackbar = Snackbar
-                            .make(coordinatorLayout, "Password should not contain spaces", Snackbar.LENGTH_LONG);
+                            .make(coordinatorLayout, "Password should not contain spaces",duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(LoginActivity.this,R.color.orange));
@@ -592,8 +522,9 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
 
                                     } else{
 
+                                        int duration=1000;
                                         Snackbar snackbar = Snackbar
-                                                .make(coordinatorLayout, toast_invalid, Snackbar.LENGTH_LONG);
+                                                .make(coordinatorLayout, toast_invalid, duration);
                                         View snackbarView = snackbar.getView();
                                         TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                                         tv.setBackgroundColor(ContextCompat.getColor(LoginActivity.this,R.color.orange));
@@ -698,7 +629,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
     @Override
     public void onBackPressed() {
 
-      //  finish();
+
 
         if (doubleBackToExitPressedOnce) {
 
@@ -711,8 +642,9 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
 
         doubleBackToExitPressedOnce = true;
 
+        int duration=1000;
         Snackbar snackbar = Snackbar
-                .make(coordinatorLayout,toast_click_back, Snackbar.LENGTH_LONG);
+                .make(coordinatorLayout,toast_click_back, duration);
         View snackbarView = snackbar.getView();
         TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
         tv.setBackgroundColor(ContextCompat.getColor(LoginActivity.this,R.color.orange));
@@ -724,7 +656,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
         }
 
         snackbar.show();
-     //   Toast.makeText(getApplicationContext(), toast_click_back, Toast.LENGTH_SHORT).show();
+
 
         new Handler().postDelayed(new Runnable() {
 
@@ -759,7 +691,6 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
 
                     StringBuffer buffer = new StringBuffer();
 
-                    // System.out.println("hhhhhhhhhhhhhhhhh"+buffer.append(res.getString(0)));
 
                     while (res.moveToNext()) {
                         buffer.append(res.getString(0) + "\n");
@@ -801,7 +732,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
     private void DeleteData(String userId,String pass) {
         System.out.println("kkkkkkkkkkkkk"+userId);
         System.out.println("sssssssssssss"+pass);
-        //  boolean isInserted = myDb.insertData(userId, pass);
+
         myDb.deleteData(userId);
 
     }
@@ -810,7 +741,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
 
     public void setupUI(View view) {
 
-        //Set up touch listener for non-text box views to hide keyboard.
+
         if(!(view instanceof EditText)) {
 
             view.setOnTouchListener(new View.OnTouchListener() {
@@ -823,7 +754,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
             });
         }
 
-        //If a layout container, iterate over children and seed recursion.
+
         if (view instanceof ViewGroup) {
 
             for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
@@ -836,8 +767,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
     }
 
     public static void hideSoftKeyboard(Activity activity) {
-        /*InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);*/
+
 
         InputMethodManager inputManager = (InputMethodManager)
                 activity.getSystemService(
@@ -877,18 +807,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                     }
                 }
                 return filtered;
-//                for (int i = start; i < end; i++) {
-//                    if (Character.isWhitespace(source.charAt(i))) {
-//                        if (dstart == 0)
-//                            return "";
-//                    }
-//                }
-                // return null;
-      /*  char c = source.charAt(index);
-        if (isCharAllowed(c))
-            sb.append(c);
-        else
-            keepOriginal = false;*/
+
             }
             if (keepOriginal)
                 return null;

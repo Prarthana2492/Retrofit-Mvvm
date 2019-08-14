@@ -55,7 +55,6 @@ public class SettingFragment extends Fragment {
         feedback=view.findViewById(R.id.feedback);
         change_lang=view.findViewById(R.id.change_lang);
         policy=view.findViewById(R.id.policy);
-       // setting_tittle=view.findViewById(R.id.setting_tittle);
         acc_info=view.findViewById(R.id.acc_info);
         your_address=view.findViewById(R.id.ur_address);
         notificatn=view.findViewById(R.id.notificatn);
@@ -107,8 +106,6 @@ public class SettingFragment extends Fragment {
         try {
 
             lngObject = new JSONObject(sessionManager.getRegId("language"));
-
-         //   setting_tittle.setText(lngObject.getString("Settings"));
             acc_info1.setText(lngObject.getString("AccountInfo"));
             your_addresss.setText(lngObject.getString("YourAddress"));
           //  refer_ern.setText(lngObject.getString("Refer_Earn"));
@@ -130,26 +127,6 @@ public class SettingFragment extends Fragment {
 
 
 
-
-       /* view.setFocusableInTouchMode(true);
-        view.requestFocus(View.FOCUS_UP);
-        view.setOnKeyListener(new View.OnKeyListener() {
-
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-                   *//* FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("home_menu", FragmentManager.POP_BACK_STACK_INCLUSIVE);*//*
-                    selectedFragment = HomeMenuFragment.newInstance();
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
-                    // transaction.addToBackStack("looking");
-                    transaction.commit();
-
-                }
-                return false;
-            }
-        });*/
 
        logout_layout.setOnClickListener(new View.OnClickListener() {
            @Override
