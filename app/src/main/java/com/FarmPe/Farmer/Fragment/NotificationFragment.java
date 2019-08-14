@@ -59,20 +59,7 @@ public class NotificationFragment extends Fragment {
         back_feed=view.findViewById(R.id.back_feed);
 
         sessionManager = new SessionManager(getActivity());
-    /*    back_feed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack ("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-                 *//*else if(getArguments().getString("navigation_from").equals("setting")){
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-                }*//*
-            }
-        });*/
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();
@@ -84,6 +71,7 @@ public class NotificationFragment extends Fragment {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack ("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
 
 
 
@@ -101,13 +89,12 @@ public class NotificationFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
 
-
         farmadapter=new NotificationAdapter(getActivity(),newOrderBeansList);
         recyclerView.setAdapter(farmadapter);
 
         try {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
-          //  toolbar_title.setText(lngObject.getString("Notifications"));
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -129,14 +116,14 @@ public class NotificationFragment extends Fragment {
 
                         notifn_array = result.getJSONArray("NotificationList");
 
-                            for(int i=0;i<notifn_array.length();i++){
+                        for(int i=0;i<notifn_array.length();i++){
                             JSONObject jsonObject1 = notifn_array.getJSONObject(i);
                             notification_home_bean = new Notification_Home_Bean(jsonObject1.getString("NotificationText"),jsonObject1.getString("Id"));
                             newOrderBeansList.add(notification_home_bean);
 
                         }
 
-                            farmadapter.notifyDataSetChanged();
+                        farmadapter.notifyDataSetChanged();
 
 
 
@@ -153,6 +140,10 @@ public class NotificationFragment extends Fragment {
         }catch (Exception e){
             e.printStackTrace();
         }
+
+
+
+
 
 
 

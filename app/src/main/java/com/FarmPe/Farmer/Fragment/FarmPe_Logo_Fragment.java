@@ -266,7 +266,6 @@ LinearLayout linearLayout,no_request,no_farms,requests_made;
                         }
 
                         reqst_count.setText(request_count);
-                        HomeMenuFragment.farm_count.setText(farm_count);
                         HomeMenuFragment.request_count.setText(request_count);
                         HomeMenuFragment.notifictn_count.setText(notificatn_count);
 

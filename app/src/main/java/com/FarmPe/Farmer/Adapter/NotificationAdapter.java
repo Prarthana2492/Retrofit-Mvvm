@@ -25,7 +25,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     Fragment selectedFragment;
 
     public LinearLayout linearLayout;
-    public static String first;
+
     public static CardView cardView;
     public NotificationAdapter(Activity activity, List<Notification_Home_Bean> moviesList) {
         this.productList = moviesList;
@@ -46,7 +46,10 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             super(view);
             prod_price=view.findViewById(R.id.prod_price);
             prod_name=view.findViewById(R.id.prod_name);
+
             image=view.findViewById(R.id.image);
+
+
         }
 
     }
@@ -74,5 +77,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         System.out.println("lengthhhhhhh"+productList.size());
         return productList.size();
     }
+
+
 
 }
