@@ -93,7 +93,21 @@ ImageView b_arrow;
             public void onClick(View view) {
 
                 if(AddBrandAdapter.brandId == null){
-                    int duration = 1000;
+
+                    Snackbar snackbar = Snackbar
+                            .make(linearLayout, "Please choose any option", Snackbar.LENGTH_LONG);
+                    View snackbarView = snackbar.getView();
+                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                    tv.setTextColor(Color.WHITE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    } else {
+                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                    }
+
+                    snackbar.show();
+                  /*  int duration = 1000;
                     Snackbar snackbar = Snackbar
                             .make(linearLayout, "Please choose any option", duration);
                     View snackbarView = snackbar.getView();
@@ -106,7 +120,7 @@ ImageView b_arrow;
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
 
-                    snackbar.show();
+                    snackbar.show();*/
 
                 }else{
                     AddHpAdapter.hp_model = null;

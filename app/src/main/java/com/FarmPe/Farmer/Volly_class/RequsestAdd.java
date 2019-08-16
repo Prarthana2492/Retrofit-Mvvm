@@ -11,13 +11,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 
-
 import org.json.JSONObject;
 
-import java.util.concurrent.TimeUnit;
-
-
-public class Crop_Post {
+public class RequsestAdd {
 
     private static Handler handler = new Handler();
     public static StringRequest stringRequest;
@@ -25,7 +21,7 @@ public class Crop_Post {
     public static JSONObject jsonObject, questionsRequest;
     static int pStatus = 0;
 
-    public static void crop_posting(Activity activity, String url, JSONObject postObject, final VoleyJsonObjectCallback callback) {
+    public static void crop_posting1(Activity activity, String url, JSONObject postObject, final VoleyJsonObjectCallback callback) {
         final ProgressDialog progressDialog = ProgressDialog.show(activity, "",
                 "Loading....Please wait.");
 
@@ -38,7 +34,7 @@ public class Crop_Post {
         // progressDialog.setContentView(R.layout.small_progress_bar);
 
 
-       // progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        // progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         System.out.println("ggggggggggggggggggggBookingAppointmentObj" + postObject);
 
         JsonObjectRequest jobReq = new JsonObjectRequest(Request.Method.POST, url, postObject,
@@ -71,6 +67,7 @@ public class Crop_Post {
                 });
 
 
+        jobReq.setRetryPolicy(new DefaultRetryPolicy(8000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
     /*    jobReq.setRetryPolicy(new DefaultRetryPolicy(
                 0,
@@ -84,7 +81,9 @@ public class Crop_Post {
     }
 
 
-    }
+}
+
+
 
 
 

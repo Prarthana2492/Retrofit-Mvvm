@@ -91,6 +91,7 @@ public class Edit_Looking_For_Fragment extends Fragment {
     public static AddHpAdapter farmadapter;
     SessionManager sessionManager;
     public static String back;
+    ImageView tractor_img;
     TextView toolbar_title,update_btn_txt,brand;
     JSONObject lngObject;
     JSONArray edit_req_array;
@@ -102,13 +103,13 @@ public class Edit_Looking_For_Fragment extends Fragment {
     EditText profile_name,profile_phone,profile_mail,profile_passwrd;
     RadioButton month_1,month_2,month_3,month_4,finance_yes,finance_no;
     CircleImageView prod_img;
-ImageView b_arrow;
+
     TextView farmer_name,farmer_phone,farmer_email,farmer_loc,delete_req,hp_power,address_text,request;
     LinearLayout back_feed;
     Fragment selectedFragment;
     RadioGroup radio_group_time,radioGroup_finance;
     String time_period,lookingfordetails_id,modelid;
-    boolean finance;
+    String finance;
     public static int selectedId_time_recent;
 
 
@@ -122,14 +123,11 @@ ImageView b_arrow;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.farmers_detail_page, container, false);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        b_arrow=view.findViewById(R.id.b_arrow);
+
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
-       // farmer_name=view.findViewById(R.id.farmer_name);
         farmer_phone=view.findViewById(R.id.phone_no);
-       // farmer_email=view.findViewById(R.id.email);
         brand=view.findViewById(R.id.brand);
-       // farmer_loc=view.findViewById(R.id.loc);
         prod_img=view.findViewById(R.id.prod_img);
         hp_power=view.findViewById(R.id.hp_power);
         delete_req=view.findViewById(R.id.delete_req);
@@ -139,7 +137,6 @@ ImageView b_arrow;
         month_4=view.findViewById(R.id.month_4);
         finance_yes=view.findViewById(R.id.finance_yes);
         finance_no=view.findViewById(R.id.finance_no);
-       // tractor_img=view.findViewById(R.id.tractor_img);
 
         linearLayout=view.findViewById(R.id.linearLayout);
         address_text=view.findViewById(R.id.address_text);
@@ -175,12 +172,17 @@ ImageView b_arrow;
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
+
                 HomeMenuFragment.onBack_status = "looking_frg";
+
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("looking1", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-
+            /*    selectedFragment = HomeMenuFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                // transaction.addToBackStack("looking");
+                transaction.commit();*/
             }
         });
 
@@ -190,10 +192,10 @@ ImageView b_arrow;
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 selectedId_time_recent = radioGroup_finance.getCheckedRadioButtonId();
                 RadioButton  radioButton = (RadioButton)view.findViewById(selectedId_time_recent);
-                if (String.valueOf(radioButton.getText()).equals("yes")){
-                    finance=true;
+                if (String.valueOf(radioButton.getText()).equals("Yes")){
+                    finance="True";
                 }else {
-                    finance=false;
+                    finance="False";
                 }
             }
         });
@@ -208,13 +210,12 @@ ImageView b_arrow;
 
 
 
-            request.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    update_profile_details();
-                }
-            });
-
+        request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                update_profile_details();
+            }
+        });
 
 
 
@@ -233,9 +234,6 @@ ImageView b_arrow;
                 transaction.commit();
             }
         });
-
-
-
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -315,17 +313,170 @@ ImageView b_arrow;
         });
 
 
+
+//        try{
+//
+//            JSONObject jsonObject = new JSONObject();
+//            JSONObject post_object = new JSONObject();
+//
+//            jsonObject.put("Id", FarmsImageAdapter.looking_forId);
+//            post_object.put("objUser",jsonObject);
+//            System.out.println("ggpgpgpg" + post_object);
+//
+//
+//            Crop_Post.crop_posting(getActivity(), Urls.Get_Profile_Details, post_object, new VoleyJsonObjectCallback() {
+//                @Override
+//                public void onSuccessResponse(JSONObject result) {
+//                    System.out.println("ggpgpgpg" + result);
+//
+//                    try{
+//
+//                        JSONObject jsonObject1 = result.getJSONObject("user");
+//                        String ProfileName1 = jsonObject1.getString("FullName");
+//                        System.out.println("11111" + jsonObject1.getString("FullName"));
+//                        String ProfilePhone = jsonObject1.getString("MaskedPhoneNo");
+//                        String ProfileEmail = jsonObject1.getString("EmailId");
+//                        String ProfileImage = jsonObject1.getString("ProfilePic");
+//                        System.out.println("11111" + ProfileName1);
+//
+//
+//
+//                        farmer_name.setText(ProfileName1);
+//                        farmer_phone.setText(ProfilePhone);
+//                        farmer_email.setText(ProfileEmail);
+//
+//
+//                        Glide.with(getActivity()).load(ProfileImage)
+//
+//                                .thumbnail(0.5f)
+//                                //  .crossFade()
+//                                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                                .error(R.drawable.avatarmale)
+//                                .into(prod_img);
+//
+//
+//                    }catch (Exception e){
+//                        e.printStackTrace();
+//                    }
+//
+//                }
+//            });
+
+
+
+
+
+
+      /*  SharedPreferences myPrefrence = getActivity().getPreferences(MODE_PRIVATE);
+        String imageS = myPrefrence.getString("imagePreferance", "");
+        if(!imageS.equals("")) imageB = decodeToBase64(imageS);
+        prod_img.setImageBitmap(imageB);
+*/
         return view;
     }
 
     private void getting_edit() {
 
-        try{
 
-            final JSONObject jsonObject = new JSONObject();
-            jsonObject.put("UserId",sessionManager.getRegId("userId"));
+        for(int i=0;i<LookingForFragment.cropsListArray.length();i++){
 
-            Crop_Post.crop_posting(getActivity(), Urls.Get_Edit_Request, jsonObject, new VoleyJsonObjectCallback() {
+            JSONObject jsonObject1 = null;
+            try {
+                jsonObject1 = LookingForFragment.cropsListArray.getJSONObject(i);
+
+                JSONObject jsonObject2 = jsonObject1.getJSONObject("Address");
+
+                String id = jsonObject1.getString("Id");
+
+                if (id.equals(FarmsImageAdapter.looking_forId)) {
+                    String purchasetimeline = jsonObject1.getString("PurchaseTimeline");
+                    String lookin_true = jsonObject1.getString("LookingForFinance");
+                    String brand_name = jsonObject1.getString("BrandName");
+                    String model_name = jsonObject1.getString("Model");
+                    String model_image = jsonObject1.getString("ModelImage");
+                    String horse_range = jsonObject1.getString("HorsePowerRange");
+                    String addrss_id = jsonObject2.getString("Id");
+                    String addrss_name = jsonObject2.getString("Name");
+                    String mobile_no = jsonObject2.getString("MobileNo");
+                    String street_address = jsonObject2.getString("StreeAddress1");
+                    String pincode = jsonObject2.getString("Pincode");
+                    String state = jsonObject2.getString("State");
+                    String district = jsonObject2.getString("District");
+                    String taluk = jsonObject2.getString("Taluk");
+                    lookingfordetails_id = jsonObject1.getString("LookingForDetailsId");
+                    addressID = jsonObject1.getString("AddressId");
+                    modelid = jsonObject1.getString("ModelId");
+
+
+                    brand.setText("Brand - " + brand_name);
+                    hp_power.setText("HP - " + horse_range);
+                    hp_power.setText("Model - " + model_name);
+                    address_text.setText(street_address + " , " + state + " , " + pincode);
+
+
+                    if (lookin_true.equals("true")) {
+                        finance_yes.setChecked(true);
+
+                        finance = "True";
+
+
+                    } else {
+
+                        finance_no.setChecked(true);
+                        finance = "False";
+
+                    }
+
+
+                    if (purchasetimeline.equals("Immediately")) {
+
+                        month_1.setChecked(true);
+
+                    } else if (purchasetimeline.equals("1 Month")) {
+
+                        month_2.setChecked(true);
+
+
+                    } else if (purchasetimeline.equals("3 Months")) {
+
+                        month_3.setChecked(true);
+
+
+                    } else if (purchasetimeline.equals("After 3 Months")) {
+                        month_4.setChecked(true);
+
+
+                    }
+                }
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+//
+//                            Glide.with(getActivity()).load(model_image)
+//
+//                                    .thumbnail(0.5f)
+//                                    .crossFade()
+//                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                                    .into(tractor_img);
+//
+
+
+        }
+
+
+
+
+
+
+     /*   try{
+
+
+
+
+            Crop_Post.crop_posting(getActivity(), Urls.Get_Edit_Request, post_jsonObject, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("dfdsfsf" + result);
@@ -339,7 +490,7 @@ ImageView b_arrow;
 
                             String id = jsonObject1.getString("Id");
                             String purchasetimeline = jsonObject1.getString("PurchaseTimeline");
-                            Boolean lookin_true = jsonObject1.getBoolean("LookingForFinance");
+                            String lookin_true = jsonObject1.getString("LookingForFinance");
                             String brand_name = jsonObject1.getString("BrandName");
                             String model_name = jsonObject1.getString("Model");
                             String model_image = jsonObject1.getString("ModelImage");
@@ -356,6 +507,7 @@ ImageView b_arrow;
                             addrss_id = jsonObject1.getString("AddressId");
                             modelid = jsonObject1.getString("ModelId");
 
+                            System.out.println("dfdsfsfkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk" + lookin_true);
 
                             brand.setText("Brand - " + brand_name);
                             hp_power.setText("HP - " + horse_range);
@@ -364,12 +516,17 @@ ImageView b_arrow;
 
 
 
-                            if(lookin_true){
+                            if(lookin_true.equals("true")){
                                 finance_yes.setChecked(true);
+
+                                finance="True";
+
 
                             }else{
 
                                 finance_no.setChecked(true);
+                                finance="False";
+
                             }
 
 
@@ -417,6 +574,11 @@ ImageView b_arrow;
         }catch (Exception e){
             e.printStackTrace();
         }
+*/
+
+
+
+
 
     }
 
@@ -443,9 +605,9 @@ ImageView b_arrow;
 
 
                         if(status.equals("1")){
-                            int duration = 1000;
+
                             Snackbar snackbar = Snackbar
-                                    .make(linearLayout,message, duration);
+                                    .make(linearLayout,message, Snackbar.LENGTH_LONG);
                             View snackbarView = snackbar.getView();
                             TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                             tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -527,7 +689,11 @@ ImageView b_arrow;
             }
         }
     };
+    private Bitmap decodeToBase64(String input) {
 
+        byte[] decodedByte = Base64.decode(input, 0);
+        return BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
+    }
 
 
     @Override
@@ -554,13 +720,108 @@ ImageView b_arrow;
     }
 
 
+    public byte[] getFileDataFromDrawable(Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+        bitmap.compress(Bitmap.CompressFormat.PNG, 80, byteArrayOutputStream);
+
+        return byteArrayOutputStream.toByteArray();
 
 
 
+        //System.out.println("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj"+byteArrayOutputStream.toByteArray());
+
+    }
+
+    private void uploadImage(final Bitmap bitmap){
+        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST,Urls.Update_Profile_Details,
+                new Response.Listener<NetworkResponse>(){
+                    @Override
+                    public void onResponse(NetworkResponse response) {
+                        //Toast.makeText(getActivity(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                        //  String resultResponse = new String(response.data);
+                        selectedImage=null;
+
+                        Toast.makeText(getActivity(),toast_update, Toast.LENGTH_SHORT).show();
+                        selectedFragment = SettingFragment.newInstance();
+                        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                        ft.replace(R.id.frame_layout,selectedFragment);
+                        ft.commit();
+
+                    }
+                },
+
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            /*
+             *pass files using below method
+             * */
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                //  params.put("UserId",sessionManager.getRegId("userId") );
+
+                params.put("UserId",sessionManager.getRegId("userId"));
+                params.put("FullName",profile_name.getText().toString());
+                params.put("PhoneNo",profile_phone.getText().toString());
+                params.put("EmailId",profile_mail.getText().toString());
+                params.put("Password",profile_passwrd.getText().toString());
+                Log.e(TAG,"afaeftagsparams"+params);
+                return params;
+            }
+
+
+            @Override
+            protected Map<String, DataPart> getByteData() {
+                Map<String, DataPart> params = new HashMap<>();
+                long imagename = System.currentTimeMillis();
+                // params.put("File", new DataPart(imagename + ".png", getFileDataFromDrawable(bitmap)));
+                Log.e(TAG,"Imhereafaeftagsparams Imhereafaeftagsparams "+bitmap);
+
+                if (bitmap==null){
+
+                }else {
+                    params.put("File", new DataPart(imagename + ".png", getFileDataFromDrawable(bitmap)));
+
+                }
+                Log.e(TAG,"Imhereafaeftagsparams "+params);
+                return params;
+            }
+        };
+        //adding the request to volley
+        Volley.newRequestQueue(getActivity()).add(volleyMultipartRequest);
+    }
+
+
+    private String encodeToBase64(Bitmap image) {
+
+        Bitmap immage = image;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        immage.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] b = baos.toByteArray();
+        String imageEncoded = Base64.encodeToString(b, Base64.DEFAULT);
+
+        Log.d("Image Log:", imageEncoded);
+        return imageEncoded;
+    }
 
     private void update_profile_details() {
 
 
+        /*{
+            "Id":2,
+                "UserId":1,
+                "ModelId":2,
+                "PurchaseTimeline":"Immediately",
+                "LookingForFinance":"True",
+                "AddressId":1,
+                "IsAgreed":"True",
+                "LookingForDetailsId":1
+        }*/
 
 
         try{
@@ -571,6 +832,7 @@ ImageView b_arrow;
             jsonObject.put("ModelId",modelid);
 
             jsonObject.put("LookingForFinance",finance);
+
             jsonObject.put("AddressId", addressID);
             jsonObject.put("IsAgreed","True");
             jsonObject.put("LookingForDetailsId",lookingfordetails_id);
@@ -589,9 +851,9 @@ ImageView b_arrow;
 
 
                         if(!(status.equals("0"))){
-                            int duration = 1000;
+
                             Snackbar snackbar = Snackbar
-                                    .make(linearLayout,message, duration);
+                                    .make(linearLayout,message, Snackbar.LENGTH_LONG);
                             View snackbarView = snackbar.getView();
                             TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                             tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -632,7 +894,40 @@ ImageView b_arrow;
             e.printStackTrace();
         }
 
-}
+
+
+
+
+
+
+
+    }
+
+
+
+
+    public static void hideSoftKeyboard(Activity activity) {
+        /*InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);*/
+
+        InputMethodManager inputManager = (InputMethodManager)
+                activity.getSystemService(
+                        Context.INPUT_METHOD_SERVICE);
+        View focusedView = activity.getCurrentFocus();
+
+        if (focusedView != null) {
+
+            try {
+                assert inputManager != null;
+                inputManager.hideSoftInputFromWindow(focusedView.getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
+            } catch (AssertionError e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 
 }
 

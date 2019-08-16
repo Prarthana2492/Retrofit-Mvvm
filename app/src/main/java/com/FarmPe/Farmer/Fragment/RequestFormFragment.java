@@ -270,7 +270,6 @@ public class RequestFormFragment extends Fragment {
             JSONObject userRequestjsonObject = new JSONObject();
 
             userRequestjsonObject.put("UserId",sessionManager.getRegId("userId"));
-            userRequestjsonObject.put("TractorId", AddModelAdapter.tractor_id);
             userRequestjsonObject.put("PurchaseTimeline", time_period);
             userRequestjsonObject.put("LookingForFinance", finance_status);
             userRequestjsonObject.put("AddressId", addId);
@@ -281,7 +280,7 @@ public class RequestFormFragment extends Fragment {
 
 
 
-            System.out.println("postObj"+userRequestjsonObject.toString());
+            System.out.println("postObjmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"+userRequestjsonObject.toString());
 
 
             Login_post.login_posting(getActivity(), Urls.AddRequestForQuotation,userRequestjsonObject,new VoleyJsonObjectCallback() {
@@ -296,10 +295,8 @@ public class RequestFormFragment extends Fragment {
                         String message=result.getString("Message");
 
 
-
-                        int duration = 1000;
                         Snackbar snackbar = Snackbar
-                                .make(linearLayout,"Your Request Added Successfully", duration);
+                                .make(linearLayout,"Your Request Added Successfully", Snackbar.LENGTH_LONG);
                         View snackbarView = snackbar.getView();
                         TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                         tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));

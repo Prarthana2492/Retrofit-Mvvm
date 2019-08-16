@@ -81,50 +81,39 @@ public class Notification_Adapter1 extends RecyclerView.Adapter<Notification_Ada
 
         holder.actninfo.setText(products.getNoti_txt());
 
-        holder.switch1.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                isTouched = true;
-                return false;
-            }
-        });
+        if (Notification_Recyc_Fragment.list.contains(products.getNoti_id())){
+
+            holder.switch1.setChecked(true);
+        }else {
+
+
+            holder.switch1.setChecked(false);
+
+        }
+
+        holder.actninfo.setText(products.getNoti_txt());
+
 
         holder.switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isTouched) {
-                    isTouched = false;
-
-                    if (isChecked) {
-                        Notification_Recyc_Fragment.enable_all.setVisibility(View.VISIBLE);
-                    } else {
-                        Notification_Recyc_Fragment.enable_all.setVisibility(View.GONE);
-                    }
-                }
-            }
-        });
 
 
-
-        holder.switch1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                if (holder.switch1.isChecked()){
+                if (isChecked) {
                     enable_switch(products.getNoti_id());
                     FirebaseMessaging.getInstance().subscribeToTopic(products.getNoti_code());// to register in topic(subcribe)
-
-
-                }else {
+                } else {
+                    enable_switch("");
 
                     FirebaseMessaging.getInstance().unsubscribeFromTopic(products.getNoti_code());// to register in topic(unsubscribe)
-
                 }
-
 
             }
         });
+
+
+
+
 
 
     }

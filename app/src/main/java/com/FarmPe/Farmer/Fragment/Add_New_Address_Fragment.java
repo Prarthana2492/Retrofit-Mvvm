@@ -57,12 +57,12 @@ public class  Add_New_Address_Fragment extends Fragment {
     RecyclerView recyclerView;
 
 
-    static List<StateBean> stateBeanList = new ArrayList<>();
-    static List<StateBean> districtBeanList = new ArrayList<>();
-    static List<StateBean> talukBeanList = new ArrayList<>();
-    static List<StateBean> hobliBeanList = new ArrayList<>();
-    static List<StateBean> villageBeanList = new ArrayList<>();
-    private List<StateBean> searchresultAraaylist = new ArrayList<>();
+    static List<StateBean> stateBeanList = new ArrayList<StateBean>();
+    static List<StateBean> districtBeanList = new ArrayList<StateBean>();
+    static List<StateBean> talukBeanList = new ArrayList<StateBean>();
+    static List<StateBean> hobliBeanList = new ArrayList<StateBean>();
+    static List<StateBean> villageBeanList = new ArrayList<StateBean>();
+    private List<StateBean> searchresultAraaylist = new ArrayList<StateBean>();
     StateApdater stateApdater;
     DistrictAdapter districtAdapter;
     TalukAdapter talukAdapter;
@@ -337,19 +337,19 @@ public class  Add_New_Address_Fragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 sorting(s.toString());
-                // TODO Auto-generated method stub
+
             }
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                // TODO Auto-generated method stub
+
             }
 
             @Override
             public void afterTextChanged(Editable s) {
 
-                // TODO Auto-generated method stub
+
             }
         });
 
@@ -999,11 +999,18 @@ public class  Add_New_Address_Fragment extends Fragment {
                                 }
                                 snackbar1.show();
 
-                                bundle.putString("streetname",hobli.getText().toString() + district.getText().toString());
+
+                                Bundle bundle1=new Bundle();
+                                bundle1.putString("add_id",status);
+                                bundle1.putString("streetname",hobli.getText().toString() + district.getText().toString());
+                                bundle1.putString("looking_forId",getArguments().getString("looking_forId"));
+                                bundle1.putString("modelId",getArguments().getString("modelId"));
+
+
                                 selectedFragment = Edit_Looking_For_Fragment.newInstance();
                                 FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
                                 transaction.replace(R.id.frame_layout, selectedFragment);
-                                selectedFragment.setArguments(bundle);
+                                selectedFragment.setArguments(bundle1);
                                 transaction.commit();
 
 

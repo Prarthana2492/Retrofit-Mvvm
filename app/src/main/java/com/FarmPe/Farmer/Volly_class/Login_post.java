@@ -59,10 +59,10 @@ public class Login_post {
 
                     }
                 });
-        jobReq.setRetryPolicy(new DefaultRetryPolicy(
-                (int) TimeUnit.SECONDS.toMillis(60),
+       /* jobReq.setRetryPolicy(new DefaultRetryPolicy(
+                (int) TimeUnit.SECONDS.toMillis(2000),
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));*/
 
         VolleySingletonQuee.getInstance(activity).addToRequestQueue(jobReq);
 

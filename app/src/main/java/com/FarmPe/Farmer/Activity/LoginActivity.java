@@ -49,6 +49,7 @@ import com.FarmPe.Farmer.Urls;
 import com.FarmPe.Farmer.Volly_class.Crop_Post;
 import com.FarmPe.Farmer.Volly_class.Login_post;
 import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 
 import org.json.JSONArray;
@@ -505,7 +506,8 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                                             sessionManager.save_name(userObject.getString("FullName"),userObject.getString("PhoneNo"),userObject.getString("ProfilePic"));
                                             sessionManager.saveUserId(userObject.getString("Id"));
 
-
+                                            FirebaseMessaging.getInstance().subscribeToTopic("FARMERNEWS");// to register in topic(subcribe)
+                                            FirebaseMessaging.getInstance().subscribeToTopic("NEWS");// to register in topic(subcribe)
                                             if(remember_me.isChecked()){
 
                                                 if(!myDb.isEmailExists(mobile_no.getText().toString())){
@@ -673,7 +675,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
         et1.addTextChangedListener(new TextWatcher() {
 
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // TODO Auto-generated method stub
+
                 if (et1.getText().toString().length() == 10)     //size as per your requirement
                 {
 
@@ -706,12 +708,12 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
 
             public void beforeTextChanged(CharSequence s, int start,
                                           int count, int after) {
-                // TODO Auto-generated method stub
+
 
             }
 
             public void afterTextChanged(Editable s) {
-                // TODO Auto-generated method stub
+
             }
 
         });

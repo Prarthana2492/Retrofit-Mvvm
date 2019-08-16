@@ -45,6 +45,7 @@ public class LookingForFragment extends Fragment {
     TextView filter_text,delete_req;
     SessionManager sessionManager;
 
+   public static JSONArray cropsListArray = null;
 
     public static LookingForFragment newInstance() {
         LookingForFragment fragment = new LookingForFragment();
@@ -79,6 +80,8 @@ public class LookingForFragment extends Fragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+
+                    HomeMenuFragment.onBack_status="no_request";
 
 
 
@@ -119,7 +122,6 @@ public class LookingForFragment extends Fragment {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("YourRequestttttttttttttttttt" + result);
-                    JSONArray cropsListArray = null;
 
 
                     try {
