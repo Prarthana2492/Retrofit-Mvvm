@@ -1033,7 +1033,18 @@ public class  Add_New_Address_Fragment extends Fragment {
                                 transaction.commit();
 
 
-                            }else {
+                            }
+
+                            else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")) {
+                                HomeMenuFragment.onBack_status = "no_request";
+
+                                FragmentManager fm = getActivity().getSupportFragmentManager();
+                                fm.popBackStack("HOME_FRAGMENT", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                            }
+
+
+
+                            else {
 
                                 int duration = 1000;
                                 Snackbar snackbar = Snackbar

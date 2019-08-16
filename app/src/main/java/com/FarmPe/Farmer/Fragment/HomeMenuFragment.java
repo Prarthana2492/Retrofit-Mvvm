@@ -217,11 +217,13 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
                                 get_address_array = result.getJSONArray("UserAddressDetails");
 
                                 if(get_address_array.length()== 0){
+                                    drawer.closeDrawers();
                                     Bundle bundle = new Bundle();
                                     bundle.putString("navigation_from","HOME_FRAGMENT");
                                     selectedFragment = Add_New_Address_Fragment.newInstance();
                                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                                     selectedFragment.setArguments(bundle);
+                                    transaction.addToBackStack("HOME_FRAGMENT");
                                     transaction.replace(R.id.frame_layout, selectedFragment);
                                     transaction.commit();
 
