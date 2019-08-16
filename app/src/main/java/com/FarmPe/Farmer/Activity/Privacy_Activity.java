@@ -33,7 +33,6 @@ public class Privacy_Activity extends AppCompatActivity implements ConnectivityR
     public static RecyclerView recyclerView;
 
     TextView toolbar_title;
-    NestedScrollView profile_view;
     Fragment selectedFragment;
     String toast_internet,toast_nointernet;
     JSONObject lngObject;
@@ -119,7 +118,7 @@ public class Privacy_Activity extends AppCompatActivity implements ConnectivityR
 ;
 
 
-        profile_view.setVisibility(View.GONE);
+      //  profile_view.setVisibility(View.GONE);
 
 
 

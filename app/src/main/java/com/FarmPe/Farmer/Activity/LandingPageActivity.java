@@ -275,9 +275,16 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-    }
+      //  super.onBackPressed();
 
+
+            HomeMenuFragment.onBack_status = "no_request";
+            selectedFragment = HomeMenuFragment.newInstance();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frame_layout, selectedFragment);
+            transaction.commit();
+
+    }
 
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {

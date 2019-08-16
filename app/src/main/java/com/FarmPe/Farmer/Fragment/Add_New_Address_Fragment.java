@@ -193,7 +193,17 @@ public class  Add_New_Address_Fragment extends Fragment {
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("edit", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-                } else{
+                }else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")) {
+                    HomeMenuFragment.onBack_status = "no_request";
+                    selectedFragment = HomeMenuFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.commit();
+                }
+
+
+
+                else{
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("request", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 }
@@ -233,7 +243,16 @@ public class  Add_New_Address_Fragment extends Fragment {
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack("edit", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-                    }  else{
+                    }
+                    else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")) {
+                        HomeMenuFragment.onBack_status = "no_request";
+                        selectedFragment = HomeMenuFragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout, selectedFragment);
+                        transaction.commit();
+                    }
+
+                    else{
                        FragmentManager fm = getActivity().getSupportFragmentManager();
                        fm.popBackStack("request", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     }
