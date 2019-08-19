@@ -75,9 +75,10 @@
                 />
 
             <TextView
+                android:id="@+id/sub_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Give us the Tractor specification to find your preference and customize our services."
+                android:text="Let us know what are you looking from below list."
                 android:textSize="14dp"
                 android:fontFamily="@font/segoeui"
                 android:layout_marginTop="10dp"

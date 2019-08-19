@@ -41,7 +41,7 @@ public class AddHpFragment extends Fragment {
     public static List<AddTractorBean> newOrderBeansList = new ArrayList<>();
     public static RecyclerView recyclerView;
     public static AddHpAdapter farmadapter;
-    TextView toolbar_title,continue_button;
+    TextView toolbar_title,continue_button,sub_label;
     LinearLayout back_feed,linearLayout;
     Fragment selectedFragment;
 
@@ -57,9 +57,18 @@ ImageView b_arrow;
         recyclerView=view.findViewById(R.id.recycler_what_looking);
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
+        sub_label=view.findViewById(R.id.sub_label);
         continue_button=view.findViewById(R.id.continue_button);
         linearLayout=view.findViewById(R.id.linearLayout);
+
+
+
         toolbar_title.setText("Select HP");
+        sub_label.setText("Choose the Horse Power (HP) you prefer");
+
+
+
+
         b_arrow=view.findViewById(R.id.b_arrow);
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override

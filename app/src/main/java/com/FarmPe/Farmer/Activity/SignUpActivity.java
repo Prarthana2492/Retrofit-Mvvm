@@ -20,6 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.text.InputFilter;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -27,6 +28,7 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.text.style.ForegroundColorSpan;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -279,11 +281,15 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
                 ds.setUnderlineText(true);
             }
         };
-        snt.setSpan(clickableSpan, 31, snt.length() - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        privacy_terms.setText(snt);
+        Spanned text = Html.fromHtml("By Registering, you accept our <b>Privacy policy</b> and <b>Terms of use</b>.");
+        SpannableString spannable = new  SpannableString(text) ;
+        spannable.setSpan(new ForegroundColorSpan(Color.WHITE), 30, 63, spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        privacy_terms.setText(spannable);
 
-        privacy_terms.setMovementMethod(LinkMovementMethod.getInstance());
-        privacy_terms.setHighlightColor(Color.TRANSPARENT);
+
+
+
+
 
 
         sessionManager = new SessionManager(this);

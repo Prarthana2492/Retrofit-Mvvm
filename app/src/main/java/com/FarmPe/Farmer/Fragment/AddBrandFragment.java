@@ -42,7 +42,7 @@ public class AddBrandFragment extends Fragment {
     public static RecyclerView recyclerView;
     public static AddBrandAdapter farmadapter;
     Fragment selectedFragment = null;
-    TextView toolbar_title;
+    TextView toolbar_title,sub_label;
     LinearLayout back_feed,linearLayout;
     TextView continue_button;
 ImageView b_arrow;
@@ -59,10 +59,13 @@ ImageView b_arrow;
         recyclerView=view.findViewById(R.id.recycler_what_looking);
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
+        sub_label=view.findViewById(R.id.sub_label);
         continue_button=view.findViewById(R.id.continue_button);
         linearLayout=view.findViewById(R.id.linearLayout);
         b_arrow=view.findViewById(R.id.b_arrow);
         toolbar_title.setText("Select Brand");
+
+        sub_label.setText("let us know the manufacturer/brand name you are interested to buy");
 
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override

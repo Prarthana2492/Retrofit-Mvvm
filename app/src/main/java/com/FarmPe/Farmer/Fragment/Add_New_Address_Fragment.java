@@ -35,7 +35,6 @@ import com.FarmPe.Farmer.Adapter.DistrictAdapter;
 import com.FarmPe.Farmer.Adapter.HoblisAdapter;
 import com.FarmPe.Farmer.Adapter.StateApdater;
 import com.FarmPe.Farmer.Adapter.TalukAdapter;
-import com.FarmPe.Farmer.Adapter.VillageAdapter;
 import com.FarmPe.Farmer.Adapter.You_Address_Adapter;
 import com.FarmPe.Farmer.Bean.StateBean;
 import com.FarmPe.Farmer.R;
@@ -50,6 +49,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 
 
 public class  Add_New_Address_Fragment extends Fragment {
@@ -193,6 +193,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("edit", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
+
                 }else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")) {
                     HomeMenuFragment.onBack_status = "no_request";
                     selectedFragment = HomeMenuFragment.newInstance();
@@ -202,17 +203,12 @@ public class  Add_New_Address_Fragment extends Fragment {
                 }
 
 
-
                 else{
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("request", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 }
             }
         });
-
-
-
-
 
 
         view.setFocusableInTouchMode(true);
@@ -244,6 +240,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                         fm.popBackStack("edit", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
                     }
+
                     else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")) {
                         HomeMenuFragment.onBack_status = "no_request";
                         selectedFragment = HomeMenuFragment.newInstance();
@@ -380,6 +377,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                 // submit.setVisibility(View.GONE);
                 drawer.openDrawer(GravityCompat.END);
                 search_status="state";
+                search.setText("");
               //  search.setQueryHint("");
               //  search.setQuery("",false);
                 stateBeanList.clear();
@@ -409,6 +407,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                 drawer.openDrawer(GravityCompat.END);
                 // stateBeanList.clear();
                 search_status="district";
+                search.setText("");
               //  search.setQuery("",false);
                // search.setQueryHint("");
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
@@ -433,6 +432,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                 drawer.openDrawer(GravityCompat.END);
                 // stateBeanList.clear();
                 search_status="taluk";
+                search.setText("");
               //  search.setQueryHint("");
               //  search.setQuery("",false);
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
@@ -457,6 +457,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                 drawer.openDrawer(GravityCompat.END);
                 // stateBeanList.clear();
                 search_status="hobli";
+                search.setText("");
                 //search.setQuery("",false);
               //  search.setQueryHint("");
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
@@ -1021,7 +1022,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                                 Bundle bundle1=new Bundle();
                                 bundle1.putString("add_id",status);
-                                bundle1.putString("streetname",hobli.getText().toString() + district.getText().toString());
+                                bundle1.putString("streetname",hobli.getText().toString() + " , " + district.getText().toString());
                                 bundle1.putString("looking_forId",getArguments().getString("looking_forId"));
                                 bundle1.putString("modelId",getArguments().getString("modelId"));
 

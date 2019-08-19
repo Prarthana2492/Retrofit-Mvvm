@@ -159,14 +159,13 @@ LinearLayout linearLayout,no_request,no_farms,requests_made;
         newOrderBeansList2.clear();
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager_farm);
+       // recyclerView.addItemDecoration(new ItemDecorator( -80));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
 
 
         homePage_adapter=new HomePage_Adapter(getActivity(),newOrderBeansList2);
         recyclerView.setAdapter(homePage_adapter);
-
-
 
 
 

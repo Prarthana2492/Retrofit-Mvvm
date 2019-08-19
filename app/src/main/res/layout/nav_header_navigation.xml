@@ -309,7 +309,7 @@
           android:text="Your Request"
           android:layout_marginTop="30dp"
           android:textSize="17dp"
-          android:drawableLeft="@drawable/ic_plus_black"
+          android:drawableLeft="@drawable/ic_add_plus"
           android:drawablePadding="10dp"
           android:fontFamily="@font/segoeui"
           android:textColor="#000"

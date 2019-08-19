@@ -76,54 +76,17 @@
                 android:id="@+id/toolbar_title" />
 
 
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="Please answer below questions to let us know your request in detail."
+                  android:textColor="#000"
+                  android:layout_marginTop="10dp"
+                  android:fontFamily="@font/segoeui"
+                  android:layout_marginHorizontal="10dp"
 
+           />
 
-
-
-            <!--<RadioGroup-->
-            <!--android:id="@+id/radio_group_time"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:orientation="vertical"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--android:layout_marginLeft="10dp"-->
-            <!--android:weightSum="100"-->
-            <!--&gt;-->
-
-            <!--<RadioButton-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Irrigated"-->
-
-            <!--/>-->
-
-            <!--<RadioButton-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-
-            <!--android:text="Livestock"-->
-            <!--/>-->
-
-            <!--<RadioButton-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Non irrigated"-->
-            <!--/>-->
-            <!--<RadioButton-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Organic"-->
-
-            <!--/>-->
-            <!--<RadioButton-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Plantation"-->
-
-            <!--/>-->
-
-
-            <!--</RadioGroup>-->
 
         </LinearLayout>
 

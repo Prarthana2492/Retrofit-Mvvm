@@ -158,7 +158,7 @@ public class Edit_Looking_For_Fragment extends Fragment {
             getting_edit();
         }else{
 
-            String stret_name=getArguments().getString("streetname");
+            String stret_name = getArguments().getString("streetname");
             addressID=getArguments().getString("add_id");
             lookingfordetails_id=getArguments().getString("looking_forId");
             modelid=getArguments().getString("modelId");
@@ -226,6 +226,7 @@ public class Edit_Looking_For_Fragment extends Fragment {
                 bundle.putString("navigation_from", "edit_lokng_frg");
                 bundle.putString("looking_forId",lookingfordetails_id);
                 bundle.putString("modelId", modelid);
+
                 selectedFragment = Add_New_Address_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
@@ -234,6 +235,7 @@ public class Edit_Looking_For_Fragment extends Fragment {
                 transaction.commit();
             }
         });
+
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -254,8 +256,6 @@ public class Edit_Looking_For_Fragment extends Fragment {
                 return false;
             }
         });
-
-
 
 
 
@@ -408,9 +408,9 @@ public class Edit_Looking_For_Fragment extends Fragment {
                     modelid = jsonObject1.getString("ModelId");
 
 
-                    brand.setText("Brand - " + brand_name);
+                  //  brand.setText("Brand - " + brand_name);
                     hp_power.setText("HP - " + horse_range);
-                    hp_power.setText("Model - " + model_name);
+                 //   hp_power.setText("Model - " + model_name);
                     address_text.setText(street_address + " , " + state + " , " + pincode);
 
 

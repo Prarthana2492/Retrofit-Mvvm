@@ -424,7 +424,7 @@
                 android:padding="8dp"
                 android:layout_marginLeft="10dp"
                 android:text="Privacy policy and Terms of use."
-                android:textColor="#fff"
+                android:textColor="#8c8c8c"
                 android:textSize="11dp" />
 
 

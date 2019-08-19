@@ -42,7 +42,7 @@ public class AddModelFragment extends Fragment {
     public static RecyclerView recyclerView;
     public static AddModelAdapter farmadapter;
     Fragment selectedFragment = null;
-    TextView toolbar_title,continue_button;
+    TextView toolbar_title,continue_button,sub_label;
     LinearLayout back_feed,linearLayout;
 ImageView b_arrow;
 
@@ -60,7 +60,12 @@ ImageView b_arrow;
         back_feed=view.findViewById(R.id.back_feed);
         linearLayout=view.findViewById(R.id.linearLayout);
         continue_button=view.findViewById(R.id.continue_button);
+        sub_label=view.findViewById(R.id.sub_label);
         toolbar_title.setText("Select Model");
+
+        sub_label.setText("Do you know the model ? then select model of your choice else select \"Suggest Model\"");
+
+
         b_arrow=view.findViewById(R.id.b_arrow);
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override

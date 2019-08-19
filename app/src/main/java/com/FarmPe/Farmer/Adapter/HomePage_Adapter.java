@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.FarmPe.Farmer.Bean.AddPhotoBean;
 import com.FarmPe.Farmer.Bean.AddTractorBean;
@@ -16,6 +17,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomePage_Adapter extends RecyclerView.Adapter<HomePage_Adapter.MyViewHolder> {
 
@@ -32,21 +35,23 @@ public class HomePage_Adapter extends RecyclerView.Adapter<HomePage_Adapter.MyVi
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public ImageView image;
+        public CircleImageView image;
+        public TextView requst_name;
 
 
         public MyViewHolder(View view) {
             super(view);
 
-            image=view.findViewById(R.id.image);
+            image  = view.findViewById(R.id.image);
+            requst_name = view.findViewById(R.id.requst_name);
 
         }
 
     }
-    @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
 
+     @Override
+     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
 
                 .inflate(R.layout.homepage_adapter_layout, parent, false);
         return new MyViewHolder(itemView);
@@ -67,8 +72,6 @@ public class HomePage_Adapter extends RecyclerView.Adapter<HomePage_Adapter.MyVi
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .error(R.drawable.avatarmale)
                 .into(holder.image);
-
-
 
     }
 
