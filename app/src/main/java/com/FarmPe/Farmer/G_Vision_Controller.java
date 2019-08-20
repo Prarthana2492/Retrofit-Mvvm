@@ -74,8 +74,9 @@ public class G_Vision_Controller {
         return g_vision_controller_single_instance;
     }
 
+
     public Bitmap callCloudVision(final Bitmap bitmap,Activity activity,String currentStatus) {
-        scaled_bitmap=scaleBitmapDown(bitmap,200);
+        scaled_bitmap=scaleBitmapDown(bitmap,400);
         this.activity=activity;
         this.currentStatus=currentStatus;
         sessionManager=new SessionManager(activity);
@@ -93,6 +94,8 @@ public class G_Vision_Controller {
         }
         return scaled_bitmap;
     }
+
+
     private Vision.Images.Annotate prepareAnnotationRequest(final Bitmap bitmap) throws IOException {
         HttpTransport httpTransport = AndroidHttp.newCompatibleTransport();
         JsonFactory jsonFactory = GsonFactory.getDefaultInstance();

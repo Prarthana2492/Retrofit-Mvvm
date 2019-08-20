@@ -261,8 +261,8 @@ LinearLayout linearLayout,no_request,no_farms,requests_made;
                             AddTractorBean2 img2 = new AddTractorBean2(rfq_images_array.getString(i), " ", "");
                             newOrderBeansList2.add(img2);
 
-
                         }
+
 
                         reqst_count.setText(request_count);
                         HomeMenuFragment.request_count.setText(request_count);
