@@ -11,9 +11,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -25,6 +27,7 @@ import android.widget.TextView;
 
 
 import com.FarmPe.Farmer.Adapter.HomePage_Adapter;
+import com.FarmPe.Farmer.Adapter.Home_Slider_Adapter;
 import com.FarmPe.Farmer.Bean.AddTractorBean1;
 import com.FarmPe.Farmer.Bean.AddTractorBean2;
 import com.FarmPe.Farmer.R;
@@ -44,16 +47,20 @@ public class FarmPe_Logo_Fragment extends Fragment {
     Fragment selectedFragment;
     public static LinearLayout backfeed;
 
-LinearLayout linearLayout,no_request,no_farms,requests_made;
+    LinearLayout linearLayout, no_request, no_farms, requests_made;
     JSONObject lngObject;
-    public static TextView reqst_count,nameee;
+    public static TextView reqst_count, nameee;
     SessionManager sessionManager;
     public static String toast_click_back;
     boolean doubleBackToExitPressedOnce = false;
-    JSONArray count_images_array,rfq_images_array;
-    HomePage_Adapter homePage_adapter;
-    TextView Add_make_request,no_make_request,no_list_farm,seeall_request;
+    JSONArray count_images_array, rfq_images_array;
+    List<Integer> image_arraylist = new ArrayList<Integer>();
 
+    HomePage_Adapter homePage_adapter;
+    TextView Add_make_request, no_make_request, no_list_farm, seeall_request;
+    ViewPager slider;
+    LinearLayout ll_dots;
+    Home_Slider_Adapter home_slider_adapter;
 
     RecyclerView recyclerView;
     public static List<AddTractorBean1> newOrderBeansList = new ArrayList<>();
@@ -69,25 +76,56 @@ LinearLayout linearLayout,no_request,no_farms,requests_made;
 
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.farmepe_logo_layout, container, false);
-     //   backfeed= view.findViewById(R.id.back_feed1);
+        //   backfeed= view.findViewById(R.id.back_feed1);
 
-        linearLayout= view.findViewById(R.id.layout);
-       // no_farms= view.findViewById(R.id.no_farms);
-        no_request= view.findViewById(R.id.no_requests);
+        linearLayout = view.findViewById(R.id.layout);
+        // no_farms= view.findViewById(R.id.no_farms);
+        no_request = view.findViewById(R.id.no_requests);
 
-        requests_made= view.findViewById(R.id.request_made);
-        nameee= view.findViewById(R.id.nameee);
+        requests_made = view.findViewById(R.id.request_made);
+        nameee = view.findViewById(R.id.nameee);
         sessionManager = new SessionManager(getActivity());
-        recyclerView= view.findViewById(R.id.recylr_2);
+        recyclerView = view.findViewById(R.id.recylr_2);
+        slider = view.findViewById(R.id.vp_slider);
+        ll_dots = view.findViewById(R.id.ll_dots);
 
 
-        reqst_count= view.findViewById(R.id.request_count);
+        reqst_count = view.findViewById(R.id.request_count);
 
-        Add_make_request= view.findViewById(R.id.add_request);
-       // no_list_farm= view.findViewById(R.id.list_farmmmmm);
-        no_make_request= view.findViewById(R.id.make_requesttttt);
+        Add_make_request = view.findViewById(R.id.add_request);
+        // no_list_farm= view.findViewById(R.id.list_farmmmmm);
+        no_make_request = view.findViewById(R.id.make_requesttttt);
 
-        seeall_request= view.findViewById(R.id.request_sell_all);
+        seeall_request = view.findViewById(R.id.request_sell_all);
+        image_arraylist.clear();
+
+        image_arraylist.add(R.drawable.home_baner_image);
+        image_arraylist.add(R.drawable.home_baner_image);
+        image_arraylist.add(R.drawable.home_baner_image);
+        image_arraylist.add(R.drawable.home_baner_image);
+        image_arraylist.add(R.drawable.home_baner_image);
+
+        home_slider_adapter = new Home_Slider_Adapter(getActivity(), image_arraylist);
+        slider.setAdapter(home_slider_adapter);
+
+        addBottomDots(0, ll_dots);
+
+
+        slider.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+            @Override
+            public void onPageSelected(int position) {
+                System.out.println("cddsd = "+position);
+                addBottomDots(position,  ll_dots);
+                // page = position;
+            }
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
+
 
 
         no_request.setVisibility(View.GONE);
@@ -99,7 +137,6 @@ LinearLayout linearLayout,no_request,no_farms,requests_made;
             lngObject = new JSONObject(sessionManager.getRegId("language"));
 
             toast_click_back = lngObject.getString("PleaseclickBACKagaintoexit");
-
 
 
         } catch (JSONException e) {
@@ -132,10 +169,10 @@ LinearLayout linearLayout,no_request,no_farms,requests_made;
                                 .make(linearLayout, toast_click_back, duration);
                         View snackbarView = snackbar.getView();
                         TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                        tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                        tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
                         tv.setTextColor(Color.WHITE);
 
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                         } else {
                             tv.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -144,7 +181,7 @@ LinearLayout linearLayout,no_request,no_farms,requests_made;
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                doubleBackToExitPressedOnce=false;
+                                doubleBackToExitPressedOnce = false;
                             }
                         }, 3000);
                     }
@@ -156,108 +193,106 @@ LinearLayout linearLayout,no_request,no_farms,requests_made;
         });
 
 
+
+
+
+
         newOrderBeansList2.clear();
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager_farm);
-       // recyclerView.addItemDecoration(new ItemDecorator( -80));
+        // recyclerView.addItemDecoration(new ItemDecorator( -80));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
 
-
-        homePage_adapter=new HomePage_Adapter(getActivity(),newOrderBeansList2);
+        homePage_adapter = new HomePage_Adapter(getActivity(), newOrderBeansList2);
         recyclerView.setAdapter(homePage_adapter);
-
 
 
         newOrderBeansList.clear();
         GridLayoutManager mLayoutManager_farm1 = new GridLayoutManager(getActivity(), 1, GridLayoutManager.HORIZONTAL, false);
 
 
+        Add_make_request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedFragment = AddFirstFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.addToBackStack("farmpe_logo");
+                transaction.commit();
 
-                Add_make_request.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        selectedFragment = AddFirstFragment.newInstance();
-                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_layout, selectedFragment);
-                        transaction.addToBackStack("farmpe_logo");
-                        transaction.commit();
+            }
+        });
 
-                    }
-                });
-
-                no_make_request.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        selectedFragment = AddFirstFragment.newInstance();
-                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_layout, selectedFragment);
-                        transaction.addToBackStack("farmpe_logo");
-                        transaction.commit();
-                    }
-                });
-
+        no_make_request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedFragment = AddFirstFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.addToBackStack("farmpe_logo");
+                transaction.commit();
+            }
+        });
 
 
-                seeall_request.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        selectedFragment = LookingForFragment.newInstance();
-                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.first_full_frame, selectedFragment);
-                        transaction.addToBackStack("home");
-                        transaction.commit();
+        seeall_request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedFragment = LookingForFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.first_full_frame, selectedFragment);
+                transaction.addToBackStack("home");
+                transaction.commit();
 
-                    }
-                });
+            }
+        });
 
 
-
-        try{
+        try {
             final JSONObject jsonObject = new JSONObject();
-            jsonObject.put("CreatedBy",sessionManager.getRegId("userId"));
+            jsonObject.put("CreatedBy", sessionManager.getRegId("userId"));
 
             Crop_Post.crop_posting(getActivity(), Urls.Home_Page_Count, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("fjfhffjcount" + result);
 
-                    try{
+                    try {
 
                         newOrderBeansList.clear();
                         newOrderBeansList2.clear();
 
                         String farm_count = String.valueOf(result.getInt("FarmsCount"));
-                        String  request_count = String.valueOf(result.getInt("RFQCount"));
-                        String  notificatn_count = String.valueOf(result.getInt("NotificationCount"));
+                        String request_count = String.valueOf(result.getInt("RFQCount"));
+                        String notificatn_count = String.valueOf(result.getInt("NotificationCount"));
 
                         count_images_array = result.getJSONArray("FarmImages");
                         rfq_images_array = result.getJSONArray("RFQImages");
 
-                        if(request_count.equalsIgnoreCase("0")){
+                        if (request_count.equalsIgnoreCase("0")) {
                             no_request.setVisibility(View.VISIBLE);
                             requests_made.setVisibility(View.GONE);
                            /* no_farms.setVisibility(View.VISIBLE);
                             farms_lists.setVisibility(View.GONE);*/
-                        }else {
+                        } else {
 
                             no_request.setVisibility(View.GONE);
                         }
 
 
-
-                        for(int i = 0;i<count_images_array.length();i++){
-                            AddTractorBean1 img1=new AddTractorBean1( count_images_array.getString(i)," ","");
+                        for (int i = 0; i < count_images_array.length(); i++) {
+                            AddTractorBean1 img1 = new AddTractorBean1(count_images_array.getString(i), " ", "");
                             newOrderBeansList.add(img1);
 
-                         //   if (i <= 3) {
+                            //   if (i <= 3) {
 
 
-                         //   }
+                            //   }
 
                         }
 
-                        for(int i = 0;i<rfq_images_array.length();i++) {
+                        for (int i = 0; i < rfq_images_array.length(); i++) {
                             AddTractorBean2 img2 = new AddTractorBean2(rfq_images_array.getString(i), " ", "");
                             newOrderBeansList2.add(img2);
 
@@ -272,14 +307,14 @@ LinearLayout linearLayout,no_request,no_farms,requests_made;
                         homePage_adapter.notifyDataSetChanged();
 
 
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
             });
 
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -287,21 +322,40 @@ LinearLayout linearLayout,no_request,no_farms,requests_made;
         return view;
     }
 
-    public class ItemDecorator extends RecyclerView.ItemDecoration{
-        private  final int mSpace;
+    public class ItemDecorator extends RecyclerView.ItemDecoration {
+        private final int mSpace;
 
-        public  ItemDecorator(int space) {
+        public ItemDecorator(int space) {
             this.mSpace = space;
         }
+
         @Override
-        public  void  getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state){
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
             int position = parent.getChildAdapterPosition(view);
-            if(position !=0)
+            if (position != 0)
                 // outRect.top = mSpace;
                 outRect.left = mSpace;
         }
 
     }
 
+    //showing dots on screen
+    private void addBottomDots(int currentPage, LinearLayout ll_dots) {
+        TextView[] dots = new TextView[image_arraylist.size()];
+        ll_dots.removeAllViews();
+        for (int i = 0; i < dots.length; i++) {
+            // System.out.println("dots_lengthhh"+dots.length);
+            dots[i] = new TextView(getActivity());
+            dots[i].setText(Html.fromHtml("&#8226;"));
+            dots[i].setTextSize(35);
+            dots[i].setTextColor(Color.parseColor("#343434"));
+            ll_dots.addView(dots[i]);
+        }
+        if (dots.length > 0)
+            dots[currentPage].setTextColor(Color.parseColor("#A2A2A2"));
+    }
+
 }
+
+
 

@@ -35,7 +35,7 @@ public class HomePage_Adapter extends RecyclerView.Adapter<HomePage_Adapter.MyVi
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public CircleImageView image;
+        public ImageView image;
         public TextView requst_name;
 
 

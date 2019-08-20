@@ -270,7 +270,6 @@ RecyclerView dialog_recyclerView;
 
                 gettingAddress(" ");
 
-
                 dialog_image.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -461,6 +460,7 @@ RecyclerView dialog_recyclerView;
                     recyclerView.setAdapter(talukAdapter);
                     prepareTalukData();
                 }
+
                 else{
                     Snackbar snackbar = Snackbar
                             .make(main_layout, "Please select a district", Snackbar.LENGTH_LONG);
@@ -503,6 +503,7 @@ RecyclerView dialog_recyclerView;
                     recyclerView.setAdapter(hoblisAdapter);
 
                     prepareHobliData();
+
                 }else{
                     Snackbar snackbar = Snackbar
                             .make(main_layout, "Please select a taluk", Snackbar.LENGTH_LONG);
@@ -520,7 +521,6 @@ RecyclerView dialog_recyclerView;
 
             }
         });
-
 
 
         village.setOnClickListener(new View.OnClickListener() {
@@ -711,6 +711,7 @@ RecyclerView dialog_recyclerView;
                         get_address_array = result.getJSONArray("UserAddressDetails");
                         for(int i=0;i<get_address_array.length();i++){
                             JSONObject jsonObject1 = get_address_array.getJSONObject(i);
+
 
 
                             add_new_address_bean = new Add_New_Address_Bean(jsonObject1.getString("Name"),jsonObject1.getString("StreeAddress"),jsonObject1.getString("StreeAddress1"),jsonObject1.getString("LandMark"),jsonObject1.getString("City"),jsonObject1.getString("Pincode"),jsonObject1.getString("MobileNo"),
