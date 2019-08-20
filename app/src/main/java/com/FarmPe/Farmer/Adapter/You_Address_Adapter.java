@@ -95,8 +95,6 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
     }
 
 
-
-
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())

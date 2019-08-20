@@ -187,6 +187,7 @@ public class You_Address_Fragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
                 ImageView image = (ImageView) dialog.findViewById(R.id.close_popup);
                 image.setOnClickListener(new View.OnClickListener() {
                     @Override

@@ -131,14 +131,14 @@ public class RequestFormFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 System.out.println("hrrrjjkj");
-                Bundle bundle1=new Bundle();
-                bundle1.putString("navigation_from","request");
-                selectedFragment = Add_New_Address_Fragment.newInstance();
-                FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                Bundle bundle = new Bundle();
+                bundle.putString("status","default");
+                selectedFragment = New_Address_Fragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
-                transaction.addToBackStack("request");
-                selectedFragment.setArguments(bundle1);
+                selectedFragment.setArguments(bundle);
                 transaction.commit();
+
             }
         });
 
