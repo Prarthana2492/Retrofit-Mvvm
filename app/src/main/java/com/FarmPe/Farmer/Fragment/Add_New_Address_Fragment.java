@@ -705,7 +705,10 @@ public class  Add_New_Address_Fragment extends Fragment {
             e.printStackTrace();
         }
 
-
+        if(getArguments().getString("navigation_from").equals("your_add")){
+            add_new_address.setText("Modify address");
+            toolbar_titletxt.setText("Modify your address");
+        }
 
         return view;
 
@@ -882,7 +885,6 @@ public class  Add_New_Address_Fragment extends Fragment {
                 }
             });
 
-
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -916,7 +918,6 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
             }
-
 
 
 

@@ -57,7 +57,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
     List<Integer> image_arraylist = new ArrayList<Integer>();
 
     HomePage_Adapter homePage_adapter;
-    TextView Add_make_request, no_make_request, no_list_farm, seeall_request;
+    TextView Add_make_request, no_make_request, no_list_farm, seeall_request,slide_text;
     ViewPager slider;
     LinearLayout ll_dots;
     Home_Slider_Adapter home_slider_adapter;
@@ -83,6 +83,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
         no_request = view.findViewById(R.id.no_requests);
 
         requests_made = view.findViewById(R.id.request_made);
+        slide_text = view.findViewById(R.id.slide_text);
         nameee = view.findViewById(R.id.nameee);
         sessionManager = new SessionManager(getActivity());
         recyclerView = view.findViewById(R.id.recylr_2);
@@ -111,13 +112,19 @@ public class FarmPe_Logo_Fragment extends Fragment {
         addBottomDots(0, ll_dots);
 
 
+        String slide_txt = "<font color=#000000> When a Farmer Cultivates his land,</font> <font color=#EC4848> Hes Cultivating a Dream Alongside.</font>";
+        slide_text.setText(Html.fromHtml(slide_txt));
+
+
+
+
         slider.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             }
             @Override
             public void onPageSelected(int position) {
-                System.out.println("cddsd = "+position);
+                System.out.println("cddsd = "+position);;
                 addBottomDots(position,  ll_dots);
                 // page = position;
             }

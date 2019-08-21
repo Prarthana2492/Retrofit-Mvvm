@@ -18,9 +18,10 @@
             android:layout_height="160dp" />
 
         <TextView
-            android:id="@+id/slide"
+            android:id="@+id/slide_text"
             android:gravity="center"
             android:layout_width="match_parent"
+            android:text="When a Farmer Cultivates his land,\n Hes Cultivating a Dream Alongside."
             android:layout_height="wrap_content" />
 
 

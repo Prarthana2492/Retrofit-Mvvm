@@ -14,22 +14,76 @@
 
 
     <android.support.v7.widget.CardView
-
         android:id="@+id/card_view"
-
         android:layout_width="match_parent"
-
         android:layout_height="match_parent"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginTop="10dp"
-
         >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="100">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right">
+            <ImageView
+                android:id="@+id/edit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:duplicateParentState="true"
+                android:layout_weight="10"
+                android:padding="10dp"
+                android:src="@drawable/ic_edit_pencil" />
+            </LinearLayout>
+            <ImageView
+
+                android:id="@+id/image_looking"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="70"
+                android:scaleType="fitXY"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/prod_price"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:fontFamily="@font/segoeui"
+                android:layout_gravity="left"
+                android:layout_marginLeft="10dp"
+                android:text="Tracter Price"
+                android:gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:textColor="#000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
 
 
 
+            <TextView
+                android:id="@+id/prod_name"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="10"
+                android:fontFamily="@font/segoeui"
+                android:layout_marginLeft="10dp"
+                android:text="Mahindra Jivo mahi"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="14dp" />
 
+        </LinearLayout>
+
+
+<!--
         <RelativeLayout
             android:id="@+id/menu"
             android:layout_width="match_parent"
@@ -48,14 +102,7 @@
                 android:layout_marginBottom="10dp"
                 android:orientation="vertical">
 
-                <ImageView
 
-                    android:id="@+id/image_looking"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:layout_gravity="center"
-                    />
 
             </LinearLayout>
 
@@ -73,12 +120,7 @@
                 >
 
 
-                <ImageView
-                    android:id="@+id/edit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_edit_pencil" />
+
 
 
 
@@ -97,32 +139,11 @@
                 android:orientation="vertical">
 
 
-                <TextView
-                    android:id="@+id/prod_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/segoeui"
-                    android:layout_gravity="left"
-                    android:text="Tracter Price"
-                    android:textColor="#000"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
-
-
-                <TextView
-                    android:id="@+id/prod_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/segoeui"
-                    android:text="Mahindra Jivo mahi"
-                    android:gravity="left"
-                    android:textColor="#000"
-                    android:textStyle="bold"
-                    android:textSize="14dp" />
 
 
 
-                <!--<TextView
+
+                &lt;!&ndash;<TextView
                     android:id="@+id/duration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -131,11 +152,11 @@
                     android:text="Immediately"
                     android:textColor="#fff"
                     android:textSize="14dp"
-                    />-->
+                    />&ndash;&gt;
 
 
 
-                <!--
+                &lt;!&ndash;
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -216,13 +237,13 @@
 
 
             </LinearLayout>
-            -->
+            &ndash;&gt;
 
 
             </LinearLayout>
 
 
-        </RelativeLayout>
+        </RelativeLayout>-->
 
 
 
