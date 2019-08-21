@@ -269,14 +269,14 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
 
 
 
-        if (LoginActivity.change_lang.getText().toString().equals("English")){
-            isEng = true;
-            Log.d("GGGGGGGG", "Here: "+LoginActivity.isEng);
-        }
-        else{
-            isEng = false;
-            Log.d("GGGGGGGG", "Here: "+LoginActivity.isEng);
-        }
+//        if (LoginActivity.change_lang.getText().toString().equals("English")){
+//            isEng = true;
+//            Log.d("GGGGGGGG", "Here: "+LoginActivity.isEng);
+//        }
+//        else{
+//            isEng = false;
+//            Log.d("GGGGGGGG", "Here: "+LoginActivity.isEng);
+//        }
 
 
 
@@ -285,7 +285,11 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
             lngObject = new JSONObject(sessionManager.getRegId("language"));
 
 
-
+            if (lngObject.getString("Login").equals("Sign in")){
+                LoginActivity.isEng = true;
+            }else{
+                LoginActivity.isEng = false;
+            }
 
 
         } catch (JSONException e) {

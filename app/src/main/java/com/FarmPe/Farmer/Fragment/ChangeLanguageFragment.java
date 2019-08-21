@@ -110,8 +110,6 @@ public class ChangeLanguageFragment extends Fragment {
 
 
 
-
-
         return view;
     }
 
