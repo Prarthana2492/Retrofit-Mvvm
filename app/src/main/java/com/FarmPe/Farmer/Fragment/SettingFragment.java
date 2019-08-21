@@ -64,6 +64,7 @@ public class SettingFragment extends Fragment {
         refer_ern=view.findViewById(R.id.refer_ern);
         feedbk=view.findViewById(R.id.feedbk);
         help_1=view.findViewById(R.id.help_1);
+        setting_tittle=view.findViewById(R.id.setting_tittle);
         abt_frmpe=view.findViewById(R.id.abt_frmpe);
         polic_1=view.findViewById(R.id.polic_1);
         logot=view.findViewById(R.id.logot);
@@ -117,6 +118,8 @@ public class SettingFragment extends Fragment {
             feedbk.setText(lngObject.getString("FeedBack"));
             notificatn.setText(lngObject.getString("Notifications"));
             logot.setText(lngObject.getString("Logout"));
+            refer_ern.setText(lngObject.getString("Refer_Earn"));
+            setting_tittle.setText(lngObject.getString("Settings"));
 
 
 

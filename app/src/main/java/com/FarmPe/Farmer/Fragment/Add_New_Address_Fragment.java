@@ -1,6 +1,7 @@
 package com.FarmPe.Farmer.Fragment;
 
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Build;
@@ -27,6 +28,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -172,6 +174,15 @@ public class  Add_New_Address_Fragment extends Fragment {
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+//Find the currently focused view, so we can grab the correct window token from it.
+                v = getActivity().getCurrentFocus();
+//If no view currently has focus, create a new one, just so we can grab a window token from it
+                if (v == null) {
+                    v = new View(getActivity());
+                }
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 System.out.println("lllllllllllllllllllllllll"+getArguments().getString("navigation_from"));
 
                 if (getArguments().getString("navigation_from").equals("yu_ads_frg")) {
@@ -373,7 +384,7 @@ public class  Add_New_Address_Fragment extends Fragment {
         state.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+             //   getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
                 // submit.setVisibility(View.GONE);
                 drawer.openDrawer(GravityCompat.END);
                 search_status="state";
@@ -402,7 +413,7 @@ public class  Add_New_Address_Fragment extends Fragment {
         district.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+             //   getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
                 // submit.setVisibility(View.INVISIBLE);
                 drawer.openDrawer(GravityCompat.END);
                 // stateBeanList.clear();
@@ -427,7 +438,7 @@ public class  Add_New_Address_Fragment extends Fragment {
         taluk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+              //  getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
                 drawer.openDrawer(GravityCompat.END);
                 // stateBeanList.clear();
@@ -452,7 +463,7 @@ public class  Add_New_Address_Fragment extends Fragment {
         hobli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+             //   getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
                 //  submit.setVisibility(View.INVISIBLE);
                 drawer.openDrawer(GravityCompat.END);
                 // stateBeanList.clear();
@@ -709,10 +720,48 @@ public class  Add_New_Address_Fragment extends Fragment {
             add_new_address.setText("Modify address");
             toolbar_titletxt.setText("Modify your address");
         }
-
+        search.setFilters(new InputFilter[]{EMOJI_FILTER1, new InputFilter.LengthFilter(30)});
         return view;
 
     }
+
+
+
+    public static InputFilter EMOJI_FILTER1 = new InputFilter() {
+        @Override
+        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+            boolean keepOriginal = true;
+            String specialChars = ".1/*!@#$%^&*()\"{}_[]|\\?/<>,.:-'';§£¥₹...%&+=€π|";
+            StringBuilder sb = new StringBuilder(end - start);
+            for (int index = start; index < end; index++) {
+                int type = Character.getType(source.charAt(index));
+                if (type == Character.SURROGATE || type == Character.OTHER_SYMBOL || type == Character.MATH_SYMBOL || specialChars.contains("" + source)) {
+                    return "";
+                }
+                for (int i = start; i < end; i++) {
+                    if (Character.isWhitespace(source.charAt(i))) {
+                        if (dstart == 0)
+                            return "";
+                    } else if (Character.isDigit(source.charAt(i))) {
+                        return "";
+                    }
+                }
+                return null;
+            }
+            if (keepOriginal)
+                return null;
+            else {
+                if (source instanceof Spanned) {
+                    SpannableString sp = new SpannableString(sb);
+                    TextUtils.copySpansFrom((Spanned) source, start, sb.length(), null, sp, 0);
+                    return sp;
+                } else {
+                    return sb;
+                }
+            }
+        }
+    };
+
 
     private void prepareTalukData() {
 

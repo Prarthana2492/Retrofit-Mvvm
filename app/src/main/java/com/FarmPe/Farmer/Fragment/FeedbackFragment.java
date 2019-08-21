@@ -115,6 +115,17 @@ public class FeedbackFragment extends Fragment {
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+//Find the currently focused view, so we can grab the correct window token from it.
+                v = getActivity().getCurrentFocus();
+//If no view currently has focus, create a new one, just so we can grab a window token from it
+                if (v == null) {
+                    v = new View(getActivity());
+                }
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 

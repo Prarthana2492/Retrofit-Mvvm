@@ -104,7 +104,7 @@ public class Edit_Looking_For_Fragment extends Fragment {
     RadioButton month_1,month_2,month_3,month_4,finance_yes,finance_no;
     CircleImageView prod_img;
 
-    TextView farmer_name,farmer_phone,farmer_email,farmer_loc,delete_req,hp_power,address_text,request;
+    TextView farmer_name,farmer_phone,farmer_email,farmer_loc,delete_req,hp_power,address_text,request,model;
     LinearLayout back_feed;
     Fragment selectedFragment;
     RadioGroup radio_group_time,radioGroup_finance;
@@ -130,6 +130,7 @@ public class Edit_Looking_For_Fragment extends Fragment {
         brand=view.findViewById(R.id.brand);
         prod_img=view.findViewById(R.id.prod_img);
         hp_power=view.findViewById(R.id.hp_power);
+        model=view.findViewById(R.id.model);
         delete_req=view.findViewById(R.id.delete_req);
         month_1=view.findViewById(R.id.month_1);
         month_2=view.findViewById(R.id.month_2);
@@ -408,9 +409,9 @@ public class Edit_Looking_For_Fragment extends Fragment {
                     modelid = jsonObject1.getString("ModelId");
 
 
-                  //  brand.setText("Brand - " + brand_name);
+                 brand.setText("Brand - " + brand_name);
                     hp_power.setText("HP - " + horse_range);
-                 //   hp_power.setText("Model - " + model_name);
+                 model.setText("Model - " + model_name);
                     address_text.setText(street_address + " , " + state + " , " + pincode);
 
 

@@ -64,7 +64,7 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
     String status, status_resp;
     JSONArray lng_array;
     Activity activity;
-    TextView privacy_terms;
+   public static TextView privacy_terms;
     JSONObject lngObject;
     public static TextInputLayout sign_name, sign_mobile, sign_pass;
     public static String mob_toast, passwrd_toast, minimum_character_toast, enter_all_toast, name_toast, mobile_registered_toast, toast_internet, toast_nointernet;
@@ -226,8 +226,7 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
                 sign_pass.setHint(lngObject.getString("Password"));
 
                 continue_sign_up.setText(lngObject.getString("Register"));
-
-
+                privacy_terms.setText(lngObject.getString("ByRegisteringyouacceptourPrivacyPolicyandTermsofuse"));
                 passwrd_toast = lngObject.getString("Enterpasswordoflength6characters");
                 mob_toast = lngObject.getString("Entervalidmobilenumber");
                 minimum_character_toast = lngObject.getString("NameShouldContainMinimum2Characters");
@@ -265,7 +264,10 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
 
             }
         });
+//        String text = "<font color=#ffffff>By Registering, you accept our</font> <font color=#EC4848>Privacy policy</font> <font color=#ffffff>and</font> <font color=#EC4848>Terms of use</font>";
+//        privacy_terms.setText(Html.fromHtml(text));
 
+/*
 
         privacy_terms.setText("");
         SpannableString snt = new SpannableString("By Registering, you accept our Privacy policy and Terms of use.");
@@ -287,6 +289,7 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
         privacy_terms.setText(spannable);
 
 
+*/
 
 
 
@@ -599,6 +602,7 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
                         String log_mobile = result.getString("PhoneNo");
                         String log_password = result.getString("Password");
                         String log_register = result.getString("Register");
+                       String  ptcstr = result.getString("ByRegisteringyouacceptourPrivacyPolicyandTermsofuse");
 
                         passwrd_toast = result.getString("Enterpasswordoflength6characters");
                         mob_toast = result.getString("Entervalidmobilenumber");
@@ -613,7 +617,7 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
                         sign_pass.setHint(log_password);
                         create_acc.setText(log_regi);
                         continue_sign_up.setText(log_register);
-
+                        privacy_terms.setText(ptcstr);
 
                     } catch (Exception e) {
                         e.printStackTrace();
