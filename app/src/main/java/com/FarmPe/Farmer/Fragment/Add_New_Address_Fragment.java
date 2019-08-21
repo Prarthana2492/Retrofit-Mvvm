@@ -473,9 +473,9 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                 prepareHobliData();
 
-
             }
         });
+
 
         add_new_address.setOnClickListener(new View.OnClickListener() {
             @Override

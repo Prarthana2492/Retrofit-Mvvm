@@ -208,6 +208,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
                     System.out.println("aaaaaaaaaaaaadddd" + sessionManager.getRegId("userId"));
                     System.out.println("ggggggggggaaaaaaa"+jsonObject);
 
+
                     Crop_Post.crop_posting(getActivity(), Urls.Get_New_Address, jsonObject, new VoleyJsonObjectCallback() {
                         @Override
                         public void onSuccessResponse(JSONObject result) {

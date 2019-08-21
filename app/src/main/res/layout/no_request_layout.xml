@@ -97,15 +97,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginHorizontal="50dp"
-            android:background="@drawable/orange_border"
+            android:background="@drawable/border_filled_red"
             android:fontFamily="@font/segoeui"
             android:gravity="center"
-            android:textAllCaps="true"
+            android:textAllCaps="false"
             android:text="Make a Request"
             android:padding="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="10dp"
-            android:textColor="#000"
+            android:textColor="#fff"
             android:textSize="16dp" />
 
 

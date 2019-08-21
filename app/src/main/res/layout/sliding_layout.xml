@@ -7,6 +7,6 @@
         android:id="@+id/im_slider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/home_baner_image"
+        android:src="@drawable/banner1"
         android:scaleType="fitXY"/>
 </LinearLayout>

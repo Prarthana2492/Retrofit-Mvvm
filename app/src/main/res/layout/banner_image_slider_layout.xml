@@ -15,14 +15,40 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/vp_slider"
             android:layout_width="match_parent"
-            android:layout_height="160dp" />
+            android:layout_height="170dp" />
 
-        <TextView
-            android:id="@+id/slide_text"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:text="When a Farmer Cultivates his land,\n Hes Cultivating a Dream Alongside."
-            android:layout_height="wrap_content" />
+        <!--<TextView-->
+            <!--android:id="@+id/slide_text"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:text="When a Farmer Cultivates his land,\n Hes Cultivating a Dream Alongside."-->
+            <!--android:layout_height="wrap_content" />-->
+
+
+        <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:weightSum="1" >-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/titlename"-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="0.5"-->
+                <!--android:gravity="center"-->
+                <!--android:textColor="@color/black"-->
+                <!--android:text="When a Farmer Cultivates his land, " />-->
+            <!--<TextView-->
+                <!--android:id="@+id/name"-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="0.5"-->
+                <!--android:gravity="center"-->
+                <!--android:textColor="@color/red"-->
+                <!--android:text="He's Cultivating a Dream Alongside." />-->
+        <!--</LinearLayout>-->
 
 
         <LinearLayout

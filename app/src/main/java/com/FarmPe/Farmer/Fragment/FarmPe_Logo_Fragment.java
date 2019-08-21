@@ -55,6 +55,8 @@ public class FarmPe_Logo_Fragment extends Fragment {
     boolean doubleBackToExitPressedOnce = false;
     JSONArray count_images_array, rfq_images_array;
     List<Integer> image_arraylist = new ArrayList<Integer>();
+    private int[] myImageList = new int[]{R.drawable.banner1, R.drawable.banner2,
+            R.drawable.banner3};
 
     HomePage_Adapter homePage_adapter;
     TextView Add_make_request, no_make_request, no_list_farm, seeall_request,slide_text;
@@ -81,42 +83,38 @@ public class FarmPe_Logo_Fragment extends Fragment {
         linearLayout = view.findViewById(R.id.layout);
         // no_farms= view.findViewById(R.id.no_farms);
         no_request = view.findViewById(R.id.no_requests);
-
         requests_made = view.findViewById(R.id.request_made);
-        slide_text = view.findViewById(R.id.slide_text);
+     //   slide_text = view.findViewById(R.id.slide_text);
         nameee = view.findViewById(R.id.nameee);
         sessionManager = new SessionManager(getActivity());
         recyclerView = view.findViewById(R.id.recylr_2);
         slider = view.findViewById(R.id.vp_slider);
         ll_dots = view.findViewById(R.id.ll_dots);
 
-
         reqst_count = view.findViewById(R.id.request_count);
-
         Add_make_request = view.findViewById(R.id.add_request);
         // no_list_farm= view.findViewById(R.id.list_farmmmmm);
+
+
         no_make_request = view.findViewById(R.id.make_requesttttt);
 
         seeall_request = view.findViewById(R.id.request_sell_all);
-        image_arraylist.clear();
+       // image_arraylist.clear();
+//        image_arraylist.add(R.drawable.banner1);
+//        image_arraylist.add(R.drawable.banner2);
+//        image_arraylist.add(R.drawable.banner3);
+//        image_arraylist.add(R.drawable.banner1);
 
-        image_arraylist.add(R.drawable.home_baner_image);
-        image_arraylist.add(R.drawable.home_baner_image);
-        image_arraylist.add(R.drawable.home_baner_image);
-        image_arraylist.add(R.drawable.home_baner_image);
-        image_arraylist.add(R.drawable.home_baner_image);
 
-        home_slider_adapter = new Home_Slider_Adapter(getActivity(), image_arraylist);
+        home_slider_adapter = new Home_Slider_Adapter(getActivity(), myImageList);
         slider.setAdapter(home_slider_adapter);
 
         addBottomDots(0, ll_dots);
 
 
-        String slide_txt = "<font color=#000000> When a Farmer Cultivates his land,</font> <font color=#EC4848> Hes Cultivating a Dream Alongside.</font>";
-        slide_text.setText(Html.fromHtml(slide_txt));
 
-
-
+//        String slide_txt = "<font color=#000000> When a Farmer Cultivates his land,</font> <font color=#EC4848> Hes Cultivating a Dream Alongside.</font>";
+//        slide_text.setText(Html.fromHtml(slide_txt));
 
         slider.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -134,7 +132,6 @@ public class FarmPe_Logo_Fragment extends Fragment {
         });
 
 
-
         no_request.setVisibility(View.GONE);
 
 
@@ -149,6 +146,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
 
 
         view.setFocusableInTouchMode(true);
@@ -348,18 +346,18 @@ public class FarmPe_Logo_Fragment extends Fragment {
 
     //showing dots on screen
     private void addBottomDots(int currentPage, LinearLayout ll_dots) {
-        TextView[] dots = new TextView[image_arraylist.size()];
+        TextView[] dots = new TextView[myImageList.length];
         ll_dots.removeAllViews();
         for (int i = 0; i < dots.length; i++) {
             // System.out.println("dots_lengthhh"+dots.length);
             dots[i] = new TextView(getActivity());
             dots[i].setText(Html.fromHtml("&#8226;"));
             dots[i].setTextSize(35);
-            dots[i].setTextColor(Color.parseColor("#343434"));
+            dots[i].setTextColor(Color.parseColor("#FFFFFF")); //bg color
             ll_dots.addView(dots[i]);
         }
         if (dots.length > 0)
-            dots[currentPage].setTextColor(Color.parseColor("#A2A2A2"));
+            dots[currentPage].setTextColor(Color.parseColor("#EC4848")); // flip color
     }
 
 }

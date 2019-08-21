@@ -19,13 +19,15 @@ public class Home_Slider_Adapter extends PagerAdapter {
         private LayoutInflater layoutInflater;
         Activity activity;
        List<Integer> image_arraylist;
+   int[] myImageList;
+       //List<Integer> image_arraylist;
         private float x1,x2;
         static final int MIN_DISTANCE = 150;
 
 
-        public Home_Slider_Adapter(Activity activity, List<Integer> image_arraylist) {
+        public Home_Slider_Adapter(Activity activity, int[] myImageList) {
             this.activity = activity;
-            this.image_arraylist = image_arraylist;
+            this.myImageList = myImageList;
         }
         @SuppressLint("ClickableViewAccessibility")
         @Override
@@ -36,6 +38,8 @@ public class Home_Slider_Adapter extends PagerAdapter {
             layoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View view = layoutInflater.inflate(R.layout.sliding_layout, container, false);
             ImageView im_slider = (ImageView) view.findViewById(R.id.im_slider);
+            im_slider.setImageResource(myImageList[position]);
+
             im_slider.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -53,7 +57,7 @@ public class Home_Slider_Adapter extends PagerAdapter {
         }
         @Override
         public int getCount() {
-            return image_arraylist.size();
+            return myImageList.length;
         }
 
         @Override

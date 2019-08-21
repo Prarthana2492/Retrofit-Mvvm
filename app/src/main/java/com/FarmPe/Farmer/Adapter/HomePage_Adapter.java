@@ -62,6 +62,7 @@ public class HomePage_Adapter extends RecyclerView.Adapter<HomePage_Adapter.MyVi
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final AddTractorBean2 products = productList.get(position);
 
+        holder.requst_name.setText("MAHINDRA_JIVO_225");
 
         System.out.println("dddiiiijgh" + products.getImage());
 
@@ -72,7 +73,6 @@ public class HomePage_Adapter extends RecyclerView.Adapter<HomePage_Adapter.MyVi
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .error(R.drawable.avatarmale)
                 .into(holder.image);
-
     }
 
     @Override
