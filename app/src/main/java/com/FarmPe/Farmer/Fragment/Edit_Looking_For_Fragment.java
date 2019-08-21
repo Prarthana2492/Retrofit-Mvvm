@@ -163,7 +163,6 @@ public class Edit_Looking_For_Fragment extends Fragment {
             addressID=getArguments().getString("add_id");
             lookingfordetails_id=getArguments().getString("looking_forId");
             modelid=getArguments().getString("modelId");
-            System.out.print("wwwwwefsdwwwwwefsdddddddwwwwwefsdwwwwwefsdddddddvvvvvvvvvvvvvvvvvv" + stret_name);
 
             address_text.setText(stret_name);
 

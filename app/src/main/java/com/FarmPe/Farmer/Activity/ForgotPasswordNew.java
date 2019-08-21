@@ -246,7 +246,7 @@ public class ForgotPasswordNew extends AppCompatActivity implements Connectivity
 
                                             otp = result.getString("OTP");
                                             forgot_mob_no = result.getString("UserName");
-                                            mob_trim=forgot_mob_no.substring(3);
+                                            mob_trim=mobileno.getText().toString();
                                             Message = result.getString("Message");
                                             status= result.getInt("Status");
 

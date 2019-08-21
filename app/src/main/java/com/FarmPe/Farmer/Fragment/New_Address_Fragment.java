@@ -36,11 +36,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.FarmPe.Farmer.Adapter.DistrictAdapter;
 import com.FarmPe.Farmer.Adapter.DistrictAdapter1;
+import com.FarmPe.Farmer.Adapter.HoblisAdapter;
 import com.FarmPe.Farmer.Adapter.HoblisAdapter1;
 import com.FarmPe.Farmer.Adapter.New_Default_Address_Adapter;
+import com.FarmPe.Farmer.Adapter.StateApdater;
 import com.FarmPe.Farmer.Adapter.StateApdater1;
+import com.FarmPe.Farmer.Adapter.TalukAdapter;
 import com.FarmPe.Farmer.Adapter.TalukAdapter1;
+import com.FarmPe.Farmer.Adapter.VillageAdapter;
 import com.FarmPe.Farmer.Adapter.VillageAdapter1;
 import com.FarmPe.Farmer.Adapter.You_Address_Adapter;
 import com.FarmPe.Farmer.Bean.AddTractorBean;
@@ -76,7 +81,7 @@ RecyclerView dialog_recyclerView;
     TextView toolbar_title, continue_3;
     public static TextView address_list;
     public static String item_list,address;
-    public static TextView state, district, taluk, block, village, skip, current_loc;
+    public static TextView state, district, taluk, block, village, skip, current_loc,or;
     public static EditText street_add, pincode;
     public static Dialog grade_dialog;
     public static String search_status = "status";
@@ -104,7 +109,7 @@ RecyclerView dialog_recyclerView;
     JSONArray get_address_array;
     JSONArray jsonArray, state_array, tal_array, hobli_array, village_array;
     StateBean stateBean;
-    EditText current_adds,default_address;
+    EditText current_adds,default_address,mob_no,name,street_name;
     Dialog dialog;
     public static String list_fams, list_farms_district, district_string, state_string, list_farms_village, street_string, pincode_string;
 
@@ -119,6 +124,9 @@ RecyclerView dialog_recyclerView;
         View view = inflater.inflate(R.layout.request_address_layout, container, false);
         //recyclerView=view.findViewById(R.id.recycler_what_looking);
         back_feed = view.findViewById(R.id.back_feed);
+        or = view.findViewById(R.id.or);
+        name = view.findViewById(R.id.name);
+        mob_no = view.findViewById(R.id.mob_no);
         continue_3 = view.findViewById(R.id.continue_3);
         state = view.findViewById(R.id.state);
         district = view.findViewById(R.id.district);
@@ -128,7 +136,7 @@ RecyclerView dialog_recyclerView;
         search = view.findViewById(R.id.search);
         //  recyclerView=view.findViewById(R.id.recycler_view1);
          village=view.findViewById(R.id.village);
-       // current_adds=view.findViewById(R.id.current_adds);
+       //current_adds=view.findViewById(R.id.current_adds);
         search_bar = view.findViewById(R.id.search_bar);
         default_address = view.findViewById(R.id.default_address);
         street_add = view.findViewById(R.id.street_add);
@@ -170,6 +178,7 @@ RecyclerView dialog_recyclerView;
 //        });
 
 
+       gettingAddress(" ");
 
 
         view.setFocusableInTouchMode(true);
@@ -256,7 +265,7 @@ RecyclerView dialog_recyclerView;
 
                 dialog_image = (ImageView) dialog.findViewById(R.id.close_popup);
                 dialog_recyclerView =  (RecyclerView) dialog.findViewById(R.id.address_recyc);
-               address_list =(TextView)dialog.findViewById(R.id.home_1);
+               address_list =(TextView)dialog.findViewById(R.id.ware_hus);
 
 
                 final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -557,7 +566,7 @@ RecyclerView dialog_recyclerView;
         continue_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ((current_adds.getVisibility() == View.GONE) || (current_adds.getVisibility() == View.VISIBLE && current_adds.getText().toString().equals(""))) {
+
 
                     //System.out.println("kjyhgvkhygf" + "onClick: nbvMHfgdfmgluhg");
                     if (state.getText().toString().equals("") && district.getText().toString().equals("") && taluk.getText().toString().equals("") && block.getText().toString().equals("")) {
@@ -670,22 +679,14 @@ RecyclerView dialog_recyclerView;
 //                        transaction.addToBackStack("farm_third");
 //
 //                        transaction.commit();
+
+                        ComposeCategory();
                     }
 
 
-                } else {
 
-                    street_string = street_add.getText().toString();
-                    pincode_string = pincode.getText().toString();
-                    state_string = state.getText().toString();
-                    district_string = district.getText().toString();
-//                    selectedFragment = ListYourFarmsFive.newInstance();
-//                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                    transaction.replace(R.id.frame_layout, selectedFragment);
-//                    transaction.addToBackStack("farm_third");
-//                    transaction.commit();
                 }
-            }
+
         });
 
         return view;
@@ -724,21 +725,30 @@ RecyclerView dialog_recyclerView;
 
 
 
-                        if(new_address_beanArrayList.size()<=1){
+                        if(new_address_beanArrayList.size()==1){
 
                             item_list = String.valueOf(new_address_beanArrayList.size());
                             address_list.setText(item_list+" " + " Address is added" );
+                            new_default_address_adapter.notifyDataSetChanged();
 
-                        }else{
+
+                        }else if (new_address_beanArrayList.size()==0) {
+                            default_address.setVisibility(View.GONE);
+                            or.setVisibility(View.GONE);
+
+
+                        }
+                        else{
 
                             item_list = String.valueOf(new_address_beanArrayList.size());
                             address_list.setText(item_list+" " + " Addresses are added" );
+                            new_default_address_adapter.notifyDataSetChanged();
+
 
                         }
 
 
-                        new_default_address_adapter.notifyDataSetChanged();
-                        dialog.show();
+                       // dialog.show();
 
 
 
@@ -758,32 +768,7 @@ RecyclerView dialog_recyclerView;
 
 
     }
-    public void setupUI(View view) {
 
-
-        if(!(view instanceof EditText)) {
-
-            view.setOnTouchListener(new View.OnTouchListener() {
-
-                public boolean onTouch(View v, MotionEvent event) {
-                    hideSoftKeyboard(getActivity());
-                    return false;
-                }
-
-            });
-        }
-
-
-        if (view instanceof ViewGroup) {
-
-            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
-
-                View innerView = ((ViewGroup) view).getChildAt(i);
-
-                setupUI(innerView);
-            }
-        }
-    }
 
     public static void hideSoftKeyboard(Activity activity) {
 
@@ -1068,171 +1053,9 @@ RecyclerView dialog_recyclerView;
 
 
 
-    private void stateList() {
-        try{
-
-            JSONObject jsonObject = new JSONObject();
-
-            Crop_Post.crop_posting(getActivity(), Urls.State, jsonObject, new VoleyJsonObjectCallback() {
-                @Override
-                public void onSuccessResponse(JSONObject result) {
-                    System.out.println("11111ssss" + result);
-
-
-                    try{
-                        stateBeanList.clear();
-                        state_array = result.getJSONArray("StateList");
-                        for(int i =0;i<state_array.length();i++){
-                            JSONObject jsonObject1 = state_array.getJSONObject(i);
-
-                            stateBean = new StateBean(jsonObject1.getString("State").trim(),jsonObject1.getString("StateId"));
-                            stateBeanList.add(stateBean);
-                        }
-
-                        //sorting(stateBeanList);
-
-                        stateApdater.notifyDataSetChanged();
-                        grade_dialog.show();
 
 
 
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
-
-                }
-            });
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-    }
-
-
-    private void district() {
-        try{
-
-            JSONObject jsonObject = new JSONObject();
-            JSONObject post_jsonobject = new JSONObject();
-            jsonObject.put("StateId",StateApdater1.stateid);
-            post_jsonobject.put("Districtobj",jsonObject);
-
-            Crop_Post.crop_posting(getActivity(), Urls.Districts, post_jsonobject, new VoleyJsonObjectCallback() {
-                @Override
-                public void onSuccessResponse(JSONObject result) {
-                    System.out.println("dddddddddddd11111" + result);
-                    try{
-                        districtBeanList.clear();
-                        jsonArray = result.getJSONArray("DistrictList");
-                        for(int i =0;i<jsonArray.length();i++){
-                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                            stateBean = new StateBean(jsonObject1.getString("District"),jsonObject1.getString("DistrictId"));
-                            districtBeanList.add(stateBean);
-                        }
-
-                        sorting(districtBeanList);
-
-
-                        districtAdapter.notifyDataSetChanged();
-                        grade_dialog.show();
-
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
-
-                }
-            });
-
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    private void taluk_list() {
-        try{
-
-            JSONObject jsonObject = new JSONObject();
-            JSONObject jsonpost = new JSONObject();
-            jsonObject.put("DistrictId",DistrictAdapter1.districtid);
-            jsonpost.put("Talukobj",jsonObject);
-            System.out.println("111qqqq" + jsonObject);
-
-
-            Crop_Post.crop_posting(getActivity(), Urls.Taluks, jsonpost, new VoleyJsonObjectCallback() {
-                @Override
-                public void onSuccessResponse(JSONObject result) {
-                    System.out.println("aaaaaaaaaaaaafffffffffffff"+result);
-                    try{
-                        talukBeanList.clear();
-                        tal_array = result.getJSONArray("TalukList") ;
-                        for(int i=0;i<tal_array.length();i++){
-                            JSONObject jsonObject1 = tal_array.getJSONObject(i);
-                            stateBean = new StateBean(jsonObject1.getString("Taluk"),jsonObject1.getString("TalukId"));
-                            talukBeanList.add(stateBean);
-
-                        }
-                        sorting(talukBeanList);
-
-                        talukAdapter.notifyDataSetChanged();
-                        grade_dialog.show();
-
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
-
-                }
-            });
-
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-    }
-    private void block_list() {
-        try{
-
-            final JSONObject jsonObject = new JSONObject();
-
-            JSONObject json_post = new JSONObject();
-            jsonObject.put("TalukId",TalukAdapter1.talukid);
-            json_post.put("Hobliobj",jsonObject);
-
-            Crop_Post.crop_posting(getActivity(), Urls.Hoblis, json_post, new VoleyJsonObjectCallback() {
-                @Override
-                public void onSuccessResponse(JSONObject result) {
-                    System.out.println("hhhhhhhssssskljhgf" + result);
-
-                    try{
-                        hobliBeanList.clear();
-                        hobli_array = result.getJSONArray("HobliList");
-                        for(int i = 0;i<hobli_array.length();i++){
-                            JSONObject jsonObject3 = hobli_array.getJSONObject(i);
-                            stateBean = new StateBean(jsonObject3.getString("Hobli"),jsonObject3.getString("HobliId"));
-                            hobliBeanList.add(stateBean);
-
-                        }
-                        sorting(hobliBeanList);
-
-                        hoblisAdapter.notifyDataSetChanged();
-                        grade_dialog.show();
-
-
-
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
-
-                }
-            });
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-    }
 
 
     public void sorting(List<StateBean> arrayList){
@@ -1312,6 +1135,70 @@ RecyclerView dialog_recyclerView;
         }
 
     }
+
+
+
+    private void ComposeCategory() {
+        try{
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("DistrictId", DistrictAdapter1.districtid);
+            jsonObject.put("HobliId", HoblisAdapter1.hobliid);
+            //jsonObject.put("LandMark",landmrk.getText().toString());
+            // jsonObject.put("City",city.getText().toString());
+            jsonObject.put("MobileNo",mob_no.getText().toString());
+            jsonObject.put("Name",name.getText().toString());
+            jsonObject.put("PickUpFrom",selected_addresstype);
+            jsonObject.put("Pincode",(pincode.getText().toString()));
+            jsonObject.put("StateId", StateApdater1.stateid);
+            jsonObject.put("TalukId", TalukAdapter1.talukid);
+            jsonObject.put("VillageId", VillageAdapter1.villageid);
+            // jsonObject.put("StreeAddress",house_numb.getText().toString());
+            jsonObject.put("StreeAddress1","hhhhhhhhhhhhhhhh");
+            jsonObject.put("UserId",sessionManager.getRegId("userId"));
+            System.out.println("Add_New_AddresssssssssssssssssjsonObject"+jsonObject);
+
+
+
+
+
+            Crop_Post.crop_posting(getActivity(), Urls.Add_New_Address, jsonObject, new VoleyJsonObjectCallback() {
+                @Override
+                public void onSuccessResponse(JSONObject result) {
+                    Bundle bundle=new Bundle();
+
+                    System.out.println("Add_New_Addresssssssssssssssss"+result);
+                   /* try{
+
+                        status= result.getString("Status");
+                        message = result.getString("Message");
+
+                        bundle.putString("add_id",status);
+                        //bundle.putString("city",city.getText().toString());
+                        bundle.putInt("selected_id2",selected_id);
+                        bundle.putInt("selected_id_time1",selected_id_time);
+                      *//*  bundle.putString("add_id",status);
+                        bundle.putString("add_id",status);*//*
+
+
+
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+
+                    }*/
+                }
+            });
+
+
+        }catch (Exception e){
+            System.out.println("Add_New_Addresssssssssssssssss"+e.toString());
+
+            e.printStackTrace();
+
+        }
+    }
+
 
 
 
