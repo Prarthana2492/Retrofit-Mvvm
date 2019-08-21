@@ -85,7 +85,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
         no_request = view.findViewById(R.id.no_requests);
         requests_made = view.findViewById(R.id.request_made);
      //   slide_text = view.findViewById(R.id.slide_text);
-        nameee = view.findViewById(R.id.nameee);
+       // nameee = view.findViewById(R.id.nameee);
         sessionManager = new SessionManager(getActivity());
         recyclerView = view.findViewById(R.id.recylr_2);
         slider = view.findViewById(R.id.vp_slider);
@@ -135,7 +135,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
         no_request.setVisibility(View.GONE);
 
 
-        nameee.setText(sessionManager.getRegId("name"));
+      //  nameee.setText(sessionManager.getRegId("name"));
 
         try {
             lngObject = new JSONObject(sessionManager.getRegId("language"));

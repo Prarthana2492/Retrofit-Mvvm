@@ -17,6 +17,7 @@
             android:orientation="vertical"
             android:weightSum="100">
 
+<!--
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -79,11 +80,12 @@
                 </LinearLayout>
 
             </LinearLayout>
+-->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="30">
+                android:layout_weight="40">
 
 
 
@@ -138,7 +140,7 @@
                 android:id="@+id/request_made"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="15"
+                android:layout_weight="20"
                 android:layout_marginBottom="15dp"
                 android:orientation="vertical">
 
@@ -185,7 +187,6 @@
                         android:textColor="@color/navy_blue"
                         android:textStyle="bold"
                         android:textSize="12dp"
-                        android:layout_marginBottom="15dp"
                         />
 
                 </LinearLayout>
@@ -200,7 +201,7 @@
                 android:layout_marginLeft="5dp"
                 android:gravity="center"
                 android:layout_marginRight="5dp"
-                android:layout_weight="25"
+                android:layout_weight="30"
                 android:orientation="horizontal">
 
 
@@ -255,6 +256,8 @@
                     android:gravity="center"/>-->
 
             </LinearLayout>
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -279,6 +282,7 @@
                     android:gravity="center"/>
 
             </LinearLayout>
+
         </LinearLayout>
 <!--
     </ScrollView>
