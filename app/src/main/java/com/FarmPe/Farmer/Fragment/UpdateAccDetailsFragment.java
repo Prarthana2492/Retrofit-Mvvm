@@ -42,6 +42,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.FarmPe.Farmer.Activity.ForgotPasswordNew;
 import com.FarmPe.Farmer.Activity.LoginActivity;
 import com.FarmPe.Farmer.DB.DatabaseHelper;
 import com.android.volley.AuthFailureError;
@@ -555,9 +556,16 @@ public class UpdateAccDetailsFragment extends Fragment {
 
                         if(profile_passwrd.getText().toString().length()<=12 && profile_passwrd.getText().toString().length()>=6){
 
-                            if(!myDb.isEmailExists(profile_phone.getText().toString())) {
 
-                                AddData(profile_phone.getText().toString(), profile_passwrd.getText().toString());
+                            if(myDb.isEmailExists(profile_phone.getText().toString().substring(3))) {
+
+                                System.out.println("lhhhhhhhhhhhhhhhhhhhhhhhhp"+profile_passwrd.getText().toString());
+                                System.out.println("lhhhhhhhhhhhhhhhhhhhhhhhhp"+profile_phone.getText().toString());
+
+                               // AddData(profile_phone.getText().toString(), profile_passwrd.getText().toString());
+
+                                myDb.updateContact(profile_phone.getText().toString().substring(3),profile_passwrd.getText().toString());
+
                             }
                         }
 

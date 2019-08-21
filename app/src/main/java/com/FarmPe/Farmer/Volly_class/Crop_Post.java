@@ -72,11 +72,10 @@ public class Crop_Post {
 
 
 
-    /*    jobReq.setRetryPolicy(new DefaultRetryPolicy(
-                0,
+        jobReq.setRetryPolicy(new DefaultRetryPolicy(
+                60000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-      */
 
         VolleySingletonQuee.getInstance(activity).addToRequestQueue(jobReq);
 //            stringRequest.setRetryPolicy(new DefaultRetryPolicy(40 * 1000,0,

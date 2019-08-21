@@ -37,6 +37,7 @@ import com.FarmPe.Farmer.Adapter.DistrictAdapter;
 import com.FarmPe.Farmer.Adapter.HoblisAdapter;
 import com.FarmPe.Farmer.Adapter.StateApdater;
 import com.FarmPe.Farmer.Adapter.TalukAdapter;
+import com.FarmPe.Farmer.Adapter.VillageAdapter;
 import com.FarmPe.Farmer.Adapter.You_Address_Adapter;
 import com.FarmPe.Farmer.Bean.StateBean;
 import com.FarmPe.Farmer.R;
@@ -953,7 +954,7 @@ public class  Add_New_Address_Fragment extends Fragment {
             jsonObject.put("Pincode",pincode_no.getText().toString());
             jsonObject.put("StateId",StateApdater.stateid);
             jsonObject.put("TalukId",TalukAdapter.talukid);
-           // jsonObject.put("VillageId", VillageAdapter.villageid);
+            jsonObject.put("VillageId", VillageAdapter.villageid);
             // jsonObject.put("StreeAddress",house_numb.getText().toString());
             jsonObject.put("StreeAddress1",street_name.getText().toString());
             jsonObject.put("UserId",sessionManager.getRegId("userId"));

@@ -207,7 +207,6 @@ public class G_Vision_Controller {
         }
 
         protected void onPostExecute(String result) {
-            System.out.println("llllllllllllllllllllllljjjjjjjjjjjjjjjjjj");
 
             Activity activity = mActivityWeakReference.get();
             if (activity != null && !activity.isFinishing()) {
