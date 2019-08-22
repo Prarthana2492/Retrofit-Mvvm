@@ -52,7 +52,7 @@ public class You_Address_Fragment extends Fragment {
     Add_New_Address_Bean add_new_address_bean;
     JSONArray get_address_array;
     LinearLayout back,select_add_address;
-    String Id,ad_list;
+    String Id,ad_list,adrs_are_added;
     ImageView b_arrow;
 
 
@@ -261,6 +261,7 @@ public class You_Address_Fragment extends Fragment {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
             toolbar_titletxt.setText(lngObject.getString("SelectYourAdress"));
             add_new_address.setText(lngObject.getString("AddNewAddress"));
+            adrs_are_added=(lngObject.getString("Addressesareadded"));
            // select_address_type.setText(lngObject.getString("Home"));
             //ad_list=(lngObject.getString("addressesareaddedin"));
 
@@ -312,7 +313,7 @@ public class You_Address_Fragment extends Fragment {
                         }else{
 
                             item_list = String.valueOf(new_address_beanArrayList.size());
-                            address_list.setText(item_list+" " + " Addresses are added" );
+                            address_list.setText(item_list+" " + adrs_are_added );
 
                         }
 

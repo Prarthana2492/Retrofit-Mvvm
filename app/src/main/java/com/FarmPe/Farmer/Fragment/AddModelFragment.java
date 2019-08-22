@@ -54,17 +54,17 @@ ImageView b_arrow;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.add_first_recy, container, false);
+        View view = inflater.inflate(R.layout.select_model_recy, container, false);
         recyclerView=view.findViewById(R.id.recycler_what_looking);
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
         linearLayout=view.findViewById(R.id.linearLayout);
         continue_button=view.findViewById(R.id.continue_button);
         sub_label=view.findViewById(R.id.sub_label);
-        toolbar_title.setText("Select Model");
+       /* toolbar_title.setText("Select Model");
 
         sub_label.setText("Do you know the model ? then select model of your choice else select \"Suggest Model\"");
-
+*/
 
         b_arrow=view.findViewById(R.id.b_arrow);
         back_feed.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +91,7 @@ ImageView b_arrow;
             }
         });
 
-        continue_button.setOnClickListener(new View.OnClickListener() {
+        /*continue_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -110,7 +110,7 @@ ImageView b_arrow;
                     }
 
                     snackbar.show();
-                 /*   int duration = 1000;
+                 *//*   int duration = 1000;
                     Snackbar snackbar = Snackbar
                             .make(linearLayout, "Please choose any option", duration);
                     View snackbarView = snackbar.getView();
@@ -123,7 +123,7 @@ ImageView b_arrow;
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
 
-                    snackbar.show();*/
+                    snackbar.show();*//*
 
                 }else{
                     selectedFragment = RequestFormFragment.newInstance();
@@ -134,12 +134,12 @@ ImageView b_arrow;
                 }
 
             }
-        });
+        });*/
 
 
         ModelList();
        // newOrderBeansList.clear();
-        GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false);
+        GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager_farm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 

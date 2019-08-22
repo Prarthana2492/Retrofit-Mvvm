@@ -281,7 +281,9 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
                                         }
 
-
+//adrs_are_added=(lngObject.getString("Addressesareadded"));
+//
+//address_list.setText(item_list+" " + adrs_are_added );
 
 
                                     }catch (Exception e){

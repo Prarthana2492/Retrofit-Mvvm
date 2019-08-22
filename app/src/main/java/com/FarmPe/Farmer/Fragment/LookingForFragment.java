@@ -108,7 +108,6 @@ public class LookingForFragment extends Fragment {
             }
         });
 
-
         return view;
     }
     private void LookingForList() {
@@ -137,7 +136,6 @@ public class LookingForFragment extends Fragment {
 
                         } else {
 
-
                             for (int i = 0; i < cropsListArray.length(); i++) {
                                 JSONObject jsonObject1 = cropsListArray.getJSONObject(i);
                                 JSONObject jsonObject2 = jsonObject1.getJSONObject("Address");
@@ -148,8 +146,9 @@ public class LookingForFragment extends Fragment {
                                 String name = jsonObject2.getString("Name");
                                 String city = jsonObject2.getString("City");
                                 String state = jsonObject2.getString("State");
+                                String area = jsonObject2.getString("Hoblie");
                                 String hp_range = jsonObject1.getString("HorsePowerRange");
-                                location = city + ", " + state;
+                                location = city + ", " + state+","+area;
 
 
                                 System.out.println("madelslistt" + newOrderBeansList.size());

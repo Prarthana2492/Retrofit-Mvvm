@@ -71,6 +71,7 @@ public class RequestFormFragment extends Fragment {
         RequestFormFragment fragment = new RequestFormFragment();
         return fragment;
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = getView() != null ? getView() :
@@ -136,6 +137,7 @@ public class RequestFormFragment extends Fragment {
                 selectedFragment = New_Address_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.addToBackStack("list_farm2");
                 selectedFragment.setArguments(bundle);
                 transaction.commit();
 
@@ -257,6 +259,7 @@ public class RequestFormFragment extends Fragment {
 
         return view;
     }
+
     private void RequestForm() {
 
 

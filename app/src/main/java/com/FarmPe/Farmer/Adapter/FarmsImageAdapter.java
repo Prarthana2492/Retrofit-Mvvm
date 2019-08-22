@@ -133,7 +133,7 @@ System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"+products.ge
         activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int width_px = Resources.getSystem().getDisplayMetrics().widthPixels;
         int height_px =Resources.getSystem().getDisplayMetrics().heightPixels;
-        int height_set=(int)(height_px*0.4);
+        int height_set=(int)(height_px*0.6);
         System.out.println("height&Width"+width_px+","+height_px);
 
 

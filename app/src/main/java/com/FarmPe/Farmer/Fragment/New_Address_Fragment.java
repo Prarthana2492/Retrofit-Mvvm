@@ -56,11 +56,9 @@ import com.FarmPe.Farmer.SessionManager;
 import com.FarmPe.Farmer.Urls;
 import com.FarmPe.Farmer.Volly_class.Crop_Post;
 import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -71,7 +69,7 @@ public class New_Address_Fragment extends Fragment {
 
     public static List<AddTractorBean> newOrderBeansList = new ArrayList<>();
     public static RecyclerView recyclerView;
-RecyclerView dialog_recyclerView;
+    RecyclerView dialog_recyclerView;
     ImageView dialog_image;
     LinearLayout back_feed, main_layout, search_bar;
     Fragment selectedFragment;
@@ -96,7 +94,7 @@ RecyclerView dialog_recyclerView;
     ArrayList<Add_New_Address_Bean> new_address_beanArrayList = new ArrayList<>();
     ImageView left_arrw;
 
-  SessionManager sessionManager;
+    SessionManager sessionManager;
     StateApdater1 stateApdater;
     DistrictAdapter1 districtAdapter;
     TalukAdapter1 talukAdapter;
@@ -109,9 +107,9 @@ RecyclerView dialog_recyclerView;
     JSONArray get_address_array;
     JSONArray jsonArray, state_array, tal_array, hobli_array, village_array;
     StateBean stateBean;
-    EditText current_adds,default_address,mob_no,name,street_name;
+    EditText current_adds,default_address,mob_no,name;
     Dialog dialog;
-    public static String list_fams, list_farms_district, district_string, state_string, list_farms_village, street_string, pincode_string;
+    public static String district_string, state_string,street_string, pincode_string;
 
 
     public static New_Address_Fragment newInstance() {
@@ -122,7 +120,7 @@ RecyclerView dialog_recyclerView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.request_address_layout, container, false);
-        //recyclerView=view.findViewById(R.id.recycler_what_looking);
+
         back_feed = view.findViewById(R.id.back_feed);
         or = view.findViewById(R.id.or);
         name = view.findViewById(R.id.name);
@@ -134,9 +132,9 @@ RecyclerView dialog_recyclerView;
         taluk = view.findViewById(R.id.taluk);
         block = view.findViewById(R.id.block);
         search = view.findViewById(R.id.search);
-        //  recyclerView=view.findViewById(R.id.recycler_view1);
+
          village=view.findViewById(R.id.village);
-       //current_adds=view.findViewById(R.id.current_adds);
+
         search_bar = view.findViewById(R.id.search_bar);
         default_address = view.findViewById(R.id.default_address);
         street_add = view.findViewById(R.id.street_add);
@@ -514,6 +512,7 @@ RecyclerView dialog_recyclerView;
                     recyclerView.setAdapter(hoblisAdapter);
 
                     prepareHobliData();
+
 
                 }else{
                     Snackbar snackbar = Snackbar

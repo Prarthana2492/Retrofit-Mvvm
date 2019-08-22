@@ -1,7 +1,6 @@
 package com.FarmPe.Farmer.Fragment;
 
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Build;
@@ -28,7 +27,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -54,7 +52,6 @@ import java.util.Comparator;
 import java.util.List;
 
 
-
 public class  Add_New_Address_Fragment extends Fragment {
 
     RecyclerView recyclerView;
@@ -73,7 +70,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
 
-    public static DrawerLayout drawer;
+    public static DrawerLayout drawer,main_layout;
     LinearLayout back_feed;
     TextView toolbar_titletxt;
     JSONArray jsonArray,state_array,tal_array,hobli_array;
@@ -86,7 +83,7 @@ public class  Add_New_Address_Fragment extends Fragment {
     String selected_addresstype;
     JSONObject lngObject;
     LinearLayout linearLayout;
-    String s_addtype,entername,entermno,inncrtmno,enterstreetad,enterpincode,selectstate,selectdistrict,selecttaluk,selecthobli,newaddressadded,addnotadded ;
+    String s_addtype,entername,entermno,inncrtmno,enterstreetad,enterpincode,selectstate,selectdistrict,selecttaluk,selecthobli,newaddressadded,addnotadded,select_addrs1,name1,mobile1,street1,state1,district1,teshil1,pincode1 ;
     public static EditText name,mobile,pincode_no,house_numb,street_name,landmrk,city,state,taluk,hobli,district,village,select_address;
     String status,message;
     String Id;
@@ -103,19 +100,20 @@ public class  Add_New_Address_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.select_your_region_layout, container, false);
 
-       getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
 
 
-         select_address = view.findViewById(R.id.select_address);
-         name = view.findViewById(R.id.full_name);
-         mobile = view.findViewById(R.id.mobile_no);
-         back_feed = view.findViewById(R.id.back_feed);
-         pincode_no = view.findViewById(R.id.pincode);
+        select_address = view.findViewById(R.id.select_address);
+        name = view.findViewById(R.id.full_name);
+        mobile = view.findViewById(R.id.mobile_no);
+        back_feed = view.findViewById(R.id.back_feed);
+        pincode_no = view.findViewById(R.id.pincode);
         //house_numb = view.findViewById(R.id.house_no);
         street_name = view.findViewById(R.id.street);
         //landmrk = view.findViewById(R.id.landmark_1);
-       search = view.findViewById(R.id.search);
+        search = view.findViewById(R.id.search);
+        main_layout = view.findViewById(R.id.drawer_layout_op);
 
 
         add_new_address = view.findViewById(R.id.add_address);
@@ -126,7 +124,7 @@ public class  Add_New_Address_Fragment extends Fragment {
         district = view.findViewById(R.id.district_1);
         taluk = view.findViewById(R.id.taluk_1);
         hobli = view.findViewById(R.id.hobli_1);
-     //   village = view.findViewById(R.id.village_1);
+        village = view.findViewById(R.id.village);
 
 
         linearLayout = view.findViewById(R.id.profile_view);
@@ -151,7 +149,7 @@ public class  Add_New_Address_Fragment extends Fragment {
         district.setText(getArguments().getString("Addr_district"));
         taluk.setText(getArguments().getString("Addr_taluk"));
         hobli.setText(getArguments().getString("Addr_hobli"));
-     //   village.setText(getArguments().getString("Addr_village"));
+        village.setText(getArguments().getString("Addr_village"));
         select_address.setText(getArguments().getString("Addr_pickup_from"));
         selected_addresstype = getArguments().getString("Addr_pickup_from");
 
@@ -175,15 +173,6 @@ public class  Add_New_Address_Fragment extends Fragment {
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
-//Find the currently focused view, so we can grab the correct window token from it.
-                v = getActivity().getCurrentFocus();
-//If no view currently has focus, create a new one, just so we can grab a window token from it
-                if (v == null) {
-                    v = new View(getActivity());
-                }
-                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 System.out.println("lllllllllllllllllllllllll"+getArguments().getString("navigation_from"));
 
                 if (getArguments().getString("navigation_from").equals("yu_ads_frg")) {
@@ -205,7 +194,6 @@ public class  Add_New_Address_Fragment extends Fragment {
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("edit", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-
                 }else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")) {
                     HomeMenuFragment.onBack_status = "no_request";
                     selectedFragment = HomeMenuFragment.newInstance();
@@ -215,12 +203,17 @@ public class  Add_New_Address_Fragment extends Fragment {
                 }
 
 
+
                 else{
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("request", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 }
             }
         });
+
+
+
+
 
 
         view.setFocusableInTouchMode(true);
@@ -252,7 +245,6 @@ public class  Add_New_Address_Fragment extends Fragment {
                         fm.popBackStack("edit", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
                     }
-
                     else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")) {
                         HomeMenuFragment.onBack_status = "no_request";
                         selectedFragment = HomeMenuFragment.newInstance();
@@ -262,8 +254,8 @@ public class  Add_New_Address_Fragment extends Fragment {
                     }
 
                     else{
-                       FragmentManager fm = getActivity().getSupportFragmentManager();
-                       fm.popBackStack("request", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                        FragmentManager fm = getActivity().getSupportFragmentManager();
+                        fm.popBackStack("request", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     }
 
                     return true;
@@ -385,13 +377,12 @@ public class  Add_New_Address_Fragment extends Fragment {
         state.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             //   getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+                getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
                 // submit.setVisibility(View.GONE);
                 drawer.openDrawer(GravityCompat.END);
                 search_status="state";
-                search.setText("");
-              //  search.setQueryHint("");
-              //  search.setQuery("",false);
+                //  search.setQueryHint("");
+                //  search.setQuery("",false);
                 stateBeanList.clear();
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
                 recyclerView.setLayoutManager(mLayoutManager);
@@ -414,79 +405,135 @@ public class  Add_New_Address_Fragment extends Fragment {
         district.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             //   getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-                // submit.setVisibility(View.INVISIBLE);
-                drawer.openDrawer(GravityCompat.END);
-                // stateBeanList.clear();
-                search_status="district";
-                search.setText("");
-              //  search.setQuery("",false);
-               // search.setQueryHint("");
-                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-                recyclerView.setLayoutManager(mLayoutManager);
-                final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-                layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                recyclerView.setLayoutManager(layoutManager);
-                recyclerView.setItemAnimator(new DefaultItemAnimator());
-                districtAdapter= new DistrictAdapter( districtBeanList,getActivity());
-                recyclerView.setAdapter(districtAdapter);
+                if (!state.getText().toString().equals("")) {
+                    getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+                    // submit.setVisibility(View.INVISIBLE);
+                    drawer.openDrawer(GravityCompat.END);
+                    // stateBeanList.clear();
+                    search_status = "district";
+                    // search.setText("");
+                    //  search.setQuery("",false);
+                    // search.setQueryHint("");
+                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+                    recyclerView.setLayoutManager(mLayoutManager);
+                    final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                    layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                    recyclerView.setLayoutManager(layoutManager);
+                    recyclerView.setItemAnimator(new DefaultItemAnimator());
+                    districtAdapter = new DistrictAdapter(districtBeanList, getActivity());
+                    recyclerView.setAdapter(districtAdapter);
 
-                prepareDistricData();
+                    prepareDistricData();
+                } else {
+                    Snackbar snackbar = Snackbar
+                            .make(main_layout, "Please select a state", Snackbar.LENGTH_LONG);
+                    View snackbarView = snackbar.getView();
+                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
+                    tv.setTextColor(Color.WHITE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    } else {
+                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                    }
+                    snackbar.show();
+
+                }
             }
         });
+
+
+
+
+
+
 
 
         taluk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              //  getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+                if (!district.getText().toString().equals("")) {
+                    getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
-                drawer.openDrawer(GravityCompat.END);
-                // stateBeanList.clear();
-                search_status="taluk";
-                search.setText("");
-              //  search.setQueryHint("");
-              //  search.setQuery("",false);
-                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-                recyclerView.setLayoutManager(mLayoutManager);
-                final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-                layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                recyclerView.setLayoutManager(layoutManager);
-                recyclerView.setItemAnimator(new DefaultItemAnimator());
+                    drawer.openDrawer(GravityCompat.END);
+                    // stateBeanList.clear();
+                    search_status = "taluk";
+                    // search.setText("");
+                    //  search.setQueryHint("");
+                    //  search.setQuery("",false);
+                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+                    recyclerView.setLayoutManager(mLayoutManager);
+                    final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                    layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                    recyclerView.setLayoutManager(layoutManager);
+                    recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-                talukAdapter = new TalukAdapter( talukBeanList,getActivity());
-                recyclerView.setAdapter(talukAdapter);
-                prepareTalukData();
+                    talukAdapter = new TalukAdapter(talukBeanList, getActivity());
+                    recyclerView.setAdapter(talukAdapter);
+                    prepareTalukData();
 
+                } else {
+
+                    Snackbar snackbar = Snackbar
+                            .make(main_layout, "Please select a district", Snackbar.LENGTH_LONG);
+                    View snackbarView = snackbar.getView();
+                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
+                    tv.setTextColor(Color.WHITE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    } else {
+                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                    }
+                    snackbar.show();
+                }
             }
         });
+
 
         hobli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             //   getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-                //  submit.setVisibility(View.INVISIBLE);
-                drawer.openDrawer(GravityCompat.END);
-                // stateBeanList.clear();
-                search_status="hobli";
-                search.setText("");
-                //search.setQuery("",false);
-              //  search.setQueryHint("");
-                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-                recyclerView.setLayoutManager(mLayoutManager);
+                if (!taluk.getText().toString().equals("")) {
+                    getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+                    //  submit.setVisibility(View.INVISIBLE);
+                    drawer.openDrawer(GravityCompat.END);
+                    // stateBeanList.clear();
+                    search_status="hobli";
+                    //search.setQuery("",false);
+                    //  search.setQueryHint("");
+                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+                    recyclerView.setLayoutManager(mLayoutManager);
 
-                final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-                layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                recyclerView.setLayoutManager(layoutManager);
-                recyclerView.setItemAnimator(new DefaultItemAnimator());
+                    final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                    layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                    recyclerView.setLayoutManager(layoutManager);
+                    recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-                hoblisAdapter = new HoblisAdapter( hobliBeanList,getActivity());
-                recyclerView.setAdapter(hoblisAdapter);
+                    hoblisAdapter = new HoblisAdapter( hobliBeanList,getActivity());
+                    recyclerView.setAdapter(hoblisAdapter);
 
-                prepareHobliData();
+                    prepareHobliData();
 
+                }
+                else {
+
+                    Snackbar snackbar = Snackbar
+                            .make(main_layout, "Please select a taluk", Snackbar.LENGTH_LONG);
+                    View snackbarView = snackbar.getView();
+                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
+                    tv.setTextColor(Color.WHITE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    } else {
+                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                    }
+                    snackbar.show();
+                }
             }
         });
+
 
 
         add_new_address.setOnClickListener(new View.OnClickListener() {
@@ -682,18 +729,18 @@ public class  Add_New_Address_Fragment extends Fragment {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
             toolbar_titletxt.setText(lngObject.getString("AddNewAddress"));
             select_address.setHint(lngObject.getString("SelectanAddressType"));
-            name.setHint(lngObject.getString("FullName"));
-            mobile.setHint(lngObject.getString("PhoneNo"));
-            street_name.setHint(lngObject.getString("Colony_Street_Locality"));
+            //name.setHint(lngObject.getString("FullName"));
+            // mobile.setHint(lngObject.getString("PhoneNo"));
+            // street_name.setHint(lngObject.getString("Colony_Street_Locality"));
             // house_numb.setHint(lngObject.getString("Flat_HouseNo_Floor_Building"));
             //landmrk.setHint(lngObject.getString("LandMark"));
             // city.setHint(lngObject.getString("City"));
-            pincode_no.setHint(lngObject.getString("Pincode"));
-            state.setHint(lngObject.getString("State"));
-         //   hobli.setHint(lngObject.getString("Hobli"));
-            district.setHint(lngObject.getString("District"));
-           // taluk.setHint(lngObject.getString("Taluk"));
-          //  village.setHint(lngObject.getString("Village"));
+            //pincode_no.setHint(lngObject.getString("Pincode"));
+            // state.setHint(lngObject.getString("State"));
+            //   hobli.setHint(lngObject.getString("Hobli"));
+            //district.setHint(lngObject.getString("District"));
+            // taluk.setHint(lngObject.getString("Taluk"));
+            village.setHint(lngObject.getString("Village"));
             add_new_address.setText(lngObject.getString("AddAddress"));
 
             s_addtype = lngObject.getString("SelectanAddressType");
@@ -709,60 +756,35 @@ public class  Add_New_Address_Fragment extends Fragment {
             selectdistrict = lngObject.getString("SelectDistrict");
             selecttaluk = lngObject.getString("SelectTaluk");
             selecthobli = lngObject.getString("Selecthobli");
-          //  selectvillage = lngObject.getString("SelectVilage");
+            //  selectvillage = lngObject.getString("SelectVilage");
             newaddressadded = lngObject.getString("NewAddressaddedsuccessfully");
             //adddeleted = lngObject.getString("Addressdeletedsuccessfully");
             addnotadded = lngObject.getString("YourAddressnotAdded");
+
+            select_addrs1 = lngObject.getString("SelectanAddressType");
+            select_address.setHint(select_addrs1+"*");
+            name1 = lngObject.getString("FullName");
+            name.setHint(name1+"*");
+            mobile1 = lngObject.getString("PhoneNo");
+            mobile.setHint(mobile1+"*");
+            street1 = lngObject.getString("Colony_Street_Locality");
+            street_name.setHint(street1+"*");
+            state1 = lngObject.getString("State");
+            state.setHint(state1+"*");
+            district1 = lngObject.getString("District");
+            district.setHint(district1+"*");
+            pincode1 = lngObject.getString("Pincode");
+            pincode_no.setHint(pincode1+"*");
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        if(getArguments().getString("navigation_from").equals("your_add")){
-            add_new_address.setText("Modify address");
-            toolbar_titletxt.setText("Modify your address");
-        }
-        search.setFilters(new InputFilter[]{EMOJI_FILTER1, new InputFilter.LengthFilter(30)});
+
+
         return view;
 
     }
-
-
-
-    public static InputFilter EMOJI_FILTER1 = new InputFilter() {
-        @Override
-        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-            boolean keepOriginal = true;
-            String specialChars = ".1/*!@#$%^&*()\"{}_[]|\\?/<>,.:-'';§£¥₹...%&+=€π|";
-            StringBuilder sb = new StringBuilder(end - start);
-            for (int index = start; index < end; index++) {
-                int type = Character.getType(source.charAt(index));
-                if (type == Character.SURROGATE || type == Character.OTHER_SYMBOL || type == Character.MATH_SYMBOL || specialChars.contains("" + source)) {
-                    return "";
-                }
-                for (int i = start; i < end; i++) {
-                    if (Character.isWhitespace(source.charAt(i))) {
-                        if (dstart == 0)
-                            return "";
-                    } else if (Character.isDigit(source.charAt(i))) {
-                        return "";
-                    }
-                }
-                return null;
-            }
-            if (keepOriginal)
-                return null;
-            else {
-                if (source instanceof Spanned) {
-                    SpannableString sp = new SpannableString(sb);
-                    TextUtils.copySpansFrom((Spanned) source, start, sb.length(), null, sp, 0);
-                    return sp;
-                } else {
-                    return sb;
-                }
-            }
-        }
-    };
-
 
     private void prepareTalukData() {
 
@@ -833,7 +855,6 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                         }
                         sorting(hobliBeanList);
-
                         hoblisAdapter.notifyDataSetChanged();
 
 
@@ -922,7 +943,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                             districtBeanList.add(stateBean);
                         }
 
-                           sorting(districtBeanList);
+                        sorting(districtBeanList);
 
 
                         districtAdapter.notifyDataSetChanged();
@@ -934,6 +955,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                 }
             });
+
 
         }catch (Exception e){
             e.printStackTrace();
@@ -955,7 +977,7 @@ public class  Add_New_Address_Fragment extends Fragment {
             jsonObject.put("StateId",StateApdater.stateid);
             jsonObject.put("TalukId",TalukAdapter.talukid);
             jsonObject.put("VillageId", VillageAdapter.villageid);
-            // jsonObject.put("StreeAddress",house_numb.getText().toString());
+            //jsonObject.put("StreeAddress",house_numb.getText().toString());
             jsonObject.put("StreeAddress1",street_name.getText().toString());
             jsonObject.put("UserId",sessionManager.getRegId("userId"));
             System.out.println("Add_New_AddresssssssssssssssssjsonObject"+jsonObject);
@@ -968,6 +990,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
             }
+
 
 
 
@@ -1073,7 +1096,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                                 Bundle bundle1=new Bundle();
                                 bundle1.putString("add_id",status);
-                                bundle1.putString("streetname",hobli.getText().toString() + " , " + district.getText().toString());
+                                bundle1.putString("streetname",hobli.getText().toString() + district.getText().toString());
                                 bundle1.putString("looking_forId",getArguments().getString("looking_forId"));
                                 bundle1.putString("modelId",getArguments().getString("modelId"));
 

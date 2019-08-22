@@ -41,7 +41,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image;
         public LinearLayout item;
-        public TextView prod_price,prod_name,duration,farmer_name,location,connect;
+        public TextView prod_price,prod_name,duration,farmer_name,location,connect,select;
 
 
 
@@ -49,10 +49,10 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
         public MyViewHolder(View view) {
             super(view);
 
-            item=view.findViewById(R.id.item);
             prod_price=view.findViewById(R.id.prod_price);
-            image=view.findViewById(R.id.prod_img);
-
+            item=view.findViewById(R.id.itemmm);
+            image=view.findViewById(R.id.imageff);
+            select=view.findViewById(R.id.selectt);
 
         }
 
@@ -61,7 +61,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.add_first_layout_item, parent, false);
+                .inflate(R.layout.select_model_item, parent, false);
         return new MyViewHolder(itemView);
 
     }
@@ -87,6 +87,16 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
             }
         });
 
+        holder.select.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedFragment = RequestFormFragment.newInstance();
+                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+                transaction.add(R.id.frame_layout, selectedFragment);
+                transaction.addToBackStack("fourth");
+                transaction.commit();
+            }
+        });
 
         Glide.with(activity).load(products.getImage())
 

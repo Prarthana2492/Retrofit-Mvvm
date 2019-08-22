@@ -403,6 +403,8 @@ public class Edit_Looking_For_Fragment extends Fragment {
                     String state = jsonObject2.getString("State");
                     String district = jsonObject2.getString("District");
                     String taluk = jsonObject2.getString("Taluk");
+                    String area = jsonObject2.getString("Hoblie");
+
                     lookingfordetails_id = jsonObject1.getString("LookingForDetailsId");
                     addressID = jsonObject1.getString("AddressId");
                     modelid = jsonObject1.getString("ModelId");
@@ -411,7 +413,7 @@ public class Edit_Looking_For_Fragment extends Fragment {
                  brand.setText("Brand - " + brand_name);
                     hp_power.setText("HP - " + horse_range);
                  model.setText("Model - " + model_name);
-                    address_text.setText(street_address + " , " + state + " , " + pincode);
+                    address_text.setText(area + " , " + district );
 
 
                     if (lookin_true.equals("true")) {
