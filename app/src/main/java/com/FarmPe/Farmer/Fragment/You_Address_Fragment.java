@@ -262,6 +262,7 @@ public class You_Address_Fragment extends Fragment {
             toolbar_titletxt.setText(lngObject.getString("SelectYourAdress"));
             add_new_address.setText(lngObject.getString("AddNewAddress"));
             adrs_are_added=(lngObject.getString("Addressesareadded"));
+            select_address_type.setText(lngObject.getString("All"));
            // select_address_type.setText(lngObject.getString("Home"));
             //ad_list=(lngObject.getString("addressesareaddedin"));
 

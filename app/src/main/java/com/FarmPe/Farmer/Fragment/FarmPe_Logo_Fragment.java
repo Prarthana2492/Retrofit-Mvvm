@@ -272,8 +272,8 @@ public class FarmPe_Logo_Fragment extends Fragment {
                         String request_count = String.valueOf(result.getInt("RFQCount"));
                         String notificatn_count = String.valueOf(result.getInt("NotificationCount"));
 
-                        count_images_array = result.getJSONArray("FarmImages");
-                        rfq_images_array = result.getJSONArray("RFQImages");
+
+                        rfq_images_array = result.getJSONArray("RFQList");
 
                         if (request_count.equalsIgnoreCase("0")) {
                             no_request.setVisibility(View.VISIBLE);
@@ -286,19 +286,17 @@ public class FarmPe_Logo_Fragment extends Fragment {
                         }
 
 
-                        for (int i = 0; i < count_images_array.length(); i++) {
-                            AddTractorBean1 img1 = new AddTractorBean1(count_images_array.getString(i), " ", "");
-                            newOrderBeansList.add(img1);
 
                             //   if (i <= 3) {
 
 
                             //   }
 
-                        }
+
 
                         for (int i = 0; i < rfq_images_array.length(); i++) {
-                            AddTractorBean2 img2 = new AddTractorBean2(rfq_images_array.getString(i), " ", "");
+                            JSONObject jsonObject1 = rfq_images_array.getJSONObject(i);
+                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
                             newOrderBeansList2.add(img2);
 
                         }

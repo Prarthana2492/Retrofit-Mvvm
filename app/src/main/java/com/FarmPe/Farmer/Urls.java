@@ -90,7 +90,6 @@ package com.FarmPe.Farmer;
 
 
 
-
     //Request Quoatation
     public static final String Get_Edit_Request = ROOT_URL + "MasterTable/GetLookingForListsById";
     public static final String Delete_Request = ROOT_URL + "MasterTable/DeleteRequestForQuotation";
@@ -100,10 +99,13 @@ package com.FarmPe.Farmer;
 
    public static final String Get_Connection_List = ROOT_URL + "MasterTable/GetConnectionList";
 
+
    //Homepage_Count
    public static final String Home_Page_Count = ROOT_URL + "MasterTable/GetCountForFarmer";
 
+
  //Notification
+
 
    public static final String Notification_HomePage = ROOT_URL + "MasterTable/GetNotifications";
 

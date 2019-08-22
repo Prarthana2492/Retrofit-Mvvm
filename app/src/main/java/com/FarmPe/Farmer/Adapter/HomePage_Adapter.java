@@ -33,17 +33,17 @@ public class HomePage_Adapter extends RecyclerView.Adapter<HomePage_Adapter.MyVi
 
     }
 
-
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image;
-        public TextView requst_name;
+        public TextView model_name,brand_name;
 
 
         public MyViewHolder(View view) {
             super(view);
 
             image  = view.findViewById(R.id.image);
-            requst_name = view.findViewById(R.id.requst_name);
+            model_name = view.findViewById(R.id.model_name);
+            brand_name = view.findViewById(R.id.brand_name);
 
         }
 
@@ -62,7 +62,8 @@ public class HomePage_Adapter extends RecyclerView.Adapter<HomePage_Adapter.MyVi
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final AddTractorBean2 products = productList.get(position);
 
-        holder.requst_name.setText("MAHINDRA_JIVO_225");
+        holder.model_name.setText(products.getProd_name());
+        holder.brand_name.setText(products.getProd_category());
 
         System.out.println("dddiiiijgh" + products.getImage());
 
