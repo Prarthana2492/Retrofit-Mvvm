@@ -44,6 +44,7 @@ public class New_Default_Address_Adapter extends RecyclerView.Adapter<New_Defaul
     public void onBindViewHolder(@NonNull final HoblisMyViewHolder holder, int position) {
         final Add_New_Address_Bean stateBean=stateBeans.get(position);
        //holder.statename.setText(stateBean.getName());
+        System.out.println("addrsssss" + stateBean.getAdd_street());
         holder.adrr_txt.setText(stateBean.getAdd_name()+ "\n" + stateBean.getAdd_street());
 
     }

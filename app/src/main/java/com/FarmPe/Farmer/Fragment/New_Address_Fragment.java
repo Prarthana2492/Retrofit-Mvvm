@@ -284,6 +284,8 @@ public class New_Address_Fragment extends Fragment {
                     }
                 });
 
+                dialog.show();
+
             }
         });
 
