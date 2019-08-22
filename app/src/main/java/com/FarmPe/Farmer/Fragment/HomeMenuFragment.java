@@ -76,7 +76,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
 
     Fragment selectedFragment;
     public static DrawerLayout drawer;
-    ImageView plus_sign_add;
+
     RelativeLayout menu;
     JSONArray get_address_array;
     LinearLayout update_acc_layout,your_request,your_farms_tab,nw_request,farmer_title;
@@ -94,7 +94,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
     static boolean fragloaded;
     String pickUPFrom;
 
-    LinearLayout linearLayout;
+    LinearLayout linearLayout,plus_sign_add;
     public static String onBack_status=null;
 
 
@@ -104,7 +104,6 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
         HomeMenuFragment fragment = new HomeMenuFragment();
         return fragment;
     }
-
 
 
     @Override
@@ -126,13 +125,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
         prod_img1=view.findViewById(R.id.prod_img1);
         request_count=view.findViewById(R.id.request_count);
         ur_request=view.findViewById(R.id.ur_rqst);
-
-
-
         your_addrss=view.findViewById(R.id.your_addrss);
-
-
-
 
 
 
@@ -150,7 +143,6 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
                 transaction.replace(R.id.first_full_frame, selectedFragment);
                 transaction.addToBackStack("home");
                 transaction.commit();
-
             }
         });
 
@@ -181,6 +173,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
 
             }
         });
+
         ur_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -227,6 +220,8 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
                                     transaction.addToBackStack("HOME_FRAGMENT");
                                     transaction.replace(R.id.frame_layout, selectedFragment);
                                     transaction.commit();
+
+
 
                                 }else {
                                     Bundle bundle = new Bundle();
@@ -300,6 +295,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
         NavigationView navigationView = (NavigationView)view.findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         System.out.println("hhhrtryur");
+
 
         if(onBack_status==null) {
 
@@ -392,7 +388,8 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedFragment = SettingFragment.newInstance();
+
+               selectedFragment = SettingFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
                 transaction.commit();
@@ -499,7 +496,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
                prod_img1.setImageBitmap(bitmap);
                 prod_img.setImageBitmap(bitmap);
                 uploadImage(getResizedBitmap(bitmap,100,100));
-                Toast.makeText(getActivity(), "Your Changed Your Profile Photo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "You Changed Your Profile Photo", Toast.LENGTH_SHORT).show();
 
 
             }   catch (Exception e) {
@@ -563,10 +560,12 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+
                 params.put("UserId",sessionManager.getRegId("userId"));
                 params.put("FullName",sessionManager.getRegId("name"));
                 params.put("PhoneNo",sessionManager.getRegId("phone"));
                 params.put("Password",sessionManager.getRegId("pass"));
+
                 Log.e(TAG,"afaeftagsparams"+params);
                 return params;
             }
