@@ -381,6 +381,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                 // submit.setVisibility(View.GONE);
                 drawer.openDrawer(GravityCompat.END);
                 search_status="state";
+                search.setText("");
                 //  search.setQueryHint("");
                 //  search.setQuery("",false);
                 stateBeanList.clear();
@@ -411,6 +412,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                     drawer.openDrawer(GravityCompat.END);
                     // stateBeanList.clear();
                     search_status = "district";
+                    search.setText("");
                     // search.setText("");
                     //  search.setQuery("",false);
                     // search.setQueryHint("");
@@ -458,6 +460,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                     drawer.openDrawer(GravityCompat.END);
                     // stateBeanList.clear();
                     search_status = "taluk";
+                    search.setText("");
                     // search.setText("");
                     //  search.setQueryHint("");
                     //  search.setQuery("",false);
@@ -500,6 +503,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                     drawer.openDrawer(GravityCompat.END);
                     // stateBeanList.clear();
                     search_status="hobli";
+                    search.setText("");
                     //search.setQuery("",false);
                     //  search.setQueryHint("");
                     RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
@@ -516,6 +520,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                     prepareHobliData();
 
                 }
+
                 else {
 
                     Snackbar snackbar = Snackbar

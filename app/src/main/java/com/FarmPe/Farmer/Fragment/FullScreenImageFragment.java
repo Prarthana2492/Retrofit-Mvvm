@@ -204,7 +204,7 @@ LinearLayout back_feed;
                 imgFullImage.setImageBitmap(scaled_bitmap);
              //   prod_img.setImageBitmap(bitmap);
                // uploadImage(getResizedBitmap(scaled_bitmap, 100, 100));
-                Toast.makeText(getActivity(), "Your Changed Your Profile Photo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "You Changed Your Profile Photo", Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 e.printStackTrace();
             }

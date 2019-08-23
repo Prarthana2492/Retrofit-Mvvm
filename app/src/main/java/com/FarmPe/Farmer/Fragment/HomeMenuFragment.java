@@ -163,8 +163,8 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
         your_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                drawer.closeDrawers();
 
+                drawer.closeDrawers();
                 selectedFragment = LookingForFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.first_full_frame, selectedFragment);
@@ -177,8 +177,8 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
         ur_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                drawer.closeDrawers();
 
+                drawer.closeDrawers();
                 selectedFragment = LookingForFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.first_full_frame, selectedFragment);
@@ -220,7 +220,6 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
                                     transaction.addToBackStack("HOME_FRAGMENT");
                                     transaction.replace(R.id.frame_layout, selectedFragment);
                                     transaction.commit();
-
 
 
                                 }else {

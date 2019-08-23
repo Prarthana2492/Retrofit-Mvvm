@@ -256,7 +256,6 @@ public class FeedbackFragment extends Fragment {
             feedback_type.setHint(lngObject.getString("FeedbackType"));
             feedback_title.setHint(lngObject.getString("FeedbackTitle"));
             feedback_description.setHint(lngObject.getString("FeedbackDescription"));
-
             feedtype=lngObject.getString("Selectfeedbacktype");
             fedback_title=lngObject.getString("Enterfeedbacktitle");
             feeddesc=lngObject.getString("Enterfeedbackdescription");

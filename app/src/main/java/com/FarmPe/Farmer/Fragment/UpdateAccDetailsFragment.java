@@ -514,7 +514,7 @@ public class UpdateAccDetailsFragment extends Fragment {
                 prod_img.setImageBitmap(bitmap);
                 int duration = 1000;
                 Snackbar snackbar = Snackbar
-                        .make(linearLayout, "Your Changed Your Profile Photo", duration);
+                        .make(linearLayout, "You Changed Your Profile Photo", duration);
                 View snackbarView = snackbar.getView();
                 TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                 tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -576,7 +576,6 @@ public class UpdateAccDetailsFragment extends Fragment {
                         HomeMenuFragment.prod_img.setImageBitmap(bitmap);
                         HomeMenuFragment.prod_img1.setImageBitmap(bitmap);
                         // sessionManager.save_name(userObject.getString("FullName"),userObject.getString("PhoneNo"),userObject.getString("ProfilePic"));
-
 
                         int duration = 1000;
                         Snackbar snackbar = Snackbar
