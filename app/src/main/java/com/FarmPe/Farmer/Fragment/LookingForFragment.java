@@ -95,18 +95,18 @@ public class LookingForFragment extends Fragment {
 
 
 
-        filter_text.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                selectedFragment = Comming_soon_looking.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.first_full_frame, selectedFragment);
-                transaction.addToBackStack("looking_edit");
-                transaction.commit();
-
-            }
-        });
+//        filter_text.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                selectedFragment = Comming_soon_looking.newInstance();
+//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.first_full_frame, selectedFragment);
+//                transaction.addToBackStack("looking_edit");
+//                transaction.commit();
+//
+//            }
+//        });
 
         return view;
     }
@@ -151,9 +151,17 @@ public class LookingForFragment extends Fragment {
                                 location = city + ", " + state+","+area;
 
 
+                                String location_det = jsonObject2.getString("Name")+","+jsonObject2.getString("MobileNo")
+                                        +","+jsonObject2.getString("StreeAddress1")+","+jsonObject2.getString("PickUpFrom")
+                                        +","+jsonObject2.getString("State")+","+jsonObject2.getString("District")
+                                        +","+jsonObject2.getString("Taluk")+","+jsonObject2.getString("Hoblie")
+                                        +","+jsonObject2.getString("Pincode");
+
+
+
                                 System.out.println("madelslistt" + newOrderBeansList.size());
 
-                                FarmsImageBean crops = new FarmsImageBean(image, "Tractor Price", model, hp_range, purchaseTimeline, name, location, id);
+                                FarmsImageBean crops = new FarmsImageBean(image, "Tractor Price", model, hp_range, purchaseTimeline, name, location, id,location_det);
                                 newOrderBeansList.add(crops);
 
 

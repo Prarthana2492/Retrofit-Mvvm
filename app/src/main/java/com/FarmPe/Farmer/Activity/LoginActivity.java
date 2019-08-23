@@ -393,6 +393,8 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
             @Override
             public void onClick(View v) {
 
+                getLang(1);
+
                 if (change_lang.getText().toString().equals("English")){
                     isEng = true;
                     Log.d("GGGGGGGG", "Here: "+LoginActivity.isEng);

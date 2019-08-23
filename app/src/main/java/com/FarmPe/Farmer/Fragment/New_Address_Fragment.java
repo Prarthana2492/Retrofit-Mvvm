@@ -70,7 +70,7 @@ public class New_Address_Fragment extends Fragment {
     public static List<AddTractorBean> newOrderBeansList = new ArrayList<>();
     public static RecyclerView recyclerView;
     RecyclerView dialog_recyclerView;
-    ImageView dialog_image;
+    LinearLayout dialog_image;
     LinearLayout back_feed, main_layout, search_bar;
     Fragment selectedFragment;
     String address_map;
@@ -261,7 +261,7 @@ public class New_Address_Fragment extends Fragment {
                 dialog = new Dialog(getActivity());
                 dialog.setContentView(R.layout.default_address_pop_up_layout);
 
-                dialog_image = (ImageView) dialog.findViewById(R.id.close_popup);
+                dialog_image = (LinearLayout) dialog.findViewById(R.id.close_popup);
                 dialog_recyclerView =  (RecyclerView) dialog.findViewById(R.id.address_recyc);
                address_list =(TextView)dialog.findViewById(R.id.ware_hus);
 
@@ -338,7 +338,6 @@ public class New_Address_Fragment extends Fragment {
                 });
 
 
-
                 ware_house.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -382,7 +381,7 @@ public class New_Address_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+              //  getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
                 // submit.setVisibility(View.GONE);
                 drawer.openDrawer(GravityCompat.END);
                 search_status = "state";
@@ -411,7 +410,7 @@ public class New_Address_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(!state.getText().toString().equals("")) {
-                    getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+                   // getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
                     // submit.setVisibility(View.INVISIBLE);
                     drawer.openDrawer(GravityCompat.END);
                     // stateBeanList.clear();
@@ -432,7 +431,7 @@ public class New_Address_Fragment extends Fragment {
                 }
                 else {
                     Snackbar snackbar = Snackbar
-                            .make(main_layout, "Please select a state", Snackbar.LENGTH_LONG);
+                            .make(main_layout, "Select  State", Snackbar.LENGTH_LONG);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
@@ -452,7 +451,7 @@ public class New_Address_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(!district.getText().toString().equals("")) {
-                    getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+                 //   getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
                     //submit.setVisibility(View.INVISIBLE);
                     drawer.openDrawer(GravityCompat.END);
                     // stateBeanList.clear();
@@ -474,7 +473,7 @@ public class New_Address_Fragment extends Fragment {
 
                 else{
                     Snackbar snackbar = Snackbar
-                            .make(main_layout, "Please select a district", Snackbar.LENGTH_LONG);
+                            .make(main_layout, "select District", Snackbar.LENGTH_LONG);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
@@ -494,7 +493,7 @@ public class New_Address_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(!taluk.getText().toString().equals("")) {
-                    getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+                 //   getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
                     //  submit.setVisibility(View.INVISIBLE);
                     drawer.openDrawer(GravityCompat.END);
                     // stateBeanList.clear();
@@ -518,7 +517,7 @@ public class New_Address_Fragment extends Fragment {
 
                 }else{
                     Snackbar snackbar = Snackbar
-                            .make(main_layout, "Please select a taluk", Snackbar.LENGTH_LONG);
+                            .make(main_layout, "Select Tehsil", Snackbar.LENGTH_LONG);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
@@ -538,7 +537,7 @@ public class New_Address_Fragment extends Fragment {
         village.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+              //  getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
                 // submit.setVisibility(View.VISIBLE);
 
                 drawer.openDrawer(GravityCompat.END);
@@ -622,7 +621,7 @@ public class New_Address_Fragment extends Fragment {
                     } else if (taluk.getText().toString().equals("")) {
                         int duration = 1000;
                         Snackbar snackbar = Snackbar
-                                .make(main_layout, "Select Taluk", duration);
+                                .make(main_layout, "Select Tehsil", duration);
                         View snackbarView = snackbar.getView();
                         TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                         tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));

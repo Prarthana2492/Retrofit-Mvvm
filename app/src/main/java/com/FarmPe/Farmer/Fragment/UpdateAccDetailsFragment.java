@@ -115,7 +115,7 @@ public class UpdateAccDetailsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.update_acc_details, container, false);
-        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+       // getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         name_tick = view.findViewById(R.id.name_tick);
         phone_tick = view.findViewById(R.id.phone_tick);
         pass_tick = view.findViewById(R.id.pass_tick);

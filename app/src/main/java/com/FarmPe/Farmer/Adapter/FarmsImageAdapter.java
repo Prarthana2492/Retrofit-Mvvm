@@ -36,7 +36,7 @@ public class FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.My
     Fragment selectedFragment;
     JSONObject lngObject;
     public LinearLayout linearLayout;
-    public static String first,looking_forId,model_id,timeline,looking_for,address;
+    public static String first,looking_forId,model_id,timeline,looking_for,address,location_det;
     SessionManager session;;
     public static CardView cardView;
 
@@ -103,6 +103,7 @@ System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"+products.ge
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                location_det= products.getLocation_details();
                 looking_forId=products.getId();
 
 

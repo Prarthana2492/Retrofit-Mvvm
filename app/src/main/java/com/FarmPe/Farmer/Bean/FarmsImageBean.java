@@ -6,7 +6,17 @@ public class FarmsImageBean {
     private String prod_price,modelname,duration,farmer_name,location,id,hp;
     private  String image;
 
-    public FarmsImageBean(String image, String prod_price, String modelname,String hp,String duration,String farmer_name,String location,String id) {
+    public String getLocation_details() {
+        return location_details;
+    }
+
+    public void setLocation_details(String location_details) {
+        this.location_details = location_details;
+    }
+
+    private String location_details;
+
+    public FarmsImageBean(String image, String prod_price, String modelname,String hp,String duration,String farmer_name,String location,String id,String location_details) {
 
         this.image = image;
         this.prod_price = prod_price;
@@ -16,6 +26,7 @@ public class FarmsImageBean {
         this.location = location;
         this.id = id;
         this.hp = hp;
+        this.location_details = location_details;
 
     }
 

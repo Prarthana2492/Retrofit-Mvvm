@@ -67,7 +67,7 @@ public class You_Address_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.address_recyc_layout, container, false);
-        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+      //  getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
 
         // getActivity().getActionBar().hide();
@@ -259,7 +259,7 @@ public class You_Address_Fragment extends Fragment {
 
         try {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
-            toolbar_titletxt.setText(lngObject.getString("SelectYourAdress"));
+         //   toolbar_titletxt.setText(lngObject.getString("SelectYourAdress"));
             add_new_address.setText(lngObject.getString("AddNewAddress"));
             adrs_are_added=(lngObject.getString("Addressesareadded"));
             select_address_type.setText(lngObject.getString("All"));

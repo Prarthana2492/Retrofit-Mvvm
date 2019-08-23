@@ -367,6 +367,7 @@ public class ForgotPasswordNew extends AppCompatActivity implements Connectivity
         }
     }
 
+
     public static void hideSoftKeyboard(Activity activity)  {
 
 

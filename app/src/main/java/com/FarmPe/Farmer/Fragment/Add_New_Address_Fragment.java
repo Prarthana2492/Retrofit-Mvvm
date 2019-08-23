@@ -32,6 +32,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.FarmPe.Farmer.Adapter.DistrictAdapter;
+import com.FarmPe.Farmer.Adapter.FarmsImageAdapter;
 import com.FarmPe.Farmer.Adapter.HoblisAdapter;
 import com.FarmPe.Farmer.Adapter.StateApdater;
 import com.FarmPe.Farmer.Adapter.TalukAdapter;
@@ -100,7 +101,7 @@ public class  Add_New_Address_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.select_your_region_layout, container, false);
 
-        getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+       // getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
 
 
@@ -229,6 +230,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
                     }else if(getArguments().getString("navigation_from").equals("your_add")){
 
                         FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -377,7 +379,7 @@ public class  Add_New_Address_Fragment extends Fragment {
         state.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+              //  getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
                 // submit.setVisibility(View.GONE);
                 drawer.openDrawer(GravityCompat.END);
                 search_status="state";
@@ -407,7 +409,7 @@ public class  Add_New_Address_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (!state.getText().toString().equals("")) {
-                    getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+                   // getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
                     // submit.setVisibility(View.INVISIBLE);
                     drawer.openDrawer(GravityCompat.END);
                     // stateBeanList.clear();
@@ -455,7 +457,7 @@ public class  Add_New_Address_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (!district.getText().toString().equals("")) {
-                    getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+                 //   getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
                     drawer.openDrawer(GravityCompat.END);
                     // stateBeanList.clear();
@@ -498,7 +500,7 @@ public class  Add_New_Address_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (!taluk.getText().toString().equals("")) {
-                    getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+                    //getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
                     //  submit.setVisibility(View.INVISIBLE);
                     drawer.openDrawer(GravityCompat.END);
                     // stateBeanList.clear();
@@ -524,7 +526,8 @@ public class  Add_New_Address_Fragment extends Fragment {
                 else {
 
                     Snackbar snackbar = Snackbar
-                            .make(main_layout, "Please select a taluk", Snackbar.LENGTH_LONG);
+                            .make(main_layout, "Select Tehsil", Snackbar.LENGTH_LONG);
+
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
@@ -704,7 +707,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                     int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, selecttaluk, duration);
+                            .make(linearLayout, "Select Tehsil", duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -785,6 +788,21 @@ public class  Add_New_Address_Fragment extends Fragment {
             e.printStackTrace();
         }
 
+
+
+        if (getArguments().getString("navigation_from").equals("edit_lokng_frg") && !FarmsImageAdapter.location_det.equals("")){
+            String[] loc=FarmsImageAdapter.location_det.split(",");
+            name.setText(loc[0]);
+            select_address.setText(loc[3]);
+            mobile.setText(loc[1]);
+            street_name.setText(loc[2]);
+            district.setText(loc[5]);
+            state.setText(loc[4]);
+            taluk.setText(loc[6]);
+            hobli.setText(loc[7]);
+            pincode_no.setText(loc[8]);
+
+        }
 
 
         return view;

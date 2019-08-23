@@ -233,11 +233,9 @@ public class G_Vision_Controller {
 
 
                 }else {
-                    Toast.makeText(activity,"Image is inappropriate, choose related image.",Toast.LENGTH_LONG).show();
+                  //  Toast.makeText(activity,"Image is inappropriate, choose related image.",Toast.LENGTH_LONG).show();
 
                 }
-
-
 
 
             }
