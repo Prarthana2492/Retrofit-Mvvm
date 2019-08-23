@@ -21,6 +21,7 @@ public class DistrictAdapter1 extends RecyclerView.Adapter<DistrictAdapter1.MySt
     List<StateBean> stateBeans;
     Activity activity;
     public static String districtid;
+    public static String distric_name;
 
 
 
@@ -48,6 +49,7 @@ public class DistrictAdapter1 extends RecyclerView.Adapter<DistrictAdapter1.MySt
             @Override
             public void onClick(View view) {
                 districtid=stateBean.getId();
+                distric_name=stateBean.getName();
 
                 New_Address_Fragment.district.setText(holder.statename.getText().toString());
                 New_Address_Fragment .drawer.closeDrawers();

@@ -31,25 +31,29 @@
         android:visibility="gone"
 
         android:layout_height="0dp"
-        android:layout_weight="40">
+        android:layout_weight="60">
 
         <include
             layout="@layout/no_request_layout"
             android:layout_width="match_parent"
             android:layout_marginBottom="10dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/request_made"
 
+        android:layout_height="0dp"
+        android:layout_weight="60"
+        android:orientation="vertical"
+        android:weightSum="100">
 
     <LinearLayout
-        android:id="@+id/request_made"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="20"
-        android:layout_marginBottom="15dp"
-        android:visibility="gone"
+        android:layout_weight="30"
         android:orientation="vertical">
 
         <TextView
@@ -94,7 +98,7 @@
         android:layout_marginLeft="5dp"
         android:gravity="center"
         android:layout_marginRight="5dp"
-        android:layout_weight="30"
+        android:layout_weight="50"
         android:orientation="horizontal">
 
 
@@ -122,7 +126,7 @@
         android:layout_marginLeft="5dp"
         android:gravity="center"
         android:layout_marginRight="5dp"
-        android:layout_weight="10"
+        android:layout_weight="20"
         android:orientation="horizontal">
 
 
@@ -140,6 +144,9 @@
             android:gravity="center"/>
 
     </LinearLayout>
+
+    </LinearLayout>
+
 
 </LinearLayout>
 

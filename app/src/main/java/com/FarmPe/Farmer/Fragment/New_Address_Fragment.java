@@ -268,12 +268,12 @@ public class New_Address_Fragment extends Fragment {
 
                 final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
                 layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                recyclerView.setLayoutManager(layoutManager);
-                recyclerView.setItemAnimator(new DefaultItemAnimator());
+                dialog_recyclerView.setLayoutManager(layoutManager);
+                dialog_recyclerView.setItemAnimator(new DefaultItemAnimator());
 
                 new_default_address_adapter = new New_Default_Address_Adapter(new_address_beanArrayList, getActivity());
 
-                recyclerView.setAdapter(new_default_address_adapter);
+                dialog_recyclerView.setAdapter(new_default_address_adapter);
 
                 gettingAddress(" ");
 
@@ -284,7 +284,7 @@ public class New_Address_Fragment extends Fragment {
                     }
                 });
 
-                dialog.show();
+             //   dialog.show();
 
             }
         });
@@ -731,6 +731,7 @@ public class New_Address_Fragment extends Fragment {
                             item_list = String.valueOf(new_address_beanArrayList.size());
                             address_list.setText(item_list+" " + " Address is added" );
                             new_default_address_adapter.notifyDataSetChanged();
+                            dialog.show();
 
 
                         }else if (new_address_beanArrayList.size()==0) {
@@ -740,16 +741,16 @@ public class New_Address_Fragment extends Fragment {
 
                         }
                         else{
+                            dialog.show();
 
                             item_list = String.valueOf(new_address_beanArrayList.size());
                             address_list.setText(item_list+" " + " Addresses are added" );
                             new_default_address_adapter.notifyDataSetChanged();
 
-
                         }
 
 
-                       // dialog.show();
+                       //dialog.show();
 
 
 
@@ -804,8 +805,6 @@ public class New_Address_Fragment extends Fragment {
             Crop_Post.crop_posting(getActivity(), Urls.State, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
-                    System.out.println("11111ssss" + result);
-
 
                     try {
                         stateBeanList.clear();
@@ -1166,20 +1165,39 @@ public class New_Address_Fragment extends Fragment {
             Crop_Post.crop_posting(getActivity(), Urls.Add_New_Address, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
-                    Bundle bundle=new Bundle();
 
                     System.out.println("Add_New_Addresssssssssssssssss"+result);
-                   /* try{
+                    try{
 
-                        status= result.getString("Status");
-                        message = result.getString("Message");
+                    String    status= result.getString("Status");
 
+
+
+
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("status","default");
+                        bundle.putInt("selected_id2",getArguments().getInt("selected_id2"));
+                        bundle.putInt("selected_id_time1",getArguments().getInt("selected_id_time1"));
                         bundle.putString("add_id",status);
-                        //bundle.putString("city",city.getText().toString());
-                        bundle.putInt("selected_id2",selected_id);
-                        bundle.putInt("selected_id_time1",selected_id_time);
-                      *//*  bundle.putString("add_id",status);
-                        bundle.putString("add_id",status);*//*
+                        bundle.putString("streetname",DistrictAdapter1.distric_name+HoblisAdapter1.hobli_name);
+
+
+
+
+
+
+
+
+                        selectedFragment = RequestFormFragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout, selectedFragment);
+                        transaction.addToBackStack("list_farm2");
+                        selectedFragment.setArguments(bundle);
+                        transaction.commit();
+
+
+
 
 
 
@@ -1187,7 +1205,7 @@ public class New_Address_Fragment extends Fragment {
                     }catch (Exception e){
                         e.printStackTrace();
 
-                    }*/
+                    }
                 }
             });
 

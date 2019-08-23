@@ -77,12 +77,13 @@ public class FarmPe_Logo_Fragment extends Fragment {
     @Override
 
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.farmepe_logo_layout, container, false);
+        final View view = inflater.inflate(R.layout.ttt, container, false);
         //   backfeed= view.findViewById(R.id.back_feed1);
 
         linearLayout = view.findViewById(R.id.layout);
         // no_farms= view.findViewById(R.id.no_farms);
         no_request = view.findViewById(R.id.no_requests);
+
         requests_made = view.findViewById(R.id.request_made);
      //   slide_text = view.findViewById(R.id.slide_text);
        // nameee = view.findViewById(R.id.nameee);
@@ -278,11 +279,15 @@ public class FarmPe_Logo_Fragment extends Fragment {
                         if (request_count.equalsIgnoreCase("0")) {
                             no_request.setVisibility(View.VISIBLE);
                             requests_made.setVisibility(View.GONE);
+                           // request_made_lyt.setVisibility(View.VISIBLE);
                            /* no_farms.setVisibility(View.VISIBLE);
                             farms_lists.setVisibility(View.GONE);*/
                         } else {
 
                             no_request.setVisibility(View.GONE);
+                            requests_made.setVisibility(View.VISIBLE);
+                          //  request_made_lyt.setVisibility(View.GONE);
+
                         }
 
 

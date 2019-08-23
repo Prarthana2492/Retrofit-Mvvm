@@ -20,7 +20,7 @@ import java.util.List;
 public class HoblisAdapter1 extends RecyclerView.Adapter<HoblisAdapter1.HoblisMyViewHolder> {
 
     List<StateBean>stateBeans;
-    public static String hobliid;
+    public static String hobliid,hobli_name;
      Activity activity;
 
 
@@ -50,6 +50,7 @@ public class HoblisAdapter1 extends RecyclerView.Adapter<HoblisAdapter1.HoblisMy
             @Override
             public void onClick(View view) {
                 hobliid=stateBean.getId();
+                hobli_name=stateBean.getName();
 
                 New_Address_Fragment.block.setText(holder.statename.getText().toString());
                 New_Address_Fragment .drawer.closeDrawers();

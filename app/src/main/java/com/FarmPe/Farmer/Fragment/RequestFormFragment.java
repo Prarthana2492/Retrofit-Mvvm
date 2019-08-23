@@ -134,6 +134,14 @@ public class RequestFormFragment extends Fragment {
                 System.out.println("hrrrjjkj");
                 Bundle bundle = new Bundle();
                 bundle.putString("status","default");
+                bundle.putInt("selected_id2",finance_selected);
+                bundle.putInt("selected_id_time1",time_selected);
+                bundle.putString("add_id",addId);
+
+
+
+
+
                 selectedFragment = New_Address_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);

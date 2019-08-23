@@ -90,6 +90,8 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
         holder.select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                tractor_id=products.getId();
+
                 selectedFragment = RequestFormFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.add(R.id.frame_layout, selectedFragment);

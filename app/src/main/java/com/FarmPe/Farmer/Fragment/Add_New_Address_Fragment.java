@@ -1018,6 +1018,9 @@ public class  Add_New_Address_Fragment extends Fragment {
                       /*  bundle.putString("add_id",status);
                         bundle.putString("add_id",status);*/
 
+
+
+
                         if(!(status.equals("0"))){
 
 
