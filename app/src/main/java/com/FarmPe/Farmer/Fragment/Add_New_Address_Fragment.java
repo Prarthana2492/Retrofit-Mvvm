@@ -180,6 +180,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
                 }else if(getArguments().getString("navigation_from").equals("your_add")){
 
                     FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -202,7 +203,6 @@ public class  Add_New_Address_Fragment extends Fragment {
                     transaction.replace(R.id.frame_layout, selectedFragment);
                     transaction.commit();
                 }
-
 
 
                 else{

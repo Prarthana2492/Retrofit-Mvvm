@@ -128,7 +128,6 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
         your_addrss=view.findViewById(R.id.your_addrss);
 
 
-
         plus_sign_add=view.findViewById(R.id.plus_sign_add);
         user_name_menu=view.findViewById(R.id.user_name_menu);
         sessionManager = new SessionManager(getActivity());
@@ -145,6 +144,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
                 transaction.commit();
             }
         });
+
 
         nw_request.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -217,7 +217,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
                                     selectedFragment = Add_New_Address_Fragment.newInstance();
                                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                                     selectedFragment.setArguments(bundle);
-                                    transaction.addToBackStack("HOME_FRAGMENT");
+                                 //   transaction.addToBackStack("HOME_FRAGMENT");
                                     transaction.replace(R.id.frame_layout, selectedFragment);
                                     transaction.commit();
 
@@ -252,7 +252,6 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
         user_name_menu.setText(sessionManager.getRegId("name"));
 
         phone_no.setText(sessionManager.getRegId("phone").substring(3));
-
 
 
 
@@ -334,7 +333,6 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
             transaction.commit();
 
         }
-
 
         prod_img1.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NewApi")

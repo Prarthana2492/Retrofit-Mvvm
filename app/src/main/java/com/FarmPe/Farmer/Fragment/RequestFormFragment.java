@@ -157,8 +157,8 @@ public class RequestFormFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         String str = address_text.getText().toString();
-                        if ((radioGroup.getCheckedRadioButtonId() == -1) && address_text.getText().toString().equals("") && radioGroup_finance.getCheckedRadioButtonId() == -1) {
-                         //1aq   Toast.makeText(getActivity(), "Select All Fields", Toast.LENGTH_SHORT).show();
+                        if ((radioGroup.getCheckedRadioButtonId() == -1) && address_text.getText().toString().equals("Add Your Address") && radioGroup_finance.getCheckedRadioButtonId() == -1) {
+                      //   Toast.makeText(getActivity(), "Select All Fields", Toast.LENGTH_SHORT).show();
                             int duration = 1000;
                             Snackbar snackbar = Snackbar
                                     .make(linearLayout,"Select All Fields", duration);
@@ -192,8 +192,9 @@ public class RequestFormFragment extends Fragment {
 
                             snackbar.show();
 
-                        } else if (str.equalsIgnoreCase("")) {
-                            //Toast.makeText(getActivity(), "Select Your Address", Toast.LENGTH_SHORT).show();
+
+                        } else if (str.equalsIgnoreCase("Add Your Address")) {
+                         //   Toast.makeText(getActivity(), "Select Your Address", Toast.LENGTH_SHORT).show();
                             int duration = 1000;
                             Snackbar snackbar = Snackbar
                                     .make(linearLayout,"Select Your Address", duration);
@@ -262,7 +263,6 @@ public class RequestFormFragment extends Fragment {
                 System.out.println("valueee"+time_period);
             }
         });
-
 
 
         return view;
