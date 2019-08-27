@@ -81,7 +81,7 @@ public class You_Address_Fragment extends Fragment {
         select_add_address = view.findViewById(R.id.select_address);
         select_address_type = view.findViewById(R.id.address_type1);
         recyclerView = view.findViewById(R.id.recycler_2);
-        address_list= view.findViewById(R.id.items);
+      //  address_list= view.findViewById(R.id.items);
         toolbar_titletxt = view.findViewById(R.id.toolbar_title);
 
 
@@ -306,18 +306,18 @@ public class You_Address_Fragment extends Fragment {
 
 
 
-                        if(new_address_beanArrayList.size()<=1){
-
-                            item_list = String.valueOf(new_address_beanArrayList.size());
-                            address_list.setText(item_list+" " + " Address is added" );
-
-                        }else{
-
-                            item_list = String.valueOf(new_address_beanArrayList.size());
-                            address_list.setText(item_list+" " + adrs_are_added );
-
-                        }
-
+//                        if(new_address_beanArrayList.size()<=1){
+//
+//                            item_list = String.valueOf(new_address_beanArrayList.size());
+//                            address_list.setText(item_list+" " + " Address is added" );
+//
+//                        }else{
+//
+//                            item_list = String.valueOf(new_address_beanArrayList.size());
+//                            address_list.setText(item_list+" " + adrs_are_added );
+//
+//                        }
+//
 
                         mAdapter.notifyDataSetChanged();
 

@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.FarmPe.Farmer.Bean.StateBean;
 
-import com.FarmPe.Farmer.Fragment.New_Address_Fragment;
+import com.FarmPe.Farmer.Fragment.Add_New_Address_Fragment;
 import com.FarmPe.Farmer.R;
 
 import java.util.List;
@@ -52,9 +52,9 @@ public class HoblisAdapter1 extends RecyclerView.Adapter<HoblisAdapter1.HoblisMy
                 hobliid=stateBean.getId();
                 hobli_name=stateBean.getName();
 
-                New_Address_Fragment.block.setText(holder.statename.getText().toString());
-                New_Address_Fragment .drawer.closeDrawers();
-                New_Address_Fragment .search.setText("");
+                Add_New_Address_Fragment.block_txt.setText(holder.statename.getText().toString());
+                Add_New_Address_Fragment .drawer.closeDrawers();
+               // New_Address_Fragment .search.setText("");
 
             }
         });

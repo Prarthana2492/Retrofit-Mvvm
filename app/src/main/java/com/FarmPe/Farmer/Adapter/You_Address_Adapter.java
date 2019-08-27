@@ -223,6 +223,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
                 yes1.setOnClickListener(new View.OnClickListener() {
 
                     @Override

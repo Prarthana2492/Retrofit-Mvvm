@@ -49,7 +49,7 @@ public class Request_Details_New extends Fragment {
 
     public static RecyclerView recyclerView;
     public static AddHpAdapter farmadapter;
-    TextView toolbar_title,request,address_text,add_addrss;
+    TextView toolbar_title,request,address_text;
     Fragment selectedFragment;
     RadioGroup radioGroup,radioGroup_finance;
     RadioButton radioButton,finance_yes,finance_no,radioButton1;
@@ -66,7 +66,7 @@ public class Request_Details_New extends Fragment {
     public static int selectedId,selectedId_time_recent;
     int finance_selected,time_selected;
     Add_New_Address_Bean add_new_address_bean;
-    TextView whenPurchase, lookingForFinance;
+    TextView whenPurchase, lookingForFinance,add_addrss;
     JSONArray get_address_array;
     String pickUPFrom;
     ImageView b_arrow;
@@ -95,6 +95,7 @@ public class Request_Details_New extends Fragment {
         request=view.findViewById(R.id.request);
         address_text=view.findViewById(R.id.address_text);
         purchase_edit=view.findViewById(R.id.purchase_edit);
+        add_addrss=view.findViewById(R.id.add_addrss);
         //purchase_edit=view.findViewById(R.id.add_addrss);
         linearLayout=view.findViewById(R.id.linearLayout);
        // toolbar_title.setText("Request for Quotation");
@@ -145,29 +146,21 @@ public class Request_Details_New extends Fragment {
 
 
 
-//        address_layout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                System.out.println("hrrrjjkj");
-//                Bundle bundle = new Bundle();
-//                bundle.putString("status","default");
-//                bundle.putInt("selected_id2",finance_selected);
-//                bundle.putInt("selected_id_time1",time_selected);
-//                bundle.putString("add_id",addId);
-//
-//
-//
-//
-//
-//                selectedFragment = New_Address_Fragment.newInstance();
-//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.frame_layout, selectedFragment);
-//                transaction.addToBackStack("list_farm2");
-//                selectedFragment.setArguments(bundle);
-//                transaction.commit();
-//
-//            }
-//        });
+        add_addrss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("status","default");
+
+                selectedFragment = Add_New_Address_Fragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                selectedFragment.setArguments(bundle);
+            //    transaction.addToBackStack("list_farm2");
+                transaction.commit();
+
+            }
+        });
 
 //
 //        request.setOnClickListener(new View.OnClickListener() {
