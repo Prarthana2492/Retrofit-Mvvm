@@ -226,7 +226,10 @@ public class  Add_New_Address_Fragment extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     System.out.println("lllllllllllllllllllllllll"+getArguments().getString("navigation_from"));
+
+
                     if (getArguments().getString("navigation_from").equals("yu_ads_frg")) {
+
 
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -248,6 +251,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                     }
                     else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")) {
+
                         HomeMenuFragment.onBack_status = "no_request";
                         selectedFragment = HomeMenuFragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -272,15 +276,16 @@ public class  Add_New_Address_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+
                 final Dialog dialog = new Dialog(getActivity());
                 dialog.setContentView(R.layout.select_address_popup);
-
                 ImageView image = (ImageView) dialog.findViewById(R.id.close_popup);
                 final TextView home =(TextView)dialog.findViewById(R.id.home_1);
                 final TextView ware_house = (TextView)dialog.findViewById(R.id.ware_hus) ;
                 final TextView farm = (TextView)dialog.findViewById(R.id.farm) ;
                 final TextView others = (TextView)dialog.findViewById(R.id.othrs) ;
                 final TextView popuptxt = (TextView)dialog.findViewById(R.id.popup_heading) ;
+
                 try {
                     lngObject = new JSONObject(sessionManager.getRegId("language"));
                     popuptxt.setText(lngObject.getString("SelectanAddressType"));
@@ -294,6 +299,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
                 image.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -350,7 +356,6 @@ public class  Add_New_Address_Fragment extends Fragment {
 
             }
         });
-
 
 
 
@@ -447,12 +452,6 @@ public class  Add_New_Address_Fragment extends Fragment {
         });
 
 
-
-
-
-
-
-
         taluk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -494,6 +493,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                 }
             }
         });
+
 
 
         hobli.setOnClickListener(new View.OnClickListener() {
@@ -618,6 +618,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                     }
                     snackbar.show();
 
+
                 }else if(street_name.getText().toString().equals("")) {
 
                     int duration = 1000;
@@ -633,6 +634,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
                     snackbar.show();
+
 
 
                 }else if(pincode_no.getText().toString().equals("")) {
@@ -764,9 +766,9 @@ public class  Add_New_Address_Fragment extends Fragment {
             selectdistrict = lngObject.getString("SelectDistrict");
             selecttaluk = lngObject.getString("SelectTaluk");
             selecthobli = lngObject.getString("Selecthobli");
-            //  selectvillage = lngObject.getString("SelectVilage");
+
             newaddressadded = lngObject.getString("NewAddressaddedsuccessfully");
-            //adddeleted = lngObject.getString("Addressdeletedsuccessfully");
+
             addnotadded = lngObject.getString("YourAddressnotAdded");
 
             select_addrs1 = lngObject.getString("SelectanAddressType");
@@ -945,7 +947,6 @@ public class  Add_New_Address_Fragment extends Fragment {
     private void prepareDistricData() {
 
 
-
         try{
 
             JSONObject jsonObject = new JSONObject();
@@ -1000,7 +1001,7 @@ public class  Add_New_Address_Fragment extends Fragment {
             jsonObject.put("StateId",StateApdater.stateid);
             jsonObject.put("TalukId",TalukAdapter.talukid);
             jsonObject.put("VillageId", VillageAdapter.villageid);
-            //jsonObject.put("StreeAddress",house_numb.getText().toString());
+
             jsonObject.put("StreeAddress1",street_name.getText().toString());
             jsonObject.put("UserId",sessionManager.getRegId("userId"));
             System.out.println("Add_New_AddresssssssssssssssssjsonObject"+jsonObject);
@@ -1013,7 +1014,6 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
             }
-
 
 
 
@@ -1102,6 +1102,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                                 FragmentManager fm = getActivity().getSupportFragmentManager();
                                 fm.popBackStack("your_add", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
+
                             } else if(getArguments().getString("navigation_from").equals("edit_lokng_frg")){
 
                                 int duration = 1000;
@@ -1143,8 +1144,6 @@ public class  Add_New_Address_Fragment extends Fragment {
                                 fm.popBackStack("HOME_FRAGMENT", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                             }
 
-
-
                             else {
 
                                 int duration = 1000;
@@ -1162,7 +1161,6 @@ public class  Add_New_Address_Fragment extends Fragment {
                                 }
                                 snackbar.show();
 
-
                                 bundle.putString("add_id",status);
                                 bundle.putString("streetname",hobli.getText().toString() + district.getText().toString());
                                 bundle.putInt("selected_id2",selected_id);
@@ -1173,7 +1171,6 @@ public class  Add_New_Address_Fragment extends Fragment {
                                 transaction.commit();
                                 selectedFragment.setArguments(bundle);
                             }
-
 
 
                         }else{
@@ -1210,7 +1207,6 @@ public class  Add_New_Address_Fragment extends Fragment {
         }
     }
 
-
     public void sorting(List<StateBean> arrayList){
 
         Collections.sort(arrayList, new Comparator() {
@@ -1242,12 +1238,14 @@ public class  Add_New_Address_Fragment extends Fragment {
                         return "";
                     }
                 }
+
                 return null;
   /*  char c = source.charAt(index);
     if (isCharAllowed(c))
         sb.append(c);
     else
         keepOriginal = false;*/
+
             }
             if (keepOriginal)
                 return null;
@@ -1262,8 +1260,6 @@ public class  Add_New_Address_Fragment extends Fragment {
             }
         }
     };
-
-
 
 
 
@@ -1285,6 +1281,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                 }
             }
+
             stateApdater = new StateApdater(searchresultAraaylist,getActivity());
             recyclerView.setAdapter(stateApdater);
         }
@@ -1300,7 +1297,7 @@ public class  Add_New_Address_Fragment extends Fragment {
             districtAdapter = new DistrictAdapter(searchresultAraaylist, getActivity());
             recyclerView.setAdapter(districtAdapter);
 
-            // Toast.makeText(getApplicationContext(),"after text change",Toast.LENGTH_LONG).show();
+
         }
         else if (search_status.equals("taluk")){
             searchresultAraaylist.clear();
@@ -1311,6 +1308,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                 }
             }
+
             talukAdapter = new TalukAdapter(searchresultAraaylist, getActivity());
             recyclerView.setAdapter(talukAdapter);
         }

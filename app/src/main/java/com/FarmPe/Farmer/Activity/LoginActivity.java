@@ -396,13 +396,18 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                 getLang(1);
 
                 if (change_lang.getText().toString().equals("English")){
+
                     isEng = true;
                     Log.d("GGGGGGGG", "Here: "+LoginActivity.isEng);
                 }
+
+
                 else{
+
                     isEng = false;
                     Log.d("GGGGGGGG", "Here: "+LoginActivity.isEng);
                 }
+
                 mobile_string=mobile_no.getText().toString();
                 mob_no =loc_text+ mobile_no.getText().toString();
                 password = pass.getText().toString();

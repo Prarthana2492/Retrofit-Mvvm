@@ -241,7 +241,6 @@
                         android:layout_weight="30">
 
 
-
                         <EditText
                             android:id="@+id/state"
                             android:layout_width="match_parent"

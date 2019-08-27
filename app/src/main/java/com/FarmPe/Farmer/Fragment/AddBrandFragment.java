@@ -55,7 +55,7 @@ ImageView b_arrow;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.add_first_recy, container, false);
+        View view = inflater.inflate(R.layout.brand_recy_layout, container, false);
         recyclerView=view.findViewById(R.id.recycler_what_looking);
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
@@ -63,9 +63,9 @@ ImageView b_arrow;
         continue_button=view.findViewById(R.id.continue_button);
         linearLayout=view.findViewById(R.id.linearLayout);
         b_arrow=view.findViewById(R.id.b_arrow);
-        toolbar_title.setText("Select Brand");
+       // toolbar_title.setText("Select Brand");
 
-        sub_label.setText("let us know the manufacturer/brand name you are interested to buy");
+     //   sub_label.setText("let us know the manufacturer/brand name you are interested to buy");
 
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,58 +91,58 @@ ImageView b_arrow;
         });
 
 
-        continue_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(AddBrandAdapter.brandId == null){
-
-                    Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Please choose any option", Snackbar.LENGTH_LONG);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                    }
-
-                    snackbar.show();
-                  /*  int duration = 1000;
-                    Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Please choose any option", duration);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                    }
-
-                    snackbar.show();*/
-
-                }else{
-                    AddHpAdapter.hp_model = null;
-                    selectedFragment = AddHpFragment.newInstance();
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.add(R.id.frame_layout, selectedFragment);
-                    transaction.addToBackStack("second");
-                    transaction.commit();
-
-                }
-
-            }
-        });
-
+//        continue_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                if(AddBrandAdapter.brandId == null){
+//
+//                    Snackbar snackbar = Snackbar
+//                            .make(linearLayout, "Please choose any option", Snackbar.LENGTH_LONG);
+//                    View snackbarView = snackbar.getView();
+//                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+//                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+//                    tv.setTextColor(Color.WHITE);
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+//                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//                    } else {
+//                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+//                    }
+//
+//                    snackbar.show();
+//                  /*  int duration = 1000;
+//                    Snackbar snackbar = Snackbar
+//                            .make(linearLayout, "Please choose any option", duration);
+//                    View snackbarView = snackbar.getView();
+//                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+//                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+//                    tv.setTextColor(Color.WHITE);
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+//                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//                    } else {
+//                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+//                    }
+//
+//                    snackbar.show();*/
+//
+//                }else{
+//                    AddHpAdapter.hp_model = null;
+//                    selectedFragment = AddHpFragment.newInstance();
+//                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                    transaction.add(R.id.frame_layout, selectedFragment);
+//                    transaction.addToBackStack("second");
+//                    transaction.commit();
+//
+//                }
+//
+//            }
+//        });
+//
 
         BrandList();
 
         newOrderBeansList.clear();
-        GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false);
+        GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 3, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager_farm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         return view;

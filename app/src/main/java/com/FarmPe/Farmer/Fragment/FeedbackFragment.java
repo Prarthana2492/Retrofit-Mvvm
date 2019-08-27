@@ -160,7 +160,6 @@ public class FeedbackFragment extends Fragment {
 
         });
 
-
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

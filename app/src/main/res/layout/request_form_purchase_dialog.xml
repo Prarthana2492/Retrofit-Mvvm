@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:layout_marginHorizontal="10dp"
+    android:background="@drawable/white_corner_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FAFAFA"
+        android:orientation="horizontal"
+        android:paddingVertical="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="15dp"
+        android:weightSum="100">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="93">
+
+            <TextView
+                android:id="@+id/popup_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="When are you planning to buy?"
+                android:textColor="#000"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+
+        >
+
+            <ImageView
+                android:id="@+id/close_popup"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="right"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="7"
+                android:src="@drawable/ic_error"
+
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <!-- <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+             android:background="#f5f5f5"
+             >
+
+             <TextView
+                 android:id="@+id/text"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+
+                 android:textStyle="bold"
+                 android:background="#fff"
+                 android:fontFamily="@font/segoeui"
+                 android:text="Select an Address Type"
+                 android:textSize="18dp"
+                 android:padding="10dp"
+                 android:gravity="start"
+
+                 android:textColor="#000000"
+                 />
+
+         </LinearLayout>-->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/immediate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:background="#fff"
+                android:fontFamily="@font/segoeui"
+                android:text="Immediate"
+                android:textSize="14dp"
+                android:padding="10dp"
+                android:gravity="start"
+                android:textColor="#000000"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.75dp"
+            android:background="#e5e5e5"
+            />
+
+
+        <!-- <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+             >
+             <TextView
+                 android:id="@+id/barn"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="10"
+                 android:background="#fff"
+                 android:fontFamily="@font/segoeui"
+                 android:text="Barn"
+                 android:textSize="14dp"
+                 android:padding="10dp"
+                 android:gravity="start"
+                 android:textColor="#000000"
+                 />
+
+         </LinearLayout>-->
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/one_month"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:background="#fff"
+                android:fontFamily="@font/segoeui"
+                android:text="1 Month"
+                android:textSize="14dp"
+                android:padding="10dp"
+                android:gravity="start"
+                android:textColor="#000000"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.75dp"
+            android:background="#e5e5e5"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/two_months"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:background="#fff"
+                android:fontFamily="@font/segoeui"
+                android:text="2 Months"
+                android:textSize="14dp"
+                android:padding="10dp"
+                android:gravity="start"
+                android:textColor="#000000"
+                />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.75dp"
+            android:background="#e5e5e5"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/after_3months"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:background="#fff"
+                android:fontFamily="@font/segoeui"
+                android:text="After 3 Months"
+                android:textSize="14dp"
+                android:padding="10dp"
+                android:gravity="start"
+                android:textColor="#000000"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
+

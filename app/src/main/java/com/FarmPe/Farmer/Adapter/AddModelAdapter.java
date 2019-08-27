@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.FarmPe.Farmer.Fragment.Request_Details_New;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.FarmPe.Farmer.Bean.AddTractorBean;
@@ -92,7 +93,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
             public void onClick(View view) {
                 tractor_id=products.getId();
 
-                selectedFragment = RequestFormFragment.newInstance();
+                selectedFragment = Request_Details_New.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.add(R.id.frame_layout, selectedFragment);
                 transaction.addToBackStack("fourth");

@@ -61,7 +61,7 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.add_first_layout_item, parent, false);
+                .inflate(R.layout.brand_item, parent, false);
         return new MyViewHolder(itemView);
 
     }
@@ -84,6 +84,18 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
                 productList.get(position).setSelected(true);
                 notifyDataSetChanged();
 
+            }
+        });
+
+        holder.image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AddHpAdapter.hp_model = null;
+                selectedFragment = AddHpFragment.newInstance();
+                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+                transaction.add(R.id.frame_layout, selectedFragment);
+                transaction.addToBackStack("second");
+                transaction.commit();
             }
         });
 
