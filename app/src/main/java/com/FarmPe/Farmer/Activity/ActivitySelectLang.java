@@ -1,20 +1,25 @@
 package com.FarmPe.Farmer.Activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
-import com.FarmPe.Farmer.Adapter.SelectLanguageAdapter;
+import com.FarmPe.Farmer.Adapter.AdapterSelectLanguage;
 import com.FarmPe.Farmer.Bean.SelectLanguageBean;
 import com.FarmPe.Farmer.R;
-import com.FarmPe.Farmer.SessionManager;
 import com.FarmPe.Farmer.Urls;
 import com.FarmPe.Farmer.Volly_class.Login_post;
 import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
@@ -26,44 +31,27 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelectLanguageActivity extends AppCompatActivity {
+public class ActivitySelectLang extends AppCompatActivity {
     private List<SelectLanguageBean> newOrderBeansList = new ArrayList<>();
     private RecyclerView recyclerView;
-    private SelectLanguageAdapter mAdapter;
-    SessionManager sessionManager;
+    private AdapterSelectLanguage mAdapter;
     boolean doubleBackToExitPressedOnce = false;
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        System.out.println("loginonStart");
-        sessionManager = new SessionManager(getApplicationContext()); //check
-       // sessionManager.checkLogin();
-
-    }
+    LinearLayout linearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.select_language_layout);
-        //select_lang=findViewById(R.id.select_lang);
-        recyclerView =findViewById(R.id.recycler_view1);
+        setContentView(R.layout.a_a_selectlang);
+        recyclerView =findViewById(R.id.recycler_view_lang);
 
-        /*select_lang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(SelectLanguageActivity.this,WelcomeActivity.class);
-                startActivity(intent);
-            }
-        });*/
-
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(mLayoutManager);
+        GridLayoutManager mLayoutManager_farm = new GridLayoutManager(ActivitySelectLang.this, 3, GridLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(mLayoutManager_farm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        mAdapter = new SelectLanguageAdapter(SelectLanguageActivity.this, newOrderBeansList);
-        recyclerView.setAdapter(mAdapter);
+         linearLayout= findViewById(R.id.main_layout);
         Langauges();
+
     }
+
     private void Langauges() {
         try {
             newOrderBeansList.clear();
@@ -71,7 +59,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
             JSONObject postjsonObject = new JSONObject();
             userRequestjsonObject.put("TalukId",5495);
             postjsonObject.putOpt("Hobliobj", userRequestjsonObject);
-            Login_post.login_posting(SelectLanguageActivity.this, Urls.Languages,postjsonObject,new VoleyJsonObjectCallback() {
+            Login_post.login_posting(ActivitySelectLang.this, Urls.Languages,postjsonObject,new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("statussssss"+result);
@@ -85,6 +73,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
                             String langimg=jsonObject1.getString("ImageIcon");
                             SelectLanguageBean stateBean=new SelectLanguageBean(language,langCode,langimg);
                             newOrderBeansList.add(stateBean);
+                            mAdapter = new AdapterSelectLanguage(ActivitySelectLang.this, newOrderBeansList);
                             recyclerView.setAdapter(mAdapter);
                         }
                     } catch (JSONException e) {
@@ -96,32 +85,48 @@ public class SelectLanguageActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-    @Override
+
+     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            this.finishAffinity();
 
-            if (doubleBackToExitPressedOnce) {
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
-                startActivity(intent);
-                finish();
-                System.exit(0);
-            }
 
-            doubleBackToExitPressedOnce = true;
-            Toast.makeText(getApplicationContext(), "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
 
-            new Handler().postDelayed(new Runnable() {
+        if (doubleBackToExitPressedOnce) {
 
-                @Override
-                public void run() {
-                    doubleBackToExitPressedOnce=false;
-                }
-            }, 3000);
+            Intent intent1 = new Intent(Intent.ACTION_MAIN);
+            intent1.addCategory(Intent.CATEGORY_HOME);
+            intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+            startActivity(intent1);
+            finish();                   }
 
+
+        doubleBackToExitPressedOnce = true;
+
+        int duration=1000;
+        Snackbar snackbar = Snackbar
+                .make(linearLayout,"Please click Back again to Exit", duration);
+        View snackbarView = snackbar.getView();
+        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+        tv.setBackgroundColor(ContextCompat.getColor(ActivitySelectLang.this,R.color.orange));
+        tv.setTextColor(Color.WHITE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        } else {
+            tv.setGravity(Gravity.CENTER_HORIZONTAL);
         }
+
+        snackbar.show();
+
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 3000);
+
+
     }
+
 }

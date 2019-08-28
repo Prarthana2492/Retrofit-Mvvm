@@ -68,13 +68,14 @@ public class  Add_New_Address_Fragment extends Fragment {
     DistrictAdapter districtAdapter;
     TalukAdapter talukAdapter;
     HoblisAdapter hoblisAdapter;
+    VillageAdapter villageAdapter;
 
 
 
     public static DrawerLayout drawer,main_layout;
     LinearLayout back_feed;
     TextView toolbar_titletxt;
-    JSONArray jsonArray,state_array,tal_array,hobli_array;
+    JSONArray jsonArray,state_array,tal_array,hobli_array,village_array;
     StateBean stateBean;
     String new_add_toast;
     EditText search;
@@ -161,6 +162,13 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
         sessionManager = new SessionManager(getActivity());
+
+        /*if(getArguments().getString("navigation_from").equals("your_add")){
+
+            toolbar_titletxt.setText("Edit Address");
+            add_new_address.setText("Update Address");
+
+        }*/
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -542,6 +550,64 @@ public class  Add_New_Address_Fragment extends Fragment {
             }
         });
 
+        village.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!hobli.getText().toString().equals("")) {
+                getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+                // submit.setVisibility(View.VISIBLE);
+
+                drawer.openDrawer(GravityCompat.END);
+                search_status="village";
+               // search.setQuery("",false);
+                //   search.setQueryHint("");
+                // stateBeanList.clear();
+
+                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+                recyclerView.setLayoutManager(mLayoutManager);
+                final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setItemAnimator(new DefaultItemAnimator());
+                villageAdapter = new VillageAdapter(villageBeanList,getActivity());
+                recyclerView.setAdapter(villageAdapter);
+
+                prepareVillageData();
+                }
+                else {
+
+                    Snackbar snackbar = Snackbar
+                            .make(main_layout, "Please select a hobli", Snackbar.LENGTH_LONG);
+                    View snackbarView = snackbar.getView();
+                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
+                    tv.setTextColor(Color.WHITE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    } else {
+                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                    }
+                    snackbar.show();
+                }
+
+
+//                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+//                recyclerView.setLayoutManager(mLayoutManager);
+//
+//                final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+//                layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+//                recyclerView.setLayoutManager(layoutManager);
+//                recyclerView.setItemAnimator(new DefaultItemAnimator());
+//                //    villageAdapter = new VillageAdapter(villageBeanList);
+//                recyclerView.setAdapter(villageAdapter);
+//
+//                prepareVillageData();
+
+
+            }
+        });
+
+
 
 
         add_new_address.setOnClickListener(new View.OnClickListener() {
@@ -854,6 +920,8 @@ public class  Add_New_Address_Fragment extends Fragment {
 
     }
 
+
+
     private void prepareHobliData() {
 
 
@@ -898,6 +966,49 @@ public class  Add_New_Address_Fragment extends Fragment {
 
     }
 
+
+        private void prepareVillageData() {
+
+
+        try{
+            JSONObject jsonObject = new JSONObject();
+            JSONObject post_Object = new JSONObject();
+            jsonObject.put("HobliId",hoblisAdapter.hobliid);
+            post_Object.put("Villageobj",jsonObject);
+
+            Crop_Post.crop_posting(getActivity(), Urls.Villages, post_Object, new VoleyJsonObjectCallback() {
+                @Override
+                public void onSuccessResponse(JSONObject result) {
+                    System.out.println("111vvv" + result);
+
+                    try{
+                        villageBeanList.clear();
+                        village_array = result.getJSONArray("VillageList");
+                        for(int i = 0;i<village_array.length();i++) {
+                            JSONObject jsonObject1 = village_array.getJSONObject(i);
+                            stateBean = new StateBean(jsonObject1.getString("Village"), jsonObject1.getString("VillagId"));
+                            villageBeanList.add(stateBean);
+                        }
+
+                        sorting(villageBeanList);
+
+                        villageAdapter.notifyDataSetChanged();
+                        //   grade_dialog.show();
+
+
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+                }
+            });
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
 
 
     private void prepareStateData() {

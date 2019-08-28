@@ -24,7 +24,7 @@
 
 
         <activity
-            android:name=".Activity.LoginActivity"
+            android:name=".Activity.ActivitySelectLang"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,6 +44,9 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAEC7lt1xYl-YKTfHLwoAo1mTCwbQzRhpk" />
 
+        <activity
+            android:name=".Activity.LoginActivity_new"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.ForgotPasswordNew"
             android:screenOrientation="portrait" />

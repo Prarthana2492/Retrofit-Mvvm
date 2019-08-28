@@ -132,7 +132,7 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/segoeui"
             android:layout_gravity="center"
-            android:text="Are You Want To Delete The Request?"
+            android:text="Are you sure you want to delete the Request?"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:textColor="#000"

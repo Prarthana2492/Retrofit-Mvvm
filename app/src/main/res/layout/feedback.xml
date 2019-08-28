@@ -233,20 +233,20 @@
                     android:id="@+id/fd_descp"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:fontFamily="@font/segoeui"
-                    android:hint="Feedback Title"
+                    android:layout_marginHorizontal="10dp"
                     android:background="@drawable/border_empty_curve"
-                    android:textColor="#000000"
-                    android:padding="10dp"
+                    android:fontFamily="@font/segoeui"
+                    android:gravity="start"
+                    android:hint="Feedback Title"
                     android:maxLength="50"
-                    android:scrollbars="vertical"
                     android:overScrollMode="always"
-                    android:scrollbarStyle="insideInset"
+                    android:padding="10dp"
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="10dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:textSize="16dp"
-                    android:gravity="start"/>
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:textColor="#000000"
+                    android:textSize="16dp" />
 
 
             </LinearLayout>

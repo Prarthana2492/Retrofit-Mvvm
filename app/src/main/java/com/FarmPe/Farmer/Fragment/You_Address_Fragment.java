@@ -2,6 +2,8 @@ package com.FarmPe.Farmer.Fragment;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -34,7 +36,7 @@ import java.util.ArrayList;
 public class You_Address_Fragment extends Fragment {
 
     Fragment selectedFragment;
-    TextView name,mobile_no,street_addrss,landmrk,pincode,add_new_address,select_address_type;
+    TextView name,mobile_no,street_addrss,landmrk,pincode,add_new_address,select_address_type,filter;
     EditText doc_number,doc_name;
     private RecyclerView recyclerView;
     public static TextView address_list;
@@ -81,8 +83,9 @@ public class You_Address_Fragment extends Fragment {
         select_add_address = view.findViewById(R.id.select_address);
         select_address_type = view.findViewById(R.id.address_type1);
         recyclerView = view.findViewById(R.id.recycler_2);
-        address_list= view.findViewById(R.id.items);
+        //address_list= view.findViewById(R.id.items);
         toolbar_titletxt = view.findViewById(R.id.toolbar_title);
+        filter = view.findViewById(R.id.filter_text);
 
 
         sessionManager = new SessionManager(getActivity());
@@ -162,12 +165,13 @@ public class You_Address_Fragment extends Fragment {
         select_address_type.setText("All");
 
 
-        select_address_type.setOnClickListener(new View.OnClickListener() {
+        filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 final Dialog dialog = new Dialog(getActivity());
                 dialog.setContentView(R.layout.select_address_popup);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 final TextView home = (TextView) dialog.findViewById(R.id.home_1);
 
                 final TextView ware_house = (TextView)dialog.findViewById(R.id.ware_hus) ;
@@ -261,7 +265,7 @@ public class You_Address_Fragment extends Fragment {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
          //   toolbar_titletxt.setText(lngObject.getString("SelectYourAdress"));
             add_new_address.setText(lngObject.getString("AddNewAddress"));
-            adrs_are_added=(lngObject.getString("Addressesareadded"));
+           // adrs_are_added=(lngObject.getString("Addressesareadded"));
             select_address_type.setText(lngObject.getString("All"));
            // select_address_type.setText(lngObject.getString("Home"));
             //ad_list=(lngObject.getString("addressesareaddedin"));
@@ -306,7 +310,7 @@ public class You_Address_Fragment extends Fragment {
 
 
 
-                        if(new_address_beanArrayList.size()<=1){
+                       /* if(new_address_beanArrayList.size()<=1){
 
                             item_list = String.valueOf(new_address_beanArrayList.size());
                             address_list.setText(item_list+" " + " Address is added" );
@@ -316,7 +320,7 @@ public class You_Address_Fragment extends Fragment {
                             item_list = String.valueOf(new_address_beanArrayList.size());
                             address_list.setText(item_list+" " + adrs_are_added );
 
-                        }
+                        }*/
 
 
                         mAdapter.notifyDataSetChanged();

@@ -97,6 +97,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
         // no_list_farm= view.findViewById(R.id.list_farmmmmm);
 
 
+
         no_make_request = view.findViewById(R.id.make_requesttttt);
 
         seeall_request = view.findViewById(R.id.request_sell_all);
@@ -268,6 +269,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
 
                         newOrderBeansList.clear();
                         newOrderBeansList2.clear();
+
 
                         String farm_count = String.valueOf(result.getInt("FarmsCount"));
                         String request_count = String.valueOf(result.getInt("RFQCount"));

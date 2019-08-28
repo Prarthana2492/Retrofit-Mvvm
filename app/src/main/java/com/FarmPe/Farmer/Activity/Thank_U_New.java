@@ -143,15 +143,15 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
         super.onCreate(savedInstanceState);
 
         checkConnection();
-        setContentView(R.layout.thank_you_otp);
+        setContentView(R.layout.thank_you_otp1);
         linearLayout=findViewById(R.id.main_layout);
-        back_thank_u=findViewById(R.id.arrow_thank_u);
+        back_thank_u=findViewById(R.id.back_feed);
         thanktu_submit=findViewById(R.id.thanktu_submit);
-        enter_otp=findViewById(R.id.otp_forgot_pass);
+        enter_otp=findViewById(R.id.otp_pass);
         otp_text=findViewById(R.id.thanktu);
         thank_title=findViewById(R.id.thank);
 
-        resend_otp=findViewById(R.id.f_resend);
+        //resend_otp=findViewById(R.id.f_resend);
 
 
 
@@ -187,7 +187,7 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
         back_thank_u.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Thank_U_New.this,LoginActivity.class);
+                Intent intent=new Intent(Thank_U_New.this,ForgotPasswordNew.class);
                 startActivity(intent);
                 finish();
             }
@@ -206,7 +206,7 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
 
 
 
-        resend_otp.setOnClickListener(new View.OnClickListener() {
+       /* resend_otp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try{
@@ -275,7 +275,7 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
                 }
             }
         });
-
+*/
 
 
 
@@ -334,7 +334,7 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
     public void onBackPressed() {
 
 
-        Intent intent=new Intent(Thank_U_New.this,LoginActivity.class);
+        Intent intent=new Intent(Thank_U_New.this,ForgotPasswordNew.class);
         startActivity(intent);
         finish();
     }

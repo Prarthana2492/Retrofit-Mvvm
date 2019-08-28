@@ -137,10 +137,10 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.reset_password);
+        setContentView(R.layout.reset_pass_1);
 
         checkConnection();
-        back_reset_pass=findViewById(R.id.arrow_reset_pass);
+        back_reset_pass=findViewById(R.id.back_feed);
         pass_submit=findViewById(R.id.password_submit);
         passwd=findViewById(R.id.passwd1);
         conf_pass=findViewById(R.id.conf_pass1);
@@ -148,7 +148,7 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
         conf_pass_txt=findViewById(R.id.conf_pass_txt);
         linearLayout=findViewById(R.id.main_layout);
         reset_text=findViewById(R.id.reset);
-        to_continue_text=findViewById(R.id.tocnt);
+       // to_continue_text=findViewById(R.id.tocnt);
         myDb = new DatabaseHelper(this);
 
         edittext_move(ForgotPasswordNew.mobileno, passwd);
@@ -167,7 +167,7 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
 
 
             reset_text.setText(lngObject.getString("ResetPassword"));
-            to_continue_text.setText(lngObject.getString("TocontinuewithFarmPeFarmer"));
+           // to_continue_text.setText(lngObject.getString("TocontinuewithFarmPeFarmer"));
             pass_submit.setText(lngObject.getString("Submit"));
             passwd_txt.setHint(lngObject.getString("NewPassword"));
             conf_pass_txt.setHint(lngObject.getString("Confirmthepassword"));
@@ -188,7 +188,7 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
         back_reset_pass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(ResetPasswordNew.this,LoginActivity.class);
+                Intent intent=new Intent(ResetPasswordNew.this,Thank_U_New.class);
                 startActivity(intent);
                 finish();
             }
@@ -350,7 +350,7 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
                                             }
                                             System.out.println("hhhhhgggere" +message);
                                             Toast.makeText(ResetPasswordNew.this, message, Toast.LENGTH_SHORT).show();
-                                            Intent intent=new Intent(ResetPasswordNew.this, LoginActivity.class);
+                                            Intent intent=new Intent(ResetPasswordNew.this, LoginActivity_new.class);
                                             startActivity(intent);
 
 
@@ -384,7 +384,7 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
     @Override
     public void onBackPressed() {
         //System.exit(0);
-        Intent intent=new Intent(ResetPasswordNew.this,LoginActivity.class);
+        Intent intent=new Intent(ResetPasswordNew.this,Thank_U_New.class);
         startActivity(intent);
         finish();
     }

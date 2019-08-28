@@ -410,9 +410,9 @@ public class Edit_Looking_For_Fragment extends Fragment {
                     modelid = jsonObject1.getString("ModelId");
 
 
-                 brand.setText("Brand - " + brand_name);
+                    brand.setText("Brand - " + brand_name);
                     hp_power.setText("HP - " + horse_range);
-                 model.setText("Model - " + model_name);
+                    model.setText("Model - " + model_name);
                     address_text.setText(area + " , " + district );
 
 
