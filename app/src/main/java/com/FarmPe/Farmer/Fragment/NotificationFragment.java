@@ -14,8 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-
 import com.FarmPe.Farmer.Adapter.NotificationAdapter;
 import com.FarmPe.Farmer.Bean.FarmsImageBean;
 import com.FarmPe.Farmer.Bean.Notification_Home_Bean;
@@ -24,13 +22,14 @@ import com.FarmPe.Farmer.SessionManager;
 import com.FarmPe.Farmer.Urls;
 import com.FarmPe.Farmer.Volly_class.Crop_Post;
 import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
+
+
+
 
 public class NotificationFragment extends Fragment {
 
@@ -45,6 +44,7 @@ public class NotificationFragment extends Fragment {
     JSONObject lngObject;
     JSONArray notifn_array;
     String location;
+
 
     public static NotificationFragment newInstance() {
         NotificationFragment fragment = new NotificationFragment();

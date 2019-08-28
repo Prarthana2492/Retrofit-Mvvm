@@ -87,6 +87,9 @@ public class NotificationList extends Fragment {
 
 
 
+
+
+
         newOrderBeansList.clear();
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager_farm);
@@ -134,9 +137,6 @@ public class NotificationList extends Fragment {
 //                            JSONObject jsonObject2=jsonObject1.getJSONObject("Address");
 
                             String model=jsonObject1.getString("NotificationText");
-
-
-
 
 
                             System.out.println("madelslistt"+newOrderBeansList.size());

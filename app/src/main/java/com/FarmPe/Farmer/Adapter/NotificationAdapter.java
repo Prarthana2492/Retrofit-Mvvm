@@ -35,7 +35,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     }
 
 
-
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image;
         public TextView prod_price,prod_name,duration,farmer_name,location,connect;
@@ -51,9 +50,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
 
         }
-
     }
-
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

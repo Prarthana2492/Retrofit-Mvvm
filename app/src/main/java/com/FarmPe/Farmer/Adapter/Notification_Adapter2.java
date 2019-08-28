@@ -57,7 +57,6 @@ public class Notification_Adapter2 extends RecyclerView.Adapter<Notification_Ada
             actninfo=view.findViewById(R.id.actninfo);
             switch1=view.findViewById(R.id.switch1);
 
-
         }
 
     }
