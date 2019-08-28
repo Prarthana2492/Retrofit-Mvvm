@@ -3,95 +3,85 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-
+    android:background="#FAFAFA"
     android:layout_marginHorizontal="20dp"
     android:layout_marginTop="20dp"
     android:tag="cards main container">
 
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="100"
+        android:orientation="horizontal">
+
         <LinearLayout
+            android:id="@+id/submit_langu_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@drawable/border_curve_grey"
-            android:padding="15dp"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:orientation="horizontal"
             android:weightSum="100"
             >
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="100"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/submit_langu_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:orientation="horizontal"
-                    android:weightSum="100"
-                    >
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_weight="15">
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="20">
 
 
-                        <ImageView
-                            android:id="@+id/lang_icon"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:textColor="#fff" />
+                <ImageView
+                    android:id="@+id/lang_icon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:textColor="#fff" />
 
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="65">
-
-                        <TextView
-                            android:id="@+id/lang_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:fontFamily="@font/segoeui"
-                            android:text="Kannada"
-                            android:layout_marginLeft="5dp"
-                            android:gravity="center_vertical"
-                            android:textColor="#fff"
-                            android:textSize="18dp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="20">
-
-
-                        <ImageView
-                            android:id="@+id/right_img"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/circle"
-                            android:textColor="#fff" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
             </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="65">
+
+                <TextView
+                    android:id="@+id/lang_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/segoeui"
+                    android:text="Kannada"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:textColor="#000"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="20">
+
+
+                <ImageView
+                    android:id="@+id/right_img"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_success__empty"
+                    android:textColor="#fff" />
+
+            </LinearLayout>
+
         </LinearLayout>
+    </LinearLayout>
 
 
 </LinearLayout>

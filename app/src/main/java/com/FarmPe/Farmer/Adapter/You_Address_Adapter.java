@@ -363,7 +363,6 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                     });
 
 
-
                 }catch (Exception e){
                     e.printStackTrace();
                 }

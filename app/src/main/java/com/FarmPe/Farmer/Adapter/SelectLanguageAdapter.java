@@ -50,19 +50,20 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView language_name;
         public LinearLayout submit_langu;
-        public ImageView right_img,lang_image;
+        public ImageView right_img, lang_image;
 
 
         public MyViewHolder(View view) {
             super(view);
-            language_name=view.findViewById(R.id.lang_text);
-            submit_langu=view.findViewById(R.id.submit_langu_layout);
-            right_img=view.findViewById(R.id.right_img);
+            language_name = view.findViewById(R.id.lang_text);
+            submit_langu = view.findViewById(R.id.submit_langu_layout);
+            right_img = view.findViewById(R.id.right_img);
             lang_image = view.findViewById(R.id.lang_icon);
 
-        }
 
+        }
     }
+
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -72,37 +73,54 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
 
     }
 
-
-
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final SelectLanguageBean products = productList.get(position);
 
 
-        if (LoginActivity.isEng && position == 0){
-            holder.right_img.setImageResource(R.drawable.ic_verified_filled_grey_white);
-            LoginActivity.isEng = false;
 
-        }else if(HomeMenuFragment.isEng && position==0){
+        if (sessionManager.getRegId("language_name").equals(products.getVendor())){
+            // holder.right_img.setImageResource(R.drawable.ic_verified_filled_grey_white);
+            //  holder.lng_rad_but.setBackgroundColor(Color.GREEN);
+            holder.right_img.setVisibility(View.VISIBLE);
 
-            holder.right_img.setImageResource(R.drawable.ic_verified_filled_grey_white);
-            HomeMenuFragment.isEng = false;
+        }else {
+
+            holder.right_img.setVisibility(View.GONE);
+
+            //// holder.right_img.setImageResource(R.drawable.filled_grey_circle);
+
+//            holder.right_img.setImageResource(R.drawable.v);
+
+            //  holder.lng_rad_but.setBackgroundColor(Color.WHITE);
+
 
         }
-        else {
-            if (sessionManager.getRegId("language_name").equals(products.getVendor())) {
-                holder.right_img.setImageResource(R.drawable.ic_verified_filled_grey_white);
 
 
-            } else {
-
-                holder.right_img.setImageResource(R.drawable.filled_grey_circle);
-
-
-            }
-        }
+//        if (LoginActivity.isEng && position == 0){
+//            holder.right_img.setImageResource(R.drawable.ic_verified_filled_grey_white);
+//            LoginActivity.isEng = false;
+//
+//        }else if(HomeMenuFragment.isEng && position==0){
+//
+//            holder.right_img.setImageResource(R.drawable.ic_verified_filled_grey_white);
+//            HomeMenuFragment.isEng = false;
+//
+//        }
+//        else {
+//            if (sessionManager.getRegId("language_name").equals(products.getVendor())) {
+//                holder.right_img.setImageResource(R.drawable.ic_verified_filled_grey_white);
+//
+//
+//            } else {
+//
+//                holder.right_img.setImageResource(R.drawable.filled_grey_circle);
+//
+//
+//            }
+//        }
         holder.language_name.setText(products.getVendor());
-
 
 
 
