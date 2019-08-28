@@ -10,7 +10,7 @@
     tools:openDrawer="start">
 
     <include
-        layout="@layout/new_address2"
+        layout="@layout/list_farm_third_layout_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

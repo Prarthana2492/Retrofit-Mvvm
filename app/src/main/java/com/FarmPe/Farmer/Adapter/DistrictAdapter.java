@@ -50,7 +50,7 @@ public class DistrictAdapter extends RecyclerView.Adapter<DistrictAdapter.MyStat
                 district_name=stateBean.getName();
 
 
-                Add_New_Address_Fragment.district.setText(holder.statename.getText().toString());
+                Add_New_Address_Fragment.district_txt.setText(holder.statename.getText().toString());
                 Add_New_Address_Fragment.drawer.closeDrawers();
               //  Add_New_Address_Fragment.grade_dialog.dismiss();
             }

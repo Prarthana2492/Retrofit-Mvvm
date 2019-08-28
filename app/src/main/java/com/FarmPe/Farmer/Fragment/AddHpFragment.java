@@ -68,7 +68,6 @@ ImageView b_arrow;
 
 
 
-
         b_arrow=view.findViewById(R.id.b_arrow);
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override

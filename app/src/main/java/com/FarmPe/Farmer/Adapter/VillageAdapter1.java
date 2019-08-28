@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 
 import com.FarmPe.Farmer.Bean.StateBean;
-import com.FarmPe.Farmer.Fragment.New_Address_Fragment;
+import com.FarmPe.Farmer.Fragment.Add_New_Address_Fragment;
 import com.FarmPe.Farmer.R;
 
 import java.util.List;
@@ -50,8 +50,8 @@ public class VillageAdapter1 extends RecyclerView.Adapter<VillageAdapter1.Hoblis
             public void onClick(View view) {
                villageid = stateBean.getId();
 
-                    New_Address_Fragment.village.setText(holder.statename.getText().toString());
-                    New_Address_Fragment.drawer.closeDrawers();
+                Add_New_Address_Fragment.village_txt.setText(holder.statename.getText().toString());
+                Add_New_Address_Fragment.drawer.closeDrawers();
 
 
 

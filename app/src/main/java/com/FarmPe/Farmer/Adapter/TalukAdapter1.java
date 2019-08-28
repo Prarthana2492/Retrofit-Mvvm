@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.FarmPe.Farmer.Bean.StateBean;
 
-import com.FarmPe.Farmer.Fragment.New_Address_Fragment;
+import com.FarmPe.Farmer.Fragment.Add_New_Address_Fragment;
 import com.FarmPe.Farmer.R;
 
 import java.util.List;
@@ -51,9 +51,9 @@ public class TalukAdapter1 extends RecyclerView.Adapter<TalukAdapter1.TalukMyVie
                 talukid=stateBean.getId();
 
 
-                New_Address_Fragment.taluk.setText(holder.statename.getText().toString());
-                New_Address_Fragment .drawer.closeDrawers();
-                New_Address_Fragment .search.setText("");
+                Add_New_Address_Fragment.tehsil_txt.setText(holder.statename.getText().toString());
+                Add_New_Address_Fragment .drawer.closeDrawers();
+              //  New_Address_Fragment .search.setText("");
 
 
 

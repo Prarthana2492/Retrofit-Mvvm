@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.FarmPe.Farmer.Bean.StateBean;
 
-import com.FarmPe.Farmer.Fragment.New_Address_Fragment;
+import com.FarmPe.Farmer.Fragment.Add_New_Address_Fragment;
 import com.FarmPe.Farmer.R;
 
 import java.util.List;
@@ -50,9 +50,9 @@ public class StateApdater1 extends RecyclerView.Adapter<StateApdater1.MyStateHol
                 stateid=stateBean.getId();
 
 
-                New_Address_Fragment.state.setText(holder.statename.getText().toString());
-                New_Address_Fragment .drawer.closeDrawers();
-                New_Address_Fragment .search.setText("");
+                Add_New_Address_Fragment.state_txt.setText(holder.statename.getText().toString());
+                Add_New_Address_Fragment .drawer.closeDrawers();
+               // New_Address_Fragment .search.setText("");
 
 
 

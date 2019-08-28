@@ -38,10 +38,6 @@ public class ChangeLanguageFragment extends Fragment {
    public static TextView lang_title;
 
 
-
-
-
-
     public static ChangeLanguageFragment newInstance() {
         ChangeLanguageFragment fragment = new ChangeLanguageFragment();
         return fragment;

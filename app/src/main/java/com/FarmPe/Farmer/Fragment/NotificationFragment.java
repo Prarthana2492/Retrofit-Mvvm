@@ -73,14 +73,11 @@ public class NotificationFragment extends Fragment {
                     fm.popBackStack ("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 
-
-
                     return true;
                 }
                 return false;
             }
         });
-
 
 
         newOrderBeansList.clear();
@@ -98,7 +95,6 @@ public class NotificationFragment extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
 
 
         try{

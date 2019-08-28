@@ -33,6 +33,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -76,17 +77,20 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
     public static TextView name,price;
     Fragment selectedFragment = null;
     public static ImageView cart_img;
-
+    View Profile,feedback_view,invite_view;
     JSONObject lngObject;
     String toast_internet,toast_nointernet;
     CoordinatorLayout coordinate_layout;
     SessionManager sessionManager;
     public static Bitmap selectedImage;
+    public static EditText editname;
 
     public  static Activity activity;
     public static String toast_click_back;
     boolean doubleBackToExitPressedOnce = false;
     private static final int MAX_DIMENSION = 200;
+    public static BottomSheetBehavior mBottomSheetBehavior6,mBottomSheetBehavior5,mBottomSheetBehavior4;
+    public static TextView name_hint,cancel,save,logout,cancel_feed,cancel_invite,prof_name,buy_now;
 
     private static final String TAG = LandingPageActivity.class.getSimpleName();
 
@@ -232,7 +236,14 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
         checkConnection();
 
         coordinate_layout=findViewById(R.id.coordinator);
-
+        name_hint=findViewById(R.id.enter_name_text);
+        coordinate_layout=findViewById(R.id.coordinator);
+        editname=findViewById(R.id.enter_name);
+        cancel=findViewById(R.id.cancel);
+        cancel_feed=findViewById(R.id.cancel_feed);
+        cancel_invite=findViewById(R.id.cancel_invite);
+        save=findViewById(R.id.save);
+        logout=findViewById(R.id.logout);
 
         sessionManager = new SessionManager(this);
         activity= this;
@@ -269,7 +280,100 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
         transaction.replace(R.id.frame_layout, selectedFragment);
         transaction.commit();
 
+
+
+
+        Profile = findViewById(R.id.profile_view);
+        feedback_view = findViewById(R.id.feedback_view);
+        invite_view = findViewById(R.id.invite_view);
+
+        mBottomSheetBehavior6 = BottomSheetBehavior.from(Profile);
+        mBottomSheetBehavior6.setPeekHeight(0);
+
+        mBottomSheetBehavior5 = BottomSheetBehavior.from(feedback_view);
+        mBottomSheetBehavior5.setPeekHeight(0);
+
+        mBottomSheetBehavior4 = BottomSheetBehavior.from(invite_view);
+        mBottomSheetBehavior4.setPeekHeight(0);
+
+        mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        mBottomSheetBehavior5.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        mBottomSheetBehavior4.setState(BottomSheetBehavior.STATE_COLLAPSED);
+
+        mBottomSheetBehavior6.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(View bottomSheet, int newState) {
+                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
+
+                }
+                else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+                }
+                else if (newState == BottomSheetBehavior.STATE_HIDDEN) {
+
+                }
+            }
+
+
+            @Override
+            public void onSlide(View bottomSheet, float slideOffset) {
+            }
+
+        });
+
+
+        mBottomSheetBehavior5.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(View bottomSheet, int newState) {
+                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
+
+                }
+                else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+                }
+                else if (newState == BottomSheetBehavior.STATE_HIDDEN) {
+
+                }
+            }
+
+
+            @Override
+            public void onSlide(View bottomSheet, float slideOffset) {
+            }
+
+        });
+
+        mBottomSheetBehavior4.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(View bottomSheet, int newState) {
+                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
+
+                }
+                else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+                }
+                else if (newState == BottomSheetBehavior.STATE_HIDDEN) {
+
+                }
+            }
+
+
+            @Override
+            public void onSlide(View bottomSheet, float slideOffset) {
+            }
+
+        });
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -285,6 +389,8 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
 //            transaction.commit();
 
     }
+
+
 
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {
