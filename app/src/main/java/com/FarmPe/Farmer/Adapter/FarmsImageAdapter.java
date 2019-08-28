@@ -30,7 +30,7 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-public class FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.MyViewHolder>  {
+public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.MyViewHolder>  {
     private List<FarmsImageBean> productList;
     Activity activity;
     Fragment selectedFragment;

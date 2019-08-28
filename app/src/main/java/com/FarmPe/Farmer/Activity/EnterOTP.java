@@ -159,16 +159,16 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
 
         checkConnection();
 
-        setContentView(R.layout.otp_layout);
+        setContentView(R.layout.thank_you_otp1);
         vibe = (Vibrator) getApplication().getSystemService(Context.VIBRATOR_SERVICE);
 
-        submit=findViewById(R.id.otp_submit);
+        submit=findViewById(R.id.thanktu_submit);
         otp_title=findViewById(R.id.thank);
-        otpedittext=findViewById(R.id.otp);
-        otp_text=findViewById(R.id.thanktu);
+        otpedittext=findViewById(R.id.otp_pass);
+        //otp_text=findViewById(R.id.thanktu);
         linearLayout=findViewById(R.id.main_layout);
 
-        left_arrow=findViewById(R.id.left_arow);
+        left_arrow=findViewById(R.id.back_feed);
 
 
 
@@ -176,7 +176,7 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
 
 
         resendotp=findViewById(R.id.resend);
-
+        resendotp.setVisibility(View.VISIBLE);
         resendotp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

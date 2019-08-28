@@ -67,6 +67,7 @@ public class RequestFormFragment extends Fragment {
     JSONArray get_address_array;
     String pickUPFrom;
     ImageView b_arrow;
+
     public static RequestFormFragment newInstance() {
         RequestFormFragment fragment = new RequestFormFragment();
         return fragment;

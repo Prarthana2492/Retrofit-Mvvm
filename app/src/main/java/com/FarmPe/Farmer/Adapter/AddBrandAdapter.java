@@ -87,7 +87,17 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
             }
         });
 
-
+       /* holder.image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AddHpAdapter.hp_model = null;
+                selectedFragment = AddHpFragment.newInstance();
+                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+                transaction.add(R.id.frame_layout, selectedFragment);
+                transaction.addToBackStack("second");
+                transaction.commit();
+            }
+        });*/
 
         Glide.with(activity).load(products.getImage())
 

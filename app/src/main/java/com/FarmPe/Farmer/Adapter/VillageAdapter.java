@@ -51,6 +51,7 @@ public class VillageAdapter extends RecyclerView.Adapter<VillageAdapter.HoblisMy
                 Add_New_Address_Fragment.village_txt.setText(holder.statename.getText().toString());
                 Add_New_Address_Fragment.drawer.closeDrawers();
                 // Add_New_Address_Fragment.grade_dialog.dismiss();
+
             }
         });
     }

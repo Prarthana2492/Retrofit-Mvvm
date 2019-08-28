@@ -227,7 +227,7 @@ public class ReferAndEarncopy extends Fragment {
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setClassName("com.twitter.android", "com.twitter.android.composer.ComposerActivity");
                     intent.setType("text/plain");
-                    intent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeFarmer\" Tap https://play.google.com/store/apps/details?id=com.renewin.FarmPeFarmer to download the app!");
+                    intent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeFarmer\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farmer to download the app!");
 
                     startActivity(intent);
 
@@ -251,7 +251,7 @@ public class ReferAndEarncopy extends Fragment {
                     whatsappIntent.setType("text/plain");
                     whatsappIntent.setPackage("com.whatsapp");
                     //whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Text");
-                    whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeFarmer\" Tap https://play.google.com/store/apps/details?id=com.renewin.FarmPeFarmer to download the app!");
+                    whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeFarmer\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farmer to download the app!");
                     try {
                         startActivity(whatsappIntent);
                     } catch (android.content.ActivityNotFoundException ex) {
@@ -276,7 +276,7 @@ public class ReferAndEarncopy extends Fragment {
                     messageIntent.setType("text/plain");
                     messageIntent.setPackage("com.android.mms");
                     //whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Text");
-                    messageIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeFarmer\" Tap https://play.google.com/store/apps/details?id=com.renewin.FarmPeFarmer to download the app");
+                    messageIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeFarmer\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farmer to download the app");
                     try {
                         startActivity(messageIntent);
                     } catch (android.content.ActivityNotFoundException ex) {
@@ -301,7 +301,7 @@ public class ReferAndEarncopy extends Fragment {
                 if (packageName.contains("com.facebook.katana")) {
                     Intent sendIntent = new Intent();
                     sendIntent.setAction(Intent.ACTION_SEND);
-                    sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeFarmer\" Tap https://play.google.com/store/apps/details?id=com.renewin.FarmPeFarmer to download the app");
+                    sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeFarmer\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farmer to download the app");
                     sendIntent.setType("text/plain");
                     sendIntent.setPackage("com.facebook.katana");
                     try {
@@ -324,7 +324,7 @@ public class ReferAndEarncopy extends Fragment {
                 if (packageName.contains("com.instagram")) {
                     Intent sendIntent = new Intent();
                     sendIntent.setAction(Intent.ACTION_SEND);
-                    sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeFarmer\" Tap https://play.google.com/store/apps/details?id=com.renewin.FarmPeFarmer to download the app");
+                    sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeFarmer\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farmer to download the app");
 
                     sendIntent.setType("text/plain");
                     sendIntent.setPackage("com.instagram.android");
@@ -378,7 +378,8 @@ public class ReferAndEarncopy extends Fragment {
                     intent.putExtra("AppName", resInfo.loadLabel(pm).toString());
                     intent.setAction(Intent.ACTION_SEND);
                     intent.setType("text/plain");
-                    intent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeFarmer\" Tap https://play.google.com/store/apps/details?id=com.renewin.FarmPeFarmer to download the app!");
+                    intent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeFarmer\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farmer" +
+                            " to download the app!");
                     //intent.putExtra(Intent.EXTRA_SUBJECT, "");
                     intent.setPackage(packageName);
                     targetShareIntents.add(intent);

@@ -47,7 +47,6 @@ public class Crop_Post {
                     public void onResponse(JSONObject jsonObject) {
                         progressDialog.cancel();
 
-//{"Status":"1","Message":"New KYC Added Succesfully"}
                         try {
                             System.out.println("jsonobjectAppointments" + jsonObject);
                             callback.onSuccessResponse(jsonObject);

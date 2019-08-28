@@ -186,7 +186,7 @@
                                 android:selectAllOnFocus="true"
                                 android:textCursorDrawable="@drawable/cursor_color"
                                 android:padding="10dp"
-                                android:background="@android:color/transparent"
+                                android:background="@drawable/border_red"
                                 android:textColor="#000000"
                                 />
                         </LinearLayout>

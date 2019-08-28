@@ -128,7 +128,7 @@ ImageView b_arrow;
                     snackbar.show();*/
 
                 }else{
-                 AddModelAdapter.tractor_id =null;
+                    AddModelAdapter.tractor_id =null;
                     selectedFragment = AddModelFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.add(R.id.frame_layout, selectedFragment);

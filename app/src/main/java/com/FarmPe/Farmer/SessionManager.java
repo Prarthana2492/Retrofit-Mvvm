@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 
 import com.FarmPe.Farmer.Activity.LandingPageActivity;
 import com.FarmPe.Farmer.Activity.LoginActivity;
+import com.FarmPe.Farmer.Activity.LoginActivity_new;
 
 
 /**
@@ -203,7 +204,7 @@ public class SessionManager {
         editor.clear();
         editor.commit();
         // After logout redirect user to Loing Activity
-        Intent i = new Intent(_context, LoginActivity.class);
+        Intent i = new Intent(_context, LoginActivity_new.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);// for clearing
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

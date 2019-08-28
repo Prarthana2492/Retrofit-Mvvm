@@ -54,7 +54,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
     public static CardView cardView;
     JSONObject lngObject;
     LinearLayout linearLayout;
-    String deleted ;
+    String deleted, default_addrs_updtd;
 
 
     public You_Address_Adapter(List<Add_New_Address_Bean> moviesList, Activity activity) {
@@ -178,6 +178,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
             @Override
             public void onClick(View v) {
 
+
                 final TextView yes1,no1,delete_text,popupheading;
                 System.out.println("aaaaaaaaaaaa");
                 final Dialog dialog = new Dialog(activity);
@@ -249,9 +250,9 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
                                             int duration = 1000;
                                             Snackbar snackbar = Snackbar
-                                                    .make(linearLayout, deleted, duration);
-                                            View snackbarView = snackbar.getView();
-                                            TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                                                      .make(linearLayout, deleted, duration);
+                                            View snackbarView2 = snackbar.getView();
+                                            TextView tv = (TextView) snackbarView2.findViewById(android.support.design.R.id.snackbar_text);
                                             tv.setBackgroundColor(ContextCompat.getColor(activity,R.color.orange));
                                             tv.setTextColor(Color.WHITE);
 
@@ -282,9 +283,6 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
                                         }
 
-//adrs_are_added=(lngObject.getString("Addressesareadded"));
-//
-//address_list.setText(item_list+" " + adrs_are_added );
 
 
                                     }catch (Exception e){
@@ -335,9 +333,9 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                                 if(status1.equals("1")){
                                     int duration = 1000;
                                     Snackbar snackbar = Snackbar
-                                            .make(linearLayout, message1, duration);
-                                    View snackbarView = snackbar.getView();
-                                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                                            .make(linearLayout, default_addrs_updtd, duration);
+                                    View snackbarView1 = snackbar.getView();
+                                    TextView tv = (TextView) snackbarView1.findViewById(android.support.design.R.id.snackbar_text);
                                     tv.setBackgroundColor(ContextCompat.getColor(activity,R.color.orange));
                                     tv.setTextColor(Color.WHITE);
 
@@ -377,6 +375,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
             holder.delete_1.setText(lngObject.getString("Delete"));
             holder.default_1.setText(lngObject.getString("setasdefault"));
             holder.default_add .setText(lngObject.getString("defaultaddressfordelivery"));
+            default_addrs_updtd =lngObject.getString("DefaultaddressupdatedSuccessfully");
         } catch (JSONException e) {
             e.printStackTrace();
         }
