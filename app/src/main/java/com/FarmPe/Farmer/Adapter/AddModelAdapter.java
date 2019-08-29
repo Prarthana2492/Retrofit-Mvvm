@@ -108,12 +108,12 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.image);
 
-        if (productList.get(position).isSelected()){
-            holder.item.setBackgroundResource(R.drawable.grey_background_drawable);
-
-        }else {
-            holder.item.setBackgroundResource(R.drawable.border_transperent);
-        }
+//        if (productList.get(position).isSelected()){
+//            holder.item.setBackgroundResource(R.drawable.grey_background_drawable);
+//
+//        }else {
+//            holder.item.setBackgroundResource(R.drawable.border_transperent);
+//        }
 
 
     }

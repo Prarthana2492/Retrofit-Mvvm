@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +25,7 @@ import static com.FarmPe.Farmer.Activity.LandingPageActivity.mBottomSheetBehavio
 
 public class AaHelpFragment extends Fragment {
     Fragment selectedFragment;
-    LinearLayout backfeed,feedback_lay,main_layout,about_lay;
+    LinearLayout backfeed,feedback_lay,main_layout,about_lay,privacy_lay;
     TextView notificatn,change_language,your_addresss,acc_info1,refer_ern,feedbk,help_1,abt_frmpe,polic_1,logot,setting_tittle;
     SessionManager sessionManager;
     JSONObject lngObject;
@@ -40,7 +41,8 @@ public class AaHelpFragment extends Fragment {
         backfeed=view.findViewById(R.id.back_feed);
         feedback_lay=view.findViewById(R.id.feedback_lay);
         main_layout=view.findViewById(R.id.main_layout);
-       // about_lay=view.findViewById(R.id.about_lay);
+        privacy_lay=view.findViewById(R.id.privacy_lay);
+       about_lay=view.findViewById(R.id.abt_farmpe_lay);
 
         getActivity().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
@@ -97,6 +99,37 @@ public class AaHelpFragment extends Fragment {
 
                     }
                 });
+            }
+        });
+
+
+        privacy_lay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("status","setting_privacy");
+                selectedFragment = PrivacyPolicyFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                selectedFragment.setArguments(bundle);
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.addToBackStack("privacy");
+                transaction.commit();
+
+
+            }
+        });
+
+        about_lay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                selectedFragment = AboutfarmpeFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.addToBackStack("setting");
+                transaction.commit();
+
+
             }
         });
 

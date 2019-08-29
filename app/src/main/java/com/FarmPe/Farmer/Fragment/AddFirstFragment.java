@@ -46,7 +46,7 @@ public class AddFirstFragment extends Fragment {
     TextView continue_button;
     public static String tracter_title = "";
     Fragment selectedFragment;
-ImageView b_arrow;
+        ImageView b_arrow;
 
 
 
@@ -57,7 +57,7 @@ ImageView b_arrow;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.add_first_recy, container, false);
+        View view = inflater.inflate(R.layout.request_price_recyc_layout, container, false);
         recyclerView=view.findViewById(R.id.recycler_what_looking);
         continue_button=view.findViewById(R.id.continue_button);
         back_feed=view.findViewById(R.id.back_feed);
@@ -68,7 +68,6 @@ ImageView b_arrow;
             @Override
             public void onClick(View v) {
                 HomeMenuFragment.onBack_status="no_request";
-                b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
                 selectedFragment = HomeMenuFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.add(R.id.frame_layout, selectedFragment);
@@ -77,55 +76,55 @@ ImageView b_arrow;
         });
 
 
-        continue_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkk"+AddFirstAdapter.looinkgId);
-
-                if (AddFirstAdapter.looinkgId==null){
-
-                    Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Please choose any option", Snackbar.LENGTH_LONG);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                    }
-
-                    snackbar.show();
-
-                  /*  int duration = 1000;
-                    Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Please choose any option", duration);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                    }
-
-                    snackbar.show();*/
-
-
-                }else {
-
-                    AddBrandAdapter.brandId = null;
-                    selectedFragment = AddBrandFragment.newInstance();
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.add(R.id.frame_layout, selectedFragment);
-                    transaction.addToBackStack("first");
-                    transaction.commit();
-                }
-
-            }
-        });
+//        continue_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkk"+AddFirstAdapter.looinkgId);
+//
+//                if (AddFirstAdapter.looinkgId==null){
+//
+//                    Snackbar snackbar = Snackbar
+//                            .make(linearLayout, "Please choose any option", Snackbar.LENGTH_LONG);
+//                    View snackbarView = snackbar.getView();
+//                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+//                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+//                    tv.setTextColor(Color.WHITE);
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+//                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//                    } else {
+//                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+//                    }
+//
+//                    snackbar.show();
+//
+//                  /*  int duration = 1000;
+//                    Snackbar snackbar = Snackbar
+//                            .make(linearLayout, "Please choose any option", duration);
+//                    View snackbarView = snackbar.getView();
+//                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+//                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+//                    tv.setTextColor(Color.WHITE);
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+//                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//                    } else {
+//                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+//                    }
+//
+//                    snackbar.show();*/
+//
+//
+//                }else {
+//
+//                    AddBrandAdapter.brandId = null;
+//                    selectedFragment = AddBrandFragment.newInstance();
+//                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                    transaction.add(R.id.frame_layout, selectedFragment);
+//                    transaction.addToBackStack("first");
+//                    transaction.commit();
+//                }
+//
+//            }
+//        });
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();

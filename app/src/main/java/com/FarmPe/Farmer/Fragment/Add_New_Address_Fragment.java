@@ -67,13 +67,14 @@ public class  Add_New_Address_Fragment extends Fragment {
     DistrictAdapter districtAdapter;
     TalukAdapter talukAdapter;
     HoblisAdapter hoblisAdapter;
+    VillageAdapter villageAdapter;
 
 
 
     public static DrawerLayout drawer,main_layout;
     LinearLayout back_feed,state,district,tehsil,block,village;
     TextView toolbar_titletxt;
-    JSONArray jsonArray,state_array,tal_array,hobli_array;
+    JSONArray jsonArray,state_array,tal_array,hobli_array,village_array;
     StateBean stateBean;
     String new_add_toast;
     EditText search,add_type;
@@ -358,8 +359,6 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
 
-
-
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -495,52 +494,33 @@ public class  Add_New_Address_Fragment extends Fragment {
         });
 
 
+        village.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              //  getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+                // submit.setVisibility(View.VISIBLE);
 
-//        block.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (!tehsil_txt.getText().toString().equals("")) {
-//                    //getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-//                    //  submit.setVisibility(View.INVISIBLE);
-//                    drawer.openDrawer(GravityCompat.END);
-//                    // stateBeanList.clear();
-//                    search_status="hobli";
-//                    search.setText("");
-//                    //search.setQuery("",false);
-//                    //  search.setQueryHint("");
-//                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-//                    recyclerView.setLayoutManager(mLayoutManager);
-//
-//                    final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-//                    layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-//                    recyclerView.setLayoutManager(layoutManager);
-//                    recyclerView.setItemAnimator(new DefaultItemAnimator());
-//
-//                    hoblisAdapter = new HoblisAdapter( hobliBeanList,getActivity());
-//                    recyclerView.setAdapter(hoblisAdapter);
-//
-//                    prepareHobliData();
-//
-//                }
-//
-//                else {
-//
-//                    Snackbar snackbar = Snackbar
-//                            .make(main_layout, "Select Tehsil", Snackbar.LENGTH_LONG);
-//
-//                    View snackbarView = snackbar.getView();
-//                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-//                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-//                    tv.setTextColor(Color.WHITE);
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-//                    } else {
-//                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-//                    }
-//                    snackbar.show();
-//                }
-//            }
-//        });
+                drawer.openDrawer(GravityCompat.END);
+                search_status="village";
+                search.setText("");
+                //   search.setQueryHint("");
+                // stateBeanList.clear();
+
+                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+                recyclerView.setLayoutManager(mLayoutManager);
+                final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setItemAnimator(new DefaultItemAnimator());
+                villageAdapter = new VillageAdapter(villageBeanList,getActivity());
+                recyclerView.setAdapter(villageAdapter);
+
+                prepareVillageData();
+
+
+
+            }
+        });
 
 
 
@@ -554,7 +534,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                     int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, s_addtype, duration);
+                            .make(main_layout, s_addtype, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -572,7 +552,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                     int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, entername, duration);
+                            .make(main_layout, entername, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -590,7 +570,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                 }else if(mobile.getText().toString().equals("")){
                     int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, entermno, duration);
+                            .make(main_layout, entermno, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -623,7 +603,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                     int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, enterstreetad, duration);
+                            .make(main_layout, enterstreetad, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -641,7 +621,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                     int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, enterpincode, duration);
+                            .make(main_layout, enterpincode, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -658,7 +638,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                     int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, enterpincode, duration);
+                            .make(main_layout, enterpincode, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -675,7 +655,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                     int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, selectstate, duration);
+                            .make(main_layout, selectstate, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -692,7 +672,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                     int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, selectdistrict, duration);
+                            .make(main_layout, selectdistrict, duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -709,7 +689,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                     int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Select Tehsil", duration);
+                            .make(main_layout, "Select Tehsil", duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -738,19 +718,8 @@ public class  Add_New_Address_Fragment extends Fragment {
 //        try {
 //            lngObject = new JSONObject(sessionManager.getRegId("language"));
 //            toolbar_titletxt.setText(lngObject.getString("AddNewAddress"));
-//            select_address.setHint(lngObject.getString("SelectanAddressType"));
-//            //name.setHint(lngObject.getString("FullName"));
-//            // mobile.setHint(lngObject.getString("PhoneNo"));
-//            // street_name.setHint(lngObject.getString("Colony_Street_Locality"));
-//            // house_numb.setHint(lngObject.getString("Flat_HouseNo_Floor_Building"));
-//            //landmrk.setHint(lngObject.getString("LandMark"));
-//            // city.setHint(lngObject.getString("City"));
-//            //pincode_no.setHint(lngObject.getString("Pincode"));
-//            // state.setHint(lngObject.getString("State"));
-//            //   hobli.setHint(lngObject.getString("Hobli"));
-//            //district.setHint(lngObject.getString("District"));
-//            // taluk.setHint(lngObject.getString("Taluk"));
-//          //  vi.setHint(lngObject.getString("Village"));
+//            address_type.setHint(lngObject.getString("SelectanAddressType"));
+//
 //            save_1.setText(lngObject.getString("AddAddress"));
 //
 //            s_addtype = lngObject.getString("SelectanAddressType");
@@ -759,8 +728,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 //            inncrtmno = lngObject.getString("Entervalidmobilenumber");
 //            // enterhno = lngObject.getString("EnterhouseNoFloorbuilding");
 //            enterstreetad = lngObject.getString("EnterStreetaddress");
-//            // enterlandmark = lngObject.getString("Enterlandmark");
-//            //entercity = lngObject.getString("Entercity");
+//
 //            enterpincode = lngObject.getString("Enterpincode");
 //            selectstate = lngObject.getString("Selectstate");
 //            selectdistrict = lngObject.getString("SelectDistrict");
@@ -789,7 +757,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 //        } catch (JSONException e) {
 //            e.printStackTrace();
 //        }
-//
+
 
 //
 //        if (getArguments().getString("navigation_from").equals("edit_lokng_frg") && !FarmsImageAdapter.location_det.equals("")){
@@ -808,6 +776,47 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
         return view;
+
+    }
+
+    private void prepareVillageData() {
+        try{
+            JSONObject jsonObject = new JSONObject();
+            JSONObject post_Object = new JSONObject();
+            jsonObject.put("HobliId",hoblisAdapter.hobliid);
+            post_Object.put("Villageobj",jsonObject);
+
+            Crop_Post.crop_posting(getActivity(), Urls.Villages, post_Object, new VoleyJsonObjectCallback() {
+                @Override
+                public void onSuccessResponse(JSONObject result) {
+                    System.out.println("111vvv" + result);
+
+                    try{
+                        villageBeanList.clear();
+                        village_array = result.getJSONArray("VillageList");
+                        for(int i = 0;i<village_array.length();i++) {
+                            JSONObject jsonObject1 = village_array.getJSONObject(i);
+                            stateBean = new StateBean(jsonObject1.getString("Village"), jsonObject1.getString("VillagId"));
+                            villageBeanList.add(stateBean);
+                        }
+
+                        sorting(villageBeanList);
+
+                        villageAdapter.notifyDataSetChanged();
+                        //   grade_dialog.show();
+
+
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+                }
+            });
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 
@@ -1167,7 +1176,6 @@ public class  Add_New_Address_Fragment extends Fragment {
                                 selectedFragment.setArguments(bundle);
                             }
 
-
                         }else{
 
                             // Toast.makeText(getActivity(),"Your Address not Added ",Toast.LENGTH_SHORT).show();
@@ -1324,5 +1332,6 @@ public class  Add_New_Address_Fragment extends Fragment {
 
     }
 }
+
 
 
