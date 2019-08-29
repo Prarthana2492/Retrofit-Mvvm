@@ -88,6 +88,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
             }
         });
 
+
         holder.select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,6 +101,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
                 transaction.commit();
             }
         });
+
 
         Glide.with(activity).load(products.getImage())
 

@@ -2,6 +2,8 @@ package com.FarmPe.Farmer.Adapter;
 
 import android.app.Activity;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +15,10 @@ import android.widget.TextView;
 
 import com.FarmPe.Farmer.Activity.LoginActivity;
 import com.FarmPe.Farmer.Bean.SelectLanguageBean;
+import com.FarmPe.Farmer.Fragment.AaSettingFragment;
+import com.FarmPe.Farmer.Fragment.AboutfarmpeFragment;
 import com.FarmPe.Farmer.Fragment.ChangeLanguageFragment;
+import com.FarmPe.Farmer.Fragment.Edit_Looking_For_Fragment;
 import com.FarmPe.Farmer.Fragment.HomeMenuFragment;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
@@ -126,21 +131,31 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
 
        System.out.println("fsddsd" +products.getImageicon());
 
-        Glide.with(activity).load(products.getImageicon())
-
-                .thumbnail(0.5f)
-                .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(holder.lang_image);
+//        Glide.with(activity).load(products.getImageicon())
+//
+//                .thumbnail(0.5f)
+//                .crossFade()
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .into(holder.lang_image);
 
 
         holder.submit_langu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 selected_position = position;
                 notifyDataSetChanged();
                 sessionManager.saveLanguage_name(products.getVendor());
                 getLang(products.getLanguageid());
+
+
+                selectedFragment = AaSettingFragment.newInstance();
+                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.commit();
+
+
+
 
             }
         });
