@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.FarmPe.Farmer.Fragment.AddModelFragment;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.FarmPe.Farmer.Bean.AddTractorBean;
@@ -69,7 +70,7 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final AddTractorBean products = productList.get(position);
-
+        brandId=products.getId();
         holder.prod_price.setText(products.getProd_name());
 
 
@@ -78,11 +79,11 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
             public void onClick(View v) {
                 brandId=products.getId();
 
-                AddHpAdapter.hp_model = null;
-                selectedFragment = AddHpFragment.newInstance();
+
+                selectedFragment = AddModelFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.add(R.id.frame_layout, selectedFragment);
-                transaction.addToBackStack("second");
+                transaction.addToBackStack("third");
                 transaction.commit();
 
 //                for (int i = 0; i < productList.size(); i++) {

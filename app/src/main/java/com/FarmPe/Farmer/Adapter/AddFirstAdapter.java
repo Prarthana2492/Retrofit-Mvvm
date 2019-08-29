@@ -72,6 +72,7 @@ public class AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyView
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final AddTractorBean products = productList.get(position);
+        looinkgId=products.getId();
 
         holder.prod_price.setText(products.getProd_name());
 
@@ -100,7 +101,7 @@ public class AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyView
                 looinkgId=products.getId();
 
 
-                AddBrandAdapter.brandId = null;
+              //  AddBrandAdapter.brandId = null;
                 selectedFragment = AddBrandFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.add(R.id.frame_layout, selectedFragment);

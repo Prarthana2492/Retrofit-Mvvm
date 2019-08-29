@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.FarmPe.Farmer.Bean.ModelBean;
 import com.FarmPe.Farmer.Fragment.Request_Details_New;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -23,7 +24,7 @@ import com.FarmPe.Farmer.R;
 import java.util.List;
 
 public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyViewHolder>  {
-    private List<AddTractorBean> productList;
+    private List<ModelBean> productList;
     Activity activity;
     Fragment selectedFragment;
 
@@ -31,7 +32,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
    public static LinearLayout next_arw;
     public static String first,tractor_id;
     public static CardView cardView;
-    public AddModelAdapter(Activity activity, List<AddTractorBean> moviesList) {
+    public AddModelAdapter(Activity activity, List<ModelBean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
 
@@ -42,7 +43,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image;
         public LinearLayout item;
-        public TextView prod_price,prod_name,duration,farmer_name,location,connect,select;
+        public TextView brand_name,select,model,hp_power;
 
 
 
@@ -50,8 +51,9 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
         public MyViewHolder(View view) {
             super(view);
 
-            prod_price=view.findViewById(R.id.prod_price);
-            item=view.findViewById(R.id.itemmm);
+            brand_name=view.findViewById(R.id.brand_name);
+            model=view.findViewById(R.id.model);
+            hp_power=view.findViewById(R.id.hp_power);
             image=view.findViewById(R.id.imageff);
             select=view.findViewById(R.id.selectt);
 
@@ -69,24 +71,36 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        final AddTractorBean products = productList.get(position);
+        final ModelBean products = productList.get(position);
 
-        holder.prod_price.setText(products.getProd_name());
-        System.out.println("nammmmm"+products.getProd_name());
 
-        holder.item.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tractor_id=products.getId();
+        holder.brand_name.setText(products.getBrand_name());
+        holder.model.setText(products.getModel_name()+ " , " +products.getDrive_type()+ " , "+products.getSteering());
+        holder.hp_power.setText( products.getHorse_power()+ " , " +products.getClutch_type()+ " , " + products.getTransmission_type());
 
-                for (int i = 0; i < productList.size(); i++) {
-                    productList.get(i).setSelected(false);
-                }
-                productList.get(position).setSelected(true);
-                notifyDataSetChanged();
 
-            }
-        });
+
+        Glide.with(activity).load(products.getImage())
+
+                .thumbnail(0.5f)
+                .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.image);
+
+
+//        holder.item.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                tractor_id=products.getId();
+//
+//                for (int i = 0; i < productList.size(); i++) {
+//                    productList.get(i).setSelected(false);
+//                }
+//                productList.get(position).setSelected(true);
+//                notifyDataSetChanged();
+//
+//            }
+//        });
 
 
         holder.select.setOnClickListener(new View.OnClickListener() {
@@ -103,12 +117,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
         });
 
 
-        Glide.with(activity).load(products.getImage())
 
-                .thumbnail(0.5f)
-                .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(holder.image);
 
 //        if (productList.get(position).isSelected()){
 //            holder.item.setBackgroundResource(R.drawable.grey_background_drawable);
