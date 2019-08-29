@@ -139,7 +139,7 @@ public class ForgotPasswordNew extends AppCompatActivity implements Connectivity
         coordinatorLayout = findViewById(R.id.main_layou1);
         forgot_pass_text = findViewById(R.id.forgot);
 
-        forgt_pass_detail = findViewById(R.id.tocnt);
+         forgt_pass_detail = findViewById(R.id.tocnt);
 
         setupUI(coordinatorLayout);
 
@@ -153,7 +153,7 @@ public class ForgotPasswordNew extends AppCompatActivity implements Connectivity
 
             lngObject = new JSONObject(sessionManager.getRegId("language"));
 
-            forgt_pass_detail.setText(lngObject.getString("ForgotPasswordText"));
+            // forgt_pass_detail.setText(lngObject.getString("ForgotPasswordText"));
             mobileno.setHint(lngObject.getString("DigitMobileNumber"));
             forgot_pass_text.setText(lngObject.getString("ForgotPassword") + "?");
             forgot_submit.setText(lngObject.getString("ResetPassword"));
@@ -366,6 +366,7 @@ public class ForgotPasswordNew extends AppCompatActivity implements Connectivity
             }
         }
     }
+
 
 
     public static void hideSoftKeyboard(Activity activity)  {
