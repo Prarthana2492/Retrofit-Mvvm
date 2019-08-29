@@ -58,6 +58,7 @@ public class AaSettingFragment extends Fragment {
             }
         });
 
+
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -80,6 +81,7 @@ public class AaSettingFragment extends Fragment {
                 return false;
             }
         });
+
 
         acc_info_lay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +123,7 @@ public class AaSettingFragment extends Fragment {
         lang_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (newState==false){
                     selectedFragment = ChangeLanguageFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -156,6 +159,7 @@ public class AaSettingFragment extends Fragment {
             }
         });
 
+
         invi_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -166,15 +170,18 @@ public class AaSettingFragment extends Fragment {
                 main_layout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         mBottomSheetBehavior4.setState(BottomSheetBehavior.STATE_COLLAPSED);
                         main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
                         newState=false;
 
                     }
                 });
+
                 LandingPageActivity.cancel_invite.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         mBottomSheetBehavior4.setState(BottomSheetBehavior.STATE_COLLAPSED);
                         main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
                         newState=false;

@@ -78,11 +78,18 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
             public void onClick(View v) {
                 brandId=products.getId();
 
-                for (int i = 0; i < productList.size(); i++) {
-                    productList.get(i).setSelected(false);
-                }
-                productList.get(position).setSelected(true);
-                notifyDataSetChanged();
+                AddHpAdapter.hp_model = null;
+                selectedFragment = AddHpFragment.newInstance();
+                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+                transaction.add(R.id.frame_layout, selectedFragment);
+                transaction.addToBackStack("second");
+                transaction.commit();
+
+//                for (int i = 0; i < productList.size(); i++) {
+//                    productList.get(i).setSelected(false);
+//                }
+//                productList.get(position).setSelected(true);
+//                notifyDataSetChanged();
 
             }
         });
@@ -107,18 +114,13 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
                 .into(holder.image);
 
 
-        if (productList.get(position).isSelected()){
-                      holder.item.setBackgroundResource(R.drawable.grey_background_drawable);
-            AddHpAdapter.hp_model = null;
-            selectedFragment = AddHpFragment.newInstance();
-            FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-            transaction.add(R.id.frame_layout, selectedFragment);
-            transaction.addToBackStack("second");
-            transaction.commit();
+//        if (productList.get(position).isSelected()){
+//                      holder.item.setBackgroundResource(R.drawable.grey_background_drawable);
 
-        }else {
-            holder.item.setBackgroundResource(R.drawable.border_transperent);
-        }
+
+//        }else {
+//            holder.item.setBackgroundResource(R.drawable.border_transperent);
+//        }
 
 
     }

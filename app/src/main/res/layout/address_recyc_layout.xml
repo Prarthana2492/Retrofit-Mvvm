@@ -162,7 +162,7 @@
         android:textStyle="bold"
         android:layout_marginRight="10dp"
         android:gravity="end"
-        android:textColor="#181818 "
+        android:textColor="@color/green"
         android:paddingVertical="7dp"
 
         />

@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.FarmPe.Farmer.Fragment.AddFirstFragment;
+import com.FarmPe.Farmer.Fragment.Request_Details_New;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.FarmPe.Farmer.Bean.AddTractorBean;
@@ -63,7 +64,7 @@ public class AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyView
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.add_first_layout_item, parent, false);
+                .inflate(R.layout.request_price_adapter, parent, false);
         return new MyViewHolder(itemView);
 
     }
@@ -83,12 +84,13 @@ public class AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyView
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.image);
 
-        if (productList.get(position).isSelected()){
-            holder.item.setBackgroundResource(R.drawable.grey_background_drawable);
+//        if (productList.get(position).isSelected()){
+//            holder.item.setBackgroundResource(R.drawable.grey_background_drawable);
+//
+//        }else {
+//            holder.item.setBackgroundResource(R.drawable.border_transperent);
+//        }
 
-        }else {
-            holder.item.setBackgroundResource(R.drawable.border_transperent);
-        }
 
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,11 +100,18 @@ public class AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyView
                 looinkgId=products.getId();
 
 
-                for (int i = 0; i < productList.size(); i++) {
-                    productList.get(i).setSelected(false);
-                }
-                productList.get(position).setSelected(true);
-                notifyDataSetChanged();
+                AddBrandAdapter.brandId = null;
+                selectedFragment = AddBrandFragment.newInstance();
+                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+                transaction.add(R.id.frame_layout, selectedFragment);
+                transaction.addToBackStack("first");
+                transaction.commit();
+
+//                for (int i = 0; i < productList.size(); i++) {
+//                    productList.get(i).setSelected(false);
+//                }
+//                productList.get(position).setSelected(true);
+//                notifyDataSetChanged();
 
             }
         });

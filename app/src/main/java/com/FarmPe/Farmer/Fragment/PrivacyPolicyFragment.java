@@ -52,7 +52,8 @@ public class PrivacyPolicyFragment extends Fragment {
         sessionManager = new SessionManager(getActivity());
 
 
-System.out.println("eewqewqe" + getArguments().getString("status"));
+
+    System.out.println("eewqewqe" + getArguments().getString("status"));
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();
@@ -73,7 +74,7 @@ System.out.println("eewqewqe" + getArguments().getString("status"));
                     }else if(status.equals("setting_privacy")){
 
                         FragmentManager fm = getActivity().getSupportFragmentManager();
-                        fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                        fm.popBackStack("privacy", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     }
                     return true;
                 }
@@ -98,7 +99,7 @@ System.out.println("eewqewqe" + getArguments().getString("status"));
                 }else if(status.equals("setting_privacy")){
 
                     FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    fm.popBackStack("privacy", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 }
 
             }

@@ -68,7 +68,6 @@ public class VillageAdapter extends RecyclerView.Adapter<VillageAdapter.HoblisMy
             super(itemView);
             statename=itemView.findViewById(R.id.state_item);
             state_name_layout=itemView.findViewById(R.id.state_name_layout);
-
         }
     }
 }

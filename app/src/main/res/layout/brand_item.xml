@@ -6,28 +6,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="@color/light_gray"
+    android:background="#F1F1F1"
     android:tag="cards main container">
 
 
 
     <LinearLayout
         android:id="@+id/item"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
         android:weightSum="100"
-        android:background="#fff"
+        android:background="@drawable/request_price_border"
         android:gravity="center"
-        android:padding="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/prod_img"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:scaleType="fitXY"
             />
 

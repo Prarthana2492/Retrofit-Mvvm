@@ -68,10 +68,12 @@ public class RequestFormFragment extends Fragment {
     String pickUPFrom;
     ImageView b_arrow;
 
+
     public static RequestFormFragment newInstance() {
         RequestFormFragment fragment = new RequestFormFragment();
         return fragment;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

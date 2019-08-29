@@ -5,6 +5,7 @@ package com.FarmPe.Farmer.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.FarmPe.Farmer.Adapter.NotificationAdapter;
@@ -30,13 +32,13 @@ import java.util.List;
 
 
 
-
 public class NotificationFragment extends Fragment {
 
     public static List<Notification_Home_Bean> newOrderBeansList = new ArrayList<>();
     public static RecyclerView recyclerView;
     public static NotificationAdapter farmadapter;
     TextView toolbar_title;
+    ImageView back_arrw;
     LinearLayout back_feed;
     Notification_Home_Bean notification_home_bean;
     Fragment selectedFragment;
@@ -57,6 +59,7 @@ public class NotificationFragment extends Fragment {
         recyclerView=view.findViewById(R.id.recycler_noti);
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
+        back_arrw=view.findViewById(R.id.back_arrw);
 
         sessionManager = new SessionManager(getActivity());
 
@@ -76,6 +79,22 @@ public class NotificationFragment extends Fragment {
                     return true;
                 }
                 return false;
+            }
+        });
+
+
+
+        back_feed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                back_arrw.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
+                selectedFragment = HomeMenuFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.add(R.id.frame_layout, selectedFragment);
+                transaction.commit();
+
             }
         });
 

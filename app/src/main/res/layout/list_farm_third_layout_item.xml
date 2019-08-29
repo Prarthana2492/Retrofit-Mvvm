@@ -98,6 +98,7 @@
 
 
                 <LinearLayout
+                    android:id="@+id/address_linear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -177,10 +178,11 @@
                     android:layout_marginTop="35dp"
                     android:textSize="13dp"
                     android:background="@android:color/transparent"
-                    android:maxLength="10"
+                    android:maxLength="30"
+                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:inputType="textFilter"
                     android:layout_marginLeft="6dp"
                     android:paddingRight="10dp"
-                    android:inputType="number"
                     android:backgroundTint="#d3d3d3"
                     android:fontFamily="@font/segoeui"
                     android:textColorHint="#000"
@@ -332,7 +334,7 @@
                         android:id="@+id/country_txt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="home"
+                        android:hint="India"
                         android:paddingVertical="2dp"
                         android:layout_marginTop="35dp"
                         android:textSize="13dp"
@@ -670,7 +672,7 @@
 
                 <EditText
                       android:id="@+id/pincode"
-                      android:layout_width="wrap_content"
+                      android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:hint="Pincode"
                       android:paddingVertical="2dp"

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_centerInParent="true"
     android:orientation="vertical"
     android:weightSum="100"
     android:background="#F1F1F1">
+
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -50,7 +51,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Model"
+            android:text="Request a Price"
             android:textSize="18dp"
             android:textColor="#fff"
             android:textStyle="bold"
@@ -58,62 +59,46 @@
 
     </android.support.v7.widget.Toolbar>
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="#F1F1F1"
-        android:orientation="vertical">
-
+        android:orientation="vertical"
+        >
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:weightSum="100"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+           android:layout_marginLeft="5dp"
+
+            android:layout_marginRight="5dp"
             >
-        <TextView
-            android:id="@+id/time"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="75"
-            android:fontFamily="@font/segoeui"
-            android:gravity="center_vertical"
-            android:textColor="#000"
-            android:text="Sort By Recently Added"
-            android:textSize="13dp"
-            android:paddingHorizontal="10dp"
-            android:layout_marginLeft="5dp"
-            />
-
-
-        <TextView
-            android:id="@+id/filter_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="25"
-            android:fontFamily="@font/segoeui"
-            android:text="Filter"
-            android:textColor="#000"
-            android:drawablePadding="7dp"
-            android:drawableLeft="@drawable/ic_icon_filterrrr"
-            android:textSize="13dp"
-            android:paddingHorizontal="10dp"
-            />
-
-
-    </LinearLayout>
 
 
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_what_looking"
                 android:layout_width="match_parent"
-                android:background="#fff"
-                android:layout_height="wrap_content">
+                android:background="@drawable/request_price_border"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_height="match_parent">
 
 
             </android.support.v7.widget.RecyclerView>
 
-</LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
 </LinearLayout>
