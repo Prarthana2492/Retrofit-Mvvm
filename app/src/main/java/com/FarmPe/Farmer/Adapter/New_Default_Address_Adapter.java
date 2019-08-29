@@ -48,6 +48,7 @@ public class New_Default_Address_Adapter extends RecyclerView.Adapter<New_Defaul
         holder.adrr_txt.setText(stateBean.getAdd_name() + "\n" + stateBean.getAdd_street() + "\n" + stateBean.getAdd_district()+ " , " + stateBean.getAdd_hobli() +
                 "\n" + stateBean.getAdd_state() + " - " + stateBean.getAdd_pincode() + "\n" + stateBean.getAdd_mobile());
 
+
     }
 
     @Override

@@ -54,7 +54,6 @@ public class ActivitySelectLang extends AppCompatActivity {
 
     private void Langauges() {
         try {
-            newOrderBeansList.clear();
             JSONObject userRequestjsonObject = new JSONObject();
             JSONObject postjsonObject = new JSONObject();
             userRequestjsonObject.put("TalukId",5495);
@@ -66,6 +65,8 @@ public class ActivitySelectLang extends AppCompatActivity {
                     JSONObject jsonObject;
                     try {
                         JSONArray jsonArray=result.getJSONArray("LanguagesList");
+                        newOrderBeansList.clear();
+
                         for (int i=0;i<jsonArray.length();i++){
                             JSONObject jsonObject1=jsonArray.getJSONObject(i);
                             String language=jsonObject1.getString("Language");
@@ -73,9 +74,11 @@ public class ActivitySelectLang extends AppCompatActivity {
                             String langimg=jsonObject1.getString("ImageIcon");
                             SelectLanguageBean stateBean=new SelectLanguageBean(language,langCode,langimg);
                             newOrderBeansList.add(stateBean);
-                            mAdapter = new AdapterSelectLanguage(ActivitySelectLang.this, newOrderBeansList);
-                            recyclerView.setAdapter(mAdapter);
+
                         }
+
+                        mAdapter = new AdapterSelectLanguage(ActivitySelectLang.this, newOrderBeansList);
+                        recyclerView.setAdapter(mAdapter);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

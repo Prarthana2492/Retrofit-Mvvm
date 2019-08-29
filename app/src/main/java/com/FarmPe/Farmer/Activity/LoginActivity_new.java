@@ -47,6 +47,7 @@ import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -65,7 +66,8 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
     SelectLanguageAdapter2 mAdapter;
     LinearLayout back_feed;
 
-    public static TextInputLayout text_mobile,text_pass;
+    public static TextInputLayout text_pass;
+    public static EditText text_mobile;
 
 
     ConnectivityReceiver connectivityReceiver;
@@ -173,7 +175,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
         welcome_back = findViewById(R.id.welcome_back);
         createaccount = findViewById(R.id.create_acc);
        // change_lang = findViewById(R.id.change_lang);
-        text_mobile = findViewById(R.id.text_name);
+        text_mobile = findViewById(R.id.mob_no);
         text_pass = findViewById(R.id.text_pass);
         back_feed = findViewById(R.id.back_feed);
 
@@ -221,34 +223,33 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
         pass.setFilters(new InputFilter[] {EMOJI_FILTER1,new InputFilter.LengthFilter(12) });
 
-        System.out.println("llllllllllll" + sessionManager.getRegId("language"));
+        System.out.println("llllllllllllbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" + sessionManager.getRegId("language"));
 
-       /* try {
-            if ((sessionManager.getRegId("language")).equals("")){
+        try {
+            if ((sessionManager.getRegId("language")).equals("")) {
                 getLang(1);
 
-            }else {
+            } else {
 
 
                 lngObject = new JSONObject(sessionManager.getRegId("language"));
 
-                System.out.println("llllllllllllkkkkkkkkkkkkkkk" +lngObject.getString("EnterPhoneNo"));
-
+                System.out.println("llllllllllllkkkkkkkkkkkkkkk" + lngObject.getString("EnterPhoneNo"));
 
 
                 text_mobile.setHint(lngObject.getString("PhoneNo"));
                 text_pass.setHint(lngObject.getString("Password"));
-                remember_me.setText(lngObject.getString("RememberMe"));
+              //  remember_me.setText(lngObject.getString("RememberMe"));
                 forgot_pass.setText(lngObject.getString("ForgotPassword") + "?");
                 log_in.setText(lngObject.getString("Login"));
                 welcome_back.setText(lngObject.getString("Login"));
 
-                newfarmpelng=lngObject.getString("NewtoFarmPe");
+                newfarmpelng = lngObject.getString("NewtoFarmPe");
                 signuplng = lngObject.getString("SignUp");
 
 
-                new_farmpe.setText(newfarmpelng+"?");
-                createaccount.setText(" "+signuplng);
+//                new_farmpe.setText(newfarmpelng + "?");
+                createaccount.setText(" " + signuplng);
 
                 pass_toast = lngObject.getString("EnterPassword");
                 mob_toast = lngObject.getString("EnterPhoneNo");
@@ -257,12 +258,12 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                 toast_internet = lngObject.getString("GoodConnectedtoInternet");
                 toast_nointernet = lngObject.getString("NoInternetConnection");
 
-            }
+
+        }
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-*/
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

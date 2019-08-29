@@ -55,7 +55,7 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
         public MyViewHolder(View view) {
             super(view);
             lang_text=view.findViewById(R.id.lang_text);
-         //   language=view.findViewById(R.id.language);
+            language=view.findViewById(R.id.main_layout);
             lang_img=view.findViewById(R.id.lang_img);
 
         }
@@ -83,14 +83,16 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.lang_img);
 
-        System.out.print("iiidddddd" + products1.getLanguageid());
+        System.out.println("iiiddddddmmmmmmmmmmmmmmmmm" + products1.getLanguageid());
 
-        holder.lang_img.setOnClickListener(new View.OnClickListener() {
+        holder.language.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("iiiddddddkkkkkkkkkkkkkkkkkkkkkkkkkkk" + products1.getLanguageid());
 
-                Intent intent = new Intent(activity, LoginActivity_new.class);
-                activity.startActivity(intent);
+                sessionManager.saveLanguage_name(products1.getVendor());
+                getLang(products1.getLanguageid());
+
                 /*selectedFragment = AaSettingFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
@@ -130,6 +132,13 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
                          sessionManager.saveLanguage(result.toString());
 
 
+
+                        Intent intent = new Intent(activity, LoginActivity_new.class);
+
+                        activity.startActivity(intent);
+
+/*
+
                         String lang_title1 = result.getString("ChangeLanguage");
                         System.out.println("ckkkkkkk"+result.getString("ChangeLanguage"));
                         LoginActivity_new.popup_heading.setText(result.getString("ChangeLanguage"));
@@ -156,6 +165,7 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
                            LoginActivity_new.pass_toast = result.getString("EnterPassword");
                            LoginActivity_new.toast_invalid = result.getString("InvalidCredentials");
                            LoginActivity_new.toast_click_back = result.getString("PleaseclickBACKagaintoexit");
+*/
 
 
 
