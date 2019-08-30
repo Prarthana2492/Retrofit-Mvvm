@@ -91,7 +91,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/insta"/>
+                android:src="@drawable/ic_instagram"/>
 
 
             <TextView
@@ -165,7 +165,6 @@
         </LinearLayout>
 
 
-
         <LinearLayout
             android:id="@+id/message"
             android:layout_width="0dp"
@@ -173,6 +172,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_horizontal">
+
 
             <ImageView
                 android:layout_width="50dp"
@@ -192,21 +192,20 @@
 
     </LinearLayout>
 
-
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
         android:layout_marginTop="20dp"
-        android:outlineAmbientShadowColor="#000"
-        android:outlineSpotShadowColor="#000"
-        android:background="#000"
+        android:outlineAmbientShadowColor="#CCCCCC"
+        android:outlineSpotShadowColor="#CCCCCC"
+        android:background="#CCCCCC"
         />
 
 
     <TextView
         android:id="@+id/cancel_invite"
         android:layout_width="match_parent"
-        android:textSize="20sp"
+        android:textSize="14dp"
         android:layout_marginTop="5dp"
         android:gravity="center_horizontal"
         android:textStyle="bold"

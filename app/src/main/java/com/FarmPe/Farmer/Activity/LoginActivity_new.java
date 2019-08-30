@@ -245,7 +245,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                 welcome_back.setText(lngObject.getString("Login"));
 
                 newfarmpelng = lngObject.getString("NewtoFarmPe");
-                signuplng = lngObject.getString("SignUp");
+                signuplng = lngObject.getString("Register");
 
 
 //                new_farmpe.setText(newfarmpelng + "?");

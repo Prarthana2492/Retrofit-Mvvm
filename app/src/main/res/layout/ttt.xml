@@ -19,7 +19,6 @@
             layout="@layout/banner_image_slider_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="3dp"
             android:layout_marginBottom="10dp" >
         </include>
     </LinearLayout>
@@ -29,7 +28,6 @@
         android:layout_width="match_parent"
         android:id="@+id/no_requests"
         android:visibility="gone"
-
         android:layout_height="0dp"
         android:layout_weight="60">
 

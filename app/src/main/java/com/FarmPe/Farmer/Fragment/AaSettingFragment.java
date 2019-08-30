@@ -1,5 +1,8 @@
 package com.FarmPe.Farmer.Fragment;
 
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetBehavior;
@@ -28,9 +31,10 @@ public class AaSettingFragment extends Fragment {
 
     BottomSheetDialog mBottomSheetDialog;
     View sheetView;
+    String packageName;
     Fragment selectedFragment;
     LinearLayout backfeed,acc_info_lay,not_lay,lang_lay,help_lay,invi_lay,main_layout,requ_lay;
-    TextView notificatn,change_language,your_addresss,acc_info1,refer_ern,feedbk,help_1,abt_frmpe,polic_1,logot,setting_tittle;
+    TextView sub_lang,notificatn,change_language,your_addresss,acc_info1,refer_ern,feedbk,help_1,abt_frmpe,polic_1,logot,setting_tittle;
     SessionManager sessionManager;
     JSONObject lngObject;
     boolean newState=false;
@@ -51,6 +55,19 @@ public class AaSettingFragment extends Fragment {
         invi_lay=view.findViewById(R.id.invi_lay);
         main_layout=view.findViewById(R.id.main_layout);
         requ_lay=view.findViewById(R.id.requ_lay);
+        sub_lang=view.findViewById(R.id.sub_lang);
+
+        sessionManager = new SessionManager(getActivity());
+
+
+        sub_lang.setText(sessionManager.getRegId("language_name"));
+
+        Resources resources = getResources();
+        PackageManager pm = getActivity().getPackageManager();
+        Intent sendIntent = new Intent(Intent.ACTION_SEND);
+        sendIntent.setType("text/plain");
+        packageName = pm.queryIntentActivities(sendIntent, 0).toString();
+
 
 
         backfeed.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +79,7 @@ public class AaSettingFragment extends Fragment {
                 transaction.commit();
             }
         });
+
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();
@@ -98,6 +116,7 @@ public class AaSettingFragment extends Fragment {
 
             }
         });
+
 
         not_lay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,6 +167,146 @@ public class AaSettingFragment extends Fragment {
                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.invite_people_bottom_sheet, null);
                 TextView cancel = sheetView.findViewById(R.id.cancel_invite);
+                LinearLayout whatsapp = sheetView.findViewById(R.id.whatsapp);
+                LinearLayout facebook = sheetView.findViewById(R.id.facebook);
+                LinearLayout instagram = sheetView.findViewById(R.id.instagram);
+                LinearLayout twitter = sheetView.findViewById(R.id.twitter);
+                LinearLayout messenger = sheetView.findViewById(R.id.messenger);
+                LinearLayout message = sheetView.findViewById(R.id.message);
+
+
+
+                whatsapp.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        if (packageName.contains("com.whatsapp")) {
+                            Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
+                            whatsappIntent.setType("text/plain");
+                            whatsappIntent.setPackage("com.whatsapp");
+                            //whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Text");
+                            whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeFarmer\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farmer to download the app!");
+                            try {
+                                startActivity(whatsappIntent);
+                            } catch (android.content.ActivityNotFoundException ex) {
+                                Toast.makeText(getActivity(), "Whatsapp have not been installed.", Toast.LENGTH_SHORT);
+                            }
+
+                        }else {
+                            Toast.makeText(getActivity(), "Whatsapp have not been installed.", Toast.LENGTH_SHORT);
+
+                        }
+
+                    }
+                });
+
+
+                facebook.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+
+                        if (packageName.contains("com.facebook.katana")) {
+                            Intent sendIntent = new Intent();
+                            sendIntent.setAction(Intent.ACTION_SEND);
+                            sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeFarmer\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farmer to download the app");
+                            sendIntent.setType("text/plain");
+                            sendIntent.setPackage("com.facebook.katana");
+                            try {
+                                startActivity(sendIntent);
+                            } catch (android.content.ActivityNotFoundException ex) {
+                                Toast.makeText(getActivity(), "Facebook is not installed on this device ", Toast.LENGTH_LONG).show();
+                            }
+                        }else {
+                            Toast.makeText(getActivity(), "Facebook is not installed on this device ", Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                });
+
+
+                instagram.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        if (packageName.contains("com.instagram")) {
+                            Intent sendIntent = new Intent();
+                            sendIntent.setAction(Intent.ACTION_SEND);
+                            sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeFarmer\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farmer to download the app");
+
+                            sendIntent.setType("text/plain");
+                            sendIntent.setPackage("com.instagram.android");
+                            try {
+                                startActivity(sendIntent);
+                            } catch (android.content.ActivityNotFoundException ex) {
+                                Toast.makeText(getActivity(), "Please install instagram ", Toast.LENGTH_LONG).show();
+                            }
+                        }else {
+                            Toast.makeText(getActivity(), "Please install instagram ", Toast.LENGTH_LONG).show();
+
+                        }
+
+                    }
+                });
+
+                twitter.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        try
+                        {
+                            // Check if the Twitter app is installed on the phone.
+                            getActivity().getPackageManager().getPackageInfo("com.twitter.android", 0);
+                            Intent intent = new Intent(Intent.ACTION_SEND);
+                            intent.setClassName("com.twitter.android", "com.twitter.android.composer.ComposerActivity");
+                            intent.setType("text/plain");
+                            intent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeFarmer\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farmer to download the app!");
+
+                            startActivity(intent);
+
+                        }
+                        catch (Exception e)
+                        {
+                            Toast.makeText(getActivity(),"Twitter is not installed on this device",Toast.LENGTH_LONG).show();
+
+                        }
+
+                    }
+                });
+//
+//                messenger.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//
+//                    }
+//                });
+
+                message.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+
+                        if (packageName.contains("com.android.mms")) {
+                            Intent messageIntent = new Intent(Intent.ACTION_SEND);
+                            messageIntent.setType("text/plain");
+                            messageIntent.setPackage("com.android.mms");
+                            //whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Text");
+                            messageIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeFarmer\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farmer to download the app");
+                            try {
+                                startActivity(messageIntent);
+                            } catch (android.content.ActivityNotFoundException ex) {
+                                Toast.makeText(getActivity(), "Message have not been installed.", Toast.LENGTH_SHORT);
+                            }
+
+                        }else {
+                            Toast.makeText(getActivity(), "Message have not been installed.", Toast.LENGTH_SHORT);
+
+                        }
+
+                    }
+                });
+
+
 
                 cancel.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -166,18 +325,7 @@ public class AaSettingFragment extends Fragment {
         requ_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (newState==false){
-//                    selectedFragment = AaStatusFragment.newInstance();
-//                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                    transaction.replace(R.id.frame_layout, selectedFragment);
-//                    transaction.addToBackStack("setting");
-//                    transaction.commit();
-//
-//                }else{
-//                    mBottomSheetBehavior4.setState(BottomSheetBehavior.STATE_COLLAPSED);
-//                    main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
-//                    newState=false;
-//                }
+
             }
         });
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#000</color>
-    <color name="colorPrimaryDark">#000</color>
+    <color name="colorPrimary">#1e8434</color>
+    <color name="colorPrimaryDark">#1e8434</color>
     <color name="colorAccent">#F72C1D</color>
 
     <color name="gold_color">#e8bc1a</color>
@@ -19,6 +19,7 @@
     <color name="red">#EC4848</color>
     <color name="green">#279E5E</color>
     <color name="sky_blue">#2680EB</color>
+
 
 
 </resources>

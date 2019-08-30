@@ -47,7 +47,7 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView lang_text;
         public LinearLayout language;
-        public ImageView lang_img;
+        public ImageView lang_img,right_img;
 
 
 
@@ -56,7 +56,8 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
             super(view);
             lang_text=view.findViewById(R.id.lang_text);
             language=view.findViewById(R.id.main_layout);
-            lang_img=view.findViewById(R.id.lang_img);
+            lang_img=view.findViewById(R.id.lang_icon);
+            right_img = view.findViewById(R.id.right_img);
 
         }
 
@@ -76,14 +77,34 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
 
 
         holder.lang_text.setText(products1.getVendor());
-        Glide.with(activity).load(R.drawable.success)
-
-                .thumbnail(0.5f)
-                .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(holder.lang_img);
+//        Glide.with(activity).load(R.drawable.success)
+//
+//                .thumbnail(0.5f)
+//                .crossFade()
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .into(holder.lang_img);
 
         System.out.println("iiiddddddmmmmmmmmmmmmmmmmm" + products1.getLanguageid());
+
+
+        if (sessionManager.getRegId("language_name").equals(products1.getVendor())){
+            // holder.right_img.setImageResource(R.drawable.ic_verified_filled_grey_white);
+            //  holder.lng_rad_but.setBackgroundColor(Color.GREEN);
+            holder.right_img.setVisibility(View.VISIBLE);
+
+        }else {
+
+            holder.right_img.setVisibility(View.GONE);
+
+            //// holder.right_img.setImageResource(R.drawable.filled_grey_circle);
+
+//            holder.right_img.setImageResource(R.drawable.v);
+
+            //  holder.lng_rad_but.setBackgroundColor(Color.WHITE);
+
+
+        }
+
 
         holder.language.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -187,6 +187,7 @@ LinearLayout back_feed;
         });
         return view;
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         //  super.onActivityResult(requestCode, resultCode, data);
@@ -203,7 +204,7 @@ LinearLayout back_feed;
                scaled_bitmap=g_vision_controller.callCloudVision(bitmap,getActivity(),"Profile");
                 imgFullImage.setImageBitmap(scaled_bitmap);
              //   prod_img.setImageBitmap(bitmap);
-               // uploadImage(getResizedBitmap(scaled_bitmap, 100, 100));
+                uploadImage(getResizedBitmap(scaled_bitmap, 100, 100));
                 Toast.makeText(getActivity(), "You Changed Your Profile Photo", Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 e.printStackTrace();

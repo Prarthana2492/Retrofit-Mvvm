@@ -56,7 +56,7 @@ public class ActivitySelectLang extends AppCompatActivity {
         setContentView(R.layout.a_a_selectlang);
         recyclerView =findViewById(R.id.recycler_view_lang);
 
-        GridLayoutManager mLayoutManager_farm = new GridLayoutManager(ActivitySelectLang.this, 3, GridLayoutManager.VERTICAL, false);
+        GridLayoutManager mLayoutManager_farm = new GridLayoutManager(ActivitySelectLang.this, 1, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager_farm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
          linearLayout= findViewById(R.id.main_layout);

@@ -116,12 +116,15 @@
             android:layout_gravity="center_vertical"
             >
 
+            <android.support.v7.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:checked="false"
+                android:theme="@style/SCBSwitch" />
 
-           <Switch
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:thumbTint="#279E5E"
-               />
+
+
 
         </LinearLayout>
 

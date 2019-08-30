@@ -154,9 +154,6 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
                 transaction.replace(R.id.frame_layout, selectedFragment);
                 transaction.commit();
 
-
-
-
             }
         });
     }

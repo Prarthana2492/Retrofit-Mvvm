@@ -125,7 +125,7 @@ public class SelectLanguageAdapter2 extends RecyclerView.Adapter<SelectLanguageA
                           String log_password = result.getString("Password");
                           String log_remember_me = result.getString("RememberMe");
                           String log_forgot_passwrd = result.getString("ForgotPassword");
-                          String log_register = result.getString("SignUp");
+                          String log_register = result.getString("Register");
                           String log_farmpe = result.getString("NewtoFarmPe");
 
 

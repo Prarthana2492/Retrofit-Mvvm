@@ -160,46 +160,11 @@ public class AaAccountFragment extends Fragment {
             }
         });
 
+
         logout_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                /*main_layout.setBackgroundColor(Color.parseColor("#666666"));
-                mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_EXPANDED);
-                LandingPageActivity.name_hint.setText("Logout");
-                LandingPageActivity.editname.setVisibility(View.GONE);
-                LandingPageActivity.logout.setVisibility(View.VISIBLE);
-                LandingPageActivity.logout.setText("Are you sure you want to Exit?");
-                LandingPageActivity.cancel.setText("No");
-                LandingPageActivity.save.setText("Yes");
-
-                LandingPageActivity.save.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        sessionManager.logoutUser();
-                        getActivity().finish();
-                        mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                        main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
-
-                    }
-                });
-
-                main_layout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                        main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
-
-                    }
-                });
-                LandingPageActivity.cancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                        main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
-
-                    }l_
-                });*/
 
                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);

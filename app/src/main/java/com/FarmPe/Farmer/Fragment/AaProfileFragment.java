@@ -200,28 +200,7 @@ public class AaProfileFragment extends Fragment {
         about_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*main_layout.setBackgroundColor(Color.parseColor("#666666"));
-                mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_EXPANDED);
-                LandingPageActivity.name_hint.setText("Add About");
-                LandingPageActivity.editname.setVisibility(View.VISIBLE);
-                LandingPageActivity.logout.setVisibility(View.GONE);
-                LandingPageActivity.cancel.setText("Cancel");
-                LandingPageActivity.save.setText("Save");
-                main_layout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                        main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
-                    }
-                });
-                LandingPageActivity.cancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                        main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
 
-                    }
-                });*/
 
                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);

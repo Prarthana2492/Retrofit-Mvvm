@@ -39,6 +39,7 @@
         android:scrollbars="vertical"
         android:maxLength="250"
         android:padding="10dp"
+        android:textSize="15dp"
         android:layout_marginTop="20sp"
         android:layout_marginHorizontal="25dp"/>
 
@@ -48,9 +49,9 @@
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
         android:layout_marginTop="20dp"
-        android:outlineAmbientShadowColor="#000"
-        android:outlineSpotShadowColor="#000"
-        android:background="#000"
+        android:outlineAmbientShadowColor="#CCCCCC"
+        android:outlineSpotShadowColor="#CCCCCC"
+        android:background="#CCCCCC"
         />
 
 

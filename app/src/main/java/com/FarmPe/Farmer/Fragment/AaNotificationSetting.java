@@ -23,6 +23,8 @@ public class AaNotificationSetting extends Fragment {
     TextView notificatn,change_language,your_addresss,acc_info1,refer_ern,feedbk,help_1,abt_frmpe,polic_1,logot,setting_tittle;
     SessionManager sessionManager;
     JSONObject lngObject;
+
+
     public static AaNotificationSetting newInstance() {
         AaNotificationSetting fragment = new AaNotificationSetting();
         return fragment;
@@ -35,6 +37,7 @@ public class AaNotificationSetting extends Fragment {
         backfeed=view.findViewById(R.id.back_feed);
         acc_info_lay=view.findViewById(R.id.acc_info_lay);
 
+
         backfeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +45,7 @@ public class AaNotificationSetting extends Fragment {
                 fm.popBackStack ("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
+
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();
@@ -62,6 +66,7 @@ public class AaNotificationSetting extends Fragment {
         });
 
 
+
         acc_info_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +77,7 @@ public class AaNotificationSetting extends Fragment {
                 transaction.commit();
             }
         });
+
 
 
        /* not_lay.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +91,9 @@ public class AaNotificationSetting extends Fragment {
             }
         });*/
 
-        return view;
+
+       return view;
+
     }
 
 
