@@ -73,6 +73,8 @@ public class Request_Details_New extends Fragment {
 
 
 
+
+
    public static Request_Details_New newInstance() {
        Request_Details_New fragment = new Request_Details_New();
         return fragment;
@@ -92,7 +94,7 @@ public class Request_Details_New extends Fragment {
         address_layout=view.findViewById(R.id.address_layout);
         radioGroup=view.findViewById(R.id.radio_group_time);
         radioGroup_finance=view.findViewById(R.id.radioGroup_finance);
-        request=view.findViewById(R.id.request);
+        request=view.findViewById(R.id.add_address);
         address_text=view.findViewById(R.id.address_text);
         purchase_edit=view.findViewById(R.id.purchase_edit);
         add_addrss=view.findViewById(R.id.add_addrss);
@@ -105,7 +107,7 @@ public class Request_Details_New extends Fragment {
 
 
         if (bundle==null){
-            gettingAddress();
+           // gettingAddress();
 
 
         }else{
@@ -162,92 +164,18 @@ public class Request_Details_New extends Fragment {
             }
         });
 
-//
-//        request.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String str = address_text.getText().toString();
-//                if ((radioGroup.getCheckedRadioButtonId() == -1) && address_text.getText().toString().equals("Add Your Address") && radioGroup_finance.getCheckedRadioButtonId() == -1) {
-//                    //   Toast.makeText(getActivity(), "Select All Fields", Toast.LENGTH_SHORT).show();
-//                    int duration = 1000;
-//                    Snackbar snackbar = Snackbar
-//                            .make(linearLayout,"Select All Fields", duration);
-//                    View snackbarView = snackbar.getView();
-//                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-//                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-//                    tv.setTextColor(Color.WHITE);
-//
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-//                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-//                    } else {
-//                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-//                    }
-//
-//                    snackbar.show();
-//
-//                } else if ((radioGroup.getCheckedRadioButtonId() == -1)) {
-//                    int duration = 1000;
-//                    Snackbar snackbar = Snackbar
-//                            .make(linearLayout,"Select Timeline", duration);
-//                    View snackbarView = snackbar.getView();
-//                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-//                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-//                    tv.setTextColor(Color.WHITE);
-//
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-//                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-//                    } else {
-//                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-//                    }
-//
-//                    snackbar.show();
-//
-//
-//                } else if (str.equalsIgnoreCase("Add Your Address")) {
-//                    //   Toast.makeText(getActivity(), "Select Your Address", Toast.LENGTH_SHORT).show();
-//                    int duration = 1000;
-//                    Snackbar snackbar = Snackbar
-//                            .make(linearLayout,"Select Your Address", duration);
-//                    View snackbarView = snackbar.getView();
-//                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-//                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-//                    tv.setTextColor(Color.WHITE);
-//
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-//                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-//                    } else {
-//                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-//                    }
-//
-//                    snackbar.show();
-//                }
-//
-//                else if((radioGroup_finance.getCheckedRadioButtonId()==-1)) {
-//
-//                    int duration = 1000;
-//                    Snackbar snackbar = Snackbar
-//                            .make(linearLayout,"Select finance",duration);
-//                    View snackbarView = snackbar.getView();
-//                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-//                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-//                    tv.setTextColor(Color.WHITE);
-//
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-//                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-//                    } else {
-//                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-//                    }
-//
-//                    snackbar.show();
-//
-//                }  else {
-//
-//                    RequestForm();
-//                }
-//
-//            }
-//        });
-//
+
+        request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                    RequestForm();
+
+
+            }
+        });
+
 
 
         purchase_edit.setOnClickListener(new View.OnClickListener() {
@@ -334,9 +262,10 @@ public class Request_Details_New extends Fragment {
             JSONObject userRequestjsonObject = new JSONObject();
 
             userRequestjsonObject.put("UserId",sessionManager.getRegId("userId"));
-            userRequestjsonObject.put("PurchaseTimeline", time_period);
-            userRequestjsonObject.put("LookingForFinance", finance_status);
-            userRequestjsonObject.put("AddressId", addId);
+            userRequestjsonObject.put("PurchaseTimeline", "imd");
+            userRequestjsonObject.put("LookingForFinance", "yes");
+            userRequestjsonObject.put("AddressId", 1);
+           // userRequestjsonObject.put("AddressId", addId);
             userRequestjsonObject.put("ModelId", AddModelAdapter.tractor_id);
             userRequestjsonObject.put("IsAgreed", "True");
             userRequestjsonObject.put("LookingForDetailsId", AddFirstAdapter.looinkgId);

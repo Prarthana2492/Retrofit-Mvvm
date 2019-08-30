@@ -69,6 +69,14 @@ public class FarmPe_Logo_Fragment extends Fragment {
     public static List<AddTractorBean2> newOrderBeansList2 = new ArrayList<>();
 
 
+
+    public static JSONArray cropsListArray = null;
+    public static JSONArray tractorImplementsModelMasterList = null;
+    public static JSONArray tractorAccessoriesModelMasterList = null;
+    public static JSONArray harvesterModelMasterList = null;
+    public static JSONArray jCBRFQModelList = null;
+
+
     public static FarmPe_Logo_Fragment newInstance() {
         FarmPe_Logo_Fragment fragment = new FarmPe_Logo_Fragment();
         return fragment;
@@ -275,8 +283,21 @@ public class FarmPe_Logo_Fragment extends Fragment {
                         String request_count = String.valueOf(result.getInt("RFQCount"));
                         String notificatn_count = String.valueOf(result.getInt("NotificationCount"));
 
+                        JSONObject rfqListObject=result.getJSONObject("RFQList");
 
-                        rfq_images_array = result.getJSONArray("RFQList");
+                        cropsListArray = rfqListObject.getJSONArray("TractorRFQModelList");
+
+                        tractorImplementsModelMasterList = rfqListObject.getJSONArray("TractorImplementsRFQModelList");
+                        tractorAccessoriesModelMasterList = rfqListObject.getJSONArray("TractorAccesoriesRFQModelList");
+                        harvesterModelMasterList = rfqListObject.getJSONArray("HarvesterRFQModelList");
+                        jCBRFQModelList = rfqListObject.getJSONArray("JCBRFQModelList");
+
+
+
+
+
+
+
 
                         if (request_count.equalsIgnoreCase("0")) {
                             no_request.setVisibility(View.VISIBLE);
@@ -301,8 +322,32 @@ public class FarmPe_Logo_Fragment extends Fragment {
 
 
 
-                        for (int i = 0; i < rfq_images_array.length(); i++) {
-                            JSONObject jsonObject1 = rfq_images_array.getJSONObject(i);
+                        for (int i = 0; i < cropsListArray.length(); i++) {
+                            JSONObject jsonObject1 = cropsListArray.getJSONObject(i);
+                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
+                            newOrderBeansList2.add(img2);
+
+                        }
+                        for (int i = 0; i < tractorImplementsModelMasterList.length(); i++) {
+                            JSONObject jsonObject1 = tractorImplementsModelMasterList.getJSONObject(i);
+                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
+                            newOrderBeansList2.add(img2);
+
+                        }
+                        for (int i = 0; i < tractorAccessoriesModelMasterList.length(); i++) {
+                            JSONObject jsonObject1 = tractorAccessoriesModelMasterList.getJSONObject(i);
+                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
+                            newOrderBeansList2.add(img2);
+
+                        }
+                        for (int i = 0; i < harvesterModelMasterList.length(); i++) {
+                            JSONObject jsonObject1 = harvesterModelMasterList.getJSONObject(i);
+                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
+                            newOrderBeansList2.add(img2);
+
+                        }
+                        for (int i = 0; i < jCBRFQModelList.length(); i++) {
+                            JSONObject jsonObject1 = jCBRFQModelList.getJSONObject(i);
                             AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
                             newOrderBeansList2.add(img2);
 
