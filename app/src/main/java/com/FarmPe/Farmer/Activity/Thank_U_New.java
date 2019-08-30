@@ -148,10 +148,9 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
         back_thank_u=findViewById(R.id.back_feed);
         thanktu_submit=findViewById(R.id.thanktu_submit);
         enter_otp=findViewById(R.id.otp_pass);
-        otp_text=findViewById(R.id.thanktu);
+       // otp_text=findViewById(R.id.thanktu);
         thank_title=findViewById(R.id.thank);
-
-        //resend_otp=findViewById(R.id.f_resend);
+        resend_otp=findViewById(R.id.resend);
 
 
 
@@ -169,7 +168,7 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
 
             thanktu_submit.setText(lngObject.getString("SendOTP"));
             thank_title.setText(lngObject.getString("OneTimePassword"));
-            otp_text.setText(lngObject.getString("PleaseentertheOTPbelowtoresetpassword"));
+           // otp_text.setText(lngObject.getString("PleaseentertheOTPbelowtoresetpassword"));
             enter_otp.setHint(lngObject.getString("EntertheOTP"));
             toast_otp = lngObject.getString("EntertheOTP");
             toast_invalid_otp = lngObject.getString("InvalidOTP");
@@ -206,7 +205,7 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
 
 
 
-       /* resend_otp.setOnClickListener(new View.OnClickListener() {
+        resend_otp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try{
@@ -275,7 +274,6 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
                 }
             }
         });
-*/
 
 
 

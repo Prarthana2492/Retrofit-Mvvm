@@ -61,6 +61,7 @@ public class AaNotificationSetting extends Fragment {
             }
         });
 
+
         acc_info_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +72,7 @@ public class AaNotificationSetting extends Fragment {
                 transaction.commit();
             }
         });
+
 
        /* not_lay.setOnClickListener(new View.OnClickListener() {
             @Override

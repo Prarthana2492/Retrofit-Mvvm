@@ -3,30 +3,36 @@ package com.FarmPe.Farmer.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
-import com.FarmPe.Farmer.Activity.LandingPageActivity;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
 
 import org.json.JSONObject;
 
-import static com.FarmPe.Farmer.Activity.LandingPageActivity.mBottomSheetBehavior6;
+
 
 
 public class AaAccountFragment extends Fragment {
+    BottomSheetDialog mBottomSheetDialog;
+    View sheetView;
     Fragment selectedFragment;
     LinearLayout backfeed,acc_info_lay,change_pass_lay,main_layout,logout_lay;
     TextView notificatn,change_language,your_addresss,acc_info1,refer_ern,feedbk,help_1,abt_frmpe,polic_1,logot,setting_tittle;
@@ -48,7 +54,7 @@ public class AaAccountFragment extends Fragment {
         main_layout=view.findViewById(R.id.main_layout);
         logout_lay=view.findViewById(R.id.logout_lay);
 
-        LandingPageActivity.editname.setVisibility(View.GONE);
+       // LandingPageActivity.editname.setVisibility(View.GONE);
 
         final SessionManager sessionManager=new SessionManager(getActivity());
         getActivity().getWindow().setSoftInputMode(
@@ -87,6 +93,7 @@ public class AaAccountFragment extends Fragment {
                 selectedFragment = AaProfileFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.addToBackStack("aaAccount");
                 transaction.commit();
             }
         });
@@ -94,7 +101,7 @@ public class AaAccountFragment extends Fragment {
         change_pass_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                main_layout.setBackgroundColor(Color.parseColor("#666666"));
+                /*main_layout.setBackgroundColor(Color.parseColor("#666666"));
                 mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_EXPANDED);
                 LandingPageActivity.editname.setVisibility(View.VISIBLE);
                 LandingPageActivity.logout.setVisibility(View.GONE);
@@ -118,7 +125,37 @@ public class AaAccountFragment extends Fragment {
                         main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
 
                     }
+                });*/
+
+                mBottomSheetDialog = new BottomSheetDialog(getActivity());
+                sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
+                TextView positiveText = sheetView.findViewById(R.id.positive_text);
+                TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
+                TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
+                EditText userInput = sheetView.findViewById(R.id.user_text);
+                userInput.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                userInput.setVisibility(View.VISIBLE);
+                titleText.setText("Change password");
+                Log.d("liugekuyhg",""+titleText.getText().toString());
+                descriptionText.setText("Are you sure you want to exit?");
+                descriptionText.setVisibility(View.GONE);
+                positiveText.setText("Save");
+                TextView negetiveText = sheetView.findViewById(R.id.negetive_text);
+                negetiveText.setText("Cancel");
+                positiveText.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getActivity(), "Change was clicked", Toast.LENGTH_SHORT).show();
+                    }
                 });
+                negetiveText.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mBottomSheetDialog.dismiss();
+                    }
+                });
+                mBottomSheetDialog.setContentView(sheetView);
+                mBottomSheetDialog.show();
 
             }
         });
@@ -126,7 +163,8 @@ public class AaAccountFragment extends Fragment {
         logout_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                main_layout.setBackgroundColor(Color.parseColor("#666666"));
+
+                /*main_layout.setBackgroundColor(Color.parseColor("#666666"));
                 mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_EXPANDED);
                 LandingPageActivity.name_hint.setText("Logout");
                 LandingPageActivity.editname.setVisibility(View.GONE);
@@ -160,15 +198,42 @@ public class AaAccountFragment extends Fragment {
                         mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_COLLAPSED);
                         main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
 
+                    }l_
+                });*/
+
+                mBottomSheetDialog = new BottomSheetDialog(getActivity());
+                sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
+                TextView positiveText = sheetView.findViewById(R.id.positive_text);
+                TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
+                TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
+                EditText userInput = sheetView.findViewById(R.id.user_text);
+                userInput.setVisibility(View.GONE);
+                titleText.setText("Logout");
+                descriptionText.setText("Are you sure you want to exit?");
+                positiveText.setText("Yes");
+                TextView negetiveText = sheetView.findViewById(R.id.negetive_text);
+                negetiveText.setText("No");
+                positiveText.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        sessionManager.logoutUser();
+                        getActivity().finish();
+                        mBottomSheetDialog.dismiss();
                     }
                 });
+                negetiveText.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mBottomSheetDialog.dismiss();
+                    }
+                });
+                mBottomSheetDialog.setContentView(sheetView);
+                mBottomSheetDialog.show();
 
             }
         });
 
         return view;
     }
-
-
 
 }

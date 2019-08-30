@@ -76,6 +76,7 @@ package com.FarmPe.Farmer;
     public static final String GetLookingForFirst = ROOT_URL+"MasterTable/GetLookingFor";
     public static final String GetLookingForList = ROOT_URL+"MasterTable/GetLookingForLists";
     public static final String YourRequest = ROOT_URL+"MasterTable/GetLookingForListsById";
+    public static final String Model_List = ROOT_URL+"MasterTable/GetRFQModelMasterList";
 
 
     //List Your Farms
@@ -97,6 +98,7 @@ package com.FarmPe.Farmer;
   //Connections
 
    public static final String Get_Connection_List = ROOT_URL + "MasterTable/GetConnectionList";
+
 
 
    //Homepage_Count

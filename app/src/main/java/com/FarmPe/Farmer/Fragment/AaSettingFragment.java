@@ -3,6 +3,7 @@ package com.FarmPe.Farmer.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.FarmPe.Farmer.Activity.LandingPageActivity;
@@ -23,6 +25,9 @@ import static com.FarmPe.Farmer.Activity.LandingPageActivity.mBottomSheetBehavio
 
 
 public class AaSettingFragment extends Fragment {
+
+    BottomSheetDialog mBottomSheetDialog;
+    View sheetView;
     Fragment selectedFragment;
     LinearLayout backfeed,acc_info_lay,not_lay,lang_lay,help_lay,invi_lay,main_layout,requ_lay;
     TextView notificatn,change_language,your_addresss,acc_info1,refer_ern,feedbk,help_1,abt_frmpe,polic_1,logot,setting_tittle;
@@ -58,7 +63,6 @@ public class AaSettingFragment extends Fragment {
             }
         });
 
-
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -81,7 +85,6 @@ public class AaSettingFragment extends Fragment {
                 return false;
             }
         });
-
 
         acc_info_lay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,74 +123,85 @@ public class AaSettingFragment extends Fragment {
 
             }
         });
-        lang_lay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+//        lang_lay.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (newState==false){
+//                    selectedFragment = ChangeLanguageFragment.newInstance();
+//                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                    transaction.replace(R.id.frame_layout, selectedFragment);
+//                    transaction.addToBackStack("setting");
+//                    transaction.commit();
+//
+//                }else{
+//                    mBottomSheetBehavior4.setState(BottomSheetBehavior.STATE_COLLAPSED);
+//                    main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
+//                    newState=false;
+//                }
+//
+//            }
+//        });
 
-                if (newState==false){
-                    selectedFragment = ChangeLanguageFragment.newInstance();
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
-                    transaction.addToBackStack("setting");
-                    transaction.commit();
-
-                }else{
-                    mBottomSheetBehavior4.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                    main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
-                    newState=false;
-                }
-
-            }
-        });
-
-        help_lay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (newState==false){
-                    selectedFragment = AaHelpFragment.newInstance();
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
-                    transaction.addToBackStack("setting");
-                    transaction.commit();
-
-                }else{
-                    mBottomSheetBehavior4.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                    main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
-                    newState=false;
-                }
-
-            }
-        });
-
+//        help_lay.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (newState==false){
+//                    selectedFragment = AaHelpFragment.newInstance();
+//                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                    transaction.replace(R.id.frame_layout, selectedFragment);
+//                    transaction.addToBackStack("setting");
+//                    transaction.commit();
+//
+//                }else{
+//                    mBottomSheetBehavior4.setState(BottomSheetBehavior.STATE_COLLAPSED);
+//                    main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
+//                    newState=false;
+//                }
+//
+//            }
+//        });
 
         invi_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newState=true;
+                /*newState=true;
                 main_layout.setBackgroundColor(Color.parseColor("#666666"));
                 mBottomSheetBehavior4.setState(BottomSheetBehavior.STATE_EXPANDED);
 
                 main_layout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
                         mBottomSheetBehavior4.setState(BottomSheetBehavior.STATE_COLLAPSED);
                         main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
                         newState=false;
 
                     }
                 });
-
                 LandingPageActivity.cancel_invite.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
                         mBottomSheetBehavior4.setState(BottomSheetBehavior.STATE_COLLAPSED);
                         main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
                         newState=false;
 
                     }
+                });*/
+
+                mBottomSheetDialog = new BottomSheetDialog(getActivity());
+                sheetView = getActivity().getLayoutInflater().inflate(R.layout.invite_people_bottom_sheet, null);
+                TextView cancel = sheetView.findViewById(R.id.cancel_invite);
+
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mBottomSheetDialog.dismiss();
+                    }
                 });
+
+                mBottomSheetDialog.setContentView(sheetView);
+                mBottomSheetDialog.show();
+
+
             }
         });
 

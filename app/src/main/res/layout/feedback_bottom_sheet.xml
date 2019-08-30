@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#666666"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/curved_linear_background"
+    android:paddingBottom="10dp"
+    android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/segoeui"
+            android:gravity="center"
+            android:paddingVertical="5dp"
+            android:text="Feedback"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+
+    <EditText
+        android:id="@+id/feedback_edit"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="start"
+        android:hint="Describe your feedback"
+        android:background="#fafafa"
+        android:scrollbars="vertical"
+        android:maxLength="250"
+        android:padding="10dp"
+        android:layout_marginTop="20sp"
+        android:layout_marginHorizontal="25dp"/>
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginTop="20dp"
+        android:outlineAmbientShadowColor="#000"
+        android:outlineSpotShadowColor="#000"
+        android:background="#000"
+        />
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:gravity="right"
+        android:layout_marginHorizontal="10dp"
+        android:paddingVertical="20dp"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/save_feedback"
+            android:layout_width="wrap_content"
+            android:textSize="14dp"
+            android:text="Save"
+            android:textStyle="bold"
+            android:textColor="#279e5e"
+            android:fontFamily="@font/segoeui"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20sp"/>
+
+
+            <TextView
+                android:id="@+id/cancel_feedback"
+                android:layout_width="wrap_content"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:text="Cancel"
+                android:textColor="#279e5e"
+                android:fontFamily="@font/segoeui"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"/>
+
+
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
+</LinearLayout>

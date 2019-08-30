@@ -1066,7 +1066,9 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                                 FragmentManager fm = getActivity().getSupportFragmentManager();
                                 fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                            }else if (getArguments().getString("navigation_from").equals("SETTING_FRAG")) {
+
+
+                                }else if (getArguments().getString("navigation_from").equals("SETTING_FRAG")) {
 
                                 int duration = 1000;
                                 Snackbar snackbar = Snackbar

@@ -35,6 +35,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,11 +43,15 @@ import android.widget.Toast;
 import com.FarmPe.Farmer.Bean.AddPhotoBean;
 import com.FarmPe.Farmer.Fragment.HomeMenuFragment;
 
+import com.FarmPe.Farmer.Fragment.SettingFragment;
 import com.FarmPe.Farmer.G_Vision_Controller;
 import com.FarmPe.Farmer.GpsService;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
+import com.FarmPe.Farmer.Urls;
+import com.FarmPe.Farmer.Volly_class.Crop_Post;
 import com.FarmPe.Farmer.Volly_class.PackageManagerUtils;
+import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.HttpTransport;
@@ -83,14 +88,16 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
     CoordinatorLayout coordinate_layout;
     SessionManager sessionManager;
     public static Bitmap selectedImage;
-    public static EditText editname;
+    public static EditText editname,feedbk_edittxt;
+    String status,message;
+
 
     public  static Activity activity;
     public static String toast_click_back;
     boolean doubleBackToExitPressedOnce = false;
     private static final int MAX_DIMENSION = 200;
     public static BottomSheetBehavior mBottomSheetBehavior6,mBottomSheetBehavior5,mBottomSheetBehavior4;
-    public static TextView name_hint,cancel,save,logout,cancel_feed,cancel_invite,prof_name,buy_now;
+    public static TextView name_hint,cancel,save,logout,feedbk_save,cancel_feed,cancel_invite,prof_name,buy_now;
 
     private static final String TAG = LandingPageActivity.class.getSimpleName();
 
@@ -235,27 +242,28 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
         setContentView(R.layout.test);
         checkConnection();
 
-        coordinate_layout=findViewById(R.id.coordinator);
-        name_hint=findViewById(R.id.enter_name_text);
-        coordinate_layout=findViewById(R.id.coordinator);
-        editname=findViewById(R.id.enter_name);
-        cancel=findViewById(R.id.cancel);
-        cancel_feed=findViewById(R.id.cancel_feed);
-        cancel_invite=findViewById(R.id.cancel_invite);
-        save=findViewById(R.id.save);
-        logout=findViewById(R.id.logout);
+        coordinate_layout = findViewById(R.id.coordinator);
+        name_hint = findViewById(R.id.enter_name_text);
+
+        editname = findViewById(R.id.enter_name);
+        cancel = findViewById(R.id.cancel);
+        cancel_feed = findViewById(R.id.cancel_feed);
+        cancel_invite = findViewById(R.id.cancel_invite);
+        save = findViewById(R.id.save);
+        logout = findViewById(R.id.logout);
+        feedbk_save = findViewById(R.id.feedbk_save);
+        feedbk_edittxt = findViewById(R.id.feedbk_edittxt);
+
 
         sessionManager = new SessionManager(this);
-        activity= this;
+        activity = this;
 
         System.out.println("landiiiiiing");
 
 
         Window window = activity.getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(activity,R.color.colorPrimaryDark));
-      //  LandingPageActivity.this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-
-
+        window.setStatusBarColor(ContextCompat.getColor(activity, R.color.colorPrimaryDark));
+        //  LandingPageActivity.this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
 
         try {
@@ -266,11 +274,9 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
             toast_nointernet = lngObject.getString("NoInternetConnection");
 
 
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
 
 
         System.out.println("landiiiiiing");
@@ -281,94 +287,196 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
         transaction.commit();
 
 
-
-
         Profile = findViewById(R.id.profile_view);
         feedback_view = findViewById(R.id.feedback_view);
         invite_view = findViewById(R.id.invite_view);
 
-     /*   mBottomSheetBehavior6 = BottomSheetBehavior.from(Profile);
-        mBottomSheetBehavior6.setPeekHeight(0);
+//        mBottomSheetBehavior6 = BottomSheetBehavior.from(Profile);
+//        mBottomSheetBehavior6.setPeekHeight(0);
+//
+//        mBottomSheetBehavior5 = BottomSheetBehavior.from(feedback_view);
+//        mBottomSheetBehavior5.setPeekHeight(0);
+//
+//        mBottomSheetBehavior4 = BottomSheetBehavior.from(invite_view);
+//        mBottomSheetBehavior4.setPeekHeight(0);
+//
+//        mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_COLLAPSED);
+//        mBottomSheetBehavior5.setState(BottomSheetBehavior.STATE_COLLAPSED);
+//        mBottomSheetBehavior4.setState(BottomSheetBehavior.STATE_COLLAPSED);
+//
+//        mBottomSheetBehavior6.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+//            @Override
+//            public void onStateChanged(View bottomSheet, int newState) {
+//                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
+//
+//                }
+//                else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+//                }
+//                else if (newState == BottomSheetBehavior.STATE_HIDDEN) {
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onSlide(View bottomSheet, float slideOffset) {
+//            }
+//
+//        });
+//
+//
+//        mBottomSheetBehavior5.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+//            @Override
+//            public void onStateChanged(View bottomSheet, int newState) {
+//                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
+//
+//                }
+//                else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+//                }
+//                else if (newState == BottomSheetBehavior.STATE_HIDDEN) {
+//
+//                }
+//            }
+//
+//
+//            @Override
+//            public void onSlide(View bottomSheet, float slideOffset) {
+//            }
+//
+//        });
+//
+//        mBottomSheetBehavior4.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+//            @Override
+//            public void onStateChanged(View bottomSheet, int newState) {
+//                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
+//
+//                }
+//                else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+//                }
+//                else if (newState == BottomSheetBehavior.STATE_HIDDEN) {
+//
+//                }
+//            }
+//
+//
+//            @Override
+//            public void onSlide(View bottomSheet, float slideOffset) {
+//            }
+//
+//        });
+//
+//
+//
+//        feedbk_save.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//
+//                if(feedbk_edittxt.getText().toString().equals("")) {
+//                    int duration = 1000;
+//                    Snackbar snackbar = Snackbar
+//                            .make(coordinate_layout, "Type your Feedback", duration);
+//                    View snackbarView = snackbar.getView();
+//                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+//                    tv.setBackgroundColor(ContextCompat.getColor(activity, R.color.orange));
+//                    tv.setTextColor(Color.WHITE);
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//                    } else {
+//                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+//                    }
+//                    snackbar.show();
+//
+//
+//
+//                }else {
+//
+//
+//                    try {
+//
+//                        JSONObject jsonObject = new JSONObject();
+//                        jsonObject.put("FeedbackType", "feedback");
+//                        jsonObject.put("FeedbackTitle", "feedback");
+//                        jsonObject.put("FeedbackDescription", feedbk_edittxt.getText().toString());
+//                        jsonObject.put("CreatedBy", sessionManager.getRegId("userId"));
+//
+//                        System.out.println("nnnnnnnnnnnnnnnaaaaaaaaa" + jsonObject);
+//
+//                        Crop_Post.crop_posting(activity, Urls.AddFeedback, jsonObject, new VoleyJsonObjectCallback() {
+//                            @Override
+//                            public void onSuccessResponse(JSONObject result) {
+//                                System.out.println("AddFeedbackkkkkkkkkkkkkkkkkkkkkkk" + result);
+//
+//                                try {
+//
+//                                    feedbk_edittxt.clearFocus();
+//                                    status = result.getString("Status");
+//                                    message = result.getString("Message");
+//
+//                                    if (!(status.equals("0"))) {
+//                                        //Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
+//                                        int duration = 1000;
+//                                        Snackbar snackbar = Snackbar
+//                                                .make(coordinate_layout, "Your Feedback Submitted Successfully", duration);
+//                                        View snackbarView = snackbar.getView();
+//                                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+//                                        tv.setBackgroundColor(ContextCompat.getColor(activity, R.color.orange));
+//                                        tv.setTextColor(Color.WHITE);
+//                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//                                        } else {
+//                                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
+//                                        }
+//                                        snackbar.show();
+//                                        mBottomSheetBehavior5.setState(BottomSheetBehavior.STATE_COLLAPSED);
+//
+//                                    } else {
+//
+//                                        // Toast.makeText(getActivity(),"Your Feedback not Submitted ",Toast.LENGTH_SHORT).show();
+//                                        int duration = 1000;
+//                                        Snackbar snackbar = Snackbar
+//                                                .make(coordinate_layout, "Your Feedback not Submitted Successfully", duration);
+//                                        View snackbarView = snackbar.getView();
+//                                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+//                                        tv.setBackgroundColor(ContextCompat.getColor(activity, R.color.orange));
+//                                        tv.setTextColor(Color.WHITE);
+//
+//                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//                                        } else {
+//                                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
+//                                        }
+//                                        snackbar.show();
+//
+//                                        mBottomSheetBehavior5.setState(BottomSheetBehavior.STATE_COLLAPSED);
+//                                    }
+//
+//
+//                                } catch (Exception e) {
+//                                    e.printStackTrace();
+//
+//                                }
+//
+//
+//                            }
+//                        });
+//
+//
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                }
+//            }
+//        });
+//
+//
+//    }
+//
+//
+//
 
-        mBottomSheetBehavior5 = BottomSheetBehavior.from(feedback_view);
-        mBottomSheetBehavior5.setPeekHeight(0);
 
-        mBottomSheetBehavior4 = BottomSheetBehavior.from(invite_view);
-        mBottomSheetBehavior4.setPeekHeight(0);
-
-        mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_COLLAPSED);
-        mBottomSheetBehavior5.setState(BottomSheetBehavior.STATE_COLLAPSED);
-        mBottomSheetBehavior4.setState(BottomSheetBehavior.STATE_COLLAPSED);
-
-        mBottomSheetBehavior6.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-            @Override
-            public void onStateChanged(View bottomSheet, int newState) {
-                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
-
-                }
-                else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
-                }
-                else if (newState == BottomSheetBehavior.STATE_HIDDEN) {
-
-                }
-            }
-
-
-            @Override
-            public void onSlide(View bottomSheet, float slideOffset) {
-            }
-
-        });
-
-
-        mBottomSheetBehavior5.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-            @Override
-            public void onStateChanged(View bottomSheet, int newState) {
-                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
-
-                }
-                else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
-                }
-                else if (newState == BottomSheetBehavior.STATE_HIDDEN) {
-
-                }
-            }
-
-
-            @Override
-            public void onSlide(View bottomSheet, float slideOffset) {
-            }
-
-        });
-
-        mBottomSheetBehavior4.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-            @Override
-            public void onStateChanged(View bottomSheet, int newState) {
-                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
-
-                }
-                else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
-                }
-                else if (newState == BottomSheetBehavior.STATE_HIDDEN) {
-
-                }
-            }
-
-
-            @Override
-            public void onSlide(View bottomSheet, float slideOffset) {
-            }
-
-        });*/
     }
-
-
-
-
-
-
-
-
 
 
 

@@ -250,9 +250,9 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
 
             submit.setText(lngObject.getString("SendOTP"));
             otp_title.setText(lngObject.getString("OneTimePassword"));
-            otp_text.setText(lngObject.getString("EnterOTP"));
+            otpedittext.setHint(lngObject.getString("EnterOTP"));
             resendotp.setText(lngObject.getString("Resend"));
-            otpedittext.setHint(lngObject.getString("EntertheOTP"));
+            //otp_text.setHint(lngObject.getString("EntertheOTP"));
 
             toast_otp = lngObject.getString("EntertheOTP");
             toast_invalid_otp = lngObject.getString("InvalidOTP");

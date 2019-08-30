@@ -238,7 +238,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
 
                 text_mobile.setHint(lngObject.getString("PhoneNo"));
-                text_pass.setHint(lngObject.getString("Password"));
+                pass.setHint(lngObject.getString("Password"));
               //  remember_me.setText(lngObject.getString("RememberMe"));
                 forgot_pass.setText(lngObject.getString("ForgotPassword") + "?");
                 log_in.setText(lngObject.getString("Login"));

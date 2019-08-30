@@ -144,8 +144,8 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
         pass_submit=findViewById(R.id.password_submit);
         passwd=findViewById(R.id.passwd1);
         conf_pass=findViewById(R.id.conf_pass1);
-        passwd_txt=findViewById(R.id.passwd_txt);
-        conf_pass_txt=findViewById(R.id.conf_pass_txt);
+        passwd_txt=findViewById(R.id.text_pass1);
+        conf_pass_txt=findViewById(R.id.text_pass);
         linearLayout=findViewById(R.id.main_layout);
         reset_text=findViewById(R.id.reset);
        // to_continue_text=findViewById(R.id.tocnt);
@@ -169,8 +169,8 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
             reset_text.setText(lngObject.getString("ResetPassword"));
            // to_continue_text.setText(lngObject.getString("TocontinuewithFarmPeFarmer"));
             pass_submit.setText(lngObject.getString("Submit"));
-            passwd_txt.setHint(lngObject.getString("NewPassword"));
-            conf_pass_txt.setHint(lngObject.getString("Confirmthepassword"));
+            passwd.setHint(lngObject.getString("NewPassword"));
+            conf_pass.setHint(lngObject.getString("Confirmthepassword"));
             passwrd_toast = lngObject.getString("EnterPassword");
             passwrd_length_toast = lngObject.getString("Enterpasswordoflength6characters");
             pass_not_matching_toast = lngObject.getString("Yourpasswordisnotmatching");
