@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.FarmPe.Farmer.Adapter.AdapterSelectLanguage;
 import com.FarmPe.Farmer.Bean.SelectLanguageBean;
 import com.FarmPe.Farmer.R;
+import com.FarmPe.Farmer.SessionManager;
 import com.FarmPe.Farmer.Urls;
 import com.FarmPe.Farmer.Volly_class.Login_post;
 import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
@@ -37,6 +38,17 @@ public class ActivitySelectLang extends AppCompatActivity {
     private AdapterSelectLanguage mAdapter;
     boolean doubleBackToExitPressedOnce = false;
     LinearLayout linearLayout;
+
+    SessionManager sessionManager;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        System.out.println("loginonStart");
+        sessionManager = new SessionManager(getApplicationContext()); //check
+         sessionManager.checkLogin();
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

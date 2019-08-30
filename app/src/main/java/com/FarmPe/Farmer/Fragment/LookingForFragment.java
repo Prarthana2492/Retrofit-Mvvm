@@ -46,6 +46,10 @@ public class LookingForFragment extends Fragment {
     SessionManager sessionManager;
 
    public static JSONArray cropsListArray = null;
+   public static JSONArray tractorImplementsModelMasterList = null;
+   public static JSONArray tractorAccessoriesModelMasterList = null;
+   public static JSONArray harvesterModelMasterList = null;
+   public static JSONArray jCBRFQModelList = null;
 
     public static LookingForFragment newInstance() {
         LookingForFragment fragment = new LookingForFragment();
@@ -122,9 +126,191 @@ public class LookingForFragment extends Fragment {
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("YourRequestttttttttttttttttt" + result);
 
-
                     try {
-                        cropsListArray = result.getJSONArray("LookingForList");
+                        cropsListArray = result.getJSONArray("TractorRFQModelList");
+
+                    tractorImplementsModelMasterList = result.getJSONArray("TractorImplementsRFQModelList");
+                    tractorAccessoriesModelMasterList = result.getJSONArray("TractorAccesoriesRFQModelList");
+                    harvesterModelMasterList = result.getJSONArray("HarvesterRFQModelList");
+                        jCBRFQModelList = result.getJSONArray("JCBRFQModelList");
+
+                        for (int i = 0; i < cropsListArray.length(); i++) {
+                            JSONObject jsonObject1 = cropsListArray.getJSONObject(i);
+                            JSONObject jsonObject2 = jsonObject1.getJSONObject("Address");
+                            String model = jsonObject1.getString("Model");
+                            String purchaseTimeline = jsonObject1.getString("PurchaseTimeline");
+                            String image = jsonObject1.getString("ModelImage");
+                            String id = jsonObject1.getString("Id");
+                            String name = jsonObject2.getString("Name");
+                            String city = jsonObject2.getString("City");
+                            String state = jsonObject2.getString("State");
+                            String area = jsonObject2.getString("Hoblie");
+                            String hp_range = jsonObject1.getString("HorsePower");
+                            location = city + ", " + state+","+area;
+
+
+                            String location_det = jsonObject2.getString("Name")+","+jsonObject2.getString("MobileNo")
+                                    +","+jsonObject2.getString("StreeAddress1")+","+jsonObject2.getString("PickUpFrom")
+                                    +","+jsonObject2.getString("State")+","+jsonObject2.getString("District")
+                                    +","+jsonObject2.getString("Taluk")+","+jsonObject2.getString("Hoblie")
+                                    +","+jsonObject2.getString("Pincode");
+
+
+
+                            System.out.println("madelslistt" + newOrderBeansList.size());
+
+                            FarmsImageBean crops = new FarmsImageBean(image, "Tractor Price", model, hp_range, purchaseTimeline, name, location, id,location_det);
+                            newOrderBeansList.add(crops);
+
+                        }
+
+
+                        for (int i = 0; i < tractorImplementsModelMasterList.length(); i++) {
+                            JSONObject jsonObject1 = tractorImplementsModelMasterList.getJSONObject(i);
+                            JSONObject jsonObject2 = jsonObject1.getJSONObject("Address");
+                            String model = jsonObject1.getString("Model");
+                            String purchaseTimeline = jsonObject1.getString("PurchaseTimeline");
+                            String image = jsonObject1.getString("ModelImage");
+                            String id = jsonObject1.getString("Id");
+                            String name = jsonObject2.getString("Name");
+                            String city = jsonObject2.getString("City");
+                            String state = jsonObject2.getString("State");
+                            String area = jsonObject2.getString("Hoblie");
+                            String hp_range = jsonObject1.getString("HorsePower");
+                            location = city + ", " + state+","+area;
+
+
+                            String location_det = jsonObject2.getString("Name")+","+jsonObject2.getString("MobileNo")
+                                    +","+jsonObject2.getString("StreeAddress1")+","+jsonObject2.getString("PickUpFrom")
+                                    +","+jsonObject2.getString("State")+","+jsonObject2.getString("District")
+                                    +","+jsonObject2.getString("Taluk")+","+jsonObject2.getString("Hoblie")
+                                    +","+jsonObject2.getString("Pincode");
+
+
+
+                            System.out.println("madelslistt" + newOrderBeansList.size());
+
+                            FarmsImageBean crops = new FarmsImageBean(image, "Tractor Price", model, hp_range, purchaseTimeline, name, location, id,location_det);
+                            newOrderBeansList.add(crops);
+
+                        }
+
+
+
+
+
+                        for (int i = 0; i < tractorAccessoriesModelMasterList.length(); i++) {
+                            JSONObject jsonObject1 = tractorAccessoriesModelMasterList.getJSONObject(i);
+                            JSONObject jsonObject2 = jsonObject1.getJSONObject("Address");
+                            String model = jsonObject1.getString("Model");
+                            String purchaseTimeline = jsonObject1.getString("PurchaseTimeline");
+                            String image = jsonObject1.getString("ModelImage");
+                            String id = jsonObject1.getString("Id");
+                            String name = jsonObject2.getString("Name");
+                            String city = jsonObject2.getString("City");
+                            String state = jsonObject2.getString("State");
+                            String area = jsonObject2.getString("Hoblie");
+                            String hp_range = jsonObject1.getString("HorsePower");
+                            location = city + ", " + state+","+area;
+
+
+                            String location_det = jsonObject2.getString("Name")+","+jsonObject2.getString("MobileNo")
+                                    +","+jsonObject2.getString("StreeAddress1")+","+jsonObject2.getString("PickUpFrom")
+                                    +","+jsonObject2.getString("State")+","+jsonObject2.getString("District")
+                                    +","+jsonObject2.getString("Taluk")+","+jsonObject2.getString("Hoblie")
+                                    +","+jsonObject2.getString("Pincode");
+
+
+
+                            System.out.println("madelslistt" + newOrderBeansList.size());
+
+                            FarmsImageBean crops = new FarmsImageBean(image, "Tractor Price", model, hp_range, purchaseTimeline, name, location, id,location_det);
+                            newOrderBeansList.add(crops);
+
+                        }
+
+
+                        for (int i = 0; i < harvesterModelMasterList.length(); i++) {
+                            JSONObject jsonObject1 = harvesterModelMasterList.getJSONObject(i);
+                            JSONObject jsonObject2 = jsonObject1.getJSONObject("Address");
+                            String model = jsonObject1.getString("Model");
+                            String purchaseTimeline = jsonObject1.getString("PurchaseTimeline");
+                            String image = jsonObject1.getString("ModelImage");
+                            String id = jsonObject1.getString("Id");
+                            String name = jsonObject2.getString("Name");
+                            String city = jsonObject2.getString("City");
+                            String state = jsonObject2.getString("State");
+                            String area = jsonObject2.getString("Hoblie");
+                          //  String hp_range = jsonObject1.getString("HorsePower");
+                            String hp_range = "";
+                            location = city + ", " + state+","+area;
+
+
+                            String location_det = jsonObject2.getString("Name")+","+jsonObject2.getString("MobileNo")
+                                    +","+jsonObject2.getString("StreeAddress1")+","+jsonObject2.getString("PickUpFrom")
+                                    +","+jsonObject2.getString("State")+","+jsonObject2.getString("District")
+                                    +","+jsonObject2.getString("Taluk")+","+jsonObject2.getString("Hoblie")
+                                    +","+jsonObject2.getString("Pincode");
+
+
+
+                            System.out.println("madelslistt" + newOrderBeansList.size());
+
+                            FarmsImageBean crops = new FarmsImageBean(image, "Tractor Price", model, hp_range, purchaseTimeline, name, location, id,location_det);
+                            newOrderBeansList.add(crops);
+
+                        }
+
+                        for (int i = 0; i < jCBRFQModelList.length(); i++) {
+                            JSONObject jsonObject1 = jCBRFQModelList.getJSONObject(i);
+                            JSONObject jsonObject2 = jsonObject1.getJSONObject("Address");
+                            String model = jsonObject1.getString("Model");
+                            String purchaseTimeline = jsonObject1.getString("PurchaseTimeline");
+                            String image = jsonObject1.getString("ModelImage");
+                            String id = jsonObject1.getString("Id");
+                            String name = jsonObject2.getString("Name");
+                            String city = jsonObject2.getString("City");
+                            String state = jsonObject2.getString("State");
+                            String area = jsonObject2.getString("Hoblie");
+                            String hp_range = jsonObject1.getString("HorsePower");
+                            location = city + ", " + state+","+area;
+
+
+                            String location_det = jsonObject2.getString("Name")+","+jsonObject2.getString("MobileNo")
+                                    +","+jsonObject2.getString("StreeAddress1")+","+jsonObject2.getString("PickUpFrom")
+                                    +","+jsonObject2.getString("State")+","+jsonObject2.getString("District")
+                                    +","+jsonObject2.getString("Taluk")+","+jsonObject2.getString("Hoblie")
+                                    +","+jsonObject2.getString("Pincode");
+
+
+
+                            System.out.println("madelslistt" + newOrderBeansList.size());
+
+                            FarmsImageBean crops = new FarmsImageBean(image, "Tractor Price", model, hp_range, purchaseTimeline, name, location, id,location_det);
+                            newOrderBeansList.add(crops);
+
+                        }
+
+
+
+                        farmadapter = new FarmsImageAdapter(getActivity(), newOrderBeansList);
+                        GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
+                        recyclerView.setLayoutManager(mLayoutManager_farm);
+                        recyclerView.setItemAnimator(new DefaultItemAnimator());
+                        recyclerView.setAdapter(farmadapter);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+
+                /*    try {
+                        cropsListArray = result.getJSONArray("TractorRFQModelList");
+                        tractorImplementsModelMasterList = result.getJSONArray("TractorImplementsRFQModelList");
+                        tractorAccessoriesModelMasterList = result.getJSONArray("TractorAccesoriesRFQModelList");
+                        harvesterModelMasterList = result.getJSONArray("HarvesterRFQModelList");
+                       // jCBModelMasterList = result.getJSONArray("JCBModelMasterList");
                         System.out.println("eeeddd" + cropsListArray.length());
 
                         if (cropsListArray.length() == 0) {
@@ -147,7 +333,7 @@ public class LookingForFragment extends Fragment {
                                 String city = jsonObject2.getString("City");
                                 String state = jsonObject2.getString("State");
                                 String area = jsonObject2.getString("Hoblie");
-                                String hp_range = jsonObject1.getString("HorsePowerRange");
+                                String hp_range = jsonObject1.getString("HorsePower");
                                 location = city + ", " + state+","+area;
 
 
@@ -176,7 +362,7 @@ public class LookingForFragment extends Fragment {
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                    }
+                    }*/
 
 
                 }

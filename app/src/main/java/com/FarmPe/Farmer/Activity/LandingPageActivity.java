@@ -287,7 +287,7 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
         feedback_view = findViewById(R.id.feedback_view);
         invite_view = findViewById(R.id.invite_view);
 
-        mBottomSheetBehavior6 = BottomSheetBehavior.from(Profile);
+     /*   mBottomSheetBehavior6 = BottomSheetBehavior.from(Profile);
         mBottomSheetBehavior6.setPeekHeight(0);
 
         mBottomSheetBehavior5 = BottomSheetBehavior.from(feedback_view);
@@ -359,7 +359,7 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
             public void onSlide(View bottomSheet, float slideOffset) {
             }
 
-        });
+        });*/
     }
 
 

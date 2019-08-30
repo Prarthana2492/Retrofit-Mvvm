@@ -29,7 +29,7 @@ package com.FarmPe.Farmer;
     public static final String Get_New_Address = ROOT_URL+"MasterTable/GetUserAddress";
     // Wallet
     public static final String GetFarmDetailsList = ROOT_URL+"MasterTable/GetFarmsList";
-    public static final String GetFarmsListByUserId = "http://13.232.185.209:909/api/MasterTable/GetFarmsListByUserId";
+    public static final String GetFarmsListByUserId = "MasterTable/GetFarmsListByUserId";
 
 
     // Refer n Earn
@@ -60,7 +60,6 @@ package com.FarmPe.Farmer;
    public static final String GET_NOTIFICATIONLIST= ROOT_URL + "MasterTable/GetNotifications";
    public static final String UPDATEUSERNOTIFICATIONSETTING= ROOT_URL + "Auth/UpdateUserNotificationSettings";
 
-   // http://3.17.6.57:8686/api/Auth/UpdateUserNotificationSettings
 
     public static final String Districts=ROOT_URL+"MasterTable/GetDistricts";
     public static final String Taluks=ROOT_URL+"MasterTable/GetTaluks";
