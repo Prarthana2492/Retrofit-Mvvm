@@ -80,7 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_user"
+                    android:src="@drawable/ic_message1"
 
                     />
 
@@ -133,7 +133,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_user"
+                    android:src="@drawable/ic_help1"
 
                     />
 
@@ -188,7 +188,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_user"
+                    android:src="@drawable/ic_sign_contract"
 
                     />
 
@@ -242,7 +242,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_user"
+                    android:src="@drawable/ic_agriculture"
 
                     />
 

@@ -8,7 +8,7 @@
     android:layout_centerInParent="true"
     android:orientation="vertical"
     android:weightSum="100"
-  >
+    >
 
 
 
@@ -98,7 +98,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/address_linear"
+                    android:id="@+id/adrss_type_linear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -106,6 +106,7 @@
                     >
 
                     <LinearLayout
+
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="40dp"
@@ -130,16 +131,18 @@
                             android:textColorHint="#000"/>
 
 
-                        <TextView
+                        <EditText
                             android:id="@+id/address_type"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:hint="Home"
                             android:paddingVertical="2dp"
                             android:textSize="13dp"
+                            android:editable="false"
                             android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColor="#666666"
+                            android:background="@android:color/transparent"
                             />
                     </LinearLayout>
 
@@ -161,7 +164,7 @@
 
 
                 </LinearLayout>
-                      <View
+                <View
                     android:layout_width="match_parent"
                     android:layout_height="0.75dp"
                     android:background="#dcdcdc"
@@ -179,8 +182,6 @@
                     android:textSize="13dp"
                     android:background="@android:color/transparent"
                     android:maxLength="30"
-                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                    android:inputType="textFilter"
                     android:layout_marginLeft="6dp"
                     android:paddingRight="10dp"
                     android:backgroundTint="#d3d3d3"
@@ -264,6 +265,7 @@
                     android:backgroundTint="#d3d3d3"
                     android:fontFamily="@font/segoeui"
                     android:textColorHint="#000"
+
                     />
 
                 <View
@@ -304,7 +306,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="100"
-                   >
+                    >
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -313,35 +315,35 @@
 
 
 
-                    <EditText
+                        <EditText
 
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:hint="Country : "
-                        android:paddingVertical="2dp"
-                        android:layout_marginTop="35dp"
-                        android:textSize="13dp"
-                        android:editable="false"
-                        android:background="@android:color/transparent"
-                        android:layout_marginLeft="6dp"
-                        android:paddingRight="10dp"
-                        android:backgroundTint="#d3d3d3"
-                        android:fontFamily="@font/segoeui"
-                        android:textColorHint="#000"/>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="Country : "
+                            android:paddingVertical="2dp"
+                            android:layout_marginTop="35dp"
+                            android:textSize="13dp"
+                            android:editable="false"
+                            android:background="@android:color/transparent"
+                            android:layout_marginLeft="6dp"
+                            android:paddingRight="10dp"
+                            android:backgroundTint="#d3d3d3"
+                            android:fontFamily="@font/segoeui"
+                            android:textColorHint="#000"/>
 
 
-                    <TextView
-                        android:id="@+id/country_txt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:hint="India"
-                        android:paddingVertical="2dp"
-                        android:layout_marginTop="35dp"
-                        android:textSize="13dp"
-                        android:paddingRight="10dp"
-                        android:fontFamily="@font/segoeui"
-                        android:textColor="#666666"
-                        />
+                        <TextView
+                            android:id="@+id/country_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="India"
+                            android:paddingVertical="2dp"
+                            android:layout_marginTop="35dp"
+                            android:textSize="13dp"
+                            android:paddingRight="10dp"
+                            android:fontFamily="@font/segoeui"
+                            android:textColor="#666666"
+                            />
                     </LinearLayout>
 
 
@@ -351,11 +353,11 @@
                         android:layout_weight="10"
                         android:layout_gravity="bottom|right">
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:src="@drawable/ic_right_angle_arrow"/>
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:src="@drawable/ic_right_angle_arrow"/>
 
                     </LinearLayout>
 
@@ -388,7 +390,7 @@
 
 
                         <EditText
-
+                            android:id="@+id/ed_state"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:hint="State : "
@@ -405,7 +407,7 @@
                             android:textColorHint="#000"/>
 
 
-                        <TextView
+                        <EditText
                             android:id="@+id/state_txt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -416,6 +418,8 @@
                             android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColor="#666666"
+                            android:background="@android:color/transparent"
+                            android:editable="false"
                             />
                     </LinearLayout>
 
@@ -461,7 +465,7 @@
 
 
                         <EditText
-
+                            android:id="@+id/ed_dstrt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:hint="District : "
@@ -478,7 +482,7 @@
                             android:textColorHint="#000"/>
 
 
-                        <TextView
+                        <EditText
                             android:id="@+id/district_txt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -489,6 +493,8 @@
                             android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColor="#666666"
+                            android:background="@android:color/transparent"
+                            android:editable="false"
                             />
                     </LinearLayout>
 
@@ -536,7 +542,7 @@
 
 
                         <EditText
-
+                            android:id="@+id/ed_tsl"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:hint="Tehsil/Block : "
@@ -553,17 +559,19 @@
                             android:textColorHint="#000"/>
 
 
-                        <TextView
+                        <EditText
                             android:id="@+id/tehsil_txt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="Karnataka"
+                            android:hint="Bangalore"
                             android:paddingVertical="2dp"
                             android:layout_marginTop="35dp"
                             android:textSize="13dp"
                             android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColor="#666666"
+                            android:background="@android:color/transparent"
+                            android:editable="false"
                             />
                     </LinearLayout>
 
@@ -612,7 +620,7 @@
 
 
                         <EditText
-
+                            android:id="@+id/ed_vill"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:hint="Village : "
@@ -628,17 +636,19 @@
                             android:textColorHint="#000"/>
 
 
-                        <TextView
+                        <EditText
                             android:id="@+id/village_txt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="Karnataka"
+                            android:hint="Bangalore"
                             android:paddingVertical="2dp"
                             android:layout_marginTop="35dp"
                             android:textSize="13dp"
                             android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColor="#666666"
+                            android:background="@android:color/transparent"
+                            android:editable="false"
                             />
                     </LinearLayout>
 
@@ -657,9 +667,8 @@
 
                     </LinearLayout>
 
-
-
                 </LinearLayout>
+
 
                 <View
                     android:layout_width="match_parent"
@@ -669,27 +678,22 @@
 
 
 
-
                 <EditText
-                      android:id="@+id/pincode"
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:hint="Pincode"
-                      android:paddingVertical="2dp"
-                     android:layout_marginTop="35dp"
-                     android:textSize="13dp"
-                     android:background="@android:color/transparent"
-                     android:maxLength="6"
-                     android:inputType="number"
-                     android:layout_marginLeft="6dp"
-                     android:paddingRight="10dp"
-                     android:backgroundTint="#d3d3d3"
-                     android:fontFamily="@font/segoeui"
-                     android:textColorHint="#000"/>
-
-
-
-
+                    android:id="@+id/pincode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Pincode"
+                    android:paddingVertical="2dp"
+                    android:layout_marginTop="35dp"
+                    android:textSize="13dp"
+                    android:background="@android:color/transparent"
+                    android:maxLength="6"
+                    android:inputType="number"
+                    android:layout_marginLeft="6dp"
+                    android:paddingRight="10dp"
+                    android:backgroundTint="#d3d3d3"
+                    android:fontFamily="@font/segoeui"
+                    android:textColorHint="#000"/>
 
 
                 <View
@@ -699,16 +703,11 @@
                     android:layout_marginBottom="20dp"
                     android:background="#dcdcdc"/>
 
-
-
-
-
             </LinearLayout>
-
-
 
         </LinearLayout>
     </ScrollView>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -717,8 +716,8 @@
         android:background="#FAFAFA"
         android:layout_marginBottom="3dp"
         android:orientation="vertical"
-
         >
+
 
         <View
             android:layout_width="match_parent"
@@ -737,18 +736,17 @@
             android:orientation="horizontal"
             >
 
-
             <TextView
-            android:id="@+id/skip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cancel"
-            android:layout_gravity="right"
-            android:textColor="#279E5E"
-            android:textSize="14dp"
-            android:paddingVertical="10dp"
-            android:paddingHorizontal="20dp"
-            />
+                android:id="@+id/skip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:layout_gravity="right"
+                android:textColor="#279E5E"
+                android:textSize="14dp"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp"
+                />
 
 
             <TextView
@@ -762,7 +760,9 @@
                 android:layout_marginRight="15dp"
                 android:paddingVertical="10dp"
                 android:paddingHorizontal="20dp"
+
                 />
+
         </LinearLayout>
 
     </LinearLayout>
