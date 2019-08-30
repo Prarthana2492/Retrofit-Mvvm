@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:padding="8dp"
         android:orientation="horizontal"
-        android:background="#000"
+        android:background="@color/menu_green"
         tools:ignore="MissingConstraints">
 
 

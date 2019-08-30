@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:titleTextColor="@android:color/white"
-            android:background="#000">
+            android:background="@color/menu_green">
 
             <LinearLayout
                 android:id="@+id/back_feed"

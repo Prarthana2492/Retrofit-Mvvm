@@ -29,7 +29,7 @@
             android:layout_height="0dp"
             android:layout_gravity="left"
             android:layout_weight="10"
-            android:background="#000"
+            android:background="@color/menu_green"
             android:contentInsetStart="0dp"
             android:contentInsetLeft="0dp"
             android:contentInsetEnd="0dp"

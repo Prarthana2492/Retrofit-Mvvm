@@ -39,7 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:titleTextColor="@android:color/white"
-                    android:background="#000"
+                    android:background="@color/menu_green"
                     android:gravity="left"
                     android:layout_gravity="left"
                     android:contentInsetLeft="0dp"

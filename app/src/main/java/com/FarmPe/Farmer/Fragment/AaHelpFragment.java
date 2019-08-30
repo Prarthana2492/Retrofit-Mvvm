@@ -1,17 +1,22 @@
 package com.FarmPe.Farmer.Fragment;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +24,9 @@ import android.widget.Toast;
 import com.FarmPe.Farmer.Activity.LandingPageActivity;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
+import com.FarmPe.Farmer.Urls;
+import com.FarmPe.Farmer.Volly_class.Crop_Post;
+import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
 
 import org.json.JSONObject;
 
@@ -32,7 +40,9 @@ public class AaHelpFragment extends Fragment {
     LinearLayout backfeed,feedback_lay,main_layout,privacy_lay,about_lay;
     TextView notificatn,change_language,your_addresss,acc_info1,refer_ern,feedbk,help_1,abt_frmpe,polic_1,logot,setting_tittle;
     SessionManager sessionManager;
+    EditText feedback_edit;
     JSONObject lngObject;
+    String status,message;
     public static AaHelpFragment newInstance() {
         AaHelpFragment fragment = new AaHelpFragment();
         return fragment;
@@ -47,6 +57,7 @@ public class AaHelpFragment extends Fragment {
         main_layout=view.findViewById(R.id.main_layout);
         privacy_lay=view.findViewById(R.id.privacy_lay);
         about_lay=view.findViewById(R.id.abt_farmpe_lay);
+        feedback_edit=view.findViewById(R.id.feedback_edit);
 
         getActivity().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
@@ -121,10 +132,11 @@ public class AaHelpFragment extends Fragment {
                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.feedback_bottom_sheet, null);
                 TextView cancel = sheetView.findViewById(R.id.cancel_feedback);
                 TextView save = sheetView.findViewById(R.id.save_feedback);
+                feedback_edit = sheetView.findViewById(R.id.feedback_edit);
                 save.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getActivity(), "Save was clicked", Toast.LENGTH_SHORT).show();
+                      feedback();
                     }
                 });
                 cancel.setOnClickListener(new View.OnClickListener() {
@@ -142,6 +154,93 @@ public class AaHelpFragment extends Fragment {
         return view;
     }
 
+    private void feedback() {
+
+
+
+        try{
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("FeedbackType","feedback");
+            jsonObject.put("FeedbackTitle","feedback");
+            jsonObject.put("FeedbackDescription",feedback_edit.getText().toString());
+            jsonObject.put("CreatedBy",sessionManager.getRegId("userId"));
+
+            System.out.println("nnnnnnnnnnnnnnnaaaaaaaaa"+jsonObject);
+
+            Crop_Post.crop_posting(getActivity(), Urls.AddFeedback, jsonObject, new VoleyJsonObjectCallback() {
+                @Override
+                public void onSuccessResponse(JSONObject result) {
+                    System.out.println("AddFeedbackkkkkkkkkkkkkkkkkkkkkkk"+result);
+
+                    try{
+
+                        status= result.getString("Status");
+                        message = result.getString("Message");
+
+                        if(!(status.equals("0"))){
+                            //Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
+                            int duration = 1000;
+                            Snackbar snackbar = Snackbar
+                                    .make(main_layout, "Your Feedback Submitted Successfully", duration);
+                            View snackbarView = snackbar.getView();
+                            TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                            tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                            tv.setTextColor(Color.WHITE);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                                tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                            } else {
+                                tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                            }
+                            snackbar.show();
+                            selectedFragment = SettingFragment.newInstance();
+                            FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                            transaction.replace(R.id.frame_layout, selectedFragment);
+                            transaction.commit();
+
+
+                        }else{
+
+                            // Toast.makeText(getActivity(),"Your Feedback not Submitted ",Toast.LENGTH_SHORT).show();
+                            int duration = 1000;
+                            Snackbar snackbar = Snackbar
+                                    .make(main_layout,"Your Feedback Not Submitted Successfully", duration);
+                            View snackbarView = snackbar.getView();
+                            TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                            tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                            tv.setTextColor(Color.WHITE);
+
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                                tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                            } else {
+                                tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                            }
+                            snackbar.show();
+
+
+                        }
+
+
+
+
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+
+                    }
+
+
+                }
+            });
+
+
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
 
 
 }
