@@ -89,18 +89,12 @@ public class AaSettingFragment extends Fragment {
         acc_info_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (newState==false){
+
                     selectedFragment = AaAccountFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_layout, selectedFragment);
                     transaction.addToBackStack("setting");
                     transaction.commit();
-
-                }else{
-                    mBottomSheetBehavior4.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                    main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
-                   newState=false;
-                }
 
             }
         });
@@ -108,84 +102,48 @@ public class AaSettingFragment extends Fragment {
         not_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (newState==false){
+
                     selectedFragment = AaNotificationSetting.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_layout, selectedFragment);
                     transaction.addToBackStack("setting");
                     transaction.commit();
 
-                }else{
-                    mBottomSheetBehavior4.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                    main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
-                    newState=false;
-                }
+            }
+        });
+
+
+        lang_lay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                selectedFragment = ChangeLanguageFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.addToBackStack("setting");
+                transaction.commit();
 
             }
         });
-//        lang_lay.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (newState==false){
-//                    selectedFragment = ChangeLanguageFragment.newInstance();
-//                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                    transaction.replace(R.id.frame_layout, selectedFragment);
-//                    transaction.addToBackStack("setting");
-//                    transaction.commit();
-//
-//                }else{
-//                    mBottomSheetBehavior4.setState(BottomSheetBehavior.STATE_COLLAPSED);
-//                    main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
-//                    newState=false;
-//                }
-//
-//            }
-//        });
 
-//        help_lay.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (newState==false){
-//                    selectedFragment = AaHelpFragment.newInstance();
-//                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                    transaction.replace(R.id.frame_layout, selectedFragment);
-//                    transaction.addToBackStack("setting");
-//                    transaction.commit();
-//
-//                }else{
-//                    mBottomSheetBehavior4.setState(BottomSheetBehavior.STATE_COLLAPSED);
-//                    main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
-//                    newState=false;
-//                }
-//
-//            }
-//        });
+
+        help_lay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    selectedFragment = AaHelpFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.addToBackStack("setting");
+                    transaction.commit();
+
+            }
+        });
 
         invi_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*newState=true;
-                main_layout.setBackgroundColor(Color.parseColor("#666666"));
-                mBottomSheetBehavior4.setState(BottomSheetBehavior.STATE_EXPANDED);
 
-                main_layout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mBottomSheetBehavior4.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                        main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
-                        newState=false;
-
-                    }
-                });
-                LandingPageActivity.cancel_invite.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mBottomSheetBehavior4.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                        main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
-                        newState=false;
-
-                    }
-                });*/
 
                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.invite_people_bottom_sheet, null);

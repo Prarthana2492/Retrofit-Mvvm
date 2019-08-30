@@ -67,7 +67,7 @@ public class  Add_New_Address_Fragment extends Fragment {
     DistrictAdapter districtAdapter;
     TalukAdapter talukAdapter;
     HoblisAdapter hoblisAdapter;
-    VillageAdapter villageAdapter;
+  //  VillageAdapter villageAdapter;
 
 
 
@@ -308,7 +308,6 @@ public class  Add_New_Address_Fragment extends Fragment {
                 });
 
 
-
                 home.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -432,6 +431,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                     recyclerView.setAdapter(districtAdapter);
 
                     prepareDistricData();
+
                 } else {
                     Snackbar snackbar = Snackbar
                             .make(main_layout, "Please select a state", Snackbar.LENGTH_LONG);
@@ -494,34 +494,61 @@ public class  Add_New_Address_Fragment extends Fragment {
         });
 
 
+
         village.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              //  getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-                // submit.setVisibility(View.VISIBLE);
+              //  getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
                 drawer.openDrawer(GravityCompat.END);
-                search_status="village";
+
+                search_status = "village";
                 search.setText("");
-                //   search.setQueryHint("");
-                // stateBeanList.clear();
 
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
                 recyclerView.setLayoutManager(mLayoutManager);
+
                 final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
                 layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
-                villageAdapter = new VillageAdapter(villageBeanList,getActivity());
-                recyclerView.setAdapter(villageAdapter);
 
-                prepareVillageData();
+                hoblisAdapter = new HoblisAdapter(hobliBeanList, getActivity());
+                recyclerView.setAdapter(hoblisAdapter);
 
-
+                prepareHobliData();
 
             }
         });
 
+//        village.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//              //  getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+//                // submit.setVisibility(View.VISIBLE);
+//
+//                drawer.openDrawer(GravityCompat.END);
+//                search_status="village";
+//                search.setText("");
+//                //   search.setQueryHint("");
+//                // stateBeanList.clear();
+//
+//                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+//                recyclerView.setLayoutManager(mLayoutManager);
+//                final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+//                layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+//                recyclerView.setLayoutManager(layoutManager);
+//                recyclerView.setItemAnimator(new DefaultItemAnimator());
+//                villageAdapter = new VillageAdapter(villageBeanList,getActivity());
+//                recyclerView.setAdapter(villageAdapter);
+//
+//                prepareVillageData();
+//
+//
+//
+//            }
+//        });
+//
 
 
         save_1.setOnClickListener(new View.OnClickListener() {
@@ -779,46 +806,46 @@ public class  Add_New_Address_Fragment extends Fragment {
 
     }
 
-    private void prepareVillageData() {
-        try{
-            JSONObject jsonObject = new JSONObject();
-            JSONObject post_Object = new JSONObject();
-            jsonObject.put("HobliId",hoblisAdapter.hobliid);
-            post_Object.put("Villageobj",jsonObject);
-
-            Crop_Post.crop_posting(getActivity(), Urls.Villages, post_Object, new VoleyJsonObjectCallback() {
-                @Override
-                public void onSuccessResponse(JSONObject result) {
-                    System.out.println("111vvv" + result);
-
-                    try{
-                        villageBeanList.clear();
-                        village_array = result.getJSONArray("VillageList");
-                        for(int i = 0;i<village_array.length();i++) {
-                            JSONObject jsonObject1 = village_array.getJSONObject(i);
-                            stateBean = new StateBean(jsonObject1.getString("Village"), jsonObject1.getString("VillagId"));
-                            villageBeanList.add(stateBean);
-                        }
-
-                        sorting(villageBeanList);
-
-                        villageAdapter.notifyDataSetChanged();
-                        //   grade_dialog.show();
-
-
-
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
-
-                }
-            });
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-    }
+//    private void prepareVillageData() {
+//        try{
+//            JSONObject jsonObject = new JSONObject();
+//            JSONObject post_Object = new JSONObject();
+//            jsonObject.put("HobliId",hoblisAdapter.hobliid);
+//            post_Object.put("Villageobj",jsonObject);
+//
+//            Crop_Post.crop_posting(getActivity(), Urls.Villages, post_Object, new VoleyJsonObjectCallback() {
+//                @Override
+//                public void onSuccessResponse(JSONObject result) {
+//                    System.out.println("111vvv" + result);
+//
+//                    try{
+//                        villageBeanList.clear();
+//                        village_array = result.getJSONArray("VillageList");
+//                        for(int i = 0;i<village_array.length();i++) {
+//                            JSONObject jsonObject1 = village_array.getJSONObject(i);
+//                            stateBean = new StateBean(jsonObject1.getString("Village"), jsonObject1.getString("VillagId"));
+//                            villageBeanList.add(stateBean);
+//                        }
+//
+//                        sorting(villageBeanList);
+//
+//                        villageAdapter.notifyDataSetChanged();
+//                        //   grade_dialog.show();
+//
+//
+//
+//                    }catch (Exception e){
+//                        e.printStackTrace();
+//                    }
+//
+//                }
+//            });
+//
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//
+//    }
 
     private void prepareTalukData() {
 
@@ -860,6 +887,10 @@ public class  Add_New_Address_Fragment extends Fragment {
         }
     }
 
+
+
+
+
     private void prepareHobliData() {
 
 
@@ -870,6 +901,9 @@ public class  Add_New_Address_Fragment extends Fragment {
             JSONObject json_post = new JSONObject();
             jsonObject.put("TalukId",TalukAdapter.talukid);
             json_post.put("Hobliobj",jsonObject);
+
+            System.out.println("hhhhhhhssssskljhgf" +  json_post);
+
 
             Crop_Post.crop_posting(getActivity(), Urls.Hoblis, json_post, new VoleyJsonObjectCallback() {
                 @Override
@@ -883,7 +917,6 @@ public class  Add_New_Address_Fragment extends Fragment {
                             JSONObject jsonObject3 = hobli_array.getJSONObject(i);
                             stateBean = new StateBean(jsonObject3.getString("Hobli"),jsonObject3.getString("HobliId"));
                             hobliBeanList.add(stateBean);
-
                         }
                         sorting(hobliBeanList);
                         hoblisAdapter.notifyDataSetChanged();
@@ -1021,7 +1054,6 @@ public class  Add_New_Address_Fragment extends Fragment {
             }
 
 
-
             Crop_Post.crop_posting(getActivity(), Urls.Add_New_Address, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
@@ -1050,7 +1082,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                                 int duration = 1000;
                                 Snackbar snackbar = Snackbar
-                                        .make(linearLayout, newaddressadded, duration);
+                                        .make(linearLayout, "New Address updated Successfully", duration);
                                 View snackbarView = snackbar.getView();
                                 TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                                 tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -1072,7 +1104,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                                 int duration = 1000;
                                 Snackbar snackbar = Snackbar
-                                        .make(linearLayout, newaddressadded, duration);
+                                        .make(linearLayout,"New Address updated Successfully", duration);
                                 View snackbarView = snackbar.getView();
                                 TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                                 tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -1154,7 +1186,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                                 int duration = 1000;
                                 Snackbar snackbar = Snackbar
-                                        .make(linearLayout, newaddressadded, duration);
+                                        .make(linearLayout,"New Address updated successfully", duration);
                                 View snackbarView = snackbar.getView();
                                 TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                                 tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -1304,7 +1336,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
         }
-        else if (search_status.equals("taluk")){
+        else if (search_status.equals("tehsil")){
             searchresultAraaylist.clear();
             for (int i = 0; i < talukBeanList.size(); i++) {
 
@@ -1318,7 +1350,7 @@ public class  Add_New_Address_Fragment extends Fragment {
             recyclerView.setAdapter(talukAdapter);
         }
 
-        else if (search_status.equals("hobli")){
+        else if (search_status.equals("village")){
             searchresultAraaylist.clear();
             for (int i = 0; i < hobliBeanList.size(); i++) {
 

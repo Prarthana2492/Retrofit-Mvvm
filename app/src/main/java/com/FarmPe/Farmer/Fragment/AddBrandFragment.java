@@ -176,6 +176,7 @@ ImageView b_arrow;
                             String brand_name=jsonObject1.getString("BrandName");
 
                             String id=jsonObject1.getString("Id");
+
                             String BrandIcon=jsonObject1.getString("BrandIcon");
 
 

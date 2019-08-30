@@ -72,13 +72,12 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
         final AddTractorBean products = productList.get(position);
         brandId=products.getId();
         holder.prod_price.setText(products.getProd_name());
-
+        System.out.println("croptttt"+ brandId);
 
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 brandId=products.getId();
-
 
                 selectedFragment = AddModelFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();

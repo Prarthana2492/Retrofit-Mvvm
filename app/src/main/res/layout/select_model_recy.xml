@@ -105,13 +105,12 @@
     </LinearLayout>
 
 
-
             <android.support.v7.widget.RecyclerView
+
                 android:id="@+id/recycler_what_looking"
                 android:layout_width="match_parent"
                 android:background="#fff"
                 android:layout_height="wrap_content">
-
 
             </android.support.v7.widget.RecyclerView>
 

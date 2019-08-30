@@ -43,10 +43,12 @@ public class TalukAdapter extends RecyclerView.Adapter<TalukAdapter.TalukMyViewH
 
         holder.statename.setText(stateBean.getName());
 
+        System.out.println("talukidddd" + stateBean.getId());
+
         holder.state_name_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("checkingggggg");
+                System.out.println("checkingggggg" + stateBean.getId());
                 talukid=stateBean.getId();
                 Add_New_Address_Fragment.tehsil_txt.setText(holder.statename.getText().toString());
                 Add_New_Address_Fragment.drawer.closeDrawers();

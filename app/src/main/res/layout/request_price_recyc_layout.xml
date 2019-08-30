@@ -72,7 +72,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
            android:layout_marginLeft="5dp"
-
             android:layout_marginRight="5dp"
             >
 
@@ -83,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:background="@drawable/request_price_border"
                 android:layout_marginBottom="10dp"
-                android:layout_marginTop="5dp"
+
                 android:layout_height="match_parent">
 
 
