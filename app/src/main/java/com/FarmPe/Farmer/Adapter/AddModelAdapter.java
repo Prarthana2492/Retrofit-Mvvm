@@ -43,7 +43,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image;
         public LinearLayout item;
-        public TextView brand_name,select,model,hp_power;
+        public TextView brand_name,select,model,hp_power,brochure;
 
 
 
@@ -56,10 +56,12 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
             hp_power=view.findViewById(R.id.hp_power);
             image=view.findViewById(R.id.imageff);
             select=view.findViewById(R.id.selectt);
+            brochure=view.findViewById(R.id.brochure);
 
         }
 
     }
+
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
