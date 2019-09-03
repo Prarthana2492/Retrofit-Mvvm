@@ -172,6 +172,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
         setContentView(R.layout.sign_in_1);
         checkConnection();
 
+
         welcome_back = findViewById(R.id.welcome_back);
         createaccount = findViewById(R.id.create_acc);
        // change_lang = findViewById(R.id.change_lang);

@@ -133,6 +133,7 @@ public class ForgotPasswordNew extends AppCompatActivity implements Connectivity
         checkConnection();
 
 
+
         forgot_back = findViewById(R.id.back_feed);
         forgot_submit = findViewById(R.id.forgot_submit);
         mobileno = findViewById(R.id.mobile_no);
