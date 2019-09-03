@@ -411,8 +411,6 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                 mobile_string=mobile_no.getText().toString();
                 mob_no =loc_text+ mobile_no.getText().toString();
                 password = pass.getText().toString();
-                System.out.println("pppppppaasssww" + mob_toast);
-                System.out.println("pppppmmmmmw" + mobile_string);
 
                 if (mobile_string.equals("")) {
                     mobile_no.requestFocus();
@@ -515,6 +513,17 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
                                             FirebaseMessaging.getInstance().subscribeToTopic("FARMERNEWS");// to register in topic(subcribe)
                                             FirebaseMessaging.getInstance().subscribeToTopic("NEWS");// to register in topic(subcribe)
+
+
+                                            if(!myDb.isEmailExists(mobile_no.getText().toString())){
+
+                                                AddData(mobile_no.getText().toString(),password);
+                                            }
+                                        }else {
+                                            if(myDb.isEmailExists(mobile_no.getText().toString())){
+
+                                                DeleteData(mobile_no.getText().toString(),password);
+                                            }
                                            /* if(remember_me.isChecked()){
 
                                                 if(!myDb.isEmailExists(mobile_no.getText().toString())){
