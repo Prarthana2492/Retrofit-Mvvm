@@ -936,7 +936,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                         for(int i =0;i<state_array.length();i++){
                             JSONObject jsonObject1 = state_array.getJSONObject(i);
 
-                            stateBean = new StateBean(jsonObject1.getString("State").trim(),jsonObject1.getString("StateId"));
+                            stateBean = new StateBean(jsonObject1.getString("State").trim().replace("&amp;","&"),jsonObject1.getString("StateId"));
                             stateBeanList.add(stateBean);
                         }
                         sorting(stateBeanList);

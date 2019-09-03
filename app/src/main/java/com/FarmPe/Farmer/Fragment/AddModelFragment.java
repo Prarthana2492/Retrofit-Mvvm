@@ -44,6 +44,11 @@ public class AddModelFragment extends Fragment {
     public static RecyclerView recyclerView;
     public static AddModelAdapter farmadapter;
     JSONArray model_list_array;
+
+    public static JSONArray tractorImplementsModelMasterList = null;
+    public static JSONArray tractorAccessoriesModelMasterList = null;
+    public static JSONArray harvesterModelMasterList = null;
+    public static JSONArray jCBRFQModelList = null;
     ModelBean modelBean;
     Fragment selectedFragment = null;
     TextView toolbar_title,continue_button,sub_label;
@@ -118,6 +123,7 @@ ImageView b_arrow;
 
             jsonObject.put("LookingForDetailsId",AddFirstAdapter.looinkgId);
             jsonObject.put("BrandId",AddBrandAdapter.brandId);
+            System.out.println("fgfggdfcxxg" + jsonObject);
 
             Crop_Post.crop_posting(getActivity(), Urls.Model_List, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
@@ -127,8 +133,35 @@ ImageView b_arrow;
                     try{
 
                         model_list_array = result.getJSONArray("TractorModelMasterList");
+
+                        tractorImplementsModelMasterList = result.getJSONArray("TractorImplementsModelMasterList");
+                        tractorAccessoriesModelMasterList = result.getJSONArray("TractorAccessoriesModelMasterList");
+                        harvesterModelMasterList = result.getJSONArray("HarvesterModelMasterList");
+                        jCBRFQModelList = result.getJSONArray("JCBModelMasterList");
+                        modelBeanArrayList.clear();
                         for(int i=0;i<model_list_array.length();i++){
                             JSONObject jsonObject1 = model_list_array.getJSONObject(i);
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),jsonObject1.getString("DriveType"),jsonObject1.getString("Steering"),jsonObject1.getString("HorsePower"),jsonObject1.getString("ClutchType"),jsonObject1.getString("TransmissionType"),jsonObject1.getString("CubicCapacity"),jsonObject1.getString("ModelImage"),jsonObject1.getString("Id"));
+                            modelBeanArrayList.add(modelBean);
+
+                        }
+                        for(int i=0;i<tractorImplementsModelMasterList.length();i++){
+                            JSONObject jsonObject1 = tractorImplementsModelMasterList.getJSONObject(i);
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),jsonObject1.getString("DriveType"),jsonObject1.getString("Steering"),jsonObject1.getString("HorsePower"),jsonObject1.getString("ClutchType"),jsonObject1.getString("TransmissionType"),jsonObject1.getString("CubicCapacity"),jsonObject1.getString("ModelImage"),jsonObject1.getString("Id"));
+                            modelBeanArrayList.add(modelBean);
+
+                        }  for(int i=0;i<tractorAccessoriesModelMasterList.length();i++){
+                            JSONObject jsonObject1 = tractorAccessoriesModelMasterList.getJSONObject(i);
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),jsonObject1.getString("DriveType"),jsonObject1.getString("Steering"),jsonObject1.getString("HorsePower"),jsonObject1.getString("ClutchType"),jsonObject1.getString("TransmissionType"),jsonObject1.getString("CubicCapacity"),jsonObject1.getString("ModelImage"),jsonObject1.getString("Id"));
+                            modelBeanArrayList.add(modelBean);
+
+                        }  for(int i=0;i<harvesterModelMasterList.length();i++){
+                            JSONObject jsonObject1 = harvesterModelMasterList.getJSONObject(i);
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),jsonObject1.getString("DriveType"),jsonObject1.getString("Steering"),jsonObject1.getString("HorsePower"),jsonObject1.getString("ClutchType"),jsonObject1.getString("TransmissionType"),jsonObject1.getString("CubicCapacity"),jsonObject1.getString("ModelImage"),jsonObject1.getString("Id"));
+                            modelBeanArrayList.add(modelBean);
+
+                        }  for(int i=0;i<jCBRFQModelList.length();i++){
+                            JSONObject jsonObject1 = jCBRFQModelList.getJSONObject(i);
                             modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),jsonObject1.getString("DriveType"),jsonObject1.getString("Steering"),jsonObject1.getString("HorsePower"),jsonObject1.getString("ClutchType"),jsonObject1.getString("TransmissionType"),jsonObject1.getString("CubicCapacity"),jsonObject1.getString("ModelImage"),jsonObject1.getString("Id"));
                             modelBeanArrayList.add(modelBean);
 
