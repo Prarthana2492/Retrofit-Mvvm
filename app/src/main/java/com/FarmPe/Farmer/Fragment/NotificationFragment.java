@@ -89,7 +89,7 @@ public class NotificationFragment extends Fragment {
             public void onClick(View view) {
 
 
-                back_arrw.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
+              //  back_arrw.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
                 selectedFragment = HomeMenuFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.add(R.id.frame_layout, selectedFragment);

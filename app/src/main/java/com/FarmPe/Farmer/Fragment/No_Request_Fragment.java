@@ -46,7 +46,7 @@ ImageView b_arrow;
         back_feed1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
+              //  b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
                 HomeMenuFragment.onBack_status = "no_request";
 
                 selectedFragment = HomeMenuFragment.newInstance();

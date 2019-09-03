@@ -109,7 +109,7 @@ public class RequestFormFragment extends Fragment {
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
+            //    b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("fourth", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }

@@ -31,7 +31,6 @@ public class Notification_Adapter2 extends RecyclerView.Adapter<Notification_Ada
 
     public LinearLayout linearLayout;
 
-
     public static String first;
     public static CardView cardView;
     public Notification_Adapter2(Activity activity, List<Notification_recy_bean> moviesList) {

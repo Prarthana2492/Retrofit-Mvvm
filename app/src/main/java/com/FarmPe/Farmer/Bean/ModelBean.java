@@ -6,6 +6,16 @@ public class ModelBean {
     private String model_name;
     private String horse_power;
 
+    public String getPdf_brochure() {
+        return pdf_brochure;
+    }
+
+    public void setPdf_brochure(String pdf_brochure) {
+        this.pdf_brochure = pdf_brochure;
+    }
+
+    private String pdf_brochure;
+
     public String getDrive_type() {
         return drive_type;
     }
@@ -98,7 +108,7 @@ public class ModelBean {
 
 
     public ModelBean(String brand_name, String model_name,String drive_type,String steering,String horse_power,String clutch_type,
-                     String transmission_type ,String cubic_capcity,String image,String id)
+                     String transmission_type ,String cubic_capcity,String image,String pdf_brochure,String id)
                     {
 
         this.brand_name = brand_name;
@@ -106,10 +116,12 @@ public class ModelBean {
         this.drive_type = drive_type;
         this.steering = steering;
         this.horse_power = horse_power;
+
         this.clutch_type = clutch_type;
         this.transmission_type = transmission_type;
         this.cubic_capcity = cubic_capcity;
         this.image = image;
+        this.pdf_brochure = pdf_brochure;
         this.id = id;
 
     }

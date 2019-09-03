@@ -61,7 +61,6 @@
                         android:id="@+id/street_address1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:textSize="14dp"
                         android:textColor="@color/dot_dark_screen1"
                         android:text="#12 5th main 2nd cross xyz Apartments"/>
@@ -71,7 +70,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="14dp"
-                        android:layout_marginTop="5dp"
                         android:textColor="@color/dot_dark_screen1"
                         android:text="Area District"/>
 
@@ -80,7 +78,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="14dp"
-                        android:layout_marginTop="5dp"
+
                         android:textColor="@color/dot_dark_screen1"
                         android:text="State,Pincode"/>
 
@@ -89,7 +87,6 @@
                         android:id="@+id/mobile_no1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
                         android:textSize="14dp"
                         android:textColor="@color/dot_dark_screen1"
                         android:text="Phone Number - 7895632412"/>
@@ -128,6 +125,7 @@
                         android:textSize="13dp"
                         android:textColor="#064a8e"
                         android:text="Default Address"/>
+
                     <TextView
                         android:id="@+id/edit_1"
                         android:layout_width="wrap_content"

@@ -4,86 +4,139 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="#FAFAFA"
-    android:layout_marginHorizontal="20dp"
-    android:layout_marginTop="20dp"
     android:tag="cards main container">
 
-
-
     <LinearLayout
+        android:id="@+id/submit_langu_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="100"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:clickable="true"
 
-        <LinearLayout
-            android:id="@+id/submit_langu_layout"
+        >
+
+        <RadioGroup
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/radiogrp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:weightSum="100"
-            >
+            android:orientation="vertical"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="75">
 
-            <LinearLayout
-                android:layout_width="0dp"
+
+            <RadioButton
+                android:id="@+id/radioButton1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone"
-                android:layout_weight="20">
+                android:text="RadioButton1"
+                android:padding="12dp"
+                android:buttonTint="@color/menu_green"
+                android:textSize="18dp"/>
+
+        </RadioGroup>
 
 
-                <ImageView
-                    android:id="@+id/lang_icon"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:textColor="#fff" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="65">
-
-                <TextView
-                    android:id="@+id/lang_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/segoeui"
-                    android:text="Kannada"
-                    android:layout_marginLeft="5dp"
-                    android:gravity="center_vertical"
-                    android:textColor="#000"
-                    android:textSize="18dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="20">
-
-
-                <ImageView
-                    android:id="@+id/right_img"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:visibility="gone"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_check_mark"
-                    android:textColor="#fff" />
-
-            </LinearLayout>
-
-        </LinearLayout>
     </LinearLayout>
 
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
 </LinearLayout>
+
+
+
+
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical"-->
+    <!--android:background="#FAFAFA"-->
+    <!--android:layout_marginHorizontal="20dp"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:tag="cards main container">-->
+
+
+
+    <!--<LinearLayout-->
+
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:weightSum="100"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/main_layout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:clickable="true"-->
+    <!--android:padding="5dp"-->
+    <!--android:layout_marginTop="5dp"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:weightSum="100"-->
+    <!--&gt;-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical"-->
+    <!--android:visibility="gone"-->
+    <!--android:layout_weight="20">-->
+
+
+    <!--<ImageView-->
+    <!--android:id="@+id/lang_icon"-->
+    <!--android:layout_width="50dp"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:textColor="#fff" />-->
+
+    <!--</LinearLayout>-->
+
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:layout_weight="65">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/lang_text"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:fontFamily="@font/segoeui"-->
+    <!--android:text="Kannada"-->
+    <!--android:layout_marginLeft="5dp"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:textColor="#000"-->
+    <!--android:textSize="18dp" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:layout_weight="20">-->
+
+
+    <!--<ImageView-->
+    <!--android:id="@+id/right_img"-->
+    <!--android:layout_width="30dp"-->
+    <!--android:layout_height="30dp"-->
+    <!--android:visibility="gone"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:src="@drawable/ic_check_mark"-->
+    <!--android:textColor="#fff" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+
+
+    <!--</LinearLayout>-->

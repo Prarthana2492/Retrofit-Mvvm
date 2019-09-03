@@ -19,7 +19,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 
 import com.FarmPe.Farmer.R;
@@ -145,7 +145,7 @@ public class AaAccountFragment extends Fragment {
                 positiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getActivity(), "Change was clicked", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(getActivity(), "Change was clicked", Toast.LENGTH_SHORT).show();
                     }
                 });
                 negetiveText.setOnClickListener(new View.OnClickListener() {

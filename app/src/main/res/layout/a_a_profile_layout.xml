@@ -19,6 +19,7 @@
             android:id="@+id/back_feed"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:background="@drawable/ic_filter_state"
             android:gravity="center">
             <ImageView
                 android:layout_width="20dp"
@@ -60,16 +61,17 @@
                     android:layout_height="match_parent">
                     <de.hdodenhof.circleimageview.CircleImageView
                         xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:layout_marginTop="10dp"
                         android:id="@+id/prod_imgg"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
                         android:src="@drawable/avatarmale" />
                     <ImageView
                         android:id="@+id/iv_camera"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:padding="10dp"
-                        android:layout_marginBottom="30dp"
+                        android:layout_marginBottom="10dp"
                         android:background="@drawable/border_round"
                         android:layout_gravity="bottom|right"
                         android:src="@drawable/ic_camera"
@@ -112,6 +114,7 @@
 
                 </LinearLayout>
 
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -153,8 +156,8 @@
                                 android:textColor="#000"
                                 />
 
-
                         </LinearLayout>
+
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -164,6 +167,7 @@
                             android:layout_gravity="center"
                             >
 
+
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -171,6 +175,7 @@
                                 />
 
                         </LinearLayout>
+
 
 
 

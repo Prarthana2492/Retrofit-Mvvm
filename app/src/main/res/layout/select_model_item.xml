@@ -19,6 +19,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
 
         app:cardElevation="8dp"
         >
@@ -27,7 +28,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-
             android:weightSum="100">
 
             <LinearLayout
@@ -64,7 +64,7 @@
                 android:fontFamily="@font/segoeui"
                 android:layout_gravity="left"
                 android:layout_marginLeft="10dp"
-                android:text="Tracter Price"
+                android:text=""
                 android:gravity="center_vertical"
                 android:layout_marginTop="10dp"
                 android:textColor="#000"
@@ -80,7 +80,8 @@
                 android:layout_weight="8"
                 android:fontFamily="@font/segoeui"
                 android:layout_marginLeft="10dp"
-                android:text="3028 EN 21- 30 HP"
+                android:text=""
+                android:singleLine="true"
                 android:textColor="#000"
                 android:textStyle="bold"
                 android:textSize="14dp" />
@@ -93,7 +94,8 @@
                 android:layout_weight="10"
                 android:fontFamily="@font/segoeui"
                 android:layout_marginLeft="10dp"
-                android:text="50HP, DI 50 RX Tractor,8f+2r,2893 Cc"
+                android:singleLine="true"
+                android:text=""
                 android:textColor="#000"
                 android:textStyle="bold"
                 android:textSize="14dp" />

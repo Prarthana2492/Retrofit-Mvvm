@@ -28,6 +28,7 @@
                 android:id="@+id/back_feed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/ic_filter_state"
                 android:padding="10dp"
                 >
 
@@ -70,7 +71,10 @@
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_marginLeft="10dp"
+       android:layout_marginTop="10dp"
         android:layout_height="wrap_content"/>
+
+
     <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -92,5 +96,6 @@
         android:background="@drawable/border"
 
         />
+
     </LinearLayout>-->
 </LinearLayout>

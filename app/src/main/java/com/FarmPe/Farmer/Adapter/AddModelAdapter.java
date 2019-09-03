@@ -79,10 +79,10 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
 
         holder.brand_name.setText(products.getBrand_name());
-        holder.model.setText(products.getModel_name()+ " , " +products.getDrive_type()+ " , "+products.getSteering());
-        holder.hp_power.setText( products.getHorse_power()+ " , " +products.getClutch_type()+ " , " + products.getTransmission_type());
+        holder.model.setText(products.getModel_name());
+        holder.hp_power.setText(products.getDrive_type()+ " , " + products.getSteering()+ " , " + products.getHorse_power() + " , " + products.getClutch_type()+ " , " + products.getTransmission_type());
 
-
+  System.out.println("fhjhgf" + products.getPdf_brochure());
 
         Glide.with(activity).load(products.getImage())
 
@@ -95,9 +95,10 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
         holder.brochure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                System.out.println("hjkjkkjk" + products.getPdf_brochure());
+                String s1 = products.getPdf_brochure();
                 Intent intent = new Intent();
-                intent.setDataAndType(Uri.parse("https://prodfarmpecontentimages.s3.ap-south-1.amazonaws.com/Tractor+Brocher/Sonalika/DI+60+SIKANDER.pdf"), "application/pdf");
+                intent.setDataAndType(Uri.parse(s1),"application/pdf");
                 activity.startActivity(intent);
 
             }

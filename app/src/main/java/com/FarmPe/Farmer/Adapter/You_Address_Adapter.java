@@ -312,7 +312,6 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
             @Override
             public void onClick(View v) {
 
-
                 add_id =products.getAdd_id();
 
                 try{
@@ -373,8 +372,8 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
             lngObject = new JSONObject(sessionManager.getRegId("language"));
             holder.edit_1.setText(lngObject.getString("Edit"));
             holder.delete_1.setText(lngObject.getString("Delete"));
-            holder.default_1.setText(lngObject.getString("setasdefault"));
-            holder.default_add .setText(lngObject.getString("defaultaddressfordelivery"));
+          //  holder.default_1.setText(lngObject.getString("setasdefault"));
+          //  holder.default_add .setText(lngObject.getString("defaultaddressfordelivery"));
             default_addrs_updtd =lngObject.getString("DefaultaddressupdatedSuccessfully");
         } catch (JSONException e) {
             e.printStackTrace();

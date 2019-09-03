@@ -182,7 +182,7 @@ public class AaProfileFragment extends Fragment {
                 positiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getActivity(),"Save was clicked",Toast.LENGTH_LONG).show();
+                      //  Toast.makeText(getActivity(),"Save was clicked",Toast.LENGTH_LONG).show();
                     }
                 });
                 negetiveText.setOnClickListener(new View.OnClickListener() {
@@ -221,7 +221,7 @@ public class AaProfileFragment extends Fragment {
                 positiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getActivity(),"Save was clicked",Toast.LENGTH_LONG).show();
+                      //  Toast.makeText(getActivity(),"Save was clicked",Toast.LENGTH_LONG).show();
                     }
                 });
 

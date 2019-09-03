@@ -14,6 +14,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.FarmPe.Farmer.Adapter.FarmsImageAdapter;
@@ -42,6 +43,7 @@ public class LookingForFragment extends Fragment {
     Fragment selectedFragment = null;
     boolean doubleBackToExitPressedOnce = false;
     String location;
+    LinearLayout back_feed;
     TextView filter_text,delete_req;
     SessionManager sessionManager;
 
@@ -62,6 +64,7 @@ public class LookingForFragment extends Fragment {
         recyclerView=view.findViewById(R.id.recycler_looking);
         filter_text=view.findViewById(R.id.filter_text);
         delete_req =view.findViewById(R.id.delete_req);
+        back_feed =view.findViewById(R.id.back_feed);
         newOrderBeansList.clear();
 
 
@@ -70,6 +73,16 @@ public class LookingForFragment extends Fragment {
        System.out.println("bbbbbbbbbbbbbbbbb"+ "+1-333-444-5678".replaceAll("\\d{4}(?=\\d)", "*"));
       // System.out.println("bbbbbbbbbbbbbbbbbbbb"+ "+1-333-444-5678".replaceAll("\\d{4}(?=\\d)", "*"));
 
+
+
+        back_feed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            }
+        });
 
 
         LookingForList();
