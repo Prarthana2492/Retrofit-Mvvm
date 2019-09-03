@@ -138,6 +138,7 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
     }
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -151,6 +152,7 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
        // otp_text=findViewById(R.id.thanktu);
         thank_title=findViewById(R.id.thank);
         resend_otp=findViewById(R.id.resend);
+
 
 
 

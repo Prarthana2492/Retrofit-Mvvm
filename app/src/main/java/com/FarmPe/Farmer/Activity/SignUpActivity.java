@@ -181,6 +181,7 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
         checkConnection();
 
 
+
         linearLayout = findViewById(R.id.linear_login);
         back_feed = findViewById(R.id.back_feed);
         //back_feed = findViewById(R.id.back_feed);

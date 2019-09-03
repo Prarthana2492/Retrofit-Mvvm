@@ -140,6 +140,8 @@
                 app:passwordToggleEnabled="true"
                 app:theme="@style/MyStyle">
 
+
+
                 <EditText
                     android:id="@+id/conf_pass1"
                     android:layout_width="match_parent"

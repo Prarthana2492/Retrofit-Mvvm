@@ -175,6 +175,7 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
         sessionId= getIntent().getStringExtra("otpnumber");
 
 
+
         resendotp=findViewById(R.id.resend);
         resendotp.setVisibility(View.VISIBLE);
         resendotp.setOnClickListener(new View.OnClickListener() {
@@ -248,10 +249,10 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
         try {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
 
-            submit.setText(lngObject.getString("SendOTP"));
-            otp_title.setText(lngObject.getString("OneTimePassword"));
-            otpedittext.setHint(lngObject.getString("EnterOTP"));
-            resendotp.setText(lngObject.getString("Resend"));
+           // submit.setText(lngObject.getString("SendOTP"));
+            //otp_title.setText(lngObject.getString("OneTimePassword"));
+           // otpedittext.setHint(lngObject.getString("EnterOTP"));
+            //resendotp.setText(lngObject.getString("Resend"));
             //otp_text.setHint(lngObject.getString("EntertheOTP"));
 
             toast_otp = lngObject.getString("EntertheOTP");
