@@ -840,10 +840,13 @@ public class  Add_New_Address_Fragment extends Fragment {
             jsonObject.put("TalukId",TalukAdapter.talukid);
             json_post.put("Hobliobj",jsonObject);
 
+            System.out.println("hhhhhhhssssskljhgfmmmmmmmmmmmmmmmmmmmmmmmmmmmm" + json_post);
+
+
             Crop_Post.crop_posting(getActivity(), Urls.Hoblis, json_post, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
-                    System.out.println("hhhhhhhssssskljhgf" + result);
+                    System.out.println("hhhhhhhssssskljhgfmmmmmmmmmmmmmmmmmmmmmmmmmmmm" + result);
 
                     try{
                         hobliBeanList.clear();
@@ -851,12 +854,12 @@ public class  Add_New_Address_Fragment extends Fragment {
                         for(int i = 0;i<hobli_array.length();i++){
                             JSONObject jsonObject3 = hobli_array.getJSONObject(i);
                             stateBean = new StateBean(jsonObject3.getString("Hobli"),jsonObject3.getString("HobliId"));
-                            hobliBeanList.add(stateBean);
+                            villageBeanList.add(stateBean);
 
                         }
                         sorting(hobliBeanList);
 
-                        hoblisAdapter.notifyDataSetChanged();
+                        villageAdapter.notifyDataSetChanged();
                         //  grade_dialog.show();
 
 

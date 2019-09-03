@@ -1,6 +1,8 @@
 package com.FarmPe.Farmer.Adapter;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -90,19 +92,16 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
                 .into(holder.image);
 
 
-//        holder.item.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                tractor_id=products.getId();
-//
-//                for (int i = 0; i < productList.size(); i++) {
-//                    productList.get(i).setSelected(false);
-//                }
-//                productList.get(position).setSelected(true);
-//                notifyDataSetChanged();
-//
-//            }
-//        });
+        holder.brochure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent();
+                intent.setDataAndType(Uri.parse("https://prodfarmpecontentimages.s3.ap-south-1.amazonaws.com/Tractor+Brocher/Sonalika/DI+60+SIKANDER.pdf"), "application/pdf");
+                activity.startActivity(intent);
+
+            }
+        });
 
 
         holder.select.setOnClickListener(new View.OnClickListener() {
