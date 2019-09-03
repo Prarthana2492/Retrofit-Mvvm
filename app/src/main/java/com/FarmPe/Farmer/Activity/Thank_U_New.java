@@ -166,8 +166,8 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
         try {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
 
-            thanktu_submit.setText(lngObject.getString("SendOTP"));
-            thank_title.setText(lngObject.getString("OneTimePassword"));
+           // thanktu_submit.setText(lngObject.getString("SendOTP"));
+            //thank_title.setText(lngObject.getString("OneTimePassword"));
            // otp_text.setText(lngObject.getString("PleaseentertheOTPbelowtoresetpassword"));
             enter_otp.setHint(lngObject.getString("EntertheOTP"));
             toast_otp = lngObject.getString("EntertheOTP");
@@ -175,7 +175,7 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
             toast_internet = lngObject.getString("GoodConnectedtoInternet");
             toast_nointernet = lngObject.getString("NoInternetConnection");
             toast_number_exceeded = lngObject.getString("Youhaveexceededthelimitofresendingotp");
-            resend_otp.setText(lngObject.getString("Resend"));
+            //resend_otp.setText(lngObject.getString("Resend"));
 
         } catch (JSONException e) {
             e.printStackTrace();

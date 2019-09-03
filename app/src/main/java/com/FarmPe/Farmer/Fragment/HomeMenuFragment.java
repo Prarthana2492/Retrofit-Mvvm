@@ -517,7 +517,6 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
 
         progressDialog.show();
 
-
         VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, Urls.Update_Profile_Details,
                 new Response.Listener<NetworkResponse>(){
                     @Override

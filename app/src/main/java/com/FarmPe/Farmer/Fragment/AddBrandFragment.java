@@ -22,7 +22,6 @@ import android.widget.TextView;
 
 import com.FarmPe.Farmer.Adapter.AddBrandAdapter;
 import com.FarmPe.Farmer.Adapter.AddFirstAdapter;
-import com.FarmPe.Farmer.Adapter.AddHpAdapter;
 import com.FarmPe.Farmer.Bean.AddTractorBean;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.Urls;

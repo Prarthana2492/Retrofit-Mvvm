@@ -67,6 +67,7 @@
         android:orientation="vertical"
         android:layout_weight="72"
         android:weightSum="100"
+        android:layout_marginTop="20dp"
         >
 
         <LinearLayout
@@ -124,7 +125,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-
             android:background="@drawable/border_login"
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="10dp"
@@ -169,6 +169,7 @@
         </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -177,8 +178,6 @@
             android:gravity="center"
             android:background="@drawable/border_filled_red"
             android:layout_marginHorizontal="20dp"
-
-
             android:orientation="vertical"
             >
 
@@ -186,13 +185,14 @@
                 android:id="@+id/login_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
                 android:fontFamily="@font/segoeui"
                 android:gravity="center"
-                android:text="LOGIN"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="12dp"
-                android:layout_marginHorizontal="20dp"
+                android:text="LOGIN"
                 android:textColor="#fff"
+                android:textAllCaps="true"
                 android:textSize="16dp" />
 
         </LinearLayout>
@@ -203,7 +203,6 @@
             android:layout_height="0dp"
             android:layout_weight="5"
             android:layout_gravity="right"
-            android:textStyle="bold"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
             android:text="Forgot Password?"
@@ -231,6 +230,7 @@
                 android:gravity="center"
                 android:text="REGISTER"
                 android:textColor="#000"
+                android:textAllCaps="true"
                 android:textSize="16dp" />
 
         </LinearLayout>
