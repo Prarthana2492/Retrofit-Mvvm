@@ -21,7 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.FarmPe.Farmer.Adapter.AddFirstAdapter;
-import com.FarmPe.Farmer.Adapter.AddHpAdapter;
+
 import com.FarmPe.Farmer.Adapter.AddModelAdapter;
 import com.FarmPe.Farmer.Bean.AddTractorBean;
 import com.FarmPe.Farmer.R;
@@ -40,7 +40,7 @@ public class AddHpFragment extends Fragment {
 
     public static List<AddTractorBean> newOrderBeansList = new ArrayList<>();
     public static RecyclerView recyclerView;
-    public static AddHpAdapter farmadapter;
+
     TextView toolbar_title,continue_button,sub_label;
     LinearLayout back_feed,linearLayout;
     Fragment selectedFragment;
@@ -93,7 +93,7 @@ ImageView b_arrow;
         });
 
 
-        continue_button.setOnClickListener(new View.OnClickListener() {
+        /*continue_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -112,7 +112,7 @@ ImageView b_arrow;
                     }
 
                     snackbar.show();
-                  /*  int duration = 1000;
+                  *//*  int duration = 1000;
                     Snackbar snackbar = Snackbar
                             .make(linearLayout, "Please choose any option", duration);
                     View snackbarView = snackbar.getView();
@@ -125,7 +125,7 @@ ImageView b_arrow;
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
 
-                    snackbar.show();*/
+                    snackbar.show();*//*
 
                 }else{
                     AddModelAdapter.tractor_id =null;
@@ -140,7 +140,7 @@ ImageView b_arrow;
             }
         });
 
-
+*/
         HpList();
 
         newOrderBeansList.clear();
@@ -186,8 +186,8 @@ ImageView b_arrow;
 
 
                         }
-                        farmadapter=new AddHpAdapter(getActivity(),newOrderBeansList);
-                        recyclerView.setAdapter(farmadapter);
+                       // farmadapter=new AddHpAdapter(getActivity(),newOrderBeansList);
+                       // recyclerView.setAdapter(farmadapter);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

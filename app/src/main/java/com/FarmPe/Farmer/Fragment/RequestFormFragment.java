@@ -23,7 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.FarmPe.Farmer.Adapter.AddFirstAdapter;
-import com.FarmPe.Farmer.Adapter.AddHpAdapter;
+//import com.FarmPe.Farmer.Adapter.AddHpAdapter;
 import com.FarmPe.Farmer.Adapter.AddModelAdapter;
 import com.FarmPe.Farmer.Bean.Add_New_Address_Bean;
 import com.FarmPe.Farmer.Bean.FarmsImageBean;
@@ -46,7 +46,7 @@ public class RequestFormFragment extends Fragment {
     ArrayList<Add_New_Address_Bean> new_address_beanArrayList = new ArrayList<>();
 
     public static RecyclerView recyclerView;
-    public static AddHpAdapter farmadapter;
+   // public static AddHpAdapter farmadapter;
     TextView toolbar_title,request,address_text;
     Fragment selectedFragment;
     RadioGroup radioGroup,radioGroup_finance;

@@ -55,7 +55,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.FarmPe.Farmer.Adapter.AddHpAdapter;
+//import com.FarmPe.Farmer.Adapter.AddHpAdapter;
 import com.FarmPe.Farmer.Bean.FarmsImageBean;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
@@ -88,7 +88,7 @@ public class UpdateAccDetailsFragment extends Fragment {
 
     public static List<FarmsImageBean> newOrderBeansList = new ArrayList<>();
     public static RecyclerView recyclerView;
-    public static AddHpAdapter farmadapter;
+   // public static AddHpAdapter farmadapter;
     SessionManager sessionManager;
     TextView toolbar_title,update_btn_txt;
     JSONObject lngObject;

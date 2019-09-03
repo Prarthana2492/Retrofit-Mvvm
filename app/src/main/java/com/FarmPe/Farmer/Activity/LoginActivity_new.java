@@ -241,8 +241,8 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                 pass.setHint(lngObject.getString("Password"));
               //  remember_me.setText(lngObject.getString("RememberMe"));
                 forgot_pass.setText(lngObject.getString("ForgotPassword") + "?");
-                log_in.setText(lngObject.getString("Login"));
-                welcome_back.setText(lngObject.getString("Login"));
+               // log_in.setText(lngObject.getString("Login"));
+               // welcome_back.setText(lngObject.getString("Login"));
 
                 newfarmpelng = lngObject.getString("NewtoFarmPe");
                 signuplng = lngObject.getString("Register");
@@ -600,12 +600,12 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
                         String lang_title1 = result.getString("ChangeLanguage");
 
-                        String log_login = result.getString("Login");
+                       // String log_login = result.getString("Login");
                         String log_mobile = result.getString("PhoneNo");
                         String log_password = result.getString("Password");
                         String log_remember_me = result.getString("RememberMe");
                         String log_forgot_passwrd = result.getString("ForgotPassword");
-                        String log_register = result.getString(" " + "SignUp");
+                       // String log_register = result.getString(" " + "SignUp");
                         String log_farmpe = result.getString("NewtoFarmPe");
 
                         mob_toast = result.getString("EnterPhoneNo");
@@ -619,14 +619,14 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
                         popup_heading.setText(lang_title1);
                         remember_me.setText(log_remember_me);
-                        log_in.setText(log_login);
+                       // log_in.setText(log_login);
                         text_mobile.setHint(log_mobile);
                         new_farmpe.setText(log_farmpe+"?");
 
                         forgot_pass.setText(log_forgot_passwrd+"?");
                         text_pass.setHint(log_password);
-                        welcome_back.setText(log_login);
-                        createaccount.setText(log_register);
+                       // welcome_back.setText(log_login);
+                       // createaccount.setText(log_register);
 
 
                     }catch (Exception e){

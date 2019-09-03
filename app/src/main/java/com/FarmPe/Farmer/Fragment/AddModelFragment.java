@@ -21,7 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.FarmPe.Farmer.Adapter.AddBrandAdapter;
 import com.FarmPe.Farmer.Adapter.AddFirstAdapter;
-import com.FarmPe.Farmer.Adapter.AddHpAdapter;
+
 import com.FarmPe.Farmer.Adapter.AddModelAdapter;
 import com.FarmPe.Farmer.Bean.AddTractorBean;
 import com.FarmPe.Farmer.Bean.ModelBean;
@@ -38,7 +38,19 @@ import java.util.List;
 
 
 
-public class AddModelFragment extends Fragment {
+public class
+
+
+
+
+
+
+
+
+
+
+
+AddModelFragment extends Fragment {
 
     public static List<ModelBean> modelBeanArrayList = new ArrayList<>();
     public static RecyclerView recyclerView;
