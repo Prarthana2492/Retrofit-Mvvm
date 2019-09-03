@@ -40,7 +40,9 @@ import android.widget.TextView;
 
 
 import com.FarmPe.Farmer.Adapter.DistrictAdapter;
+import com.FarmPe.Farmer.Adapter.DistrictAdapter1;
 import com.FarmPe.Farmer.Adapter.HoblisAdapter;
+import com.FarmPe.Farmer.Adapter.HoblisAdapter1;
 import com.FarmPe.Farmer.Adapter.StateApdater;
 import com.FarmPe.Farmer.Adapter.TalukAdapter;
 import com.FarmPe.Farmer.Adapter.VillageAdapter;
@@ -202,7 +204,12 @@ public class  Add_New_Address_Fragment extends Fragment {
                     fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 
-                }else if(getArguments().getString("navigation_from").equals("your_add")){
+                }else   if (getArguments().getString("navigation_from").equals("REQ_NEW")){
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("req_newdetail", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                }
+
+                else if(getArguments().getString("navigation_from").equals("your_add")){
 
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("your_add", FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -1042,8 +1049,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                         bundle.putString("add_id",status);
 
-                        bundle.putInt("selected_id2",selected_id);
-                        bundle.putInt("selected_id_time1",selected_id_time);
+                        bundle.putString("streetname",  DistrictAdapter.district_name);
 
 
                         if(!(status.equals("0"))){
@@ -1068,6 +1074,14 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                                 FragmentManager fm = getActivity().getSupportFragmentManager();
                                 fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                            }else if (getArguments().getString("navigation_from").equals("REQ_NEW")){
+
+                                selectedFragment = Request_Details_New.newInstance();
+                                selectedFragment.setArguments(bundle);
+                                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                transaction.replace(R.id.frame_layout, selectedFragment);
+                                transaction.commit();
+
                             }
                             else if (getArguments().getString("navigation_from").equals("SETTING_FRAG")) {
                                 int duration=1000;

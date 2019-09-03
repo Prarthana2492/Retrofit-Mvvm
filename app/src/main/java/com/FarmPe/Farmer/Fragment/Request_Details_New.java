@@ -49,7 +49,8 @@ public class Request_Details_New extends Fragment {
 
     public static RecyclerView recyclerView;
     public static AddHpAdapter farmadapter;
-    TextView toolbar_title,request,address_text;
+    TextView toolbar_title,request;
+    EditText address_text;
     Fragment selectedFragment;
     RadioGroup radioGroup,radioGroup_finance;
     RadioButton radioButton,finance_yes,finance_no,radioButton1;
@@ -99,7 +100,7 @@ public class Request_Details_New extends Fragment {
         purchase_edit=view.findViewById(R.id.purchase_edit);
         add_addrss=view.findViewById(R.id.add_addrss);
         //purchase_edit=view.findViewById(R.id.add_addrss);
-        linearLayout=view.findViewById(R.id.linearLayout);
+        linearLayout=view.findViewById(R.id.profile_view);
        // toolbar_title.setText("Request for Quotation");
         sessionManager=new SessionManager(getActivity());
         Bundle bundle=getArguments();
@@ -107,23 +108,24 @@ public class Request_Details_New extends Fragment {
 
 
         if (bundle==null){
-           // gettingAddress();
+           gettingAddress();
 
 
         }else{
-            finance_selected=bundle.getInt("selected_id2");
-            time_selected=bundle.getInt("selected_id_time1");
+           // finance_selected=bundle.getInt("selected_id2");
+           // time_selected=bundle.getInt("selected_id_time1");
             addId=bundle.getString("add_id");
             String stret_name=bundle.getString("streetname");
             address_text.setText(stret_name);
-            radioGroup.check(bundle.getInt("selected_id_time1"));
-            radioGroup_finance.check(finance_selected);
+           // radioGroup.check(bundle.getInt("selected_id_time1"));
+           // radioGroup_finance.check(finance_selected);
         }
 
 
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("fourth", FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -152,13 +154,13 @@ public class Request_Details_New extends Fragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString("status","default");
+                bundle.putString("navigation_from","REQ_NEW");
 
                 selectedFragment = Add_New_Address_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
                 selectedFragment.setArguments(bundle);
-            //    transaction.addToBackStack("list_farm2");
+                transaction.addToBackStack("req_newdetail");
                 transaction.commit();
 
             }
@@ -169,8 +171,30 @@ public class Request_Details_New extends Fragment {
             @Override
             public void onClick(View v) {
 
+                if (addId==null){
 
+
+                    Snackbar snackbar = Snackbar
+                            .make(linearLayout,"Enter Address", Snackbar.LENGTH_LONG);
+                    View snackbarView = snackbar.getView();
+                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                    tv.setTextColor(Color.WHITE);
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    } else {
+                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                    }
+
+                    snackbar.show();
+
+                }else {
                     RequestForm();
+
+                }
+
+
 
 
             }
@@ -264,7 +288,7 @@ public class Request_Details_New extends Fragment {
             userRequestjsonObject.put("UserId",sessionManager.getRegId("userId"));
             userRequestjsonObject.put("PurchaseTimeline", "imd");
             userRequestjsonObject.put("LookingForFinance", "yes");
-            userRequestjsonObject.put("AddressId", 1);
+            userRequestjsonObject.put("AddressId", addId);
            // userRequestjsonObject.put("AddressId", addId);
             userRequestjsonObject.put("ModelId", AddModelAdapter.tractor_id);
             userRequestjsonObject.put("IsAgreed", "True");
@@ -350,7 +374,7 @@ public class Request_Details_New extends Fragment {
 
                             if (jsonObject1.getBoolean("IsDefaultAddress")){
                                 addId=jsonObject1.getString("Id");
-                                address_text.setText(jsonObject1.getString("Hoblie")+","+jsonObject1.getString("District"));
+                                address_text.setText(jsonObject1.getString("Hoblie")+"  "+jsonObject1.getString("District"));
 
                             }
 

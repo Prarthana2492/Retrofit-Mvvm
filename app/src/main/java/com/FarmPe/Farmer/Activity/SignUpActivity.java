@@ -295,9 +295,9 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
         privacy_terms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                privacy_policy="privacy";
-                Intent intent = new Intent(SignUpActivity.this, LandingPageActivity.class);
-                startActivity(intent);
+               // privacy_policy="privacy";
+               // Intent intent = new Intent(SignUpActivity.this, LandingPageActivity.class);
+               // startActivity(intent);
             }
         });
 

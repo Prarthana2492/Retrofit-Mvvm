@@ -78,6 +78,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="3028 EN 21- 30 HP"
                 android:textColor="#000"
+                android:singleLine="true"
                 android:textStyle="bold"
                 android:textSize="14dp" />
 
