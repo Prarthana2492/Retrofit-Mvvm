@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.FarmPe.Farmer.Activity.LoginActivity_new;
@@ -32,7 +34,10 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
     Activity activity;
     Fragment selectedFragment;
     SessionManager sessionManager;
+    String lng_list;
 
+
+    public static int selected_position=0;
 
 
     public static CardView cardView;
@@ -45,9 +50,12 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+
         public TextView lang_text;
         public LinearLayout language;
         public ImageView lang_img,right_img;
+        public RadioGroup lang_icon;
+        public RadioButton lang_txt;
 
 
 
@@ -56,8 +64,10 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
             super(view);
             lang_text=view.findViewById(R.id.lang_text);
             language=view.findViewById(R.id.main_layout);
-            lang_img=view.findViewById(R.id.lang_icon);
-            right_img = view.findViewById(R.id.right_img);
+//            lang_img=view.findViewById(R.id.lang_icon);
+//            right_img = view.findViewById(R.id.right_img);
+            lang_icon = view.findViewById(R.id.radiogrp);
+            lang_txt = view.findViewById(R.id.radioButton1);
 
         }
 
@@ -76,57 +86,63 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
         final SelectLanguageBean products1 = productList.get(position);
 
 
-        holder.lang_text.setText(products1.getVendor());
-//        Glide.with(activity).load(R.drawable.success)
-//
-//                .thumbnail(0.5f)
-//                .crossFade()
-//                .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                .into(holder.lang_img);
+        holder.lang_txt.setText(products1.getVendor());
+
+        lng_list = products1.getVendor();
+
+        if(selected_position == position){
+
+            holder.lang_txt.setChecked(true);
+        }else{
+
+            holder.lang_txt.setChecked(false);
+        }
+
+
+
+
+
+
 
         System.out.println("iiiddddddmmmmmmmmmmmmmmmmm" + products1.getLanguageid());
 
 
-        if (sessionManager.getRegId("language_name").equals(products1.getVendor())){
-            // holder.right_img.setImageResource(R.drawable.ic_verified_filled_grey_white);
-            //  holder.lng_rad_but.setBackgroundColor(Color.GREEN);
-            holder.right_img.setVisibility(View.VISIBLE);
+//        if (sessionManager.getRegId("language_name").equals(products1.getVendor())){
+//            // holder.right_img.setImageResource(R.drawable.ic_verified_filled_grey_white);
+//            //  holder.lng_rad_but.setBackgroundColor(Color.GREEN);
+//            holder.right_img.setVisibility(View.VISIBLE);
+//
+//        }else {
+//
+//            holder.right_img.setVisibility(View.GONE);
+//
+//            //// holder.right_img.setImageResource(R.drawable.filled_grey_circle);
+//
+////            holder.right_img.setImageResource(R.drawable.v);
+//
+//            //  holder.lng_rad_but.setBackgroundColor(Color.WHITE);
+//
+//
+//        }
+//
+//
 
-        }else {
 
-            holder.right_img.setVisibility(View.GONE);
+        holder.lang_txt.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            System.out.println("iiiddddddkkkkkkkkkkkkkkkkkkkkkkkkkkk" + products1.getLanguageid());
 
-            //// holder.right_img.setImageResource(R.drawable.filled_grey_circle);
+            sessionManager.saveLanguage_name(products1.getVendor());
+            getLang(products1.getLanguageid());
+            lng_list = products1.getVendor();
 
-//            holder.right_img.setImageResource(R.drawable.v);
-
-            //  holder.lng_rad_but.setBackgroundColor(Color.WHITE);
-
+            selected_position = position;
+            notifyDataSetChanged();
 
         }
-
-
-        holder.language.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("iiiddddddkkkkkkkkkkkkkkkkkkkkkkkkkkk" + products1.getLanguageid());
-
-                sessionManager.saveLanguage_name(products1.getVendor());
-                getLang(products1.getLanguageid());
-
-                /*selectedFragment = AaSettingFragment.newInstance();
-                FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
-                transaction.commit();*/
-
-               /* sessionManager.saveLanguage_name(products1.getVendor());
-                getLang(products1.getLanguageid());
-                LoginActivity_new.change_lang.setText(products1.getVendor());
-                LoginActivity_new.dialog.dismiss();*/
-
-            }
-        });
-    }
+    });
+}
 
 
     private void getLang(int id) {

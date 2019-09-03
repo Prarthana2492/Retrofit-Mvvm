@@ -114,7 +114,6 @@ public class  Add_New_Address_Fragment extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.select_your_region_layout, container, false);
@@ -128,7 +127,7 @@ public class  Add_New_Address_Fragment extends Fragment {
         pincode_no = view.findViewById(R.id.pincode);
         //house_numb = view.findViewById(R.id.house_no);
         street_name = view.findViewById(R.id.colny_street);
-        landmrk = view.findViewById(R.id.landmrk);
+       // landmrk = view.findViewById(R.id.landmrk);
         search = view.findViewById(R.id.search);
         // main_layout = view.findViewById(R.id.drawer_layout_op);
         state_txt = view.findViewById(R.id.state_txt);
@@ -166,7 +165,7 @@ public class  Add_New_Address_Fragment extends Fragment {
         pincode_no.setText(getArguments().getString("Addr_pincode"));
         // house_numb.setText(getArguments().getString("Addr_Houseno"));
         street_name.setText(getArguments().getString("Addr_Street"));
-        landmrk.setText(getArguments().getString("Addr_landmark"));
+     //   landmrk.setText(getArguments().getString("Addr_landmark"));
         //city.setText(getArguments().getString("Addr_city"));
 
         state_txt.setText(getArguments().getString("Addr_state"));
@@ -621,32 +620,21 @@ public class  Add_New_Address_Fragment extends Fragment {
                     }
                     snackbar.show();
 
-                }/*else if(house_numb.getText().toString().equals("")){
-                    // Toast.makeText(getActivity(), "Enter House No/Floor/building", Toast.LENGTH_SHORT).show();
-                    Snackbar snackbar = Snackbar
-                            .make(linearLayout, enterhno, Snackbar.LENGTH_LONG);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-                    snackbar.show();
-
-
-                }*/else if(street_name.getText().toString().equals("")) {
-                    //Toast.makeText(getActivity(), "Enter Street Address", Toast.LENGTH_SHORT).show();
-                    int duration=1000;
-                    Snackbar snackbar = Snackbar
-                            .make(linearLayout, enterstreetad,duration);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                    }
-                    snackbar.show();
+//                }else if(street_name.getText().toString().equals("")) {
+//                    //Toast.makeText(getActivity(), "Enter Street Address", Toast.LENGTH_SHORT).show();
+//                    int duration=1000;
+//                    Snackbar snackbar = Snackbar
+//                            .make(linearLayout, enterstreetad,duration);
+//                    View snackbarView = snackbar.getView();
+//                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+//                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+//                    tv.setTextColor(Color.WHITE);
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+//                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//                    } else {
+//                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+//                    }
+//                    snackbar.show();
 
 
                 }else if(state_txt.getText().toString().equals("")) {
@@ -697,21 +685,6 @@ public class  Add_New_Address_Fragment extends Fragment {
                     }
                     snackbar.show();
 
-                }else if(pincode_no.getText().toString().equals("")) {
-                    // Toast.makeText(getActivity(), "Enter Pincode", Toast.LENGTH_SHORT).show();
-                    int duration=1000;
-                    Snackbar snackbar = Snackbar
-                            .make(linearLayout, enterpincode,duration);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                    }
-                    snackbar.show();
 
 
                 }else if(pincode_no.length()<6){
@@ -739,8 +712,6 @@ public class  Add_New_Address_Fragment extends Fragment {
 
             }
         });
-
-
 
         try {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
@@ -840,10 +811,13 @@ public class  Add_New_Address_Fragment extends Fragment {
             jsonObject.put("TalukId",TalukAdapter.talukid);
             json_post.put("Hobliobj",jsonObject);
 
+            System.out.println("hhhhhhhssssskljhgfmmmmmmmmmmmmmmmmmmmmmmmmmmmm" + json_post);
+
+
             Crop_Post.crop_posting(getActivity(), Urls.Hoblis, json_post, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
-                    System.out.println("hhhhhhhssssskljhgf" + result);
+                    System.out.println("hhhhhhhssssskljhgfmmmmmmmmmmmmmmmmmmmmmmmmmmmm" + result);
 
                     try{
                         hobliBeanList.clear();
@@ -851,12 +825,12 @@ public class  Add_New_Address_Fragment extends Fragment {
                         for(int i = 0;i<hobli_array.length();i++){
                             JSONObject jsonObject3 = hobli_array.getJSONObject(i);
                             stateBean = new StateBean(jsonObject3.getString("Hobli"),jsonObject3.getString("HobliId"));
-                            hobliBeanList.add(stateBean);
+                            villageBeanList.add(stateBean);
 
                         }
                         sorting(hobliBeanList);
 
-                        hoblisAdapter.notifyDataSetChanged();
+                        villageAdapter.notifyDataSetChanged();
                         //  grade_dialog.show();
 
 

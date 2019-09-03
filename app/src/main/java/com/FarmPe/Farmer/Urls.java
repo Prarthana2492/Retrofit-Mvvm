@@ -4,7 +4,7 @@ package com.FarmPe.Farmer;
   public class Urls {
 
   private static final String ROOT_URL = "http://13.232.185.209:909/api/";///DEV
-  // private static final String ROOT_URL = "http://13.233.184.72:909/api/";///pro
+ //  private static final String ROOT_URL = "http://13.233.184.72:909/api/";///pro
 
 
     public static final String IMAGE_ROOT_URL = "http://13.233.184.72:909";//Image root
@@ -70,8 +70,6 @@ package com.FarmPe.Farmer;
 
     public static final String GetBrandList = ROOT_URL+"MasterTable/GetBrandList";
     public static final String ModelList = ROOT_URL+"MasterTable/GetModels";
-    public static final String New_ModelList = ROOT_URL+"MasterTable/GetRFQModelMasterList";
-
     public static final String GetHPList = ROOT_URL+"MasterTable/GetHPList";
     public static final String AddRequestForQuotation = ROOT_URL+"MasterTable/AddUpdateRequestForQuotation";
     public static final String GetLookingForItems = ROOT_URL+"MasterTable/GetLookingForDetails";

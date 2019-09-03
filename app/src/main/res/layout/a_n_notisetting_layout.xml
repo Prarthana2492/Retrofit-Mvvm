@@ -34,6 +34,7 @@
                 android:id="@+id/back_feed"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:background="@drawable/ic_filter_state"
                 android:gravity="center">
 
 
@@ -152,9 +153,10 @@
             >
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_weight="75"
                 android:gravity="center"
                 >
 
@@ -193,7 +195,25 @@
             </LinearLayout>
 
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="25"
+                android:gravity="center"
+                android:layout_gravity="center_vertical"
+                >
 
+                <android.support.v7.widget.SwitchCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:checked="false"
+                    android:theme="@style/SCBSwitch" />
+
+
+
+
+            </LinearLayout>
 
 
         </LinearLayout>
@@ -219,9 +239,10 @@
             >
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_weight="75"
                 android:gravity="center"
                 >
 
@@ -260,7 +281,25 @@
             </LinearLayout>
 
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="25"
+                android:gravity="center"
+                android:layout_gravity="center_vertical"
+                >
 
+                <android.support.v7.widget.SwitchCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:checked="false"
+                    android:theme="@style/SCBSwitch" />
+
+
+
+
+            </LinearLayout>
 
 
         </LinearLayout>

@@ -53,7 +53,7 @@ public class SelectLanguageAdapter_SignUP extends RecyclerView.Adapter<SelectLan
             super(view);
             language_name=view.findViewById(R.id.lang_text);
             language=view.findViewById(R.id.language);
-            right_img=view.findViewById(R.id.right_img);
+          //  right_img=view.findViewById(R.id.right_img);
 
         }
 

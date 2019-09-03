@@ -82,7 +82,7 @@
                 android:orientation="horizontal"
                 android:paddingRight="10dp"
                 android:paddingLeft="10dp"
-                android:background="#000"
+                android:background="@color/menu_green"
                 android:paddingVertical="10dp"
                 android:weightSum="100"
                 >

@@ -23,6 +23,7 @@
             android:id="@+id/back_feed"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:background="@drawable/ic_filter_state"
             android:gravity="center">
 
 
@@ -94,6 +95,7 @@
                 android:gravity="center"
                 >
 
+
                 <TextView
                     android:id="@+id/feedback"
                     android:layout_width="match_parent"
@@ -158,9 +160,7 @@
                     />
 
 
-
             </LinearLayout>
-
 
 
         </LinearLayout>

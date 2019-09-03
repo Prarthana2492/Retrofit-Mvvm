@@ -126,7 +126,7 @@ public class Request_Details_New extends Fragment {
             @Override
             public void onClick(View v) {
 
-                b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
+             //   b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("fourth", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }

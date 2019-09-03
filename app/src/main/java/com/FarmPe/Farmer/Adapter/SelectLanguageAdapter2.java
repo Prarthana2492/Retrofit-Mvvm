@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.FarmPe.Farmer.Activity.LoginActivity;
@@ -31,6 +33,8 @@ public class SelectLanguageAdapter2 extends RecyclerView.Adapter<SelectLanguageA
 
 
     Fragment selectedFragment;
+    public static int selected_position=0;
+    String lng_list;
 
     SessionManager sessionManager;
 
@@ -50,18 +54,21 @@ public class SelectLanguageAdapter2 extends RecyclerView.Adapter<SelectLanguageA
         public TextView language_name;
         public LinearLayout language;
         public ImageView right_img;
-
+        public RadioGroup lang_icon;
+        public RadioButton lang_txt;
 
 
 
         public MyViewHolder(View view) {
             super(view);
-            language_name=view.findViewById(R.id.lang_text);
-            language=view.findViewById(R.id.language);
-            right_img=view.findViewById(R.id.right_img);
+            language_name = view.findViewById(R.id.lang_text);
+            language = view.findViewById(R.id.language);
+            lang_icon = view.findViewById(R.id.radiogrp);
+            lang_txt = view.findViewById(R.id.radioButton1);
+
+            //   right_img = view.findViewById(R.id.right_img);
 
         }
-
     }
 
     @Override
@@ -77,22 +84,51 @@ public class SelectLanguageAdapter2 extends RecyclerView.Adapter<SelectLanguageA
         final SelectLanguageBean products1 = productList.get(position);
 
 
-        holder.language_name.setText(products1.getVendor());
 
-        System.out.print("iiidddddd" + products1.getLanguageid());
+        holder.lang_txt.setText(products1.getVendor());
 
-        holder.language.setOnClickListener(new View.OnClickListener() {
+        lng_list = products1.getVendor();
+
+        if(selected_position == position){
+
+            holder.lang_txt.setChecked(true);
+        }else{
+
+            holder.lang_txt.setChecked(false);
+        }
+
+
+
+        holder.lang_txt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("iiiddddddkkkkkkkkkkkkkkkkkkkkkkkkkkk" + products1.getLanguageid());
 
                 sessionManager.saveLanguage_name(products1.getVendor());
                 getLang(products1.getLanguageid());
-                LoginActivity.change_lang.setText(products1.getVendor());
-                LoginActivity.dialog.dismiss();
+                lng_list = products1.getVendor();
+
+                selected_position = position;
+                notifyDataSetChanged();
 
             }
         });
     }
+
+
+
+//        holder.language.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                sessionManager.saveLanguage_name(products1.getVendor());
+//                getLang(products1.getLanguageid());
+//                LoginActivity.change_lang.setText(products1.getVendor());
+//                LoginActivity.dialog.dismiss();
+//
+//            }
+//        });
+//    }
 
 
     private void getLang(int id) {
@@ -140,7 +176,7 @@ public class SelectLanguageAdapter2 extends RecyclerView.Adapter<SelectLanguageA
                            LoginActivity.text_mobile.setHint(log_mobile);
                            LoginActivity.mob_toast = result.getString("EnterPhoneNo");
                            LoginActivity.pass_toast = result.getString("EnterPassword");
-                           LoginActivity.toast_invalid = result.getString("InvalidCredentials");
+                         //  LoginActivity.toast_invalid = result.getString("InvalidCredentials");
                            LoginActivity.toast_click_back = result.getString("PleaseclickBACKagaintoexit");
                            LoginActivity.toast_internet = result.getString("GoodConnectedtoInternet");
                            LoginActivity.toast_nointernet = result.getString("NoInternetConnection");

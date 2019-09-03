@@ -7,8 +7,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="100"
-    android:background="#000"
+    android:background="#F1F1F1"
     >
+
 
 
     <android.support.v7.widget.Toolbar
@@ -16,39 +17,87 @@
         android:minHeight="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         app:titleTextColor="@android:color/white"
-        >
+        android:background="@color/menu_green"
+        android:gravity="left"
+        android:layout_gravity="left"
+        android:contentInsetLeft="0dp"
+        android:contentInsetStart="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="10dp"
+        android:contentInsetRight="0dp"
+        android:contentInsetEnd="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetEnd="0dp">
+
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:id="@+id/back_feed"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:background="@drawable/ic_filter_state">
 
-            <TextView
+            <ImageView
+                android:id="@+id/b_arrow"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Your Requests"
-                android:textSize="20dp"
-                android:textColor="#000"
-                android:id="@+id/toolbar_title" />
-
+                android:layout_height="20dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_go_back_left_arrow_"
+                />
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Request"
+            android:textSize="18dp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:id="@+id/toolbar_title" />
+
     </android.support.v7.widget.Toolbar>
+
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/toolbar"-->
+        <!--android:minHeight="?attr/actionBarSize"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/white"-->
+        <!--app:titleTextColor="@android:color/white"-->
+        <!--&gt;-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical"-->
+            <!--&gt;-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Your Requests"-->
+                <!--android:textSize="20dp"-->
+                <!--android:textColor="#000"-->
+                <!--android:id="@+id/toolbar_title" />-->
+
+        <!--</LinearLayout>-->
+
+    <!--</android.support.v7.widget.Toolbar>-->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#fff"
+        android:background="#F1F1F1"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:weightSum="100"
-            android:background="@color/light_gray"
+            android:background="#F1F1F1"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             >
@@ -124,7 +173,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="10dp"
             >
 
         </android.support.v7.widget.RecyclerView>

@@ -142,21 +142,34 @@
 
 
             <android.support.v7.widget.SwitchCompat
-                android:id="@+id/finance_sw"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:layout_alignParentRight="true"
                 android:checked="false"
-                android:fontFamily="@font/segoeui"
-                android:gravity="right"
-                android:textAppearance="@style/SwitchTextAppearance"
-                android:textOff="No"
+                android:layout_gravity="right"
                 android:textOn="Yes"
-                android:textColor="@color/white"
-
-                android:thumb="@drawable/switch_custom_selector"
+                android:textOff="No"
                 app:showText="true"
-                app:track="@drawable/switch_custom_track" />
+                android:theme="@style/SCBSwitch" />
+
+
+
+            <!--<android.support.v7.widget.SwitchCompat-->
+                <!--android:id="@+id/finance_sw"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="right"-->
+                <!--android:checked="false"-->
+                <!--android:fontFamily="@font/segoeui"-->
+                <!--android:gravity="right"-->
+                <!--android:textAppearance="@style/SwitchTextAppearance"-->
+                <!--android:textOff="No"-->
+                <!--android:textOn="Yes"-->
+                <!--android:textColor="@color/white"-->
+
+                <!--android:thumb="@drawable/switch_custom_selector"-->
+                <!--app:showText="true"-->
+                <!--app:track="@drawable/switch_custom_track" />-->
         </LinearLayout>
 
 
@@ -245,18 +258,19 @@
 
 
             <android.support.v7.widget.SwitchCompat
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:checked="false"
-                android:fontFamily="@font/segoeui"
-                android:gravity="right"
-                android:textOff="No"
+                android:layout_gravity="right"
                 android:textOn="Yes"
-                android:thumb="@drawable/switch_custom_selector"
+                android:textOff="No"
                 app:showText="true"
-                android:textColor="@color/white"
-                app:track="@drawable/switch_custom_track" />
+                android:textColor="@color/black"
+                android:theme="@style/SCBSwitch" />
+
+
+
         </LinearLayout>
 
 
