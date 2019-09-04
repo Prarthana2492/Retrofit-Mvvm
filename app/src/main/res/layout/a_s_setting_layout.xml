@@ -110,7 +110,7 @@
                 android:id="@+id/acc_info1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Account Info"
+                android:text="Account"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 android:textColor="#000"
@@ -131,7 +131,7 @@
     </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/requ_lay"
+            android:id="@+id/setting_request"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

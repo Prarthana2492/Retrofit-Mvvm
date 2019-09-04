@@ -76,15 +76,17 @@
             android:id="@+id/time"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="75"
             android:fontFamily="@font/segoeui"
             android:gravity="center_vertical"
             android:textColor="#000"
-            android:text="Sort By Recently Added"
+            android:layout_weight="75"
+            android:text="@string/recently_added"
             android:textSize="13dp"
             android:paddingHorizontal="10dp"
             android:layout_marginLeft="5dp"
             />
+
+
 
 
         <TextView
@@ -95,7 +97,7 @@
             android:fontFamily="@font/segoeui"
             android:text="Filter"
             android:textColor="#000"
-            android:drawablePadding="7dp"
+            android:drawablePadding="4dp"
             android:drawableLeft="@drawable/ic_icon_filterrrr"
             android:textSize="13dp"
             android:paddingHorizontal="10dp"

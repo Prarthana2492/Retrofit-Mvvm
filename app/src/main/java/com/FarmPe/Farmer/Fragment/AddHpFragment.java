@@ -67,7 +67,6 @@ ImageView b_arrow;
         sub_label.setText("Choose the Horse Power (HP) you prefer");
 
 
-
         b_arrow=view.findViewById(R.id.b_arrow);
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override

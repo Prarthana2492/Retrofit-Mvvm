@@ -1,6 +1,8 @@
 package com.FarmPe.Farmer.Fragment;
 
+import android.app.Dialog;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -63,7 +65,7 @@ AddModelFragment extends Fragment {
     public static JSONArray jCBRFQModelList = null;
     ModelBean modelBean;
     Fragment selectedFragment = null;
-    TextView toolbar_title,continue_button,sub_label;
+    TextView toolbar_title,continue_button,sub_label,filter_text;
     LinearLayout back_feed,linearLayout;
 ImageView b_arrow;
 
@@ -81,6 +83,7 @@ ImageView b_arrow;
         back_feed=view.findViewById(R.id.back_feed);
         linearLayout=view.findViewById(R.id.linearLayout);
         continue_button=view.findViewById(R.id.continue_button);
+        filter_text=view.findViewById(R.id.filter_text);
         sub_label=view.findViewById(R.id.sub_label);
        /* toolbar_title.setText("Select Model");
 
@@ -112,6 +115,32 @@ ImageView b_arrow;
             }
         });
 
+
+
+        filter_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                final Dialog dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.layout_filterpopup);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                final TextView rec = (TextView) dialog.findViewById(R.id.recen_added);
+                final TextView asce = (TextView)dialog.findViewById(R.id.sort_ascendi) ;
+                final TextView desc = (TextView)dialog.findViewById(R.id.sort_desendi) ;
+                //   final TextView popuptxt = (TextView)dialog.findViewById(R.id.popup_heading) ;
+                ImageView image = (ImageView) dialog.findViewById(R.id.close_popup);
+                image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+
+
+            }
+        });
 
 
         ModelList();

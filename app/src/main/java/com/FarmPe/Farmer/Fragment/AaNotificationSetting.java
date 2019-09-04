@@ -35,7 +35,7 @@ public class AaNotificationSetting extends Fragment {
         View view = inflater.inflate(R.layout.a_n_notisetting_layout, container, false);
 
         backfeed=view.findViewById(R.id.back_feed);
-        acc_info_lay=view.findViewById(R.id.acc_info_lay);
+        acc_info_lay = view.findViewById(R.id.acc_info_lay);
 
 
         backfeed.setOnClickListener(new View.OnClickListener() {
@@ -67,16 +67,16 @@ public class AaNotificationSetting extends Fragment {
 
 
 
-        acc_info_lay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectedFragment = AaAccountFragment.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
-                transaction.addToBackStack("setting");
-                transaction.commit();
-            }
-        });
+//        acc_info_lay.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                selectedFragment = AaAccountFragment.newInstance();
+//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.frame_layout, selectedFragment);
+//                transaction.addToBackStack("setting");
+//                transaction.commit();
+//            }
+//        });
 
 
 

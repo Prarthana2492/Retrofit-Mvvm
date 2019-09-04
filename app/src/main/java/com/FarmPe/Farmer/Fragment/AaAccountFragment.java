@@ -90,10 +90,12 @@ public class AaAccountFragment extends Fragment {
         acc_info_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("status","ACC_IMG");
                 selectedFragment = AaProfileFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
-                transaction.addToBackStack("aaAccount");
+                selectedFragment.setArguments(bundle);
                 transaction.commit();
             }
         });
@@ -101,31 +103,7 @@ public class AaAccountFragment extends Fragment {
         change_pass_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*main_layout.setBackgroundColor(Color.parseColor("#666666"));
-                mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_EXPANDED);
-                LandingPageActivity.editname.setVisibility(View.VISIBLE);
-                LandingPageActivity.logout.setVisibility(View.GONE);
-                LandingPageActivity.name_hint.setText("Change Password");
-                LandingPageActivity.cancel.setText("Cancel");
-                LandingPageActivity.save.setText("Save");
-                LandingPageActivity.editname.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                LandingPageActivity.editname.setFilters(new InputFilter[] { new InputFilter.LengthFilter(12)});
-                main_layout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                        main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
 
-                    }
-                });
-                LandingPageActivity.cancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                        main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
-
-                    }
-                });*/
 
                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
@@ -137,7 +115,7 @@ public class AaAccountFragment extends Fragment {
                 userInput.setVisibility(View.VISIBLE);
                 titleText.setText("Change password");
                 Log.d("liugekuyhg",""+titleText.getText().toString());
-                descriptionText.setText("Are you sure you want to exit?");
+                descriptionText.setText("Are you sure, you want to exit?");
                 descriptionText.setVisibility(View.GONE);
                 positiveText.setText("Save");
                 TextView negetiveText = sheetView.findViewById(R.id.negetive_text);
@@ -145,7 +123,9 @@ public class AaAccountFragment extends Fragment {
                 positiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                       // Toast.makeText(getActivity(), "Change was clicked", Toast.LENGTH_SHORT).show();
+
+                        save_password();
+
                     }
                 });
                 negetiveText.setOnClickListener(new View.OnClickListener() {
@@ -159,6 +139,7 @@ public class AaAccountFragment extends Fragment {
 
             }
         });
+
 
 
         logout_lay.setOnClickListener(new View.OnClickListener() {
@@ -199,6 +180,11 @@ public class AaAccountFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void save_password() {
+
+
     }
 
 }

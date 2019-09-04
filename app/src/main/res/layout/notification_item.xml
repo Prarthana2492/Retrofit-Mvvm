@@ -38,10 +38,9 @@
                     android:id="@+id/prod_img"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/notification"
-                    app:civ_border_color="#000"
-                    app:civ_border_width="0.75dp"
-                    />
+                    android:src="@drawable/ic_notificationblack"
+
+                   />
 
 
             </LinearLayout>

@@ -55,7 +55,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/nandi_farmer"
+            android:src="@drawable/farmer_logo_text"
             />
 
 
@@ -114,7 +114,7 @@
                 android:textColor="#000"
                 android:textColorHint="#000"
                 android:textCursorDrawable="@drawable/cursor_color"
-                android:textSize="14dp"
+                android:textSize="16dp"
                 android:textStyle="normal" />
         </LinearLayout>
 

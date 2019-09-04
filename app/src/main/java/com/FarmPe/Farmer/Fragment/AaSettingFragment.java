@@ -33,7 +33,7 @@ public class AaSettingFragment extends Fragment {
     View sheetView;
     String packageName;
     Fragment selectedFragment;
-    LinearLayout backfeed,acc_info_lay,not_lay,lang_lay,help_lay,invi_lay,main_layout,requ_lay;
+    LinearLayout backfeed,acc_info_lay,not_lay,lang_lay,help_lay,invi_lay,main_layout,request_lay;
     TextView sub_lang,notificatn,change_language,your_addresss,acc_info1,refer_ern,feedbk,help_1,abt_frmpe,polic_1,logot,setting_tittle;
     SessionManager sessionManager;
     JSONObject lngObject;
@@ -54,8 +54,9 @@ public class AaSettingFragment extends Fragment {
         help_lay=view.findViewById(R.id.help_lay);
         invi_lay=view.findViewById(R.id.invi_lay);
         main_layout=view.findViewById(R.id.main_layout);
-        requ_lay=view.findViewById(R.id.requ_lay);
+        request_lay=view.findViewById(R.id.setting_request);
         sub_lang=view.findViewById(R.id.sub_lang);
+
 
         sessionManager = new SessionManager(getActivity());
 
@@ -146,6 +147,23 @@ public class AaSettingFragment extends Fragment {
         });
 
 
+        request_lay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                selectedFragment = Setting_Request_Fragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.addToBackStack("request_profile");
+                transaction.commit();
+
+            }
+        });
+
+
+
+
+
         help_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -189,11 +207,11 @@ public class AaSettingFragment extends Fragment {
                             try {
                                 startActivity(whatsappIntent);
                             } catch (android.content.ActivityNotFoundException ex) {
-                                Toast.makeText(getActivity(), "Whatsapp have not been installed.", Toast.LENGTH_SHORT);
+                                Toast.makeText(getActivity(), "Whatsapp is not installed on this device.", Toast.LENGTH_SHORT);
                             }
 
                         }else {
-                            Toast.makeText(getActivity(), "Whatsapp have not been installed.", Toast.LENGTH_SHORT);
+                            Toast.makeText(getActivity(), "Whatsapp is not installed on this device.", Toast.LENGTH_SHORT);
 
                         }
 
@@ -224,30 +242,7 @@ public class AaSettingFragment extends Fragment {
                     }
                 });
 
-                messenger.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
 
-
-                        if (packageName.contains("com.facebook.orca")) {
-                            Intent sendIntent = new Intent();
-                            sendIntent.setAction(Intent.ACTION_SEND);
-                            sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeFarmer\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farmer to download the app");
-                            sendIntent.setType("text/plain");
-                            sendIntent.setPackage("com.facebook.orca");
-                            try {
-                                startActivity(sendIntent);
-                            } catch (android.content.ActivityNotFoundException ex) {
-                                Toast.makeText(getActivity(), "Messanger is not installed on this device ", Toast.LENGTH_LONG).show();
-                            }
-
-
-                        }else {
-                            Toast.makeText(getActivity(), "Messanger is not installed on this device ", Toast.LENGTH_LONG).show();
-                        }
-
-                    }
-                });
                 instagram.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -262,7 +257,7 @@ public class AaSettingFragment extends Fragment {
                             try {
                                 startActivity(sendIntent);
                             } catch (android.content.ActivityNotFoundException ex) {
-                                Toast.makeText(getActivity(), "Instagram is not installed on this device ", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getActivity(), "Instagram is not installed on this device  ", Toast.LENGTH_LONG).show();
                             }
                         }else {
                             Toast.makeText(getActivity(), "Instagram is not installed on this device ", Toast.LENGTH_LONG).show();
@@ -271,9 +266,6 @@ public class AaSettingFragment extends Fragment {
 
                     }
                 });
-
-
-
 
                 twitter.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -299,13 +291,31 @@ public class AaSettingFragment extends Fragment {
 
                     }
                 });
-//
-//                messenger.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//
-//                    }
-//                });
+
+
+                messenger.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        if (packageName.contains("com.facebook.orca")) {
+                            Intent sendIntent = new Intent();
+                            sendIntent.setAction(Intent.ACTION_SEND);
+                            sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeFarmer\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farmer to download the app");
+                            sendIntent.setType("text/plain");
+                            sendIntent.setPackage("com.facebook.orca");
+                            try {
+                                startActivity(sendIntent);
+                            } catch (android.content.ActivityNotFoundException ex) {
+                                Toast.makeText(getActivity(), "Messanger is not installed on this device ", Toast.LENGTH_LONG).show();
+                            }
+
+                        }else {
+                            Toast.makeText(getActivity(), "Messanger is not installed on this device ", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+
 
                 message.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -321,11 +331,11 @@ public class AaSettingFragment extends Fragment {
                             try {
                                 startActivity(messageIntent);
                             } catch (android.content.ActivityNotFoundException ex) {
-                                Toast.makeText(getActivity(), "Message have not been installed.", Toast.LENGTH_SHORT);
+                                Toast.makeText(getActivity(), "Message is not installed on this device .", Toast.LENGTH_SHORT);
                             }
 
                         }else {
-                            Toast.makeText(getActivity(), "Message have not been installed.", Toast.LENGTH_SHORT);
+                            Toast.makeText(getActivity(), "Message is not installed on this device.", Toast.LENGTH_SHORT);
 
                         }
 
@@ -348,12 +358,6 @@ public class AaSettingFragment extends Fragment {
             }
         });
 
-        requ_lay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
 
         return view;

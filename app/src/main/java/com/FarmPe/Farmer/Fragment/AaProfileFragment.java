@@ -17,6 +17,7 @@ import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.text.InputFilter;
 import android.text.SpannableString;
@@ -73,6 +74,7 @@ public class AaProfileFragment extends Fragment {
     View sheetView;
     CircleImageView prod_img;
     Fragment selectedFragment;
+    EditText userInput;
     LinearLayout backfeed,acc_info_lay,linearLayout,about_lay;
     TextView notificatn,change_language,your_addresss,acc_info1,refer_ern,feedbk,help_1,abt_frmpe,polic_1,logot,setting_tittle,aboutText;
     SessionManager sessionManager;
@@ -96,6 +98,7 @@ public class AaProfileFragment extends Fragment {
         profname = view.findViewById(R.id.prof_name);
         profile_phone = view.findViewById(R.id.phone_text);
         aboutText = view.findViewById(R.id.about_text);
+
         prod_img = view.findViewById(R.id.prod_imgg);
         sessionManager = new SessionManager(getActivity());
         setupUI(linearLayout);
@@ -106,8 +109,21 @@ public class AaProfileFragment extends Fragment {
         backfeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fm = getActivity().getSupportFragmentManager();
-                fm.popBackStack ("aaAccount", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                if (getArguments().getString("status").equals("HOME_IMG")){
+                    selectedFragment = HomeMenuFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    // transaction.addToBackStack("looking");
+                    transaction.commit();
+                }else if(getArguments().getString("status").equals("ACC_IMG")){
+                    selectedFragment = AaAccountFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    // transaction.addToBackStack("looking");
+                    transaction.commit();
+                }
+       /* FragmentManager fm = getActivity().getSupportFragmentManager();
+        fm.popBackStack ("aaAccount", FragmentManager.POP_BACK_STACK_INCLUSIVE);*/
             }
         });
 
@@ -120,8 +136,19 @@ public class AaProfileFragment extends Fragment {
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     //    getFragmentManager().popBackStack("home_menu", android.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("aaAccount", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    if (getArguments().getString("status").equals("HOME_IMG")){
+                        selectedFragment = HomeMenuFragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout, selectedFragment);
+                        // transaction.addToBackStack("looking");
+                        transaction.commit();
+                    }else if(getArguments().getString("status").equals("ACC_IMG")){
+                        selectedFragment = AaAccountFragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout, selectedFragment);
+                        // transaction.addToBackStack("looking");
+                        transaction.commit();
+                    }
 
                     return true;
                 }
@@ -182,6 +209,8 @@ public class AaProfileFragment extends Fragment {
                 positiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                       uploadImage(bitmap);
+
                       //  Toast.makeText(getActivity(),"Save was clicked",Toast.LENGTH_LONG).show();
                     }
                 });
@@ -200,14 +229,12 @@ public class AaProfileFragment extends Fragment {
         about_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
                 TextView positiveText = sheetView.findViewById(R.id.positive_text);
                 TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
                 TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
-                EditText userInput = sheetView.findViewById(R.id.user_text);
+                  userInput = sheetView.findViewById(R.id.user_text);
                 userInput.setVisibility(View.VISIBLE);
                 userInput.setText(aboutText.getText().toString());
                 descriptionText.setVisibility(View.GONE);
@@ -216,8 +243,6 @@ public class AaProfileFragment extends Fragment {
                 positiveText.setText("Save");
                 TextView negetiveText = sheetView.findViewById(R.id.negetive_text);
                 negetiveText.setText("Cancel");
-
-
                 positiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -282,6 +307,9 @@ public class AaProfileFragment extends Fragment {
         }
 
         return view;
+    }
+
+    private void save_name() {
     }
 
     public static InputFilter EMOJI_FILTER = new InputFilter() {
@@ -418,7 +446,7 @@ public class AaProfileFragment extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("UserId",sessionManager.getRegId("userId"));
-                params.put("FullName",profname.getText().toString());
+                params.put("FullName",userInput.getText().toString());
                 params.put("PhoneNo",profile_phone.getText().toString());
                 //  params.put("EmailId","abcd@gmail.com");
                 //    params.put("Password",profile_passwrd.getText().toString());

@@ -32,7 +32,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/green_border"
                 android:fontFamily="@font/segoeui"
-                android:hint="   Search"
+                android:hint="Search"
                 android:textColorHint="#000"
                 android:paddingLeft="10dp"
                 android:inputType="textCapWords|textCapSentences"

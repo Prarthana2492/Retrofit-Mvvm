@@ -46,8 +46,9 @@
             android:layout_height="wrap_content"
             android:text="Select Language"
             android:fontFamily="@font/segoeui"
-            android:textSize="18dp"
+            android:textSize="16dp"
             android:paddingVertical="10dp"
+            android:textStyle="bold"
             android:layout_gravity="center_horizontal"
             android:textColor="#000"
             />

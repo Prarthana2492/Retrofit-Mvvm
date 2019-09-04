@@ -89,6 +89,13 @@ public class FarmPe_Logo_Fragment extends Fragment {
         return fragment;
     }
 
+
+    @Override
+    public void onDestroy() {
+        timer.cancel();
+        super.onDestroy();
+    }
+
     @Override
 
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
@@ -128,23 +135,20 @@ public class FarmPe_Logo_Fragment extends Fragment {
 
         addBottomDots(0, ll_dots);
 
-
-        final Handler handler = new Handler();
-        final Runnable Update = new Runnable() {
-            public void run() {
-                if (currentPage == NUM_PAGES-1) {
-                    currentPage = 0;
-                }
-                slider.setCurrentItem(currentPage++, true);
-            }
-        };
-        timer = new Timer(); // This will create a new Thread
-        timer.schedule(new TimerTask() { // task to be scheduled
+        TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                handler.post(Update);
+                slider.post(new Runnable(){
+                    @Override
+                    public void run() {
+                        slider.setCurrentItem((slider.getCurrentItem()+1)%myImageList.length);
+                    }
+                });
             }
-        }, DELAY_MS, PERIOD_MS);
+        };
+        timer = new Timer();
+        timer.schedule(timerTask, 3000, 3000);
+
 
 
 

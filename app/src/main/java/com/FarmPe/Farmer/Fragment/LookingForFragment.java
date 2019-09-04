@@ -1,5 +1,8 @@
 package com.FarmPe.Farmer.Fragment;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -14,6 +17,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -79,8 +83,20 @@ public class LookingForFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                FragmentManager fm = getActivity().getSupportFragmentManager();
-                fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                if(getArguments().getString("status").equals("setting_your_request")) {
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("setting_req", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+
+                } else if(getArguments().getString("status").equals("hme_request")){
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                }
+
+
             }
         });
 
@@ -98,19 +114,64 @@ public class LookingForFragment extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
-                    HomeMenuFragment.onBack_status="no_request";
 
 
+                    if(getArguments().getString("status").equals("setting_your_request")){
 
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                        FragmentManager fm = getActivity().getSupportFragmentManager();
+                        fm.popBackStack("setting_req", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+
+                    } else if(getArguments().getString("status").equals("hme_request")){
+
+                        FragmentManager fm = getActivity().getSupportFragmentManager();
+                        fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                    }
+
+
+//                    }else{
+//
+//                        HomeMenuFragment.onBack_status="no_request";
+//                        FragmentManager fm = getActivity().getSupportFragmentManager();
+//                        fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+//                    }
+
+//                    HomeMenuFragment.onBack_status="no_request";
+//
+//
+//
+//                    FragmentManager fm = getActivity().getSupportFragmentManager();
+//                    fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     return true;
                 }
                 return false;
             }
         });
 
+        filter_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                final Dialog dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.layout_filterpopup);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                final TextView rec = (TextView) dialog.findViewById(R.id.recen_added);
+                final TextView asce = (TextView)dialog.findViewById(R.id.sort_ascendi) ;
+                final TextView desc = (TextView)dialog.findViewById(R.id.sort_desendi) ;
+                //   final TextView popuptxt = (TextView)dialog.findViewById(R.id.popup_heading) ;
+                ImageView image = (ImageView) dialog.findViewById(R.id.close_popup);
+                image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+
+
+            }
+        });
 
 //        filter_text.setOnClickListener(new View.OnClickListener() {
 //            @Override

@@ -150,6 +150,8 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
             @Override
             public void onClick(View view) {
                 AddFirstAdapter.looinkgId = null;
+                Bundle bundle = new Bundle();
+                bundle.putString("status","home_request");
                 selectedFragment = AddFirstFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
@@ -165,12 +167,29 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
             public void onClick(View view) {
 
                 drawer.closeDrawers();
+                Bundle bundle = new Bundle();
+                bundle.putString("status","hme_request");
                 selectedFragment = LookingForFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
+                selectedFragment.setArguments(bundle);
                 transaction.addToBackStack("home");
                 transaction.commit();
 
+            }
+        });
+
+        prod_img1.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("status", "HOME_IMG");
+                selectedFragment = AaProfileFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                selectedFragment.setArguments(bundle);
+                transaction.commit();
             }
         });
 
@@ -179,9 +198,12 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
             public void onClick(View view) {
 
                 drawer.closeDrawers();
+                Bundle bundle = new Bundle();
+                bundle.putString("status","hme_request");
                 selectedFragment = LookingForFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
+                selectedFragment.setArguments(bundle);
                 transaction.addToBackStack("home");
                 transaction.commit();
 
@@ -334,31 +356,18 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
 
         }
 
-        prod_img1.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("NewApi")
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("status", "HOME_IMG");
-                selectedFragment = FullScreenImageFragment.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
-                selectedFragment.setArguments(bundle);
-                transaction.commit();
-            }
-        });
-
-
 
 
         plus_sign_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                   AddFirstAdapter.looinkgId = null;
-
-                selectedFragment = AddFirstFragment.newInstance();
+                 Bundle bundle = new Bundle();
+                 bundle.putString("status", "home_request");
+                 selectedFragment = AddFirstFragment.newInstance();
                 FragmentTransaction transaction = (getActivity().getSupportFragmentManager().beginTransaction());
                 transaction.replace(R.id.frame_layout, selectedFragment);
+                selectedFragment.setArguments(bundle);
                 transaction.addToBackStack("home");
                 transaction.commit();
 

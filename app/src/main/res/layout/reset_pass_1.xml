@@ -51,7 +51,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/nandi_farmer" />
+            android:src="@drawable/farmer_logo_text" />
 
 
     </LinearLayout>
@@ -107,7 +107,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:background="@drawable/border_login"
                     android:fontFamily="@font/segoeui"
-                    android:hint="New Pasword"
+                    android:hint="New Password"
                     android:inputType="textPassword"
                     android:maxLength="12"
                     android:paddingHorizontal="10dp"
@@ -117,7 +117,7 @@
                     android:textColor="#000"
                     android:textColorHint="#000"
                     android:textCursorDrawable="@drawable/cursor_color"
-                    android:textSize="14dp"
+                    android:textSize="16dp"
                     android:textStyle="normal" />
             </android.support.design.widget.TextInputLayout>
 
@@ -149,7 +149,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:background="@drawable/border_login"
                     android:fontFamily="@font/segoeui"
-                    android:hint="Confirm Pasword"
+                    android:hint="Confirm Password"
                     android:inputType="textPassword"
                     android:maxLength="12"
                     android:paddingHorizontal="10dp"
@@ -159,7 +159,7 @@
                     android:textColor="#000"
                     android:textColorHint="#000"
                     android:textCursorDrawable="@drawable/cursor_color"
-                    android:textSize="14dp"
+                    android:textSize="16dp"
                     android:textStyle="normal" />
             </android.support.design.widget.TextInputLayout>
 

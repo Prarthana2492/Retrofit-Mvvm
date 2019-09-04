@@ -114,7 +114,7 @@
             android:background="@drawable/border_login"
             android:singleLine="true"
             android:textColor="#000"
-            android:textSize="14dp"
+            android:textSize="16dp"
             android:textStyle="normal"
             />
         </LinearLayout>
@@ -144,7 +144,7 @@
                 android:layout_marginHorizontal="20dp"
                 android:background="@drawable/border_login"
                 android:fontFamily="@font/segoeui"
-                android:hint="Pasword"
+                android:hint="Password"
                 android:inputType="textPassword"
                 android:maxLength="12"
                 android:paddingHorizontal="15dp"
@@ -154,7 +154,7 @@
                 android:textColor="#000"
                 android:textColorHint="#000"
                 android:textCursorDrawable="@drawable/cursor_color"
-                android:textSize="14dp"
+                android:textSize="16dp"
                 android:textStyle="normal" />
         </android.support.design.widget.TextInputLayout>
 

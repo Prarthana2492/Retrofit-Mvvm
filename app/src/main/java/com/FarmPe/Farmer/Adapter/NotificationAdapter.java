@@ -37,7 +37,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image;
-        public TextView prod_price,prod_name,duration,farmer_name,location,connect;
+        LinearLayout noti_layout;
+        public TextView prod_price,prod_name,duration,farmer_name,location,connect,view_text;
 
 
 
@@ -45,6 +46,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             super(view);
             prod_price=view.findViewById(R.id.prod_price);
             prod_name=view.findViewById(R.id.prod_name);
+            noti_layout=view.findViewById(R.id.noti_layout);
+            view_text=view.findViewById(R.id.view_text);
 
             image=view.findViewById(R.id.image);
 
@@ -60,13 +63,21 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     }
 
+
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final Notification_Home_Bean products = productList.get(position);
 
         holder.prod_name.setText(products.getNotiftn_mess());
 
+        holder.noti_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.noti_layout.setBackgroundResource(R.drawable.white_filled_background);
+                holder.view_text.setVisibility(View.GONE);
 
+            }
+        });
     }
 
     @Override

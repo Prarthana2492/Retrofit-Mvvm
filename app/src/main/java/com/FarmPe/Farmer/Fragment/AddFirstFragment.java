@@ -67,64 +67,31 @@ public class AddFirstFragment extends Fragment {
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomeMenuFragment.onBack_status="no_request";
-                selectedFragment = HomeMenuFragment.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.add(R.id.frame_layout, selectedFragment);
-                transaction.commit();
+
+
+
+                if (getArguments().getString("status").equals("setting_request")) {
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("setting_req", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+
+
+                }else if (getArguments().getString("status").equals("home_request")) {
+
+                    HomeMenuFragment.onBack_status = "no_request";
+                    selectedFragment = HomeMenuFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.add(R.id.frame_layout, selectedFragment);
+                    transaction.commit();
+
+
+                }
+
             }
         });
 
 
-//        continue_button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkk"+AddFirstAdapter.looinkgId);
-//
-//                if (AddFirstAdapter.looinkgId==null){
-//
-//                    Snackbar snackbar = Snackbar
-//                            .make(linearLayout, "Please choose any option", Snackbar.LENGTH_LONG);
-//                    View snackbarView = snackbar.getView();
-//                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-//                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-//                    tv.setTextColor(Color.WHITE);
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-//                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-//                    } else {
-//                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-//                    }
-//
-//                    snackbar.show();
-//
-//                  /*  int duration = 1000;
-//                    Snackbar snackbar = Snackbar
-//                            .make(linearLayout, "Please choose any option", duration);
-//                    View snackbarView = snackbar.getView();
-//                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-//                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-//                    tv.setTextColor(Color.WHITE);
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-//                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-//                    } else {
-//                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-//                    }
-//
-//                    snackbar.show();*/
-//
-//
-//                }else {
-//
-//                    AddBrandAdapter.brandId = null;
-//                    selectedFragment = AddBrandFragment.newInstance();
-//                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                    transaction.add(R.id.frame_layout, selectedFragment);
-//                    transaction.addToBackStack("first");
-//                    transaction.commit();
-//                }
-//
-//            }
-//        });
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();
@@ -133,12 +100,23 @@ public class AddFirstFragment extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
-                    HomeMenuFragment.onBack_status="no_request";
 
-                    selectedFragment = HomeMenuFragment.newInstance();
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.add(R.id.frame_layout, selectedFragment);
-                    transaction.commit();
+                    if (getArguments().getString("status").equals("setting_request")){
+
+                        FragmentManager fm = getActivity().getSupportFragmentManager();
+                        fm.popBackStack("setting_req", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+
+                      }else if (getArguments().getString("status").equals("home_request")) {
+
+                        HomeMenuFragment.onBack_status = "no_request";
+                        selectedFragment = HomeMenuFragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.add(R.id.frame_layout, selectedFragment);
+                        transaction.commit();
+
+
+                    }
                     return true;
                 }
                 return false;
