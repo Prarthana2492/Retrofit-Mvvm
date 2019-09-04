@@ -67,7 +67,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name,mobile_no,street_addrss,landmrk,city_1,edit_1,delete_1,default_1,default_add,area_district;
+        TextView name,mobile_no,street_addrss,landmrk,city_1,edit_1,delete_1,default_1,default_add,area_district,colony;
         LinearLayout add_new_adress;
 
 
@@ -85,6 +85,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
             default_add = view.findViewById(R.id.default_add);
             linearLayout = view.findViewById(R.id.bottom_sheet1);
             area_district = view.findViewById(R.id.districttt);
+            colony = view.findViewById(R.id.colony);
 
 
             add_new_adress = view.findViewById(R.id.linear_frame);
@@ -130,8 +131,9 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
 
         holder.name.setText(products.getAdd_name());
-        holder.street_addrss.setText(products.getAdd_street());
-        holder.area_district.setText(products.getAdd_hobli()+", "+ products.getAdd_district());
+        holder.street_addrss.setText(products.getAdd_door_no());
+        holder.colony.setText(products.getAdd_street());
+        holder.area_district.setText(products.getAdd_district()+","+products.getAdd_taluk()+","+products.getAdd_hobli());
         holder.city_1.setText(products.getAdd_state()+" - " + products.getAdd_pincode());
         holder.mobile_no.setText("Phone No - " + products.getAdd_mobile());
         // holder.landmrk.setText(products.getAdd_landmark());

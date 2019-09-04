@@ -227,7 +227,7 @@
 
 
                 <EditText
-
+                    android:id="@+id/house_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Flat/ House No./ Floor/ Building"

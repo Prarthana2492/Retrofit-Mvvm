@@ -224,7 +224,30 @@ public class AaSettingFragment extends Fragment {
                     }
                 });
 
+                messenger.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
+
+                        if (packageName.contains("com.facebook.orca")) {
+                            Intent sendIntent = new Intent();
+                            sendIntent.setAction(Intent.ACTION_SEND);
+                            sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeFarmer\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farmer to download the app");
+                            sendIntent.setType("text/plain");
+                            sendIntent.setPackage("com.facebook.orca");
+                            try {
+                                startActivity(sendIntent);
+                            } catch (android.content.ActivityNotFoundException ex) {
+                                Toast.makeText(getActivity(), "Messanger is not installed on this device ", Toast.LENGTH_LONG).show();
+                            }
+
+
+                        }else {
+                            Toast.makeText(getActivity(), "Messanger is not installed on this device ", Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                });
                 instagram.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -239,15 +262,18 @@ public class AaSettingFragment extends Fragment {
                             try {
                                 startActivity(sendIntent);
                             } catch (android.content.ActivityNotFoundException ex) {
-                                Toast.makeText(getActivity(), "Please install instagram ", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getActivity(), "Instagram is not installed on this device ", Toast.LENGTH_LONG).show();
                             }
                         }else {
-                            Toast.makeText(getActivity(), "Please install instagram ", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "Instagram is not installed on this device ", Toast.LENGTH_LONG).show();
 
                         }
 
                     }
                 });
+
+
+
 
                 twitter.setOnClickListener(new View.OnClickListener() {
                     @Override

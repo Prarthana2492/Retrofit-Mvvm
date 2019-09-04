@@ -201,7 +201,7 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
         // referal_code=findViewById(R.id.referal_code);
         // textInputLayout_pass=findViewById(R.id.text_pass);
 
-        privacy_terms.setText(Html.fromHtml("By joining you accept the <b> <font color='#2680EB'>Privacy Policy</font></b> and <b><font color='#2680EB'>Terms of use.</font></b></u>"));
+        privacy_terms.setText(Html.fromHtml("By joining you accept the <b> <font color='#2680EB'>Privacy Policy</font></b> , and <b><font color='#2680EB'>Terms of use.</font></b></u>"));
 
         sessionManager = new SessionManager(SignUpActivity.this);
 

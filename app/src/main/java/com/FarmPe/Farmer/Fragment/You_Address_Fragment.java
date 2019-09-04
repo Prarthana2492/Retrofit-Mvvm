@@ -165,7 +165,7 @@ public class You_Address_Fragment extends Fragment {
         select_address_type.setText("All");
 
 
-        filter.setOnClickListener(new View.OnClickListener() {
+        select_address_type.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

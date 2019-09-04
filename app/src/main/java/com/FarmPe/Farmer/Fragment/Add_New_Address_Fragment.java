@@ -99,7 +99,7 @@ public class  Add_New_Address_Fragment extends Fragment {
     LinearLayout linearLayout;
     public static TextView state_txt,district_txt,tehsil_txt,village_txt,block_txt;
     String s_addtype,entername,entermno,inncrtmno,enterstreetad,enterpincode,selectstate,selectdistrict,selecttaluk,selecthobli,selectvillage,newaddressadded,addnotadded ;
-    public static EditText name,mobile,pincode_no,street_name,select_address,landmrk,address_type,edit_state,edit_districr,edit_village;
+    public static EditText name,mobile,pincode_no,house_numb,street_name,select_address,landmrk,address_type,edit_state,edit_districr,edit_village;
     String status,message;
     String Id;
     SessionManager sessionManager;
@@ -125,7 +125,7 @@ public class  Add_New_Address_Fragment extends Fragment {
         mobile = view.findViewById(R.id.mob_no);
         back_feed = view.findViewById(R.id.back_feed);
         pincode_no = view.findViewById(R.id.pincode);
-        //house_numb = view.findViewById(R.id.house_no);
+        house_numb = view.findViewById(R.id.house_no);
         street_name = view.findViewById(R.id.colny_street);
        // landmrk = view.findViewById(R.id.landmrk);
         search = view.findViewById(R.id.search);
@@ -716,7 +716,7 @@ public class  Add_New_Address_Fragment extends Fragment {
         try {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
             toolbar_titletxt.setText(lngObject.getString("AddNewAddress"));
-            select_address.setHint(lngObject.getString("SelectanAddressType"));
+           // select_address.setHint(lngObject.getString("SelectanAddressType"));
             name.setHint(lngObject.getString("FullName"));
             mobile.setHint(lngObject.getString("PhoneNo"));
             street_name.setHint(lngObject.getString("Colony_Street_Locality"));
@@ -992,7 +992,7 @@ public class  Add_New_Address_Fragment extends Fragment {
             jsonObject.put("StateId",StateApdater.stateid);
             jsonObject.put("TalukId",TalukAdapter.talukid);
             // jsonObject.put("VillageId", VillageAdapter.villageid);
-            // jsonObject.put("StreeAddress",house_numb.getText().toString());
+            jsonObject.put("StreeAddress",house_numb.getText().toString());
             jsonObject.put("StreeAddress1",street_name.getText().toString());
             jsonObject.put("UserId",sessionManager.getRegId("userId"));
             System.out.println("Add_New_AddresssssssssssssssssjsonObject"+jsonObject);

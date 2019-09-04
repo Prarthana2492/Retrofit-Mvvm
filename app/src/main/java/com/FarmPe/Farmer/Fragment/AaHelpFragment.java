@@ -59,6 +59,8 @@ public class AaHelpFragment extends Fragment {
         about_lay=view.findViewById(R.id.abt_farmpe_lay);
         feedback_edit=view.findViewById(R.id.feedback_edit);
 
+        sessionManager = new SessionManager(getActivity());
+
         getActivity().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
@@ -137,6 +139,7 @@ public class AaHelpFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                       feedback();
+                     // mBottomSheetDialog.dismiss();
                     }
                 });
                 cancel.setOnClickListener(new View.OnClickListener() {
@@ -193,10 +196,12 @@ public class AaHelpFragment extends Fragment {
                                 tv.setGravity(Gravity.CENTER_HORIZONTAL);
                             }
                             snackbar.show();
-                            selectedFragment = SettingFragment.newInstance();
+                            selectedFragment = AaSettingFragment.newInstance();
                             FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
                             transaction.replace(R.id.frame_layout, selectedFragment);
                             transaction.commit();
+
+                            mBottomSheetDialog.dismiss();
 
 
                         }else{

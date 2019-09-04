@@ -68,7 +68,7 @@
 
 
     <LinearLayout
-        android:layout_weight="10"
+        android:layout_weight="8"
         android:id="@+id/select_address"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -82,7 +82,8 @@
             android:fontFamily="@font/segoeui"
             android:textSize="14dp"
             android:padding="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="end"
             android:text="Address Type :"/>
 
 
@@ -98,13 +99,14 @@
             android:textColor="#181818 "
             android:layout_weight="70"
            android:layout_gravity="start"
+            android:layout_marginRight="10dp"
             />
 
         <TextView
             android:id="@+id/filter_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="20"
+            android:layout_weight="10"
             android:drawableLeft="@drawable/ic_icon_filterrrr"
             android:fontFamily="@font/segoeui"
             android:gravity="right"
@@ -140,7 +142,7 @@
         android:layout_height="0dp"
         android:layout_weight="80"
         android:background="#fff"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="1dp"
         android:layout_marginBottom="10dp"
         >
 
