@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingRight="15dp"
+        android:background="@drawable/addrs_top_curve"
         android:paddingLeft="10dp"
         android:paddingVertical="10dp"
         android:weightSum="100"
@@ -30,7 +31,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-
             android:text="Select an Address Type"
             android:textColor="#000"
             android:textSize="16dp"
@@ -46,8 +46,8 @@
         <ImageView
             android:id="@+id/close_popup"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_close_black"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_error"
             android:layout_gravity="right"
             android:layout_weight="8"
 

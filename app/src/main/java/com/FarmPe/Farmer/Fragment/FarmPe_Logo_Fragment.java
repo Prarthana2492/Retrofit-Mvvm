@@ -271,9 +271,12 @@ public class FarmPe_Logo_Fragment extends Fragment {
         no_make_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("status","home_request");
                 selectedFragment = AddFirstFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
+                selectedFragment.setArguments(bundle);
                 transaction.addToBackStack("farmpe_logo");
                 transaction.commit();
             }
@@ -283,9 +286,13 @@ public class FarmPe_Logo_Fragment extends Fragment {
         seeall_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Bundle bundle = new Bundle();
+                bundle.putString("status","hme_request");
                 selectedFragment = LookingForFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.first_full_frame, selectedFragment);
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                selectedFragment.setArguments(bundle);
                 transaction.addToBackStack("home");
                 transaction.commit();
 
@@ -381,7 +388,6 @@ public class FarmPe_Logo_Fragment extends Fragment {
                             newOrderBeansList2.add(img2);
 
                         }
-
 
                         reqst_count.setText(request_count);
                         HomeMenuFragment.request_count.setText(request_count);

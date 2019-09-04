@@ -247,7 +247,6 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                 forgot_pass.setText(lngObject.getString("ForgotPassword") + "?");
                 log_in.setText(lngObject.getString("Login"));
                 welcome_back.setText(lngObject.getString("Login"));
-
                 newfarmpelng=lngObject.getString("NewtoFarmPe");
                 signuplng = lngObject.getString("SignUp");
 
@@ -257,7 +256,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
 
                 pass_toast = lngObject.getString("EnterPassword");
                 mob_toast = lngObject.getString("EnterPhoneNo");
-                toast_invalid = lngObject.getString("InvalidCredentials");
+              //  toast_invalid = lngObject.getString("InvalidCredentials");
                 toast_click_back = lngObject.getString("PleaseclickBACKagaintoexit");
                 toast_internet = lngObject.getString("GoodConnectedtoInternet");
                 toast_nointernet = lngObject.getString("NoInternetConnection");
@@ -533,7 +532,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
 
                                         int duration=1000;
                                         Snackbar snackbar = Snackbar
-                                                .make(coordinatorLayout, toast_invalid, duration);
+                                                .make(coordinatorLayout, "Invalid Mobile Number or Password", duration);
                                         View snackbarView = snackbar.getView();
                                         TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                                         tv.setBackgroundColor(ContextCompat.getColor(LoginActivity.this,R.color.orange));
@@ -601,7 +600,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
 
                         mob_toast = result.getString("EnterPhoneNo");
                         pass_toast = result.getString("EnterPassword");
-                        toast_invalid = result.getString("InvalidCredentials");
+                      //  toast_invalid = result.getString("InvalidCredentials");
                         toast_click_back = result.getString("PleaseclickBACKagaintoexit");
                         toast_internet = result.getString("GoodConnectedtoInternet");
                         toast_nointernet = result.getString("NoInternetConnection");

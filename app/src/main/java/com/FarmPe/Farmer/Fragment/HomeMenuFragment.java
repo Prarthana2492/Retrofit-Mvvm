@@ -156,6 +156,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
                 transaction.addToBackStack("home");
+                selectedFragment.setArguments(bundle);
                 transaction.commit();
                 drawer.closeDrawers();
             }
@@ -179,19 +180,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
             }
         });
 
-        prod_img1.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("NewApi")
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("status", "HOME_IMG");
-                selectedFragment = AaProfileFragment.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
-                selectedFragment.setArguments(bundle);
-                transaction.commit();
-            }
-        });
+
 
         ur_request.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -209,6 +198,23 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
 
             }
         });
+
+
+        prod_img1.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("status","HOME_IMG");
+                selectedFragment = AaProfileFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.addToBackStack("home_pic");
+                selectedFragment.setArguments(bundle);
+                transaction.commit();
+            }
+        });
+
 
 
 
@@ -327,8 +333,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
 
         }
 
-
-      else if(onBack_status.equals("looking_frg")){
+        else if(onBack_status.equals("looking_frg")){
 
             selectedFragment = LookingForFragment.newInstance();
             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -337,7 +342,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
 
         }
 
-      else if(onBack_status.equals("no_request")){
+       else if(onBack_status.equals("no_request")){
 
             selectedFragment = FarmPe_Logo_Fragment.newInstance();
             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -362,14 +367,14 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
             @Override
             public void onClick(View v) {
                   AddFirstAdapter.looinkgId = null;
-                 Bundle bundle = new Bundle();
-                 bundle.putString("status", "home_request");
-                 selectedFragment = AddFirstFragment.newInstance();
-                FragmentTransaction transaction = (getActivity().getSupportFragmentManager().beginTransaction());
-                transaction.replace(R.id.frame_layout, selectedFragment);
-                selectedFragment.setArguments(bundle);
-                transaction.addToBackStack("home");
-                transaction.commit();
+                  Bundle bundle = new Bundle();
+                  bundle.putString("status", "home_request");
+                  selectedFragment = AddFirstFragment.newInstance();
+                  FragmentTransaction transaction = (getActivity().getSupportFragmentManager().beginTransaction());
+                  transaction.replace(R.id.frame_layout, selectedFragment);
+                  selectedFragment.setArguments(bundle);
+                  transaction.addToBackStack("home");
+                  transaction.commit();
 
 
             }
@@ -395,7 +400,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
             @Override
             public void onClick(View v) {
 
-               selectedFragment = AaSettingFragment.newInstance();
+                selectedFragment = AaSettingFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
                 transaction.commit();

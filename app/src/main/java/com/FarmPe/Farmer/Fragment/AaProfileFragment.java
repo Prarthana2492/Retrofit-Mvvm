@@ -52,6 +52,7 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 
@@ -78,10 +79,11 @@ public class AaProfileFragment extends Fragment {
     LinearLayout backfeed,acc_info_lay,linearLayout,about_lay;
     TextView notificatn,change_language,your_addresss,acc_info1,refer_ern,feedbk,help_1,abt_frmpe,polic_1,logot,setting_tittle,aboutText;
     SessionManager sessionManager;
-    EditText profile_phone,profname;
+    public static EditText profile_phone,profname;
     JSONObject lngObject;
     Bitmap bitmap;
     String profnamestr;
+    public  static String ProfilePhone;
     public static AaProfileFragment newInstance() {
         AaProfileFragment fragment = new AaProfileFragment();
         return fragment;
@@ -110,11 +112,13 @@ public class AaProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (getArguments().getString("status").equals("HOME_IMG")){
+
                     selectedFragment = HomeMenuFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_layout, selectedFragment);
                     // transaction.addToBackStack("looking");
                     transaction.commit();
+
                 }else if(getArguments().getString("status").equals("ACC_IMG")){
                     selectedFragment = AaAccountFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -197,7 +201,7 @@ public class AaProfileFragment extends Fragment {
                 TextView positiveText = sheetView.findViewById(R.id.positive_text);
                 TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
                 TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
-                EditText userInput = sheetView.findViewById(R.id.user_text);
+                final EditText userInput = sheetView.findViewById(R.id.user_text);
                 userInput.setVisibility(View.VISIBLE);
                 userInput.setText(profname.getText().toString());
                 descriptionText.setVisibility(View.GONE);
@@ -206,10 +210,54 @@ public class AaProfileFragment extends Fragment {
                 positiveText.setText("Save");
                 TextView negetiveText = sheetView.findViewById(R.id.negetive_text);
                 negetiveText.setText("Cancel");
+
                 positiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                       uploadImage(bitmap);
+                        StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.Update_Profile_Details,
+                                new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        int duration = 1000;
+                                        Snackbar snackbar = Snackbar
+                                                .make(linearLayout, "Profile Details Updated Successfully", duration);
+                                        View snackbarView = snackbar.getView();
+                                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                                        tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                                        tv.setTextColor(Color.WHITE);
+                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                        } else {
+                                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                                        }
+                                        snackbar.show();
+                                        mBottomSheetDialog.dismiss();
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString("status","HOME_IMG");
+                                        selectedFragment = AaProfileFragment.newInstance();
+                                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                        transaction.replace(R.id.frame_layout, selectedFragment);
+                                        selectedFragment.setArguments(bundle);
+                                        transaction.commit();
+                                    }
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        Toast.makeText(getActivity(),error.toString(),Toast.LENGTH_LONG).show();
+                                    }
+                                }){
+                            @Override
+                            protected Map<String,String> getParams(){
+                                Map<String,String> params = new HashMap<String, String>();
+                                params.put("UserId",sessionManager.getRegId("userId"));
+                                params.put("FullName",userInput.getText().toString());
+                                params.put("PhoneNo",profile_phone.getText().toString());
+                                return params;
+                            }
+                        };
+                        Volley.newRequestQueue(getActivity()).add(stringRequest);
+//  Toast.makeText(getActivity(),"Save was clicked",Toast.LENGTH_LONG).show();
 
                       //  Toast.makeText(getActivity(),"Save was clicked",Toast.LENGTH_LONG).show();
                     }
@@ -277,7 +325,7 @@ public class AaProfileFragment extends Fragment {
                         JSONObject jsonObject1 = result.getJSONObject("user");
                         profnamestr = jsonObject1.getString("FullName");
                         System.out.println("ggpgpgpg" + profnamestr);
-                        String ProfilePhone = jsonObject1.getString("PhoneNo");
+                        ProfilePhone = jsonObject1.getString("PhoneNo");
                         //String ProfileEmail = jsonObject1.getString("EmailId");
                         String ProfileImage = jsonObject1.getString("ProfilePic");
 
@@ -309,8 +357,7 @@ public class AaProfileFragment extends Fragment {
         return view;
     }
 
-    private void save_name() {
-    }
+
 
     public static InputFilter EMOJI_FILTER = new InputFilter() {
         @Override

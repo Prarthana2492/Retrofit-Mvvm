@@ -35,7 +35,7 @@
         android:layout_height="200dp"
         android:gravity="start"
         android:hint="Describe your feedback"
-        android:background="#f1f1f1"
+        android:background="#fafafa"
         android:scrollbars="vertical"
         android:maxLength="250"
         android:padding="10dp"

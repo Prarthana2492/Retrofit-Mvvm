@@ -223,6 +223,7 @@
                 android:layout_marginHorizontal="20dp"
                 android:padding="15dp"
                 android:textColor="#000"
+                android:textStyle="normal"
                 android:textSize="16dp" />
 
         </LinearLayout>

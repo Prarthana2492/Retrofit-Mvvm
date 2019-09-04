@@ -140,7 +140,7 @@
         android:id="@+id/recycler_2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="80"
+        android:layout_weight="82"
         android:background="#fff"
         android:layout_marginTop="1dp"
         android:layout_marginBottom="10dp"
@@ -153,20 +153,22 @@
     android:id="@+id/linear_newAdd"
     android:layout_width="match_parent"
     android:layout_height="0dp"
+    android:background="#fafafa"
     android:layout_weight="10">
 
     <TextView
         android:id="@+id/new_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
         android:fontFamily="@font/segoeui"
+        android:layout_gravity="center_vertical"
+
+        android:gravity="right"
         android:text="Add New Address"
+        android:textColor="@color/green"
         android:textSize="14dp"
         android:textStyle="bold"
-        android:layout_marginRight="10dp"
-        android:gravity="end"
-        android:textColor="@color/green"
-        android:paddingVertical="7dp"
 
         />
 </LinearLayout>

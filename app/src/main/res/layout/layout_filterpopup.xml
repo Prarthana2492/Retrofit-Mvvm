@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="230dp"
     android:orientation="vertical"
+
     android:background="@drawable/border_empty_curve"
     >
 
@@ -17,10 +18,11 @@
         android:orientation="horizontal"
         android:paddingRight="15dp"
         android:paddingLeft="10dp"
-        android:background="#F1F1F1"
+        android:background="@drawable/addrs_top_curve"
         android:paddingVertical="10dp"
         android:weightSum="100"
         >
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

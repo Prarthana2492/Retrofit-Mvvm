@@ -88,9 +88,8 @@ public class AddFirstFragment extends Fragment {
 
                 }
 
-            }
+                }
         });
-
 
 
         view.setFocusableInTouchMode(true);
@@ -116,7 +115,15 @@ public class AddFirstFragment extends Fragment {
                         transaction.commit();
 
 
-                    }
+                    }else if (getArguments().getString("status").equals("menu_request")) {
+
+                    HomeMenuFragment.onBack_status = "no_request";
+                    selectedFragment = HomeMenuFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.add(R.id.frame_layout, selectedFragment);
+                    transaction.commit();
+
+                }
                     return true;
                 }
                 return false;

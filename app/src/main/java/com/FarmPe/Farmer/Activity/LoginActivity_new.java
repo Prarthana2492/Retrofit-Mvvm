@@ -206,8 +206,8 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
        // remember_me.setTypeface(ResourcesCompat.getFont(getApplicationContext(), R.font.segoeui));
 
 
-        forgot_pass.setTypeface(null, Typeface.BOLD);
-       // remember_me.setTypeface(null, Typeface.BOLD);
+       // forgot_pass.setTypeface(null, Typeface.BOLD);
+        // remember_me.setTypeface(null, Typeface.BOLD);
 
 
 
@@ -254,7 +254,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
                 pass_toast = lngObject.getString("EnterPassword");
                 mob_toast = lngObject.getString("EnterPhoneNo");
-                toast_invalid = lngObject.getString("InvalidCredentials");
+              //  toast_invalid = lngObject.getString("InvalidCredentials");
                 toast_click_back = lngObject.getString("PleaseclickBACKagaintoexit");
                 toast_internet = lngObject.getString("GoodConnectedtoInternet");
                 toast_nointernet = lngObject.getString("NoInternetConnection");
@@ -453,6 +453,8 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                     snackbar.show();
 
 
+
+
                 } else if (password.contains(" ")) {
                     pass.requestFocus();
 
@@ -543,7 +545,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
                                         int duration=1000;
                                         Snackbar snackbar = Snackbar
-                                                .make(coordinatorLayout, toast_invalid, duration);
+                                                .make(coordinatorLayout, "Invalid Mobile Number or Password", duration);
                                         View snackbarView = snackbar.getView();
                                         TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                                         tv.setBackgroundColor(ContextCompat.getColor(LoginActivity_new.this,R.color.orange));
@@ -611,7 +613,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
                         mob_toast = result.getString("EnterPhoneNo");
                         pass_toast = result.getString("EnterPassword");
-                        toast_invalid = result.getString("InvalidCredentials");
+                     //   toast_invalid = result.getString("InvalidCredentials");
                         toast_click_back = result.getString("PleaseclickBACKagaintoexit");
                         toast_internet = result.getString("GoodConnectedtoInternet");
                         toast_nointernet = result.getString("NoInternetConnection");

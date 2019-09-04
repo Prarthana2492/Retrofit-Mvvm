@@ -91,8 +91,13 @@ public class LookingForFragment extends Fragment {
 
                 } else if(getArguments().getString("status").equals("hme_request")){
 
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    HomeMenuFragment.onBack_status="no_request";
+
+                    selectedFragment = HomeMenuFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.addToBackStack("home");
+                    transaction.commit();
 
                 }
 
@@ -124,8 +129,13 @@ public class LookingForFragment extends Fragment {
 
                     } else if(getArguments().getString("status").equals("hme_request")){
 
-                        FragmentManager fm = getActivity().getSupportFragmentManager();
-                        fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                        HomeMenuFragment.onBack_status="no_request";
+
+                        selectedFragment = HomeMenuFragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout, selectedFragment);
+                        transaction.addToBackStack("home");
+                        transaction.commit();
 
                     }
 
