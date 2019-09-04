@@ -22,6 +22,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.FarmPe.Farmer.Bean.AddTractorBean;
 import com.FarmPe.Farmer.Fragment.RequestFormFragment;
 import com.FarmPe.Farmer.R;
+import com.google.firebase.database.core.Constants;
 
 import java.util.List;
 
@@ -95,12 +96,13 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
         holder.brochure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("hjkjkkjk" + products.getPdf_brochure());
-                String s1 = products.getPdf_brochure();
-                Intent intent = new Intent();
-                intent.setDataAndType(Uri.parse(s1),"application/pdf");
-                activity.startActivity(intent);
-
+//                System.out.println("hjkjkkjk" + products.getPdf_brochure());
+//                String s1 = products.getPdf_brochure();
+//                Intent intent = new Intent();
+//                intent.setDataAndType(Uri.parse(s1),"application/pdf");
+//                activity.startActivity(intent);
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(products.getPdf_brochure()));
+                activity.startActivity(browserIntent);
             }
         });
 
@@ -109,7 +111,6 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
             @Override
             public void onClick(View view) {
                 tractor_id=products.getId();
-
                 selectedFragment = Request_Details_New.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.add(R.id.frame_layout, selectedFragment);
