@@ -47,13 +47,13 @@ public class You_Address_Fragment extends Fragment {
     public static String navigation_all;
     public static String item_list,address;
 
-    TextView toolbar_titletxt;
+    TextView toolbar_titletxt,noadd_here,add_adrs;
     JSONObject lngObject;
 
     ArrayList<Add_New_Address_Bean> new_address_beanArrayList = new ArrayList<>();
     Add_New_Address_Bean add_new_address_bean;
     JSONArray get_address_array;
-    LinearLayout back,select_add_address;
+    LinearLayout back,select_add_address,addnew_linear,add_visible;
     String Id,ad_list,adrs_are_added;
     ImageView b_arrow;
 
@@ -86,11 +86,18 @@ public class You_Address_Fragment extends Fragment {
         //address_list= view.findViewById(R.id.items);
         toolbar_titletxt = view.findViewById(R.id.toolbar_title);
         filter = view.findViewById(R.id.filter_text);
+        add_visible = view.findViewById(R.id.layoutt_lnr);
+        addnew_linear = view.findViewById(R.id.linear_newAdd);
+        noadd_here = view.findViewById(R.id.text);
+        add_adrs = view.findViewById(R.id.make_requesttttt);
 
 
+
+        noadd_here.setText("No Address here");
+        add_adrs.setText("Add Address");
         sessionManager = new SessionManager(getActivity());
 
-
+        add_visible.setVisibility(View.GONE);
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();
@@ -253,6 +260,20 @@ public class You_Address_Fragment extends Fragment {
         });
 
 
+        add_adrs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("navigation_from", "yu_ads_frg");
+                selectedFragment = Add_New_Address_Fragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                selectedFragment.setArguments(bundle);
+                transaction.addToBackStack("yu_ads_frg");
+                transaction.commit();
+            }
+        });
+
         mAdapter = new You_Address_Adapter(new_address_beanArrayList,getActivity());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -310,17 +331,19 @@ public class You_Address_Fragment extends Fragment {
 
 
 
-                       /* if(new_address_beanArrayList.size()<=1){
+                        if(new_address_beanArrayList.size()==0){
 
-                            item_list = String.valueOf(new_address_beanArrayList.size());
-                            address_list.setText(item_list+" " + " Address is added" );
+                            add_visible.setVisibility(View.VISIBLE);
+                            recyclerView.setVisibility(View.GONE);
+                            addnew_linear.setVisibility(View.GONE);
+                            select_add_address.setVisibility(View.GONE);
+
 
                         }else{
 
-                            item_list = String.valueOf(new_address_beanArrayList.size());
-                            address_list.setText(item_list+" " + adrs_are_added );
+                            add_visible.setVisibility(View.GONE);
 
-                        }*/
+                        }
 
 
                         mAdapter.notifyDataSetChanged();

@@ -55,7 +55,7 @@
                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Your Addresses"
+                     android:text="Your Addresses"
                     android:textSize="16dp"
                     android:textColor="#fff"
                     android:textStyle="bold"
@@ -150,6 +150,7 @@
 
 
 <LinearLayout
+    android:id="@+id/linear_newAdd"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="10">
@@ -169,5 +170,11 @@
 
         />
 </LinearLayout>
+
+    <include
+        android:visibility="gone"
+        layout="@layout/no_addres_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
