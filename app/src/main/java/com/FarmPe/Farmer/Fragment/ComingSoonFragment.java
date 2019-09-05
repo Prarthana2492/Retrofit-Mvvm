@@ -31,19 +31,14 @@ public class ComingSoonFragment extends Fragment {
 
 
 
-
-
         backfeed1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 HomeMenuFragment.onBack_status = "farms";
 
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("your_farm", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-
 
             }
         });

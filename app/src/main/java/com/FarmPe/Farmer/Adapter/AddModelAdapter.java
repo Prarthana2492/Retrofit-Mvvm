@@ -3,6 +3,7 @@ package com.FarmPe.Farmer.Adapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -16,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.FarmPe.Farmer.Bean.ModelBean;
+import com.FarmPe.Farmer.Fragment.Model_Brochure_Fragment;
 import com.FarmPe.Farmer.Fragment.Request_Details_New;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -35,6 +37,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
    public static LinearLayout next_arw;
     public static String first,tractor_id;
     public static CardView cardView;
+    String brochure_pdf;
     public AddModelAdapter(Activity activity, List<ModelBean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
@@ -77,7 +80,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final ModelBean products = productList.get(position);
-
+        brochure_pdf = products.getPdf_brochure();
 
         holder.brand_name.setText(products.getBrand_name());
         holder.model.setText(products.getModel_name());
@@ -96,13 +99,17 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
         holder.brochure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                System.out.println("hjkjkkjk" + products.getPdf_brochure());
-//                String s1 = products.getPdf_brochure();
-//                Intent intent = new Intent();
-//                intent.setDataAndType(Uri.parse(s1),"application/pdf");
-//                activity.startActivity(intent);
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(products.getPdf_brochure()));
-                activity.startActivity(browserIntent);
+                Bundle bundle = new Bundle();
+                bundle.putString("brochur_status",brochure_pdf);
+                selectedFragment = Model_Brochure_Fragment.newInstance();
+                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+                transaction.add(R.id.frame_layout, selectedFragment);
+                selectedFragment.setArguments(bundle);
+                transaction.addToBackStack("pdf");
+                transaction.commit();
+
+//                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(products.getPdf_brochure()));
+//                activity.startActivity(browserIntent);
             }
         });
 

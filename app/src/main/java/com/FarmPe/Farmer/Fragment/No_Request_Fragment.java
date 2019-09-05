@@ -27,7 +27,7 @@ public class No_Request_Fragment extends Fragment {
     TextView make_request;
     LinearLayout back_feed1;
     Fragment selectedFragment = null;
-ImageView b_arrow;
+    ImageView b_arrow;
 
     public static No_Request_Fragment newInstance() {
         No_Request_Fragment fragment = new No_Request_Fragment();
@@ -43,6 +43,8 @@ ImageView b_arrow;
         b_arrow=view.findViewById(R.id.b_arrow);
 
 
+
+
         back_feed1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +58,8 @@ ImageView b_arrow;
 
             }
         });
+
+
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();
@@ -84,9 +88,12 @@ ImageView b_arrow;
             public void onClick(View view) {
 
                 AddFirstAdapter.looinkgId = null;
+                Bundle bundle = new Bundle();
+                bundle.putString("status","home_request");
                 selectedFragment = AddFirstFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
+                selectedFragment.setArguments(bundle);
                 transaction.addToBackStack("home");
                 transaction.commit();
 

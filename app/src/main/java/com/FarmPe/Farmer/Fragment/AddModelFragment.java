@@ -43,15 +43,6 @@ import java.util.List;
 public class
 
 
-
-
-
-
-
-
-
-
-
 AddModelFragment extends Fragment {
 
     public static List<ModelBean> modelBeanArrayList = new ArrayList<>();

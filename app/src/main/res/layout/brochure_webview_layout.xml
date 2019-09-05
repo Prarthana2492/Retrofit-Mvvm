@@ -58,30 +58,30 @@
 
 
             <!--<LinearLayout-->
-                <!--android:id="@+id/back_feed"-->
-                <!--android:layout_width="35dp"-->
-                <!--android:layout_height="50dp"-->
+            <!--android:id="@+id/back_feed"-->
+            <!--android:layout_width="35dp"-->
+            <!--android:layout_height="50dp"-->
 
-                <!--&gt;-->
+            <!--&gt;-->
 
-                <!--<ImageView-->
-                    <!--android:id="@+id/b_arrow"-->
-                    <!--android:layout_width="20dp"-->
-                    <!--android:layout_height="20dp"-->
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:src="@drawable/ic_left_arrow_white"-->
-                    <!--style="@style/SelectableItemBackground"-->
-                    <!--android:background="?attr/selectableItemBackgroundBorderless"-->
+            <!--<ImageView-->
+            <!--android:id="@+id/b_arrow"-->
+            <!--android:layout_width="20dp"-->
+            <!--android:layout_height="20dp"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:src="@drawable/ic_left_arrow_white"-->
+            <!--style="@style/SelectableItemBackground"-->
+            <!--android:background="?attr/selectableItemBackgroundBorderless"-->
 
 
-                    <!--/>-->
+            <!--/>-->
 
             <!--</LinearLayout>-->
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Help"
+                android:text="View Brochure"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="#fff"

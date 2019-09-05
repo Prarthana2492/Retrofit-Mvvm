@@ -71,11 +71,13 @@ import static com.android.volley.VolleyLog.TAG;
 
 
 public class AaProfileFragment extends Fragment {
+
+
     BottomSheetDialog mBottomSheetDialog;
     View sheetView;
     CircleImageView prod_img;
     Fragment selectedFragment;
-    EditText userInput;
+    EditText abt_text;
     LinearLayout backfeed,acc_info_lay,linearLayout,about_lay;
     TextView notificatn,change_language,your_addresss,acc_info1,refer_ern,feedbk,help_1,abt_frmpe,polic_1,logot,setting_tittle,aboutText;
     SessionManager sessionManager;
@@ -84,6 +86,7 @@ public class AaProfileFragment extends Fragment {
     Bitmap bitmap;
     String profnamestr;
     public  static String ProfilePhone;
+
     public static AaProfileFragment newInstance() {
         AaProfileFragment fragment = new AaProfileFragment();
         return fragment;
@@ -198,6 +201,8 @@ public class AaProfileFragment extends Fragment {
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
+
+                                        System.out.println("fsdfsdfff" + response);
                                         int duration = 1000;
                                         Snackbar snackbar = Snackbar
                                                 .make(linearLayout, "Profile Details Updated Successfully", duration);
@@ -235,6 +240,7 @@ public class AaProfileFragment extends Fragment {
                                 params.put("UserId",sessionManager.getRegId("userId"));
                                 params.put("FullName",userInput.getText().toString());
                                 params.put("PhoneNo",sessionManager.getRegId("phone"));
+                                System.out.println("fhsdfhjf" + params);
                                 return params;
                             }
                         };
@@ -265,9 +271,9 @@ public class AaProfileFragment extends Fragment {
                 TextView positiveText = sheetView.findViewById(R.id.positive_text);
                 TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
                 TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
-                  userInput = sheetView.findViewById(R.id.user_text);
-                userInput.setVisibility(View.VISIBLE);
-                userInput.setText(aboutText.getText().toString());
+               abt_text = sheetView.findViewById(R.id.user_text);
+                abt_text.setVisibility(View.VISIBLE);
+                abt_text.setText(aboutText.getText().toString());
                 descriptionText.setVisibility(View.GONE);
                 titleText.setText("Add about");
                 descriptionText.setText("Are you sure you want to exit?");
@@ -277,7 +283,7 @@ public class AaProfileFragment extends Fragment {
                 positiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                      //  Toast.makeText(getActivity(),"Save was clicked",Toast.LENGTH_LONG).show();
+                     save_description();
                     }
                 });
 
@@ -314,17 +320,22 @@ public class AaProfileFragment extends Fragment {
                         ProfilePhone = jsonObject1.getString("PhoneNo");
                         //String ProfileEmail = jsonObject1.getString("EmailId");
                         String ProfileImage = jsonObject1.getString("ProfilePic");
-
+                        String profile_description = jsonObject1.getString("About");
 
                         profname.setText(profnamestr);
+                        aboutText.setText(profile_description);
+
                         //phone_no.setText(ProfilePhone.substring(3));
 
                         profile_phone.setText(ProfilePhone); // masking + deleting last line
-                        // profile_mail.setText(ProfileEmail);
+
 
                         profname.setFilters(new InputFilter[]{EMOJI_FILTER});
                         profile_phone.setFilters(new InputFilter[]{EMOJI_FILTER});
-                        Glide.with(getActivity()).load(ProfileImage)
+                        aboutText.setFilters(new InputFilter[]{EMOJI_FILTER});
+
+
+                      Glide.with(getActivity()).load(ProfileImage)
                                 .thumbnail(0.5f)
                                 .crossFade()
                                 .error(R.drawable.avatarmale)
@@ -341,6 +352,56 @@ public class AaProfileFragment extends Fragment {
         }
 
         return view;
+    }
+
+    private void save_description() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.Update_Profile_Details,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        int duration = 1000;
+                        Snackbar snackbar = Snackbar
+                                .make(linearLayout, "Profile Details Updated Successfully", duration);
+                        View snackbarView = snackbar.getView();
+                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                        tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                        tv.setTextColor(Color.WHITE);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                        } else {
+                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                        }
+
+                        snackbar.show();
+                        mBottomSheetDialog.dismiss();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("status","HOME_IMG");
+                        selectedFragment = AaProfileFragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout, selectedFragment);
+                        selectedFragment.setArguments(bundle);
+                        transaction.commit();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getActivity(),error.toString(),Toast.LENGTH_LONG).show();
+                    }
+                }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("UserId",sessionManager.getRegId("userId"));
+                params.put("FullName",sessionManager.getRegId("name"));
+                params.put("PhoneNo",sessionManager.getRegId("phone"));
+                params.put("About",abt_text.getText().toString());
+                return params;
+            }
+        };
+        Volley.newRequestQueue(getActivity()).add(stringRequest);
+
     }
 
 
@@ -480,8 +541,8 @@ public class AaProfileFragment extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("UserId",sessionManager.getRegId("userId"));
-                params.put("FullName",userInput.getText().toString());
-                params.put("PhoneNo",profile_phone.getText().toString());
+                params.put("FullName",sessionManager.getRegId("name"));
+                params.put("PhoneNo",sessionManager.getRegId("phone"));
                 //  params.put("EmailId","abcd@gmail.com");
                 //    params.put("Password",profile_passwrd.getText().toString());
                 Log.e(TAG,"afaeftagsparams"+params);

@@ -110,7 +110,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         b_arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
+               // b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("currentlocation", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }

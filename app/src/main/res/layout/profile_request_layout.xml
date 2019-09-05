@@ -44,6 +44,7 @@
             android:text="Requests"
             android:textSize="20dp"
             android:textColor="#fff"
+            android:textStyle="bold"
             android:layout_marginLeft="20dp"
             android:layout_gravity="center"
             android:id="@+id/setting_tittle" />
@@ -81,7 +82,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_user_profile"
+                    android:src="@drawable/ic_close_envelop"
 
                     />
 
@@ -189,7 +190,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_logout"
+                    android:src="@drawable/plus_add_green"
 
                     />
 

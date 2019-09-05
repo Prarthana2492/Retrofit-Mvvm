@@ -43,6 +43,7 @@
                 android:layout_height="wrap_content"
                 android:text="Account"
                 android:textSize="20dp"
+                android:textStyle="bold"
                 android:textColor="#fff"
                 android:layout_marginLeft="20dp"
                 android:layout_gravity="center"

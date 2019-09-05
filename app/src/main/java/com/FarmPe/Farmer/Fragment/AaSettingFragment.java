@@ -4,15 +4,11 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,11 +29,13 @@ import static com.FarmPe.Farmer.Activity.LandingPageActivity.mBottomSheetBehavio
 
 public class AaSettingFragment extends Fragment {
 
+
+
     BottomSheetDialog mBottomSheetDialog;
     View sheetView;
     String packageName;
     Fragment selectedFragment;
-    LinearLayout backfeed,acc_info_lay,not_lay,lang_lay,help_lay,invi_lay,main_layout,request_lay,linearLayout;
+    LinearLayout backfeed,acc_info_lay,not_lay,lang_lay,help_lay,invi_lay,main_layout,request_lay;
     TextView sub_lang,notificatn,change_language,your_addresss,acc_info1,refer_ern,feedbk,help_1,abt_frmpe,polic_1,logot,setting_tittle;
     SessionManager sessionManager;
     JSONObject lngObject;
@@ -46,6 +44,7 @@ public class AaSettingFragment extends Fragment {
         AaSettingFragment fragment = new AaSettingFragment();
         return fragment;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,8 +58,7 @@ public class AaSettingFragment extends Fragment {
         invi_lay=view.findViewById(R.id.invi_lay);
         main_layout=view.findViewById(R.id.main_layout);
         request_lay=view.findViewById(R.id.setting_request);
-        sub_lang = view.findViewById(R.id.sub_lang);
-        linearLayout = view.findViewById(R.id.main_layout);
+        sub_lang=view.findViewById(R.id.sub_lang);
 
 
         sessionManager = new SessionManager(getActivity());
@@ -213,22 +211,9 @@ public class AaSettingFragment extends Fragment {
                                 startActivity(whatsappIntent);
                             } catch (android.content.ActivityNotFoundException ex) {
 
-                                int duration = 1000;
-                                Snackbar snackbar = Snackbar
-                                        .make(linearLayout, "Whatsapp is not installed on this device.", duration);
-                                View snackbarView = snackbar.getView();
-                                TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                                tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                                tv.setTextColor(Color.WHITE);
 
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                                    tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                                } else {
-                                    tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                                }
-                                snackbar.show();
 
-                              //  Toast.makeText(getActivity(), "Whatsapp is not installed on this device.", Toast.LENGTH_SHORT);
+                                Toast.makeText(getActivity(), "Whatsapp is not installed on this device.", Toast.LENGTH_SHORT);
                             }
 
                         }else {

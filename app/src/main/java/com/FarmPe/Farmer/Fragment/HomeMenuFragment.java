@@ -111,6 +111,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
         final View view = inflater.inflate(R.layout.activity_navigation_menu_home, container, false);
 
 
+
         menu=view.findViewById(R.id.menu);
         home = view.findViewById(R.id.home);
         phone_no = view.findViewById(R.id.phone_no);
@@ -127,11 +128,11 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
         ur_request=view.findViewById(R.id.ur_rqst);
         your_addrss=view.findViewById(R.id.your_addrss);
 
-
         plus_sign_add=view.findViewById(R.id.plus_sign_add);
         user_name_menu=view.findViewById(R.id.user_name_menu);
         sessionManager = new SessionManager(getActivity());
         userid=sessionManager.getRegId("userId");
+
 
         farmer_title.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -237,6 +238,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
 
                             try{
                                 get_address_array = result.getJSONArray("UserAddressDetails");
+
 
                                 if(get_address_array.length()== 0){
                                     drawer.closeDrawers();

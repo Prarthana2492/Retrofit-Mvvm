@@ -17,7 +17,7 @@
         android:text="Invite a friend via..."
         android:gravity="center"
         android:textColor="#000"
-        android:textSize="20sp"
+        android:textSize="18dp"
         android:textStyle="bold"
         android:fontFamily="@font/segoeui"
         android:layout_width="match_parent"
@@ -52,7 +52,7 @@
                 android:text="Whatsapp"
 
                 android:textColor="#000"
-                android:textSize="12sp"/>
+                android:textSize="12dp"/>
 
         </LinearLayout>
 
@@ -74,7 +74,7 @@
                 android:text="Facebook"
 
                 android:textColor="#000"
-                android:textSize="12sp"/>
+                android:textSize="12dp"/>
         </LinearLayout>
 
 
@@ -101,7 +101,7 @@
                 android:text="Instagram"
 
                 android:textColor="#000"
-                android:textSize="12sp"/>
+                android:textSize="12dp"/>
         </LinearLayout>
 
 
@@ -135,7 +135,7 @@
                 android:text="Twitter"
 
                 android:textColor="#000"
-                android:textSize="12sp"/>
+                android:textSize="12dp"/>
         </LinearLayout>
 
 
@@ -161,7 +161,7 @@
                 android:text="Messenger"
 
                 android:textColor="#000"
-                android:textSize="12sp"/>
+                android:textSize="12dp"/>
         </LinearLayout>
 
 
@@ -186,7 +186,7 @@
                 android:text="Message"
 
                 android:textColor="#000"
-                android:textSize="12sp"/>
+                android:textSize="12dp"/>
         </LinearLayout>
 
 
@@ -205,7 +205,7 @@
     <TextView
         android:id="@+id/cancel_invite"
         android:layout_width="match_parent"
-        android:textSize="14dp"
+        android:textSize="15dp"
         android:layout_marginTop="5dp"
         android:gravity="center_horizontal"
         android:textStyle="bold"

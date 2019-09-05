@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Request a Price"
-            android:textSize="18dp"
+            android:textSize="20dp"
             android:textColor="#fff"
             android:textStyle="bold"
             android:id="@+id/toolbar_title" />

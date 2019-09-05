@@ -46,6 +46,7 @@
             android:layout_height="wrap_content"
             android:text="Notification Setting"
             android:textSize="20dp"
+            android:textStyle="bold"
             android:textColor="#fff"
             android:id="@+id/toolbar_title" />
 

@@ -13,8 +13,8 @@ package com.FarmPe.Farmer;
 
     public static final String LOGIN=ROOT_URL+"Auth/ValidateUser";
     public static final String SIGNUP=ROOT_URL+"Auth/RegisterUser";
-    public static final String GetAllCrops=ROOT_URL+"Crops/GetCrops";
-    public static final String AddToCart=ROOT_URL+"Order/AddToCart";
+
+
     public static final String Languages=ROOT_URL+"MasterTable/GetLanguages";
     public static final String Forgot_Password=ROOT_URL+"Auth/ForgotPassword";
     public static final String ChangePassword=ROOT_URL+"Auth/ChangePassword";
@@ -27,9 +27,11 @@ package com.FarmPe.Farmer;
 
 
     public static final String Get_New_Address = ROOT_URL+"MasterTable/GetUserAddress";
+
+
     // Wallet
-    public static final String GetFarmDetailsList = ROOT_URL+"MasterTable/GetFarmsList";
-    public static final String GetFarmsListByUserId = "MasterTable/GetFarmsListByUserId";
+      public static final String GetFarmDetailsList = ROOT_URL+"MasterTable/GetFarmsList";
+      public static final String GetFarmsListByUserId = "MasterTable/GetFarmsListByUserId";
 
 
     // Refer n Earn

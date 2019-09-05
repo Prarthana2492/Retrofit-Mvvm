@@ -53,13 +53,13 @@
 
 
                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                     android:text="Your Addresses"
-                    android:textSize="16dp"
-                    android:textColor="#fff"
-                    android:textStyle="bold"
-                    android:id="@+id/toolbar_title" />
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                       android:text="Your Addresses"
+                       android:textSize="20dp"
+                       android:textColor="#fff"
+                       android:textStyle="bold"
+                       android:id="@+id/toolbar_title" />
 
             </android.support.v7.widget.Toolbar>
 
@@ -93,26 +93,25 @@
             android:fontFamily="@font/segoeui"
             android:text="All"
             android:textSize="14dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="3dp"
             android:layout_gravity="center_vertical"
             android:textStyle="bold"
             android:textColor="#181818 "
-            android:layout_weight="70"
+            android:layout_weight="95"
 
 
             />
 
         <TextView
             android:id="@+id/filter_text"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="30"
             android:drawableLeft="@drawable/ic_icon_filterrrr"
             android:fontFamily="@font/segoeui"
             android:gravity="right"
             android:layout_gravity="center_vertical"
             android:paddingHorizontal="16dp"
-            android:text="Filter"
+            android:text=" Filter"
             android:textColor="#181818"
             android:textSize="14dp" />
 
