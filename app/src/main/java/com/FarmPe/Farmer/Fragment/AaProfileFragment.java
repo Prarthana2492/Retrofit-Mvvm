@@ -97,8 +97,8 @@ public class AaProfileFragment extends Fragment {
         acc_info_lay=view.findViewById(R.id.acc_info_lay);
         linearLayout=view.findViewById(R.id.main_layout);
         about_lay=view.findViewById(R.id.about_lay);
-        profname = (EditText) view.findViewById(R.id.prof_name);
-        profile_phone = (EditText)view.findViewById(R.id.phone_text);
+        profname = view.findViewById(R.id.prof_name);
+        profile_phone = view.findViewById(R.id.phone_text);
         aboutText = view.findViewById(R.id.about_text);
 
         prod_img = view.findViewById(R.id.prod_imgg);
@@ -174,27 +174,7 @@ public class AaProfileFragment extends Fragment {
         acc_info_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*main_layout.setBackgroundColor(Color.parseColor("#666666"));
-                mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_EXPANDED);
-                LandingPageActivity.name_hint.setText("Enter your name");
-                LandingPageActivity.editname.setVisibility(View.VISIBLE);
-                LandingPageActivity.logout.setVisibility(View.GONE);
-                LandingPageActivity.cancel.setText("Cancel");
-                LandingPageActivity.save.setText("Save");
-                main_layout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                        main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
-                    }
-                });
-                LandingPageActivity.cancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                        main_layout.setBackgroundColor(Color.parseColor("#f5f5f5"));
-                    }
-                });*/
+
 
                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
@@ -227,9 +207,11 @@ public class AaProfileFragment extends Fragment {
                                         tv.setTextColor(Color.WHITE);
                                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                                             tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
                                         } else {
                                             tv.setGravity(Gravity.CENTER_HORIZONTAL);
                                         }
+
                                         snackbar.show();
                                         mBottomSheetDialog.dismiss();
                                         Bundle bundle = new Bundle();
@@ -252,7 +234,7 @@ public class AaProfileFragment extends Fragment {
                                 Map<String,String> params = new HashMap<String, String>();
                                 params.put("UserId",sessionManager.getRegId("userId"));
                                 params.put("FullName",userInput.getText().toString());
-                                params.put("PhoneNo",profile_phone.getText().toString());
+                                params.put("PhoneNo",sessionManager.getRegId("phone"));
                                 return params;
                             }
                         };
@@ -428,6 +410,7 @@ public class AaProfileFragment extends Fragment {
                 }
                 snackbar.show();
                 //  Toast.makeText(getActivity(),"Your Changed Your Profile Photo", Toast.LENGTH_SHORT).show();
+
 
             } catch (IOException e) {
                 e.printStackTrace();

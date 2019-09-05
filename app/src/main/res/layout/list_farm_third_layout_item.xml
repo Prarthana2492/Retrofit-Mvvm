@@ -86,6 +86,9 @@
             </LinearLayout>
 
 
+
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -94,6 +97,38 @@
                 android:orientation="vertical"
                 android:layout_marginTop="1dp"
                 android:background="#ffff">
+
+
+
+                <TextView
+                    android:id="@+id/current_loc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" USE CURRENT LOCATION"
+                    android:textSize="12dp"
+                    android:fontFamily="@font/segoeui"
+                    android:layout_marginTop="25dp"
+                    android:textColor="#000"
+                    android:drawableLeft="@drawable/ic_gps_pin"
+                    android:padding="10dp"
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    android:background="@drawable/border_red"
+                    />
+
+
+                <TextView
+                    android:id="@+id/ortext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OR"
+                    android:textSize="14dp"
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/segoeui"
+                    android:textColor="#000"
+                    />
 
 
 

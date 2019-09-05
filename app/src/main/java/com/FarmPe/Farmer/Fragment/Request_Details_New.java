@@ -107,7 +107,6 @@ public class Request_Details_New extends Fragment {
         Bundle bundle=getArguments();
 
 
-
         if (bundle==null){
            gettingAddress();
 
@@ -118,10 +117,10 @@ public class Request_Details_New extends Fragment {
             addId=bundle.getString("add_id");
             String stret_name=bundle.getString("streetname");
             address_text.setText(stret_name);
-           // radioGroup.check(bundle.getInt("selected_id_time1"));
-           // radioGroup_finance.check(finance_selected);
-        }
+            String currentaddress_str=bundle.getString("currentaddress_id");
+            address_text.setText(currentaddress_str);
 
+        }
 
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override

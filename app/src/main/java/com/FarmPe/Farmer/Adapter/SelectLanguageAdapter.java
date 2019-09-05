@@ -1,6 +1,7 @@
 package com.FarmPe.Farmer.Adapter;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -98,15 +99,19 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
         if (selected_position == position) {
 
             holder.lang_txt.setChecked(true);
+            holder.lang_txt.setTypeface(null, Typeface.BOLD);
         } else {
 
             holder.lang_txt.setChecked(false);
+            holder.lang_txt.setTypeface(null, Typeface.NORMAL);
         }
 
 
         holder.lang_txt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+              //  holder.lang_txt.setTypeface(null, Typeface.BOLD);
                 System.out.println("iiiddddddkkkkkkkkkkkkkkkkkkkkkkkkkkk" + products.getLanguageid());
 
                 sessionManager.saveLanguage_name(products.getVendor());

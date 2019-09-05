@@ -47,6 +47,7 @@ public class AboutfarmpeFragment extends Fragment {
         privacypolicytxt.setText("About FarmPe");
         terms.loadUrl("http://farmpe.in/about-us.html");
         sessionManager = new SessionManager(getActivity());
+
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -74,9 +75,11 @@ public class AboutfarmpeFragment extends Fragment {
                 fm.popBackStack("abt_farmpe", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
+
         try {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
             privacypolicytxt.setText(lngObject.getString("AboutFarmPe"));
+
         } catch (JSONException e) {
             e.printStackTrace();
         }

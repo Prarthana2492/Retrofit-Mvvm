@@ -122,7 +122,7 @@ public class AaHelpFragment extends Fragment {
                 selectedFragment = AboutfarmpeFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
-                transaction.addToBackStack("setting");
+                transaction.addToBackStack("abt_farmpe");
                 transaction.commit();
 
             }
@@ -287,8 +287,6 @@ public class AaHelpFragment extends Fragment {
 
 
                         }
-
-
 
 
 

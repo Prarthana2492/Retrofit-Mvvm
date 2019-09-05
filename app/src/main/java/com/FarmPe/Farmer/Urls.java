@@ -54,7 +54,6 @@ package com.FarmPe.Farmer;
     public static final String Get_Profile_Details= ROOT_URL + "Auth/GetUserDetails";
     public static final String Update_Profile_Details= ROOT_URL + "Auth/UpdateUserProfile";
 
-
    //Notification
    public static final String GET_NOTIFICATION= ROOT_URL + "MasterTable/GetNotificationMaster";
    public static final String GET_NOTIFICATIONLIST= ROOT_URL + "MasterTable/GetNotifications";

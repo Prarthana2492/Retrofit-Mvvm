@@ -67,7 +67,7 @@ public class AaAccountFragment extends Fragment {
     SessionManager sessionManager;
     JSONObject lngObject;
     DatabaseHelper myDb;
-    EditText userInput;
+    EditText userInputedt;
 
     public static AaAccountFragment newInstance() {
         AaAccountFragment fragment = new AaAccountFragment();
@@ -87,7 +87,7 @@ public class AaAccountFragment extends Fragment {
         myDb = new DatabaseHelper(getActivity());
         // LandingPageActivity.editname.setVisibility(View.GONE);
 
-        final SessionManager sessionManager = new SessionManager(getActivity());
+      sessionManager = new SessionManager(getActivity());
         getActivity().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
@@ -137,19 +137,17 @@ public class AaAccountFragment extends Fragment {
         change_pass_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
                 TextView positiveText = sheetView.findViewById(R.id.positive_text);
                 TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
                 TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
-                 userInput = sheetView.findViewById(R.id.user_text);
-                userInput.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                userInput.setVisibility(View.VISIBLE);
+                userInputedt= sheetView.findViewById(R.id.user_text);
 
+                userInputedt.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                userInputedt.setVisibility(View.VISIBLE);
                 titleText.setText("Change password");
-                Log.d("liugekuyhg", "" + titleText.getText().toString());
+                Log.d("liugekuyhg",""+titleText.getText().toString());
                 descriptionText.setText("Are you sure, you want to exit?");
                 descriptionText.setVisibility(View.GONE);
                 positiveText.setText("Save");
@@ -158,80 +156,7 @@ public class AaAccountFragment extends Fragment {
                 positiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
-
-                        StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.Update_Profile_Details,
-                                new Response.Listener<String>() {
-                                    @Override
-                                    public void onResponse(String response) {
-
-
-                                        if(userInput.getText().toString().length()<=12 && userInput.getText().toString().length()>=6){
-
-
-                                            if(myDb.isEmailExists(AaProfileFragment.profile_phone.getText().toString().substring(3))) {
-
-                                                System.out.println("lhhhhhhhhhhhhhhhhhhhhhhhhp"+userInput.getText().toString());
-                                            //    System.out.println("lhhhhhhhhhhhhhhhhhhhhhhhhp"+profile_phone.getText().toString());
-
-                                                // AddData(profile_phone.getText().toString(), profile_passwrd.getText().toString());
-
-                                                myDb.updateContact(AaProfileFragment.profile_phone.getText().toString().substring(3),userInput.getText().toString());
-
-                                            }
-                                        }
-
-                                        else{
-
-                                        }
-
-                                        int duration = 1000;
-                                        Snackbar snackbar = Snackbar
-                                                .make(linearLayout, "Password Updated Successfully", duration);
-                                        View snackbarView = snackbar.getView();
-                                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                                        tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                                        tv.setTextColor(Color.WHITE);
-                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                                        } else {
-                                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                                        }
-                                        snackbar.show();
-                                        mBottomSheetDialog.dismiss();
-
-                                        selectedFragment = AaAccountFragment.newInstance();
-                                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                        transaction.replace(R.id.frame_layout, selectedFragment);
-
-                                        transaction.commit();
-                                    }
-                                },
-                                new Response.ErrorListener() {
-                                    @Override
-                                    public void onErrorResponse(VolleyError error) {
-                                        Toast.makeText(getActivity(),error.toString(),Toast.LENGTH_LONG).show();
-                                    }
-                                }){
-
-                            @Override
-                            protected Map<String,String> getParams(){
-                                Map<String,String> params = new HashMap<String, String>();
-                                params.put("UserId",sessionManager.getRegId("userId"));
-                                params.put("FullName",AaProfileFragment.profname.getText().toString());
-                                params.put("PhoneNo",AaProfileFragment.profile_phone.getText().toString());
-
-                                params.put("Password",userInput.getText().toString());
-
-                                System.out.println("jdfhjsfhj" + params);
-                                return params;
-                            }
-                        };
-                        Volley.newRequestQueue(getActivity()).add(stringRequest);
-
-
-
-
+                        save_password();
                     }
                 });
                 negetiveText.setOnClickListener(new View.OnClickListener() {
@@ -242,10 +167,8 @@ public class AaAccountFragment extends Fragment {
                 });
                 mBottomSheetDialog.setContentView(sheetView);
                 mBottomSheetDialog.show();
-
             }
         });
-
 
         logout_lay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -286,6 +209,68 @@ public class AaAccountFragment extends Fragment {
 
         return view;
     }
+
+    private void save_password() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.Update_Profile_Details,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("lhhhhhhhhhhhhhhhhhhhhhhhhplllllllll"+response);
+
+                        if(userInputedt.getText().toString().length()<=12 && userInputedt.getText().toString().length()>=6){
+                            if(myDb.isEmailExists(sessionManager.getRegId("phone").substring(3))) {
+                                System.out.println("lhhhhhhhhhhhhhhhhhhhhhhhhp"+userInputedt.getText().toString());
+                                //    System.out.println("lhhhhhhhhhhhhhhhhhhhhhhhhp"+profile_phone.getText().toString());
+                                // AddData(profile_phone.getText().toString(), profile_passwrd.getText().toString());
+                                myDb.updateContact(sessionManager.getRegId("phone").substring(3),userInputedt.getText().toString());
+                            }
+                        }
+                        else{
+                        }
+                        //   Toast.makeText(getActivity(), "Password Updated Successfully", Toast.LENGTH_LONG).show();
+                        int duration = 1000;
+                        Snackbar snackbar = Snackbar
+                                .make(main_layout, "Password Updated Successfully", duration);
+                        View snackbarView = snackbar.getView();
+                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                        tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                        tv.setTextColor(Color.WHITE);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                        } else {
+                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                        }
+                        snackbar.show();
+                        mBottomSheetDialog.dismiss();
+                        selectedFragment = AaAccountFragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout, selectedFragment);
+                        transaction.commit();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getActivity(),error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+              //  String stredtphone=AaProfileFragment.profile_phone.getText().toString();
+             //   String stredtname=AaProfileFragment.profname.getText().toString();
+                params.put("UserId",sessionManager.getRegId("userId"));
+                params.put("FullName",sessionManager.getRegId("name"));
+                params.put("PhoneNo",sessionManager.getRegId("phone"));
+                params.put("Password",userInputedt.getText().toString());
+                Log.e(TAG,"jdfhjsfhj" + params);
+                return params;
+            }
+        };
+
+        Volley.newRequestQueue(getActivity()).add(stringRequest);
+    }
+
 
 }
 

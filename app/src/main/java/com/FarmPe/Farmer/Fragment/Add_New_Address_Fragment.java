@@ -85,7 +85,7 @@ public class  Add_New_Address_Fragment extends Fragment {
     public static DrawerLayout drawer,main_layout;
 
 
-    TextView toolbar_titletxt;
+    TextView toolbar_titletxt,current_loc,ortext;
     JSONArray jsonArray,state_array,tal_array,hobli_array,village_array;
     StateBean stateBean;
     String new_add_toast;
@@ -141,7 +141,7 @@ public class  Add_New_Address_Fragment extends Fragment {
         edit_districr = view.findViewById(R.id.ed_dstrt);
         edit_village = view.findViewById(R.id.ed_vill);
         // add_type = view.findViewById(R.id.add_type);
-
+        ortext = view.findViewById(R.id.ortext);
 
         save_1 = view.findViewById(R.id.save_1);
         recyclerView = view.findViewById(R.id.recycler_view);
@@ -189,10 +189,19 @@ public class  Add_New_Address_Fragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        current_loc = view.findViewById(R.id.current_loc);
+        if (getArguments().getString("navigation_from").equals("REQ_NEW")){
+            current_loc.setVisibility(View.VISIBLE);
+            ortext.setVisibility(View.VISIBLE);
+        }else {
+            current_loc.setVisibility(View.GONE);
+            ortext.setVisibility(View.GONE);
+        }
+
 
 
         if(getArguments().getString("navigation_from").equals("your_add")){
-            toolbar_titletxt.setText("Edit Address");
+            toolbar_titletxt.setText("Edit Your Address");
         }
 
 
@@ -301,6 +310,18 @@ public class  Add_New_Address_Fragment extends Fragment {
             }
         });
 
+
+
+        current_loc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedFragment = MapFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.addToBackStack("currentlocation");
+                transaction.commit();
+            }
+        });
         adrss_type_linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
