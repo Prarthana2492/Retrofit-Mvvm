@@ -48,6 +48,7 @@ public class AaHelpFragment extends Fragment {
         return fragment;
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.a_a_help_layout, container, false);
@@ -118,7 +119,7 @@ public class AaHelpFragment extends Fragment {
                 selectedFragment = AboutfarmpeFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
-                transaction.addToBackStack("setting");
+                transaction.addToBackStack("abt_farmpe");
                 transaction.commit();
 
             }
@@ -135,6 +136,7 @@ public class AaHelpFragment extends Fragment {
                 TextView cancel = sheetView.findViewById(R.id.cancel_feedback);
                 TextView save = sheetView.findViewById(R.id.save_feedback);
                 feedback_edit = sheetView.findViewById(R.id.feedback_edit);
+
                 save.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -142,12 +144,14 @@ public class AaHelpFragment extends Fragment {
                      // mBottomSheetDialog.dismiss();
                     }
                 });
+
                 cancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         mBottomSheetDialog.dismiss();
                     }
                 });
+
                 mBottomSheetDialog.setContentView(sheetView);
                 mBottomSheetDialog.show();
             }

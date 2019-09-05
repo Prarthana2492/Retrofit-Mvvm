@@ -2,6 +2,7 @@ package com.FarmPe.Farmer.Fragment;
 
 import android.app.Dialog;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -208,6 +209,7 @@ public class Request_Details_New extends Fragment {
 
                 final Dialog dialog = new Dialog(getActivity());
                 dialog.setContentView(R.layout.request_form_purchase_dialog);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 ImageView image = (ImageView) dialog.findViewById(R.id.close_popup);
                 final TextView immediate =(TextView)dialog.findViewById(R.id.immediate);
                 final TextView one_month = (TextView)dialog.findViewById(R.id.one_month) ;

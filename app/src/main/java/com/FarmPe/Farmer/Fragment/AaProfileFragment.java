@@ -97,8 +97,8 @@ public class AaProfileFragment extends Fragment {
         acc_info_lay=view.findViewById(R.id.acc_info_lay);
         linearLayout=view.findViewById(R.id.main_layout);
         about_lay=view.findViewById(R.id.about_lay);
-        profname = view.findViewById(R.id.prof_name);
-        profile_phone = view.findViewById(R.id.phone_text);
+        profname = (EditText) view.findViewById(R.id.prof_name);
+        profile_phone = (EditText)view.findViewById(R.id.phone_text);
         aboutText = view.findViewById(R.id.about_text);
 
         prod_img = view.findViewById(R.id.prod_imgg);
@@ -274,6 +274,7 @@ public class AaProfileFragment extends Fragment {
         });
 
 
+
         about_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -311,6 +312,8 @@ public class AaProfileFragment extends Fragment {
             }
         });
 
+
+
         try{
             JSONObject jsonObject = new JSONObject();
             JSONObject post_object = new JSONObject();
@@ -320,6 +323,7 @@ public class AaProfileFragment extends Fragment {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("ggpgpgpg" + result);
+
 
                     try{
                         JSONObject jsonObject1 = result.getJSONObject("user");

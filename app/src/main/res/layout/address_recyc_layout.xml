@@ -81,37 +81,37 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/segoeui"
             android:textSize="14dp"
-            android:padding="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_gravity="end"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
             android:text="Address Type :"/>
 
 
         <TextView
             android:id="@+id/address_type1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/segoeui"
             android:text="All"
             android:textSize="14dp"
-            android:padding="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
             android:textStyle="bold"
             android:textColor="#181818 "
             android:layout_weight="70"
-           android:layout_gravity="start"
-            android:layout_marginRight="10dp"
+
+
             />
 
         <TextView
             android:id="@+id/filter_text"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="10"
+            android:layout_weight="30"
             android:drawableLeft="@drawable/ic_icon_filterrrr"
             android:fontFamily="@font/segoeui"
             android:gravity="right"
-            android:paddingHorizontal="10dp"
-            android:padding="10dp"
+            android:layout_gravity="center_vertical"
+            android:paddingHorizontal="16dp"
             android:text="Filter"
             android:textColor="#181818"
             android:textSize="14dp" />
@@ -120,20 +120,6 @@
 
     </LinearLayout>
 
-
-   <!-- <TextView
-        android:id="@+id/items"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/segoeui"
-        android:text=""
-        android:layout_margin="4dp"
-        android:textSize="13dp"
-        android:padding="3dp"
-        android:layout_marginLeft="3dp"
-        android:gravity="start"
-        android:textColor="#181818 "
-        />-->
 
 
     <android.support.v7.widget.RecyclerView
@@ -163,7 +149,6 @@
         android:layout_marginRight="10dp"
         android:fontFamily="@font/segoeui"
         android:layout_gravity="center_vertical"
-
         android:gravity="right"
         android:text="Add New Address"
         android:textColor="@color/green"

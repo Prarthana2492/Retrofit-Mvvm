@@ -183,18 +183,6 @@ public class LookingForFragment extends Fragment {
             }
         });
 
-//        filter_text.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                selectedFragment = Comming_soon_looking.newInstance();
-//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.first_full_frame, selectedFragment);
-//                transaction.addToBackStack("looking_edit");
-//                transaction.commit();
-//
-//            }
-//        });
 
         return view;
     }
