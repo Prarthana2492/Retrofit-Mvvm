@@ -260,7 +260,7 @@ public class AaAccountFragment extends Fragment {
                 EditText userInput = sheetView.findViewById(R.id.user_text);
                 userInput.setVisibility(View.GONE);
                 titleText.setText("Logout");
-                descriptionText.setText("Are you sure you want to exit?");
+                descriptionText.setText("Are you sure, you want to exit?");
                 positiveText.setText("Yes");
                 TextView negetiveText = sheetView.findViewById(R.id.negetive_text);
                 negetiveText.setText("No");

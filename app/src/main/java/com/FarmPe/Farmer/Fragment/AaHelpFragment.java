@@ -10,6 +10,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.text.InputFilter;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -135,10 +139,30 @@ public class AaHelpFragment extends Fragment {
                 TextView cancel = sheetView.findViewById(R.id.cancel_feedback);
                 TextView save = sheetView.findViewById(R.id.save_feedback);
                 feedback_edit = sheetView.findViewById(R.id.feedback_edit);
+                feedback_edit.setFilters(new InputFilter[]{EMOJI_FILTER});
                 save.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                      feedback();
+
+                        if(feedback_edit.getText().toString().equals("")){
+                            mBottomSheetDialog.dismiss();
+                            int duration = 1000;
+                            Snackbar snackbar = Snackbar
+                                    .make(main_layout, "Please enter description", duration);
+                            View snackbarView = snackbar.getView();
+                            TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                            tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                            tv.setTextColor(Color.WHITE);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                                tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                            } else {
+                                tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                            }
+                            snackbar.show();
+
+                        }else{
+                            feedback();
+                        }
                      // mBottomSheetDialog.dismiss();
                     }
                 });
@@ -154,8 +178,47 @@ public class AaHelpFragment extends Fragment {
         });
 
 
+
+
         return view;
     }
+
+    public static InputFilter EMOJI_FILTER = new InputFilter() {
+        @Override
+        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+            boolean keepOriginal = true;
+            StringBuilder sb = new StringBuilder(end - start);
+            for (int index = start; index < end; index++) {
+                int type = Character.getType(source.charAt(index));
+                if (type == Character.SURROGATE || type == Character.OTHER_SYMBOL) {
+                    return "";
+                }
+                for (int i = start; i < end; i++) {
+                    if (Character.isWhitespace(source.charAt(i))) {
+                        if (dstart == 0)
+                            return "";
+                    }
+                }
+                return null;
+          /*  char c = source.charAt(index);
+            if (isCharAllowed(c))
+                sb.append(c);
+            else
+                keepOriginal = false;*/
+            }
+            if (keepOriginal)
+                return null;
+            else {
+                if (source instanceof Spanned) {
+                    SpannableString sp = new SpannableString(sb);
+                    TextUtils.copySpansFrom((Spanned) source, start, sb.length(), null, sp, 0);
+                    return sp;
+                } else {
+                    return sb;
+                }
+            }
+        }
+    };
 
     private void feedback() {
 

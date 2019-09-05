@@ -13,6 +13,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -111,7 +112,8 @@ public class Edit_Looking_For_Fragment extends Fragment {
     String time_period,lookingfordetails_id,modelid;
     String finance;
     public static int selectedId_time_recent;
-
+    BottomSheetDialog mBottomSheetDialog;
+    View sheetView;
 
     public static Edit_Looking_For_Fragment newInstance() {
         Edit_Looking_For_Fragment fragment = new Edit_Looking_For_Fragment();
@@ -264,7 +266,7 @@ public class Edit_Looking_For_Fragment extends Fragment {
             public void onClick(View view) {
 
 
-                final TextView yes1,no1,text_desctxt,popup_headingtxt;
+              /*  final TextView yes1,no1,text_desctxt,popup_headingtxt;
                 final LinearLayout close_layout;
                 System.out.println("aaaaaaaaaaaa");
                 final Dialog dialog = new Dialog(getContext());
@@ -304,9 +306,36 @@ public class Edit_Looking_For_Fragment extends Fragment {
                 });
 
 
-                dialog.show();
+                dialog.show();*/
 
+                mBottomSheetDialog = new BottomSheetDialog(getActivity());
+                sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
+                TextView confirm = sheetView.findViewById(R.id.positive_text);
+                TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
+                TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
+                EditText userInput = sheetView.findViewById(R.id.user_text);
+                userInput.setVisibility(View.GONE);
+                titleText.setText("Delete The Request");
+                descriptionText.setText("Are you sure you want to delete the Request?");
+                confirm.setText("Confirm");
 
+                TextView cancel = sheetView.findViewById(R.id.negetive_text);
+                cancel.setText("Cancel");
+                confirm.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        delete_request();
+                        mBottomSheetDialog.dismiss();
+                    }
+                });
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mBottomSheetDialog.dismiss();
+                    }
+                });
+                mBottomSheetDialog.setContentView(sheetView);
+                mBottomSheetDialog.show();
 
 
             }

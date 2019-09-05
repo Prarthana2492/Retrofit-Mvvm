@@ -191,6 +191,10 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
 
+        if(getArguments().getString("navigation_from").equals("your_add")){
+            toolbar_titletxt.setText("Edit Address");
+        }
+
 
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -715,7 +719,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
         try {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
-            toolbar_titletxt.setText(lngObject.getString("AddNewAddress"));
+           // toolbar_titletxt.setText(lngObject.getString("AddNewAddress"));
            // select_address.setHint(lngObject.getString("SelectanAddressType"));
             name.setHint(lngObject.getString("FullName"));
             mobile.setHint(lngObject.getString("PhoneNo"));

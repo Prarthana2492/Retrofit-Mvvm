@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -18,6 +19,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -55,7 +57,8 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
     JSONObject lngObject;
     LinearLayout linearLayout;
     String deleted, default_addrs_updtd;
-
+    BottomSheetDialog mBottomSheetDialog;
+    View sheetView;
 
     public You_Address_Adapter(List<Add_New_Address_Bean> moviesList, Activity activity) {
 
@@ -180,8 +183,110 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
             @Override
             public void onClick(View v) {
 
+                mBottomSheetDialog = new BottomSheetDialog(activity);
+                sheetView = activity.getLayoutInflater().inflate(R.layout.general_layout, null);
+                TextView confirm = sheetView.findViewById(R.id.positive_text);
+                TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
+                TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
+                EditText userInput = sheetView.findViewById(R.id.user_text);
+                userInput.setVisibility(View.GONE);
+                titleText.setText("Remove Address");
+                descriptionText.setText("Are you sure you want to remove the Address?");
+                confirm.setText("Confirm");
+                TextView cancel = sheetView.findViewById(R.id.negetive_text);
+                cancel.setText("Cancel");
 
-                final TextView yes1,no1,delete_text,popupheading;
+                try {
+
+
+                    lngObject = new JSONObject(sessionManager.getRegId("language"));
+                    // popuptxt.setText(lngObject.getString("SelectanAddressType"));
+                    confirm.setText(lngObject.getString("Confirm"));
+                    cancel.setText(lngObject.getString("Cancel"));
+                    deleted=lngObject.getString("Addressdeletedsuccessfully");
+                    descriptionText.setText(lngObject.getString("Areyousureyouwanttoremovetheaddress"));
+                    titleText.setText(lngObject.getString("Removeaddress"));
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+                confirm.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        add_id =products.getAdd_id();
+
+                        try{
+                            JSONObject jsonObject  = new JSONObject();
+                            jsonObject.put("Id",add_id);
+                            jsonObject.put("UserId",sessionManager.getRegId("userId"));
+
+                            Crop_Post.crop_posting(activity, Urls.Delete_Address_Details, jsonObject, new VoleyJsonObjectCallback() {
+                                @Override
+                                public void onSuccessResponse(JSONObject result) {
+                                    System.out.println("111111dddd" + result);
+
+                                    try{
+
+                                        status = result.getString("Status");
+                                        message = result.getString("Message");
+
+                                        if(status.equals("1")){
+
+                                            int duration = 1000;
+                                            Snackbar snackbar = Snackbar
+                                                    .make(linearLayout, deleted, duration);
+                                            View snackbarView2 = snackbar.getView();
+                                            TextView tv = (TextView) snackbarView2.findViewById(android.support.design.R.id.snackbar_text);
+                                            tv.setBackgroundColor(ContextCompat.getColor(activity,R.color.orange));
+                                            tv.setTextColor(Color.WHITE);
+
+                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                                                tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                            } else {
+                                                tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                                            }
+
+                                            snackbar.show();
+
+                                        }
+
+
+                                        productList.remove(position);
+                                        notifyDataSetChanged();
+
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+
+
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+
+
+
+
+                        mBottomSheetDialog.dismiss();
+                    }
+                });
+
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mBottomSheetDialog.dismiss();
+                    }
+                });
+                mBottomSheetDialog.setContentView(sheetView);
+                mBottomSheetDialog.show();
+
+
+                /*final TextView yes1,no1,delete_text,popupheading;
                 System.out.println("aaaaaaaaaaaa");
                 final Dialog dialog = new Dialog(activity);
                 dialog.setContentView(R.layout.address_delete_popup);
@@ -304,7 +409,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
 
                 dialog.show();
-
+*/
             }
         });
 
