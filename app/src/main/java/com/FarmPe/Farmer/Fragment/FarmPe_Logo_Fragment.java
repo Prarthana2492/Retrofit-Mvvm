@@ -25,15 +25,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-
+import com.FarmPe.Farmer.Adapter.AddFirstAdapter;
 import com.FarmPe.Farmer.Adapter.HomePage_Adapter;
 import com.FarmPe.Farmer.Adapter.Home_Slider_Adapter;
+import com.FarmPe.Farmer.Adapter.Noimg_Recylr_Adapter;
 import com.FarmPe.Farmer.Bean.AddTractorBean1;
 import com.FarmPe.Farmer.Bean.AddTractorBean2;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
 import com.FarmPe.Farmer.Urls;
 import com.FarmPe.Farmer.Volly_class.Crop_Post;
+import com.FarmPe.Farmer.Volly_class.Login_post;
 import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
 
 import org.json.JSONArray;
@@ -61,6 +63,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
             R.drawable.banner3};
 
     HomePage_Adapter homePage_adapter;
+    Noimg_Recylr_Adapter noimg_recylr_adapter;
     TextView Add_make_request, no_make_request, no_list_farm, seeall_request,slide_text;
     ViewPager slider;
     LinearLayout ll_dots;
@@ -71,11 +74,11 @@ public class FarmPe_Logo_Fragment extends Fragment {
     final long PERIOD_MS = 1000;
     private static int NUM_PAGES = 0;
 
-    RecyclerView recyclerView;
+    RecyclerView recyclerView,noimg_recyclerView;
+
     public static List<AddTractorBean1> newOrderBeansList = new ArrayList<>();
     public static List<AddTractorBean2> newOrderBeansList2 = new ArrayList<>();
-
-
+    public static List<AddTractorBean2> newOrderBeansList3 = new ArrayList<>();
 
     public static JSONArray cropsListArray = null;
     public static JSONArray tractorImplementsModelMasterList = null;
@@ -105,6 +108,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
         requests_made = view.findViewById(R.id.request_made);
         sessionManager = new SessionManager(getActivity());
         recyclerView = view.findViewById(R.id.recylr_2);
+        noimg_recyclerView = view.findViewById(R.id.recylr_5);
         slider = view.findViewById(R.id.vp_slider);
         ll_dots = view.findViewById(R.id.ll_dots);
         reqst_count = view.findViewById(R.id.request_count);
@@ -148,16 +152,23 @@ public class FarmPe_Logo_Fragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager_farm);
         // recyclerView.addItemDecoration(new ItemDecorator( -80));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        AddTractorBean2 img2 = new AddTractorBean2("","","","");
-        newOrderBeansList2.add(img2);
-        newOrderBeansList2.add(img2);
-        newOrderBeansList2.add(img2);
-        newOrderBeansList2.add(img2);
-        newOrderBeansList2.add(img2);
-        newOrderBeansList2.add(img2);
 
         homePage_adapter = new HomePage_Adapter(getActivity(), newOrderBeansList2);
         recyclerView.setAdapter(homePage_adapter);
+
+
+
+
+
+
+
+        GridLayoutManager mLayoutManager_farm3 = new GridLayoutManager(getActivity(), 1, GridLayoutManager.HORIZONTAL, false);
+        noimg_recyclerView.setLayoutManager(mLayoutManager_farm3);
+        // recyclerView.addItemDecoration(new ItemDecorator( -80));
+        noimg_recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        noimg_recylr_adapter = new Noimg_Recylr_Adapter(getActivity(), newOrderBeansList3);
+        noimg_recyclerView.setAdapter(noimg_recylr_adapter);
 
 
         view.setFocusableInTouchMode(true);
@@ -272,117 +283,172 @@ public class FarmPe_Logo_Fragment extends Fragment {
             public void onPageScrollStateChanged(int state) {
             }
         });
+                           no_request.setVisibility(View.VISIBLE);
+                           requests_made.setVisibility(View.GONE);
 
-        try {
-            final JSONObject jsonObject = new JSONObject();
-            jsonObject.put("CreatedBy", sessionManager.getRegId("userId"));
+        Noimg_recylr();
 
-            Crop_Post.crop_posting(getActivity(), Urls.Home_Page_Count, jsonObject, new VoleyJsonObjectCallback() {
-                @Override
-                public void onSuccessResponse(JSONObject result) {
-                    System.out.println("fjfhffjcount" + result);
-
-                    try {
-
-                        newOrderBeansList.clear();
-                        newOrderBeansList2.clear();
-
-
-                        String farm_count = String.valueOf(result.getInt("FarmsCount"));
-                        String request_count = String.valueOf(result.getInt("RFQCount"));
-                        String notificatn_count = String.valueOf(result.getInt("NotificationCount"));
-
-                        JSONObject rfqListObject=result.getJSONObject("RFQList");
-
-                        cropsListArray = rfqListObject.getJSONArray("TractorRFQModelList");
-
-                        tractorImplementsModelMasterList = rfqListObject.getJSONArray("TractorImplementsRFQModelList");
-                        tractorAccessoriesModelMasterList = rfqListObject.getJSONArray("TractorAccesoriesRFQModelList");
-                        harvesterModelMasterList = rfqListObject.getJSONArray("HarvesterRFQModelList");
-                        jCBRFQModelList = rfqListObject.getJSONArray("JCBRFQModelList");
-
-
-
-
-
-
-                        if (request_count.equalsIgnoreCase("0")) {
-                            no_request.setVisibility(View.VISIBLE);
-                            requests_made.setVisibility(View.GONE);
-
-
-
-                        } else {
-
-                            no_request.setVisibility(View.GONE);
-                            requests_made.setVisibility(View.VISIBLE);
-
-                        }
-
-                        //   if (i <= 3) {
-
-
-                        //   }
-
-                        for (int i = 0; i < cropsListArray.length(); i++) {
-                            JSONObject jsonObject1 = cropsListArray.getJSONObject(i);
-                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
-                            newOrderBeansList2.add(img2);
-
-                        }
-
-                        for (int i = 0; i < tractorImplementsModelMasterList.length(); i++) {
-                            JSONObject jsonObject1 = tractorImplementsModelMasterList.getJSONObject(i);
-                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
-                            newOrderBeansList2.add(img2);
-
-                        }
-
-                        for (int i = 0; i < tractorAccessoriesModelMasterList.length(); i++) {
-                            JSONObject jsonObject1 = tractorAccessoriesModelMasterList.getJSONObject(i);
-                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
-                            newOrderBeansList2.add(img2);
-
-                        }
-
-                        for (int i = 0; i < harvesterModelMasterList.length(); i++) {
-                            JSONObject jsonObject1 = harvesterModelMasterList.getJSONObject(i);
-                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
-                            newOrderBeansList2.add(img2);
-
-                        }
-
-                        for (int i = 0; i < jCBRFQModelList.length(); i++) {
-                            JSONObject jsonObject1 = jCBRFQModelList.getJSONObject(i);
-                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
-                            newOrderBeansList2.add(img2);
-
-                        }
-
-                        reqst_count.setText(request_count);
-                        HomeMenuFragment.request_count.setText(request_count);
-                        HomeMenuFragment.notifictn_count.setText(notificatn_count);
-
-
-                        homePage_adapter.notifyDataSetChanged();
-
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            final JSONObject jsonObject = new JSONObject();
+//            jsonObject.put("CreatedBy", sessionManager.getRegId("userId"));
+//
+//            Crop_Post.crop_posting(getActivity(), Urls.Home_Page_Count, jsonObject, new VoleyJsonObjectCallback() {
+//                @Override
+//                public void onSuccessResponse(JSONObject result) {
+//                    System.out.println("fjfhffjcount" + result);
+//
+//                    try {
+//
+//                        newOrderBeansList.clear();
+//                        newOrderBeansList2.clear();
+//
+//
+//                        String farm_count = String.valueOf(result.getInt("FarmsCount"));
+//                        String request_count = String.valueOf(result.getInt("RFQCount"));
+//                        String notificatn_count = String.valueOf(result.getInt("NotificationCount"));
+//
+//                        JSONObject rfqListObject=result.getJSONObject("RFQList");
+//
+//                        cropsListArray = rfqListObject.getJSONArray("TractorRFQModelList");
+//
+//                        tractorImplementsModelMasterList = rfqListObject.getJSONArray("TractorImplementsRFQModelList");
+//                        tractorAccessoriesModelMasterList = rfqListObject.getJSONArray("TractorAccesoriesRFQModelList");
+//                        harvesterModelMasterList = rfqListObject.getJSONArray("HarvesterRFQModelList");
+//                        jCBRFQModelList = rfqListObject.getJSONArray("JCBRFQModelList");
+//
+//
+//
+//
+//
+//
+//                        if (request_count.equalsIgnoreCase("0")) {
+//                            no_request.setVisibility(View.VISIBLE);
+//                            requests_made.setVisibility(View.GONE);
+//
+//                                    Noimg_recylr();
+//
+//                        } else {
+//
+//                            no_request.setVisibility(View.GONE);
+//                            requests_made.setVisibility(View.VISIBLE);
+//
+//                        }
+//
+//                        //   if (i <= 3) {
+//
+//
+//                        //   }
+//
+//                        for (int i = 0; i < cropsListArray.length(); i++) {
+//                            JSONObject jsonObject1 = cropsListArray.getJSONObject(i);
+//                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
+//                            newOrderBeansList2.add(img2);
+//
+//                        }
+//
+//                        for (int i = 0; i < tractorImplementsModelMasterList.length(); i++) {
+//                            JSONObject jsonObject1 = tractorImplementsModelMasterList.getJSONObject(i);
+//                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
+//                            newOrderBeansList2.add(img2);
+//
+//                        }
+//
+//                        for (int i = 0; i < tractorAccessoriesModelMasterList.length(); i++) {
+//                            JSONObject jsonObject1 = tractorAccessoriesModelMasterList.getJSONObject(i);
+//                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
+//                            newOrderBeansList2.add(img2);
+//
+//                        }
+//
+//                        for (int i = 0; i < harvesterModelMasterList.length(); i++) {
+//                            JSONObject jsonObject1 = harvesterModelMasterList.getJSONObject(i);
+//                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
+//                            newOrderBeansList2.add(img2);
+//
+//                        }
+//
+//                        for (int i = 0; i < jCBRFQModelList.length(); i++) {
+//                            JSONObject jsonObject1 = jCBRFQModelList.getJSONObject(i);
+//                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
+//                            newOrderBeansList2.add(img2);
+//
+//                        }
+//
+//                        reqst_count.setText(request_count);
+//                        HomeMenuFragment.request_count.setText(request_count);
+//                        HomeMenuFragment.notifictn_count.setText(notificatn_count);
+//
+//
+//                        homePage_adapter.notifyDataSetChanged();
+//
+//
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            });
+//
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
 
 
         return view;
 
     }
+
+    private void Noimg_recylr() {
+
+        try {
+            newOrderBeansList3.clear();
+
+            JSONObject userRequestjsonObject = new JSONObject();
+
+            userRequestjsonObject.put("LookingForDetailsId", AddFirstAdapter.looinkgId);
+            System.out.println("sdfsdfsdf" + AddFirstAdapter.looinkgId );
+
+            JSONObject postjsonObject = new JSONObject();
+            System.out.println("postObj"+userRequestjsonObject.toString());
+
+            Login_post.login_posting(getActivity(), Urls.GetBrandList,userRequestjsonObject,new VoleyJsonObjectCallback() {
+                @Override
+                public void onSuccessResponse(JSONObject result) {
+                    System.out.println("cropsresult"+result);
+                    JSONArray cropsListArray=null;
+                    try {
+                        cropsListArray=result.getJSONArray("BrandList");
+                        System.out.println("e     e e ddd"+cropsListArray.length());
+                        for (int i=0;i<cropsListArray.length();i++){
+                            JSONObject jsonObject1=cropsListArray.getJSONObject(i);
+
+                            String brand_name=jsonObject1.getString("BrandName");
+
+                            String id=jsonObject1.getString("Id");
+
+                            String BrandIcon=jsonObject1.getString("BrandIcon");
+
+
+                            AddTractorBean2 crops = new AddTractorBean2(BrandIcon, "","","");
+                            newOrderBeansList3.add(crops);
+
+
+                        }
+                        noimg_recylr_adapter=new Noimg_Recylr_Adapter(getActivity(),newOrderBeansList3);
+                        noimg_recyclerView.setAdapter(noimg_recylr_adapter);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 
     private void addBottomDots(int currentPage, LinearLayout ll_dots) {
