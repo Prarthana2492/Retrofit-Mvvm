@@ -244,6 +244,7 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
                                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                                     }
                                     snackbar.show();
+
                                 }else  if (status==2){
 
                                     int duration=1000;

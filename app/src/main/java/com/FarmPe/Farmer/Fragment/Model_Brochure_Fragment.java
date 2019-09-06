@@ -70,11 +70,8 @@ public class Model_Brochure_Fragment extends Fragment {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
 
-                    selectedFragment = AddModelFragment.newInstance();
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.add(R.id.frame_layout, selectedFragment);
-                    transaction.commit();
-
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("pdf", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     return true;
                 }
                 return false;
@@ -87,10 +84,8 @@ public class Model_Brochure_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                selectedFragment = AddModelFragment.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.add(R.id.frame_layout, selectedFragment);
-                transaction.commit();
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                fm.popBackStack("pdf", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
             }
         });

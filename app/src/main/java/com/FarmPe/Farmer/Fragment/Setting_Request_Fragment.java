@@ -125,6 +125,19 @@ public class Setting_Request_Fragment extends Fragment {
             }
         });
 
+        request_favo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                selectedFragment = Request_Favorite_Fragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.addToBackStack("req_fav");
+                transaction.commit();
+
+            }
+        });
+
 
 
 

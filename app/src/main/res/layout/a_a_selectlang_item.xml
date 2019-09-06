@@ -6,6 +6,8 @@
     android:background="#FAFAFA"
     android:tag="cards main container">
 
+
+
     <LinearLayout
         android:id="@+id/submit_langu_layout"
         android:layout_width="match_parent"
@@ -14,8 +16,8 @@
         >
 
         <RadioGroup
-            xmlns:android="http://schemas.android.com/apk/res/android"
 
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/radiogrp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,6 +27,7 @@
             android:layout_weight="75">
 
             <RadioButton
+
                 android:id="@+id/radioButton1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -34,6 +37,7 @@
                 android:textSize="18dp"/>
 
         </RadioGroup>
+
 
 
     </LinearLayout>

@@ -44,7 +44,6 @@ public class ChangeLanguageFragment extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.select_language_layout, container, false);
@@ -56,10 +55,10 @@ public class ChangeLanguageFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         mAdapter = new SelectLanguageAdapter(getActivity(), newOrderBeansList);
 
-
         sessionManager = new SessionManager(getActivity());
         recyclerView.setAdapter(mAdapter);
         Langauges();
+
 
 
 
@@ -80,6 +79,8 @@ public class ChangeLanguageFragment extends Fragment {
                 return false;
             }
         });
+
+
 
 
 
@@ -105,10 +106,10 @@ public class ChangeLanguageFragment extends Fragment {
         });
 
 
-
         return view;
     }
 
+    
     private void Langauges() {
         try {
             newOrderBeansList.clear();

@@ -79,6 +79,11 @@ package com.FarmPe.Farmer;
     public static final String YourRequest = ROOT_URL+"MasterTable/GetLookingForListsById";
     public static final String Model_List = ROOT_URL+"MasterTable/GetRFQModelMasterList";
 
+    //Favorites
+
+     public static final String Get_Favorites = ROOT_URL+"MasterTable/GetFarmerFavouriteModelLists";
+     public static final String Add_Favorites = ROOT_URL+"MasterTable/AddUpdateFarmerFavouriteModelList";
+
 
     //List Your Farms
 

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="400dp"
     xmlns:card_view="http://schemas.android.com/tools"
-    android:id="@+id/linear_looking_main"
+    android:id="@+id/layout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:weightSum="100"
@@ -36,7 +36,7 @@
                 android:layout_gravity="right">
 
             <ImageView
-                android:id="@+id/edit"
+                android:id="@+id/fav_request"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:duplicateParentState="true"

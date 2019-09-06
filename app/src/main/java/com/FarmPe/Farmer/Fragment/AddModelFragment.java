@@ -108,6 +108,7 @@ ImageView b_arrow;
 
 
 
+
         filter_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

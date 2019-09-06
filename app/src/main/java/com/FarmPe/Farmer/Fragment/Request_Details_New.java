@@ -10,6 +10,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -28,6 +31,8 @@ import android.widget.Toast;
 import com.FarmPe.Farmer.Adapter.AddFirstAdapter;
 
 import com.FarmPe.Farmer.Adapter.AddModelAdapter;
+import com.FarmPe.Farmer.Adapter.TalukAdapter;
+import com.FarmPe.Farmer.Adapter.You_Address_Dialog_Adapter;
 import com.FarmPe.Farmer.Bean.Add_New_Address_Bean;
 import com.FarmPe.Farmer.Bean.FarmsImageBean;
 import com.FarmPe.Farmer.R;
@@ -51,15 +56,17 @@ public class Request_Details_New extends Fragment {
     public static RecyclerView recyclerView;
 
     TextView toolbar_title,request;
-    EditText address_text;
+    public static   EditText address_text;
     Fragment selectedFragment;
     RadioGroup radioGroup,radioGroup_finance;
     RadioButton radioButton,finance_yes,finance_no,radioButton1;
     LinearLayout back_feed,address_layout;
     SessionManager sessionManager;
+    You_Address_Dialog_Adapter you_address_dialog_adapter;
     View view;
     String addId;
     String time_period;
+    public static Dialog dialog;
     boolean finance;
     EditText purchase_edit;
     String finance_status;
@@ -68,7 +75,7 @@ public class Request_Details_New extends Fragment {
     public static int selectedId,selectedId_time_recent;
     int finance_selected,time_selected;
     Add_New_Address_Bean add_new_address_bean;
-    TextView whenPurchase, lookingForFinance,add_addrss;
+    TextView whenPurchase, lookingForFinance,add_addrss,no_address_text;
     JSONArray get_address_array;
     String pickUPFrom;
     ImageView b_arrow;
@@ -98,10 +105,12 @@ public class Request_Details_New extends Fragment {
         radioGroup_finance=view.findViewById(R.id.radioGroup_finance);
         request=view.findViewById(R.id.add_address);
         address_text=view.findViewById(R.id.address_text);
+        recyclerView = view.findViewById(R.id.recycler_view);
         purchase_edit=view.findViewById(R.id.purchase_edit);
         add_addrss=view.findViewById(R.id.add_addrss);
         //purchase_edit=view.findViewById(R.id.add_addrss);
         linearLayout=view.findViewById(R.id.profile_view);
+        no_address_text=view.findViewById(R.id.no_address_text);
        // toolbar_title.setText("Request for Quotation");
         sessionManager=new SessionManager(getActivity());
         Bundle bundle=getArguments();
@@ -120,7 +129,12 @@ public class Request_Details_New extends Fragment {
             String currentaddress_str=bundle.getString("currentaddress_id");
             address_text.setText(currentaddress_str);
 
-        }
+
+            }
+
+
+
+
 
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -201,7 +215,6 @@ public class Request_Details_New extends Fragment {
         });
 
 
-
         purchase_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -271,7 +284,101 @@ public class Request_Details_New extends Fragment {
 
 
 
+        address_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    dialog = new Dialog(getActivity());
+                   dialog.setContentView(R.layout.default_address_pop_up_layout);
+                   dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                   ImageView image = (ImageView) dialog.findViewById(R.id.close_popup);
+
+                 recyclerView = dialog.findViewById(R.id.recycler_view);
+                 no_address_text=dialog.findViewById(R.id.no_address_text);
+                final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+                you_address_dialog_adapter = new You_Address_Dialog_Adapter(new_address_beanArrayList, getActivity());
+                recyclerView.setAdapter(you_address_dialog_adapter);
+                 address_list();
+
+
+                image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
+            }
+        });
+
+
+
         return view;
+    }
+
+    private void address_list() {
+
+        try{
+            final JSONObject jsonObject = new JSONObject();
+            jsonObject.put("UserId",sessionManager.getRegId("userId"));
+            jsonObject.put("PickUpFrom",pickUPFrom);
+            System.out.println("aaaaaaaaaaaaadddd" + sessionManager.getRegId("userId"));
+
+            Crop_Post.crop_posting(getActivity(), Urls.Get_New_Address, jsonObject, new VoleyJsonObjectCallback() {
+                @Override
+                public void onSuccessResponse(JSONObject result) {
+                    System.out.println("ggggggggggaaaaaaa"+result);
+                    try{
+                        new_address_beanArrayList.clear();
+
+                        get_address_array = result.getJSONArray("UserAddressDetails");
+                        for(int i=0;i<get_address_array.length();i++){
+                            JSONObject jsonObject1 = get_address_array.getJSONObject(i);
+
+
+                            add_new_address_bean = new Add_New_Address_Bean(jsonObject1.getString("Name"),jsonObject1.getString("StreeAddress"),jsonObject1.getString("StreeAddress1"),jsonObject1.getString("LandMark"),jsonObject1.getString("City"),jsonObject1.getString("Pincode"),jsonObject1.getString("MobileNo"),
+                                    jsonObject1.getString("PickUpFrom"),jsonObject1.getString("State"),jsonObject1.getString("District"),jsonObject1.getString("Taluk"),jsonObject1.getString("Hoblie"),jsonObject1.getString("Village"),jsonObject1.getString("Id"),jsonObject1.getBoolean("IsDefaultAddress"));
+                            new_address_beanArrayList.add(add_new_address_bean);
+
+                        }
+
+
+                         if(new_address_beanArrayList.size()== 0){
+                             no_address_text.setVisibility(View.VISIBLE);
+                             recyclerView.setVisibility(View.GONE);
+                         }else{
+
+                             no_address_text.setVisibility(View.GONE);
+                             recyclerView.setVisibility(View.VISIBLE);
+                         }
+
+
+
+
+
+                        you_address_dialog_adapter.notifyDataSetChanged();
+
+
+
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+                }
+            });
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+
     }
 
     private void RequestForm() {

@@ -200,7 +200,22 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
                                 String  Message = result.getString("Message");
                                 int  status= result.getInt("Status");
 
-                                if (status==2){
+                                if (status==1){
+                                    Snackbar snackbar = Snackbar
+                                            .make(linearLayout,Message, Snackbar.LENGTH_LONG);
+
+                                    View snackbarView = snackbar.getView();
+                                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                                    tv.setBackgroundColor(ContextCompat.getColor(EnterOTP.this,R.color.orange));
+                                    tv.setTextColor(Color.WHITE);
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                    } else {
+                                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                                    }
+                                    snackbar.show();
+
+                                } else if (status==2){
                                     Snackbar snackbar = Snackbar
                                             .make(linearLayout,Message, Snackbar.LENGTH_LONG);
 

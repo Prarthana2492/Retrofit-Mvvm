@@ -106,7 +106,7 @@ public class  Add_New_Address_Fragment extends Fragment {
     String Id;
     SessionManager sessionManager;
     public static Dialog grade_dialog;
-    int selected_id,selected_id_time;
+    int selected_id_time;
 
 
 
@@ -144,7 +144,6 @@ public class  Add_New_Address_Fragment extends Fragment {
         edit_village = view.findViewById(R.id.ed_vill);
         // add_type = view.findViewById(R.id.add_type);
         ortext = view.findViewById(R.id.ortext);
-
         save_1 = view.findViewById(R.id.save_1);
         recyclerView = view.findViewById(R.id.recycler_view);
         drawer = (DrawerLayout) view.findViewById(R.id.drawer_layout_op);
@@ -1113,6 +1112,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                                 FragmentManager fm = getActivity().getSupportFragmentManager();
                                 fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
                             }else if (getArguments().getString("navigation_from").equals("REQ_NEW")){
 
                                 selectedFragment = Request_Details_New.newInstance();

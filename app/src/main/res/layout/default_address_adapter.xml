@@ -16,9 +16,62 @@
         <RadioButton
             android:id="@+id/adrr_txt"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/menu_green"
+            android:checked="false"
             android:layout_marginTop="10dp"
-            android:text=""/>
+            android:text="gsdgfdgfdgfdgfd"/>
+
+
+        <TextView
+            android:id="@+id/street_address1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:layout_marginLeft="22dp"
+            android:textColor="@color/dot_dark_screen1"
+            android:text="#12 5th main 2nd cross xyz Apartments"/>
+
+
+        <TextView
+            android:id="@+id/colony"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:layout_marginLeft="22dp"
+            android:textColor="@color/dot_dark_screen1"
+            android:text="Colony"/>
+
+
+        <TextView
+            android:id="@+id/districttt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:layout_marginLeft="22dp"
+            android:textColor="@color/dot_dark_screen1"
+            android:text="Area District"/>
+
+        <TextView
+            android:id="@+id/city_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:layout_marginLeft="22dp"
+            android:textColor="@color/dot_dark_screen1"
+            android:text="State,Pincode"/>
+
+
+        <TextView
+            android:id="@+id/mobile_no1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:layout_marginLeft="22dp"
+            android:textColor="@color/dot_dark_screen1"
+            android:text="Phone Number - 7895632412"/>
+
+
 
 
 

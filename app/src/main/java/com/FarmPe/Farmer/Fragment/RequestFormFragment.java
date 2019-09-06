@@ -97,6 +97,7 @@ public class RequestFormFragment extends Fragment {
         Bundle bundle=getArguments();
         if (bundle==null){
             gettingAddress();
+
         }else{
             finance_selected=bundle.getInt("selected_id2");
             time_selected=bundle.getInt("selected_id_time1");
