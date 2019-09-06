@@ -148,13 +148,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager_farm);
         // recyclerView.addItemDecoration(new ItemDecorator( -80));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        AddTractorBean2 img2 = new AddTractorBean2("","","","");
-        newOrderBeansList2.add(img2);
-        newOrderBeansList2.add(img2);
-        newOrderBeansList2.add(img2);
-        newOrderBeansList2.add(img2);
-        newOrderBeansList2.add(img2);
-        newOrderBeansList2.add(img2);
+
 
         homePage_adapter = new HomePage_Adapter(getActivity(), newOrderBeansList2);
         recyclerView.setAdapter(homePage_adapter);
@@ -309,6 +303,8 @@ public class FarmPe_Logo_Fragment extends Fragment {
                         if (request_count.equalsIgnoreCase("0")) {
                             no_request.setVisibility(View.VISIBLE);
                             requests_made.setVisibility(View.GONE);
+
+
 
 
 
