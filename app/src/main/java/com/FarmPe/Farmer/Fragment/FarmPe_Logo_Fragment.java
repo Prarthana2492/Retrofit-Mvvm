@@ -28,12 +28,14 @@ import android.widget.TextView;
 
 import com.FarmPe.Farmer.Adapter.HomePage_Adapter;
 import com.FarmPe.Farmer.Adapter.Home_Slider_Adapter;
+import com.FarmPe.Farmer.Adapter.Noimg_Recylr_Adapter;
 import com.FarmPe.Farmer.Bean.AddTractorBean1;
 import com.FarmPe.Farmer.Bean.AddTractorBean2;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
 import com.FarmPe.Farmer.Urls;
 import com.FarmPe.Farmer.Volly_class.Crop_Post;
+import com.FarmPe.Farmer.Volly_class.Login_post;
 import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
 
 import org.json.JSONArray;
@@ -72,8 +74,10 @@ public class FarmPe_Logo_Fragment extends Fragment {
     private static int NUM_PAGES = 0;
 
     RecyclerView recyclerView;
+    RecyclerView noimg_recyclerView;
     public static List<AddTractorBean1> newOrderBeansList = new ArrayList<>();
     public static List<AddTractorBean2> newOrderBeansList2 = new ArrayList<>();
+    public static List<AddTractorBean2> newOrderBeansList3 = new ArrayList<>();
 
 
 
@@ -83,7 +87,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
     public static JSONArray harvesterModelMasterList = null;
     public static JSONArray jCBRFQModelList = null;
 
-
+    Noimg_Recylr_Adapter noimg_recylr_adapter;
     public static FarmPe_Logo_Fragment newInstance() {
         FarmPe_Logo_Fragment fragment = new FarmPe_Logo_Fragment();
         return fragment;
@@ -99,7 +103,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
     @Override
 
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.ttt, container, false);
+        final View view = inflater.inflate(R.layout.activity_main, container, false);
         //   backfeed= view.findViewById(R.id.back_feed1);
 
         linearLayout = view.findViewById(R.id.layout);
@@ -111,6 +115,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
        // nameee = view.findViewById(R.id.nameee);
         sessionManager = new SessionManager(getActivity());
         recyclerView = view.findViewById(R.id.recylr_2);
+        noimg_recyclerView = view.findViewById(R.id.recylr_5);
         slider = view.findViewById(R.id.vp_slider);
         ll_dots = view.findViewById(R.id.ll_dots);
 
@@ -246,6 +251,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager_farm);
         // recyclerView.addItemDecoration(new ItemDecorator( -80));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        noimg_recyclerView.setItemAnimator(new DefaultItemAnimator());
 
 
         homePage_adapter = new HomePage_Adapter(getActivity(), newOrderBeansList2);
@@ -254,6 +260,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
 
         newOrderBeansList.clear();
         GridLayoutManager mLayoutManager_farm1 = new GridLayoutManager(getActivity(), 1, GridLayoutManager.HORIZONTAL, false);
+        noimg_recyclerView.setLayoutManager(mLayoutManager_farm1);
 
 
         Add_make_request.setOnClickListener(new View.OnClickListener() {
@@ -339,7 +346,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
                         if (request_count.equalsIgnoreCase("0")) {
                             no_request.setVisibility(View.VISIBLE);
                             requests_made.setVisibility(View.GONE);
-
+                            Noimg_recylr();
                            // request_made_lyt.setVisibility(View.VISIBLE);
                            /* no_farms.setVisibility(View.VISIBLE);
                             farms_lists.setVisibility(View.GONE);*/
@@ -446,6 +453,45 @@ public class FarmPe_Logo_Fragment extends Fragment {
         }
         if (dots.length > 0)
             dots[currentPage].setTextColor(Color.parseColor("#EC4848")); // flip color
+    }
+
+    private void Noimg_recylr() {
+        try {
+            newOrderBeansList3.clear();
+            JSONObject userRequestjsonObject = new JSONObject();
+            userRequestjsonObject.put("Id", 3);
+
+            JSONObject postjsonObject = new JSONObject();
+            postjsonObject.put("LookingForObj", userRequestjsonObject);
+            System.out.println("postObj"+postjsonObject.toString());
+            Login_post.login_posting(getActivity(), Urls.GetLookingForItems,postjsonObject,new VoleyJsonObjectCallback() {
+                @Override
+                public void onSuccessResponse(JSONObject result) {
+                    System.out.println("cropsresult"+result);
+                    JSONArray cropsListArray=null;
+                    try {
+                        cropsListArray=result.getJSONArray("LookingForDetailsList");
+                        System.out.println("e     e e ddd"+cropsListArray.length());
+                        for (int i=0;i<cropsListArray.length();i++){
+                            JSONObject jsonObject1=cropsListArray.getJSONObject(i);
+                            String getPrice=jsonObject1.getString("LookingForDetails");
+                            String LookingForDetailsIcon=jsonObject1.getString("LookingForDetailsIcon");
+                            // String lookingForId=jsonObject1.getString("LookingForId");
+                            String lookingForId=jsonObject1.getString("Id");
+
+                            AddTractorBean2 crops = new AddTractorBean2(LookingForDetailsIcon, getPrice,"","");
+                            newOrderBeansList3.add(crops);
+                        }
+                        noimg_recylr_adapter=new Noimg_Recylr_Adapter(getActivity(),newOrderBeansList3);
+                        noimg_recyclerView.setAdapter(noimg_recylr_adapter);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
