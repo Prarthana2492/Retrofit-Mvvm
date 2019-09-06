@@ -38,9 +38,6 @@ public class Noimg_Recylr_Adapter extends RecyclerView.Adapter<Noimg_Recylr_Adap
             super(view);
 
             image  = view.findViewById(R.id.imageeee);
-
-
-
             model_name = view.findViewById(R.id.model_name);
 
 
@@ -64,7 +61,7 @@ public class Noimg_Recylr_Adapter extends RecyclerView.Adapter<Noimg_Recylr_Adap
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final AddTractorBean2 products = productList.get(position);
 
-//        holder.model_name.setText(products.getProd_name());
+        holder.model_name.setText(products.getProd_name());
 
         System.out.println("dddiiiijgh" + products.getImage());
 

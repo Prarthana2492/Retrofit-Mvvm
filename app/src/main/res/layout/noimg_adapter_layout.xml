@@ -33,6 +33,25 @@
 
         </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
 
+        <TextView
+            android:id="@+id/model_name"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:fontFamily="@font/segoeui"
+            android:text="fffffffffff"
+            android:layout_gravity="center_vertical"
+            android:singleLine="true"
+            android:layout_marginTop="4dp"
+            android:textColor="#000"
+            android:textSize="12dp" />
+    </LinearLayout>
 
 </LinearLayout>
