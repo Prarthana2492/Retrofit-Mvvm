@@ -117,5 +117,39 @@
 
             </android.support.v7.widget.RecyclerView>
 
+
+        <LinearLayout
+            android:id="@+id/no_favo_added"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="#fff"
+            android:gravity="center"
+            android:visibility="gone"
+
+            >
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_star_filled"/>
+
+            <TextView
+                android:id="@+id/no_address_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/segoeui"
+                android:text="No Favorites Added"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/menu_green"
+                />
+
+
+
+        </LinearLayout>
+
 </LinearLayout>
 </LinearLayout>

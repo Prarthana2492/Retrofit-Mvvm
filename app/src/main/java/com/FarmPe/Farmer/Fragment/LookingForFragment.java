@@ -202,10 +202,10 @@ public class LookingForFragment extends Fragment {
 
                         cropsListArray = result.getJSONArray("TractorRFQModelList");
 
-                      tractorImplementsModelMasterList = result.getJSONArray("TractorImplementsRFQModelList");
-                      tractorAccessoriesModelMasterList = result.getJSONArray("TractorAccesoriesRFQModelList");
-                       harvesterModelMasterList = result.getJSONArray("HarvesterRFQModelList");
-                        jCBRFQModelList = result.getJSONArray("JCBRFQModelList");
+                       tractorImplementsModelMasterList = result.getJSONArray("TractorImplementsRFQModelList");
+                       tractorAccessoriesModelMasterList = result.getJSONArray("TractorAccesoriesRFQModelList");
+                        harvesterModelMasterList = result.getJSONArray("HarvesterRFQModelList");
+                         jCBRFQModelList = result.getJSONArray("JCBRFQModelList");
 
 
                         if(cropsListArray.length()==0){

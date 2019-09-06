@@ -60,7 +60,7 @@ public class Request_Details_New extends Fragment {
     Fragment selectedFragment;
     RadioGroup radioGroup,radioGroup_finance;
     RadioButton radioButton,finance_yes,finance_no,radioButton1;
-    LinearLayout back_feed,address_layout;
+    LinearLayout back_feed,address_layout,no_address_text;
     SessionManager sessionManager;
     You_Address_Dialog_Adapter you_address_dialog_adapter;
     View view;
@@ -75,7 +75,7 @@ public class Request_Details_New extends Fragment {
     public static int selectedId,selectedId_time_recent;
     int finance_selected,time_selected;
     Add_New_Address_Bean add_new_address_bean;
-    TextView whenPurchase, lookingForFinance,add_addrss,no_address_text;
+    TextView whenPurchase, lookingForFinance,add_addrss;
     JSONArray get_address_array;
     String pickUPFrom;
     ImageView b_arrow;
@@ -314,7 +314,6 @@ public class Request_Details_New extends Fragment {
                 dialog.show();
             }
         });
-
 
 
         return view;

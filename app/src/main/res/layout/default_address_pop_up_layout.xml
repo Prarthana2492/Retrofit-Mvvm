@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text="Select an Address"
+                android:text="Select your Address"
                 android:textColor="#000"
                 android:textSize="16dp"
                 android:textStyle="bold"
@@ -108,29 +108,30 @@
             android:layout_marginBottom="20dp"
             android:layout_marginTop="15dp"
             android:layout_marginHorizontal="10dp"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
+
 
 
         </android.support.v7.widget.RecyclerView>
 
 
         <LinearLayout
+            android:id="@+id/no_address_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:visibility="gone"
             android:background="@drawable/border_empty_curve"
             android:layout_marginTop="15dp"
             >
 
             <TextView
-                android:id="@+id/no_address_text"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="#fff"
                 android:fontFamily="@font/segoeui"
-                android:text="No Address ,Please Add New Address."
-                android:textSize="16dp"
-                android:visibility="gone"
+                android:text="No Address is Added"
+                android:textSize="18dp"
                 android:padding="10dp"
                 android:gravity="center"
                 android:textColor="@color/menu_green"

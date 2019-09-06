@@ -57,7 +57,7 @@ public class Request_Favorite_Fragment extends Fragment {
     ModelBean modelBean;
     Fragment selectedFragment = null;
     TextView toolbar_title,continue_button,sub_label,filter_text;
-    LinearLayout back_feed,linearLayout,recently_added_layout;
+    LinearLayout back_feed,linearLayout,recently_added_layout,no_favo_added;
     ImageView b_arrow;
     SessionManager sessionManager;
 
@@ -78,6 +78,7 @@ public class Request_Favorite_Fragment extends Fragment {
         continue_button=view.findViewById(R.id.continue_button);
         filter_text=view.findViewById(R.id.filter_text);
         sub_label=view.findViewById(R.id.sub_label);
+        no_favo_added=view.findViewById(R.id.no_favo_added);
         recently_added_layout=view.findViewById(R.id.recently_added_layout);
 
         sessionManager = new SessionManager(getActivity());
@@ -157,16 +158,28 @@ public class Request_Favorite_Fragment extends Fragment {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("fsdfdddsdfs" + result);
+
+
                     try{
+                        modelBeanArrayList.clear();
 
 
-                            model_list_array = result.getJSONArray("TractorModelMasterList");
+                        model_list_array = result.getJSONArray("TractorModelMasterList");
 
-                            tractorImplementsModelMasterList = result.getJSONArray("TractorImplementsModelMasterList");
-                            tractorAccessoriesModelMasterList = result.getJSONArray("TractorAccessoriesModelMasterList");
-                            harvesterModelMasterList = result.getJSONArray("HarvesterModelMasterList");
-                            jCBRFQModelList = result.getJSONArray("JCBModelMasterList");
-                            modelBeanArrayList.clear();
+                        tractorImplementsModelMasterList = result.getJSONArray("TractorImplementsModelMasterList");
+                        tractorAccessoriesModelMasterList = result.getJSONArray("TractorAccessoriesModelMasterList");
+                        harvesterModelMasterList = result.getJSONArray("HarvesterModelMasterList");
+                        jCBRFQModelList = result.getJSONArray("JCBModelMasterList");
+
+                        if(model_list_array.length()==0 && tractorImplementsModelMasterList.length()==0 && tractorAccessoriesModelMasterList.length()==0 && harvesterModelMasterList.length()==0 && jCBRFQModelList.length()==0){
+
+                            no_favo_added.setVisibility(View.VISIBLE);
+
+                        }else {
+
+
+
+
 
 
                             for (int i = 0; i < model_list_array.length(); i++) {
@@ -204,7 +217,7 @@ public class Request_Favorite_Fragment extends Fragment {
 
                             farmadapter.notifyDataSetChanged();
 
-
+                        }
 
 
                     }catch (Exception e){

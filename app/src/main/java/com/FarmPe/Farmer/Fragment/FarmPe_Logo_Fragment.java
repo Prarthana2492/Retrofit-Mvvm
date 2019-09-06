@@ -37,6 +37,7 @@ import com.FarmPe.Farmer.Urls;
 import com.FarmPe.Farmer.Volly_class.Crop_Post;
 import com.FarmPe.Farmer.Volly_class.Login_post;
 import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -72,6 +73,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
     final long DELAY_MS = 200;//delay in milliseconds before task is to be executed
     final long PERIOD_MS = 1000;
     private static int NUM_PAGES = 0;
+    private ShimmerFrameLayout mShimmerViewContainer;
 
     RecyclerView recyclerView;
     RecyclerView noimg_recyclerView;
@@ -122,9 +124,6 @@ public class FarmPe_Logo_Fragment extends Fragment {
         reqst_count = view.findViewById(R.id.request_count);
         Add_make_request = view.findViewById(R.id.add_request);
         // no_list_farm= view.findViewById(R.id.list_farmmmmm);
-
-
-
         no_make_request = view.findViewById(R.id.make_requesttttt);
 
         seeall_request = view.findViewById(R.id.request_sell_all);
@@ -133,7 +132,9 @@ public class FarmPe_Logo_Fragment extends Fragment {
 //        image_arraylist.add(R.drawable.banner2);
 //        image_arraylist.add(R.drawable.banner3);
 //        image_arraylist.add(R.drawable.banner1);
-
+        mShimmerViewContainer = view.findViewById(R.id.shimmer_view_container);
+        mShimmerViewContainer.setVisibility(View.VISIBLE);
+        mShimmerViewContainer.startShimmerAnimation();
 
         home_slider_adapter = new Home_Slider_Adapter(getActivity(), myImageList);
         slider.setAdapter(home_slider_adapter);
@@ -405,7 +406,13 @@ public class FarmPe_Logo_Fragment extends Fragment {
 
 
                         homePage_adapter.notifyDataSetChanged();
-
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                mShimmerViewContainer.stopShimmerAnimation();
+                                mShimmerViewContainer.setVisibility(View.GONE);
+                            }
+                        }, 2000);
 
                     } catch (Exception e) {
                         e.printStackTrace();

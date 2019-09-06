@@ -136,6 +136,8 @@ public class AaHelpFragment extends Fragment {
 
                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.feedback_bottom_sheet, null);
+
+                new KeyboardUtil(getActivity(), sheetView);
                 TextView cancel = sheetView.findViewById(R.id.cancel_feedback);
                 TextView save = sheetView.findViewById(R.id.save_feedback);
                 feedback_edit = sheetView.findViewById(R.id.feedback_edit);

@@ -64,7 +64,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image,fav_request;
-        public LinearLayout item;
+
         public TextView brand_name,select,model,hp_power,brochure;
 
 
