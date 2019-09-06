@@ -61,7 +61,9 @@ public class You_Address_Fragment extends Fragment {
     public static You_Address_Fragment newInstance() {
         You_Address_Fragment fragment = new You_Address_Fragment();
         return fragment;
+
     }
+
 
 
 
@@ -84,13 +86,13 @@ public class You_Address_Fragment extends Fragment {
         select_address_type = view.findViewById(R.id.address_type1);
         recyclerView = view.findViewById(R.id.recycler_2);
         //address_list= view.findViewById(R.id.items);
+
         toolbar_titletxt = view.findViewById(R.id.toolbar_title);
         filter = view.findViewById(R.id.filter_text);
         add_visible = view.findViewById(R.id.layoutt_lnr);
         addnew_linear = view.findViewById(R.id.linear_newAdd);
         noadd_here = view.findViewById(R.id.text);
         add_adrs = view.findViewById(R.id.make_requesttttt);
-
 
 
         noadd_here.setText("No Address here");
@@ -108,6 +110,8 @@ public class You_Address_Fragment extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
+
+
                     if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")){
 
                         selectedFragment = HomeMenuFragment.newInstance();
@@ -122,8 +126,10 @@ public class You_Address_Fragment extends Fragment {
                         fm.popBackStack ("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
                     }
+
                     return true;
                 }
+
                 return false;
             }
         });

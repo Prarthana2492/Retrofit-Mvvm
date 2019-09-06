@@ -98,9 +98,8 @@
             android:textStyle="bold"
             android:textColor="#181818 "
             android:layout_weight="95"
-
-
             />
+
 
         <TextView
             android:id="@+id/filter_text"
@@ -110,7 +109,7 @@
             android:fontFamily="@font/segoeui"
             android:gravity="right"
             android:layout_gravity="center_vertical"
-            android:paddingHorizontal="16dp"
+            android:paddingHorizontal="14dp"
             android:text=" Filter"
             android:textColor="#181818"
             android:textSize="14dp" />

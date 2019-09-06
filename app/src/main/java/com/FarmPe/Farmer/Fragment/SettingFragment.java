@@ -71,7 +71,6 @@ public class SettingFragment extends Fragment {
 
 
 
-
         sessionManager = new SessionManager(getActivity());
 
         back_feed.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +82,7 @@ public class SettingFragment extends Fragment {
                 transaction.commit();
             }
         });
+
 
 
         view.setFocusableInTouchMode(true);
@@ -112,7 +112,6 @@ public class SettingFragment extends Fragment {
           //  refer_ern.setText(lngObject.getString("Refer_Earn"));
             change_language.setText(lngObject.getString("ChangeLanguage"));
             polic_1.setText(lngObject.getString("PrivacyPolicy"));
-
             help_1.setText(lngObject.getString("Help_Support"));
             abt_frmpe.setText(lngObject.getString("AboutFarmPe"));
             feedbk.setText(lngObject.getString("FeedBack"));
@@ -189,6 +188,7 @@ public class SettingFragment extends Fragment {
            }
        });
 
+
         help_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -199,6 +199,7 @@ public class SettingFragment extends Fragment {
                 transaction.commit();
             }
         });
+
         abt_frmpe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -209,6 +210,8 @@ public class SettingFragment extends Fragment {
                 transaction.commit();
             }
         });
+
+
         acc_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -219,6 +222,8 @@ public class SettingFragment extends Fragment {
                 transaction.commit();
             }
         });
+
+
        noti_setting.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -229,6 +234,8 @@ public class SettingFragment extends Fragment {
                transaction.commit();
            }
        });
+
+
         refer_earn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -239,6 +246,8 @@ public class SettingFragment extends Fragment {
                 transaction.commit();
             }
         });
+
+
         feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -250,6 +259,7 @@ public class SettingFragment extends Fragment {
             }
         });
 
+
         change_lang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -260,6 +270,8 @@ public class SettingFragment extends Fragment {
                 transaction.commit();
             }
         });
+
+
 
         policy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -274,6 +286,7 @@ public class SettingFragment extends Fragment {
                 transaction.commit();
             }
         });
+
 
         your_address.setOnClickListener(new View.OnClickListener() {
             @Override

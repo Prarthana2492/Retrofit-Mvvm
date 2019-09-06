@@ -2,6 +2,7 @@ package com.FarmPe.Farmer.Adapter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -93,14 +94,13 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
         if(selected_position == position){
 
             holder.lang_txt.setChecked(true);
+            holder.lang_txt.setTypeface(null, Typeface.BOLD);
+
         }else{
 
             holder.lang_txt.setChecked(false);
+            holder.lang_txt.setTypeface(null, Typeface.NORMAL);
         }
-
-
-
-
 
 
 
@@ -127,7 +127,6 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
 //
 //
 
-
         holder.lang_txt.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -142,13 +141,12 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
 
         }
     });
-}
+  }
 
 
     private void getLang(int id) {
 
         try{
-
 
               JSONObject jsonObject = new JSONObject();
               jsonObject.put("Id",id);
@@ -162,17 +160,12 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
 
                     System.out.println("qqqqqqvvhhhhhhhhhhhh" + result);
 
-                    try{
 
+                         try{
+                             sessionManager.saveLanguage(result.toString());
 
-
-                         sessionManager.saveLanguage(result.toString());
-
-
-
-                        Intent intent = new Intent(activity, LoginActivity_new.class);
-
-                        activity.startActivity(intent);
+                          Intent intent = new Intent(activity, LoginActivity_new.class);
+                          activity.startActivity(intent);
 
 /*
 
