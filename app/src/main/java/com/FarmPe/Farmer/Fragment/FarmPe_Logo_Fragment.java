@@ -99,41 +99,23 @@ public class FarmPe_Logo_Fragment extends Fragment {
     @Override
 
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.ttt, container, false);
-        //   backfeed= view.findViewById(R.id.back_feed1);
-
+        final View view = inflater.inflate(R.layout.activity_main, container, false);
         linearLayout = view.findViewById(R.id.layout);
-        // no_farms= view.findViewById(R.id.no_farms);
         no_request = view.findViewById(R.id.no_requests);
-
         requests_made = view.findViewById(R.id.request_made);
-     //   slide_text = view.findViewById(R.id.slide_text);
-       // nameee = view.findViewById(R.id.nameee);
         sessionManager = new SessionManager(getActivity());
         recyclerView = view.findViewById(R.id.recylr_2);
         slider = view.findViewById(R.id.vp_slider);
         ll_dots = view.findViewById(R.id.ll_dots);
-
         reqst_count = view.findViewById(R.id.request_count);
         Add_make_request = view.findViewById(R.id.add_request);
-        // no_list_farm= view.findViewById(R.id.list_farmmmmm);
-
-
-
         no_make_request = view.findViewById(R.id.make_requesttttt);
-
         seeall_request = view.findViewById(R.id.request_sell_all);
-       // image_arraylist.clear();
-//        image_arraylist.add(R.drawable.banner1);
-//        image_arraylist.add(R.drawable.banner2);
-//        image_arraylist.add(R.drawable.banner3);
-//        image_arraylist.add(R.drawable.banner1);
-
-
         home_slider_adapter = new Home_Slider_Adapter(getActivity(), myImageList);
         slider.setAdapter(home_slider_adapter);
 
-        addBottomDots(0, ll_dots);
+        // addBottomDots(0, ll_dots);
+        System.out.println("fjfhffjcount" + "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
 
         TimerTask timerTask = new TimerTask() {
             @Override
@@ -152,40 +134,30 @@ public class FarmPe_Logo_Fragment extends Fragment {
 
 
 
-//        String slide_txt = "<font color=#000000> When a Farmer Cultivates his land,</font> <font color=#EC4848> Hes Cultivating a Dream Alongside.</font>";
-//        slide_text.setText(Html.fromHtml(slide_txt));
-
-        slider.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
-            @Override
-            public void onPageSelected(int position) {
-                System.out.println("cddsd = "+position);;
-                addBottomDots(position,  ll_dots);
-                // page = position;
-            }
-            @Override
-            public void onPageScrollStateChanged(int state) {
-            }
-        });
 
 
-        no_request.setVisibility(View.GONE);
 
 
-      //  nameee.setText(sessionManager.getRegId("name"));
-
-        try {
-            lngObject = new JSONObject(sessionManager.getRegId("language"));
-
-            toast_click_back = lngObject.getString("PleaseclickBACKagaintoexit");
 
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
+
+
+
+        GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(mLayoutManager_farm);
+        // recyclerView.addItemDecoration(new ItemDecorator( -80));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        AddTractorBean2 img2 = new AddTractorBean2("","","","");
+        newOrderBeansList2.add(img2);
+        newOrderBeansList2.add(img2);
+        newOrderBeansList2.add(img2);
+        newOrderBeansList2.add(img2);
+        newOrderBeansList2.add(img2);
+        newOrderBeansList2.add(img2);
+
+        homePage_adapter = new HomePage_Adapter(getActivity(), newOrderBeansList2);
+        recyclerView.setAdapter(homePage_adapter);
 
 
         view.setFocusableInTouchMode(true);
@@ -239,23 +211,6 @@ public class FarmPe_Logo_Fragment extends Fragment {
 
 
 
-
-
-        newOrderBeansList2.clear();
-        GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(mLayoutManager_farm);
-        // recyclerView.addItemDecoration(new ItemDecorator( -80));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-
-        homePage_adapter = new HomePage_Adapter(getActivity(), newOrderBeansList2);
-        recyclerView.setAdapter(homePage_adapter);
-
-
-        newOrderBeansList.clear();
-        GridLayoutManager mLayoutManager_farm1 = new GridLayoutManager(getActivity(), 1, GridLayoutManager.HORIZONTAL, false);
-
-
         Add_make_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -303,6 +258,21 @@ public class FarmPe_Logo_Fragment extends Fragment {
         });
 
 
+        slider.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+            @Override
+            public void onPageSelected(int position) {
+                System.out.println("cddsd = "+position);;
+                addBottomDots(position,  ll_dots);
+                // page = position;
+            }
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
+
         try {
             final JSONObject jsonObject = new JSONObject();
             jsonObject.put("CreatedBy", sessionManager.getRegId("userId"));
@@ -340,22 +310,19 @@ public class FarmPe_Logo_Fragment extends Fragment {
                             no_request.setVisibility(View.VISIBLE);
                             requests_made.setVisibility(View.GONE);
 
-                           // request_made_lyt.setVisibility(View.VISIBLE);
-                           /* no_farms.setVisibility(View.VISIBLE);
-                            farms_lists.setVisibility(View.GONE);*/
+
 
                         } else {
 
                             no_request.setVisibility(View.GONE);
                             requests_made.setVisibility(View.VISIBLE);
-                          //  request_made_lyt.setVisibility(View.GONE);
 
                         }
 
-                            //   if (i <= 3) {
+                        //   if (i <= 3) {
 
 
-                            //   }
+                        //   }
 
                         for (int i = 0; i < cropsListArray.length(); i++) {
                             JSONObject jsonObject1 = cropsListArray.getJSONObject(i);
@@ -412,27 +379,12 @@ public class FarmPe_Logo_Fragment extends Fragment {
         }
 
 
+
         return view;
-    }
-
-    public class ItemDecorator extends RecyclerView.ItemDecoration {
-        private final int mSpace;
-
-        public ItemDecorator(int space) {
-            this.mSpace = space;
-        }
-
-        @Override
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-            int position = parent.getChildAdapterPosition(view);
-            if (position != 0)
-                // outRect.top = mSpace;
-                outRect.left = mSpace;
-        }
 
     }
 
-    //showing dots on screen
+
     private void addBottomDots(int currentPage, LinearLayout ll_dots) {
         TextView[] dots = new TextView[myImageList.length];
         ll_dots.removeAllViews();
@@ -447,8 +399,4 @@ public class FarmPe_Logo_Fragment extends Fragment {
         if (dots.length > 0)
             dots[currentPage].setTextColor(Color.parseColor("#EC4848")); // flip color
     }
-
 }
-
-
-

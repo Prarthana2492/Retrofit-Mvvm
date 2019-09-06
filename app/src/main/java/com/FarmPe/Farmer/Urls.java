@@ -3,8 +3,8 @@ package com.FarmPe.Farmer;
 
   public class Urls {
 
-  private static final String ROOT_URL = "http://13.232.185.209:909/api/";///DEV
- //  private static final String ROOT_URL = "http://13.233.184.72:909/api/";///pro
+  //private static final String ROOT_URL = "http://13.232.185.209:909/api/";///DEV
+  private static final String ROOT_URL = "http://13.233.184.72:909/api/";///pro
 
 
     public static final String IMAGE_ROOT_URL = "http://13.233.184.72:909";//Image root
@@ -87,6 +87,8 @@ package com.FarmPe.Farmer;
     public static final String Farm_Details = ROOT_URL+"MasterTable/AddUpdateFarms";
     public static final String AddUpdateFarms = ROOT_URL+"MasterTable/AddUpdateFarms";
     public static final String Invitation_Farm = ROOT_URL+"MasterTable/GetInvitationList";
+
+
     public static final String Invitn_accpt_cancel = ROOT_URL+"MasterTable/RespondToConnectionRequest";
 
 

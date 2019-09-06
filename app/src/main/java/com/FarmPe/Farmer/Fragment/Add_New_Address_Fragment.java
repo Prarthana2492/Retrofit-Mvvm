@@ -1306,7 +1306,6 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
     public  void sorting(String filter_text){
-        System.out.println("lllllllllllllllljjjjjjj"+stateBeanList.size());
 
         final String text = filter_text.toLowerCase();
 

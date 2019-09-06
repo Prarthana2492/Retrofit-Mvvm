@@ -3,20 +3,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp"
-    android:layout_marginTop="2dp"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="1dp"
+
+    android:layout_marginTop="1dp"
     >
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
+        android:layout_height="wrap_content">
 
 
         <android.support.v4.view.ViewPager
             android:id="@+id/vp_slider"
             android:layout_width="match_parent"
-            android:layout_height="170dp" />
+            android:layout_height="match_parent" />
 
         <!--<TextView-->
             <!--android:id="@+id/slide_text"-->
