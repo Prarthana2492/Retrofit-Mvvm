@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.FarmPe.Farmer.Bean.AddTractorBean;
 import com.FarmPe.Farmer.Bean.AddTractorBean2;
 import com.FarmPe.Farmer.R;
 import com.bumptech.glide.Glide;
@@ -30,13 +31,20 @@ public class Noimg_Recylr_Adapter extends RecyclerView.Adapter<Noimg_Recylr_Adap
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image;
-
+        public TextView model_name;
 
 
         public MyViewHolder(View view) {
             super(view);
 
             image  = view.findViewById(R.id.imageeee);
+
+
+
+            model_name = view.findViewById(R.id.model_name);
+
+
+
 
 
         }
@@ -56,7 +64,7 @@ public class Noimg_Recylr_Adapter extends RecyclerView.Adapter<Noimg_Recylr_Adap
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final AddTractorBean2 products = productList.get(position);
 
-
+//        holder.model_name.setText(products.getProd_name());
 
         System.out.println("dddiiiijgh" + products.getImage());
 
