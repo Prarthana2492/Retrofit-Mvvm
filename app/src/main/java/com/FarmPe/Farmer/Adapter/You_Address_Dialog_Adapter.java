@@ -40,16 +40,14 @@ public class You_Address_Dialog_Adapter extends RecyclerView.Adapter<You_Address
         this.activity = activity;
     }
 
-
-
     @NonNull
     @Override
     public HoblisMyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View stateview=LayoutInflater.from(parent.getContext()).inflate(R.layout.default_address_adapter,parent,false);
 
-
         return new HoblisMyViewHolder(stateview);
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull final HoblisMyViewHolder holder, final int position) {
@@ -83,7 +81,7 @@ public class You_Address_Dialog_Adapter extends RecyclerView.Adapter<You_Address
         holder.mobile_no.setText("Phone No - " + products.getAdd_mobile());
 
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.state_name_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -106,7 +104,7 @@ public class You_Address_Dialog_Adapter extends RecyclerView.Adapter<You_Address
 
     public class HoblisMyViewHolder extends RecyclerView.ViewHolder{
         TextView name,mobile_no,street_addrss,landmrk,city_1,edit_1,delete_1,default_1,default_add,area_district,colony;
-        LinearLayout add_new_adress;
+        LinearLayout add_new_adress,state_name_layout;
         RadioButton adrr_txt;
 
         public HoblisMyViewHolder(View itemView) {
@@ -125,6 +123,7 @@ public class You_Address_Dialog_Adapter extends RecyclerView.Adapter<You_Address
             area_district = itemView.findViewById(R.id.districttt);
             colony = itemView.findViewById(R.id.colony);
             adrr_txt = itemView.findViewById(R.id.adrr_txt);
+            state_name_layout = itemView.findViewById(R.id.state_name_layout);
 
             add_new_adress = itemView.findViewById(R.id.linear_frame);
            // sessionManager = new SessionManager(activity);

@@ -250,7 +250,6 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                 newfarmpelng=lngObject.getString("NewtoFarmPe");
                 signuplng = lngObject.getString("SignUp");
 
-
                 new_farmpe.setText(newfarmpelng+"?");
                 createaccount.setText(" "+signuplng);
 
@@ -262,6 +261,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                 toast_nointernet = lngObject.getString("NoInternetConnection");
 
             }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -305,6 +305,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
 
 
                 try {
+
                     lngObject = new JSONObject(sessionManager.getRegId("language"));
 
                     popup_heading.setText(lngObject.getString("ChangeLanguage"));

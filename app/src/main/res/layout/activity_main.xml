@@ -11,76 +11,76 @@
     tools:context=".MainActivity"
     >
 
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmer_view_container"
-        android:layout_width="match_parent"
-        app:duration="500"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@color/placeholder_bg" />
+    <!--<com.facebook.shimmer.ShimmerFrameLayout-->
+        <!--android:id="@+id/shimmer_view_container"-->
+        <!--android:layout_width="match_parent"-->
+        <!--app:duration="500"-->
+        <!--android:layout_height="wrap_content">-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical">-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical">-->
+                <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="200dp"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:background="@color/placeholder_bg" />-->
 
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="55dp"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/activity_padding_horizontal"
-                android:paddingRight="@dimen/activity_padding_horizontal"
-                android:weightSum="3">
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
-                    android:layout_weight="1"
-                    android:background="@color/placeholder_bg" />
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
-                    android:layout_marginLeft="@dimen/activity_padding_horizontal"
-                    android:layout_marginRight="@dimen/activity_padding_horizontal"
-                    android:layout_weight="1"
-                    android:background="@color/placeholder_bg" />
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
-                    android:layout_weight="1"
-                    android:background="@color/placeholder_bg" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-              android:layout_margin="50dp">
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="10dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginRight="60dp"
-                    android:background="@color/placeholder_bg" />
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:background="@color/placeholder_bg" />
-            </LinearLayout>
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="55dp"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:paddingLeft="@dimen/activity_padding_horizontal"-->
+                <!--android:paddingRight="@dimen/activity_padding_horizontal"-->
+                <!--android:weightSum="3">-->
+                <!--<View-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="150dp"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:background="@color/placeholder_bg" />-->
+                <!--<View-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="150dp"-->
+                    <!--android:layout_marginLeft="@dimen/activity_padding_horizontal"-->
+                    <!--android:layout_marginRight="@dimen/activity_padding_horizontal"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:background="@color/placeholder_bg" />-->
+                <!--<View-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="150dp"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:background="@color/placeholder_bg" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_marginTop="10dp"-->
+              <!--android:layout_margin="50dp">-->
+                <!--<View-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="10dp"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_marginLeft="60dp"-->
+                    <!--android:layout_marginRight="60dp"-->
+                    <!--android:background="@color/placeholder_bg" />-->
+                <!--<View-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="50dp"-->
+                    <!--android:layout_marginTop="20dp"-->
+                    <!--android:layout_marginLeft="30dp"-->
+                    <!--android:layout_marginRight="30dp"-->
+                    <!--android:background="@color/placeholder_bg" />-->
+            <!--</LinearLayout>-->
 
-        </LinearLayout>
-    </com.facebook.shimmer.ShimmerFrameLayout>
+        <!--</LinearLayout>-->
+    <!--</com.facebook.shimmer.ShimmerFrameLayout>-->
 
 
 
@@ -94,10 +94,10 @@
         <include
             layout="@layout/banner_image_slider_layout"
             android:layout_width="match_parent"
-
             android:layout_height="match_parent"
             >
         </include>
+
 
     </LinearLayout>
 
@@ -122,7 +122,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:id="@+id/request_made"
-
         android:layout_height="0dp"
         android:layout_weight="60"
         android:orientation="vertical"
@@ -131,43 +130,41 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="30"
-            android:orientation="vertical">
+            android:layout_weight="15"
+            android:weightSum="100"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
 
-            <TextView
+
+           <TextView
                 android:id="@+id/request_count"
-                android:layout_width="match_parent"
+                android:layout_marginTop="3dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:gravity="center"
-                android:textColor="@color/sky_blue"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:inputType="number"/>
-
-            <TextView
-                android:layout_marginTop="3dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Requests Made"
+                android:layout_weight="30"
                 android:gravity="center"
                 android:textColor="#000"
                 android:textStyle="bold"
-                android:textSize="18dp"
-                android:layout_marginBottom="12dp"
-                />
+                android:textSize="16dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="12dp"/>
+
 
             <TextView
                 android:id="@+id/request_sell_all"
                 android:layout_marginTop="3dp"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="See All"
-                android:gravity="center"
+                android:gravity="right"
+                android:layout_weight="65"
                 android:textColor="@color/sky_blue"
                 android:textStyle="bold"
-                android:textSize="12dp"
+                android:textSize="14dp"
+
                 />
+
         </LinearLayout>
 
 
@@ -177,11 +174,12 @@
             android:layout_marginLeft="5dp"
             android:gravity="center"
             android:layout_marginRight="5dp"
-            android:layout_weight="50"
+            android:layout_weight="65"
             android:orientation="horizontal">
 
 
             <android.support.v7.widget.RecyclerView
+
                 android:id="@+id/recylr_2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -191,12 +189,9 @@
 
             </android.support.v7.widget.RecyclerView>
 
-
-
-
-
-
         </LinearLayout>
+
+
 
         <LinearLayout
             android:id="@+id/request_button_lyt"
@@ -207,6 +202,7 @@
             android:layout_marginRight="5dp"
             android:layout_weight="20"
             android:orientation="horizontal">
+
 
 
             <TextView

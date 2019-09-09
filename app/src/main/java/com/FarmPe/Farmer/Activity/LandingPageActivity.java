@@ -114,6 +114,7 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
     private static final String ANDROID_CERT_HEADER = "X-Android-Cert";
     private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
     private static final int MAX_LABEL_RESULTS = 10;
+
     @Override
     protected void onStop()
 
@@ -153,7 +154,9 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
                 connectivity_check=false;
             }
 
+
         } else {
+
             message = "No Internet Connection";
             color = Color.RED;
 

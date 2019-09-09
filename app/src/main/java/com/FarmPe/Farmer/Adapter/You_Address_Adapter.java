@@ -89,7 +89,6 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
             linearLayout = view.findViewById(R.id.bottom_sheet1);
             area_district = view.findViewById(R.id.districttt);
             colony = view.findViewById(R.id.colony);
-
             add_new_adress = view.findViewById(R.id.linear_frame);
             sessionManager = new SessionManager(activity);
 

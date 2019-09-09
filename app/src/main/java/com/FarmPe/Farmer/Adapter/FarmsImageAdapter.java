@@ -51,7 +51,7 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image,image_looking,edit;
-        public TextView prod_price,prod_name,duration,farmer_name,location,connect;
+        public TextView prod_price,prod_name,duration,farmer_name,location,connect,selectt;
 
 
         public  LinearLayout linear_looking_main;
@@ -65,6 +65,7 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
             linear_looking_main=view.findViewById(R.id.linear_looking_main);
             image_looking=view.findViewById(R.id.image_looking);
             edit=view.findViewById(R.id.edit);
+            selectt=view.findViewById(R.id.selectt);
 
 
         }
@@ -83,6 +84,9 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final FarmsImageBean products = productList.get(position);
+
+
+        holder.selectt.setVisibility(View.GONE);
 
         try {
 

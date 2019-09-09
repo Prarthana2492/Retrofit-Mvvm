@@ -120,21 +120,20 @@ public class FarmPe_Logo_Fragment extends Fragment {
         noimg_recyclerView = view.findViewById(R.id.recylr_5);
         slider = view.findViewById(R.id.vp_slider);
         ll_dots = view.findViewById(R.id.ll_dots);
-
         reqst_count = view.findViewById(R.id.request_count);
         Add_make_request = view.findViewById(R.id.add_request);
         // no_list_farm= view.findViewById(R.id.list_farmmmmm);
         no_make_request = view.findViewById(R.id.make_requesttttt);
-
         seeall_request = view.findViewById(R.id.request_sell_all);
+
        // image_arraylist.clear();
 //        image_arraylist.add(R.drawable.banner1);
 //        image_arraylist.add(R.drawable.banner2);
 //        image_arraylist.add(R.drawable.banner3);
 //        image_arraylist.add(R.drawable.banner1);
-        mShimmerViewContainer = view.findViewById(R.id.shimmer_view_container);
-        mShimmerViewContainer.setVisibility(View.VISIBLE);
-        mShimmerViewContainer.startShimmerAnimation();
+//        mShimmerViewContainer = view.findViewById(R.id.shimmer_view_container);
+//        mShimmerViewContainer.setVisibility(View.VISIBLE);
+//        mShimmerViewContainer.startShimmerAnimation();
 
         home_slider_adapter = new Home_Slider_Adapter(getActivity(), myImageList);
         slider.setAdapter(home_slider_adapter);
@@ -147,11 +146,13 @@ public class FarmPe_Logo_Fragment extends Fragment {
                 slider.post(new Runnable(){
                     @Override
                     public void run() {
+
                         slider.setCurrentItem((slider.getCurrentItem()+1)%myImageList.length);
                     }
                 });
             }
         };
+
         timer = new Timer();
         timer.schedule(timerTask, 3000, 3000);
 
@@ -171,8 +172,10 @@ public class FarmPe_Logo_Fragment extends Fragment {
                 addBottomDots(position,  ll_dots);
                 // page = position;
             }
+
             @Override
             public void onPageScrollStateChanged(int state) {
+
             }
         });
 
@@ -203,6 +206,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         // this.finishAffinity();
+
                         if (doubleBackToExitPressedOnce) {
                             Intent intent = new Intent(Intent.ACTION_MAIN);
                             intent.addCategory(Intent.CATEGORY_HOME);
@@ -244,9 +248,6 @@ public class FarmPe_Logo_Fragment extends Fragment {
 
 
 
-
-
-
         newOrderBeansList2.clear();
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager_farm);
@@ -264,9 +265,15 @@ public class FarmPe_Logo_Fragment extends Fragment {
         noimg_recyclerView.setLayoutManager(mLayoutManager_farm1);
 
 
+        noimg_recylr_adapter = new Noimg_Recylr_Adapter(getActivity(), newOrderBeansList3);
+        noimg_recyclerView.setAdapter(noimg_recylr_adapter);
+
+
+
         Add_make_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Bundle bundle = new Bundle();
                 bundle.putString("status","home_request");
                 selectedFragment = AddFirstFragment.newInstance();
@@ -282,6 +289,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
         no_make_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Bundle bundle = new Bundle();
                 bundle.putString("status","home_request");
                 selectedFragment = AddFirstFragment.newInstance();
@@ -341,9 +349,6 @@ public class FarmPe_Logo_Fragment extends Fragment {
 
 
 
-
-
-
                         if (request_count.equalsIgnoreCase("0")) {
                             no_request.setVisibility(View.VISIBLE);
                             requests_made.setVisibility(View.GONE);
@@ -372,12 +377,14 @@ public class FarmPe_Logo_Fragment extends Fragment {
 
                         }
 
+
                         for (int i = 0; i < tractorImplementsModelMasterList.length(); i++) {
                             JSONObject jsonObject1 = tractorImplementsModelMasterList.getJSONObject(i);
                             AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
                             newOrderBeansList2.add(img2);
 
                         }
+
 
                         for (int i = 0; i < tractorAccessoriesModelMasterList.length(); i++) {
                             JSONObject jsonObject1 = tractorAccessoriesModelMasterList.getJSONObject(i);
@@ -386,12 +393,14 @@ public class FarmPe_Logo_Fragment extends Fragment {
 
                         }
 
+
                         for (int i = 0; i < harvesterModelMasterList.length(); i++) {
                             JSONObject jsonObject1 = harvesterModelMasterList.getJSONObject(i);
                             AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
                             newOrderBeansList2.add(img2);
 
                         }
+
 
                         for (int i = 0; i < jCBRFQModelList.length(); i++) {
                             JSONObject jsonObject1 = jCBRFQModelList.getJSONObject(i);
@@ -400,19 +409,20 @@ public class FarmPe_Logo_Fragment extends Fragment {
 
                         }
 
-                        reqst_count.setText(request_count);
+                        reqst_count.setText("Requests "+ "(" + request_count + ")");
                         HomeMenuFragment.request_count.setText(request_count);
                         HomeMenuFragment.notifictn_count.setText(notificatn_count);
 
 
                         homePage_adapter.notifyDataSetChanged();
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                mShimmerViewContainer.stopShimmerAnimation();
-                                mShimmerViewContainer.setVisibility(View.GONE);
-                            }
-                        }, 2000);
+
+                        //                        new Handler().postDelayed(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                mShimmerViewContainer.stopShimmerAnimation();
+//                                mShimmerViewContainer.setVisibility(View.GONE);
+//                            }
+//                        }, 2000);
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -424,7 +434,6 @@ public class FarmPe_Logo_Fragment extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
         return view;
     }
@@ -462,6 +471,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
             dots[currentPage].setTextColor(Color.parseColor("#EC4848")); // flip color
     }
 
+
     private void Noimg_recylr() {
         try {
             newOrderBeansList3.clear();
@@ -471,14 +481,18 @@ public class FarmPe_Logo_Fragment extends Fragment {
             JSONObject postjsonObject = new JSONObject();
             postjsonObject.put("LookingForObj", userRequestjsonObject);
             System.out.println("postObj"+postjsonObject.toString());
+
+
             Login_post.login_posting(getActivity(), Urls.GetLookingForItems,postjsonObject,new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("cropsresult"+result);
                     JSONArray cropsListArray=null;
+
                     try {
                         cropsListArray=result.getJSONArray("LookingForDetailsList");
-                        System.out.println("e     e e ddd"+cropsListArray.length());
+                        System.out.println("eeeddd"+cropsListArray.length());
+
                         for (int i=0;i<cropsListArray.length();i++){
                             JSONObject jsonObject1=cropsListArray.getJSONObject(i);
                             String getPrice=jsonObject1.getString("LookingForDetails");
@@ -488,14 +502,19 @@ public class FarmPe_Logo_Fragment extends Fragment {
 
                             AddTractorBean2 crops = new AddTractorBean2(LookingForDetailsIcon, getPrice,"","");
                             newOrderBeansList3.add(crops);
+
                         }
+
                         noimg_recylr_adapter=new Noimg_Recylr_Adapter(getActivity(),newOrderBeansList3);
                         noimg_recyclerView.setAdapter(noimg_recylr_adapter);
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+
                 }
             });
+
         } catch (Exception e) {
             e.printStackTrace();
         }

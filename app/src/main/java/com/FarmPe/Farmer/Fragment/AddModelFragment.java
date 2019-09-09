@@ -49,7 +49,6 @@ AddModelFragment extends Fragment {
     public static RecyclerView recyclerView;
     public static AddModelAdapter farmadapter;
     JSONArray model_list_array;
-
     public static JSONArray tractorImplementsModelMasterList = null;
     public static JSONArray tractorAccessoriesModelMasterList = null;
     public static JSONArray harvesterModelMasterList = null;
@@ -58,7 +57,7 @@ AddModelFragment extends Fragment {
     Fragment selectedFragment = null;
     TextView toolbar_title,continue_button,sub_label,filter_text;
     LinearLayout back_feed,linearLayout;
-ImageView b_arrow;
+    ImageView b_arrow;
 
 
     public static AddModelFragment newInstance() {
@@ -108,7 +107,6 @@ ImageView b_arrow;
 
 
 
-
         filter_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,7 +119,9 @@ ImageView b_arrow;
                 final TextView asce = (TextView)dialog.findViewById(R.id.sort_ascendi) ;
                 final TextView desc = (TextView)dialog.findViewById(R.id.sort_desendi) ;
                 //   final TextView popuptxt = (TextView)dialog.findViewById(R.id.popup_heading) ;
-                ImageView image = (ImageView) dialog.findViewById(R.id.close_popup);
+
+                LinearLayout image = (LinearLayout) dialog.findViewById(R.id.close_popup);
+
                 image.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -173,6 +173,7 @@ ImageView b_arrow;
                         harvesterModelMasterList = result.getJSONArray("HarvesterModelMasterList");
                         jCBRFQModelList = result.getJSONArray("JCBModelMasterList");
                         modelBeanArrayList.clear();
+
                         for(int i=0;i<model_list_array.length();i++){
                             JSONObject jsonObject1 = model_list_array.getJSONObject(i);
                             modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),jsonObject1.getString("DriveType"),jsonObject1.getString("Steering"),jsonObject1.getString("HorsePower"),jsonObject1.getString("ClutchType"),jsonObject1.getString("TransmissionType"),jsonObject1.getString("CubicCapacity"),jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"));
@@ -224,52 +225,6 @@ ImageView b_arrow;
         }
 
     }
-//    private void ModelList() {
-//        Bundle bundle=getArguments();
-//        String hpId  = AddHpAdapter.hp_model;
-//
-//        try {
-//            newOrderBeansList.clear();
-//
-//            JSONObject userRequestjsonObject = new JSONObject();
-//             userRequestjsonObject.put("BrandId", AddBrandAdapter.brandId);
-//             userRequestjsonObject.put("HPId", hpId);
 
-//
-//
-//
-//            Login_post.login_posting(getActivity(), Urls.ModelList,userRequestjsonObject,new VoleyJsonObjectCallback() {
-//                @Override
-//                public void onSuccessResponse(JSONObject result) {
-//                    System.out.println("cropsresult"+result);
-//                    JSONArray cropsListArray=null;
-//                    try {
-//                        cropsListArray=result.getJSONArray("TractorList");
-//                        System.out.println("eeeddd"+cropsListArray.length());
-//                        for (int i=0;i<cropsListArray.length();i++){
-//                            JSONObject jsonObject1=cropsListArray.getJSONObject(i);
-//                            String model=jsonObject1.getString("Model");
-//                            System.out.println("madels"+model);
-//                            String image=jsonObject1.getString("ModelImage");
-//                            String id=jsonObject1.getString("Id");
-//                            System.out.println("madelslistt"+newOrderBeansList.size());
-//                            AddTractorBean crops = new AddTractorBean(image, model,id,false);
-//                            newOrderBeansList.add(crops);
-//
-//
-//                        }
-//
-//                        farmadapter=new AddModelAdapter(getActivity(),newOrderBeansList);
-//                        recyclerView.setAdapter(farmadapter);
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            });
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
 
 }

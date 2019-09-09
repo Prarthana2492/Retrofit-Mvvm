@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
@@ -83,8 +84,10 @@ ImageView b_arrow;
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("first", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
                     return true;
                 }
                 return false;

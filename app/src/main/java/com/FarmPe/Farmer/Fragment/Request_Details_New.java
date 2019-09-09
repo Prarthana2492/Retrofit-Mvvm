@@ -91,8 +91,10 @@ public class Request_Details_New extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View view = getView() != null ? getView() :
-                inflater.inflate(R.layout.request_form_layout, container, false);
+       View view = inflater.inflate(R.layout.request_form_layout, container, false);
+//        final View view = getView() != null ? getView() :
+//                inflater.inflate(R.layout.request_form_layout, container, false);
+
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
         b_arrow=view.findViewById(R.id.b_arrow);
@@ -109,7 +111,7 @@ public class Request_Details_New extends Fragment {
         purchase_edit=view.findViewById(R.id.purchase_edit);
         add_addrss=view.findViewById(R.id.add_addrss);
         //purchase_edit=view.findViewById(R.id.add_addrss);
-        linearLayout=view.findViewById(R.id.profile_view);
+        linearLayout=view.findViewById(R.id.linear_layout);
         no_address_text=view.findViewById(R.id.no_address_text);
        // toolbar_title.setText("Request for Quotation");
         sessionManager=new SessionManager(getActivity());
@@ -141,6 +143,7 @@ public class Request_Details_New extends Fragment {
             public void onClick(View v) {
 
              //   b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
+
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("fourth", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
@@ -154,8 +157,11 @@ public class Request_Details_New extends Fragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+
+
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("fourth", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
                     return true;
                 }
                 return false;
@@ -267,6 +273,8 @@ public class Request_Details_New extends Fragment {
                     }
                 });
 
+
+
                 after_3months.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -292,16 +300,16 @@ public class Request_Details_New extends Fragment {
                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                    ImageView image = (ImageView) dialog.findViewById(R.id.close_popup);
 
-                 recyclerView = dialog.findViewById(R.id.recycler_view);
-                 no_address_text=dialog.findViewById(R.id.no_address_text);
-                final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-                layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                recyclerView.setLayoutManager(layoutManager);
-                recyclerView.setItemAnimator(new DefaultItemAnimator());
+                   recyclerView = dialog.findViewById(R.id.recycler_view);
+                   no_address_text=dialog.findViewById(R.id.no_address_text);
+                   final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                   layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                   recyclerView.setLayoutManager(layoutManager);
+                   recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-                you_address_dialog_adapter = new You_Address_Dialog_Adapter(new_address_beanArrayList, getActivity());
-                recyclerView.setAdapter(you_address_dialog_adapter);
-                 address_list();
+                  you_address_dialog_adapter = new You_Address_Dialog_Adapter(new_address_beanArrayList, getActivity());
+                  recyclerView.setAdapter(you_address_dialog_adapter);
+                  address_list();
 
 
                 image.setOnClickListener(new View.OnClickListener() {
@@ -354,9 +362,6 @@ public class Request_Details_New extends Fragment {
                              no_address_text.setVisibility(View.GONE);
                              recyclerView.setVisibility(View.VISIBLE);
                          }
-
-
-
 
 
                         you_address_dialog_adapter.notifyDataSetChanged();

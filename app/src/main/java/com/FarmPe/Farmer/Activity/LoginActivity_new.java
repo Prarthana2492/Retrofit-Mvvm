@@ -24,6 +24,7 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -401,14 +402,15 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
             @Override
             public void onClick(View v) {
 
-               /* if (change_lang.getText().toString().equals("English")){
-                    isEng = true;
-                    Log.d("GGGGGGGG", "Here: "+LoginActivity_new.isEng);
-                }
-                else{
-                    isEng = false;
-                    Log.d("GGGGGGGG", "Here: "+LoginActivity_new.isEng);
-                }*/
+//                if (change_lang.getText().toString().equals("English")){
+//                    isEng = true;
+//                    Log.d("GGGGGGGG", "Here: "+LoginActivity_new.isEng);
+//                }
+//                else{
+//                    isEng = false;
+//                    Log.d("GGGGGGGG", "Here: "+LoginActivity_new.isEng);
+//                }
+
                 mobile_string=mobile_no.getText().toString();
                 mob_no =loc_text+ mobile_no.getText().toString();
                 password = pass.getText().toString();
@@ -522,7 +524,9 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
                                                 AddData(mobile_no.getText().toString(),password);
                                             }
-                                        }else {
+
+                                           }else {
+
                                             if(myDb.isEmailExists(mobile_no.getText().toString())){
 
                                                 DeleteData(mobile_no.getText().toString(),password);

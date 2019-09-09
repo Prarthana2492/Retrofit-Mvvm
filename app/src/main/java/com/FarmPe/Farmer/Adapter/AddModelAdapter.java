@@ -110,7 +110,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
         holder.model.setText(products.getModel_name());
         holder.hp_power.setText(products.getDrive_type()+ " , " + products.getSteering()+ " , " + products.getHorse_power() + " , " + products.getClutch_type()+ " , " + products.getTransmission_type());
 
-  System.out.println("fhjhgf" + products.getPdf_brochure());
+     System.out.println("fhjhgf" + products.getPdf_brochure());
 
         Glide.with(activity).load(products.getImage())
 
@@ -121,8 +121,8 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
 
         holder.brochure.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                @Override
+                public void onClick(View v) {
 
 
                 if(products.getPdf_brochure().equalsIgnoreCase("")){
@@ -140,12 +140,13 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
                     snackbar.show();
+
                 }else {
                     Bundle bundle = new Bundle();
                     bundle.putString("brochur_status", brochure_pdf);
                     selectedFragment = Model_Brochure_Fragment.newInstance();
                     FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-                    transaction.add(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_layout, selectedFragment);
                     selectedFragment.setArguments(bundle);
                     transaction.addToBackStack("pdf");
                     transaction.commit();
@@ -171,7 +172,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
                 tractor_id=products.getId();
                 selectedFragment = Request_Details_New.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-                transaction.add(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_layout, selectedFragment);
                 transaction.addToBackStack("fourth");
                 transaction.commit();
             }

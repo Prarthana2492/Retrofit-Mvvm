@@ -155,12 +155,34 @@ public class AaAccountFragment extends Fragment {
                 positiveText.setText("Save");
                 TextView negetiveText = sheetView.findViewById(R.id.negetive_text);
                 negetiveText.setText("Cancel");
+
+
                 positiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        save_password();
+
+
+                        if(userInputedt.getText().toString().equals("")) {
+
+
+                            Toast.makeText(getActivity(), "Please Enter New Password", Toast.LENGTH_SHORT).show();
+                            mBottomSheetDialog.show();
+
+
+                        } else if(userInputedt.length()<12){
+
+                            Toast.makeText(getActivity(), "Password Should Be Minimum 12 Characters", Toast.LENGTH_SHORT).show();
+                            mBottomSheetDialog.show();
+
+
+                        }else{
+
+                            save_password();
+                        }
+
                     }
                 });
+
                 negetiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

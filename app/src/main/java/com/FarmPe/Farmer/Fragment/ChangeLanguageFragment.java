@@ -84,16 +84,16 @@ public class ChangeLanguageFragment extends Fragment {
 
 
 
-        try {
-            lngObject = new JSONObject(sessionManager.getRegId("language"));
-
-            lang_title.setText(lngObject.getString("ChangeLanguage"));
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
+//        try {
+//            lngObject = new JSONObject(sessionManager.getRegId("language"));
+//
+//            lang_title.setText(lngObject.getString("ChangeLanguage"));
+//
+//
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//
 
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override

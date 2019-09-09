@@ -96,7 +96,7 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
 
         holder.fav_request.setImageResource(R.drawable.ic_star_filled);
 
-         holder.select.setVisibility(View.GONE);
+
         model_id = products.getId();
         brochure_pdf = products.getPdf_brochure();
 
@@ -133,17 +133,17 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
         });
 
 
-//        holder.select.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                tractor_id=products.getId();
-//                selectedFragment = Request_Details_New.newInstance();
-//                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-//                transaction.add(R.id.frame_layout, selectedFragment);
-//                transaction.addToBackStack("fourth");
-//                transaction.commit();
-//            }
-//        });
+        holder.select.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tractor_id=products.getId();
+                selectedFragment = Request_Details_New.newInstance();
+                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+                transaction.add(R.id.frame_layout, selectedFragment);
+                transaction.addToBackStack("fourth");
+                transaction.commit();
+            }
+        });
 
 
 

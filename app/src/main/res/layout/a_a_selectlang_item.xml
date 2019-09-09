@@ -33,6 +33,7 @@
                 android:layout_height="wrap_content"
                 android:text="  RadioButton1"
                 android:padding="5dp"
+                android:checked="false"
                 android:buttonTint="@color/menu_green"
                 android:textSize="18dp"/>
 

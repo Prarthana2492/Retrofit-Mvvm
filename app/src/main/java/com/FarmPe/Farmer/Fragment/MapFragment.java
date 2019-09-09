@@ -90,10 +90,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         //getSupportActionBar().setTitle("Map Location Activity");
         mapFrag = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFrag.getMapAsync(this);
+
         final LocationManager lm = (LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE);
+
+
+
+
            view.setFocusableInTouchMode(true);
            view.requestFocus();
-          view.setOnKeyListener(new View.OnKeyListener() {
+           view.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
 
@@ -116,6 +121,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
             }
         });
 
+
+
         confirm_loc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,7 +143,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                     }
                     snackbar.show();
 
-                } else {
+
+               } else {
                     System.out.println("hrrrjjkj");
                     Bundle bundle = new Bundle();
                     bundle.putString("currentaddress_id",state);
@@ -145,9 +153,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                     transaction.add(R.id.frame_layout, selectedFragment);
                     selectedFragment.setArguments(bundle);
                     transaction.commit();
+
                 }
+
             }
+
         });
+
         return view;
     }
 

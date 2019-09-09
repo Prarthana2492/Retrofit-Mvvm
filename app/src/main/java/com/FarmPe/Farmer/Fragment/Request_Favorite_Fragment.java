@@ -184,27 +184,27 @@ public class Request_Favorite_Fragment extends Fragment {
 
                             for (int i = 0; i < model_list_array.length(); i++) {
                                 JSONObject jsonObject1 = model_list_array.getJSONObject(i);
-                                modelBean = new ModelBean(jsonObject1.getString("BrandName"), jsonObject1.getString("Model"), jsonObject1.getString("DriveType"), jsonObject1.getString("Steering"), jsonObject1.getString("HorsePower"), jsonObject1.getString("ClutchType"), jsonObject1.getString("TransmissionType"), jsonObject1.getString("CubicCapacity"), jsonObject1.getString("ModelImage"), jsonObject1.getString("Brochure"), jsonObject1.getString("Id"));
+                                modelBean = new ModelBean(jsonObject1.getString("BrandName"), jsonObject1.getString("Model"), "", "","", "", "", "", jsonObject1.getString("ModelImage"), jsonObject1.getString("Brochure"), jsonObject1.getString("Id"));
                                 modelBeanArrayList.add(modelBean);
 
                             }
 
                             for (int i = 0; i < tractorImplementsModelMasterList.length(); i++) {
                                 JSONObject jsonObject1 = tractorImplementsModelMasterList.getJSONObject(i);
-                                modelBean = new ModelBean(jsonObject1.getString("BrandName"), jsonObject1.getString("Model"), jsonObject1.getString("DriveType"), jsonObject1.getString("Steering"), jsonObject1.getString("HorsePower"), jsonObject1.getString("ClutchType"), jsonObject1.getString("TransmissionType"), jsonObject1.getString("CubicCapacity"), jsonObject1.getString("ModelImage"), jsonObject1.getString("Brochure"), jsonObject1.getString("Id"));
+                                modelBean = new ModelBean(jsonObject1.getString("BrandName"), jsonObject1.getString("Model"),"","", "","", "","" , jsonObject1.getString("ModelImage"), jsonObject1.getString("Brochure"), jsonObject1.getString("Id"));
                                 modelBeanArrayList.add(modelBean);
 
                             }
                             for (int i = 0; i < tractorAccessoriesModelMasterList.length(); i++) {
                                 JSONObject jsonObject1 = tractorAccessoriesModelMasterList.getJSONObject(i);
-                                modelBean = new ModelBean(jsonObject1.getString("BrandName"), jsonObject1.getString("Model"), jsonObject1.getString("DriveType"), jsonObject1.getString("Steering"), jsonObject1.getString("HorsePower"), jsonObject1.getString("ClutchType"), jsonObject1.getString("TransmissionType"), jsonObject1.getString("CubicCapacity"), jsonObject1.getString("ModelImage"), jsonObject1.getString("Brochure"), jsonObject1.getString("Id"));
+                                modelBean = new ModelBean(jsonObject1.getString("BrandName"), jsonObject1.getString("Model"),"","","","","","" ,jsonObject1.getString("ModelImage"), jsonObject1.getString("Brochure"), jsonObject1.getString("Id"));
                                 modelBeanArrayList.add(modelBean);
 
 
                             }
                             for (int i = 0; i < harvesterModelMasterList.length(); i++) {
                                 JSONObject jsonObject1 = harvesterModelMasterList.getJSONObject(i);
-                                modelBean = new ModelBean(jsonObject1.getString("BrandName"), jsonObject1.getString("Model"), jsonObject1.getString("DriveType"), jsonObject1.getString("Steering"), jsonObject1.getString("HorsePower"), jsonObject1.getString("ClutchType"), jsonObject1.getString("TransmissionType"), jsonObject1.getString("CubicCapacity"), jsonObject1.getString("ModelImage"), jsonObject1.getString("Brochure"), jsonObject1.getString("Id"));
+                                modelBean = new ModelBean(jsonObject1.getString("BrandName"), jsonObject1.getString("Model"),"", "", "", "", "", "", jsonObject1.getString("ModelImage"), jsonObject1.getString("Brochure"), jsonObject1.getString("Id"));
                                 modelBeanArrayList.add(modelBean);
 
                             }
