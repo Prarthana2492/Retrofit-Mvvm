@@ -126,14 +126,14 @@ public class FarmPe_Logo_Fragment extends Fragment {
         no_make_request = view.findViewById(R.id.make_requesttttt);
         seeall_request = view.findViewById(R.id.request_sell_all);
 
-       // image_arraylist.clear();
-//        image_arraylist.add(R.drawable.banner1);
-//        image_arraylist.add(R.drawable.banner2);
-//        image_arraylist.add(R.drawable.banner3);
-//        image_arraylist.add(R.drawable.banner1);
-//        mShimmerViewContainer = view.findViewById(R.id.shimmer_view_container);
-//        mShimmerViewContainer.setVisibility(View.VISIBLE);
-//        mShimmerViewContainer.startShimmerAnimation();
+        image_arraylist.clear();
+        image_arraylist.add(R.drawable.banner1);
+        image_arraylist.add(R.drawable.banner2);
+        image_arraylist.add(R.drawable.banner3);
+        image_arraylist.add(R.drawable.banner1);
+        mShimmerViewContainer = view.findViewById(R.id.shimmer_view_container);
+        mShimmerViewContainer.setVisibility(View.VISIBLE);
+        mShimmerViewContainer.startShimmerAnimation();
 
         home_slider_adapter = new Home_Slider_Adapter(getActivity(), myImageList);
         slider.setAdapter(home_slider_adapter);
@@ -259,6 +259,9 @@ public class FarmPe_Logo_Fragment extends Fragment {
         homePage_adapter = new HomePage_Adapter(getActivity(), newOrderBeansList2);
         recyclerView.setAdapter(homePage_adapter);
 
+      /*  noimg_recylr_adapter=new Noimg_Recylr_Adapter(getActivity(),newOrderBeansList3);
+        noimg_recyclerView.setAdapter(noimg_recylr_adapter);
+*/
 
         newOrderBeansList.clear();
         GridLayoutManager mLayoutManager_farm1 = new GridLayoutManager(getActivity(), 1, GridLayoutManager.HORIZONTAL, false);
@@ -339,9 +342,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
                         String notificatn_count = String.valueOf(result.getInt("NotificationCount"));
 
                         JSONObject rfqListObject=result.getJSONObject("RFQList");
-
                         cropsListArray = rfqListObject.getJSONArray("TractorRFQModelList");
-
                         tractorImplementsModelMasterList = rfqListObject.getJSONArray("TractorImplementsRFQModelList");
                         tractorAccessoriesModelMasterList = rfqListObject.getJSONArray("TractorAccesoriesRFQModelList");
                         harvesterModelMasterList = rfqListObject.getJSONArray("HarvesterRFQModelList");
@@ -416,13 +417,15 @@ public class FarmPe_Logo_Fragment extends Fragment {
 
                         homePage_adapter.notifyDataSetChanged();
 
-                        //                        new Handler().postDelayed(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                mShimmerViewContainer.stopShimmerAnimation();
-//                                mShimmerViewContainer.setVisibility(View.GONE);
-//                            }
-//                        }, 2000);
+
+
+                                               new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                mShimmerViewContainer.stopShimmerAnimation();
+                                mShimmerViewContainer.setVisibility(View.GONE);
+                            }
+                        }, 2000);
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -503,10 +506,12 @@ public class FarmPe_Logo_Fragment extends Fragment {
                             AddTractorBean2 crops = new AddTractorBean2(LookingForDetailsIcon, getPrice,"","");
                             newOrderBeansList3.add(crops);
 
+                            noimg_recylr_adapter.notifyDataSetChanged();
+                            mShimmerViewContainer.stopShimmerAnimation();
+                            mShimmerViewContainer.setVisibility(View.GONE);
+
                         }
 
-                        noimg_recylr_adapter=new Noimg_Recylr_Adapter(getActivity(),newOrderBeansList3);
-                        noimg_recyclerView.setAdapter(noimg_recylr_adapter);
 
                     } catch (JSONException e) {
                         e.printStackTrace();

@@ -1,5 +1,6 @@
 package com.FarmPe.Farmer.Fragment;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -148,15 +150,33 @@ public class AaHelpFragment extends Fragment {
 
                         if(feedback_edit.getText().toString().equals("")){
                            // mBottomSheetDialog.dismiss();
-                            Toast.makeText(getActivity(), "Please enter description", Toast.LENGTH_SHORT).show();
+
+
+                            InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                            //Toast.makeText(getActivity(), "Please Enter Password", Toast.LENGTH_LONG).show();
+                            int duration = 1000;
+                            Snackbar snackbar = Snackbar
+                                    .make(mBottomSheetDialog.getWindow().getDecorView(), "Please Enter Description", duration);
+                            View snackbarView = snackbar.getView();
+                            TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                            tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                            tv.setTextColor(Color.WHITE);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                                tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                            } else {
+                                tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                            }
+                            snackbar.show();
                             mBottomSheetDialog.show();
 
                         }else{
                             feedback();
                         }
-                     // mBottomSheetDialog.dismiss();
+
                     }
                 });
+
                 cancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

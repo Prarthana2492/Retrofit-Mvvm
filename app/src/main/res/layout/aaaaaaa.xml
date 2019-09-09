@@ -168,14 +168,12 @@
 
                         <EditText
                             android:id="@+id/address_type"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:hint="Home"
                             android:paddingVertical="2dp"
                             android:textSize="13dp"
                             android:editable="false"
-                            android:focusable="false"
-                            android:focusableInTouchMode="true"
                             android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColor="#666666"
@@ -221,23 +219,23 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="40dp"
-                        android:layout_weight="100">
+                        android:layout_weight="90">
+
 
 
                         <EditText
-                            android:id="@+id/name_txt"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="6dp"
+                            android:layout_height="wrap_content"
+                            android:hint="Name : "
+                            android:paddingVertical="2dp"
+                            android:textSize="13dp"
                             android:background="@android:color/transparent"
+                            android:editable="false"
+                            android:layout_marginLeft="6dp"
+                            android:paddingRight="10dp"
                             android:backgroundTint="#d3d3d3"
                             android:fontFamily="@font/segoeui"
-                            android:hint="Name : "
-                            android:editable="false"
-                            android:paddingVertical="2dp"
-                            android:paddingRight="10dp"
-                            android:textColorHint="#000"
-                            android:textSize="13dp" />
+                            android:textColorHint="#000"/>
 
 
                         <EditText
@@ -248,8 +246,7 @@
                             android:paddingVertical="2dp"
                             android:textSize="13dp"
                             android:maxLength="30"
-                            android:focusable="false"
-                            android:focusableInTouchMode="true"
+                            android:editable="false"
                             android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColor="#666666"
@@ -266,21 +263,21 @@
 
 
                 <!--<EditText-->
-                <!--android:id="@+id/full_name"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:hint="Name"-->
-                <!--android:paddingVertical="2dp"-->
-                <!--android:layout_marginTop="35dp"-->
-                <!--android:textSize="13dp"-->
-                <!--android:background="@android:color/transparent"-->
-                <!--android:maxLength="30"-->
-                <!--android:layout_marginLeft="6dp"-->
-                <!--android:paddingRight="10dp"-->
-                <!--android:backgroundTint="#d3d3d3"-->
-                <!--android:fontFamily="@font/segoeui"-->
-                <!--android:textColorHint="#000"-->
-                <!--/>-->
+                    <!--android:id="@+id/full_name"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:hint="Name"-->
+                    <!--android:paddingVertical="2dp"-->
+                    <!--android:layout_marginTop="35dp"-->
+                    <!--android:textSize="13dp"-->
+                    <!--android:background="@android:color/transparent"-->
+                    <!--android:maxLength="30"-->
+                    <!--android:layout_marginLeft="6dp"-->
+                    <!--android:paddingRight="10dp"-->
+                    <!--android:backgroundTint="#d3d3d3"-->
+                    <!--android:fontFamily="@font/segoeui"-->
+                    <!--android:textColorHint="#000"-->
+                    <!--/>-->
 
                 <View
                     android:layout_width="match_parent"
@@ -301,12 +298,11 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="40dp"
-                        android:layout_weight="100">
+                        android:layout_weight="90">
 
 
 
                         <EditText
-                            android:id="@+id/mobile_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:hint="Mobile Number :"
@@ -323,15 +319,13 @@
 
                         <EditText
                             android:id="@+id/mob_no"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:hint="fdgdfggfdgdgd"
                             android:paddingVertical="2dp"
                             android:textSize="13dp"
                             android:maxLength="10"
-                            android:focusable="false"
-                            android:focusableInTouchMode="true"
-                            android:inputType="number"
+                            android:editable="false"
                             android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColor="#666666"
@@ -349,22 +343,22 @@
 
 
                 <!--<EditText-->
-                <!--android:id="@+id/mob_no"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:hint="Mobile Number"-->
-                <!--android:paddingVertical="2dp"-->
-                <!--android:layout_marginTop="35dp"-->
-                <!--android:textSize="13dp"-->
-                <!--android:background="@android:color/transparent"-->
-                <!--android:maxLength="10"-->
-                <!--android:layout_marginLeft="6dp"-->
-                <!--android:paddingRight="10dp"-->
-                <!--android:inputType="number"-->
-                <!--android:backgroundTint="#d3d3d3"-->
-                <!--android:fontFamily="@font/segoeui"-->
-                <!--android:textColorHint="#000"-->
-                <!--/>-->
+                    <!--android:id="@+id/mob_no"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:hint="Mobile Number"-->
+                    <!--android:paddingVertical="2dp"-->
+                    <!--android:layout_marginTop="35dp"-->
+                    <!--android:textSize="13dp"-->
+                    <!--android:background="@android:color/transparent"-->
+                    <!--android:maxLength="10"-->
+                    <!--android:layout_marginLeft="6dp"-->
+                    <!--android:paddingRight="10dp"-->
+                    <!--android:inputType="number"-->
+                    <!--android:backgroundTint="#d3d3d3"-->
+                    <!--android:fontFamily="@font/segoeui"-->
+                    <!--android:textColorHint="#000"-->
+                    <!--/>-->
 
                 <View
                     android:layout_width="match_parent"
@@ -383,7 +377,6 @@
                     android:paddingVertical="2dp"
                     android:layout_marginTop="35dp"
                     android:textSize="13dp"
-                    android:inputType="textNoSuggestions"
                     android:background="@android:color/transparent"
                     android:maxLength="30"
                     android:layout_marginLeft="6dp"
@@ -408,7 +401,6 @@
                     android:paddingVertical="2dp"
                     android:layout_marginTop="35dp"
                     android:textSize="13dp"
-                    android:inputType="textNoSuggestions"
                     android:background="@android:color/transparent"
                     android:maxLength="30"
                     android:layout_marginLeft="6dp"
@@ -841,12 +833,11 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="40dp"
-                        android:layout_weight="100">
+                        android:layout_weight="90">
 
 
 
                         <EditText
-                            android:id="@+id/pincode_edittxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:hint="Pincode : "
@@ -863,15 +854,13 @@
 
                         <EditText
                             android:id="@+id/pincode"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:hint="fdgdfggfdgdgd"
                             android:paddingVertical="2dp"
                             android:textSize="13dp"
                             android:maxLength="6"
-                            android:inputType="number"
-                            android:focusable="false"
-                            android:focusableInTouchMode="true"
+                            android:editable="false"
                             android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColor="#666666"
@@ -886,6 +875,23 @@
 
                 </LinearLayout>
 
+
+                <!--<EditText-->
+                    <!--android:id="@+id/pincode"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:hint="Pincode"-->
+                    <!--android:paddingVertical="2dp"-->
+                    <!--android:layout_marginTop="35dp"-->
+                    <!--android:textSize="13dp"-->
+                    <!--android:background="@android:color/transparent"-->
+                    <!--android:maxLength="6"-->
+                    <!--android:inputType="number"-->
+                    <!--android:layout_marginLeft="6dp"-->
+                    <!--android:paddingRight="10dp"-->
+                    <!--android:backgroundTint="#d3d3d3"-->
+                    <!--android:fontFamily="@font/segoeui"-->
+                    <!--android:textColorHint="#000"/>-->
 
 
                 <View

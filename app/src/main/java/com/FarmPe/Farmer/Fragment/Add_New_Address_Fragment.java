@@ -101,7 +101,7 @@ public class  Add_New_Address_Fragment extends Fragment {
     LinearLayout linearLayout;
     public static TextView state_txt,district_txt,tehsil_txt,village_txt,block_txt;
     String s_addtype,entername,entermno,inncrtmno,enterstreetad,enterpincode,selectstate,selectdistrict,selecttaluk,selecthobli,selectvillage,newaddressadded,addnotadded ;
-    public static EditText name,mobile,pincode_no,house_numb,street_name,select_address,landmrk,address_type,edit_state,edit_districr,edit_village;
+    public static EditText name,mobile,pincode_no,house_numb,street_name,select_address,landmrk,address_type,edit_state,edit_districr,pincode_edittxt,edit_village,name_txt,mobile_edit;
     String status,message;
     String Id;
     SessionManager sessionManager;
@@ -129,6 +129,9 @@ public class  Add_New_Address_Fragment extends Fragment {
         pincode_no = view.findViewById(R.id.pincode);
         house_numb = view.findViewById(R.id.house_no);
         street_name = view.findViewById(R.id.colny_street);
+        mobile_edit = view.findViewById(R.id.mobile_edit);
+        pincode_edittxt = view.findViewById(R.id.pincode_edittxt);
+
        // landmrk = view.findViewById(R.id.landmrk);
         search = view.findViewById(R.id.search);
         // main_layout = view.findViewById(R.id.drawer_layout_op);
@@ -153,6 +156,7 @@ public class  Add_New_Address_Fragment extends Fragment {
         tehsil = view.findViewById(R.id.tehsil_1);
         //  block = view.findViewById(R.id.block_1);
         village = view.findViewById(R.id.village_1);
+        name_txt = view.findViewById(R.id.name_txt);
 
         linearLayout = view.findViewById(R.id.linear_layout);
 
@@ -189,6 +193,7 @@ public class  Add_New_Address_Fragment extends Fragment {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
 
         current_loc = view.findViewById(R.id.current_loc);
         if (getArguments().getString("navigation_from").equals("REQ_NEW")){
@@ -349,6 +354,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
                 image.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -405,7 +411,6 @@ public class  Add_New_Address_Fragment extends Fragment {
 
             }
         });
-
 
 
 
@@ -753,10 +758,10 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
 
-                }else if(pincode_no.length()<6){
+                }else if(!(pincode_no.getText().toString().equals("")) && pincode_no.length()<6){
                     int duration=1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, enterpincode,duration);
+                            .make(linearLayout, "Enter a valid pincode",duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
@@ -784,11 +789,11 @@ public class  Add_New_Address_Fragment extends Fragment {
            // toolbar_titletxt.setText(lngObject.getString("AddNewAddress"));
            // select_address.setHint(lngObject.getString("SelectanAddressType"));
 
-            name.setHint(lngObject.getString("FullName")+ " :");
-            mobile.setHint(lngObject.getString("PhoneNo") + " :");
+            name_txt.setHint(lngObject.getString("FullName")+ " :");
+            mobile_edit.setHint(lngObject.getString("PhoneNo") + " :");
             street_name.setHint(lngObject.getString("Colony_Street_Locality"));
 
-            pincode_no.setHint(lngObject.getString("Pincode")+" :");
+            pincode_edittxt.setHint(lngObject.getString("Pincode")+" :");
             edit_state.setHint(lngObject.getString("State") + " :");
 
             edit_districr.setHint(lngObject.getString("District") + " :");

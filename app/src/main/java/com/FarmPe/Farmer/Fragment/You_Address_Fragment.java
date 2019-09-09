@@ -325,8 +325,6 @@ public class You_Address_Fragment extends Fragment {
         }
 
 
-
-
         return view;
     }
 

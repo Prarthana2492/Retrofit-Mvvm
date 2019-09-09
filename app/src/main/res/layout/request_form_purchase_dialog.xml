@@ -34,7 +34,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-
                 android:text="When are you planning to buy?"
                 android:textColor="#000"
                 android:textSize="16dp"

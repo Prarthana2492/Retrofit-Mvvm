@@ -1,5 +1,6 @@
 package com.FarmPe.Farmer.Fragment;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -27,6 +28,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -165,14 +167,49 @@ public class AaAccountFragment extends Fragment {
                         if(userInputedt.getText().toString().equals("")) {
 
 
-                            Toast.makeText(getActivity(), "Please Enter New Password", Toast.LENGTH_SHORT).show();
+                            InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                            //Toast.makeText(getActivity(), "Please Enter Password", Toast.LENGTH_LONG).show();
+                            int duration = 1000;
+                            Snackbar snackbar = Snackbar
+                                    .make(mBottomSheetDialog.getWindow().getDecorView(), "Please Enter Password", duration);
+                            View snackbarView = snackbar.getView();
+                            TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                            tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                            tv.setTextColor(Color.WHITE);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                                tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                            } else {
+                                tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                            }
+                            snackbar.show();
                             mBottomSheetDialog.show();
 
 
-                        } else if(userInputedt.length()<12){
 
-                            Toast.makeText(getActivity(), "Password Should Be Minimum 12 Characters", Toast.LENGTH_SHORT).show();
+                        } else if(userInputedt.length()<6){
+
+                            InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                            //Toast.makeText(getActivity(), "Please Enter Password", Toast.LENGTH_LONG).show();
+                            int duration = 1000;
+                            Snackbar snackbar = Snackbar
+                                    .make(mBottomSheetDialog.getWindow().getDecorView(), "Password Should Be Minimum 6 Characters", duration);
+                            View snackbarView = snackbar.getView();
+                            TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                            tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                            tv.setTextColor(Color.WHITE);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                                tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                            } else {
+                                tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                            }
+                            snackbar.show();
                             mBottomSheetDialog.show();
+
+
+                            //Toast.makeText(getActivity(), "Password Should Be Minimum 12 Characters", Toast.LENGTH_SHORT).show();
+
 
 
                         }else{

@@ -64,30 +64,7 @@
         android:orientation="vertical"
         >
 
-        <!-- <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:orientation="vertical"
-             android:background="#f5f5f5"
-             >
 
-             <TextView
-                 android:id="@+id/text"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-
-                 android:textStyle="bold"
-                 android:background="#fff"
-                 android:fontFamily="@font/segoeui"
-                 android:text="Select an Address Type"
-                 android:textSize="18dp"
-                 android:padding="10dp"
-                 android:gravity="start"
-
-                 android:textColor="#000000"
-                 />
-
-         </LinearLayout>-->
 
 
 
@@ -96,7 +73,6 @@
             android:layout_height="1dp"
             android:background="#e5e5e5"
             />
-
 
 
 
@@ -127,13 +103,13 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#fff"
+                android:layout_height="match_parent"
                 android:fontFamily="@font/segoeui"
-                android:text="No Address is Added"
+                android:text="Add New Address"
                 android:textSize="18dp"
                 android:padding="10dp"
                 android:gravity="center"
+                android:background="@drawable/border_empty_curve"
                 android:textColor="@color/menu_green"
                 />
 

@@ -251,8 +251,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
 
 //                new_farmpe.setText(newfarmpelng + "?");
-                createaccount.setText(" " + signuplng);
-
+                createaccount.setText(" " + signuplng.toUpperCase());
                 pass_toast = lngObject.getString("EnterPassword");
                 mob_toast = lngObject.getString("EnterPhoneNo");
               //  toast_invalid = lngObject.getString("InvalidCredentials");
