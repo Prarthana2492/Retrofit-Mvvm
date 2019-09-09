@@ -276,7 +276,7 @@ public class You_Address_Fragment extends Fragment {
                 final TextView asce = (TextView)dialog.findViewById(R.id.sort_ascendi) ;
                 final TextView desc = (TextView)dialog.findViewById(R.id.sort_desendi) ;
                 //   final TextView popuptxt = (TextView)dialog.findViewById(R.id.popup_heading) ;
-                ImageView image = (ImageView) dialog.findViewById(R.id.close_popup);
+                LinearLayout image = (LinearLayout) dialog.findViewById(R.id.close_popup);
                 image.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

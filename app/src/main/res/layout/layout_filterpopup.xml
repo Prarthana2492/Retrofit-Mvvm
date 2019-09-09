@@ -29,12 +29,12 @@
             android:padding="5dp"
             android:layout_weight="92">
 
+
             <TextView
                 android:id="@+id/popup_heading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-
                 android:text="Select an Address Type"
                 android:textColor="#000"
                 android:textSize="16dp"
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_filter_state"
-            android:padding="5dp">
+            android:padding="4dp">
 
 
             <ImageView
@@ -63,8 +63,6 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
 
 
 
@@ -90,6 +88,7 @@
             />
 
     </LinearLayout>
+
 
     <View
         android:layout_width="match_parent"
