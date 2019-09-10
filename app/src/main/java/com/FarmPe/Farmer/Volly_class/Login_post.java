@@ -37,11 +37,9 @@ public class Login_post {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
                         progressDialog.cancel();
-                        System.out.println("1obj1obj"+jsonObject);
 
 
                         try {
-                            System.out.println("objecttttt"+jsonObject);
                             callback.onSuccessResponse(jsonObject);
 
 
@@ -53,7 +51,6 @@ public class Login_post {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        System.out.println("jsonobject"+volleyError);
 
                         progressDialog.cancel();
 
@@ -79,7 +76,7 @@ public class Login_post {
 
 
         JsonObjectRequest jobReq = new JsonObjectRequest(Request.Method.POST, Urls.Forgot_Password, jsonObject,
-                new Response.Listener<JSONObject>() {
+                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
                         progressDialog.cancel();
@@ -175,11 +172,9 @@ public class Login_post {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
                         progressDialog.cancel();
-                        System.out.println("jsonobject"+jsonObject);
 
 
                         try {
-                            System.out.println("jsonobject"+jsonObject);
                             callback.onSuccessResponse(jsonObject);
 
 
@@ -191,7 +186,6 @@ public class Login_post {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        System.out.println("jsonobject"+volleyError);
 
                         progressDialog.cancel();
 

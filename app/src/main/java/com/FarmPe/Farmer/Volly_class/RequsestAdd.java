@@ -35,7 +35,6 @@ public class RequsestAdd {
 
 
         // progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        System.out.println("ggggggggggggggggggggBookingAppointmentObj" + postObject);
 
         JsonObjectRequest jobReq = new JsonObjectRequest(Request.Method.POST, url, postObject,
                 new Response.Listener<JSONObject>() {

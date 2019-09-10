@@ -1074,7 +1074,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                 jsonObject.put("Id", You_Address_Adapter.add_id);
 
 
-            } else {
+            }
 
 
                 Crop_Post.crop_posting(getActivity(), Urls.Add_New_Address, jsonObject, new VoleyJsonObjectCallback() {
@@ -1213,7 +1213,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                 });
 
-            }
+
         }catch (Exception e){
             e.printStackTrace();
 

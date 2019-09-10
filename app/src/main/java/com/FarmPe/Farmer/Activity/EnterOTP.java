@@ -185,13 +185,11 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
                 try{
                     JSONObject postjsonObject = new JSONObject();
                     postjsonObject.put("UserName", SignUpActivity.contact );
-                    System.out.println("rrrrrrrrrrrrrrrrrrrr" + postjsonObject);
 
                     Login_post.login_posting(EnterOTP.this, Urls.ResendOTP, postjsonObject, new VoleyJsonObjectCallback() {
                         @Override
                         public void onSuccessResponse(JSONObject result) {
 
-                            System.out.println("kkkkkkkkkkkkkkkkkkkkkkkk" + result.toString());
 
                             try{
 

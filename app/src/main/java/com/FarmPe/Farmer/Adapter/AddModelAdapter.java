@@ -108,9 +108,44 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
         holder.brand_name.setText(products.getBrand_name());
         holder.model.setText(products.getModel_name());
-        holder.hp_power.setText(products.getDrive_type()+ " , " + products.getSteering()+ " , " + products.getHorse_power() + " , " + products.getClutch_type()+ " , " + products.getTransmission_type());
+        String drive_type = products.getDrive_type()+",";
+        String steering = products.getSteering()+",";
+        String clutch_type=products.getClutch_type()+",";
+        String transmission_type= products.getTransmission_type()+",";
+        String horse_power= products.getHorse_power();
+        if (products.getSteering().equals("")){
+            steering=" ";
+        } if (products.getClutch_type().equals("")){
+            clutch_type=" ";
+        } if (products.getTransmission_type().equals("")){
+            transmission_type=" ";
+        }if (products.getHorse_power().equals("")){
+            horse_power=" ";
+        }
+        if (products.getDrive_type().equals("")){
+            drive_type=" ";
+        }
 
-     System.out.println("fhjhgf" + products.getPdf_brochure());
+             holder.hp_power.setText(drive_type+steering+clutch_type+transmission_type+horse_power)   ;
+
+
+
+
+//         /* if (products.getDrive_type().equals("")){
+//            System.out.println("fhjhgfjjjjjjjjjjjjjjjjjkkkkkkkkkkk" + products.getDrive_type());
+//
+//
+//            String st=  steering+ " , " + horse_power + " , " + clutch_type+ " , " +transmission_type;
+//
+//              holder.hp_power.setText(st.replace("  , ",""))   ;
+//
+//          }else {
+//              String st=products.getDrive_type()+ " , " + steering+ " , " + horse_power + " , " + clutch_type+ " , " + transmission_type;
+//
+//              holder.hp_power.setText(st.replace("  , ",""))   ;
+//          }
+//
+//*/
 
         Glide.with(activity).load(products.getImage())
 

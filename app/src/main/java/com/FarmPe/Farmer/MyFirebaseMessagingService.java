@@ -1,22 +1,11 @@
 package com.FarmPe.Farmer;
 
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.media.RingtoneManager;
-import android.net.Uri;
+
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-import com.FarmPe.Farmer.Activity.LandingPageActivity;
 
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
