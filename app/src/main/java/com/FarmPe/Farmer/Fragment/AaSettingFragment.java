@@ -166,7 +166,6 @@ public class AaSettingFragment extends Fragment {
 
 
 
-
         help_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -270,8 +270,10 @@ public class AaAccountFragment extends Fragment {
             }
         });
 
+
         return view;
     }
+
 
     private void save_password() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.Update_Profile_Details,
@@ -288,27 +290,30 @@ public class AaAccountFragment extends Fragment {
                                 myDb.updateContact(sessionManager.getRegId("phone").substring(3),userInputedt.getText().toString());
                             }
                         }
-                        else{
+
+                        else {
+
+                            //   Toast.makeText(getActivity(), "Password Updated Successfully", Toast.LENGTH_LONG).show();
+                            int duration = 1000;
+                            Snackbar snackbar = Snackbar
+                                    .make(main_layout, "Password Updated Successfully", duration);
+                            View snackbarView = snackbar.getView();
+                            TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                            tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
+                            tv.setTextColor(Color.WHITE);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                            } else {
+                                tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                            }
+                            snackbar.show();
+                            mBottomSheetDialog.dismiss();
+                            selectedFragment = AaAccountFragment.newInstance();
+                            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                            transaction.replace(R.id.frame_layout, selectedFragment);
+                            transaction.commit();
+
                         }
-                        //   Toast.makeText(getActivity(), "Password Updated Successfully", Toast.LENGTH_LONG).show();
-                        int duration = 1000;
-                        Snackbar snackbar = Snackbar
-                                .make(main_layout, "Password Updated Successfully", duration);
-                        View snackbarView = snackbar.getView();
-                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                        tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                        tv.setTextColor(Color.WHITE);
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                        } else {
-                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                        }
-                        snackbar.show();
-                        mBottomSheetDialog.dismiss();
-                        selectedFragment = AaAccountFragment.newInstance();
-                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_layout, selectedFragment);
-                        transaction.commit();
                     }
                 },
                 new Response.ErrorListener() {

@@ -251,13 +251,13 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
 
 //                new_farmpe.setText(newfarmpelng + "?");
-                createaccount.setText(" " + signuplng.toUpperCase());
-                pass_toast = lngObject.getString("EnterPassword");
-                mob_toast = lngObject.getString("EnterPhoneNo");
+                  createaccount.setText(" " + signuplng.toUpperCase());
+                  pass_toast = lngObject.getString("EnterPassword");
+                  mob_toast = lngObject.getString("EnterPhoneNo");
               //  toast_invalid = lngObject.getString("InvalidCredentials");
-                toast_click_back = lngObject.getString("PleaseclickBACKagaintoexit");
-                toast_internet = lngObject.getString("GoodConnectedtoInternet");
-                toast_nointernet = lngObject.getString("NoInternetConnection");
+                  toast_click_back = lngObject.getString("PleaseclickBACKagaintoexit");
+                  toast_internet = lngObject.getString("GoodConnectedtoInternet");
+                  toast_nointernet = lngObject.getString("NoInternetConnection");
 
 
         }
@@ -275,8 +275,6 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
         });
 
 
-
-
         createaccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -284,6 +282,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                 startActivity(intent);
             }
         });
+
 
         forgot_pass.setOnClickListener(new View.OnClickListener() {
             @Override

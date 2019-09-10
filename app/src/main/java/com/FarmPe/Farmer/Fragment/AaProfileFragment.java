@@ -199,57 +199,86 @@ public class AaProfileFragment extends Fragment {
                 positiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.Update_Profile_Details,
-                                new Response.Listener<String>() {
-                                    @Override
-                                    public void onResponse(String response) {
 
-                                        System.out.println("fsdfsdfff" + response);
-                                        int duration = 1000;
-                                        Snackbar snackbar = Snackbar
-                                                .make(linearLayout, "Profile Details Updated Successfully", duration);
-                                        View snackbarView = snackbar.getView();
-                                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                                        tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                                        tv.setTextColor(Color.WHITE);
-                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
-                                        } else {
-                                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                                        }
+                        if (userInput.getText().toString().equals("")) {
 
-                                        snackbar.show();
-                                        mBottomSheetDialog.dismiss();
-                                        Bundle bundle = new Bundle();
-                                        bundle.putString("status","HOME_IMG");
-                                        selectedFragment = AaProfileFragment.newInstance();
-                                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                        transaction.replace(R.id.frame_layout, selectedFragment);
-                                        selectedFragment.setArguments(bundle);
-                                        transaction.commit();
-                                    }
-                                },
-                                new Response.ErrorListener() {
-                                    @Override
-                                    public void onErrorResponse(VolleyError error) {
-                                        Toast.makeText(getActivity(),error.toString(),Toast.LENGTH_LONG).show();
-                                    }
-                                }){
-                            @Override
-                            protected Map<String,String> getParams(){
-                                Map<String,String> params = new HashMap<String, String>();
-                                params.put("UserId",sessionManager.getRegId("userId"));
-                                params.put("FullName",userInput.getText().toString());
-                                params.put("PhoneNo",sessionManager.getRegId("phone"));
-                                System.out.println("fhsdfhjf" + params);
-                                return params;
+                            InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                            //Toast.makeText(getActivity(), "Please Enter Password", Toast.LENGTH_LONG).show();
+                            int duration = 1000;
+                            Snackbar snackbar = Snackbar
+                                    .make(mBottomSheetDialog.getWindow().getDecorView(), "Name Field Cannot Be Empty", duration);
+                            View snackbarView = snackbar.getView();
+                            TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                            tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                            tv.setTextColor(Color.WHITE);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                                tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                            } else {
+                                tv.setGravity(Gravity.CENTER_HORIZONTAL);
                             }
-                        };
-                        Volley.newRequestQueue(getActivity()).add(stringRequest);
+                            snackbar.show();
+                            mBottomSheetDialog.show();
+
+
+
+                        } else {
+
+
+                            StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.Update_Profile_Details,
+                                    new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String response) {
+
+                                            System.out.println("fsdfsdfff" + response);
+                                            int duration = 1000;
+                                            Snackbar snackbar = Snackbar
+                                                    .make(linearLayout, "Profile Details Updated Successfully", duration);
+                                            View snackbarView = snackbar.getView();
+                                            TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                                            tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
+                                            tv.setTextColor(Color.WHITE);
+                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                                tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                                            } else {
+                                                tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                                            }
+
+                                            snackbar.show();
+                                            mBottomSheetDialog.dismiss();
+                                            Bundle bundle = new Bundle();
+                                            bundle.putString("status", "HOME_IMG");
+                                            selectedFragment = AaProfileFragment.newInstance();
+                                            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                            transaction.replace(R.id.frame_layout, selectedFragment);
+                                            selectedFragment.setArguments(bundle);
+                                            transaction.commit();
+                                        }
+                                    },
+                                    new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
+                                        }
+                                    }) {
+                                @Override
+                                protected Map<String, String> getParams() {
+                                    Map<String, String> params = new HashMap<String, String>();
+                                    params.put("UserId", sessionManager.getRegId("userId"));
+                                    params.put("FullName", userInput.getText().toString());
+                                    params.put("PhoneNo", sessionManager.getRegId("phone"));
+                                    System.out.println("fhsdfhjf" + params);
+                                    return params;
+                                }
+
+                            };
+                            Volley.newRequestQueue(getActivity()).add(stringRequest);
 //  Toast.makeText(getActivity(),"Save was clicked",Toast.LENGTH_LONG).show();
 
-                      //  Toast.makeText(getActivity(),"Save was clicked",Toast.LENGTH_LONG).show();
+                            //  Toast.makeText(getActivity(),"Save was clicked",Toast.LENGTH_LONG).show();
+                        }
                     }
                 });
                 negetiveText.setOnClickListener(new View.OnClickListener() {
@@ -287,7 +316,38 @@ public class AaProfileFragment extends Fragment {
                 positiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                     save_description();
+
+                        if(abt_text.getText().toString().equals("")){
+
+
+                            InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                            //Toast.makeText(getActivity(), "Please Enter Password", Toast.LENGTH_LONG).show();
+                            int duration = 1000;
+                            Snackbar snackbar = Snackbar
+                                    .make(mBottomSheetDialog.getWindow().getDecorView(), "About Field Cannot Be Empty", duration);
+                            View snackbarView = snackbar.getView();
+                            TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                            tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                            tv.setTextColor(Color.WHITE);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                                tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                            } else {
+                                tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                            }
+                            snackbar.show();
+                            mBottomSheetDialog.show();
+
+
+                        }else{
+
+
+                            save_description();
+
+
+                        }
+
+
                     }
                 });
 

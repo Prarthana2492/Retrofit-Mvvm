@@ -499,7 +499,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                 }else{
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Please select State", Snackbar.LENGTH_LONG);
+                            .make(linearLayout, "Please Select State", Snackbar.LENGTH_LONG);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
@@ -542,7 +542,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                 }else{
 
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Please select District", Snackbar.LENGTH_LONG);
+                            .make(linearLayout, "Please Select District", Snackbar.LENGTH_LONG);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
@@ -614,7 +614,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                 }else {
 
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Please select Tehsil", Snackbar.LENGTH_LONG);
+                            .make(linearLayout, "Please Select Tehsil", Snackbar.LENGTH_LONG);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
@@ -635,7 +635,6 @@ public class  Add_New_Address_Fragment extends Fragment {
         save_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
 
                 if(address_type.getText().toString().equals("")){
@@ -673,8 +672,8 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
 
-
                 }else if(mobile.getText().toString().equals("")){
+
                     int duration = 1000;
 
                     Snackbar snackbar = Snackbar
@@ -1068,153 +1067,153 @@ public class  Add_New_Address_Fragment extends Fragment {
             jsonObject.put("StreeAddress1",street_name.getText().toString());
             jsonObject.put("UserId",sessionManager.getRegId("userId"));
             System.out.println("Add_New_AddresssssssssssssssssjsonObject"+jsonObject);
+
+
             if(getArguments().getString("navigation_from").equals("your_add")){
 
                 jsonObject.put("Id", You_Address_Adapter.add_id);
 
 
-            } else{
+            } else {
 
 
-            }
+                Crop_Post.crop_posting(getActivity(), Urls.Add_New_Address, jsonObject, new VoleyJsonObjectCallback() {
+                    @Override
+                    public void onSuccessResponse(JSONObject result) {
+                        Bundle bundle = new Bundle();
+
+                        System.out.println("Add_New_Addressssssssssssssssslllllllllllllllllllllll" + result);
+                        try {
+
+                            status = result.getString("Status");
+                            message = result.getString("Message");
+
+                            bundle.putString("add_id", status);
+
+                            bundle.putString("streetname", DistrictAdapter.district_name);
 
 
-            Crop_Post.crop_posting(getActivity(), Urls.Add_New_Address, jsonObject, new VoleyJsonObjectCallback() {
-                @Override
-                public void onSuccessResponse(JSONObject result) {
-                    Bundle bundle=new Bundle();
-
-                    System.out.println("Add_New_Addressssssssssssssssslllllllllllllllllllllll"+result);
-                    try{
-
-                        status= result.getString("Status");
-                        message = result.getString("Message");
-
-                        bundle.putString("add_id",status);
-
-                        bundle.putString("streetname",  DistrictAdapter.district_name);
+                            if (!(status.equals("0"))) {
 
 
-                        if(!(status.equals("0"))){
+                                if (getArguments().getString("navigation_from").equals("yu_ads_frg")) {
+                                    int duration = 1000;
+                                    Snackbar snackbar = Snackbar
+                                            .make(linearLayout, newaddressadded, duration);
+                                    View snackbarView = snackbar.getView();
+                                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
+                                    tv.setTextColor(Color.WHITE);
+
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                    } else {
+                                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                                    }
+
+                                    snackbar.show();
+                                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                                    fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 
-                            if (getArguments().getString("navigation_from").equals("yu_ads_frg")) {
-                                int duration=1000;
-                                Snackbar snackbar = Snackbar
-                                        .make(linearLayout, newaddressadded,duration);
-                                View snackbarView = snackbar.getView();
-                                TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                                tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                                tv.setTextColor(Color.WHITE);
+                                } else if (getArguments().getString("navigation_from").equals("REQ_NEW")) {
 
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                                    tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                    selectedFragment = Request_Details_New.newInstance();
+                                    selectedFragment.setArguments(bundle);
+                                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.frame_layout, selectedFragment);
+                                    transaction.commit();
+
+
+                                } else if (getArguments().getString("navigation_from").equals("SETTING_FRAG")) {
+                                    int duration = 1000;
+                                    Snackbar snackbar = Snackbar
+                                            .make(linearLayout, newaddressadded, duration);
+                                    View snackbarView = snackbar.getView();
+                                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
+                                    tv.setTextColor(Color.WHITE);
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                    } else {
+                                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                                    }
+
+                                    snackbar.show();
+
+                                    selectedFragment = You_Address_Fragment.newInstance();
+                                    FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.frame_layout, selectedFragment);
+                                    transaction.commit();
+
+
+                                } else if (getArguments().getString("navigation_from").equals("your_add")) {
+                                    int duration = 1000;
+                                    Snackbar snackbar1 = Snackbar
+                                            .make(linearLayout, "Address updated Successfully", duration);
+                                    View snackbarView1 = snackbar1.getView();
+                                    TextView tv1 = (TextView) snackbarView1.findViewById(android.support.design.R.id.snackbar_text);
+                                    tv1.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
+                                    tv1.setTextColor(Color.WHITE);
+
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        tv1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                    } else {
+                                        tv1.setGravity(Gravity.CENTER_HORIZONTAL);
+                                    }
+                                    snackbar1.show();
+
+                                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                                    fm.popBackStack("your_add", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+
                                 } else {
-                                    tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                                    int duration = 1000;
+                                    Snackbar snackbar = Snackbar
+                                            .make(linearLayout, newaddressadded, duration);
+                                    View snackbarView = snackbar.getView();
+                                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
+                                    tv.setTextColor(Color.WHITE);
+
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                    } else {
+                                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                                    }
+                                    snackbar.show();
+
                                 }
-                                snackbar.show();
 
-
-                                FragmentManager fm = getActivity().getSupportFragmentManager();
-                                fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-                            }else if (getArguments().getString("navigation_from").equals("REQ_NEW")){
-
-                                selectedFragment = Request_Details_New.newInstance();
-                                selectedFragment.setArguments(bundle);
-                                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                transaction.replace(R.id.frame_layout, selectedFragment);
-                                transaction.commit();
-
-                            }
-                            else if (getArguments().getString("navigation_from").equals("SETTING_FRAG")) {
-                                int duration=1000;
-                                Snackbar snackbar = Snackbar
-                                        .make(linearLayout, newaddressadded,duration);
-                                View snackbarView = snackbar.getView();
-                                TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                                tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                                tv.setTextColor(Color.WHITE);
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                                    tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                                } else {
-                                    tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                                }
-                                snackbar.show();
-
-                                selectedFragment = You_Address_Fragment.newInstance();
-                                FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
-                                transaction.replace(R.id.frame_layout, selectedFragment);
-                                transaction.commit();
-
-
-                            }
-                            else if(getArguments().getString("navigation_from").equals("your_add")){
-                                int duration=1000;
-                                Snackbar snackbar1 = Snackbar
-                                        .make(linearLayout, "Address updated Successfully",duration);
-                                View snackbarView1 = snackbar1.getView();
-                                TextView tv1 = (TextView) snackbarView1.findViewById(android.support.design.R.id.snackbar_text);
-                                tv1.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                                tv1.setTextColor(Color.WHITE);
-
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                                    tv1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                                } else {
-                                    tv1.setGravity(Gravity.CENTER_HORIZONTAL);
-                                }
-                                snackbar1.show();
-
-                                FragmentManager fm = getActivity().getSupportFragmentManager();
-                                fm.popBackStack("your_add", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-
-
-                            }else {
-                                int duration=1000;
-                                Snackbar snackbar = Snackbar
-                                        .make(linearLayout, newaddressadded,duration);
-                                View snackbarView = snackbar.getView();
-                                TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                                tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                                tv.setTextColor(Color.WHITE);
-
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                                    tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                                } else {
-                                    tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                                }
-                                snackbar.show();
-
-                            }
-
-                        }else{
-
-                            int duration=1000;
-                            Snackbar snackbar = Snackbar
-                                    .make(linearLayout, addnotadded,duration);
-                            View snackbarView = snackbar.getView();
-                            TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                            tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                            tv.setTextColor(Color.WHITE);
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                                tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                             } else {
-                                tv.setGravity(Gravity.CENTER_HORIZONTAL);
+
+                                int duration = 1000;
+                                Snackbar snackbar = Snackbar
+                                        .make(linearLayout, addnotadded, duration);
+                                View snackbarView = snackbar.getView();
+                                TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                                tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
+                                tv.setTextColor(Color.WHITE);
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                    tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                } else {
+                                    tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                                }
+                                snackbar.show();
+
                             }
-                            snackbar.show();
+
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
 
                         }
 
-
-                    }catch (Exception e){
-                        e.printStackTrace();
-
                     }
-                }
-            });
 
+                });
 
+            }
         }catch (Exception e){
             e.printStackTrace();
 

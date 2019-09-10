@@ -116,7 +116,6 @@ public class AaHelpFragment extends Fragment {
             }
         });
 
-
         about_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -144,13 +143,13 @@ public class AaHelpFragment extends Fragment {
                 TextView save = sheetView.findViewById(R.id.save_feedback);
                 feedback_edit = sheetView.findViewById(R.id.feedback_edit);
                 feedback_edit.setFilters(new InputFilter[]{EMOJI_FILTER});
+
                 save.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
                         if(feedback_edit.getText().toString().equals("")){
                            // mBottomSheetDialog.dismiss();
-
 
                             InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
                             inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
@@ -176,6 +175,7 @@ public class AaHelpFragment extends Fragment {
 
                     }
                 });
+
 
                 cancel.setOnClickListener(new View.OnClickListener() {
                     @Override

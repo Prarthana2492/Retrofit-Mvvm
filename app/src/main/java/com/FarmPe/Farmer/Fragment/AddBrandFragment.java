@@ -72,9 +72,10 @@ ImageView b_arrow;
             public void onClick(View v) {
               // b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
                 FragmentManager fm = getActivity().getSupportFragmentManager();
-                fm.popBackStack("first", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fm.popBackStack("req_price", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
+
 
 
 
@@ -83,16 +84,22 @@ ImageView b_arrow;
         view.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
+
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
                     FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("first", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    fm.popBackStack("req_price", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
                     return true;
                 }
+
                 return false;
             }
         });
+
+
+
+
 
 
 //        continue_button.setOnClickListener(new View.OnClickListener() {

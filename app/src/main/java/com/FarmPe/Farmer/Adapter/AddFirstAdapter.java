@@ -105,7 +105,7 @@ public class AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyView
                 selectedFragment = AddBrandFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.add(R.id.frame_layout, selectedFragment);
-                transaction.addToBackStack("first");
+                transaction.addToBackStack("req_price");
                 transaction.commit();
 
 //                for (int i = 0; i < productList.size(); i++) {
