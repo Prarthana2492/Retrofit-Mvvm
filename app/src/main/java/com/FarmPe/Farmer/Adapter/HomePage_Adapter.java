@@ -35,13 +35,13 @@ public class HomePage_Adapter extends RecyclerView.Adapter<HomePage_Adapter.MyVi
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image;
-        public TextView model_name,brand_name;
+        public TextView model_name, brand_name;
 
 
         public MyViewHolder(View view) {
             super(view);
 
-            image  = view.findViewById(R.id.image);
+            image = view.findViewById(R.id.image);
             model_name = view.findViewById(R.id.model_name);
             brand_name = view.findViewById(R.id.brand_name);
 
@@ -57,6 +57,7 @@ public class HomePage_Adapter extends RecyclerView.Adapter<HomePage_Adapter.MyVi
         return new MyViewHolder(itemView);
 
     }
+
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {

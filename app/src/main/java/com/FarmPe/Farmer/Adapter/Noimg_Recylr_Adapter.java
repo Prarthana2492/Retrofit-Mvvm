@@ -7,14 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.FarmPe.Farmer.Bean.AddTractorBean;
 import com.FarmPe.Farmer.Bean.AddTractorBean2;
 import com.FarmPe.Farmer.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
+
+
+
 
 public class Noimg_Recylr_Adapter extends RecyclerView.Adapter<Noimg_Recylr_Adapter.MyViewHolder> {
 
@@ -25,7 +26,6 @@ public class Noimg_Recylr_Adapter extends RecyclerView.Adapter<Noimg_Recylr_Adap
     public Noimg_Recylr_Adapter(Activity activity, List<AddTractorBean2> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
-
 
     }
 
@@ -40,12 +40,7 @@ public class Noimg_Recylr_Adapter extends RecyclerView.Adapter<Noimg_Recylr_Adap
             image  = view.findViewById(R.id.imageeee);
             model_name = view.findViewById(R.id.model_name);
 
-
-
-
-
         }
-
     }
 
      @Override

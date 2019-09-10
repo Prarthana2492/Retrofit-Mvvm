@@ -69,9 +69,10 @@ public class You_Address_Dialog_Adapter extends RecyclerView.Adapter<You_Address
         district_addrs =products.getAdd_district();
         tehsil_addrs =products.getAdd_taluk();
 
+        Request_Details_New.addId = add_id;
+
         System.out.println("1123213213" + products.getAdd_id() );
         System.out.println("1123213213name" + products.getAdd_name() );
-
 
         holder.adrr_txt.setText(products.getAdd_name());
         holder.street_addrss.setText(products.getAdd_door_no());
@@ -90,12 +91,10 @@ public class You_Address_Dialog_Adapter extends RecyclerView.Adapter<You_Address
                 Request_Details_New.dialog.dismiss();
 
              Request_Details_New.address_text.setText(products.getAdd_district() + "," + products.getAdd_taluk());
-
             }
         });
-
-
     }
+
 
     @Override
     public int getItemCount() {
@@ -112,7 +111,6 @@ public class You_Address_Dialog_Adapter extends RecyclerView.Adapter<You_Address
 
 
 
-
             mobile_no= itemView.findViewById(R.id.mobile_no1);
             street_addrss= itemView.findViewById(R.id.street_address1);
             city_1= itemView.findViewById(R.id.city_1);
@@ -124,9 +122,9 @@ public class You_Address_Dialog_Adapter extends RecyclerView.Adapter<You_Address
             colony = itemView.findViewById(R.id.colony);
             adrr_txt = itemView.findViewById(R.id.adrr_txt);
             state_name_layout = itemView.findViewById(R.id.state_name_layout);
-
             add_new_adress = itemView.findViewById(R.id.linear_frame);
-           // sessionManager = new SessionManager(activity);
+
+            // sessionManager = new SessionManager(activity);
 
         }
     }

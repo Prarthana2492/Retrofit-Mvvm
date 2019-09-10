@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:layout_weight="92">
+            android:layout_weight="95">
 
             <TextView
                 android:id="@+id/popup_heading"
@@ -40,21 +40,22 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dp">
+            android:id="@+id/close_popup"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_filter_state"
+            android:gravity="center">
+
 
             <ImageView
-                android:id="@+id/close_popup"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:src="@drawable/ic_error"
-                android:layout_gravity="right"
-                android:layout_weight="8"
-
-                />
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:src="@drawable/ic_error"/>
 
         </LinearLayout>
+
+
+
 
     </LinearLayout>
 
@@ -65,16 +66,11 @@
         >
 
 
-
-
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#e5e5e5"
             />
-
-
 
 
         <android.support.v7.widget.RecyclerView

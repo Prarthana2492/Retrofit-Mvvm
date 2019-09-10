@@ -1,11 +1,16 @@
 package com.FarmPe.Farmer.Adapter;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.os.Build;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +48,7 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image;
         public LinearLayout item;
-        public TextView prod_price,prod_name,duration,farmer_name,location,connect;
+        public TextView prod_price,prod_name,duration,location;
 
 
 
@@ -53,6 +58,7 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
             prod_price=view.findViewById(R.id.prod_price);
             image=view.findViewById(R.id.prod_img);
             item=view.findViewById(R.id.item);
+            linearLayout=view.findViewById(R.id.linear_layout);
 
 
         }
@@ -77,15 +83,34 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                brandId=products.getId();
-
-                selectedFragment = AddModelFragment.newInstance();
-                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
-                transaction.addToBackStack("third");
-                transaction.commit();
 
 
+
+                if(products.getImage().equalsIgnoreCase("")){
+                    int duration = 1000;
+                    Snackbar snackbar = Snackbar
+                            .make(linearLayout, "No Brands", duration);
+                    View snackbarView2 = snackbar.getView();
+                    TextView tv = (TextView) snackbarView2.findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setBackgroundColor(ContextCompat.getColor(activity,R.color.orange));
+                    tv.setTextColor(Color.WHITE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    else {
+                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                    }
+                    snackbar.show();
+                }else {
+
+
+                    brandId = products.getId();
+                    selectedFragment = AddModelFragment.newInstance();
+                    FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.addToBackStack("third");
+                    transaction.commit();
+
+                }
 //                for (int i = 0; i < productList.size(); i++) {
 //                    productList.get(i).setSelected(false);
 //                }
@@ -112,6 +137,7 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
                 .thumbnail(0.5f)
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .centerCrop()
                 .into(holder.image);
 
 

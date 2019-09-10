@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.FarmPe.Farmer.Bean.ModelBean;
+import com.FarmPe.Farmer.Fragment.AddModelFragment;
 import com.FarmPe.Farmer.Fragment.Model_Brochure_Fragment;
 import com.FarmPe.Farmer.Fragment.Request_Details_New;
 import com.FarmPe.Farmer.SessionManager;
@@ -108,11 +109,14 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
         holder.brand_name.setText(products.getBrand_name());
         holder.model.setText(products.getModel_name());
+
         String drive_type = products.getDrive_type()+",";
         String steering = products.getSteering()+",";
         String clutch_type=products.getClutch_type()+",";
         String transmission_type= products.getTransmission_type()+",";
         String horse_power= products.getHorse_power();
+
+
         if (products.getSteering().equals("")){
             steering=" ";
         } if (products.getClutch_type().equals("")){
@@ -166,7 +170,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
                     //  Toast.makeText(activity, "No Brochure ", Toast.LENGTH_SHORT).show();
                     int duration = 1000;
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, "No Brochure", duration);
+                            .make(AddModelFragment.linearLayout, "No Brochure", duration);
                     View snackbarView2 = snackbar.getView();
                     TextView tv = (TextView) snackbarView2.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setBackgroundColor(ContextCompat.getColor(activity,R.color.orange));
@@ -207,6 +211,8 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
         holder.select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 tractor_id=products.getId();
                 selectedFragment = Request_Details_New.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();

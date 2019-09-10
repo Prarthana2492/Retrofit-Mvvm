@@ -101,7 +101,10 @@
                 android:layout_marginRight="15dp"
                 android:textSize="14dp"
                 android:textColor="#666666"
+                android:focusableInTouchMode="true"
+                android:focusable="false"
                 android:editable="false"
+                android:padding="5dp"
                 android:background="@android:color/transparent"
                 android:drawableRight="@drawable/ic_down_arrow"
 
@@ -203,6 +206,7 @@
                 android:focusableInTouchMode="true"
                 android:focusable="false"
                 android:textSize="15dp"
+                android:padding="5dp"
                 android:background="@android:color/transparent"
                 android:drawableRight="@drawable/ic_down_arrow"
                 android:editable="false"

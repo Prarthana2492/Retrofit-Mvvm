@@ -94,6 +94,9 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
             holder.prod_price.setText(products.getProd_price());
             holder.prod_name.setText(products.getModelname() + " " + products.getHp());
 
+            model_id = products.getModelname();
+            timeline = products.getDuration();
+            address = products.getLocation();
 
 
         }catch (Exception e){
@@ -107,9 +110,7 @@ System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"+products.ge
             public void onClick(View v) {
                 location_det= products.getLocation_details();
                 looking_forId=products.getId();
-                model_id = products.getModelname();
-                timeline = products.getDuration();
-                address = products.getLocation();
+
 
                 selectedFragment = Edit_Looking_For_Fragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();

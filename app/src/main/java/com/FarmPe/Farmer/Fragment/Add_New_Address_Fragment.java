@@ -328,14 +328,15 @@ public class  Add_New_Address_Fragment extends Fragment {
                 transaction.commit();
             }
         });
-        adrss_type_linear.setOnClickListener(new View.OnClickListener() {
+
+        address_type.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 final Dialog dialog = new Dialog(getActivity());
                 dialog.setContentView(R.layout.select_address_popup);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                ImageView image = (ImageView) dialog.findViewById(R.id.close_popup);
+                LinearLayout image = (LinearLayout) dialog.findViewById(R.id.close_popup);
                 final TextView home =(TextView)dialog.findViewById(R.id.home_1);
                 final TextView ware_house = (TextView)dialog.findViewById(R.id.ware_hus) ;
                 final TextView farm = (TextView)dialog.findViewById(R.id.farm) ;

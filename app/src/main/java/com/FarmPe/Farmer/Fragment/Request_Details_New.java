@@ -66,7 +66,7 @@ public class Request_Details_New extends Fragment {
     SessionManager sessionManager;
     You_Address_Dialog_Adapter you_address_dialog_adapter;
     View view;
-    String addId;
+   public static String addId;
     String time_period;
     public static Dialog dialog;
     boolean finance;
@@ -250,9 +250,6 @@ public class Request_Details_New extends Fragment {
 
                 }
 
-
-
-
             }
         });
 
@@ -264,7 +261,7 @@ public class Request_Details_New extends Fragment {
                 final Dialog dialog = new Dialog(getActivity());
                 dialog.setContentView(R.layout.request_form_purchase_dialog);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                ImageView image = (ImageView) dialog.findViewById(R.id.close_popup);
+                LinearLayout image = (LinearLayout) dialog.findViewById(R.id.close_popup);
                 final TextView immediate =(TextView)dialog.findViewById(R.id.immediate);
                 final TextView one_month = (TextView)dialog.findViewById(R.id.one_month) ;
                 final TextView two_months = (TextView)dialog.findViewById(R.id.two_months) ;
@@ -337,22 +334,20 @@ public class Request_Details_New extends Fragment {
         address_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    dialog = new Dialog(getActivity());
-                    dialog.setContentView(R.layout.default_address_pop_up_layout);
-                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    ImageView image = (ImageView) dialog.findViewById(R.id.close_popup);
 
-                    recyclerView = dialog.findViewById(R.id.recycler_view);
-                    no_address_text=dialog.findViewById(R.id.no_address_text);
-                    final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-                    layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                   recyclerView.setLayoutManager(layoutManager);
-                   recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-                  you_address_dialog_adapter = new You_Address_Dialog_Adapter(new_address_beanArrayList, getActivity());
-                  recyclerView.setAdapter(you_address_dialog_adapter);
-                  address_list();
-
+                     dialog = new Dialog(getActivity());
+                     dialog.setContentView(R.layout.default_address_pop_up_layout);
+                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                     LinearLayout image = (LinearLayout) dialog.findViewById(R.id.close_popup);
+                     recyclerView = dialog.findViewById(R.id.recycler_view);
+                     no_address_text=dialog.findViewById(R.id.no_address_text);
+                     final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                     layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                     recyclerView.setLayoutManager(layoutManager);
+                     recyclerView.setItemAnimator(new DefaultItemAnimator());
+                     you_address_dialog_adapter = new You_Address_Dialog_Adapter(new_address_beanArrayList, getActivity());
+                     recyclerView.setAdapter(you_address_dialog_adapter);
+                     address_list();
 
                 image.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -554,11 +549,11 @@ public class Request_Details_New extends Fragment {
 
         }catch (Exception e){
             e.printStackTrace();
-        }
-
-
-
     }
+
+
+
+}
 
 
 }

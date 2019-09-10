@@ -205,7 +205,7 @@ public class You_Address_Fragment extends Fragment {
                     e.printStackTrace();
                 }
 
-                ImageView image = (ImageView) dialog.findViewById(R.id.close_popup);
+                LinearLayout image = (LinearLayout) dialog.findViewById(R.id.close_popup);
                 image.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

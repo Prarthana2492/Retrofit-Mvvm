@@ -57,6 +57,7 @@ public class AaHelpFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.a_a_help_layout, container, false);
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         backfeed=view.findViewById(R.id.back_feed);
         feedback_lay=view.findViewById(R.id.feedback_lay);

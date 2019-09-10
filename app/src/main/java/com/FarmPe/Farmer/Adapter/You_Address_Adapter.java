@@ -193,8 +193,8 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                 TextView cancel = sheetView.findViewById(R.id.negetive_text);
                 cancel.setText("Cancel");
 
-                try {
 
+                try {
 
                     lngObject = new JSONObject(sessionManager.getRegId("language"));
                     // popuptxt.setText(lngObject.getString("SelectanAddressType"));
@@ -249,7 +249,6 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                                             snackbar.show();
 
                                         }
-
 
                                         productList.remove(position);
                                         notifyDataSetChanged();

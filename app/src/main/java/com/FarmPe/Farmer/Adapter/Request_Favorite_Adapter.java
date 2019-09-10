@@ -102,7 +102,30 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
 
         holder.brand_name.setText(products.getBrand_name());
         holder.model.setText(products.getModel_name());
-        holder.hp_power.setText(products.getDrive_type()+ " , " + products.getSteering()+ " , " + products.getHorse_power() + " , " + products.getClutch_type()+ " , " + products.getTransmission_type());
+
+
+        String drive_type = products.getDrive_type()+",";
+        String steering = products.getSteering()+",";
+        String clutch_type=products.getClutch_type()+",";
+        String transmission_type= products.getTransmission_type()+",";
+        String horse_power= products.getHorse_power();
+
+
+        if (products.getSteering().equals("")){
+            steering=" ";
+        } if (products.getClutch_type().equals("")){
+            clutch_type=" ";
+        } if (products.getTransmission_type().equals("")){
+            transmission_type=" ";
+        }if (products.getHorse_power().equals("")){
+            horse_power=" ";
+        }
+        if (products.getDrive_type().equals("")){
+            drive_type=" ";
+        }
+
+        holder.hp_power.setText(drive_type+steering+clutch_type+transmission_type+horse_power)   ;
+       // holder.hp_power.setText(products.getDrive_type()+ " , " + products.getSteering()+ " , " + products.getHorse_power() + " , " + products.getClutch_type()+ " , " + products.getTransmission_type());
 
         System.out.println("fhjhgf" + products.getPdf_brochure());
         System.out.println("fhjhgfdfsdfsdf" + products.getImage());
@@ -136,7 +159,7 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
         holder.select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tractor_id=products.getId();
+                model_id = products.getId();
                 selectedFragment = Request_Details_New.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);

@@ -56,7 +56,9 @@ AddModelFragment extends Fragment {
     ModelBean modelBean;
     Fragment selectedFragment = null;
     TextView toolbar_title,continue_button,sub_label,filter_text;
-    LinearLayout back_feed,linearLayout;
+    LinearLayout back_feed;
+
+    public static LinearLayout linearLayout;
     ImageView b_arrow;
 
 
@@ -65,15 +67,18 @@ AddModelFragment extends Fragment {
         return fragment;
     }
 
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.select_model_recy, container, false);
         recyclerView=view.findViewById(R.id.recycler_what_looking);
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
-        linearLayout=view.findViewById(R.id.linearLayout);
         continue_button=view.findViewById(R.id.continue_button);
         filter_text=view.findViewById(R.id.filter_text);
+        linearLayout=view.findViewById(R.id.linearLayout);
         sub_label=view.findViewById(R.id.sub_label);
        /* toolbar_title.setText("Select Model");
 
