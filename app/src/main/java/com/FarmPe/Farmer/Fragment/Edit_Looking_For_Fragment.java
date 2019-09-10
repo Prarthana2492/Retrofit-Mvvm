@@ -150,6 +150,8 @@ public class Edit_Looking_For_Fragment extends Fragment {
         radioGroup_finance=view.findViewById(R.id.radioGroup_finance);
         address=view.findViewById(R.id.address_layout);
 
+
+
         try {
             addressID=getArguments().getString("add_id");
         }catch (Exception e){
@@ -423,7 +425,7 @@ public class Edit_Looking_For_Fragment extends Fragment {
                     String brand_name = jsonObject1.getString("BrandName");
                     String model_name = jsonObject1.getString("Model");
                     String model_image = jsonObject1.getString("ModelImage");
-                    String horse_range = jsonObject1.getString("HorsePowerRange");
+                    String horse_range = "";
                     String addrss_id = jsonObject2.getString("Id");
                     String addrss_name = jsonObject2.getString("Name");
                     String mobile_no = jsonObject2.getString("MobileNo");
@@ -433,7 +435,6 @@ public class Edit_Looking_For_Fragment extends Fragment {
                     String district = jsonObject2.getString("District");
                     String taluk = jsonObject2.getString("Taluk");
                     String area = jsonObject2.getString("Hoblie");
-
                     lookingfordetails_id = jsonObject1.getString("LookingForDetailsId");
                     addressID = jsonObject1.getString("AddressId");
                     modelid = jsonObject1.getString("ModelId");
@@ -479,7 +480,6 @@ public class Edit_Looking_For_Fragment extends Fragment {
 
                     }
                 }
-
 
             } catch (JSONException e) {
                 e.printStackTrace();

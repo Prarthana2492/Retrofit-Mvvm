@@ -174,10 +174,10 @@ public class AaProfileFragment extends Fragment {
 
             }
         });
+
         acc_info_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);

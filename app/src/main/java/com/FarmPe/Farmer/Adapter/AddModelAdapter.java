@@ -151,6 +151,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
                 .thumbnail(0.5f)
                 .crossFade()
+                .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.image);
 
@@ -158,6 +159,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
         holder.brochure.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
 
 
                 if(products.getPdf_brochure().equalsIgnoreCase("")){
@@ -175,6 +177,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
                     snackbar.show();
+
 
                 }else {
                     Bundle bundle = new Bundle();

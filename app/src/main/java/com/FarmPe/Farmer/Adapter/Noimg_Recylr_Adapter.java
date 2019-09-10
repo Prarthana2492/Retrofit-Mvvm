@@ -71,6 +71,7 @@ public class Noimg_Recylr_Adapter extends RecyclerView.Adapter<Noimg_Recylr_Adap
                 //  .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .error(R.drawable.avatarmale)
+                .centerCrop()
                 .into(holder.image);
     }
 

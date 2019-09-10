@@ -291,19 +291,18 @@ public class Request_Details_New extends Fragment {
         });
 
 
-
         address_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                     dialog = new Dialog(getActivity());
-                   dialog.setContentView(R.layout.default_address_pop_up_layout);
-                   dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                   ImageView image = (ImageView) dialog.findViewById(R.id.close_popup);
+                    dialog.setContentView(R.layout.default_address_pop_up_layout);
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    ImageView image = (ImageView) dialog.findViewById(R.id.close_popup);
 
-                   recyclerView = dialog.findViewById(R.id.recycler_view);
-                   no_address_text=dialog.findViewById(R.id.no_address_text);
-                   final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-                   layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                    recyclerView = dialog.findViewById(R.id.recycler_view);
+                    no_address_text=dialog.findViewById(R.id.no_address_text);
+                    final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                    layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                    recyclerView.setLayoutManager(layoutManager);
                    recyclerView.setItemAnimator(new DefaultItemAnimator());
 

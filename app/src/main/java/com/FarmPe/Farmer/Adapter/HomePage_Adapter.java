@@ -73,6 +73,7 @@ public class HomePage_Adapter extends RecyclerView.Adapter<HomePage_Adapter.MyVi
                 //  .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .error(R.drawable.avatarmale)
+                .centerCrop()
                 .into(holder.image);
     }
 
