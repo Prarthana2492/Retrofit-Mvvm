@@ -1014,6 +1014,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
             JSONObject jsonObject = new JSONObject();
             JSONObject post_jsonobject = new JSONObject();
+
             jsonObject.put("StateId",stateApdater.stateid);
             post_jsonobject.put("Districtobj",jsonObject);
 

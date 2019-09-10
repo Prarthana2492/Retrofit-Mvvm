@@ -72,7 +72,7 @@ public class AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyView
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final AddTractorBean products = productList.get(position);
-        looinkgId=products.getId();
+       // looinkgId=products.getId();
 
         holder.prod_price.setText(products.getProd_name());
 

@@ -406,8 +406,8 @@ public class Edit_Looking_For_Fragment extends Fragment {
 
     private void getting_edit() {
 
-
         for(int i=0;i<LookingForFragment.cropsListArray.length();i++){
+            System.out.println("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkkkkkkkkkkkkk"+LookingForFragment.cropsListArray);
 
             JSONObject jsonObject1 = null;
             try {
@@ -418,20 +418,14 @@ public class Edit_Looking_For_Fragment extends Fragment {
                 String id = jsonObject1.getString("Id");
 
                 if (id.equals(FarmsImageAdapter.looking_forId)) {
+                    System.out.println("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkkkkkkk"+jsonObject1);
+
                     String purchasetimeline = jsonObject1.getString("PurchaseTimeline");
                     String lookin_true = jsonObject1.getString("LookingForFinance");
                     String brand_name = jsonObject1.getString("BrandName");
                     String model_name = jsonObject1.getString("Model");
-                    String model_image = jsonObject1.getString("ModelImage");
-                    String horse_range = jsonObject1.getString("HorsePowerRange");
-                    String addrss_id = jsonObject2.getString("Id");
-                    String addrss_name = jsonObject2.getString("Name");
-                    String mobile_no = jsonObject2.getString("MobileNo");
-                    String street_address = jsonObject2.getString("StreeAddress1");
-                    String pincode = jsonObject2.getString("Pincode");
-                    String state = jsonObject2.getString("State");
+                    String horse_range = "";
                     String district = jsonObject2.getString("District");
-                    String taluk = jsonObject2.getString("Taluk");
                     String area = jsonObject2.getString("Hoblie");
 
                     lookingfordetails_id = jsonObject1.getString("LookingForDetailsId");

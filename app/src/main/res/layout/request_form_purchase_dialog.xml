@@ -79,12 +79,11 @@
             android:layout_weight="10"
             android:background="#fff"
             android:fontFamily="@font/segoeui"
-            android:text="Immediate"
-            android:textSize="14dp"
-            android:padding="10dp"
             android:gravity="start"
+            android:padding="10dp"
+            android:text="Immediately"
             android:textColor="#000000"
-            />
+            android:textSize="14dp" />
 
     </LinearLayout>
 

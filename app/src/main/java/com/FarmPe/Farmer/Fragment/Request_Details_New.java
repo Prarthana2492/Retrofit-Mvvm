@@ -14,12 +14,14 @@ import android.support.v4.view.GravityCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SwitchCompat;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -80,6 +82,9 @@ public class Request_Details_New extends Fragment {
     String pickUPFrom;
     ImageView b_arrow;
 
+    String purchasetime="";
+    String lookingforfinance="no";
+    SwitchCompat lookingForFinance_switch;
 
 
 
@@ -99,6 +104,7 @@ public class Request_Details_New extends Fragment {
         back_feed=view.findViewById(R.id.back_feed);
         b_arrow=view.findViewById(R.id.b_arrow);
         whenPurchase = view.findViewById(R.id.whenPurchase);
+        lookingForFinance_switch = view.findViewById(R.id.lookingForFinance_switch);
         //whenPurchase.setText("When are you planning to purchase "+ AddFirstFragment.tracter_title+"?");
         lookingForFinance = view.findViewById(R.id.lookingForFinance);
        // lookingForFinance.setText("Are you looking for finance / loan for "+AddFirstFragment.tracter_title+" purchase?");
@@ -136,6 +142,19 @@ public class Request_Details_New extends Fragment {
 
 
 
+        lookingForFinance_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b){
+                    lookingforfinance="yes";
+                }else {
+                    lookingforfinance="no";
+
+                }
+
+
+            }
+        });
 
 
         back_feed.setOnClickListener(new View.OnClickListener() {
@@ -209,7 +228,24 @@ public class Request_Details_New extends Fragment {
 
                     snackbar.show();
 
-                }else {
+                }else if (purchasetime.equals("")){
+                    Snackbar snackbar = Snackbar
+                            .make(linearLayout,"Select Purchase Planning", Snackbar.LENGTH_LONG);
+                    View snackbarView = snackbar.getView();
+                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                    tv.setTextColor(Color.WHITE);
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    } else {
+                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                    }
+
+                    snackbar.show();
+                }
+
+                else {
                     RequestForm();
 
                 }
@@ -248,6 +284,7 @@ public class Request_Details_New extends Fragment {
                 immediate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        purchasetime=immediate.getText().toString();
                         purchase_edit.setText(immediate.getText().toString());
                         dialog.dismiss();
                     }
@@ -259,6 +296,8 @@ public class Request_Details_New extends Fragment {
                     @Override
                     public void onClick(View view) {
                         purchase_edit.setText(one_month.getText().toString());
+                        purchasetime=one_month.getText().toString();
+
                         dialog.dismiss();
 
                     }
@@ -268,6 +307,8 @@ public class Request_Details_New extends Fragment {
                     @Override
                     public void onClick(View view) {
                         purchase_edit.setText(two_months.getText().toString());
+                        purchasetime=two_months.getText().toString();
+
                         dialog.dismiss();
 
                     }
@@ -279,6 +320,8 @@ public class Request_Details_New extends Fragment {
                     @Override
                     public void onClick(View view) {
                         purchase_edit.setText(after_3months.getText().toString());
+                        purchasetime=after_3months.getText().toString();
+
                         dialog.dismiss();
 
                     }
@@ -398,7 +441,7 @@ public class Request_Details_New extends Fragment {
             JSONObject userRequestjsonObject = new JSONObject();
 
             userRequestjsonObject.put("UserId",sessionManager.getRegId("userId"));
-            userRequestjsonObject.put("PurchaseTimeline", "imd");
+            userRequestjsonObject.put("PurchaseTimeline", purchase_edit);
             userRequestjsonObject.put("LookingForFinance", "yes");
             userRequestjsonObject.put("AddressId", addId);
            // userRequestjsonObject.put("AddressId", addId);
