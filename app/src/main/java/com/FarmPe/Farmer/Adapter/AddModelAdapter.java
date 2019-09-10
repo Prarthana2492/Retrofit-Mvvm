@@ -161,6 +161,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
                 public void onClick(View v) {
 
 
+
                 if(products.getPdf_brochure().equalsIgnoreCase("")){
                     //  Toast.makeText(activity, "No Brochure ", Toast.LENGTH_SHORT).show();
                     int duration = 1000;
@@ -176,6 +177,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
                     snackbar.show();
+
 
                 }else {
                     Bundle bundle = new Bundle();

@@ -151,7 +151,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                 bundle.putString("Addr_mobile",products.getAdd_mobile());
                 bundle.putString("Addr_pincode",products.getAdd_pincode());
                 bundle.putString("Addr_Street",products.getAdd_street());
-                // bundle.putString("Addr_Houseno",products.getAdd_door_no());
+                bundle.putString("Addr_Houseno",products.getAdd_door_no());
                 // bundle.putString("Addr_landmark",products.getAdd_landmark());
                 //bundle.putString("Addr_city",products.getAdd_city());
 

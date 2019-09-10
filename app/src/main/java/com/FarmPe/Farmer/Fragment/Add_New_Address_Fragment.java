@@ -168,7 +168,7 @@ public class  Add_New_Address_Fragment extends Fragment {
         System.out.println("selecteddddd_idddnz"+getArguments().getString("Addr_name"));
         mobile.setText(getArguments().getString("Addr_mobile"));
         pincode_no.setText(getArguments().getString("Addr_pincode"));
-        // house_numb.setText(getArguments().getString("Addr_Houseno"));
+         house_numb.setText(getArguments().getString("Addr_Houseno"));
         street_name.setText(getArguments().getString("Addr_Street"));
      //   landmrk.setText(getArguments().getString("Addr_landmark"));
         //city.setText(getArguments().getString("Addr_city"));
@@ -1113,8 +1113,14 @@ public class  Add_New_Address_Fragment extends Fragment {
                                     }
 
                                     snackbar.show();
-                                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                                    fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                                    selectedFragment = You_Address_Fragment.newInstance();
+                                    FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.frame_layout, selectedFragment);
+                                    transaction.commit();
+
+//                                    FragmentManager fm = getActivity().getSupportFragmentManager();
+//                                    fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 
                                 } else if (getArguments().getString("navigation_from").equals("REQ_NEW")) {

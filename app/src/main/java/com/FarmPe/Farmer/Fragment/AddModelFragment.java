@@ -177,7 +177,7 @@ AddModelFragment extends Fragment {
 
                         for(int i=0;i<model_list_array.length();i++){
                             JSONObject jsonObject1 = model_list_array.getJSONObject(i);
-                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),jsonObject1.getString("DriveType"),jsonObject1.getString("Steering"),jsonObject1.getString("HorsePower"),jsonObject1.getString("ClutchType"),jsonObject1.getString("TransmissionType"),jsonObject1.getString("CubicCapacity"),jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"));
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"));
                             modelBeanArrayList.add(modelBean);
 
                         }

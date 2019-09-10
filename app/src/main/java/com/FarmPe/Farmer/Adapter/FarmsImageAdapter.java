@@ -2,6 +2,7 @@ package com.FarmPe.Farmer.Adapter;
 
 import android.app.Activity;
 import android.content.res.Resources;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -94,10 +95,7 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
             holder.prod_name.setText(products.getModelname() + " " + products.getHp());
 
 
-            looking_forId = products.getId();
-            model_id = products.getModelname();
-            timeline = products.getDuration();
-            address = products.getLocation();
+
         }catch (Exception e){
 
         }
@@ -109,11 +107,14 @@ System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"+products.ge
             public void onClick(View v) {
                 location_det= products.getLocation_details();
                 looking_forId=products.getId();
-
+                model_id = products.getModelname();
+                timeline = products.getDuration();
+                address = products.getLocation();
 
                 selectedFragment = Edit_Looking_For_Fragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
+
                 transaction.addToBackStack("looking1");
                 transaction.commit();
             }
@@ -127,6 +128,7 @@ System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"+products.ge
                     .thumbnail(0.5f)
                     .crossFade()
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .centerCrop()
                     .into(holder.image_looking);
         } catch (
                 Exception e) {
