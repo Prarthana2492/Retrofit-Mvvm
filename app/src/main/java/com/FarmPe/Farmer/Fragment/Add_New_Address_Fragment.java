@@ -99,7 +99,7 @@ public class  Add_New_Address_Fragment extends Fragment {
     String selected_addresstype;
     JSONObject lngObject;
     LinearLayout linearLayout;
-    public static TextView state_txt,district_txt,tehsil_txt,village_txt,block_txt;
+    public static TextView state_txt,district_txt,tehsil_txt,village_txt,block_txt,cancel_add;
     String s_addtype,entername,entermno,inncrtmno,enterstreetad,enterpincode,selectstate,selectdistrict,selecttaluk,selecthobli,selectvillage,newaddressadded,addnotadded ;
     public static EditText name,mobile,pincode_no,house_numb,street_name,select_address,landmrk,address_type,edit_state,edit_districr,pincode_edittxt,edit_village,name_txt,mobile_edit;
     String status,message;
@@ -157,6 +157,7 @@ public class  Add_New_Address_Fragment extends Fragment {
         //  block = view.findViewById(R.id.block_1);
         village = view.findViewById(R.id.village_1);
         name_txt = view.findViewById(R.id.name_txt);
+        cancel_add = view.findViewById(R.id.cancel_add);
 
         linearLayout = view.findViewById(R.id.linear_layout);
 
@@ -316,6 +317,53 @@ public class  Add_New_Address_Fragment extends Fragment {
             }
         });
 
+
+        cancel_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+                if (getArguments().getString("navigation_from").equals("yu_ads_frg")) {
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                }else if(getArguments().getString("navigation_from").equals("your_add")){
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("your_add", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                }else if(getArguments().getString("navigation_from").equals("SETTING_FRAG")){
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                }else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")){
+
+
+                    HomeMenuFragment.onBack_status = "no_request";
+                    selectedFragment = HomeMenuFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.commit();
+
+                }else if(getArguments().getString("navigation_from").equals("edit_lokng_frg")){
+
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("edit", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+
+                } else{
+
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("request", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                }
+
+            }
+        });
 
 
         current_loc.setOnClickListener(new View.OnClickListener() {
@@ -1131,6 +1179,34 @@ public class  Add_New_Address_Fragment extends Fragment {
                                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                                     transaction.replace(R.id.frame_layout, selectedFragment);
                                     transaction.commit();
+
+                                }else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")){
+
+                                    int duration = 1000;
+                                    Snackbar snackbar = Snackbar
+                                            .make(linearLayout, newaddressadded, duration);
+                                    View snackbarView = snackbar.getView();
+                                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
+                                    tv.setTextColor(Color.WHITE);
+
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                    } else {
+                                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                                    }
+
+
+                                    HomeMenuFragment.onBack_status="no_request";
+
+                                    selectedFragment = HomeMenuFragment.newInstance();
+                                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.frame_layout, selectedFragment);
+                                    transaction.addToBackStack("home");
+                                    transaction.commit();
+
+                                    snackbar.show();
+
 
 
                                 } else if (getArguments().getString("navigation_from").equals("SETTING_FRAG")) {

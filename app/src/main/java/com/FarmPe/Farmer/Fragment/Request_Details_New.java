@@ -443,7 +443,6 @@ public class Request_Details_New extends Fragment {
             userRequestjsonObject.put("LookingForDetailsId", AddFirstAdapter.looinkgId);
 
 
-
             System.out.println("postObjmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"+userRequestjsonObject.toString());
 
 
@@ -491,7 +490,6 @@ public class Request_Details_New extends Fragment {
         }
 
     }
-
 
 
     public void gettingAddress(){

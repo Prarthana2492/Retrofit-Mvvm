@@ -232,6 +232,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
                                         if(status.equals("1")){
 
+
                                             int duration = 1000;
                                             Snackbar snackbar = Snackbar
                                                     .make(linearLayout, deleted, duration);
@@ -240,11 +241,14 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                                             tv.setBackgroundColor(ContextCompat.getColor(activity,R.color.orange));
                                             tv.setTextColor(Color.WHITE);
 
+
                                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                                                 tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
                                             } else {
                                                 tv.setGravity(Gravity.CENTER_HORIZONTAL);
                                             }
+
 
                                             snackbar.show();
 

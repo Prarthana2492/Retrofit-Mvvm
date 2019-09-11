@@ -166,7 +166,7 @@
                             android:id="@+id/address_type"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Home"
+                            android:hint=""
                             android:paddingVertical="2dp"
                             android:textSize="13dp"
                             android:editable="false"
@@ -240,13 +240,15 @@
 
                         <EditText
                             android:id="@+id/full_name"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="fdgdfggfdgdgd"
+                            android:hint=""
                             android:paddingVertical="2dp"
                             android:textSize="13dp"
                             android:maxLength="30"
-
+                            android:focusableInTouchMode="true"
+                            android:focusable="true"
+                            android:clickable="true"
                             android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColor="#666666"
@@ -288,10 +290,9 @@
                 <LinearLayout
                     android:id="@+id/mobile_linear_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="59dp"
                     android:orientation="horizontal"
-                    android:weightSum="100"
-                    >
+                    android:weightSum="100">
 
                     <LinearLayout
 
@@ -301,42 +302,39 @@
                         android:layout_weight="100">
 
 
-
                         <EditText
                             android:id="@+id/mobile_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="6dp"
+                            android:background="@android:color/transparent"
+                            android:backgroundTint="#d3d3d3"
+                            android:editable="false"
+                            android:fontFamily="@font/segoeui"
                             android:hint="Mobile Number :"
                             android:paddingVertical="2dp"
-                            android:textSize="13dp"
-                            android:background="@android:color/transparent"
-                            android:editable="false"
-                            android:layout_marginLeft="6dp"
                             android:paddingRight="10dp"
-                            android:backgroundTint="#d3d3d3"
-                            android:fontFamily="@font/segoeui"
-                            android:textColorHint="#000"/>
+                            android:textColorHint="#000"
+                            android:textSize="13dp" />
 
 
                         <EditText
                             android:id="@+id/mob_no"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="fdgdfggfdgdgd"
-                            android:paddingVertical="2dp"
-                            android:textSize="13dp"
-                            android:maxLength="10"
-                            android:inputType="number"
-                            android:paddingRight="10dp"
-                            android:fontFamily="@font/segoeui"
-                            android:textColor="#666666"
                             android:background="@android:color/transparent"
-                            />
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:clickable="true"
+                            android:fontFamily="@font/segoeui"
+                            android:hint=""
+                            android:inputType="number"
+                            android:maxLength="10"
+                            android:paddingVertical="2dp"
+                            android:paddingRight="10dp"
+                            android:textColor="#666666"
+                            android:textSize="13dp" />
                     </LinearLayout>
-
-
-
-
 
 
                 </LinearLayout>
@@ -557,9 +555,9 @@
 
                         <EditText
                             android:id="@+id/state_txt"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Karnataka"
+                            android:hint=""
                             android:paddingVertical="2dp"
                             android:layout_marginTop="35dp"
                             android:textSize="13dp"
@@ -633,12 +631,14 @@
 
                         <EditText
                             android:id="@+id/district_txt"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Bangalore"
+                            android:hint=""
                             android:paddingVertical="2dp"
                             android:layout_marginTop="35dp"
                             android:textSize="13dp"
+                            android:focusableInTouchMode="true"
+                            android:focusable="false"
                             android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColor="#666666"
@@ -711,13 +711,15 @@
 
                         <EditText
                             android:id="@+id/tehsil_txt"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Bangalore"
+                            android:hint=""
                             android:paddingVertical="2dp"
                             android:layout_marginTop="35dp"
                             android:textSize="13dp"
                             android:paddingRight="10dp"
+                            android:focusableInTouchMode="true"
+                            android:focusable="false"
                             android:fontFamily="@font/segoeui"
                             android:textColor="#666666"
                             android:background="@android:color/transparent"
@@ -787,12 +789,14 @@
 
                         <EditText
                             android:id="@+id/village_txt"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Bangalore"
+                            android:hint=""
                             android:paddingVertical="2dp"
                             android:layout_marginTop="35dp"
                             android:textSize="13dp"
+                            android:focusableInTouchMode="true"
+                            android:focusable="false"
                             android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColor="#666666"
@@ -862,11 +866,14 @@
                             android:id="@+id/pincode"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="fdgdfggfdgdgd"
+                            android:hint=""
                             android:paddingVertical="2dp"
                             android:textSize="13dp"
                             android:maxLength="6"
                             android:inputType="number"
+                            android:focusableInTouchMode="true"
+                            android:focusable="true"
+                            android:clickable="true"
                             android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColor="#666666"
@@ -921,7 +928,7 @@
             >
 
             <TextView
-                android:id="@+id/skip"
+                android:id="@+id/cancel_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cancel"

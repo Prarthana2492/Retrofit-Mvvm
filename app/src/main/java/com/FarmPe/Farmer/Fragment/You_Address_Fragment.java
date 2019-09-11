@@ -46,6 +46,7 @@ public class You_Address_Fragment extends Fragment {
     SessionManager sessionManager;
     public static String navigation_all;
     public static String item_list,address;
+   public static LinearLayout linearLayout;
 
     TextView toolbar_titletxt,noadd_here,add_adrs;
     JSONObject lngObject;
@@ -93,6 +94,7 @@ public class You_Address_Fragment extends Fragment {
         addnew_linear = view.findViewById(R.id.linear_newAdd);
         noadd_here = view.findViewById(R.id.text);
         add_adrs = view.findViewById(R.id.make_requesttttt);
+        linearLayout = view.findViewById(R.id.linearLayout);
 
 
         noadd_here.setText("No Address here");
@@ -119,7 +121,6 @@ public class You_Address_Fragment extends Fragment {
                         transaction.replace(R.id.frame_layout, selectedFragment);
                         transaction.commit();
 
-
                     } else if(getArguments().getString("navigation_from").equals("SETTING_FRAG1")){
 
                         FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -139,6 +140,7 @@ public class You_Address_Fragment extends Fragment {
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")){
 
                     selectedFragment = HomeMenuFragment.newInstance();
