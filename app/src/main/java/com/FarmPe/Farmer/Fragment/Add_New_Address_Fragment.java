@@ -1,6 +1,7 @@
 package com.FarmPe.Farmer.Fragment;
 
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Color;
 
@@ -33,6 +34,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -99,7 +101,7 @@ public class  Add_New_Address_Fragment extends Fragment {
     String selected_addresstype;
     JSONObject lngObject;
     LinearLayout linearLayout;
-    public static TextView state_txt,district_txt,tehsil_txt,village_txt,block_txt;
+    public static TextView state_txt,district_txt,tehsil_txt,village_txt,block_txt,cancel_add;
     String s_addtype,entername,entermno,inncrtmno,enterstreetad,enterpincode,selectstate,selectdistrict,selecttaluk,selecthobli,selectvillage,newaddressadded,addnotadded ;
     public static EditText name,mobile,pincode_no,house_numb,street_name,select_address,landmrk,address_type,edit_state,edit_districr,pincode_edittxt,edit_village,name_txt,mobile_edit;
     String status,message;
@@ -157,6 +159,7 @@ public class  Add_New_Address_Fragment extends Fragment {
         //  block = view.findViewById(R.id.block_1);
         village = view.findViewById(R.id.village_1);
         name_txt = view.findViewById(R.id.name_txt);
+        cancel_add = view.findViewById(R.id.cancel_add);
 
         linearLayout = view.findViewById(R.id.linear_layout);
 
@@ -316,6 +319,53 @@ public class  Add_New_Address_Fragment extends Fragment {
             }
         });
 
+
+        cancel_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+                if (getArguments().getString("navigation_from").equals("yu_ads_frg")) {
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                }else if(getArguments().getString("navigation_from").equals("your_add")){
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("your_add", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                }else if(getArguments().getString("navigation_from").equals("SETTING_FRAG")){
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                }else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")){
+
+
+                    HomeMenuFragment.onBack_status = "no_request";
+                    selectedFragment = HomeMenuFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.commit();
+
+                }else if(getArguments().getString("navigation_from").equals("edit_lokng_frg")){
+
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("edit", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+
+                } else{
+
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("request", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                }
+
+            }
+        });
 
 
         current_loc.setOnClickListener(new View.OnClickListener() {
@@ -638,6 +688,10 @@ public class  Add_New_Address_Fragment extends Fragment {
             public void onClick(View view) {
 
 
+
+
+
+
                 if(address_type.getText().toString().equals("")){
 
                     int duration = 1000;
@@ -776,6 +830,15 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                 }
                 else {
+
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+//Find the currently focused view, so we can grab the correct window token from it.
+                    view = getActivity().getCurrentFocus();
+//If no view currently has focus, create a new one, just so we can grab a window token from it
+                    if (view == null) {
+                        view = new View(getActivity());
+                    }
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
                     ComposeCategory();
 
@@ -1136,6 +1199,38 @@ public class  Add_New_Address_Fragment extends Fragment {
                                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                                     transaction.replace(R.id.frame_layout, selectedFragment);
                                     transaction.commit();
+
+                                }else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")){
+
+                                    int duration = 1000;
+                                    Snackbar snackbar = Snackbar
+                                            .make(linearLayout, newaddressadded, duration);
+                                    View snackbarView = snackbar.getView();
+                                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
+                                    tv.setTextColor(Color.WHITE);
+
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                    } else {
+                                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                                    }
+
+                                    selectedFragment = You_Address_Fragment.newInstance();
+                                    FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.frame_layout, selectedFragment);
+                                    transaction.commit();
+
+//                                    HomeMenuFragment.onBack_status="no_request";
+//
+//                                    selectedFragment = HomeMenuFragment.newInstance();
+//                                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                                    transaction.replace(R.id.frame_layout, selectedFragment);
+//                                    transaction.addToBackStack("home");
+//                                    transaction.commit();
+
+                                    snackbar.show();
+
 
 
                                 } else if (getArguments().getString("navigation_from").equals("SETTING_FRAG")) {

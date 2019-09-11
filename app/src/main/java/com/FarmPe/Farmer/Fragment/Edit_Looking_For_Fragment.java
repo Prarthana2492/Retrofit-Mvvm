@@ -196,6 +196,7 @@ public class Edit_Looking_For_Fragment extends Fragment {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 selectedId_time_recent = radioGroup_finance.getCheckedRadioButtonId();
                 RadioButton  radioButton = (RadioButton)view.findViewById(selectedId_time_recent);
+
                 if (String.valueOf(radioButton.getText()).equals("Yes")){
                     finance="True";
                 }else {
@@ -441,7 +442,7 @@ public class Edit_Looking_For_Fragment extends Fragment {
 
 
                     brand.setText("Brand - " + brand_name);
-                    hp_power.setText("HP - " + horse_range);
+                    //hp_power.setText("HP - " + horse_range);
                     model.setText("Model - " + model_name);
                     address_text.setText(area + " , " + district );
 

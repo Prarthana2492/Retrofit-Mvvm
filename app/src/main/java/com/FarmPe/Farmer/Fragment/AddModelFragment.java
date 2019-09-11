@@ -68,8 +68,6 @@ AddModelFragment extends Fragment {
     }
 
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.select_model_recy, container, false);
@@ -80,6 +78,7 @@ AddModelFragment extends Fragment {
         filter_text=view.findViewById(R.id.filter_text);
         linearLayout=view.findViewById(R.id.linearLayout);
         sub_label=view.findViewById(R.id.sub_label);
+
        /* toolbar_title.setText("Select Model");
 
         sub_label.setText("Do you know the model ? then select model of your choice else select \"Suggest Model\"");

@@ -53,6 +53,7 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
 
 
 
+
         public MyViewHolder(View view) {
             super(view);
             prod_price=view.findViewById(R.id.prod_price);
@@ -80,6 +81,7 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
         holder.prod_price.setText(products.getProd_name());
         System.out.println("croptttt"+ brandId);
 
+
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,6 +102,7 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
                     snackbar.show();
+
                 }else {
 
 
@@ -119,6 +122,7 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
 
             }
         });
+
 
        /* holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
