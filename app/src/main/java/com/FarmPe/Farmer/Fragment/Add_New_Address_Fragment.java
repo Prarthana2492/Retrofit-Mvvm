@@ -1,6 +1,7 @@
 package com.FarmPe.Farmer.Fragment;
 
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Color;
 
@@ -33,6 +34,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -686,6 +688,10 @@ public class  Add_New_Address_Fragment extends Fragment {
             public void onClick(View view) {
 
 
+
+
+
+
                 if(address_type.getText().toString().equals("")){
 
                     int duration = 1000;
@@ -824,6 +830,15 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                 }
                 else {
+
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+//Find the currently focused view, so we can grab the correct window token from it.
+                    view = getActivity().getCurrentFocus();
+//If no view currently has focus, create a new one, just so we can grab a window token from it
+                    if (view == null) {
+                        view = new View(getActivity());
+                    }
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
                     ComposeCategory();
 
@@ -1196,14 +1211,18 @@ public class  Add_New_Address_Fragment extends Fragment {
                                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                                     }
 
-
-                                    HomeMenuFragment.onBack_status="no_request";
-
-                                    selectedFragment = HomeMenuFragment.newInstance();
-                                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                    selectedFragment = You_Address_Fragment.newInstance();
+                                    FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
                                     transaction.replace(R.id.frame_layout, selectedFragment);
-                                    transaction.addToBackStack("home");
                                     transaction.commit();
+
+//                                    HomeMenuFragment.onBack_status="no_request";
+//
+//                                    selectedFragment = HomeMenuFragment.newInstance();
+//                                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                                    transaction.replace(R.id.frame_layout, selectedFragment);
+//                                    transaction.addToBackStack("home");
+//                                    transaction.commit();
 
                                     snackbar.show();
 

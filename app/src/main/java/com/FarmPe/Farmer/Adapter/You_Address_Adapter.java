@@ -235,7 +235,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
                                             int duration = 1000;
                                             Snackbar snackbar = Snackbar
-                                                    .make(linearLayout, deleted, duration);
+                                                    .make(You_Address_Fragment.linearLayout, deleted, duration);
                                             View snackbarView2 = snackbar.getView();
                                             TextView tv = (TextView) snackbarView2.findViewById(android.support.design.R.id.snackbar_text);
                                             tv.setBackgroundColor(ContextCompat.getColor(activity,R.color.orange));
@@ -439,7 +439,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                                 if(status1.equals("1")){
                                     int duration = 1000;
                                     Snackbar snackbar = Snackbar
-                                            .make(linearLayout, default_addrs_updtd, duration);
+                                            .make(You_Address_Fragment.linearLayout, default_addrs_updtd, duration);
                                     View snackbarView1 = snackbar.getView();
                                     TextView tv = (TextView) snackbarView1.findViewById(android.support.design.R.id.snackbar_text);
                                     tv.setBackgroundColor(ContextCompat.getColor(activity,R.color.orange));
