@@ -1131,12 +1131,12 @@ public class  Add_New_Address_Fragment extends Fragment {
             jsonObject.put("StreeAddress",house_numb.getText().toString());
             jsonObject.put("StreeAddress1",street_name.getText().toString());
             jsonObject.put("UserId",sessionManager.getRegId("userId"));
-            jsonObject.put("Id", You_Address_Adapter.add_id);
+          ///  jsonObject.put("Id", You_Address_Adapter.add_id);
 
             System.out.println("Add_New_AddresssssssssssssssssjsonObject"+jsonObject);
 
 
-        /*    if(getArguments().getString("navigation_from").equals("your_add")){
+            if(getArguments().getString("navigation_from").equals("your_add")){
 
                 jsonObject.put("Id", You_Address_Adapter.add_id);
 
@@ -1144,7 +1144,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
 
-            }*/
+            }
 
 
                 Crop_Post.crop_posting(getActivity(), Urls.Add_New_Address, jsonObject, new VoleyJsonObjectCallback() {
@@ -1183,10 +1183,14 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                                     snackbar.show();
 
-                                    selectedFragment = You_Address_Fragment.newInstance();
+
+                                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                                    fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                             /*       selectedFragment = You_Address_Fragment.newInstance();
                                     FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
                                     transaction.replace(R.id.frame_layout, selectedFragment);
-                                    transaction.commit();
+                                    transaction.commit();*/
 
 //                                    FragmentManager fm = getActivity().getSupportFragmentManager();
 //                                    fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
