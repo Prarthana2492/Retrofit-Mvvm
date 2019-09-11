@@ -1068,15 +1068,20 @@ public class  Add_New_Address_Fragment extends Fragment {
             jsonObject.put("StreeAddress",house_numb.getText().toString());
             jsonObject.put("StreeAddress1",street_name.getText().toString());
             jsonObject.put("UserId",sessionManager.getRegId("userId"));
+            jsonObject.put("Id", You_Address_Adapter.add_id);
+
             System.out.println("Add_New_AddresssssssssssssssssjsonObject"+jsonObject);
 
 
-            if(getArguments().getString("navigation_from").equals("your_add")){
+        /*    if(getArguments().getString("navigation_from").equals("your_add")){
 
                 jsonObject.put("Id", You_Address_Adapter.add_id);
 
 
-            }
+
+
+
+            }*/
 
 
                 Crop_Post.crop_posting(getActivity(), Urls.Add_New_Address, jsonObject, new VoleyJsonObjectCallback() {

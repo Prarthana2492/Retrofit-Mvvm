@@ -209,10 +209,12 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
         holder.select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Bundle bundle=new Bundle();
+                bundle.putString("navigation_from","mod");
 
                 tractor_id=products.getId();
                 selectedFragment = Request_Details_New.newInstance();
+                selectedFragment.setArguments(bundle);
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
                 transaction.addToBackStack("fourth");

@@ -426,8 +426,7 @@ public class Request_Details_New extends Fragment {
 
 
 
-        System.out.println("purchase"+time_period);
-        System.out.println("finance"+time_period);
+
 
         try {
 
@@ -437,10 +436,16 @@ public class Request_Details_New extends Fragment {
             userRequestjsonObject.put("PurchaseTimeline", purchase_edit);
             userRequestjsonObject.put("LookingForFinance", "yes");
             userRequestjsonObject.put("AddressId", addId);
-           // userRequestjsonObject.put("AddressId", addId);
-            userRequestjsonObject.put("ModelId", AddModelAdapter.tractor_id);
             userRequestjsonObject.put("IsAgreed", "True");
-            userRequestjsonObject.put("LookingForDetailsId", AddFirstAdapter.looinkgId);
+
+            // userRequestjsonObject.put("AddressId", addId);
+            if (getArguments().getString("navigation_from").equals("mod")) {
+                userRequestjsonObject.put("ModelId", AddModelAdapter.tractor_id);
+                userRequestjsonObject.put("LookingForDetailsId", AddFirstAdapter.looinkgId);
+            }else {
+                userRequestjsonObject.put("ModelId", getArguments().getString("MOD_ID"));
+                userRequestjsonObject.put("LookingForDetailsId", getArguments().getString("LOOKING_ID"));
+            }
 
 
 

@@ -104,11 +104,19 @@ public class ModelBean {
     private String steering;
     private String id;
     private String image;
+    private String lookingForDetailsId;
 
 
+    public String getLookingForDetailsId() {
+        return lookingForDetailsId;
+    }
 
-    public ModelBean(String brand_name, String model_name,String drive_type,String steering,String horse_power,String clutch_type,
-                     String transmission_type ,String cubic_capcity,String image,String pdf_brochure,String id)
+    public void setLookingForDetailsId(String lookingForDetailsId) {
+        this.lookingForDetailsId = lookingForDetailsId;
+    }
+
+    public ModelBean(String brand_name, String model_name, String drive_type, String steering, String horse_power, String clutch_type,
+                     String transmission_type , String cubic_capcity, String image, String pdf_brochure, String id, String lookingForDetailsId)
                     {
 
         this.brand_name = brand_name;
@@ -123,6 +131,7 @@ public class ModelBean {
         this.image = image;
         this.pdf_brochure = pdf_brochure;
         this.id = id;
+        this. lookingForDetailsId = lookingForDetailsId;
 
     }
 
