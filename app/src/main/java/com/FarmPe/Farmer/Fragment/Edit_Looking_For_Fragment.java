@@ -460,7 +460,7 @@ public class Edit_Looking_For_Fragment extends Fragment {
 
                     }
 
-
+,mkk,mkk
                     if (purchasetimeline.equals("Immediately")) {
 
                         month_1.setChecked(true);
