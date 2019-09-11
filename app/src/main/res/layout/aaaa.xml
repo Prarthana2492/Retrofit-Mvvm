@@ -36,11 +36,12 @@
                     android:gravity="right"
                     android:layout_gravity="right"
                     android:orientation="vertical"
-                    android:layout_weight="70">
+                    android:layout_weight="100">
 
                     <ImageView
                         android:id="@+id/imageff"
                         android:scaleType="fitXY"
+                        android:src="@drawable/ic_check_mark"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 
@@ -52,6 +53,50 @@
                         android:layout_margin="10dp"
                         android:duplicateParentState="true"
                         android:src="@drawable/ic_star" />
+
+
+
+
+                    <TextView
+                        android:id="@+id/brand_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeui"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="10dp"
+                        android:text="hhjkjkjkjk"
+                        android:gravity="bottom"
+                        android:layout_marginTop="10dp"
+                        android:textColor="#000"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/model"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeui"
+                        android:layout_marginLeft="10dp"
+                        android:text="fvhhhhh"
+                        android:singleLine="true"
+                        android:textColor="#000"
+                        android:textStyle="bold"
+                        android:textSize="14dp" />
+
+
+                    <TextView
+                        android:id="@+id/hp_power"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:fontFamily="@font/segoeui"
+                        android:layout_marginLeft="10dp"
+                        android:singleLine="true"
+                        android:text="fffff"
+                        android:textColor="#000"
+                        android:textStyle="bold"
+                        android:textSize="14dp" />
+
                 </FrameLayout>
 
                 <TextView
@@ -96,7 +141,7 @@
                     android:textStyle="bold"
                     android:textSize="14dp" />
 
-                  <LinearLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -104,7 +149,7 @@
                     android:weightSum="20"
                     android:layout_marginTop="10dp">
 
-                   <TextView
+                    <TextView
                         android:id="@+id/brochure"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

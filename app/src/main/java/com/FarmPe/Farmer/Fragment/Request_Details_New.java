@@ -288,7 +288,6 @@ public class Request_Details_New extends Fragment {
                 });
 
 
-
                 one_month.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -364,6 +363,7 @@ public class Request_Details_New extends Fragment {
         return view;
     }
 
+
     private void address_list() {
 
         try{
@@ -405,7 +405,6 @@ public class Request_Details_New extends Fragment {
 
 
 
-
                     }catch (Exception e){
                         e.printStackTrace();
                     }
@@ -442,7 +441,6 @@ public class Request_Details_New extends Fragment {
             userRequestjsonObject.put("ModelId", AddModelAdapter.tractor_id);
             userRequestjsonObject.put("IsAgreed", "True");
             userRequestjsonObject.put("LookingForDetailsId", AddFirstAdapter.looinkgId);
-
 
 
 

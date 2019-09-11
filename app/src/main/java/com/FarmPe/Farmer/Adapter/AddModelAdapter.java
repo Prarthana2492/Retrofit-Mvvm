@@ -20,7 +20,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.FarmPe.Farmer.Bean.ModelBean;
 import com.FarmPe.Farmer.Fragment.AddModelFragment;
@@ -32,14 +32,11 @@ import com.FarmPe.Farmer.Volly_class.Crop_Post;
 import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.FarmPe.Farmer.Bean.AddTractorBean;
-import com.FarmPe.Farmer.Fragment.RequestFormFragment;
 import com.FarmPe.Farmer.R;
-import com.google.firebase.database.core.Constants;
 
 import org.json.JSONObject;
 
-import java.net.URI;
+
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -50,14 +47,17 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
     SessionManager sessionManager;
 
     LinearLayout linearLayout;
-   public static LinearLayout next_arw;
     public static String first,tractor_id,model_id;
+
     public static CardView cardView;
     ImageView fav_request;
     String brochure_pdf;
+
+
     public AddModelAdapter(Activity activity, List<ModelBean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
+
             sessionManager = new SessionManager(activity);
     }
 
@@ -83,8 +83,6 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
             fav_request=view.findViewById(R.id.fav_request);
 
             linearLayout=view.findViewById(R.id.layout);
-
-
 
         }
 
@@ -165,8 +163,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
                 public void onClick(View v) {
 
 
-
-                if(products.getPdf_brochure().equalsIgnoreCase("")){
+                    if(products.getPdf_brochure().equalsIgnoreCase("")){
                     //  Toast.makeText(activity, "No Brochure ", Toast.LENGTH_SHORT).show();
                     int duration = 1000;
                     Snackbar snackbar = Snackbar
@@ -193,6 +190,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
                     transaction.addToBackStack("pdf");
                     transaction.commit();
                 }
+
 //                Bundle bundle = new Bundle();
 //                bundle.putString("brochur_status",brochure_pdf);
 //                selectedFragment = Model_Brochure_Fragment.newInstance();
@@ -254,6 +252,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
             jsonObject.put("LookingForDetailsId",AddFirstAdapter.looinkgId);
             jsonObject.put("IsShortlisted",true);
             jsonObject.put("CreatedBy",sessionManager.getRegId("userId"));
+
             System.out.println("gfjgfgjdfmmmmmmmmmmm" + jsonObject);
 
              Crop_Post.crop_posting(activity, Urls.Add_Favorites, jsonObject, new VoleyJsonObjectCallback() {
@@ -269,7 +268,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
                                 int duration = 1000;
                                 Snackbar snackbar = Snackbar
-                                        .make(linearLayout, "Your Request is Favorited", duration);
+                                        .make(AddModelFragment.linearLayout,"Your Request is Favorited", duration);
                                 View snackbarView2 = snackbar.getView();
                                 TextView tv = (TextView) snackbarView2.findViewById(android.support.design.R.id.snackbar_text);
                                 tv.setBackgroundColor(ContextCompat.getColor(activity,R.color.orange));
