@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/light_gray"
         android:imeOptions="actionGo"
-        android:singleLine="true"/>
+        android:singleLine="false"/>
 
     <TextView
         android:id="@+id/bottom_sheet_description"

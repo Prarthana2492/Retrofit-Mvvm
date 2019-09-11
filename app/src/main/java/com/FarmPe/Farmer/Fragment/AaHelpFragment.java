@@ -143,7 +143,7 @@ public class AaHelpFragment extends Fragment {
                 TextView cancel = sheetView.findViewById(R.id.cancel_feedback);
                 TextView save = sheetView.findViewById(R.id.save_feedback);
                 feedback_edit = sheetView.findViewById(R.id.feedback_edit);
-                feedback_edit.setFilters(new InputFilter[]{EMOJI_FILTER});
+                feedback_edit.setFilters(new InputFilter[]{EMOJI_FILTER,new InputFilter.LengthFilter(100)});
 
                 save.setOnClickListener(new View.OnClickListener() {
                     @Override

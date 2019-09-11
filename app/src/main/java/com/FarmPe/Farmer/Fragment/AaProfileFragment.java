@@ -187,6 +187,28 @@ public class AaProfileFragment extends Fragment {
                 TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
                 TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
                 final EditText userInput = sheetView.findViewById(R.id.user_text);
+
+                userInput.setFilters(new InputFilter[] {
+                        new InputFilter.LengthFilter(30) {
+                            public CharSequence filter(CharSequence src, int start,
+                                                       int end, Spanned dst, int dstart, int dend) {
+
+                                for (int i = start; i < end; i++) {
+                                    if (Character.isWhitespace(src.charAt(i))) {
+                                        if (dstart == 0)
+                                            return "";
+                                    }
+                                }
+
+                                if(src.toString().matches("[a-zA-Z ]+")){
+                                    return src;
+                                }
+                                return "";
+                            }
+                        }
+                });
+
+
                 userInput.setVisibility(View.VISIBLE);
                 userInput.setText(profname.getText().toString());
                 descriptionText.setVisibility(View.GONE);
@@ -304,7 +326,9 @@ public class AaProfileFragment extends Fragment {
                 TextView positiveText = sheetView.findViewById(R.id.positive_text);
                 TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
                 TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
-               abt_text = sheetView.findViewById(R.id.user_text);
+                abt_text = sheetView.findViewById(R.id.user_text);
+                abt_text.setFilters(new InputFilter[]{EMOJI_FILTER, new InputFilter.LengthFilter(50)});
+
                 abt_text.setVisibility(View.VISIBLE);
                 abt_text.setText(aboutText.getText().toString());
                 descriptionText.setVisibility(View.GONE);
@@ -507,6 +531,49 @@ public class AaProfileFragment extends Fragment {
             }
         }
     };
+
+
+    public static InputFilter EMOJI_FILTER1 = new InputFilter() {
+        @Override
+        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+            boolean keepOriginal = true;
+            StringBuilder sb = new StringBuilder(end - start);
+            for (int index = start; index < end; index++) {
+                int type = Character.getType(source.charAt(index));
+                if (type == Character.SURROGATE || type == Character.OTHER_SYMBOL) {
+                    return "";
+                }
+                for (int i = start; i < end; i++) {
+                    if (Character.isWhitespace(source.charAt(i))) {
+                        if (dstart == 0)
+                            return "";
+                    }
+                }
+
+                return null;
+          /*  char c = source.charAt(index);
+            if (isCharAllowed(c))
+                sb.append(c);
+            else
+                keepOriginal = false;*/
+            }
+
+            if (keepOriginal)
+                return null;
+            else {
+                if (source instanceof Spanned) {
+                    SpannableString sp = new SpannableString(sb);
+                    TextUtils.copySpansFrom((Spanned) source, start, sb.length(), null, sp, 0);
+                    return sp;
+                } else {
+                    return sb;
+                }
+            }
+        }
+    };
+
+
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

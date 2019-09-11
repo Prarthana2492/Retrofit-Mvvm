@@ -19,6 +19,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Base64;
 import android.util.Log;
@@ -146,7 +149,9 @@ public class AaAccountFragment extends Fragment {
                 TextView positiveText = sheetView.findViewById(R.id.positive_text);
                 TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
                 TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
+
                 userInputedt= sheetView.findViewById(R.id.user_text);
+                userInputedt.setFilters(new InputFilter[]{EMOJI_FILTER, new InputFilter.LengthFilter(12)});
 
                 userInputedt.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 userInputedt.setVisibility(View.VISIBLE);
@@ -273,6 +278,56 @@ public class AaAccountFragment extends Fragment {
 
         return view;
     }
+
+    public static InputFilter EMOJI_FILTER = new InputFilter() {
+        @Override
+        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+            boolean keepOriginal = true;
+            StringBuilder sb = new StringBuilder(end - start);
+            for (int index = start; index < end; index++) {
+                int type = Character.getType(source.charAt(index));
+                if (type == Character.SURROGATE || type == Character.OTHER_SYMBOL) {
+                    return "";
+                }
+                for (int i = start; i < end; i++) {
+                    if (Character.isWhitespace(source.charAt(i))) {
+                        if (dstart == 0)
+                            return "";
+                    }
+                }
+
+          /*  char c = source.charAt(index);
+            if (isCharAllowed(c))
+                sb.append(c);
+            else
+                keepOriginal = false;*/
+
+                String filtered = "";
+                for (int i = start; i < end; i++) {
+                    char character = source.charAt(i);
+                    if (!Character.isWhitespace(character)) {
+                        filtered += character;
+                    }
+                }
+                return filtered;
+            }
+
+
+
+            if (keepOriginal)
+                return null;
+            else {
+                if (source instanceof Spanned) {
+                    SpannableString sp = new SpannableString(sb);
+                    TextUtils.copySpansFrom((Spanned) source, start, sb.length(), null, sp, 0);
+                    return sp;
+                } else {
+                    return sb;
+                }
+            }
+        }
+    };
+
 
 
     private void save_password() {
