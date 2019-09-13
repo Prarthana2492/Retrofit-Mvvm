@@ -221,12 +221,11 @@
                     <RadioButton
                         android:id="@+id/genYes"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="30"
                         android:fontFamily="@font/segoeui"
-                        android:text="Yes"
                         android:tag="True"
-                        />
+                        android:text="Yes" />
 
                     <RadioButton
                         android:id="@+id/genNo"

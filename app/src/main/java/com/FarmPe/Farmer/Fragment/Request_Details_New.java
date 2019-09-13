@@ -54,9 +54,7 @@ public class Request_Details_New extends Fragment {
 
     public static List<FarmsImageBean> newOrderBeansList = new ArrayList<>();
     ArrayList<Add_New_Address_Bean> new_address_beanArrayList = new ArrayList<>();
-
     public static RecyclerView recyclerView;
-
     TextView toolbar_title,request;
     public static   EditText address_text;
     Fragment selectedFragment;
@@ -81,7 +79,7 @@ public class Request_Details_New extends Fragment {
     JSONArray get_address_array;
     String pickUPFrom;
     ImageView b_arrow;
-
+    TextView purchase_edit1;
     String purchasetime="";
     String lookingforfinance="no";
     SwitchCompat lookingForFinance_switch;
@@ -100,11 +98,12 @@ public class Request_Details_New extends Fragment {
 //        final View view = getView() != null ? getView() :
 //                inflater.inflate(R.layout.request_form_layout, container, false);
 
+
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
         b_arrow=view.findViewById(R.id.b_arrow);
         whenPurchase = view.findViewById(R.id.whenPurchase);
-        lookingForFinance_switch = view.findViewById(R.id.lookingForFinance_switch);
+        //lookingForFinance_switch = view.findViewById(R.id.lookingForFinance_switch);
         //whenPurchase.setText("When are you planning to purchase "+ AddFirstFragment.tracter_title+"?");
         lookingForFinance = view.findViewById(R.id.lookingForFinance);
        // lookingForFinance.setText("Are you looking for finance / loan for "+AddFirstFragment.tracter_title+" purchase?");
@@ -115,6 +114,7 @@ public class Request_Details_New extends Fragment {
         address_text=view.findViewById(R.id.address_text);
         recyclerView = view.findViewById(R.id.recycler_view);
         purchase_edit=view.findViewById(R.id.purchase_edit);
+        purchase_edit1=view.findViewById(R.id.purchase_edit1);
         add_addrss=view.findViewById(R.id.add_addrss);
         //purchase_edit=view.findViewById(R.id.add_addrss);
         linearLayout=view.findViewById(R.id.linear_layout);
@@ -141,20 +141,20 @@ public class Request_Details_New extends Fragment {
             }
 
 
-
-        lookingForFinance_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b){
-                    lookingforfinance="yes";
-                }else {
-                    lookingforfinance="no";
-
-                }
-
-
-            }
-        });
+//
+//        lookingForFinance_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                if (b){
+//                    lookingforfinance="yes";
+//                }else {
+//                    lookingforfinance="no";
+//
+//                }
+//
+//
+//            }
+//        });
 
 
         back_feed.setOnClickListener(new View.OnClickListener() {
@@ -194,7 +194,6 @@ public class Request_Details_New extends Fragment {
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putString("navigation_from","REQ_NEW");
-
                 selectedFragment = Add_New_Address_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
@@ -254,7 +253,7 @@ public class Request_Details_New extends Fragment {
         });
 
 
-        purchase_edit.setOnClickListener(new View.OnClickListener() {
+        purchase_edit1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -269,13 +268,13 @@ public class Request_Details_New extends Fragment {
               //  final TextView popuptxt = (TextView)dialog.findViewById(R.id.popup_heading) ;
 
 
-
                 image.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
                     }
                 });
+
 
 
                 immediate.setOnClickListener(new View.OnClickListener() {
@@ -288,6 +287,7 @@ public class Request_Details_New extends Fragment {
                 });
 
 
+
                 one_month.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -298,6 +298,7 @@ public class Request_Details_New extends Fragment {
 
                     }
                 });
+
 
                 two_months.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -385,7 +386,8 @@ public class Request_Details_New extends Fragment {
 
 
                             add_new_address_bean = new Add_New_Address_Bean(jsonObject1.getString("Name"),jsonObject1.getString("StreeAddress"),jsonObject1.getString("StreeAddress1"),jsonObject1.getString("LandMark"),jsonObject1.getString("City"),jsonObject1.getString("Pincode"),jsonObject1.getString("MobileNo"),
-                                    jsonObject1.getString("PickUpFrom"),jsonObject1.getString("State"),jsonObject1.getString("District"),jsonObject1.getString("Taluk"),jsonObject1.getString("Hoblie"),jsonObject1.getString("Village"),jsonObject1.getString("Id"),jsonObject1.getBoolean("IsDefaultAddress"));
+                                    jsonObject1.getString("PickUpFrom"),jsonObject1.getString("State"),jsonObject1.getString("District"),jsonObject1.getString("Taluk"),jsonObject1.getString("Hoblie"),jsonObject1.getString("Village"),jsonObject1.getString("Id"),jsonObject1.getBoolean("IsDefaultAddress"),
+                                    jsonObject1.getString("StateId"),jsonObject1.getString("DistrictId"),jsonObject1.getString("TalukId"),jsonObject1.getString("VillageId"));
                             new_address_beanArrayList.add(add_new_address_bean);
 
                         }
@@ -425,23 +427,26 @@ public class Request_Details_New extends Fragment {
 
 
 
-
-
-
         try {
 
             JSONObject userRequestjsonObject = new JSONObject();
 
             userRequestjsonObject.put("UserId",sessionManager.getRegId("userId"));
-            userRequestjsonObject.put("PurchaseTimeline", purchase_edit);
+            userRequestjsonObject.put("PurchaseTimeline", purchase_edit.getText().toString());
             userRequestjsonObject.put("LookingForFinance", "yes");
             userRequestjsonObject.put("AddressId", addId);
             userRequestjsonObject.put("IsAgreed", "True");
 
             // userRequestjsonObject.put("AddressId", addId);
+
             if (getArguments().getString("navigation_from").equals("mod")) {
+
                 userRequestjsonObject.put("ModelId", AddModelAdapter.tractor_id);
                 userRequestjsonObject.put("LookingForDetailsId", AddFirstAdapter.looinkgId);
+                System.out.println("jfdkgk" + AddFirstAdapter.looinkgId);
+                System.out.println("jfdkgk" +AddFirstAdapter.purchase_tractor.equals("lookingId"));
+
+
             }else {
                 userRequestjsonObject.put("ModelId", getArguments().getString("MOD_ID"));
                 userRequestjsonObject.put("LookingForDetailsId", getArguments().getString("LOOKING_ID"));
@@ -457,6 +462,7 @@ public class Request_Details_New extends Fragment {
                     System.out.println("cropsresult"+result);
 
                     newOrderBeansList.clear();
+
 
                     try {
                         String status=result.getString("Status");
@@ -477,7 +483,6 @@ public class Request_Details_New extends Fragment {
                         }
 
                         snackbar.show();
-
                         selectedFragment = HomeMenuFragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frame_layout, selectedFragment);
@@ -487,9 +492,9 @@ public class Request_Details_New extends Fragment {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
                 }
             });
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -512,7 +517,6 @@ public class Request_Details_New extends Fragment {
                     try{
                         new_address_beanArrayList.clear();
 
-
                         get_address_array = result.getJSONArray("UserAddressDetails");
                         for(int i=0;i<get_address_array.length();i++){
                             JSONObject jsonObject1 = get_address_array.getJSONObject(i);
@@ -527,7 +531,6 @@ public class Request_Details_New extends Fragment {
                                 address_text.setText(jsonObject1.getString("Hoblie")+"  "+jsonObject1.getString("District"));
 
                             }
-
                         }
 
                         // item_list = String.valueOf(new_address_beanArrayList.size());

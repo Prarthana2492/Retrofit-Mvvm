@@ -69,6 +69,23 @@
 
 
 
+    <TextView
+        android:id="@+id/norecords"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+        android:layout_weight="83"
+        android:text="No records"
+        android:visibility="gone"
+        android:textSize="20dp"
+        android:fontFamily="@font/segoeui"
+        android:textColor="#000"
+        android:gravity="center"
+        android:layout_gravity="center"
+        />
+
 
     <!-- <android.support.v7.widget.RecyclerView
          android:id="@+id/recycler_view"

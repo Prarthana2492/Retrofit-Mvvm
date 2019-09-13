@@ -161,7 +161,7 @@
                 android:layout_marginTop="20dp"
                 android:textStyle="bold"
                 android:layout_gravity="center"
-                android:textColor="#00BCD4"
+                android:textColor="#2680EB"
                 />
 
 

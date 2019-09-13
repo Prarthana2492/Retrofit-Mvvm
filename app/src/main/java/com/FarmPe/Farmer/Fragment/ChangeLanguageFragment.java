@@ -34,8 +34,8 @@ public class ChangeLanguageFragment extends Fragment {
     SessionManager sessionManager;
     LinearLayout back_feed;
     public static   JSONObject lngObject;
+    public static TextView lang_title;
 
-   public static TextView lang_title;
 
 
     public static ChangeLanguageFragment newInstance() {
@@ -47,6 +47,8 @@ public class ChangeLanguageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.select_language_layout, container, false);
+
+
         back_feed=view.findViewById(R.id.back_feed);
         lang_title=view.findViewById(R.id.lang_title);
         recyclerView =view.findViewById(R.id.recycler_view1);
@@ -61,7 +63,6 @@ public class ChangeLanguageFragment extends Fragment {
 
 
 
-
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -69,6 +70,7 @@ public class ChangeLanguageFragment extends Fragment {
 
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
+
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -123,6 +125,7 @@ public class ChangeLanguageFragment extends Fragment {
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("statussssscccs"+result);
                     JSONObject jsonObject;
+
                     try {
                         JSONArray jsonArray=result.getJSONArray("LanguagesList");
                         for (int i=0;i<jsonArray.length();i++){
@@ -134,6 +137,7 @@ public class ChangeLanguageFragment extends Fragment {
                             newOrderBeansList.add(stateBean);
                             recyclerView.setAdapter(mAdapter);
                         }
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

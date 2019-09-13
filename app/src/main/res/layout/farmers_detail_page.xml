@@ -142,33 +142,33 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="vertical"-->
 
-                    >
+                    <!--&gt;-->
 
-                    <TextView
-                        android:id="@+id/hp_power"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="HP - Upto 20HP"
-                        android:textSize="16dp"
-                        android:layout_marginTop="20dp"
-                        android:textColor="#000"
-                        android:layout_marginHorizontal="10dp"
-                        />
+                    <!--<TextView-->
+                        <!--android:id="@+id/hp_power"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="HP - Upto 20HP"-->
+                        <!--android:textSize="16dp"-->
+                        <!--android:layout_marginTop="20dp"-->
+                        <!--android:textColor="#000"-->
+                        <!--android:layout_marginHorizontal="10dp"-->
+                        <!--/>-->
 
-                    <!--<ImageView-->
-                    <!--android:layout_width="300dp"-->
-                    <!--android:layout_height="100dp"-->
-                    <!--android:src="@drawable/tractor_sonalika"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--/>-->
+                    <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="300dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="100dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:src="@drawable/tractor_sonalika"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_gravity="center"&ndash;&gt;-->
+                    <!--&lt;!&ndash;/>&ndash;&gt;-->
 
 
-                </LinearLayout>
+                <!--</LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"

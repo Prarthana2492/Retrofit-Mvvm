@@ -3,8 +3,8 @@ package com.FarmPe.Farmer;
 
   public class Urls {
 
-  private static final String ROOT_URL = "http://13.232.185.209:909/api/";///DEV
- // private static final String ROOT_URL = "http://13.233.184.72:909/api/";///pro
+  //private static final String ROOT_URL = "http://13.232.185.209:909/api/";///DEV
+  private static final String ROOT_URL = "http://13.233.184.72:909/api/";///pro
 
 
     public static final String IMAGE_ROOT_URL = "http://13.233.184.72:909";//Image root
@@ -23,7 +23,6 @@ package com.FarmPe.Farmer;
     public static final String GetUserDetails=ROOT_URL+"GetUserDetails";
     public static final String ValidateReferalCode=ROOT_URL+"ValidateRefferalCode";
     public static final String CHANGE_LANGUAGE= ROOT_URL+"Lang/ChangeCurrentCulture";
-
 
 
     public static final String Get_New_Address = ROOT_URL+"MasterTable/GetUserAddress";
@@ -68,7 +67,6 @@ package com.FarmPe.Farmer;
     public static final String Villages=ROOT_URL+"MasterTable/GetVillages";
     public static final String State = ROOT_URL+"MasterTable/GetStates";
 
-
     public static final String GetBrandList = ROOT_URL+"MasterTable/GetBrandList";
     public static final String ModelList = ROOT_URL+"MasterTable/GetModels";
     public static final String GetHPList = ROOT_URL+"MasterTable/GetHPList";
@@ -80,19 +78,17 @@ package com.FarmPe.Farmer;
     public static final String Model_List = ROOT_URL+"MasterTable/GetRFQModelMasterList";
 
     //Favorites
-
      public static final String Get_Favorites = ROOT_URL+"MasterTable/GetFarmerFavouriteModelLists";
      public static final String Add_Favorites = ROOT_URL+"MasterTable/AddUpdateFarmerFavouriteModelList";
 
 
-    //List Your Farms
 
+    //List Your Farms
     public static final String List_Your_Farms = ROOT_URL+"MasterTable/GetFarmCategoryList";
     public static final String Farm_Type_List = ROOT_URL+"MasterTable/GetFarmTypesList";
     public static final String Farm_Details = ROOT_URL+"MasterTable/AddUpdateFarms";
     public static final String AddUpdateFarms = ROOT_URL+"MasterTable/AddUpdateFarms";
     public static final String Invitation_Farm = ROOT_URL+"MasterTable/GetInvitationList";
-
 
     public static final String Invitn_accpt_cancel = ROOT_URL+"MasterTable/RespondToConnectionRequest";
 
@@ -108,13 +104,12 @@ package com.FarmPe.Farmer;
    public static final String Get_Connection_List = ROOT_URL + "MasterTable/GetConnectionList";
 
 
-
    //Homepage_Count
-   public static final String Home_Page_Count = ROOT_URL + "MasterTable/GetCountForFarmer";
+
+      public static final String Home_Page_Count = ROOT_URL + "MasterTable/GetCountForFarmer";
 
 
  //Notification
-
 
    public static final String Notification_HomePage = ROOT_URL + "MasterTable/GetNotifications";
 

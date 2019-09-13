@@ -82,7 +82,7 @@ public class AddFirstFragment extends Fragment {
                     HomeMenuFragment.onBack_status = "no_request";
                     selectedFragment = HomeMenuFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.add(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_layout, selectedFragment);
                     transaction.commit();
 
 

@@ -113,7 +113,6 @@ public class Request_Favorite_Fragment extends Fragment {
         });
 
 
-
         filter_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -140,7 +139,6 @@ public class Request_Favorite_Fragment extends Fragment {
         });
 
 
-
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager_farm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -148,11 +146,11 @@ public class Request_Favorite_Fragment extends Fragment {
         recyclerView.setAdapter(farmadapter);
 
 
-
         try{
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("CreatedBy",sessionManager.getRegId("userId"));
+            System.out.println("fdsfsdf" + sessionManager.getRegId("userId"));
 
             Crop_Post.crop_posting(getActivity(), Urls.Get_Favorites, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
@@ -171,9 +169,11 @@ public class Request_Favorite_Fragment extends Fragment {
                         harvesterModelMasterList = result.getJSONArray("HarvesterModelMasterList");
                         jCBRFQModelList = result.getJSONArray("JCBModelMasterList");
 
+
                         if(model_list_array.length()==0 && tractorImplementsModelMasterList.length()==0 && tractorAccessoriesModelMasterList.length()==0 && harvesterModelMasterList.length()==0 && jCBRFQModelList.length()==0){
 
                             no_favo_added.setVisibility(View.VISIBLE);
+
 
                         }else {
 
