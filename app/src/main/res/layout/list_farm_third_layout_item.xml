@@ -86,9 +86,6 @@
             </LinearLayout>
 
 
-
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -97,9 +94,6 @@
                 android:orientation="vertical"
                 android:layout_marginTop="1dp"
                 android:background="#ffff">
-
-
-
                 <TextView
                     android:id="@+id/current_loc"
                     android:layout_width="wrap_content"
@@ -213,6 +207,7 @@
                     android:weightSum="100"
                     >
 
+
                     <LinearLayout
 
                         android:layout_width="0dp"
@@ -245,8 +240,8 @@
                             android:paddingVertical="2dp"
                             android:textSize="13dp"
                             android:maxLength="30"
+                            android:inputType="textNoSuggestions"
                             android:focusableInTouchMode="true"
-
                             android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColor="#666666"

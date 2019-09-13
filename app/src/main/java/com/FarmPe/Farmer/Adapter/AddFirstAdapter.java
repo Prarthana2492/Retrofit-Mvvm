@@ -100,11 +100,10 @@ public class AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyView
                 AddFirstFragment.tracter_title = holder.prod_price.getText().toString().toLowerCase().replace(" price","");
                 looinkgId=products.getId();
 
-
               //  AddBrandAdapter.brandId = null;
                 selectedFragment = AddBrandFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-                transaction.add(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_layout, selectedFragment);
                 transaction.addToBackStack("req_price");
                 transaction.commit();
 

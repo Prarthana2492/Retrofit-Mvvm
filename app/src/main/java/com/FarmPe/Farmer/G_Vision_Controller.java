@@ -5,12 +5,9 @@ import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.FarmPe.Farmer.Activity.LandingPageActivity;
-//import com.FarmPe.Farmer.Adapter.AddPhotoAdapter;
 import com.FarmPe.Farmer.Bean.AddPhotoBean;
-//import com.FarmPe.Farmer.Fragment.ListYourFarmsFive;
+
 import com.FarmPe.Farmer.Volly_class.PackageManagerUtils;
 import com.FarmPe.Farmer.volleypost.VolleyMultipartRequest;
 import com.android.volley.AuthFailureError;
@@ -102,11 +99,11 @@ public class G_Vision_Controller {
 
         VisionRequestInitializer requestInitializer =
                 new VisionRequestInitializer(CLOUD_VISION_API_KEY) {
-                    /**
+
+                    @Override  /**
                      * We override this so we can inject important identifying fields into the HTTP
                      * headers. This enables use of a restricted cloud platform API key.
                      */
-                    @Override
                     protected void initializeVisionRequest(VisionRequest<?> visionRequest)
                             throws IOException {
                         super.initializeVisionRequest(visionRequest);
@@ -271,9 +268,6 @@ public class G_Vision_Controller {
         if (annotation != null) {
             if (annotation.getAdult().equals("LIKELY")||annotation.getSpoof().equals("LIKELY")||annotation.getMedical().equals("LIKELY")||annotation.getViolence().equals("LIKELY")){
                 message.append("DECLINE");
-
-
-
 
             }
             else  if (annotation.getAdult().equals("POSSIBLE")||annotation.getSpoof().equals("POSSIBLE")||annotation.getMedical().equals("POSSIBLE")||annotation.getViolence().equals("POSSIBLE")){

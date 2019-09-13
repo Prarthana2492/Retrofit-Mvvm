@@ -22,12 +22,10 @@ public class VillageAdapter extends RecyclerView.Adapter<VillageAdapter.HoblisMy
     Activity activity;
 
 
-
     public VillageAdapter(List<StateBean> stateBeans, Activity activity) {
         this.stateBeans = stateBeans;
         this.activity = activity;
     }
-
 
 
     @NonNull
@@ -38,6 +36,7 @@ public class VillageAdapter extends RecyclerView.Adapter<VillageAdapter.HoblisMy
 
         return new HoblisMyViewHolder(stateview);
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull final HoblisMyViewHolder holder, int position) {

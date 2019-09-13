@@ -140,7 +140,6 @@ public class Request_Favorite_Fragment extends Fragment {
         });
 
 
-
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager_farm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -153,6 +152,7 @@ public class Request_Favorite_Fragment extends Fragment {
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("CreatedBy",sessionManager.getRegId("userId"));
+            System.out.println("fdsfsdf" + sessionManager.getRegId("userId"));
 
             Crop_Post.crop_posting(getActivity(), Urls.Get_Favorites, jsonObject, new VoleyJsonObjectCallback() {
                 @Override

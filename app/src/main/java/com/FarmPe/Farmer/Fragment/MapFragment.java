@@ -150,7 +150,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                     bundle.putString("currentaddress_id",state);
                     selectedFragment = Request_Details_New.newInstance();
                     FragmentTransaction transaction =getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.add(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_layout, selectedFragment);
                     selectedFragment.setArguments(bundle);
                     transaction.commit();
 

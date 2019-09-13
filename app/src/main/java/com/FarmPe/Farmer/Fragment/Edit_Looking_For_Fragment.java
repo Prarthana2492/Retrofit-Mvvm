@@ -110,7 +110,7 @@ public class Edit_Looking_For_Fragment extends Fragment {
     Fragment selectedFragment;
     RadioGroup radio_group_time,radioGroup_finance;
     String time_period,lookingfordetails_id,modelid;
-    String finance;
+    String finance,timeline;
     public static int selectedId_time_recent;
     BottomSheetDialog mBottomSheetDialog;
     View sheetView;
@@ -140,11 +140,9 @@ public class Edit_Looking_For_Fragment extends Fragment {
         month_4=view.findViewById(R.id.month_4);
         finance_yes=view.findViewById(R.id.finance_yes);
         finance_no=view.findViewById(R.id.finance_no);
-
         linearLayout=view.findViewById(R.id.linearLayout);
         address_text=view.findViewById(R.id.address_text);
         sessionManager = new SessionManager(getActivity());
-
         request=view.findViewById(R.id.update_rqt);
         radio_group_time=view.findViewById(R.id.radio_group_time);
         radioGroup_finance=view.findViewById(R.id.radioGroup_finance);
@@ -153,10 +151,12 @@ public class Edit_Looking_For_Fragment extends Fragment {
 
 
         try {
-            addressID=getArguments().getString("add_id");
-        }catch (Exception e){
 
-        }
+            addressID=getArguments().getString("add_id");
+
+           }catch (Exception e){
+
+           }
 
 
         if (addressID==null){
@@ -205,11 +205,14 @@ public class Edit_Looking_For_Fragment extends Fragment {
             }
         });
 
+
         radio_group_time.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 selectedId_time_recent = radio_group_time.getCheckedRadioButtonId();
-                RadioButton radioButton = (RadioButton)view.findViewById(selectedId_time_recent);
-                time_period=String.valueOf(radioButton.getText());
+                RadioButton radioButton1 = (RadioButton)view.findViewById(selectedId_time_recent);
+
+
+                //time_period=String.valueOf(radioButton.getText());
             }
         });
 
@@ -231,7 +234,6 @@ public class Edit_Looking_For_Fragment extends Fragment {
                 bundle.putString("navigation_from", "edit_lokng_frg");
                 bundle.putString("looking_forId",lookingfordetails_id);
                 bundle.putString("modelId", modelid);
-
                 selectedFragment = Add_New_Address_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
@@ -241,6 +243,7 @@ public class Edit_Looking_For_Fragment extends Fragment {
             }
         });
 
+
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -249,7 +252,6 @@ public class Edit_Looking_For_Fragment extends Fragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-
 
                     HomeMenuFragment.onBack_status = "looking_frg";
 
@@ -321,6 +323,9 @@ public class Edit_Looking_For_Fragment extends Fragment {
                 titleText.setText("Delete The Request");
                 descriptionText.setText("Are you sure you want to delete the Request?");
                 confirm.setText("Confirm");
+
+
+
 
                 TextView cancel = sheetView.findViewById(R.id.negetive_text);
                 cancel.setText("Cancel");
@@ -407,6 +412,7 @@ public class Edit_Looking_For_Fragment extends Fragment {
         return view;
     }
 
+
     private void getting_edit() {
 
 
@@ -421,6 +427,7 @@ public class Edit_Looking_For_Fragment extends Fragment {
                 String id = jsonObject1.getString("Id");
 
                 if (id.equals(FarmsImageAdapter.looking_forId)) {
+                    System.out.println("gddhghgh" + jsonObject1);
                     String purchasetimeline = jsonObject1.getString("PurchaseTimeline");
                     String lookin_true = jsonObject1.getString("LookingForFinance");
                     String brand_name = jsonObject1.getString("BrandName");
@@ -444,7 +451,7 @@ public class Edit_Looking_For_Fragment extends Fragment {
                     brand.setText("Brand - " + brand_name);
                     //hp_power.setText("HP - " + horse_range);
                     model.setText("Model - " + model_name);
-                    address_text.setText(area + " , " + district );
+                    address_text.setText(taluk + " , " + district );
 
 
                     if (lookin_true.equals("true")) {
@@ -460,10 +467,10 @@ public class Edit_Looking_For_Fragment extends Fragment {
 
                     }
 
-,mkk,mkk
                     if (purchasetimeline.equals("Immediately")) {
 
                         month_1.setChecked(true);
+
 
                     } else if (purchasetimeline.equals("1 Month")) {
 
@@ -477,7 +484,6 @@ public class Edit_Looking_For_Fragment extends Fragment {
 
                     } else if (purchasetimeline.equals("After 3 Months")) {
                         month_4.setChecked(true);
-
 
                     }
                 }

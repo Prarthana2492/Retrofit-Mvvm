@@ -100,7 +100,6 @@ public class You_Address_Fragment extends Fragment {
         noadd_here.setText("No Address here");
         add_adrs.setText("Add Address");
         sessionManager = new SessionManager(getActivity());
-
         add_visible.setVisibility(View.GONE);
 
         view.setFocusableInTouchMode(true);
@@ -351,12 +350,11 @@ public class You_Address_Fragment extends Fragment {
                             JSONObject jsonObject1 = get_address_array.getJSONObject(i);
 
 
-                            add_new_address_bean = new Add_New_Address_Bean(jsonObject1.getString("Name"),jsonObject1.getString("StreeAddress"),jsonObject1.getString("StreeAddress1"),jsonObject1.getString("LandMark"),jsonObject1.getString("City"),jsonObject1.getString("Pincode"),jsonObject1.getString("MobileNo"),
-                                    jsonObject1.getString("PickUpFrom"),jsonObject1.getString("State"),jsonObject1.getString("District"),jsonObject1.getString("Taluk"),jsonObject1.getString("Hoblie"),jsonObject1.getString("Village"),jsonObject1.getString("Id"),jsonObject1.getBoolean("IsDefaultAddress"));
-                            new_address_beanArrayList.add(add_new_address_bean);
+                                     add_new_address_bean = new Add_New_Address_Bean(jsonObject1.getString("Name"),jsonObject1.getString("StreeAddress"),jsonObject1.getString("StreeAddress1"),jsonObject1.getString("LandMark"),jsonObject1.getString("City"),jsonObject1.getString("Pincode"),jsonObject1.getString("MobileNo"), jsonObject1.getString("PickUpFrom"),jsonObject1.getString("State"),jsonObject1.getString("District"),jsonObject1.getString("Taluk"),jsonObject1.getString("Hoblie"),jsonObject1.getString("Village"),jsonObject1.getString("Id"),
+                                    jsonObject1.getBoolean("IsDefaultAddress"),jsonObject1.getString("StateId"),jsonObject1.getString("DistrictId"),jsonObject1.getString("TalukId"),jsonObject1.getString("VillageId"));
+                                    new_address_beanArrayList.add(add_new_address_bean);
 
                         }
-
 
 
                         if(new_address_beanArrayList.size()==0){

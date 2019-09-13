@@ -16,6 +16,43 @@ public class Add_New_Address_Bean {
     String add_taluk;
     String add_hobli;
     String add_village;
+    String add_state_id;
+    String add_district_id;
+
+    public String getAdd_state_id() {
+        return add_state_id;
+    }
+
+    public void setAdd_state_id(String add_state_id) {
+        this.add_state_id = add_state_id;
+    }
+
+    public String getAdd_district_id() {
+        return add_district_id;
+    }
+
+    public void setAdd_district_id(String add_district_id) {
+        this.add_district_id = add_district_id;
+    }
+
+    public String getAdd_tehsil_id() {
+        return add_tehsil_id;
+    }
+
+    public void setAdd_tehsil_id(String add_tehsil_id) {
+        this.add_tehsil_id = add_tehsil_id;
+    }
+
+    public String getAdd_hobli_id() {
+        return add_hobli_id;
+    }
+
+    public void setAdd_hobli_id(String add_hobli_id) {
+        this.add_hobli_id = add_hobli_id;
+    }
+
+    String add_tehsil_id;
+    String add_hobli_id;
 
     public String getAdd_city() {
         return add_city;
@@ -152,7 +189,7 @@ public class Add_New_Address_Bean {
 
 
     public Add_New_Address_Bean(String add_name, String  add_door_no, String add_street, String add_landmark, String add_city, String add_pincode, String add_mobile, String add_pickup_frm, String add_state, String add_district, String add_taluk,
-                                String add_hobli, String add_village, String add_id, boolean default_addr) {
+                                String add_hobli, String add_village, String add_id, boolean default_addr,String add_state_id,String add_district_id,String add_tehsil_id,String add_hobli_id) {
 
         this.add_name = add_name;
         this.add_door_no =  add_door_no;
@@ -169,6 +206,11 @@ public class Add_New_Address_Bean {
         this.add_village = add_village;
         this.add_id = add_id;
         this.default_addr = default_addr;
+        this.add_state_id = add_state_id;
+        this.add_district_id = add_district_id;
+        this.add_tehsil_id = add_tehsil_id;
+        this.add_hobli_id = add_hobli_id;
+
     }
 }
 

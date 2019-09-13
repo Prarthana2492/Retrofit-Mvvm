@@ -154,7 +154,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
         };
 
         timer = new Timer();
-        timer.schedule(timerTask, 3000, 3000);
+        timer.schedule(timerTask, 7000, 7000);
 
 
 
@@ -402,7 +402,6 @@ public class FarmPe_Logo_Fragment extends Fragment {
 
                         }
 
-
                         for (int i = 0; i < jCBRFQModelList.length(); i++) {
                             JSONObject jsonObject1 = jCBRFQModelList.getJSONObject(i);
                             AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
@@ -419,7 +418,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
 
 
 
-                                               new Handler().postDelayed(new Runnable() {
+                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
                                 mShimmerViewContainer.stopShimmerAnimation();

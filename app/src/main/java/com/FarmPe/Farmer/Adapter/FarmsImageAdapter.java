@@ -54,7 +54,6 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
         public ImageView image,image_looking,edit;
         public TextView prod_price,prod_name,duration,farmer_name,location,connect,selectt;
 
-
         public  LinearLayout linear_looking_main;
 
 
@@ -68,9 +67,7 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
             edit=view.findViewById(R.id.edit);
             selectt=view.findViewById(R.id.selectt);
 
-
         }
-
     }
 
     @Override
@@ -94,7 +91,7 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
             holder.prod_price.setText(products.getProd_price());
             holder.prod_name.setText(products.getModelname() + " " + products.getHp());
 
-            model_id = products.getModelname();
+             model_id = products.getModelname();
             timeline = products.getDuration();
             address = products.getLocation();
 
@@ -103,11 +100,12 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
 
         }
 
-System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"+products.getId());
+     System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"+products.getId());
 
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 location_det= products.getLocation_details();
                 looking_forId=products.getId();
 
@@ -115,7 +113,6 @@ System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"+products.ge
                 selectedFragment = Edit_Looking_For_Fragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
-
                 transaction.addToBackStack("looking1");
                 transaction.commit();
             }

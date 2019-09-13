@@ -145,7 +145,6 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
             public void onClick(View v) {
 
                 add_id =products.getAdd_id();
-
                 Bundle bundle = new Bundle();
                 bundle.putString("Addr_name",products.getAdd_name());
                 bundle.putString("Addr_mobile",products.getAdd_mobile());
@@ -154,15 +153,19 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                 bundle.putString("Addr_Houseno",products.getAdd_door_no());
                 // bundle.putString("Addr_landmark",products.getAdd_landmark());
                 //bundle.putString("Addr_city",products.getAdd_city());
-
                 bundle.putString("Addr_state",products.getAdd_state());
                 bundle.putString("Addr_district",products.getAdd_district());
                 bundle.putString("Addr_taluk",products.getAdd_taluk());
                 bundle.putString("Addr_hobli",products.getAdd_hobli());
                 bundle.putString("Addr_village",products.getAdd_village());
                 bundle.putString("Addr_pickup_from",products.getAdd_pickup_frm());
+                bundle.putString("Addr_state_id",products.getAdd_state_id());
+                bundle.putString("Addr_district_id",products.getAdd_district_id());
+                bundle.putString("Addr_tehsil_id",products.getAdd_tehsil_id());
+                bundle.putString("Addr_hobli_id",products.getAdd_hobli_id());
                 System.out.println("edittttttttttttttttttttttttttttttttttttttttttt"+bundle);
                 bundle.putString("navigation_from","your_add");
+
 
                 selectedFragment = Add_New_Address_Fragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
@@ -173,7 +176,6 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
             }
         });
-
 
 
         holder.delete_1.setOnClickListener(new View.OnClickListener() {
@@ -269,12 +271,12 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                         }
 
 
-
-
-
                         mBottomSheetDialog.dismiss();
                     }
                 });
+
+
+
 
                 cancel.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -445,14 +447,15 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                                     tv.setBackgroundColor(ContextCompat.getColor(activity,R.color.orange));
                                     tv.setTextColor(Color.WHITE);
 
+
                                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                                         tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                                     } else {
                                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                                     }
 
-                                    snackbar.show();
 
+                                    snackbar.show();
 
                                     selectedFragment = You_Address_Fragment.newInstance();
                                     FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
@@ -476,12 +479,14 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
 
         try {
+
             lngObject = new JSONObject(sessionManager.getRegId("language"));
             holder.edit_1.setText(lngObject.getString("Edit"));
             holder.delete_1.setText(lngObject.getString("Delete"));
           //  holder.default_1.setText(lngObject.getString("setasdefault"));
           //  holder.default_add .setText(lngObject.getString("defaultaddressfordelivery"));
             default_addrs_updtd =lngObject.getString("DefaultaddressupdatedSuccessfully");
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
