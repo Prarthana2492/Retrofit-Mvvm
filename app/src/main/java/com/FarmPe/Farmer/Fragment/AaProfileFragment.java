@@ -77,14 +77,14 @@ public class AaProfileFragment extends Fragment {
     View sheetView;
     CircleImageView prod_img;
     Fragment selectedFragment;
-    EditText abt_text;
+    EditText abt_text,userInput;
     LinearLayout backfeed,acc_info_lay,linearLayout,about_lay;
     TextView notificatn,change_language,your_addresss,acc_info1,refer_ern,feedbk,help_1,abt_frmpe,polic_1,logot,setting_tittle,aboutText;
     SessionManager sessionManager;
     public static EditText profile_phone,profname;
     JSONObject lngObject;
     Bitmap bitmap;
-    String profnamestr;
+
     public  static String ProfilePhone;
 
     public static AaProfileFragment newInstance() {
@@ -179,34 +179,36 @@ public class AaProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                mBottomSheetDialog = new BottomSheetDialog(getActivity());
-                sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
+                  mBottomSheetDialog = new BottomSheetDialog(getActivity());
+                  sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
 
-                new KeyboardUtil(getActivity(), sheetView);
-                TextView positiveText = sheetView.findViewById(R.id.positive_text);
-                TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
-                TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
-                final EditText userInput = sheetView.findViewById(R.id.user_text);
+                  new KeyboardUtil(getActivity(), sheetView);
+                  TextView positiveText = sheetView.findViewById(R.id.positive_text);
+                  TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
+                  TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
+                  userInput = sheetView.findViewById(R.id.user_text);
 
-                userInput.setFilters(new InputFilter[] {
-                        new InputFilter.LengthFilter(30) {
-                            public CharSequence filter(CharSequence src, int start,
-                                                       int end, Spanned dst, int dstart, int dend) {
 
-                                for (int i = start; i < end; i++) {
-                                    if (Character.isWhitespace(src.charAt(i))) {
-                                        if (dstart == 0)
-                                            return "";
-                                    }
-                                }
 
-                                if(src.toString().matches("[a-zA-Z ]+")){
-                                    return src;
-                                }
-                                return "";
-                            }
-                        }
-                });
+//                userInput.setFilters(new InputFilter[] {
+//                        new InputFilter.LengthFilter(30) {
+//                            public CharSequence filter(CharSequence src, int start,
+//                                                       int end, Spanned dst, int dstart, int dend) {
+//
+//                                for (int i = start; i < end; i++) {
+//                                    if (Character.isWhitespace(src.charAt(i))) {
+//                                        if (dstart == 0)
+//                                            return "";
+//                                    }
+//                                }
+//
+//                                if(src.toString().matches("[a-zA-Z ]+")){
+//                                    return src;
+//                                }
+//                                return "";
+//                            }
+//                        }
+//                });
 
 
                 userInput.setVisibility(View.VISIBLE);
@@ -217,6 +219,8 @@ public class AaProfileFragment extends Fragment {
                 positiveText.setText("Save");
                 TextView negetiveText = sheetView.findViewById(R.id.negetive_text);
                 negetiveText.setText("Cancel");
+
+
 
                 positiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -403,7 +407,7 @@ public class AaProfileFragment extends Fragment {
 
                     try{
                         JSONObject jsonObject1 = result.getJSONObject("user");
-                        profnamestr = jsonObject1.getString("FullName");
+                        String profnamestr = jsonObject1.getString("FullName");
                         System.out.println("ggpgpgpg" + profnamestr);
                         ProfilePhone = jsonObject1.getString("PhoneNo");
                         //String ProfileEmail = jsonObject1.getString("EmailId");

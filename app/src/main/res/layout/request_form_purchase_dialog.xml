@@ -157,7 +157,7 @@
             android:layout_weight="10"
             android:background="#fff"
             android:fontFamily="@font/segoeui"
-            android:text="2 Months"
+            android:text="3 Months"
             android:textSize="14dp"
             android:padding="10dp"
             android:gravity="start"

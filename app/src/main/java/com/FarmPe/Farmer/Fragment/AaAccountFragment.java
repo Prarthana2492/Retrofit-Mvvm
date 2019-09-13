@@ -269,6 +269,7 @@ public class AaAccountFragment extends Fragment {
                         mBottomSheetDialog.dismiss();
                     }
                 });
+
                 mBottomSheetDialog.setContentView(sheetView);
                 mBottomSheetDialog.show();
 
@@ -278,6 +279,7 @@ public class AaAccountFragment extends Fragment {
 
         return view;
     }
+
 
     public static InputFilter EMOJI_FILTER = new InputFilter() {
         @Override

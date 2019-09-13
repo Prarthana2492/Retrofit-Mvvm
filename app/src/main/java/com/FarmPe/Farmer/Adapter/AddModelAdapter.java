@@ -71,8 +71,10 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
 
 
+
         public MyViewHolder(View view) {
             super(view);
+
 
             brand_name=view.findViewById(R.id.brand_name);
             model=view.findViewById(R.id.model);
@@ -81,12 +83,13 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
             select=view.findViewById(R.id.selectt);
             brochure=view.findViewById(R.id.brochure);
             fav_request=view.findViewById(R.id.fav_request);
-
             linearLayout=view.findViewById(R.id.layout);
 
-        }
 
+
+        }
     }
+
 
 
     @Override

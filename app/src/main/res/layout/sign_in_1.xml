@@ -200,6 +200,7 @@
             android:layout_marginRight="20dp"
             android:text="Forgot Password?"
             android:textColor="#2680EB"
+            android:textStyle="bold"
             android:textSize="14dp" />
 
 

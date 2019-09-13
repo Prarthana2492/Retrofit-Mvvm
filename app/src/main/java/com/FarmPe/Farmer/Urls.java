@@ -3,8 +3,8 @@ package com.FarmPe.Farmer;
 
   public class Urls {
 
-  private static final String ROOT_URL = "http://13.232.185.209:909/api/";///DEV
- // private static final String ROOT_URL = "http://13.233.184.72:909/api/";///pro
+  //private static final String ROOT_URL = "http://13.232.185.209:909/api/";///DEV
+  private static final String ROOT_URL = "http://13.233.184.72:909/api/";///pro
 
 
     public static final String IMAGE_ROOT_URL = "http://13.233.184.72:909";//Image root

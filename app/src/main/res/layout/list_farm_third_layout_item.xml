@@ -94,6 +94,7 @@
                 android:orientation="vertical"
                 android:layout_marginTop="1dp"
                 android:background="#ffff">
+
                 <TextView
                     android:id="@+id/current_loc"
                     android:layout_width="wrap_content"
@@ -206,7 +207,6 @@
                     android:orientation="horizontal"
                     android:weightSum="100"
                     >
-
 
                     <LinearLayout
 
