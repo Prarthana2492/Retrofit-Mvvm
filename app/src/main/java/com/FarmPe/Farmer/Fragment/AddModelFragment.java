@@ -53,6 +53,14 @@ AddModelFragment extends Fragment {
     public static JSONArray tractorAccessoriesModelMasterList = null;
     public static JSONArray harvesterModelMasterList = null;
     public static JSONArray jCBRFQModelList = null;
+
+    public static JSONArray FarmMachineryModelMasterList = null;
+    public static JSONArray FenceWireModelMasterList = null;
+    public static JSONArray TyreModelMasterList = null;
+    public static JSONArray MiniTruckModelMasterList = null;
+    public static JSONArray BackhoeAttachmentModelMasterList = null;
+    public static JSONArray PowerTillerModelMasterList = null;
+
     ModelBean modelBean;
     Fragment selectedFragment = null;
     TextView toolbar_title,continue_button,sub_label,filter_text;
@@ -177,6 +185,12 @@ AddModelFragment extends Fragment {
                         tractorAccessoriesModelMasterList = result.getJSONArray("TractorAccessoriesModelMasterList");
                         harvesterModelMasterList = result.getJSONArray("HarvesterModelMasterList");
                         jCBRFQModelList = result.getJSONArray("JCBModelMasterList");
+                        FarmMachineryModelMasterList = result.getJSONArray("FarmMachineryModelMasterList");
+                        FenceWireModelMasterList = result.getJSONArray("FenceWireModelMasterList");
+                        TyreModelMasterList = result.getJSONArray("TyreModelMasterList");
+                        MiniTruckModelMasterList = result.getJSONArray("MiniTruckModelMasterList");
+                        BackhoeAttachmentModelMasterList = result.getJSONArray("BackhoeAttachmentModelMasterList");
+                        PowerTillerModelMasterList = result.getJSONArray("PowerTillerModelMasterList");
                         modelBeanArrayList.clear();
 
                         for(int i=0;i<model_list_array.length();i++){
@@ -208,6 +222,51 @@ AddModelFragment extends Fragment {
                             modelBeanArrayList.add(modelBean);
 
                         }
+
+                      for(int i=0;i<FarmMachineryModelMasterList.length();i++){
+                        JSONObject jsonObject1 = FarmMachineryModelMasterList.getJSONObject(i);
+                        modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"");
+                        modelBeanArrayList.add(modelBean);
+
+                    }
+                        for(int i=0;i<FenceWireModelMasterList.length();i++){
+                            JSONObject jsonObject1 = FenceWireModelMasterList.getJSONObject(i);
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"");
+                            modelBeanArrayList.add(modelBean);
+
+                        }
+
+                        for(int i=0;i<FenceWireModelMasterList.length();i++){
+                            JSONObject jsonObject1 = FenceWireModelMasterList.getJSONObject(i);
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"");
+                            modelBeanArrayList.add(modelBean);
+
+                        }
+                        for(int i=0;i<TyreModelMasterList.length();i++){
+                            JSONObject jsonObject1 = TyreModelMasterList.getJSONObject(i);
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"");
+                            modelBeanArrayList.add(modelBean);
+
+                        }
+                        for(int i=0;i<MiniTruckModelMasterList.length();i++){
+                            JSONObject jsonObject1 = MiniTruckModelMasterList.getJSONObject(i);
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"");
+                            modelBeanArrayList.add(modelBean);
+
+                        } for(int i=0;i<BackhoeAttachmentModelMasterList.length();i++){
+                            JSONObject jsonObject1 = BackhoeAttachmentModelMasterList.getJSONObject(i);
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"");
+                            modelBeanArrayList.add(modelBean);
+
+                        }
+
+                        for(int i=0;i<PowerTillerModelMasterList.length();i++){
+                            JSONObject jsonObject1 = PowerTillerModelMasterList.getJSONObject(i);
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"");
+                            modelBeanArrayList.add(modelBean);
+
+                        }
+
 
                         farmadapter.notifyDataSetChanged();
 

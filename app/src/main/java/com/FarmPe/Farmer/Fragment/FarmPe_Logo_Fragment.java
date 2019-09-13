@@ -102,6 +102,9 @@ public class FarmPe_Logo_Fragment extends Fragment {
         super.onDestroy();
     }
 
+
+
+
     @Override
 
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
@@ -276,6 +279,8 @@ public class FarmPe_Logo_Fragment extends Fragment {
         Add_make_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
 
                 Bundle bundle = new Bundle();
                 bundle.putString("status","home_request");
@@ -524,6 +529,9 @@ public class FarmPe_Logo_Fragment extends Fragment {
             e.printStackTrace();
         }
     }
+
+
+
 
 }
 
