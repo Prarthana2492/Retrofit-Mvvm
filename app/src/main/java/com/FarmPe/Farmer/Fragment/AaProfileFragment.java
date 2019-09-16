@@ -103,12 +103,13 @@ public class AaProfileFragment extends Fragment {
         profname = view.findViewById(R.id.prof_name);
         profile_phone = view.findViewById(R.id.phone_text);
         aboutText = view.findViewById(R.id.about_text);
-
         prod_img = view.findViewById(R.id.prod_imgg);
         sessionManager = new SessionManager(getActivity());
         setupUI(linearLayout);
         getActivity().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
+
 
 
         backfeed.setOnClickListener(new View.OnClickListener() {
@@ -175,6 +176,8 @@ public class AaProfileFragment extends Fragment {
             }
         });
 
+
+
         acc_info_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -187,6 +190,7 @@ public class AaProfileFragment extends Fragment {
                   TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
                   TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
                   userInput = sheetView.findViewById(R.id.user_text);
+                  profname.getSelectionEnd();
 
 
 
@@ -211,6 +215,7 @@ public class AaProfileFragment extends Fragment {
 //                });
 
 
+
                 userInput.setVisibility(View.VISIBLE);
                 userInput.setText(profname.getText().toString());
                 descriptionText.setVisibility(View.GONE);
@@ -225,7 +230,6 @@ public class AaProfileFragment extends Fragment {
                 positiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
 
                         if (userInput.getText().toString().equals("")) {
 
@@ -250,7 +254,6 @@ public class AaProfileFragment extends Fragment {
 
 
                         } else {
-
 
                             StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.Update_Profile_Details,
                                     new Response.Listener<String>() {
@@ -289,11 +292,13 @@ public class AaProfileFragment extends Fragment {
                                             Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
                                         }
                                     }) {
+
+
                                 @Override
                                 protected Map<String, String> getParams() {
                                     Map<String, String> params = new HashMap<String, String>();
                                     params.put("UserId", sessionManager.getRegId("userId"));
-                                    params.put("FullName", userInput.getText().toString());
+                                    params.put("FullName", sessionManager.getRegId("userId"));
                                     params.put("PhoneNo", sessionManager.getRegId("phone"));
                                     System.out.println("fhsdfhjf" + params);
                                     return params;
@@ -307,14 +312,17 @@ public class AaProfileFragment extends Fragment {
                         }
                     }
                 });
+
                 negetiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         mBottomSheetDialog.dismiss();
                     }
                 });
+
                 mBottomSheetDialog.setContentView(sheetView);
                 mBottomSheetDialog.show();
+
             }
         });
 
@@ -335,6 +343,8 @@ public class AaProfileFragment extends Fragment {
 
                 abt_text.setVisibility(View.VISIBLE);
                 abt_text.setText(aboutText.getText().toString());
+                abt_text.getSelectionEnd();
+
                 descriptionText.setVisibility(View.GONE);
                 titleText.setText("Add about");
                 descriptionText.setText("Are you sure you want to exit?");
@@ -360,11 +370,15 @@ public class AaProfileFragment extends Fragment {
                             tv.setTextColor(Color.WHITE);
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                                 tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
                             } else {
                                 tv.setGravity(Gravity.CENTER_HORIZONTAL);
+
                             }
+
                             snackbar.show();
                             mBottomSheetDialog.show();
+
 
 
                         }else{
@@ -383,9 +397,11 @@ public class AaProfileFragment extends Fragment {
                 negetiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
                         mBottomSheetDialog.dismiss();
                     }
                 });
+
 
                 mBottomSheetDialog.setContentView(sheetView);
                 mBottomSheetDialog.show();
@@ -446,6 +462,7 @@ public class AaProfileFragment extends Fragment {
         return view;
     }
 
+
     private void save_description() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.Update_Profile_Details,
                 new Response.Listener<String>() {
@@ -481,6 +498,7 @@ public class AaProfileFragment extends Fragment {
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(getActivity(),error.toString(),Toast.LENGTH_LONG).show();
                     }
+
                 }){
             @Override
             protected Map<String,String> getParams(){
@@ -738,11 +756,6 @@ public class AaProfileFragment extends Fragment {
             }
         }
     }
-
-
-
-
-
 
     public Bitmap getResizedBitmap(Bitmap bm, int newWidth, int newHeight) {
         if (bm == null) {

@@ -39,7 +39,7 @@ public class NotificationFragment extends Fragment {
     public static NotificationAdapter farmadapter;
     TextView toolbar_title;
     ImageView back_arrw;
-    LinearLayout back_feed;
+    LinearLayout back_feed,no_notifitn_added;
     Notification_Home_Bean notification_home_bean;
     Fragment selectedFragment;
     SessionManager sessionManager;
@@ -60,6 +60,7 @@ public class NotificationFragment extends Fragment {
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
         back_arrw=view.findViewById(R.id.back_arrw);
+        no_notifitn_added=view.findViewById(R.id.no_notifitn_added);
 
         sessionManager = new SessionManager(getActivity());
 
@@ -136,6 +137,17 @@ public class NotificationFragment extends Fragment {
                             notification_home_bean = new Notification_Home_Bean(jsonObject1.getString("NotificationText"),jsonObject1.getString("Id"));
                             newOrderBeansList.add(notification_home_bean);
 
+                        }
+
+                        if(notifn_array.length()==0){
+
+                            no_notifitn_added.setVisibility(View.VISIBLE);
+                            recyclerView.setVisibility(View.GONE);
+
+                        }else{
+
+                            no_notifitn_added.setVisibility(View.GONE);
+                            recyclerView.setVisibility(View.VISIBLE);
                         }
 
                         farmadapter.notifyDataSetChanged();

@@ -83,6 +83,7 @@ public class Request_Details_New extends Fragment {
     String purchasetime="";
     String lookingforfinance="no";
     SwitchCompat lookingForFinance_switch;
+    public static String model_id,looking_fr_id;
 
 
 
@@ -121,6 +122,9 @@ public class Request_Details_New extends Fragment {
         no_address_text=view.findViewById(R.id.no_address_text);
        // toolbar_title.setText("Request for Quotation");
         sessionManager=new SessionManager(getActivity());
+
+        model_id = getArguments().getString("MOD_ID");
+        looking_fr_id = getArguments().getString("LOOKING_ID");
         Bundle bundle=getArguments();
 
 
@@ -139,7 +143,6 @@ public class Request_Details_New extends Fragment {
 
 
             }
-
 
 //
 //        lookingForFinance_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -208,6 +211,7 @@ public class Request_Details_New extends Fragment {
         request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
 
                 if (addId==null){
 
@@ -434,12 +438,14 @@ public class Request_Details_New extends Fragment {
             userRequestjsonObject.put("UserId",sessionManager.getRegId("userId"));
             userRequestjsonObject.put("PurchaseTimeline", purchase_edit.getText().toString());
             userRequestjsonObject.put("LookingForFinance", "yes");
-            userRequestjsonObject.put("AddressId", addId);
+            userRequestjsonObject.put("AddressId",addId);
             userRequestjsonObject.put("IsAgreed", "True");
+            userRequestjsonObject.put("ModelId", model_id);
+            userRequestjsonObject.put("LookingForDetailsId", looking_fr_id);
 
             // userRequestjsonObject.put("AddressId", addId);
 
-            if (getArguments().getString("navigation_from").equals("mod")) {
+          /*  if (getArguments().getString("navigation_from").equals("mod")) {
 
                 userRequestjsonObject.put("ModelId", AddModelAdapter.tractor_id);
                 userRequestjsonObject.put("LookingForDetailsId", AddFirstAdapter.looinkgId);
@@ -450,7 +456,7 @@ public class Request_Details_New extends Fragment {
             }else {
                 userRequestjsonObject.put("ModelId", getArguments().getString("MOD_ID"));
                 userRequestjsonObject.put("LookingForDetailsId", getArguments().getString("LOOKING_ID"));
-            }
+            }*/
 
 
             System.out.println("postObjmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"+userRequestjsonObject.toString());

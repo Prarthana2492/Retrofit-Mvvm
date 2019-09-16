@@ -215,6 +215,8 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
             public void onClick(View view) {
                 Bundle bundle=new Bundle();
                 bundle.putString("navigation_from","mod");
+                bundle.putString("MOD_ID",model_id);
+                bundle.putString("LOOKING_ID",AddFirstAdapter.looinkgId);
 
                 tractor_id=products.getId();
                 selectedFragment = Request_Details_New.newInstance();

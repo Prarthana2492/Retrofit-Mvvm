@@ -262,11 +262,11 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
         try {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
 
-           // submit.setText(lngObject.getString("SendOTP"));
-            //otp_title.setText(lngObject.getString("OneTimePassword"));
-           // otpedittext.setHint(lngObject.getString("EnterOTP"));
-            //resendotp.setText(lngObject.getString("Resend"));
-            //otp_text.setHint(lngObject.getString("EntertheOTP"));
+              // submit.setText(lngObject.getString("SendOTP"));
+              //otp_title.setText(lngObject.getString("OneTimePassword"));
+             // otpedittext.setHint(lngObject.getString("EnterOTP"));
+             //resendotp.setText(lngObject.getString("Resend"));
+             //otp_text.setHint(lngObject.getString("EntertheOTP"));
 
             toast_otp = lngObject.getString("EntertheOTP");
             toast_invalid_otp = lngObject.getString("InvalidOTP");
@@ -339,6 +339,7 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
                 else if (otp_get_text.equals(sessionId)){
                     JSONObject postjsonObject = new JSONObject();
                     JSONObject postjsonObject1 = new JSONObject();
+
                     try {
 
                         postjsonObject.put("PhoneNo",SignUpActivity.contact);

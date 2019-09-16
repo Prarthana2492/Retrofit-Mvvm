@@ -3,14 +3,13 @@ package com.FarmPe.Farmer;
 
   public class Urls {
 
-  //private static final String ROOT_URL = "http://13.232.185.209:909/api/";///DEV
-  private static final String ROOT_URL = "http://13.233.184.72:909/api/";///pro
+   private static final String ROOT_URL = "http://13.232.185.209:909/api/";///DEV
+ // private static final String ROOT_URL = "http://13.233.184.72:909/api/";///pro
 
 
     public static final String IMAGE_ROOT_URL = "http://13.233.184.72:909";//Image root
     public static final String Add_New_Address = ROOT_URL+"MasterTable/AddUserAddress";
     public static final String GetFarmerDetailsList = ROOT_URL+"MasterTable/GetFarmersList";
-
     public static final String LOGIN=ROOT_URL+"Auth/ValidateUser";
     public static final String SIGNUP=ROOT_URL+"Auth/RegisterUser";
 
@@ -66,7 +65,6 @@ package com.FarmPe.Farmer;
     public static final String Hoblis=ROOT_URL+"MasterTable/GetHoblis";
     public static final String Villages=ROOT_URL+"MasterTable/GetVillages";
     public static final String State = ROOT_URL+"MasterTable/GetStates";
-
     public static final String GetBrandList = ROOT_URL+"MasterTable/GetBrandList";
     public static final String ModelList = ROOT_URL+"MasterTable/GetModels";
     public static final String GetHPList = ROOT_URL+"MasterTable/GetHPList";
@@ -80,7 +78,6 @@ package com.FarmPe.Farmer;
     //Favorites
      public static final String Get_Favorites = ROOT_URL+"MasterTable/GetFarmerFavouriteModelLists";
      public static final String Add_Favorites = ROOT_URL+"MasterTable/AddUpdateFarmerFavouriteModelList";
-
 
 
     //List Your Farms

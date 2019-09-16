@@ -72,4 +72,41 @@
     </android.support.v7.widget.RecyclerView>
 
 
+
+
+
+    <LinearLayout
+        android:id="@+id/no_notifitn_added"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="#fff"
+        android:gravity="center"
+        android:visibility="gone"
+
+        >
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_notificationblack"/>
+
+
+        <TextView
+            android:id="@+id/no_address_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/segoeui"
+            android:text="No Notifications"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/menu_green"
+            />
+
+
+
+    </LinearLayout>
+
+
 </LinearLayout>

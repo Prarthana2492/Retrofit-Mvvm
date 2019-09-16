@@ -155,9 +155,9 @@ public class ForgotPasswordNew extends AppCompatActivity implements Connectivity
             lngObject = new JSONObject(sessionManager.getRegId("language"));
 
             // forgt_pass_detail.setText(lngObject.getString("ForgotPasswordText"));
-          // mobileno.setHint(lngObject.getString("DigitMobileNumber"));
+           mobileno.setHint(lngObject.getString("PhoneNo"));
             forgot_pass_text.setText(lngObject.getString("ForgotPassword"));
-           // forgot_submit.setText(lngObject.getString("ResetPassword"));
+            forgot_submit.setText(lngObject.getString("ResetPassword"));
 
 
             toast_mobile = lngObject.getString("EnterPhoneNo");

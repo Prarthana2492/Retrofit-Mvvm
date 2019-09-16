@@ -2,10 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="300dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="#666663"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
+
 
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,6 +16,8 @@
     android:paddingHorizontal="15dp"
     android:orientation="vertical"
     android:background="@drawable/curved_linear_background">
+
+
 
     <TextView
         android:id="@+id/bottom_sheet_title"
@@ -28,14 +31,19 @@
         android:layout_marginTop="25dp"
         android:layout_height="wrap_content"/>
 
+
     <EditText
         android:id="@+id/user_text"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
         android:paddingVertical="12dp"
+        android:selectAllOnFocus="true"
+        android:inputType="textPassword"
+        android:imeOptions="actionNext"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/light_gray"
-        android:singleLine="false"/>
+        android:singleLine="true"/>
+
 
     <TextView
         android:id="@+id/bottom_sheet_description"

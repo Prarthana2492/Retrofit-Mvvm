@@ -43,6 +43,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.FarmPe.Farmer.Adapter.AddFirstAdapter;
 import com.FarmPe.Farmer.Adapter.DistrictAdapter;
 import com.FarmPe.Farmer.Adapter.DistrictAdapter1;
 import com.FarmPe.Farmer.Adapter.HoblisAdapter;
@@ -929,10 +930,10 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
 
-                        if (tal_array != null &&tal_array.length() > 0) {
+                         if (tal_array != null &&tal_array.length() > 0) {
 
 
-                            for (int i = 0; i < tal_array.length(); i++) {
+                                for (int i = 0; i < tal_array.length(); i++) {
                                 JSONObject jsonObject1 = tal_array.getJSONObject(i);
                                 stateBean = new StateBean(jsonObject1.getString("Taluk"), jsonObject1.getString("TalukId"));
                                 talukBeanList.add(stateBean);
@@ -982,7 +983,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                     System.out.println("hhhhhhhssssskljhgfmmmmmmmmmmmmmmmmmmmmmmmmmmmm" + result);
 
                     try{
-                        hobliBeanList.clear();
+                        villageBeanList.clear();
                         hobli_array = result.getJSONArray("HobliList");
 
                         if (hobli_array != null &&hobli_array.length() > 0) {
@@ -990,12 +991,12 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                                 JSONObject jsonObject3 = hobli_array.getJSONObject(i);
                                 stateBean = new StateBean(jsonObject3.getString("Hobli"), jsonObject3.getString("HobliId"));
-                                hobliBeanList.add(stateBean);
+                                villageBeanList.add(stateBean);
 
                             }
 
-                            sorting(hobliBeanList);
-                            hoblisAdapter.notifyDataSetChanged();
+                            sorting(villageBeanList);
+                            villageAdapter.notifyDataSetChanged();
                             //  grade_dialog.show();
 
                         }else {
@@ -1168,7 +1169,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("DistrictId",DistrictAdapter.districtid);
-            jsonObject.put("HobliId", HoblisAdapter.hobliid);
+            jsonObject.put("HobliId", VillageAdapter.villageid);
             jsonObject.put("MobileNo",mobile.getText().toString());
             jsonObject.put("Name",name.getText().toString());
             jsonObject.put("PickUpFrom",selected_addresstype);
@@ -1193,7 +1194,6 @@ public class  Add_New_Address_Fragment extends Fragment {
                 jsonObject.put("DistrictId",getArguments().getString("Addr_district_id"));
                 jsonObject.put("TalukId",getArguments().getString("Addr_tehsil_id"));
                 jsonObject.put("HobliId",getArguments().getString("Addr_hobli_id"));
-
 
 
 
@@ -1251,10 +1251,16 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                                 } else if (getArguments().getString("navigation_from").equals("REQ_NEW")) {
 
+
+                                    Bundle bundle1 = new Bundle();
+                                    bundle1.putString("navigation_from","ADD_REQ");
+                                    bundle.putString("MOD_ID",Request_Details_New.model_id);
+                                    bundle.putString("LOOKING_ID", Request_Details_New.looking_fr_id);
                                     selectedFragment = Request_Details_New.newInstance();
                                     selectedFragment.setArguments(bundle);
                                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                                     transaction.replace(R.id.frame_layout, selectedFragment);
+                                    selectedFragment.setArguments(bundle1);
                                     transaction.commit();
 
 

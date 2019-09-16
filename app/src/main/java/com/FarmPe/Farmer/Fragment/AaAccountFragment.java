@@ -159,6 +159,21 @@ public class AaAccountFragment extends Fragment {
                 Log.d("liugekuyhg",""+titleText.getText().toString());
                 descriptionText.setText("Are you sure, you want to exit?");
                 descriptionText.setVisibility(View.GONE);
+
+
+
+                userInputedt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if(userInputedt.hasFocus()){
+                            //et1.setCursorVisible(true);
+                            userInputedt.setActivated(true);
+                            userInputedt.setPressed(true);
+                        }
+                    }
+                });
+
+
                 positiveText.setText("Save");
                 TextView negetiveText = sheetView.findViewById(R.id.negetive_text);
                 negetiveText.setText("Cancel");
