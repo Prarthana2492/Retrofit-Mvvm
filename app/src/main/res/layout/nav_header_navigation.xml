@@ -17,6 +17,7 @@
     android:weightSum="100"
     android:orientation="vertical"
     >
+
    <LinearLayout
        android:id="@+id/update_acc_layout"
        android:layout_width="match_parent"
@@ -85,86 +86,86 @@
 
 
 
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:orientation="horizontal"
-       android:weightSum="100"
-       android:layout_marginBottom="5dp"
-       android:gravity="center_vertical"
-       android:layout_weight="20"
-       android:background="#fafafa"
-       >
+   <!--<LinearLayout-->
+       <!--android:layout_width="match_parent"-->
+       <!--android:layout_height="wrap_content"-->
+       <!--android:orientation="horizontal"-->
+       <!--android:weightSum="100"-->
+       <!--android:layout_marginBottom="5dp"-->
+       <!--android:gravity="center_vertical"-->
+       <!--android:layout_weight="20"-->
+       <!--android:background="#fafafa"-->
+       <!--&gt;-->
 
-      <LinearLayout
-          android:id="@+id/your_request"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:orientation="vertical"
-          android:layout_weight="50"
+      <!--<LinearLayout-->
+          <!--android:id="@+id/your_request"-->
+          <!--android:layout_width="0dp"-->
+          <!--android:layout_height="wrap_content"-->
+          <!--android:orientation="vertical"-->
+          <!--android:layout_weight="50"-->
 
-          >
+          <!--&gt;-->
 
-         <TextView
-             android:id="@+id/request_count"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text=""
-             android:textSize="16dp"
-             android:gravity="center"
-             android:paddingBottom="5dp"
-             android:textColor="#000"
-             />
+         <!--<TextView-->
+             <!--android:id="@+id/request_count"-->
+             <!--android:layout_width="match_parent"-->
+             <!--android:layout_height="wrap_content"-->
+             <!--android:text=""-->
+             <!--android:textSize="16dp"-->
+             <!--android:gravity="center"-->
+             <!--android:paddingBottom="5dp"-->
+             <!--android:textColor="#000"-->
+             <!--/>-->
 
-         <TextView
-             android:id="@+id/your_request1"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Your Requests"
-             android:textSize="14dp"
-             android:layout_marginTop="2dp"
-             android:gravity="center"
-             android:fontFamily="@font/segoeui"
-             android:textColor="#000"
-             />
+         <!--<TextView-->
+             <!--android:id="@+id/your_request1"-->
+             <!--android:layout_width="match_parent"-->
+             <!--android:layout_height="wrap_content"-->
+             <!--android:text="Your Requests"-->
+             <!--android:textSize="14dp"-->
+             <!--android:layout_marginTop="2dp"-->
+             <!--android:gravity="center"-->
+             <!--android:fontFamily="@font/segoeui"-->
+             <!--android:textColor="#000"-->
+             <!--/>-->
 
-      </LinearLayout>
-
-
-      <LinearLayout
-          android:id="@+id/nw_request"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:orientation="vertical"
-          android:layout_weight="50"
-          android:gravity="center"
-
-          >
-
-         <ImageView
-             android:layout_width="25dp"
-             android:layout_height="25dp"
-             android:paddingBottom="5dp"
-             android:src="@drawable/ic_add_plus"
-             />
-
-         <TextView
-             android:id="@+id/nw_request1"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Make a Request"
-             android:textSize="14dp"
-             android:layout_marginTop="2dp"
-             android:gravity="center"
-             android:fontFamily="@font/segoeui"
-             android:textColor="#000"
-             />
-
-      </LinearLayout>
+      <!--</LinearLayout>-->
 
 
+      <!--<LinearLayout-->
+          <!--android:id="@+id/nw_request"-->
+          <!--android:layout_width="0dp"-->
+          <!--android:layout_height="wrap_content"-->
+          <!--android:orientation="vertical"-->
+          <!--android:layout_weight="50"-->
+          <!--android:gravity="center"-->
 
-   </LinearLayout>
+          <!--&gt;-->
+
+         <!--<ImageView-->
+             <!--android:layout_width="25dp"-->
+             <!--android:layout_height="25dp"-->
+             <!--android:paddingBottom="5dp"-->
+             <!--android:src="@drawable/ic_add_plus"-->
+             <!--/>-->
+
+         <!--<TextView-->
+             <!--android:id="@+id/nw_request1"-->
+             <!--android:layout_width="match_parent"-->
+             <!--android:layout_height="wrap_content"-->
+             <!--android:text="Make a Request"-->
+             <!--android:textSize="14dp"-->
+             <!--android:layout_marginTop="2dp"-->
+             <!--android:gravity="center"-->
+             <!--android:fontFamily="@font/segoeui"-->
+             <!--android:textColor="#000"-->
+             <!--/>-->
+
+      <!--</LinearLayout>-->
+
+
+
+   <!--</LinearLayout>-->
 
    <!--<LinearLayout-->
        <!--android:layout_width="match_parent"-->

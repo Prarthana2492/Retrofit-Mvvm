@@ -488,6 +488,7 @@ public class Request_Details_New extends Fragment {
                             tv.setGravity(Gravity.CENTER_HORIZONTAL);
                         }
 
+
                         snackbar.show();
                         selectedFragment = HomeMenuFragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
