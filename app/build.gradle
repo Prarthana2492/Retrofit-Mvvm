@@ -25,6 +25,7 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -34,6 +35,7 @@ android {
         }
     }
 }
+
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')

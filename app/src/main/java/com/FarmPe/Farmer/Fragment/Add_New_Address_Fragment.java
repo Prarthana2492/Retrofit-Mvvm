@@ -1242,6 +1242,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                                     FragmentManager fm = getActivity().getSupportFragmentManager();
                                     fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
+
                              /*       selectedFragment = You_Address_Fragment.newInstance();
                                     FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
                                     transaction.replace(R.id.frame_layout, selectedFragment);
@@ -1251,8 +1252,8 @@ public class  Add_New_Address_Fragment extends Fragment {
 //                                    fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 
-                                } else if (getArguments().getString("navigation_from").equals("REQ_NEW")) {
 
+                                } else if (getArguments().getString("navigation_from").equals("REQ_NEW")) {
 
                                     Bundle bundle1 = new Bundle();
                                     bundle1.putString("navigation_from","ADD_REQ");
@@ -1264,6 +1265,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                                     transaction.replace(R.id.frame_layout, selectedFragment);
                                     selectedFragment.setArguments(bundle1);
                                     transaction.commit();
+
 
 
                                 } else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")){
@@ -1300,6 +1302,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                                     snackbar.show();
 
 
+
                                 } else if (getArguments().getString("navigation_from").equals("SETTING_FRAG")) {
                                     int duration = 1000;
                                     Snackbar snackbar = Snackbar
@@ -1313,6 +1316,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                                     } else {
                                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                                     }
+
 
                                     snackbar.show();
 
@@ -1604,7 +1608,6 @@ public class  Add_New_Address_Fragment extends Fragment {
             } else {
                 recyclerView.setVisibility(View.VISIBLE);
                 norecords.setVisibility(View.GONE);
-
 
                 talukAdapter = new TalukAdapter(searchresultAraaylist, getActivity());
                 recyclerView.setAdapter(talukAdapter);
