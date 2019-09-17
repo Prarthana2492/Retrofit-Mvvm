@@ -14,7 +14,7 @@
     <LinearLayout
         android:id="@+id/item"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="160dp"
         android:weightSum="100"
         android:background="@drawable/request_price_border"
         android:gravity="center"
@@ -25,14 +25,14 @@
 
         <ImageView
             android:id="@+id/prod_img"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:scaleType="fitXY"
             />
 
 
 
-    </LinearLayout>
+
 
 
     <LinearLayout
@@ -58,7 +58,7 @@
 
     </LinearLayout>
 
-
+    </LinearLayout>
 
 </LinearLayout>
 

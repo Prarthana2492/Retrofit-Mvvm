@@ -17,11 +17,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Base64;
 import android.util.Log;
@@ -177,6 +179,10 @@ public class AaAccountFragment extends Fragment {
                 positiveText.setText("Save");
                 TextView negetiveText = sheetView.findViewById(R.id.negetive_text);
                 negetiveText.setText("Cancel");
+
+
+
+
 
 
                 positiveText.setOnClickListener(new View.OnClickListener() {
@@ -410,6 +416,9 @@ public class AaAccountFragment extends Fragment {
 
         Volley.newRequestQueue(getActivity()).add(stringRequest);
     }
+
+
+
 
 
 }

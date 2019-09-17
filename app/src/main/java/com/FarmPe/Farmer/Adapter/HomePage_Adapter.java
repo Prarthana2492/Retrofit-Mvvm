@@ -62,7 +62,6 @@ public class HomePage_Adapter extends RecyclerView.Adapter<HomePage_Adapter.MyVi
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final AddTractorBean2 products = productList.get(position);
-
         holder.model_name.setText(products.getProd_name());
         holder.brand_name.setText(products.getProd_category());
 
@@ -73,7 +72,6 @@ public class HomePage_Adapter extends RecyclerView.Adapter<HomePage_Adapter.MyVi
                 .thumbnail(0.5f)
                 //  .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .error(R.drawable.avatarmale)
                 .centerCrop()
                 .into(holder.image);
     }

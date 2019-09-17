@@ -100,7 +100,7 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
 
         }
 
-     System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"+products.getId());
+     System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"+products.getImage());
 
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override

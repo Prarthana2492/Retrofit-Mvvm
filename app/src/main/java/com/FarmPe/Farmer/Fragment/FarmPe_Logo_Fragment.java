@@ -88,6 +88,12 @@ public class FarmPe_Logo_Fragment extends Fragment {
     public static JSONArray tractorAccessoriesModelMasterList = null;
     public static JSONArray harvesterModelMasterList = null;
     public static JSONArray jCBRFQModelList = null;
+    public static JSONArray farmMachineryRFQModelList = null;
+    public static JSONArray fenceWireRFQModelList = null;
+    public static JSONArray tyreRFQModelList = null;
+    public static JSONArray miniTruckRFQModelList = null;
+    public static JSONArray backhoeAttachmentRFQModelList = null;
+    public static JSONArray powerTillerRFQModelList = null;
 
     Noimg_Recylr_Adapter noimg_recylr_adapter;
     public static FarmPe_Logo_Fragment newInstance() {
@@ -352,7 +358,12 @@ public class FarmPe_Logo_Fragment extends Fragment {
                         tractorAccessoriesModelMasterList = rfqListObject.getJSONArray("TractorAccesoriesRFQModelList");
                         harvesterModelMasterList = rfqListObject.getJSONArray("HarvesterRFQModelList");
                         jCBRFQModelList = rfqListObject.getJSONArray("JCBRFQModelList");
-
+                        farmMachineryRFQModelList = rfqListObject.getJSONArray("FarmMachineryRFQModelList");
+                        fenceWireRFQModelList = rfqListObject.getJSONArray("FenceWireRFQModelList");
+                        tyreRFQModelList = rfqListObject.getJSONArray("TyreRFQModelList");
+                        miniTruckRFQModelList = rfqListObject.getJSONArray("MiniTruckRFQModelList");
+                        backhoeAttachmentRFQModelList = rfqListObject.getJSONArray("BackhoeAttachmentRFQModelList");
+                        powerTillerRFQModelList = rfqListObject.getJSONArray("PowerTillerRFQModelList");
 
 
                         if (request_count.equalsIgnoreCase("0")) {
@@ -413,6 +424,43 @@ public class FarmPe_Logo_Fragment extends Fragment {
                             newOrderBeansList2.add(img2);
 
                         }
+
+                        for (int i = 0; i < farmMachineryRFQModelList.length(); i++) {
+                            JSONObject jsonObject1 = farmMachineryRFQModelList.getJSONObject(i);
+                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
+                            newOrderBeansList2.add(img2);
+
+                        }
+                        for (int i = 0; i < fenceWireRFQModelList.length(); i++) {
+                            JSONObject jsonObject1 = fenceWireRFQModelList.getJSONObject(i);
+                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
+                            newOrderBeansList2.add(img2);
+
+                        }
+
+
+                        for (int i = 0; i < tyreRFQModelList.length(); i++) {
+                            JSONObject jsonObject1 = tyreRFQModelList.getJSONObject(i);
+                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
+                            newOrderBeansList2.add(img2);
+
+                        }  for (int i = 0; i < miniTruckRFQModelList.length(); i++) {
+                            JSONObject jsonObject1 = miniTruckRFQModelList.getJSONObject(i);
+                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
+                            newOrderBeansList2.add(img2);
+
+                        }for (int i = 0; i < backhoeAttachmentRFQModelList.length(); i++) {
+                            JSONObject jsonObject1 = backhoeAttachmentRFQModelList.getJSONObject(i);
+                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
+                            newOrderBeansList2.add(img2);
+
+                        }for (int i = 0; i < powerTillerRFQModelList.length(); i++) {
+                            JSONObject jsonObject1 = powerTillerRFQModelList.getJSONObject(i);
+                            AddTractorBean2 img2 = new AddTractorBean2(jsonObject1.getString("ModelImage"),jsonObject1.getString("Model"),jsonObject1.getString("LookingForDetails"),jsonObject1.getString("Id"));
+                            newOrderBeansList2.add(img2);
+
+                        }
+
 
                         reqst_count.setText("Requests "+ "(" + request_count + ")");
                         HomeMenuFragment.request_count.setText(request_count);
