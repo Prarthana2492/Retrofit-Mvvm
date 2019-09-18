@@ -882,7 +882,7 @@ public class  Add_New_Address_Fragment extends Fragment {
             edit_state.setHint(lngObject.getString("State") + " :");
 
             edit_districr.setHint(lngObject.getString("District") + " :");
-            edit_village.setHint(lngObject.getString("Village")+" :");
+           // edit_village.setHint(lngObject.getString("Village")+" :");
 
             //  add_new_address.setText(lngObject.getString("AddAddress"));
 

@@ -2,13 +2,18 @@ package com.FarmPe.Farmer.Adapter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +23,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.FarmPe.Farmer.Bean.ModelBean;
+import com.FarmPe.Farmer.Fragment.AddModelFragment;
 import com.FarmPe.Farmer.Fragment.Model_Brochure_Fragment;
 import com.FarmPe.Farmer.Fragment.Request_Details_New;
+import com.FarmPe.Farmer.Fragment.Request_Favorite_Fragment;
 import com.FarmPe.Farmer.SessionManager;
 import com.FarmPe.Farmer.Urls;
 import com.FarmPe.Farmer.Volly_class.Crop_Post;
@@ -47,7 +54,7 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
     public static LinearLayout next_arw;
     public static String first,tractor_id,model_id;
     public static CardView cardView;
-    String brochure_pdf;
+    String brochure_pdf,looking_for_id;
 
 
     public Request_Favorite_Adapter(Activity activity, List<ModelBean> moviesList) {
@@ -91,13 +98,14 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final ModelBean products = productList.get(position);
 
         holder.fav_request.setImageResource(R.drawable.ic_star_filled);
 
 
         model_id = products.getId();
+        looking_for_id =products.getLookingForDetailsId();
         brochure_pdf = products.getPdf_brochure();
 
         holder.brand_name.setText(products.getBrand_name());
@@ -136,6 +144,70 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.image);
+
+        holder.fav_request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                holder.fav_request.setImageResource(R.drawable.ic_star);
+
+                try{
+
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("ModelId",model_id);
+                    jsonObject.put("LookingForDetailsId",looking_for_id);
+                    jsonObject.put("IsShortlisted",false);
+                    jsonObject.put("CreatedBy",sessionManager.getRegId("userId"));
+
+                    System.out.println("gfjgfgjdfmmmmmmmmmmm" + jsonObject);
+
+                    Crop_Post.crop_posting(activity, Urls.Add_Favorites, jsonObject, new VoleyJsonObjectCallback() {
+                        @Override
+                        public void onSuccessResponse(JSONObject result) {
+                            System.out.println("gfjgfgjdf" + result);
+                            try{
+
+                                String status = result.getString("Status");
+
+                                if(status.equals("1")){
+
+
+                                    int duration = 1000;
+                                    Snackbar snackbar = Snackbar
+                                            .make(Request_Favorite_Fragment.linearLayout,"Your Request is Unfavorited", duration);
+                                    View snackbarView2 = snackbar.getView();
+                                    TextView tv = (TextView) snackbarView2.findViewById(android.support.design.R.id.snackbar_text);
+                                    tv.setBackgroundColor(ContextCompat.getColor(activity,R.color.orange));
+                                    tv.setTextColor(Color.WHITE);
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                    else {
+                                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                                    }
+                                    snackbar.show();
+
+
+                                    //  Toast.makeText(activity, "Your request is favorited", Toast.LENGTH_SHORT).show();
+                                }
+
+                                productList.remove(position);
+                                notifyDataSetChanged();
+
+                            }catch (Exception e){
+                                e.printStackTrace();
+
+                            }
+                        }
+                    });
+
+
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+
+
+            }
+        });
 
 
         holder.brochure.setOnClickListener(new View.OnClickListener() {
@@ -186,7 +258,6 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
 
 
     }
-
 
 
     @Override

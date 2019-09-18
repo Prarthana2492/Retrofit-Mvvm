@@ -229,7 +229,9 @@ public class LookingForFragment extends Fragment {
                          powerTillerRFQModelList = result.getJSONArray("PowerTillerRFQModelList");
 
 
-                        if(cropsListArray.length()==0){
+                        if(cropsListArray.length()==0 && tractorImplementsModelMasterList.length()==0 && tractorAccessoriesModelMasterList.length()==0 && harvesterModelMasterList.length()==0 && jCBRFQModelList.length()==0
+                        && farmMachineryRFQModelList.length()==0 && fenceWireRFQModelList.length()==0 && tyreRFQModelList.length()==0 && miniTruckRFQModelList.length()==0
+                        && backhoeAttachmentRFQModelList.length()==0 && powerTillerRFQModelList.length()==0 ){
 
                             selectedFragment = No_Request_Fragment.newInstance();
                             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();

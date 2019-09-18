@@ -177,7 +177,6 @@ public class AaProfileFragment extends Fragment {
         });
 
 
-
         acc_info_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -190,31 +189,8 @@ public class AaProfileFragment extends Fragment {
                   TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
                   TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
                   userInput = sheetView.findViewById(R.id.user_text);
-                  profname.getSelectionEnd();
 
-
-
-//                userInput.setFilters(new InputFilter[] {
-//                        new InputFilter.LengthFilter(30) {
-//                            public CharSequence filter(CharSequence src, int start,
-//                                                       int end, Spanned dst, int dstart, int dend) {
-//
-//                                for (int i = start; i < end; i++) {
-//                                    if (Character.isWhitespace(src.charAt(i))) {
-//                                        if (dstart == 0)
-//                                            return "";
-//                                    }
-//                                }
-//
-//                                if(src.toString().matches("[a-zA-Z ]+")){
-//                                    return src;
-//                                }
-//                                return "";
-//                            }
-//                        }
-//                });
-
-
+                userInput.setFilters(new InputFilter[] {EMOJI_FILTER,new InputFilter.LengthFilter(30)});
 
                 userInput.setVisibility(View.VISIBLE);
                 userInput.setText(profname.getText().toString());
@@ -260,6 +236,7 @@ public class AaProfileFragment extends Fragment {
                                         @Override
                                         public void onResponse(String response) {
 
+                                            sessionManager.save_name(profname.getText().toString(),profile_phone.getText().toString(),aboutText.getText().toString());
                                             System.out.println("fsdfsdfff" + response);
                                             int duration = 1000;
                                             Snackbar snackbar = Snackbar
@@ -298,7 +275,7 @@ public class AaProfileFragment extends Fragment {
                                 protected Map<String, String> getParams() {
                                     Map<String, String> params = new HashMap<String, String>();
                                     params.put("UserId", sessionManager.getRegId("userId"));
-                                    params.put("FullName", sessionManager.getRegId("userId"));
+                                    params.put("FullName",userInput.getText().toString());
                                     params.put("PhoneNo", sessionManager.getRegId("phone"));
                                     System.out.println("fhsdfhjf" + params);
                                     return params;
@@ -339,11 +316,10 @@ public class AaProfileFragment extends Fragment {
                 TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
                 TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
                 abt_text = sheetView.findViewById(R.id.user_text);
-                abt_text.setFilters(new InputFilter[]{EMOJI_FILTER, new InputFilter.LengthFilter(50)});
+             //   abt_text.setFilters(new InputFilter[]{EMOJI_FILTER, new InputFilter.LengthFilter(50)});
 
                 abt_text.setVisibility(View.VISIBLE);
                 abt_text.setText(aboutText.getText().toString());
-                abt_text.getSelectionEnd();
 
                 descriptionText.setVisibility(View.GONE);
                 titleText.setText("Add about");
@@ -351,12 +327,12 @@ public class AaProfileFragment extends Fragment {
                 positiveText.setText("Save");
                 TextView negetiveText = sheetView.findViewById(R.id.negetive_text);
                 negetiveText.setText("Cancel");
+
                 positiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
                         if(abt_text.getText().toString().equals("")){
-
 
                             InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
                             inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
@@ -368,6 +344,7 @@ public class AaProfileFragment extends Fragment {
                             TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                             tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
                             tv.setTextColor(Color.WHITE);
+
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                                 tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
@@ -433,14 +410,15 @@ public class AaProfileFragment extends Fragment {
                         profname.setText(profnamestr);
                         aboutText.setText(profile_description);
 
+
                         //phone_no.setText(ProfilePhone.substring(3));
 
                         profile_phone.setText(ProfilePhone); // masking + deleting last line
 
 
-                        profname.setFilters(new InputFilter[]{EMOJI_FILTER});
-                        profile_phone.setFilters(new InputFilter[]{EMOJI_FILTER});
-                        aboutText.setFilters(new InputFilter[]{EMOJI_FILTER});
+                       // profname.setFilters(new InputFilter[]{EMOJI_FILTER});
+                       // profile_phone.setFilters(new InputFilter[]{EMOJI_FILTER});
+                       // aboutText.setFilters(new InputFilter[]{EMOJI_FILTER});
 
 
                       Glide.with(getActivity()).load(ProfileImage)
@@ -468,6 +446,8 @@ public class AaProfileFragment extends Fragment {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        sessionManager.save_name(profname.getText().toString(),profile_phone.getText().toString(),aboutText.getText().toString());
+
                         int duration = 1000;
                         Snackbar snackbar = Snackbar
                                 .make(linearLayout, "Profile Details Updated Successfully", duration);
@@ -507,93 +487,13 @@ public class AaProfileFragment extends Fragment {
                 params.put("FullName",sessionManager.getRegId("name"));
                 params.put("PhoneNo",sessionManager.getRegId("phone"));
                 params.put("About",abt_text.getText().toString());
+                System.out.println("dfsdfAAAAAAAAAAAAAAAAAAAAAAA" + abt_text.getText().toString());
                 return params;
             }
         };
         Volley.newRequestQueue(getActivity()).add(stringRequest);
 
     }
-
-
-
-    public static InputFilter EMOJI_FILTER = new InputFilter() {
-        @Override
-        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-            boolean keepOriginal = true;
-            StringBuilder sb = new StringBuilder(end - start);
-            for (int index = start; index < end; index++) {
-                int type = Character.getType(source.charAt(index));
-                if (type == Character.SURROGATE || type == Character.OTHER_SYMBOL) {
-                    return "";
-                }
-                for (int i = start; i < end; i++) {
-                    if (Character.isWhitespace(source.charAt(i))) {
-                        if (dstart == 0)
-                            return "";
-                    }
-                }
-                return null;
-          /*  char c = source.charAt(index);
-            if (isCharAllowed(c))
-                sb.append(c);
-            else
-                keepOriginal = false;*/
-            }
-
-            if (keepOriginal)
-                return null;
-            else {
-                if (source instanceof Spanned) {
-                    SpannableString sp = new SpannableString(sb);
-                    TextUtils.copySpansFrom((Spanned) source, start, sb.length(), null, sp, 0);
-                    return sp;
-                } else {
-                    return sb;
-                }
-            }
-        }
-    };
-
-
-    public static InputFilter EMOJI_FILTER1 = new InputFilter() {
-        @Override
-        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-            boolean keepOriginal = true;
-            StringBuilder sb = new StringBuilder(end - start);
-            for (int index = start; index < end; index++) {
-                int type = Character.getType(source.charAt(index));
-                if (type == Character.SURROGATE || type == Character.OTHER_SYMBOL) {
-                    return "";
-                }
-                for (int i = start; i < end; i++) {
-                    if (Character.isWhitespace(source.charAt(i))) {
-                        if (dstart == 0)
-                            return "";
-                    }
-                }
-
-                return null;
-          /*  char c = source.charAt(index);
-            if (isCharAllowed(c))
-                sb.append(c);
-            else
-                keepOriginal = false;*/
-            }
-
-            if (keepOriginal)
-                return null;
-            else {
-                if (source instanceof Spanned) {
-                    SpannableString sp = new SpannableString(sb);
-                    TextUtils.copySpansFrom((Spanned) source, start, sb.length(), null, sp, 0);
-                    return sp;
-                } else {
-                    return sb;
-                }
-            }
-        }
-    };
-
 
 
 
@@ -778,4 +678,45 @@ public class AaProfileFragment extends Fragment {
             return resizedBitmap;
         }
     }
+
+
+    public static InputFilter EMOJI_FILTER = new InputFilter() {
+        @Override
+        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+            boolean keepOriginal = true;
+            String specialChars = ".1/*!@#$%^&*()\"{}_[]|\\?/<>,.:-'';§£¥₹...%&+=€π|";
+            StringBuilder sb = new StringBuilder(end - start);
+            for (int index = start; index < end; index++) {
+                int type = Character.getType(source.charAt(index));
+                if (type == Character.SURROGATE || type == Character.OTHER_SYMBOL||type==Character.MATH_SYMBOL||specialChars.contains("" + source)) {
+                    return "";
+                }
+                for (int i = start; i < end; i++) {
+                    if (Character.isWhitespace(source.charAt(i))) {
+                        if (dstart == 0)
+                            return "";
+                    }else if(Character.isDigit(source.charAt(i))) {
+                        return "";
+                    }
+                }
+                return null;
+  /*  char c = source.charAt(index);
+    if (isCharAllowed(c))
+        sb.append(c);
+    else
+        keepOriginal = false;*/
+            }
+            if (keepOriginal)
+                return null;
+            else {
+                if (source instanceof Spanned) {
+                    SpannableString sp = new SpannableString(sb);
+                    TextUtils.copySpansFrom((Spanned) source, start, sb.length(), null, sp, 0);
+                    return sp;
+                } else {
+                    return sb;
+                }
+            }
+        }
+    };
 }

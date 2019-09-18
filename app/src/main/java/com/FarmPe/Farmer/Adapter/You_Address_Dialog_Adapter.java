@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 
@@ -82,9 +83,26 @@ public class You_Address_Dialog_Adapter extends RecyclerView.Adapter<You_Address
         holder.mobile_no.setText("Phone No - " + products.getAdd_mobile());
 
 
+        holder.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                Request_Details_New.addId = products.getAdd_id();
+                // checkedId is the RadioButton selected
+                if (holder.adrr_txt.isChecked()) {
+                    selected_position = position;
+                    Request_Details_New.dialog.dismiss();
+                    Request_Details_New.address_text.setText(products.getAdd_district() + "," + products.getAdd_taluk());
+                }
+            }
+        });
+
+
         holder.state_name_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Request_Details_New.addId = products.getAdd_id();
 
                 selected_position = position;
 
@@ -105,6 +123,8 @@ public class You_Address_Dialog_Adapter extends RecyclerView.Adapter<You_Address
         TextView name,mobile_no,street_addrss,landmrk,city_1,edit_1,delete_1,default_1,default_add,area_district,colony;
         LinearLayout add_new_adress,state_name_layout;
         RadioButton adrr_txt;
+        RadioGroup radioGroup;
+
 
         public HoblisMyViewHolder(View itemView) {
             super(itemView);
@@ -121,6 +141,7 @@ public class You_Address_Dialog_Adapter extends RecyclerView.Adapter<You_Address
             area_district = itemView.findViewById(R.id.districttt);
             colony = itemView.findViewById(R.id.colony);
             adrr_txt = itemView.findViewById(R.id.adrr_txt);
+            radioGroup= (RadioGroup) itemView.findViewById(R.id.radio_group);
             state_name_layout = itemView.findViewById(R.id.state_name_layout);
             add_new_adress = itemView.findViewById(R.id.linear_frame);
 

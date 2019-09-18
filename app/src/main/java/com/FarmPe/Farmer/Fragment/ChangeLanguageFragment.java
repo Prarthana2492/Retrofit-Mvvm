@@ -49,6 +49,7 @@ public class ChangeLanguageFragment extends Fragment {
         View view = inflater.inflate(R.layout.select_language_layout, container, false);
 
 
+
         back_feed=view.findViewById(R.id.back_feed);
         lang_title=view.findViewById(R.id.lang_title);
         recyclerView =view.findViewById(R.id.recycler_view1);
@@ -56,7 +57,6 @@ public class ChangeLanguageFragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         mAdapter = new SelectLanguageAdapter(getActivity(), newOrderBeansList);
-
         sessionManager = new SessionManager(getActivity());
         recyclerView.setAdapter(mAdapter);
         Langauges();

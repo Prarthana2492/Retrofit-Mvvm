@@ -28,6 +28,7 @@ import com.FarmPe.Farmer.Adapter.AddModelAdapter;
 import com.FarmPe.Farmer.Bean.AddTractorBean;
 import com.FarmPe.Farmer.Bean.ModelBean;
 import com.FarmPe.Farmer.R;
+import com.FarmPe.Farmer.SessionManager;
 import com.FarmPe.Farmer.Urls;
 import com.FarmPe.Farmer.Volly_class.Crop_Post;
 import com.FarmPe.Farmer.Volly_class.Login_post;
@@ -65,6 +66,7 @@ AddModelFragment extends Fragment {
     Fragment selectedFragment = null;
     TextView toolbar_title,continue_button,sub_label,filter_text;
     LinearLayout back_feed;
+    SessionManager sessionManager;
 
     public static LinearLayout linearLayout;
     ImageView b_arrow;
@@ -86,6 +88,7 @@ AddModelFragment extends Fragment {
         filter_text=view.findViewById(R.id.filter_text);
         linearLayout=view.findViewById(R.id.linearLayout);
         sub_label=view.findViewById(R.id.sub_label);
+        sessionManager = new SessionManager(getActivity());
 
        /* toolbar_title.setText("Select Model");
 
@@ -168,6 +171,7 @@ AddModelFragment extends Fragment {
 
           JSONObject jsonObject = new JSONObject();
 
+            jsonObject.put("CreatedBy",sessionManager.getRegId("userId"));
             jsonObject.put("LookingForDetailsId",AddFirstAdapter.looinkgId);
             jsonObject.put("BrandId",AddBrandAdapter.brandId);
             System.out.println("fgfggdfcxxg" + jsonObject);

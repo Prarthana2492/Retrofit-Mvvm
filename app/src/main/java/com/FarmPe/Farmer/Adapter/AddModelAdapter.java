@@ -249,7 +249,6 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 //            holder.item.setBackgroundResource(R.drawable.border_transperent);
 //        }
 
-
     }
 
     private void request_fav() {
@@ -290,9 +289,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
                           //  Toast.makeText(activity, "Your request is favorited", Toast.LENGTH_SHORT).show();
 
-
                         }
-
 
                     }catch (Exception e){
                         e.printStackTrace();

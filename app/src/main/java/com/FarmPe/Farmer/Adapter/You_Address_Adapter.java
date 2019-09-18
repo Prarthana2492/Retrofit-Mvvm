@@ -133,8 +133,32 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
         holder.name.setText(products.getAdd_name());
         holder.street_addrss.setText(products.getAdd_door_no());
         holder.colony.setText(products.getAdd_street());
-        holder.area_district.setText(products.getAdd_district()+","+products.getAdd_taluk()+","+products.getAdd_hobli());
-        holder.city_1.setText(products.getAdd_state()+" - " + products.getAdd_pincode());
+
+
+        if(products.getAdd_hobli().equals("")){
+            System.out.println("hsfhhfdfhjhjhjhjhjhjhjhjhjhjhjhjhjhj");
+
+            holder.area_district.setText(products.getAdd_district()+","+products.getAdd_taluk());
+
+
+        }else{
+
+            holder.area_district.setText(products.getAdd_district()+","+products.getAdd_taluk()+","+products.getAdd_hobli());
+
+        }
+
+
+
+        if(products.getAdd_pincode().equals("")){
+            holder.city_1.setText(products.getAdd_state());
+
+        }else{
+
+            holder.city_1.setText(products.getAdd_state()+" - " + products.getAdd_pincode());
+
+        }
+
+
         holder.mobile_no.setText("Phone No - " + products.getAdd_mobile());
         // holder.landmrk.setText(products.getAdd_landmark());
 
@@ -143,6 +167,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
         holder.edit_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
 
                 add_id =products.getAdd_id();
                 Bundle bundle = new Bundle();

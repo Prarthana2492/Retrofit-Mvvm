@@ -49,6 +49,7 @@ public class Request_Favorite_Fragment extends Fragment {
     public static RecyclerView recyclerView;
     public static Request_Favorite_Adapter farmadapter;
     JSONArray model_list_array;
+    public static LinearLayout linearLayout;
 
     public static JSONArray tractorImplementsModelMasterList = null;
     public static JSONArray tractorAccessoriesModelMasterList = null;
@@ -57,7 +58,7 @@ public class Request_Favorite_Fragment extends Fragment {
     ModelBean modelBean;
     Fragment selectedFragment = null;
     TextView toolbar_title,continue_button,sub_label,filter_text;
-    LinearLayout back_feed,linearLayout,recently_added_layout,no_favo_added;
+    LinearLayout back_feed,recently_added_layout,no_favo_added;
     ImageView b_arrow;
     SessionManager sessionManager;
 

@@ -134,6 +134,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
         userid=sessionManager.getRegId("userId");
 
 
+
         farmer_title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

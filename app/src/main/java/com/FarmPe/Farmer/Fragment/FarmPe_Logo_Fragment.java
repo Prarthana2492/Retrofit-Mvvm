@@ -35,6 +35,8 @@ import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
 import com.FarmPe.Farmer.Urls;
 import com.FarmPe.Farmer.Volly_class.Crop_Post;
+import com.FarmPe.Farmer.Volly_class.HomePage_Post;
+import com.FarmPe.Farmer.Volly_class.HomepageLogin_post;
 import com.FarmPe.Farmer.Volly_class.Login_post;
 import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -337,7 +339,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
             final JSONObject jsonObject = new JSONObject();
             jsonObject.put("CreatedBy", sessionManager.getRegId("userId"));
 
-            Crop_Post.crop_posting(getActivity(), Urls.Home_Page_Count, jsonObject, new VoleyJsonObjectCallback() {
+            HomePage_Post.crop_posting(getActivity(), Urls.Home_Page_Count, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("fjfhffjcount" + result);
@@ -538,7 +540,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
             System.out.println("postObj"+postjsonObject.toString());
 
 
-            Login_post.login_posting(getActivity(), Urls.GetLookingForItems,postjsonObject,new VoleyJsonObjectCallback() {
+            HomepageLogin_post.login_posting(getActivity(), Urls.GetLookingForItems,postjsonObject,new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("cropsresult"+result);

@@ -94,7 +94,7 @@ public class AaAccountFragment extends Fragment {
         myDb = new DatabaseHelper(getActivity());
         // LandingPageActivity.editname.setVisibility(View.GONE);
 
-      sessionManager = new SessionManager(getActivity());
+        sessionManager = new SessionManager(getActivity());
         getActivity().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
@@ -319,11 +319,11 @@ public class AaAccountFragment extends Fragment {
                     }
                 }
 
-          /*  char c = source.charAt(index);
-            if (isCharAllowed(c))
-                sb.append(c);
-            else
-                keepOriginal = false;*/
+            /*  char c = source.charAt(index);
+              if (isCharAllowed(c))
+                  sb.append(c);
+              else
+                  keepOriginal = false;*/
 
                 String filtered = "";
                 for (int i = start; i < end; i++) {
@@ -403,8 +403,8 @@ public class AaAccountFragment extends Fragment {
             @Override
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<String, String>();
-              //  String stredtphone=AaProfileFragment.profile_phone.getText().toString();
-             //   String stredtname=AaProfileFragment.profname.getText().toString();
+                //  String stredtphone=AaProfileFragment.profile_phone.getText().toString();
+                //   String stredtname=AaProfileFragment.profname.getText().toString();
                 params.put("UserId",sessionManager.getRegId("userId"));
                 params.put("FullName",sessionManager.getRegId("name"));
                 params.put("PhoneNo",sessionManager.getRegId("phone"));
