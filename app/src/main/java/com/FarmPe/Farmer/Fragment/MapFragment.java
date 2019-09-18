@@ -68,7 +68,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     Button confirm_loc;
     LinearLayout main_layout;
     Marker mCurrLocationMarker;
-    private TextView resutText,currentaddress;
+    private TextView resutText,currentaddress,addressbook;
     String address_txt;
     protected static final int REQUEST_CHECK_SETTINGS = 0x1;
     String state;
@@ -86,6 +86,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         b_arrow = view.findViewById(R.id.b_arrow);
         confirm_loc = view.findViewById(R.id.confirm_loc);
         currentaddress = view.findViewById(R.id.curr_address);
+        addressbook = view.findViewById(R.id.addressbook);
+
         main_layout = view.findViewById(R.id.main_layout);
         //getSupportActionBar().setTitle("Map Location Activity");
         mapFrag = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
@@ -121,6 +123,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
             }
         });
 
+        addressbook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                selectedFragment = Request_Address_Book_Fragment.newInstance();
+                FragmentTransaction transaction =getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.commit();
+
+            }
+        });
 
 
         confirm_loc.setOnClickListener(new View.OnClickListener() {
