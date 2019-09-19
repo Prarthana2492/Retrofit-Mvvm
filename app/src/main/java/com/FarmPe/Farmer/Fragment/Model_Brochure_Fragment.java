@@ -11,7 +11,9 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -23,7 +25,7 @@ import com.FarmPe.Farmer.SessionManager;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
+import java.net.URL;
 
 
 public class Model_Brochure_Fragment extends Fragment {
@@ -52,8 +54,14 @@ public class Model_Brochure_Fragment extends Fragment {
         privacypolicytxt.setText("View Brochure");
 
         brochure = getArguments().getString("brochur_status");
+
         terms=view.findViewById(R.id.web_terms);
-        terms.loadUrl(brochure);
+
+        terms.getSettings().setJavaScriptEnabled(true);
+        terms.getSettings().setPluginState(WebSettings.PluginState.ON);
+        terms.setWebViewClient(new Callback());
+        terms.loadUrl(
+                "http://docs.google.com/gview?embedded=true&url=" + brochure);
 
         sessionManager = new SessionManager(getActivity());
 
@@ -93,6 +101,15 @@ public class Model_Brochure_Fragment extends Fragment {
 
 
         return view;
+    }
+
+
+    private class Callback extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(
+                WebView view, String url) {
+            return (false);
+        }
     }
 }
 
