@@ -7,26 +7,26 @@
     android:layout_height="match_parent"
     android:weightSum="100">
 
-  <!--  <fragment
-        android:id="@+id/autocomplete_fragment"
-        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10" />-->
+    <!--  <fragment
+          android:id="@+id/autocomplete_fragment"
+          android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="10" />-->
     <!--<fragment-->
-        <!--android:id="@+id/autocomplete_fragment"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:layout_weight="10"-->
-        <!--android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"-->
-        <!--/>-->
+    <!--android:id="@+id/autocomplete_fragment"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight="10"-->
+    <!--android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"-->
+    <!--/>-->
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="80"
-      >
+        >
 
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/map"
@@ -35,55 +35,6 @@
             android:layout_height="match_parent">
 
 
-
-        <!--<LinearLayout-->
-            <!--android:id="@+id/nomap"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:background="#928F8F"-->
-            <!--android:orientation="horizontal" />-->
-
-
-
-
-        <!--<android.support.design.widget.FloatingActionButton-->
-            <!--android:id="@+id/fab"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="end|bottom"-->
-            <!--android:layout_marginBottom="20dp"-->
-            <!--android:layout_marginRight="5dp"-->
-            <!--android:background="@color/white"-->
-            <!--android:src="@drawable/ic_target"-->
-            <!--app:fabSize="mini"-->
-            <!--app:backgroundTint="@android:color/white"-->
-            <!--app:layout_anchorGravity="bottom|right|end" />-->
-
-
-
-            <LinearLayout
-                android:id="@+id/back_feed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/ic_filter_state"
-                >
-
-
-                <ImageView
-                    android:id="@+id/b_arrow"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_go_back_left_arrow"
-                    style="@style/SelectableItemBackground"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    />
-
-            </LinearLayout>
-               />
         </fragment>
 
 
@@ -95,66 +46,120 @@
             android:src="@drawable/location_pin_location" />
 
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:background="@color/menu_green"
+            android:contentInsetStart="0dp"
+            android:contentInsetLeft="0dp"
+            android:contentInsetEnd="0dp"
+            android:contentInsetRight="0dp"
+            android:gravity="left"
+            android:minHeight="?attr/actionBarSize"
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="10dp"
+            app:titleTextColor="@android:color/white">
 
+
+            <LinearLayout
+                android:id="@+id/back_feed"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_filter_state"
+                android:gravity="center">
+
+
+                <ImageView
+                    android:id="@+id/b_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_go_back_left_arrow_" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Address"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </android.support.v7.widget.Toolbar>
     </RelativeLayout>
 
 
-     <LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_weight="20">
+        android:layout_marginTop="10dp"
+        android:layout_weight="20"
+        android:orientation="vertical">
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Set Your Current Location"
-            android:textSize="13dp"
             android:textColor="@color/black"
-           />
+            android:textSize="13dp" />
 
 
-         <TextView
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="20dp"
-             android:textSize="12dp"
-             android:text="Location"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Location"
+            android:textSize="12dp" />
 
 
-         <TextView
-             android:id="@+id/curr_address"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:gravity="center_vertical"
-             android:layout_marginTop="7dp"
-             android:text ="Location"
-             android:textColor="#000"
-            />
+        <TextView
+            android:id="@+id/curr_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:gravity="center_vertical"
+            android:text=""
+            android:layout_marginBottom="5dp"
+            android:textColor="#000" />
 
 
-     </LinearLayout>
-
-
-
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
 
+        android:orientation="vertical"
         >
 
-    <Button
-        android:id="@+id/confirm_loc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_border_layout"
-        android:text="Confirm location"
+        <Button
+            android:id="@+id/confirm_loc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/border_transperent"
 
-        />
+            android:text="Confirm location"
+
+            />
+        <TextView
+            android:id="@+id/addressbook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text ="Select from Address Book"
+            android:textColor="#2196F3"
+            />
+
     </LinearLayout>
 </LinearLayout>

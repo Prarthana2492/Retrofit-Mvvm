@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.FarmPe.Farmer.Bean.ModelBean;
 import com.FarmPe.Farmer.Fragment.AddModelFragment;
+import com.FarmPe.Farmer.Fragment.MapFragment;
 import com.FarmPe.Farmer.Fragment.Model_Brochure_Fragment;
 import com.FarmPe.Farmer.Fragment.Request_Details_New;
 import com.FarmPe.Farmer.SessionManager;
@@ -104,6 +105,18 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final ModelBean products = productList.get(position);
+
+
+         if(products.getIsshortlisted()){
+
+             holder.fav_request.setImageResource(R.drawable.ic_star_filled);
+
+          }else{
+
+             holder.fav_request.setImageResource(R.drawable.ic_star);
+
+
+        }
 
 
         model_id = products.getId();
@@ -213,29 +226,34 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
         holder.select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle=new Bundle();
-                bundle.putString("navigation_from","mod");
-                bundle.putString("MOD_ID",model_id);
-                bundle.putString("LOOKING_ID",AddFirstAdapter.looinkgId);
-
-                tractor_id=products.getId();
-                selectedFragment = Request_Details_New.newInstance();
-                selectedFragment.setArguments(bundle);
+                selectedFragment = MapFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
-                transaction.addToBackStack("fourth");
+                transaction.addToBackStack("currentlocation");
                 transaction.commit();
+
+            /*    Bundle bundle=new Bundle();
+        bundle.putString("navigation_from","mod");
+        bundle.putString("MOD_ID",model_id);
+        bundle.putString("LOOKING_ID",AddFirstAdapter.looinkgId);
+        tractor_id=products.getId();
+        selectedFragment = Request_Details_New.newInstance();
+        selectedFragment.setArguments(bundle);
+        FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_layout, selectedFragment);
+        transaction.addToBackStack("fourth");
+        transaction.commit();*/
             }
         });
-
 
       holder.fav_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                model_id = products.getId();
 
                holder.fav_request.setImageResource(R.drawable.ic_star_filled);
 
-                request_fav();
+                request_fav(model_id);
 
             }
         });
@@ -251,7 +269,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
     }
 
-    private void request_fav() {
+    private void request_fav(String model_id) {
         try{
 
             JSONObject jsonObject = new JSONObject();

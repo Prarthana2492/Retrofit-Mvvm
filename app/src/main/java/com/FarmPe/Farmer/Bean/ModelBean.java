@@ -6,6 +6,16 @@ public class ModelBean {
     private String model_name;
     private String horse_power;
 
+    public Boolean getIsshortlisted() {
+        return isshortlisted;
+    }
+
+    public void setIsshortlisted(Boolean isshortlisted) {
+        this.isshortlisted = isshortlisted;
+    }
+
+    private Boolean isshortlisted;
+
     public String getPdf_brochure() {
         return pdf_brochure;
     }
@@ -116,7 +126,7 @@ public class ModelBean {
     }
 
     public ModelBean(String brand_name, String model_name, String drive_type, String steering, String horse_power, String clutch_type,
-                     String transmission_type , String cubic_capcity, String image, String pdf_brochure, String id, String lookingForDetailsId)
+                     String transmission_type , String cubic_capcity, String image, String pdf_brochure, String id, String lookingForDetailsId,Boolean isshortlisted)
                     {
 
         this.brand_name = brand_name;
@@ -132,6 +142,7 @@ public class ModelBean {
         this.pdf_brochure = pdf_brochure;
         this.id = id;
         this. lookingForDetailsId = lookingForDetailsId;
+        this. isshortlisted = isshortlisted;
 
     }
 

@@ -712,8 +712,6 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
 
-
-
                 if(address_type.getText().toString().equals("")){
 
                     int duration = 1000;

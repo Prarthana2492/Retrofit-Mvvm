@@ -199,7 +199,7 @@ AddModelFragment extends Fragment {
 
                         for(int i=0;i<model_list_array.length();i++){
                             JSONObject jsonObject1 = model_list_array.getJSONObject(i);
-                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"");
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));
                             modelBeanArrayList.add(modelBean);
 
                         }
@@ -207,66 +207,66 @@ AddModelFragment extends Fragment {
 
                         for(int i=0;i<tractorImplementsModelMasterList.length();i++){
                             JSONObject jsonObject1 = tractorImplementsModelMasterList.getJSONObject(i);
-                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"");
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));
                             modelBeanArrayList.add(modelBean);
 
                         }  for(int i=0;i<tractorAccessoriesModelMasterList.length();i++){
                             JSONObject jsonObject1 = tractorAccessoriesModelMasterList.getJSONObject(i);
-                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"");
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));
                             modelBeanArrayList.add(modelBean);
 
                         }  for(int i=0;i<harvesterModelMasterList.length();i++){
                             JSONObject jsonObject1 = harvesterModelMasterList.getJSONObject(i);
-                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"");
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));
                             modelBeanArrayList.add(modelBean);
 
                         }  for(int i=0;i<jCBRFQModelList.length();i++){
                             JSONObject jsonObject1 = jCBRFQModelList.getJSONObject(i);
-                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"");
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));
                             modelBeanArrayList.add(modelBean);
 
                         }
 
                       for(int i=0;i<FarmMachineryModelMasterList.length();i++){
                         JSONObject jsonObject1 = FarmMachineryModelMasterList.getJSONObject(i);
-                        modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"");
+                        modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));
                         modelBeanArrayList.add(modelBean);
 
                     }
                         for(int i=0;i<FenceWireModelMasterList.length();i++){
                             JSONObject jsonObject1 = FenceWireModelMasterList.getJSONObject(i);
-                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"");
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));
                             modelBeanArrayList.add(modelBean);
 
                         }
 
                         for(int i=0;i<FenceWireModelMasterList.length();i++){
                             JSONObject jsonObject1 = FenceWireModelMasterList.getJSONObject(i);
-                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"");
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));
                             modelBeanArrayList.add(modelBean);
 
                         }
                         for(int i=0;i<TyreModelMasterList.length();i++){
                             JSONObject jsonObject1 = TyreModelMasterList.getJSONObject(i);
-                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"");
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));
                             modelBeanArrayList.add(modelBean);
 
                         }
                         for(int i=0;i<MiniTruckModelMasterList.length();i++){
                             JSONObject jsonObject1 = MiniTruckModelMasterList.getJSONObject(i);
-                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"");
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));
                             modelBeanArrayList.add(modelBean);
 
                         } for(int i=0;i<BackhoeAttachmentModelMasterList.length();i++){
                             JSONObject jsonObject1 = BackhoeAttachmentModelMasterList.getJSONObject(i);
-                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"");
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));
                             modelBeanArrayList.add(modelBean);
 
                         }
 
                         for(int i=0;i<PowerTillerModelMasterList.length();i++){
                             JSONObject jsonObject1 = PowerTillerModelMasterList.getJSONObject(i);
-                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"");
+                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));
                             modelBeanArrayList.add(modelBean);
 
                         }
