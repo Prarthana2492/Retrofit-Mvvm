@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.FarmPe.Farmer.Fragment.AddFirstFragment;
-import com.FarmPe.Farmer.Fragment.Request_Details_New;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.FarmPe.Farmer.Bean.AddTractorBean;
@@ -39,7 +39,6 @@ public class AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyView
 
 
     }
-
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

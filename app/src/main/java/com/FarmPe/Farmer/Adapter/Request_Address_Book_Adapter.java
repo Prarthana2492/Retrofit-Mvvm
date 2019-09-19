@@ -28,6 +28,8 @@ import android.widget.Toast;
 
 import com.FarmPe.Farmer.Bean.Add_New_Address_Bean;
 import com.FarmPe.Farmer.Fragment.Add_New_Address_Fragment;
+import com.FarmPe.Farmer.Fragment.MapFragment;
+import com.FarmPe.Farmer.Fragment.Request_Details_New_Fragment;
 import com.FarmPe.Farmer.Fragment.You_Address_Fragment;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
@@ -71,7 +73,7 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView name,mobile_no,street_addrss,landmrk,city_1,edit_1,delete_1,default_1,default_add,area_district,colony;
-        LinearLayout add_new_adress,default_linear_layout;
+        LinearLayout add_new_adress,address_book;
 
 
         public MyViewHolder(View view) {
@@ -89,6 +91,7 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
             linearLayout = view.findViewById(R.id.bottom_sheet1);
             area_district = view.findViewById(R.id.districttt);
             colony = view.findViewById(R.id.colony);
+            address_book = view.findViewById(R.id.address_book);
 
             add_new_adress = view.findViewById(R.id.linear_frame);
             sessionManager = new SessionManager(activity);
@@ -148,11 +151,27 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
 
         }
 
-
         holder.mobile_no.setText("Phone No - " + products.getAdd_mobile());
         // holder.landmrk.setText(products.getAdd_landmark());
 
 
+
+        holder.address_book.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("request_navigation","ADDRESS_BOOK");
+                bundle.putString("add_id",products.getAdd_id());
+
+                selectedFragment = Request_Details_New_Fragment.newInstance();
+                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.addToBackStack("address_book");
+                selectedFragment.setArguments(bundle);
+                transaction.commit();
+
+            }
+        });
 
 
     }

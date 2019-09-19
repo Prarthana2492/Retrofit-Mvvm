@@ -246,9 +246,9 @@ public class  Add_New_Address_Fragment extends Fragment {
                     fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 
-                }else   if (getArguments().getString("navigation_from").equals("REQ_NEW")){
+                }else   if (getArguments().getString("navigation_from").equals("MAP_FRAGMENT")){
                     FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("req_newdetail", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    fm.popBackStack("currentlocation", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 }
 
                 else if(getArguments().getString("navigation_from").equals("your_add")){
@@ -1241,29 +1241,6 @@ public class  Add_New_Address_Fragment extends Fragment {
                                     fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 
-                             /*       selectedFragment = You_Address_Fragment.newInstance();
-                                    FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
-                                    transaction.replace(R.id.frame_layout, selectedFragment);
-                                    transaction.commit();*/
-
-//                                    FragmentManager fm = getActivity().getSupportFragmentManager();
-//                                    fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-
-
-                                } else if (getArguments().getString("navigation_from").equals("REQ_NEW")) {
-
-                                    Bundle bundle1 = new Bundle();
-                                    bundle1.putString("navigation_from","ADD_REQ");
-                                    bundle.putString("MOD_ID",Request_Details_New.model_id);
-                                    bundle.putString("LOOKING_ID", Request_Details_New.looking_fr_id);
-                                    selectedFragment = Request_Details_New.newInstance();
-                                    selectedFragment.setArguments(bundle);
-                                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                    transaction.replace(R.id.frame_layout, selectedFragment);
-                                    selectedFragment.setArguments(bundle1);
-                                    transaction.commit();
-
 
 
                                 } else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")){
@@ -1282,14 +1259,6 @@ public class  Add_New_Address_Fragment extends Fragment {
                                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                                     }
 
-//                                    FragmentManager fm = getActivity().getSupportFragmentManager();
-//                                    fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-//                                    selectedFragment = You_Address_Fragment.newInstance();
-//                                    FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
-//                                    transaction.replace(R.id.frame_layout, selectedFragment);
-//                                    transaction.commit();
-
 
                                     HomeMenuFragment.onBack_status="no_request";
                                     selectedFragment = HomeMenuFragment.newInstance();
@@ -1299,6 +1268,35 @@ public class  Add_New_Address_Fragment extends Fragment {
                                     transaction.commit();
                                     snackbar.show();
 
+
+                                } else if(getArguments().getString("navigation_from").equals("MAP_FRAGMENT")){
+
+                                    int duration = 1000;
+                                    Snackbar snackbar = Snackbar
+                                            .make(linearLayout, newaddressadded, duration);
+                                    View snackbarView = snackbar.getView();
+                                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
+                                    tv.setTextColor(Color.WHITE);
+
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                    } else {
+                                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                                    }
+
+
+                                    Bundle bundle1 = new Bundle();
+                                    bundle1.putString("request_navigation","ADD_FRAGMENT");
+                                    bundle.putString("add_id",status);
+
+                                    selectedFragment = Request_Details_New_Fragment.newInstance();
+                                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.frame_layout, selectedFragment);
+                                    transaction.addToBackStack("home");
+                                    selectedFragment.setArguments(bundle1);
+                                    transaction.commit();
+                                    snackbar.show();
 
 
                                 } else if (getArguments().getString("navigation_from").equals("SETTING_FRAG")) {
@@ -1317,6 +1315,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
                                     snackbar.show();
+
 
                                     selectedFragment = You_Address_Fragment.newInstance();
                                     FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();

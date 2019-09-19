@@ -26,7 +26,6 @@ import com.FarmPe.Farmer.Bean.ModelBean;
 import com.FarmPe.Farmer.Fragment.AddModelFragment;
 import com.FarmPe.Farmer.Fragment.MapFragment;
 import com.FarmPe.Farmer.Fragment.Model_Brochure_Fragment;
-import com.FarmPe.Farmer.Fragment.Request_Details_New;
 import com.FarmPe.Farmer.SessionManager;
 import com.FarmPe.Farmer.Urls;
 import com.FarmPe.Farmer.Volly_class.Crop_Post;
@@ -48,7 +47,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
     SessionManager sessionManager;
 
     LinearLayout linearLayout;
-    public static String first,tractor_id,model_id;
+    public static String first,tractor_id,model_id,looking_for_id;
 
     public static CardView cardView;
     ImageView fav_request;
@@ -117,7 +116,6 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
 
         }
-
 
         model_id = products.getId();
         brochure_pdf = products.getPdf_brochure();
@@ -226,6 +224,11 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
         holder.select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                model_id = products.getId();
+                looking_for_id = AddFirstAdapter.looinkgId;
+
+
                 selectedFragment = MapFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);

@@ -38,6 +38,7 @@ public class ActivitySelectLang extends AppCompatActivity {
     private AdapterSelectLanguage mAdapter;
     boolean doubleBackToExitPressedOnce = false;
     LinearLayout linearLayout;
+    TextView continue_lang;
 
     SessionManager sessionManager;
 
@@ -50,19 +51,36 @@ public class ActivitySelectLang extends AppCompatActivity {
 
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_a_selectlang);
         recyclerView =findViewById(R.id.recycler_view_lang);
+        continue_lang =findViewById(R.id.continue_lang);
 
-        GridLayoutManager mLayoutManager_farm = new GridLayoutManager(ActivitySelectLang.this, 1, GridLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(mLayoutManager_farm);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+
+         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(ActivitySelectLang.this, 1, GridLayoutManager.VERTICAL, false);
+         recyclerView.setLayoutManager(mLayoutManager_farm);
+         recyclerView.setItemAnimator(new DefaultItemAnimator());
          linearLayout= findViewById(R.id.main_layout);
         Langauges();
 
+
+        continue_lang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(ActivitySelectLang.this, LoginActivity_new.class);
+                startActivity(intent);
+
+
+            }
+        });
+
     }
+
 
     private void Langauges() {
         try {

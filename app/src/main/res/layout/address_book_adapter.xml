@@ -28,6 +28,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <LinearLayout
+            android:id="@+id/address_book"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
@@ -105,15 +106,15 @@
 
 
             </LinearLayout>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:background="#e5e5e5"
+                />
 
         </LinearLayout>
 
 
     </android.support.v4.widget.NestedScrollView>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="12dp"
-        android:background="#e5e5e5"
-        />
+
 </LinearLayout>

@@ -182,6 +182,7 @@ AddModelFragment extends Fragment {
                     System.out.println("fgfggdfcxxg" + result);
 
                     try{
+                        modelBeanArrayList.clear();
 
                         model_list_array = result.getJSONArray("TractorModelMasterList");
 
@@ -195,7 +196,7 @@ AddModelFragment extends Fragment {
                         MiniTruckModelMasterList = result.getJSONArray("MiniTruckModelMasterList");
                         BackhoeAttachmentModelMasterList = result.getJSONArray("BackhoeAttachmentModelMasterList");
                         PowerTillerModelMasterList = result.getJSONArray("PowerTillerModelMasterList");
-                        modelBeanArrayList.clear();
+
 
                         for(int i=0;i<model_list_array.length();i++){
                             JSONObject jsonObject1 = model_list_array.getJSONObject(i);
@@ -234,28 +235,25 @@ AddModelFragment extends Fragment {
 
                     }
                         for(int i=0;i<FenceWireModelMasterList.length();i++){
+
                             JSONObject jsonObject1 = FenceWireModelMasterList.getJSONObject(i);
                             modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));
                             modelBeanArrayList.add(modelBean);
 
                         }
 
-                        for(int i=0;i<FenceWireModelMasterList.length();i++){
-                            JSONObject jsonObject1 = FenceWireModelMasterList.getJSONObject(i);
-                            modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));
-                            modelBeanArrayList.add(modelBean);
-
-                        }
                         for(int i=0;i<TyreModelMasterList.length();i++){
                             JSONObject jsonObject1 = TyreModelMasterList.getJSONObject(i);
                             modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));
                             modelBeanArrayList.add(modelBean);
 
                         }
+
                         for(int i=0;i<MiniTruckModelMasterList.length();i++){
                             JSONObject jsonObject1 = MiniTruckModelMasterList.getJSONObject(i);
                             modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));
                             modelBeanArrayList.add(modelBean);
+
 
                         } for(int i=0;i<BackhoeAttachmentModelMasterList.length();i++){
                             JSONObject jsonObject1 = BackhoeAttachmentModelMasterList.getJSONObject(i);
@@ -264,6 +262,7 @@ AddModelFragment extends Fragment {
 
                         }
 
+
                         for(int i=0;i<PowerTillerModelMasterList.length();i++){
                             JSONObject jsonObject1 = PowerTillerModelMasterList.getJSONObject(i);
                             modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));
@@ -271,14 +270,12 @@ AddModelFragment extends Fragment {
 
                         }
 
-
                         farmadapter.notifyDataSetChanged();
 
 
                     }catch (Exception e){
                         e.printStackTrace();
                     }
-
 
 
                 }

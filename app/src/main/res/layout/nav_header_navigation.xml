@@ -12,11 +12,26 @@
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="0dp"
-       android:layout_weight="55"
-       android:background="#ffffff"
+       android:layout_weight="50"
+       android:background="#fafafa"
        android:weightSum="100"
        android:orientation="vertical"
        >
+      <LinearLayout
+          android:id="@+id/back_feed"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="10dp"
+          android:layout_marginTop="15dp"
+          android:padding="10dp"
+          android:background="@drawable/ripple_effect"
+          >
+         <ImageView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/ic_go_back_left_arrow"
+             />
+      </LinearLayout>
       <LinearLayout
           android:id="@+id/update_acc_layout"
           android:layout_width="match_parent"
@@ -25,7 +40,7 @@
           android:layout_marginTop="5dp"
           android:orientation="vertical"
           android:gravity="center|bottom"
-          android:background="#ffffff"
+          android:background="#fafafa"
           >
 
          <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -49,7 +64,7 @@
           android:layout_weight="15"
           android:layout_marginBottom="25dp"
           android:gravity="center"
-          android:background="#fff"
+          android:background="#fafafa"
           >
 
 
@@ -84,87 +99,87 @@
 
 
 
-
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="horizontal"
-          android:weightSum="100"
-          android:layout_marginBottom="5dp"
-          android:gravity="center_vertical"
-          android:layout_weight="20"
-          android:background="#fafafa"
-          >
-
-         <LinearLayout
-             android:id="@+id/your_request"
-             android:layout_width="0dp"
-             android:layout_height="wrap_content"
-             android:orientation="vertical"
-             android:layout_weight="50"
-
-             >
-
-            <TextView
-                android:id="@+id/request_count"
+      <!--
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="16dp"
-                android:gravity="center"
-                android:paddingBottom="5dp"
-                android:textColor="#000"
-                />
+                android:orientation="horizontal"
+                android:weightSum="100"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_vertical"
+                android:layout_weight="20"
+                android:background="#fafafa"
+                >
 
-            <TextView
-                android:id="@+id/your_request1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Your Requests"
-                android:textSize="14dp"
-                android:layout_marginTop="2dp"
-                android:gravity="center"
-                android:fontFamily="@font/segoeui"
-                android:textColor="#000"
-                />
+               <LinearLayout
+                   android:id="@+id/your_request"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical"
+                   android:layout_weight="50"
 
-         </LinearLayout>
+                   >
 
+                  <TextView
+                      android:id="@+id/request_count"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:text=""
+                      android:textSize="16dp"
+                      android:gravity="center"
+                      android:paddingBottom="5dp"
+                      android:textColor="#000"
+                      />
 
-         <LinearLayout
-             android:id="@+id/nw_request"
-             android:layout_width="0dp"
-             android:layout_height="wrap_content"
-             android:orientation="vertical"
-             android:layout_weight="50"
-             android:gravity="center"
+                  <TextView
+                      android:id="@+id/your_request1"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:text="Your Requests"
+                      android:textSize="14dp"
+                      android:layout_marginTop="2dp"
+                      android:gravity="center"
+                      android:fontFamily="@font/segoeui"
+                      android:textColor="#000"
+                      />
 
-             >
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:paddingBottom="5dp"
-                android:src="@drawable/ic_add_plus"
-                />
-
-            <TextView
-                android:id="@+id/nw_request1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Make a Request"
-                android:textSize="14dp"
-                android:layout_marginTop="2dp"
-                android:gravity="center"
-                android:fontFamily="@font/segoeui"
-                android:textColor="#000"
-                />
-
-         </LinearLayout>
+               </LinearLayout>
 
 
+               <LinearLayout
+                   android:id="@+id/nw_request"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical"
+                   android:layout_weight="50"
+                   android:gravity="center"
 
-      </LinearLayout>
+                   >
+
+                  <ImageView
+                      android:layout_width="25dp"
+                      android:layout_height="25dp"
+                      android:paddingBottom="5dp"
+                      android:src="@drawable/ic_add_plus"
+                      />
+
+                  <TextView
+                      android:id="@+id/nw_request1"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:text="Make a Request"
+                      android:textSize="14dp"
+                      android:layout_marginTop="2dp"
+                      android:gravity="center"
+                      android:fontFamily="@font/segoeui"
+                      android:textColor="#000"
+                      />
+
+               </LinearLayout>
+
+
+
+            </LinearLayout>-->
 
 
 

@@ -79,7 +79,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
 
     RelativeLayout menu;
     JSONArray get_address_array;
-    LinearLayout update_acc_layout,your_request,your_farms_tab,nw_request,farmer_title;
+    LinearLayout update_acc_layout,your_request,your_farms_tab,nw_request,farmer_title,back_feed;
     SessionManager sessionManager;
     public static CircleImageView prod_img,prod_img1;
     public static boolean isEng = false;
@@ -115,8 +115,8 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
         menu=view.findViewById(R.id.menu);
         home = view.findViewById(R.id.home);
         phone_no = view.findViewById(R.id.phone_no);
-        your_request = view.findViewById(R.id.your_request);
-        nw_request = view.findViewById(R.id.nw_request);
+//        your_request = view.findViewById(R.id.your_request);
+//        nw_request = view.findViewById(R.id.nw_request);
         farmer_title = view.findViewById(R.id.farmer_title);
         update_acc_layout=view.findViewById(R.id.update_acc_layout);
         notification_bell=view.findViewById(R.id.notification_bell);
@@ -135,6 +135,15 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
 
 
 
+
+        back_feed = view.findViewById(R.id.back_feed);
+        back_feed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawer.closeDrawers();
+            }
+        });
+
         farmer_title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,39 +157,39 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
         });
 
 
-        nw_request.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AddFirstAdapter.looinkgId = null;
-                Bundle bundle = new Bundle();
-                bundle.putString("status","home_request");
-                selectedFragment = AddFirstFragment.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
-                transaction.addToBackStack("home");
-                selectedFragment.setArguments(bundle);
-                transaction.commit();
-                drawer.closeDrawers();
-            }
-        });
+//        nw_request.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                AddFirstAdapter.looinkgId = null;
+//                Bundle bundle = new Bundle();
+//                bundle.putString("status","home_request");
+//                selectedFragment = AddFirstFragment.newInstance();
+//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.frame_layout, selectedFragment);
+//                transaction.addToBackStack("home");
+//                selectedFragment.setArguments(bundle);
+//                transaction.commit();
+//                drawer.closeDrawers();
+//            }
+//        });
 
-
-        your_request.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                drawer.closeDrawers();
-                Bundle bundle = new Bundle();
-                bundle.putString("status","hme_request");
-                selectedFragment = LookingForFragment.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
-                selectedFragment.setArguments(bundle);
-                transaction.addToBackStack("home");
-                transaction.commit();
-
-            }
-        });
+//
+//        your_request.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                drawer.closeDrawers();
+//                Bundle bundle = new Bundle();
+//                bundle.putString("status","hme_request");
+//                selectedFragment = LookingForFragment.newInstance();
+//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.frame_layout, selectedFragment);
+//                selectedFragment.setArguments(bundle);
+//                transaction.addToBackStack("home");
+//                transaction.commit();
+//
+//            }
+//        });
 
 
 
@@ -239,7 +248,6 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
 
                             try{
                                 get_address_array = result.getJSONArray("UserAddressDetails");
-
 
                                 if(get_address_array.length()== 0){
                                     drawer.closeDrawers();

@@ -25,7 +25,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="80"
+        android:layout_weight="65"
         >
 
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
@@ -117,7 +117,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:text="Location"
             android:textSize="12dp" />
 
@@ -137,8 +137,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
+        android:layout_height="0dp"
+        android:layout_weight="15"
         android:orientation="vertical"
         >
 
@@ -146,18 +146,20 @@
             android:id="@+id/confirm_loc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+          android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
             android:background="@drawable/border_transperent"
-
             android:text="Confirm location"
 
             />
+
         <TextView
             android:id="@+id/addressbook"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text ="Select from Address Book"
+            android:layout_marginTop="10dp"
+            android:text =""
             android:textColor="#2196F3"
             />
 

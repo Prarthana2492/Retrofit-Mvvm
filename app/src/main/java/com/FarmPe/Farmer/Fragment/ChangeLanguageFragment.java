@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,10 +32,12 @@ public class ChangeLanguageFragment extends Fragment {
     private List<SelectLanguageBean> newOrderBeansList = new ArrayList<>();
     private RecyclerView recyclerView;
     private SelectLanguageAdapter mAdapter;
+    TextView continue_lang;
     SessionManager sessionManager;
     LinearLayout back_feed;
     public static   JSONObject lngObject;
     public static TextView lang_title;
+    Fragment selectedFragment = null;
 
 
 
@@ -52,6 +55,8 @@ public class ChangeLanguageFragment extends Fragment {
 
         back_feed=view.findViewById(R.id.back_feed);
         lang_title=view.findViewById(R.id.lang_title);
+        continue_lang=view.findViewById(R.id.continue_lang);
+
         recyclerView =view.findViewById(R.id.recycler_view1);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -84,6 +89,16 @@ public class ChangeLanguageFragment extends Fragment {
 
 
 
+        continue_lang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                selectedFragment = AaSettingFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.commit();
+            }
+        });
 
 
 //        try {
@@ -111,7 +126,6 @@ public class ChangeLanguageFragment extends Fragment {
         return view;
     }
 
-    
     private void Langauges() {
         try {
             newOrderBeansList.clear();

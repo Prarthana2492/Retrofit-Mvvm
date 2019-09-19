@@ -25,7 +25,7 @@ import android.widget.Toast;
 import com.FarmPe.Farmer.Bean.ModelBean;
 import com.FarmPe.Farmer.Fragment.AddModelFragment;
 import com.FarmPe.Farmer.Fragment.Model_Brochure_Fragment;
-import com.FarmPe.Farmer.Fragment.Request_Details_New;
+
 import com.FarmPe.Farmer.Fragment.Request_Favorite_Fragment;
 import com.FarmPe.Farmer.SessionManager;
 import com.FarmPe.Farmer.Urls;
@@ -228,22 +228,22 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
         });
 
 
-        holder.select.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                model_id = products.getId();
-                Bundle bundle=new Bundle();
-                bundle.putString("navigation_from","fav");
-                bundle.putString("MOD_ID",model_id);
-                bundle.putString("LOOKING_ID",products.getLookingForDetailsId());
-                selectedFragment = Request_Details_New.newInstance();
-                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
-                selectedFragment.setArguments(bundle);
-                transaction.addToBackStack("fourth");
-                transaction.commit();
-            }
-        });
+//        holder.select.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                model_id = products.getId();
+//                Bundle bundle=new Bundle();
+//                bundle.putString("navigation_from","fav");
+//                bundle.putString("MOD_ID",model_id);
+//                bundle.putString("LOOKING_ID",products.getLookingForDetailsId());
+//                selectedFragment = Request_Details_New.newInstance();
+//                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.frame_layout, selectedFragment);
+//                selectedFragment.setArguments(bundle);
+//                transaction.addToBackStack("fourth");
+//                transaction.commit();
+//            }
+//        });
 
 
 

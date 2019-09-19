@@ -164,9 +164,6 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
                          try{
                              sessionManager.saveLanguage(result.toString());
 
-                          Intent intent = new Intent(activity, LoginActivity_new.class);
-                          activity.startActivity(intent);
-
 /*
 
                         String lang_title1 = result.getString("ChangeLanguage");

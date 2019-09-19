@@ -31,6 +31,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.FarmPe.Farmer.R;
+import com.FarmPe.Farmer.SessionManager;
+import com.FarmPe.Farmer.Urls;
+import com.FarmPe.Farmer.Volly_class.Crop_Post;
+import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -49,6 +53,9 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -65,6 +72,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     GoogleApiClient mGoogleApiClient;
     ImageView b_arrow;
     Location mLastLocation;
+    SessionManager sessionManager;
+    String pickUPFrom;
+   public static JSONArray get_address_array;
     Button confirm_loc;
     LinearLayout main_layout;
     Marker mCurrLocationMarker;
@@ -74,9 +84,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     String state;
     public static MapFragment newInstance() {
         MapFragment fragment = new MapFragment();
+
         return fragment;
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -87,6 +97,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         confirm_loc = view.findViewById(R.id.confirm_loc);
         currentaddress = view.findViewById(R.id.curr_address);
         addressbook = view.findViewById(R.id.addressbook);
+        sessionManager = new SessionManager(getActivity());
 
         main_layout = view.findViewById(R.id.main_layout);
         //getSupportActionBar().setTitle("Map Location Activity");
@@ -105,8 +116,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
             public boolean onKey(View v, int keyCode, KeyEvent event) {
 
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("currentlocation", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                    selectedFragment = AddModelFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.addToBackStack("currentlocation");
+                    transaction.commit();
+
                 }
                 return false;
             }
@@ -117,20 +133,42 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         b_arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("currentlocation", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
 
+
+        address_page();
+
         addressbook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                selectedFragment = Request_Address_Book_Fragment.newInstance();
-                FragmentTransaction transaction =getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
-                transaction.commit();
+               // address_page();
+                if(get_address_array.length()== 0){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("navigation_from","MAP_FRAGMENT");
+                    selectedFragment = Add_New_Address_Fragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    selectedFragment.setArguments(bundle);
+                    transaction.addToBackStack("currentlocation");
+                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.commit();
+
+
+                }else {
+
+                    selectedFragment = Request_Address_Book_Fragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.addToBackStack("currentlocation");
+                    transaction.commit();
+
+                }
+
+
 
             }
         });
@@ -160,10 +198,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                } else {
                     System.out.println("hrrrjjkj");
                     Bundle bundle = new Bundle();
-                    bundle.putString("currentaddress_id",state);
-                    selectedFragment = Request_Details_New.newInstance();
+                    bundle.putString("request_navigation","MAP_FRAGMENT");
+                    bundle.putString("add_id","1");
+                    selectedFragment = Request_Details_New_Fragment .newInstance();
                     FragmentTransaction transaction =getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.addToBackStack("map_fragment");
                     selectedFragment.setArguments(bundle);
                     transaction.commit();
 
@@ -174,6 +214,55 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         });
 
         return view;
+    }
+
+    private void address_page() {
+
+
+        try{
+            final JSONObject jsonObject = new JSONObject();
+            jsonObject.put("UserId",sessionManager.getRegId("userId"));
+            jsonObject.put("PickUpFrom",pickUPFrom);
+            System.out.println("aaaaaaaaaaaaadddd" + sessionManager.getRegId("userId"));
+            System.out.println("ggggggggggaaaaaaa"+jsonObject);
+
+
+            Crop_Post.crop_posting(getActivity(), Urls.Get_New_Address, jsonObject, new VoleyJsonObjectCallback() {
+                @Override
+                public void onSuccessResponse(JSONObject result) {
+                    System.out.println("ggggggggggaaaaaaa"+result);
+
+                    try{
+                        get_address_array = result.getJSONArray("UserAddressDetails");
+
+                        if(get_address_array.length()== 0){
+
+                          addressbook.setText("Add New Address");
+
+
+
+                        }else {
+
+                            addressbook.setText("Select From Address Book");
+
+                        }
+
+
+
+
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+                }
+            });
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
 
