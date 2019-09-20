@@ -41,10 +41,7 @@ import java.util.List;
 
 
 
-public class
-
-
-AddModelFragment extends Fragment {
+public class AddModelFragment extends Fragment {
 
     public static List<ModelBean> modelBeanArrayList = new ArrayList<>();
     public static RecyclerView recyclerView;
@@ -70,6 +67,7 @@ AddModelFragment extends Fragment {
 
     public static LinearLayout linearLayout;
     ImageView b_arrow;
+
 
 
     public static AddModelFragment newInstance() {

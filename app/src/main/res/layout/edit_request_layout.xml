@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/linear_looking_main"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="#fff">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:background="@color/menu_green"
+            android:contentInsetStart="0dp"
+            android:contentInsetLeft="0dp"
+            android:contentInsetEnd="0dp"
+            android:contentInsetRight="0dp"
+            android:gravity="left"
+            android:minHeight="?attr/actionBarSize"
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="10dp"
+            app:titleTextColor="@android:color/white">
+
+
+            <LinearLayout
+                android:id="@+id/back_feed"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_filter_state"
+                android:gravity="center">
+
+
+                <ImageView
+                    android:id="@+id/b_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_go_back_left_arrow_" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tractor Price"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Preview"
+                android:drawableLeft="@drawable/ic_file"
+                android:drawablePadding="3dp"
+                android:gravity="right"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="right"
+                android:textColor="#fff"
+                android:textAllCaps="true"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+        </android.support.v7.widget.Toolbar>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_weight="92">
+
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="100"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="35"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+
+                <TextView
+                    android:id="@+id/prod_priced"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/segoeui"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="10dp"
+                    android:text="John Deere ,3028 EN 21-30 HP "
+                    android:textColor="#000"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <!--<TextView-->
+                    <!--android:id="@+id/prod_name2d"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:fontFamily="@font/segoeui"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:text="3028 EN 21- 30 HP"-->
+                    <!--android:textColor="#000"-->
+                    <!--android:layout_marginBottom="10dp"-->
+                    <!--android:layout_marginTop="8dp"-->
+                    <!--android:singleLine="true"-->
+                    <!--android:textSize="12dp" />-->
+
+
+                <FrameLayout
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:gravity="center"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/image_lookingd"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/tractor_red"
+                        android:layout_height="wrap_content" />
+                </FrameLayout>
+
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/toolbar_title2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Request Details"
+                android:textColor="#000"
+                android:textAllCaps="true"
+                android:background="#fafafa"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+
+                android:layout_marginTop="5dp"
+                android:textSize="15dp"
+                android:textStyle="normal" />
+
+            <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                android:background="@color/white"
+                android:layout_weight="65"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:weightSum="60"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:id="@+id/prod_namde"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="30"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="8dp"
+                        android:drawableLeft="@drawable/ic_tractor"
+                        android:fontFamily="@font/segoeui"
+                        android:text="Product Detail- Company / Brand &amp; Model"
+                        android:textColor="#000"
+                        android:drawablePadding="5dp"
+                        android:singleLine="true"
+                        android:textStyle="bold"
+                        android:textSize="14dp" />
+
+
+                    <ImageView
+                        android:id="@+id/image_looking"
+                        android:layout_weight="30"
+                        android:layout_width="45dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/ic_edit_pencil"
+                        android:layout_height="30dp" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:weightSum="60"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    >
+
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_weight="30"
+                        android:layout_width="100dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/border"
+                        android:src="@drawable/john_dhere"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="120dp"
+                        android:layout_weight="30"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/border"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/image3"
+                            android:layout_width="100dp"
+                            android:src="@drawable/tractor_red"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:id="@+id/pdf_bro"
+                            android:layout_width="wrap_content"
+                            android:src="@drawable/ic_pdf"
+                            android:layout_gravity="center_vertical"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/prod_nae"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="30"
+                            android:gravity="center"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/segoeui"
+                            android:text="View Brochure"
+                            android:textColor="#000"
+                            android:paddingRight="10dp"
+                            android:singleLine="true"
+                            android:textStyle="bold"
+                            android:textSize="10dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:weightSum="60"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:id="@+id/prodnamdef"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="30"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="@font/segoeui"
+                        android:drawableLeft="@drawable/ic_docs"
+                        android:text="General Information"
+                        android:textColor="#000"
+                        android:drawablePadding="5dp"
+                        android:singleLine="true"
+                        android:textStyle="bold"
+                        android:textSize="16dp" />
+
+                    <ImageView
+                        android:id="@+id/image_loofking"
+                        android:layout_weight="30"
+                        android:layout_width="45dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/ic_edit_pencil"
+                        android:layout_height="30dp" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/name_linear_layoutf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:orientation="vertical"
+                    android:weightSum="30"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                     >
+
+                        <EditText
+                            android:id="@+id/name_txtc1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="6dp"
+                            android:background="@android:color/transparent"
+                            android:backgroundTint="#d3d3d3"
+                            android:fontFamily="@font/segoeui"
+                            android:hint="Planning to purchase         : "
+                            android:editable="false"
+                            android:paddingVertical="2dp"
+                            android:paddingRight="10dp"
+                            android:textColorHint="#000"
+                            android:textSize="14dp" />
+
+                        <EditText
+                            android:id="@+id/full_namce1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Immediately"
+                            android:paddingVertical="2dp"
+                            android:textSize="14dp"
+                            android:maxLength="30"
+                            android:inputType="textNoSuggestions"
+                            android:focusableInTouchMode="true"
+                            android:paddingRight="10dp"
+                            android:fontFamily="@font/segoeui"
+                            android:textColorHint="#000"
+                            android:background="@android:color/transparent"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                      >
+
+                        <EditText
+                            android:id="@+id/name_txtwc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="6dp"
+                            android:background="@android:color/transparent"
+                            android:backgroundTint="#d3d3d3"
+                            android:fontFamily="@font/segoeui"
+                            android:hint="Finance loan required        : "
+                            android:editable="false"
+                            android:paddingVertical="2dp"
+                            android:paddingRight="10dp"
+                            android:textColorHint="#000"
+                            android:textSize="14dp" />
+
+                        <EditText
+                            android:id="@+id/full_namecw"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Yes"
+                            android:paddingVertical="2dp"
+                            android:textSize="14dp"
+                            android:maxLength="30"
+                            android:inputType="textNoSuggestions"
+                            android:focusableInTouchMode="true"
+                            android:paddingRight="10dp"
+                            android:fontFamily="@font/segoeui"
+                            android:textColorHint="#000"
+                            android:background="@android:color/transparent"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                       >
+
+                        <EditText
+                            android:id="@+id/namec_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="6dp"
+                            android:background="@android:color/transparent"
+                            android:backgroundTint="#d3d3d3"
+                            android:fontFamily="@font/segoeui"
+                            android:hint="Need demo/test drive       : "
+                            android:editable="false"
+                            android:paddingVertical="2dp"
+                            android:paddingRight="10dp"
+                            android:textColorHint="#000"
+                            android:textSize="14dp" />
+
+                        <EditText
+                            android:id="@+id/fullc_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint=" Yes"
+                            android:paddingVertical="2dp"
+                            android:textSize="14dp"
+                            android:maxLength="30"
+                            android:inputType="textNoSuggestions"
+                            android:focusableInTouchMode="true"
+                            android:paddingRight="10dp"
+                            android:fontFamily="@font/segoeui"
+                            android:textColorHint="#000"
+                            android:background="@android:color/transparent"
+                            />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/light_gray"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="60"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:id="@+id/prodnamde"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="30"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/segoeui"
+                        android:text="Contact Details"
+                        android:textColor="#000"
+                        android:layout_gravity="center_vertical"
+                        android:drawableLeft="@drawable/ic_docs"
+                        android:singleLine="true"
+                        android:drawablePadding="5dp"
+                        android:textStyle="bold"
+                        android:textSize="16dp" />
+
+                    <ImageView
+                        android:id="@+id/image_lgooking"
+                        android:layout_weight="30"
+                        android:layout_width="45dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/ic_edit_pencil"
+                        android:layout_height="30dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/name_linear_lafyoutf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:orientation="vertical"
+                    android:weightSum="30"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp">
+
+                        <EditText
+                            android:id="@+id/name_txt1f"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="6dp"
+                            android:background="@android:color/transparent"
+                            android:backgroundTint="#d3d3d3"
+                            android:fontFamily="@font/segoeui"
+                            android:hint="Name                  : "
+                            android:editable="false"
+                            android:paddingVertical="2dp"
+                            android:paddingRight="10dp"
+                            android:textColorHint="#000"
+                            android:textSize="14dp" />
+
+                        <EditText
+                            android:id="@+id/full_name1f"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="abcccd"
+                            android:paddingVertical="2dp"
+                            android:textSize="14dp"
+                            android:maxLength="30"
+                            android:inputType="textNoSuggestions"
+                            android:focusableInTouchMode="true"
+                            android:paddingRight="10dp"
+                            android:fontFamily="@font/segoeui"
+                            android:textColorHint="#000"
+                            android:background="@android:color/transparent"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                       >
+
+                        <EditText
+                            android:id="@+id/name_txtwf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="6dp"
+                            android:background="@android:color/transparent"
+                            android:backgroundTint="#d3d3d3"
+                            android:fontFamily="@font/segoeui"
+                            android:hint="Mobile Number  : "
+                            android:editable="false"
+                            android:paddingVertical="2dp"
+                            android:paddingRight="10dp"
+                            android:textColorHint="#000"
+                            android:textSize="14dp" />
+
+                        <EditText
+                            android:id="@+id/full_namewf"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="12345xxxxx"
+                            android:paddingVertical="2dp"
+                            android:textSize="14dp"
+                            android:maxLength="30"
+                            android:inputType="textNoSuggestions"
+                            android:focusableInTouchMode="true"
+                            android:paddingRight="10dp"
+                            android:fontFamily="@font/segoeui"
+                            android:textColorHint="#000"
+                            android:background="@android:color/transparent"
+                            />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/light_gray"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/name_linear_layout"
+                android:layout_width="match_parent"
+                android:background="#fff"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="18dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="60"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:id="@+id/prodnamdfe"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="30"
+                        android:fontFamily="@font/segoeui"
+                        android:text="Address"
+                        android:layout_gravity="center_vertical"
+                        android:drawableLeft="@drawable/ic_map_marker"
+                        android:textColor="#000"
+                        android:drawablePadding="5dp"
+                        android:singleLine="true"
+                        android:textStyle="bold"
+                        android:textSize="16dp" />
+
+                    <ImageView
+                        android:id="@+id/image_loovking"
+                        android:layout_weight="30"
+                        android:layout_width="45dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/ic_edit_pencil"
+                        android:layout_height="30dp" />
+
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/prodnamdecf1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoeui"
+                    android:layout_marginLeft="35dp"
+                    android:text="Vinayaka M \n60 feet road near BMTC Depot\nBEML Layout 5th stage,\nRR nagar, Bengaluru\nKarnataka-560098"
+                    android:textColor="#000"
+                    android:textSize="14dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
+
+
+
+
+
+

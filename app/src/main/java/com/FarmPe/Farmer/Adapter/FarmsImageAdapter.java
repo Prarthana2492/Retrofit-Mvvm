@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.FarmPe.Farmer.Fragment.Edit_LookingFor_Fragment;
 import com.FarmPe.Farmer.Fragment.Edit_Looking_For_Fragment;
 import com.FarmPe.Farmer.Urls;
 import com.FarmPe.Farmer.Volly_class.Crop_Post;
@@ -49,11 +50,9 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
     }
 
 
-
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image,image_looking,edit;
         public TextView prod_price,prod_name,duration,farmer_name,location,connect,selectt;
-
         public  LinearLayout linear_looking_main;
 
 
@@ -106,14 +105,15 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
             @Override
             public void onClick(View v) {
 
-                location_det= products.getLocation_details();
-                looking_forId=products.getId();
+//                location_det= products.getLocation_details();
+//                looking_forId=products.getId();
 
 
-                selectedFragment = Edit_Looking_For_Fragment.newInstance();
+                selectedFragment = Edit_LookingFor_Fragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
-                transaction.addToBackStack("looking1");
+                transaction.addToBackStack("edit_looking");
+
                 transaction.commit();
             }
         });
@@ -132,6 +132,8 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
                 Exception e) {
             e.printStackTrace();
         }
+
+
 
         try {
         DisplayMetrics displayMetrics = new DisplayMetrics();

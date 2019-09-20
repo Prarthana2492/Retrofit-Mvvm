@@ -34,6 +34,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -54,7 +55,7 @@ public class LookingForFragment extends Fragment {
 
 
 
-   public static JSONArray cropsListArray = null;
+    public static JSONArray cropsListArray = null;
    public static JSONArray tractorImplementsModelMasterList = null;
    public static JSONArray tractorAccessoriesModelMasterList = null;
    public static JSONArray harvesterModelMasterList = null;
@@ -257,7 +258,8 @@ public class LookingForFragment extends Fragment {
 
                         }
 
-                        farmadapter = new FarmsImageAdapter(getActivity(), newOrderBeansList);
+
+                        farmadapter = new FarmsImageAdapter(getActivity(),  newOrderBeansList);
                         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
                         recyclerView.setLayoutManager(mLayoutManager_farm);
                         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -371,7 +373,7 @@ public class LookingForFragment extends Fragment {
                     + "," + jsonObject2.getString("Pincode");
 
 
-            System.out.println("madelslistt" + newOrderBeansList.size());
+            System.out.println("madelslistt" +jsonObject1.getString("ModelId"));
 
             FarmsImageBean crops = new FarmsImageBean(image, "Tractor Price", model, hp_range, purchaseTimeline, name, location, id, location_det);
             newOrderBeansList.add(crops);

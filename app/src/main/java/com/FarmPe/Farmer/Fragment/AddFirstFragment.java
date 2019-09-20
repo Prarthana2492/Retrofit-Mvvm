@@ -131,7 +131,6 @@ public class AddFirstFragment extends Fragment {
         });
 
 
-
         AddLookigFor();
         newOrderBeansList.clear();
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 3, GridLayoutManager.VERTICAL, false);

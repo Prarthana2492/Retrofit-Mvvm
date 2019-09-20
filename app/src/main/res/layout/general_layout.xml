@@ -39,6 +39,7 @@
         android:paddingVertical="12dp"
         android:selectAllOnFocus="true"
         android:imeOptions="actionNext"
+        android:inputType="textNoSuggestions"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/light_gray"
         android:singleLine="true"/>

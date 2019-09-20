@@ -118,6 +118,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
         }
 
         model_id = products.getId();
+         System.out.println("ffdgfdgvd" + products.getId());
         brochure_pdf = products.getPdf_brochure();
 
         holder.brand_name.setText(products.getBrand_name());
@@ -226,6 +227,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
             public void onClick(View view) {
 
                 model_id = products.getId();
+                System.out.println("ffdgfdgvdreftrg" + products.getId());
                 looking_for_id = AddFirstAdapter.looinkgId;
 
 
@@ -254,7 +256,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
             public void onClick(View view) {
                 model_id = products.getId();
 
-               holder.fav_request.setImageResource(R.drawable.ic_star_filled);
+                holder.fav_request.setImageResource(R.drawable.ic_star_filled);
 
                 request_fav(model_id);
 
@@ -280,6 +282,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
             jsonObject.put("LookingForDetailsId",AddFirstAdapter.looinkgId);
             jsonObject.put("IsShortlisted",true);
             jsonObject.put("CreatedBy",sessionManager.getRegId("userId"));
+
 
             System.out.println("gfjgfgjdfmmmmmmmmmmm" + jsonObject);
 

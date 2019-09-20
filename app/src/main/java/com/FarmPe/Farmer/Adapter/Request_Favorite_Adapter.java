@@ -104,7 +104,6 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
         holder.fav_request.setImageResource(R.drawable.ic_star_filled);
 
 
-        model_id = products.getId();
         looking_for_id =products.getLookingForDetailsId();
         brochure_pdf = products.getPdf_brochure();
 
@@ -148,6 +147,7 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
         holder.fav_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                model_id = products.getId();
 
                 holder.fav_request.setImageResource(R.drawable.ic_star);
 

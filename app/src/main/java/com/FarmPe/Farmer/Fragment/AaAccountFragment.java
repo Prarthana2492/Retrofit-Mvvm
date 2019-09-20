@@ -88,6 +88,7 @@ public class AaAccountFragment extends Fragment {
         backfeed = view.findViewById(R.id.back_feed);
         acc_info_lay = view.findViewById(R.id.acc_info_lay);
         change_pass_lay = view.findViewById(R.id.change_pass_lay);
+
         main_layout = view.findViewById(R.id.main_layout);
         logout_lay = view.findViewById(R.id.logout_lay);
         linearLayout = view.findViewById(R.id.main_layout);
@@ -141,26 +142,49 @@ public class AaAccountFragment extends Fragment {
             }
         });
 
+
+        final InputFilter filter = new InputFilter() {
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                String filtered = "";
+                for (int i = start; i < end; i++) {
+                    char character = source.charAt(i);
+                    if (!Character.isWhitespace(character)) {
+                        filtered += character;
+                    }
+                }
+                return filtered;
+            }
+        };
+
+
+        userInputedt.setFilters(new InputFilter[]{filter, new InputFilter.LengthFilter(12)});
+
+
+
         change_pass_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
 
-                new KeyboardUtil(getActivity(), sheetView);
+                new KeyboardUtil(getActivity(),sheetView);
                 TextView positiveText = sheetView.findViewById(R.id.positive_text);
                 TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
                 TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
 
-                userInputedt= sheetView.findViewById(R.id.user_text);
-                userInputedt.setFilters(new InputFilter[]{EMOJI_FILTER, new InputFilter.LengthFilter(12)});
+                 userInputedt= sheetView.findViewById(R.id.user_text);
 
                 userInputedt.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+
+
+
                 userInputedt.setVisibility(View.VISIBLE);
                 titleText.setText("Change password");
                 Log.d("liugekuyhg",""+titleText.getText().toString());
                 descriptionText.setText("Are you sure, you want to exit?");
                 descriptionText.setVisibility(View.GONE);
+
 
 
 
@@ -179,10 +203,6 @@ public class AaAccountFragment extends Fragment {
                 positiveText.setText("Save");
                 TextView negetiveText = sheetView.findViewById(R.id.negetive_text);
                 negetiveText.setText("Cancel");
-
-
-
-
 
 
                 positiveText.setOnClickListener(new View.OnClickListener() {
@@ -230,13 +250,12 @@ public class AaAccountFragment extends Fragment {
                             } else {
                                 tv.setGravity(Gravity.CENTER_HORIZONTAL);
                             }
+
                             snackbar.show();
                             mBottomSheetDialog.show();
 
 
                             //Toast.makeText(getActivity(), "Password Should Be Minimum 12 Characters", Toast.LENGTH_SHORT).show();
-
-
 
                         }else{
 
@@ -302,54 +321,56 @@ public class AaAccountFragment extends Fragment {
     }
 
 
-    public static InputFilter EMOJI_FILTER = new InputFilter() {
-        @Override
-        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-            boolean keepOriginal = true;
-            StringBuilder sb = new StringBuilder(end - start);
-            for (int index = start; index < end; index++) {
-                int type = Character.getType(source.charAt(index));
-                if (type == Character.SURROGATE || type == Character.OTHER_SYMBOL) {
-                    return "";
-                }
-                for (int i = start; i < end; i++) {
-                    if (Character.isWhitespace(source.charAt(i))) {
-                        if (dstart == 0)
-                            return "";
-                    }
-                }
 
-            /*  char c = source.charAt(index);
-              if (isCharAllowed(c))
-                  sb.append(c);
-              else
-                  keepOriginal = false;*/
-
-                String filtered = "";
-                for (int i = start; i < end; i++) {
-                    char character = source.charAt(i);
-                    if (!Character.isWhitespace(character)) {
-                        filtered += character;
-                    }
-                }
-                return filtered;
-            }
-
-
-
-            if (keepOriginal)
-                return null;
-            else {
-                if (source instanceof Spanned) {
-                    SpannableString sp = new SpannableString(sb);
-                    TextUtils.copySpansFrom((Spanned) source, start, sb.length(), null, sp, 0);
-                    return sp;
-                } else {
-                    return sb;
-                }
-            }
-        }
-    };
+//
+//    public static InputFilter EMOJI_FILTER = new InputFilter() {
+//        @Override
+//        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+//            boolean keepOriginal = true;
+//            StringBuilder sb = new StringBuilder(end - start);
+//            for (int index = start; index < end; index++) {
+//                int type = Character.getType(source.charAt(index));
+//                if (type == Character.SURROGATE || type == Character.OTHER_SYMBOL) {
+//                    return "";
+//                }
+//                for (int i = start; i < end; i++) {
+//                    if (Character.isWhitespace(source.charAt(i))) {
+//                        if (dstart == 0)
+//                            return "";
+//                    }
+//                }
+//
+//            /*  char c = source.charAt(index);
+//              if (isCharAllowed(c))
+//                  sb.append(c);
+//              else
+//                  keepOriginal = false;*/
+//
+//                String filtered = "";
+//                for (int i = start; i < end; i++) {
+//                    char character = source.charAt(i);
+//                    if (!Character.isWhitespace(character)) {
+//                        filtered += character;
+//                    }
+//                }
+//                return filtered;
+//            }
+//
+//
+//
+//            if (keepOriginal)
+//                return null;
+//            else {
+//                if (source instanceof Spanned) {
+//                    SpannableString sp = new SpannableString(sb);
+//                    TextUtils.copySpansFrom((Spanned) source, start, sb.length(), null, sp, 0);
+//                    return sp;
+//                } else {
+//                    return sb;
+//                }
+//            }
+//        }
+//    };
 
 
 
