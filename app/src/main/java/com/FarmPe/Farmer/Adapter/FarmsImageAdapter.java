@@ -52,7 +52,7 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image,image_looking,edit;
-        public TextView prod_price,prod_name,duration,farmer_name,location,connect,selectt;
+        public TextView prod_price,prod_name,duration,farmer_name,location,edit_looking,selectt;
         public  LinearLayout linear_looking_main;
 
 
@@ -65,6 +65,7 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
             image_looking=view.findViewById(R.id.image_looking);
             edit=view.findViewById(R.id.edit);
             selectt=view.findViewById(R.id.selectt);
+            edit_looking=view.findViewById(R.id.edit_looking);
 
         }
     }
@@ -76,7 +77,6 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
         return new MyViewHolder(itemView);
 
     }
-
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
@@ -101,7 +101,7 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
 
      System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"+products.getImage());
 
-        holder.edit.setOnClickListener(new View.OnClickListener() {
+        holder.edit_looking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
