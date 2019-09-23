@@ -24,7 +24,7 @@
           android:layout_marginLeft="10dp"
           android:layout_marginTop="15dp"
           android:padding="10dp"
-          android:background="@drawable/ripple_effect"
+          android:background="@drawable/ic_filter_state"
           >
          <ImageView
              android:layout_width="wrap_content"
@@ -67,7 +67,6 @@
           android:background="#fafafa"
           >
 
-
          <TextView
              android:id="@+id/user_name_menu"
              android:layout_width="match_parent"
@@ -75,7 +74,7 @@
              android:fontFamily="@font/segoeui"
              android:gravity="center"
              android:padding="5dp"
-             android:text="fdssdfsfsd"
+             android:text=""
              android:textColor="#000"
              android:textSize="16dp"
              android:textStyle="bold"
@@ -86,7 +85,7 @@
              android:id="@+id/phone_no"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:text="asasasa"
+             android:text=""
              android:fontFamily="@font/segoeui"
              android:textSize="14dp"
              android:gravity="center"

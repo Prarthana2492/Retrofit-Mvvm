@@ -44,7 +44,7 @@ public class AaHelpFragment extends Fragment {
     View sheetView;
     Fragment selectedFragment;
     LinearLayout backfeed,feedback_lay,main_layout,privacy_lay,about_lay;
-    TextView notificatn,change_language,your_addresss,acc_info1,refer_ern,feedbk,help_1,abt_frmpe,polic_1,logot,setting_tittle;
+    TextView privacy,farmpe_abt,feedback;
     SessionManager sessionManager;
     EditText feedback_edit;
     JSONObject lngObject;
@@ -65,6 +65,9 @@ public class AaHelpFragment extends Fragment {
         privacy_lay=view.findViewById(R.id.privacy_lay);
         about_lay=view.findViewById(R.id.abt_farmpe_lay);
         feedback_edit=view.findViewById(R.id.feedback_edit);
+        farmpe_abt=view.findViewById(R.id.farmpe_abt);
+        privacy=view.findViewById(R.id.privacy);
+        feedback=view.findViewById(R.id.feedback);
 
         sessionManager = new SessionManager(getActivity());
 
@@ -101,7 +104,7 @@ public class AaHelpFragment extends Fragment {
         });
 
 
-        privacy_lay.setOnClickListener(new View.OnClickListener() {
+        privacy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -117,7 +120,7 @@ public class AaHelpFragment extends Fragment {
             }
         });
 
-        about_lay.setOnClickListener(new View.OnClickListener() {
+        farmpe_abt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -131,7 +134,7 @@ public class AaHelpFragment extends Fragment {
         });
 
 
-        feedback_lay.setOnClickListener(new View.OnClickListener() {
+        feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

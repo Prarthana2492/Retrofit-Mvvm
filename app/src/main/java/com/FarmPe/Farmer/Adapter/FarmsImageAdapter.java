@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.FarmPe.Farmer.Fragment.Edit_LookingFor_Fragment;
 import com.FarmPe.Farmer.Fragment.Edit_Looking_For_Fragment;
+import com.FarmPe.Farmer.Fragment.Preview_Edit_Looking_Fragment;
 import com.FarmPe.Farmer.Urls;
 import com.FarmPe.Farmer.Volly_class.Crop_Post;
 import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
@@ -52,7 +53,7 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image,image_looking,edit;
-        public TextView prod_price,prod_name,duration,farmer_name,location,edit_looking,selectt;
+        public TextView prod_price,prod_name,duration,farmer_name,location,edit_looking,selectt,preview_model;
         public  LinearLayout linear_looking_main;
 
 
@@ -66,6 +67,7 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
             edit=view.findViewById(R.id.edit);
             selectt=view.findViewById(R.id.selectt);
             edit_looking=view.findViewById(R.id.edit_looking);
+            preview_model=view.findViewById(R.id.preview_model);
 
         }
     }
@@ -115,6 +117,23 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
                 transaction.addToBackStack("edit_looking");
 
                 transaction.commit();
+            }
+        });
+
+
+        holder.preview_model.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("status","looking_For");
+
+                selectedFragment = Preview_Edit_Looking_Fragment.newInstance();
+                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.addToBackStack("looking_for_edit");
+                selectedFragment.setArguments(bundle);
+                transaction.commit();
+
             }
         });
 

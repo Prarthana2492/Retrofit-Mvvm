@@ -61,6 +61,17 @@
                 android:textColor="#fff"
                 android:textSize="20dp"
                 android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/editimg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_pencil_edit_button_white"
+                android:drawablePadding="3dp"
+                android:gravity="right"
+                android:visibility="gone"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="right" />
             <TextView
                 android:id="@+id/preview"
                 android:layout_width="wrap_content"
@@ -157,7 +168,6 @@
                 android:background="#fafafa"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
-
                 android:layout_marginTop="5dp"
                 android:textSize="15dp"
                 android:textStyle="normal" />
@@ -213,6 +223,7 @@
                     android:orientation="horizontal"
                     >
 
+
                     <ImageView
                         android:id="@+id/image"
                         android:layout_weight="30"
@@ -239,9 +250,11 @@
                             android:src="@drawable/tractor_red"
                             android:layout_height="wrap_content" />
 
+
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent">
+
 
                         <ImageView
                             android:id="@+id/pdf_bro"
@@ -250,6 +263,7 @@
                             android:layout_marginLeft="15dp"
                             android:layout_gravity="center_vertical"
                             android:layout_height="wrap_content" />
+
 
                         <TextView
                             android:id="@+id/prod_nae"
@@ -338,6 +352,9 @@
                             android:fontFamily="@font/segoeui"
                             android:hint="Planning to purchase         : "
                             android:editable="false"
+                            android:focusable="false"
+                            android:clickable="false"
+                            android:focusableInTouchMode="false"
                             android:paddingVertical="2dp"
                             android:paddingRight="10dp"
                             android:textColorHint="#000"
@@ -351,8 +368,12 @@
                             android:paddingVertical="2dp"
                             android:textSize="14dp"
                             android:maxLength="30"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:clickable="false"
+                            android:focusableInTouchMode="false"
                             android:inputType="textNoSuggestions"
-                            android:focusableInTouchMode="true"
+
                             android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColorHint="#000"
@@ -374,6 +395,9 @@
                             android:fontFamily="@font/segoeui"
                             android:hint="Finance loan required        : "
                             android:editable="false"
+                            android:focusable="false"
+                            android:clickable="false"
+                            android:focusableInTouchMode="false"
                             android:paddingVertical="2dp"
                             android:paddingRight="10dp"
                             android:textColorHint="#000"
@@ -387,10 +411,13 @@
                             android:paddingVertical="2dp"
                             android:textSize="14dp"
                             android:maxLength="30"
-                            android:inputType="textNoSuggestions"
-                            android:focusableInTouchMode="true"
-                            android:paddingRight="10dp"
                             android:editable="false"
+                            android:focusable="false"
+                            android:clickable="false"
+                            android:focusableInTouchMode="false"
+                            android:inputType="textNoSuggestions"
+
+                            android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColorHint="#000"
                             android:background="@android:color/transparent"
@@ -411,6 +438,9 @@
                             android:fontFamily="@font/segoeui"
                             android:hint="Need demo/test drive       : "
                             android:editable="false"
+                            android:focusable="false"
+                            android:clickable="false"
+                            android:focusableInTouchMode="false"
                             android:paddingVertical="2dp"
                             android:paddingRight="10dp"
                             android:textColorHint="#000"
@@ -424,8 +454,12 @@
                             android:paddingVertical="2dp"
                             android:textSize="14dp"
                             android:maxLength="30"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:clickable="false"
+                            android:focusableInTouchMode="false"
                             android:inputType="textNoSuggestions"
-                            android:focusableInTouchMode="true"
+
                             android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColorHint="#000"
@@ -458,12 +492,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="30"
-
                         android:fontFamily="@font/segoeui"
                         android:text="Contact Details"
                         android:textColor="#000"
                         android:layout_gravity="center_vertical"
-                        android:drawableLeft="@drawable/ic_docs"
+                        android:drawableLeft="@drawable/ic_user_brown"
                         android:singleLine="true"
                         android:drawablePadding="5dp"
                         android:textStyle="bold"
@@ -503,6 +536,9 @@
                             android:fontFamily="@font/segoeui"
                             android:hint="Name                  : "
                             android:editable="false"
+                            android:focusable="false"
+                            android:clickable="false"
+                            android:focusableInTouchMode="false"
                             android:paddingVertical="2dp"
                             android:paddingRight="10dp"
                             android:textColorHint="#000"
@@ -517,8 +553,11 @@
                             android:paddingVertical="2dp"
                             android:textSize="14dp"
                             android:maxLength="30"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:clickable="false"
+                            android:focusableInTouchMode="false"
                             android:inputType="textNoSuggestions"
-                            android:focusableInTouchMode="true"
                             android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColorHint="#000"
@@ -541,6 +580,9 @@
                             android:fontFamily="@font/segoeui"
                             android:hint="Mobile Number  : "
                             android:editable="false"
+                            android:focusable="false"
+                            android:clickable="false"
+                            android:focusableInTouchMode="false"
                             android:paddingVertical="2dp"
                             android:paddingRight="10dp"
                             android:textColorHint="#000"
@@ -554,8 +596,12 @@
                             android:paddingVertical="2dp"
                             android:textSize="14dp"
                             android:maxLength="30"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:clickable="false"
+                            android:focusableInTouchMode="false"
                             android:inputType="textNoSuggestions"
-                            android:focusableInTouchMode="true"
+
                             android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColorHint="#000"

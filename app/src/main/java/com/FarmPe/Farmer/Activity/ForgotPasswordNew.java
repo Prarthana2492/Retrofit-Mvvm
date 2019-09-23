@@ -173,17 +173,17 @@ public class ForgotPasswordNew extends AppCompatActivity implements Connectivity
             e.printStackTrace();
         }
 
-
-        coordinatorLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                InputMethodManager inputManager = (InputMethodManager)
-                        getSystemService(Context.INPUT_METHOD_SERVICE);
-
-                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                        InputMethodManager.HIDE_NOT_ALWAYS);
-            }
-        });
+//
+//        coordinatorLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                InputMethodManager inputManager = (InputMethodManager)
+//                        getSystemService(Context.INPUT_METHOD_SERVICE);
+//
+//                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+//                        InputMethodManager.HIDE_NOT_ALWAYS);
+//            }
+//        });
 
 
         forgot_back.setOnClickListener(new View.OnClickListener() {

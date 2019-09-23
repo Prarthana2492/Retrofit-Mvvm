@@ -143,21 +143,6 @@ public class AaAccountFragment extends Fragment {
         });
 
 
-        final InputFilter filter = new InputFilter() {
-            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-                String filtered = "";
-                for (int i = start; i < end; i++) {
-                    char character = source.charAt(i);
-                    if (!Character.isWhitespace(character)) {
-                        filtered += character;
-                    }
-                }
-                return filtered;
-            }
-        };
-
-
-        userInputedt.setFilters(new InputFilter[]{filter, new InputFilter.LengthFilter(12)});
 
 
 
@@ -165,7 +150,7 @@ public class AaAccountFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
-                sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
+                sheetView = getActivity().getLayoutInflater().inflate(R.layout.change_password_layout, null);
 
                 new KeyboardUtil(getActivity(),sheetView);
                 TextView positiveText = sheetView.findViewById(R.id.positive_text);
@@ -185,19 +170,22 @@ public class AaAccountFragment extends Fragment {
                 descriptionText.setText("Are you sure, you want to exit?");
                 descriptionText.setVisibility(View.GONE);
 
+               // userInputedt.setFilters(new InputFilter[]{EMOJI_FILTER, new InputFilter.LengthFilter(12)});
 
 
+//                userInputedt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//                    @Override
+//                    public void onFocusChange(View v, boolean hasFocus) {
+//                        if(userInputedt.hasFocus()){
+//
+//                            userInputedt.setFilters(new InputFilter[]{EMOJI_FILTER, new InputFilter.LengthFilter(12)});
+//                            //et1.setCursorVisible(true);
+////                            userInputedt.setActivated(true);
+////                            userInputedt.setPressed(true);
+//                        }
+//                    }
+//                });
 
-                userInputedt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                    @Override
-                    public void onFocusChange(View v, boolean hasFocus) {
-                        if(userInputedt.hasFocus()){
-                            //et1.setCursorVisible(true);
-                            userInputedt.setActivated(true);
-                            userInputedt.setPressed(true);
-                        }
-                    }
-                });
 
 
                 positiveText.setText("Save");
@@ -322,55 +310,55 @@ public class AaAccountFragment extends Fragment {
 
 
 
-//
-//    public static InputFilter EMOJI_FILTER = new InputFilter() {
-//        @Override
-//        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-//            boolean keepOriginal = true;
-//            StringBuilder sb = new StringBuilder(end - start);
-//            for (int index = start; index < end; index++) {
-//                int type = Character.getType(source.charAt(index));
-//                if (type == Character.SURROGATE || type == Character.OTHER_SYMBOL) {
-//                    return "";
-//                }
-//                for (int i = start; i < end; i++) {
-//                    if (Character.isWhitespace(source.charAt(i))) {
-//                        if (dstart == 0)
-//                            return "";
-//                    }
-//                }
-//
-//            /*  char c = source.charAt(index);
-//              if (isCharAllowed(c))
-//                  sb.append(c);
-//              else
-//                  keepOriginal = false;*/
-//
-//                String filtered = "";
-//                for (int i = start; i < end; i++) {
-//                    char character = source.charAt(i);
-//                    if (!Character.isWhitespace(character)) {
-//                        filtered += character;
-//                    }
-//                }
-//                return filtered;
-//            }
-//
-//
-//
-//            if (keepOriginal)
-//                return null;
-//            else {
-//                if (source instanceof Spanned) {
-//                    SpannableString sp = new SpannableString(sb);
-//                    TextUtils.copySpansFrom((Spanned) source, start, sb.length(), null, sp, 0);
-//                    return sp;
-//                } else {
-//                    return sb;
-//                }
-//            }
-//        }
-//    };
+
+    public static InputFilter EMOJI_FILTER = new InputFilter() {
+        @Override
+        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+            boolean keepOriginal = true;
+            StringBuilder sb = new StringBuilder(end - start);
+            for (int index = start; index < end; index++) {
+                int type = Character.getType(source.charAt(index));
+                if (type == Character.SURROGATE || type == Character.OTHER_SYMBOL) {
+                    return "";
+                }
+                for (int i = start; i < end; i++) {
+                    if (Character.isWhitespace(source.charAt(i))) {
+                        if (dstart == 0)
+                            return "";
+                    }
+                }
+
+            /*  char c = source.charAt(index);
+              if (isCharAllowed(c))
+                  sb.append(c);
+              else
+                  keepOriginal = false;*/
+
+                String filtered = "";
+                for (int i = start; i < end; i++) {
+                    char character = source.charAt(i);
+                    if (!Character.isWhitespace(character)) {
+                        filtered += character;
+                    }
+                }
+                return filtered;
+            }
+
+
+
+            if (keepOriginal)
+                return null;
+            else {
+                if (source instanceof Spanned) {
+                    SpannableString sp = new SpannableString(sb);
+                    TextUtils.copySpansFrom((Spanned) source, start, sb.length(), null, sp, 0);
+                    return sp;
+                } else {
+                    return sb;
+                }
+            }
+        }
+    };
 
 
 

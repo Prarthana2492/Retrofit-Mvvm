@@ -72,7 +72,7 @@
         android:layout_width="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:layout_weight="89"
+        android:layout_weight="90"
         android:layout_height="0dp"/>
 
 
@@ -84,7 +84,7 @@
         android:orientation="vertical"
         android:gravity="center_vertical"
         android:background="#f1f1f1"
-        android:layout_weight="11"
+        android:layout_weight="10"
         >
 
         <TextView

@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.FarmPe.Farmer.Bean.FarmsImageBean;
 import com.FarmPe.Farmer.R;
@@ -25,6 +27,7 @@ public class Edit_LookingFor_Fragment extends Fragment {
     public static List<FarmsImageBean> newOrderBeansList = new ArrayList<>();
     public static RecyclerView recyclerView;
     LinearLayout back_feed;
+    TextView textView;
     Fragment selectedFragment = null;
 
 
@@ -44,6 +47,7 @@ public class Edit_LookingFor_Fragment extends Fragment {
 
 
           back_feed = view.findViewById(R.id.back_feed);
+         textView = view.findViewById(R.id.preview);
 
           back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +61,21 @@ public class Edit_LookingFor_Fragment extends Fragment {
             }
         });
 
+
+
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("status","edit_for");
+                selectedFragment = Preview_Edit_Looking_Fragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.addToBackStack("editpage");
+                selectedFragment.setArguments(bundle);
+                transaction.commit();
+            }
+        });
 
 
 

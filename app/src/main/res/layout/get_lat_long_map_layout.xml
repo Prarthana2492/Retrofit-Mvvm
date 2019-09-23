@@ -146,7 +146,7 @@
             android:id="@+id/confirm_loc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-          android:layout_marginLeft="50dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:background="@drawable/border_transperent"
             android:text="Confirm location"

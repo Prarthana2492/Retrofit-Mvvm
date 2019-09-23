@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.FarmPe.Farmer.Bean.AddPhotoBean;
 
+import com.FarmPe.Farmer.Fragment.AaProfileFragment;
 import com.FarmPe.Farmer.Volly_class.PackageManagerUtils;
 import com.FarmPe.Farmer.volleypost.VolleyMultipartRequest;
 import com.android.volley.AuthFailureError;
@@ -215,7 +216,7 @@ public class G_Vision_Controller {
                        // AddPhotoAdapter.productList.add(0,img1);
                        // ListYourFarmsFive.farmadapter.notifyDataSetChanged();
                     }else {
-
+                        AaProfileFragment.prod_img.setImageBitmap(scaled_bitmap);
 
                         uploadImage(scaled_bitmap);
 

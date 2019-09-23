@@ -117,11 +117,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
-                    selectedFragment = AddModelFragment.newInstance();
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
-                    transaction.addToBackStack("currentlocation");
-                    transaction.commit();
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("currentlocation", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
                 }
                 return false;

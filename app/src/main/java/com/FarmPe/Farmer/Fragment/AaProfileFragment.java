@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.net.Uri;
@@ -40,6 +41,7 @@ import android.widget.Toast;
 
 import com.FarmPe.Farmer.Activity.LandingPageActivity;
 import com.FarmPe.Farmer.DB.DatabaseHelper;
+import com.FarmPe.Farmer.G_Vision_Controller;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
 import com.FarmPe.Farmer.Urls;
@@ -60,6 +62,7 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -75,7 +78,7 @@ public class AaProfileFragment extends Fragment {
 
     BottomSheetDialog mBottomSheetDialog;
     View sheetView;
-    CircleImageView prod_img;
+   public static CircleImageView prod_img;
     Fragment selectedFragment;
     EditText abt_text,userInput;
     LinearLayout backfeed,acc_info_lay,linearLayout,about_lay;
@@ -84,7 +87,7 @@ public class AaProfileFragment extends Fragment {
     public static EditText profile_phone,profname;
     JSONObject lngObject;
     Bitmap bitmap;
-
+    G_Vision_Controller g_vision_controller;
     public  static String ProfilePhone;
 
     public static AaProfileFragment newInstance() {
@@ -106,9 +109,7 @@ public class AaProfileFragment extends Fragment {
         prod_img = view.findViewById(R.id.prod_imgg);
         sessionManager = new SessionManager(getActivity());
         setupUI(linearLayout);
-        getActivity().getWindow().setSoftInputMode(
-                WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
 
 
@@ -505,10 +506,18 @@ public class AaProfileFragment extends Fragment {
             //getting the image Uri
             Uri imageUri = data.getData();
             try {
+                g_vision_controller = G_Vision_Controller.getInstance( );
+//getting the image Uri
+
+                final InputStream imageStream;
+
+                    imageStream = getActivity().getContentResolver().openInputStream(imageUri);
+                    bitmap = BitmapFactory.decodeStream(imageStream);
+                    g_vision_controller.callCloudVision(bitmap,getActivity(),"profile");
                 bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
 
-                prod_img.setImageBitmap(bitmap);
-                uploadImage(getResizedBitmap(bitmap,100,100));
+              //  prod_img.setImageBitmap(bitmap);
+             //   uploadImage(getResizedBitmap(bitmap,100,100));
                 int duration = 1000;
                 Snackbar snackbar = Snackbar
                         .make(linearLayout, "You Changed Your Profile Photo", duration);

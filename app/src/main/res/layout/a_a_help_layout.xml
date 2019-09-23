@@ -172,7 +172,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingVertical="20dp"
             android:weightSum="100"
             >
 
@@ -181,6 +180,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="25"
                 android:gravity="center"
+                android:paddingVertical="20dp"
                 android:layout_gravity="center_vertical"
                 >
 
@@ -200,6 +200,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="75"
                 android:orientation="vertical"
+                android:paddingVertical="20dp"
                 android:gravity="center"
                 >
 
