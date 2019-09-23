@@ -65,7 +65,7 @@ public class ActivitySelectLang extends AppCompatActivity {
          recyclerView.setLayoutManager(mLayoutManager_farm);
          recyclerView.setItemAnimator(new DefaultItemAnimator());
          linearLayout= findViewById(R.id.main_layout);
-        Langauges();
+         Langauges();
 
 
         continue_lang.setOnClickListener(new View.OnClickListener() {

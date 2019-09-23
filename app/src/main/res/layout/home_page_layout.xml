@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="#f0f4f5">
+
+
+    <include
+        layout="@layout/no_request_layout"
+        android:layout_width="match_parent"
+        android:layout_weight="20"
+        android:layout_height="0dp" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="60"
+        android:background="#ffffff"
+        android:weightSum="100"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="15"
+            android:text="Request a Price"
+            android:fontFamily="@font/segoeui"
+            android:paddingHorizontal="10dp"
+            android:gravity="center_vertical"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:layout_marginHorizontal="10dp"
+            />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="85"
+           />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="20"
+        android:background="#ffffff"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        >
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="What are you looking for?"
+            android:fontFamily="@font/segoeui"
+            android:paddingHorizontal="10dp"
+            android:textSize="14dp"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:layout_marginHorizontal="10dp"
+            />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingHorizontal="14dp"
+
+            >
+
+
+
+
+
+            <ImageView
+
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/circle_border"
+                android:padding="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_agronomy" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Consultancy"
+                android:gravity="center"
+                android:textSize="12dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#000"
+                />
+
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingHorizontal="14dp"
+
+            >
+
+            <!-- <de.hdodenhof.circleimageview.CircleImageView
+                 android:id="@+id/my_photo"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center"
+                 android:background="@drawable/ic_credit_cards_payment"
+                 app:civ_border_color="#000000"
+                 app:civ_border_width="0.5dp" />-->
+
+
+
+            <ImageView
+
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/circle_border"
+                android:padding="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_plus_black" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bussiness Plan"
+                android:gravity="center"
+                android:textSize="12dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#000"
+                />
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingHorizontal="14dp"
+
+                >
+
+                <!-- <de.hdodenhof.circleimageview.CircleImageView
+                     android:id="@+id/my_photo"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:background="@drawable/ic_credit_cards_payment"
+                     app:civ_border_color="#000000"
+                     app:civ_border_width="0.5dp" />-->
+
+
+
+                <ImageView
+
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/circle_border"
+                    android:padding="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_plus_black" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Legal"
+                    android:gravity="center"
+                    android:textSize="12dp"
+                    android:fontFamily="@font/segoeui"
+                    android:textColor="#000"
+                    />
+
+
+
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/recharge_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+
+                >
+
+                <!-- <de.hdodenhof.circleimageview.CircleImageView
+                     android:id="@+id/my_photo"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:background="@drawable/ic_credit_cards_payment"
+                     app:civ_border_color="#000000"
+                     app:civ_border_width="0.5dp" />-->
+
+
+
+                <TextView
+                    android:id="@+id/pay_recharge_img"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/circle_border"
+                    android:padding="10dp"
+                    android:text="+9"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_plus_black" />
+
+                <TextView
+                    android:id="@+id/pay_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="More"
+                    android:gravity="center"
+                    android:textSize="12dp"
+                    android:fontFamily="@font/segoeui"
+                    android:textColor="#000"
+                    />
+
+
+
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

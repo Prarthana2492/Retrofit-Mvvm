@@ -191,7 +191,7 @@ public class AaProfileFragment extends Fragment {
                   TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
                   userInput = sheetView.findViewById(R.id.user_text);
 
-                userInput.setFilters(new InputFilter[] {EMOJI_FILTER,new InputFilter.LengthFilter(30)});
+            //    userInput.setFilters(new InputFilter[] {EMOJI_FILTER,new InputFilter.LengthFilter(30)});
 
                 userInput.setVisibility(View.VISIBLE);
                 userInput.setText(profname.getText().toString());
@@ -246,10 +246,13 @@ public class AaProfileFragment extends Fragment {
                                             TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                                             tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
                                             tv.setTextColor(Color.WHITE);
+
                                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                                                 tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
                                             } else {
+
+
                                                 tv.setGravity(Gravity.CENTER_HORIZONTAL);
                                             }
 
@@ -328,6 +331,7 @@ public class AaProfileFragment extends Fragment {
                 positiveText.setText("Save");
                 TextView negetiveText = sheetView.findViewById(R.id.negetive_text);
                 negetiveText.setText("Cancel");
+
 
                 positiveText.setOnClickListener(new View.OnClickListener() {
                     @Override

@@ -158,7 +158,6 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
         }
 
-
         holder.mobile_no.setText("Phone No - " + products.getAdd_mobile());
         // holder.landmrk.setText(products.getAdd_landmark());
 

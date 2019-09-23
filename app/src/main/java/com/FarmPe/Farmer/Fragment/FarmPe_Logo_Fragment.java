@@ -128,7 +128,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
        // nameee = view.findViewById(R.id.nameee);
         sessionManager = new SessionManager(getActivity());
         recyclerView = view.findViewById(R.id.recylr_2);
-        noimg_recyclerView = view.findViewById(R.id.recylr_5);
+       // noimg_recyclerView = view.findViewById(R.id.recylr_5);
         slider = view.findViewById(R.id.vp_slider);
         ll_dots = view.findViewById(R.id.ll_dots);
         reqst_count = view.findViewById(R.id.request_count);

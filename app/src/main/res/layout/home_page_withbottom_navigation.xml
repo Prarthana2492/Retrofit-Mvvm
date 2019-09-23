@@ -1,0 +1,187 @@
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <!--  <LinearLayout
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:app="http://schemas.android.com/apk/res-auto"
+          xmlns:tools="http://schemas.android.com/tools"
+          android:orientation="vertical"
+          android:weightSum="100"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+  -->
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight="8"-->
+    <!--android:orientation="vertical"-->
+    <!--android:background="@color/top_menu_color">-->
+
+
+    <!--<android.support.v7.widget.Toolbar-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:minHeight="?attr/actionBarSize"-->
+    <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+    <!--app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+    <!--android:gravity="center">-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:weightSum="100"-->
+    <!--&gt;-->
+
+    <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="0dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:orientation="vertical"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_weight="10"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_gravity="start"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:gravity="center_vertical"&ndash;&gt;-->
+    <!--&lt;!&ndash;&gt;&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+    <!--&lt;!&ndash;android:id="@+id/menu"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:src="@drawable/ic_menu_button" />&ndash;&gt;-->
+
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:layout_weight="100"-->
+    <!--android:weightSum="100"-->
+    <!--android:gravity="center_vertical"-->
+    <!--&gt;-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/fname"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@color/white"-->
+    <!--android:layout_marginLeft="5dp"-->
+    <!--android:textSize="24dp"-->
+    <!--android:text="Sell" />-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_weight="84"-->
+    <!--android:gravity="end"-->
+    <!--&gt;-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/sell_menu"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:drawableTop="@drawable/ic_photo_camera"-->
+    <!--android:paddingTop="8dp"-->
+    <!--android:text="Orders"-->
+    <!--android:textSize="8dp"-->
+    <!--android:textAlignment="center"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:textColor="@color/white"/>-->
+    <!--</LinearLayout>-->
+
+
+    <!--&lt;!&ndash;         <ImageView-->
+    <!--android:id="@+id/account_icon"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:src="@drawable/ic_user_filled_blak"-->
+    <!--android:layout_weight="20"-->
+    <!--android:gravity="end"-->
+    <!--/>&ndash;&gt;-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/account_icon"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:drawableTop="@drawable/ic_user_filled_blak"-->
+    <!--android:paddingTop="8dp"-->
+    <!--android:text="Sell"-->
+    <!--android:textSize="8dp"-->
+    <!--android:textAlignment="center"-->
+    <!--android:layout_weight="20"-->
+    <!--android:gravity="end"-->
+    <!--android:textColor="@color/white"/>-->
+
+    <!--</LinearLayout>-->
+
+
+
+
+    <!--</LinearLayout>-->
+
+    <!--</android.support.v7.widget.Toolbar>-->
+
+    <!--</LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="100">
+
+    <FrameLayout
+        android:id="@+id/frame_menu"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="top"
+        android:layout_weight="90"
+        tools:background="#f5f5f5" />
+
+
+    <!--<include-->
+    <!--layout="@layout/home_tab"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent" />-->
+
+
+
+    <!--<FrameLayout-->
+    <!--android:id="@+id/frame_layout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_marginBottom="56dp"-->
+    <!--tools:background="#EFEFEF"/>-->
+
+
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="10dp"-->
+        <!--android:background="#f0f4f5"-->
+
+        <!--/>-->
+
+
+    <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
+        android:id="@+id/bottom_navigation_land"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:layout_gravity="bottom"/>
+
+
+
+    </LinearLayout>
+    <!--
+        </LinearLayout>
+    -->
+
+</android.support.design.widget.CoordinatorLayout>
+

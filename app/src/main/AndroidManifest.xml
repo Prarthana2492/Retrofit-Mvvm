@@ -64,6 +64,12 @@
             android:name=".Activity.Thank_U_New"
             android:screenOrientation="portrait" />
 
+        <activity
+        android:name=".Activity.HomePage_With_Bottom_Navigation"
+        android:resizeableActivity="false"
+        android:screenOrientation="portrait" />
+
+
 
 
         <activity

@@ -9,8 +9,7 @@ import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
+
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -54,7 +53,7 @@ public class ForgotPasswordNew extends AppCompatActivity implements Connectivity
 
     JSONObject lngObject;
 
-    String localize_text,toast_mobile,toast_valid_number,toast_mob_digits,toast_number_not_registered,toast_number_exceeded,toast_internet,toast_nointernet;
+    String localize_text,toast_mobile,toast_mob_digits,toast_number_not_registered,toast_number_exceeded,toast_internet,toast_nointernet;
 
 
     private void checkConnection() {

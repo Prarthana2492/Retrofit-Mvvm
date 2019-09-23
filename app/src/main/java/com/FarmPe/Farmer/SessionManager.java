@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Activity.LandingPageActivity;
 import com.FarmPe.Farmer.Activity.LoginActivity;
 import com.FarmPe.Farmer.Activity.LoginActivity_new;
@@ -178,7 +179,7 @@ public class SessionManager {
         // Check login status
         if(this.isLoggedIn()){
             // user is not logged in redirect him to Login Activity
-            Intent i = new Intent(_context, LandingPageActivity.class);
+            Intent i = new Intent(_context, HomePage_With_Bottom_Navigation.class);
             // Closing all the Activities
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 

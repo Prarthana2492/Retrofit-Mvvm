@@ -39,6 +39,7 @@ import android.widget.TextView;
 import com.FarmPe.Farmer.Adapter.SelectLanguageAdapter2;
 import com.FarmPe.Farmer.Bean.SelectLanguageBean;
 import com.FarmPe.Farmer.DB.DatabaseHelper;
+import com.FarmPe.Farmer.Fragment.Home_Menu_Fragment;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
 import com.FarmPe.Farmer.Urls;
@@ -507,7 +508,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
                                         if(status.equals("1")){
                                             System.out.println("jdhyusulogin"+status);
-                                            Intent intent = new Intent(LoginActivity_new.this, LandingPageActivity.class);
+                                            Intent intent = new Intent(LoginActivity_new.this, HomePage_With_Bottom_Navigation.class);
                                             startActivity(intent);
                                             sessionManager.createLoginSession(password,mob_no);
 
