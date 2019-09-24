@@ -81,25 +81,23 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
         super.onStop();
     }
 
-
     LinearLayout coordinatorLayout;
     public static CheckBox remember_me;
     DatabaseHelper myDb;
     public static boolean connectivity_check;
     public static boolean isEng = false;
-    public static  String password,mob_toast,mobile_string,pass_toast,toast_invalid,toast_click_back,toast_internet,toast_nointernet;
-
+    public static  String password,mob_toast,mobile_string,pass_toast,toast_click_back,toast_internet,toast_nointernet;
     public static   JSONObject lngObject;
     JSONArray lng_array;
-
     String mob_no;
     SessionManager sessionManager;
     public static  Dialog dialog;
-    public static TextView welcome_back, createaccount, change_lang,popup_heading,farmPe_title ,enterPassword, forgotPassword;
+    public static TextView welcome_back, createaccount,change_lang,popup_heading;
 
 
 
     private void checkConnection() {
+
         boolean isConnected = ConnectivityReceiver.isConnected();
         showSnack(isConnected);
     }
@@ -109,6 +107,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
         String message = null;
         int color=0;
         if (isConnected) {
+
             if(connectivity_check) {
                 message = "Good! Connected to Internet";
                 color = Color.WHITE;
@@ -125,8 +124,6 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                     textView.setGravity(Gravity.CENTER_HORIZONTAL);
                 }
                 snackbar.show();
-
-
 
                 connectivity_check=false;
             }
@@ -239,7 +236,6 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
                 System.out.println("llllllllllllkkkkkkkkkkkkkkk" + lngObject.getString("EnterPhoneNo"));
 
-
                 text_mobile.setHint(lngObject.getString("PhoneNo"));
                 pass.setHint(lngObject.getString("Password"));
               //  remember_me.setText(lngObject.getString("RememberMe"));
@@ -249,7 +245,6 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
                 newfarmpelng = lngObject.getString("NewtoFarmPe");
                 signuplng = lngObject.getString("Register");
-
 
 //                new_farmpe.setText(newfarmpelng + "?");
                   createaccount.setText(" " + signuplng.toUpperCase());
@@ -283,6 +278,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                 startActivity(intent);
             }
         });
+
 
 
         forgot_pass.setOnClickListener(new View.OnClickListener() {

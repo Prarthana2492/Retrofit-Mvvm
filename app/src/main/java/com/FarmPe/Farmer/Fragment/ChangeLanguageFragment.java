@@ -54,11 +54,10 @@ public class ChangeLanguageFragment extends Fragment {
         View view = inflater.inflate(R.layout.select_language_layout, container, false);
 
 
-        HomePage_With_Bottom_Navigation.bottomNavigation.setVisibility(View.GONE);
+       // HomePage_With_Bottom_Navigation.bottomNavigation.setVisibility(View.GONE);
         back_feed=view.findViewById(R.id.back_feed);
         lang_title=view.findViewById(R.id.lang_title);
         continue_lang=view.findViewById(R.id.continue_lang);
-
         recyclerView =view.findViewById(R.id.recycler_view1);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -143,6 +142,7 @@ public class ChangeLanguageFragment extends Fragment {
                     JSONObject jsonObject;
 
                     try {
+
                         JSONArray jsonArray=result.getJSONArray("LanguagesList");
                         for (int i=0;i<jsonArray.length();i++){
                             JSONObject jsonObject1=jsonArray.getJSONObject(i);
@@ -153,6 +153,7 @@ public class ChangeLanguageFragment extends Fragment {
                             newOrderBeansList.add(stateBean);
                             recyclerView.setAdapter(mAdapter);
                         }
+
 
                     } catch (JSONException e) {
                         e.printStackTrace();

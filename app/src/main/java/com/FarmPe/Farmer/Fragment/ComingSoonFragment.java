@@ -67,13 +67,6 @@ public class ComingSoonFragment extends Fragment {
 
 
 
-
-
-
-
-
-
-
         return view;
     }
 }

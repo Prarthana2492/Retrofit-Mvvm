@@ -68,8 +68,14 @@ public class PrivacyPolicyFragment extends Fragment {
 
                     if(status.equals("sign_Privacy")) {
 
-                        Intent intent=new Intent(getActivity(), SignUpActivity.class);
-                        startActivity(intent);
+                        System.out.println("jfnjgfjdsf");
+
+//                        Intent intent=new Intent(getActivity(), SignUpActivity.class);
+//                        startActivity(intent);
+                        Intent myIntent = new Intent(getActivity(), SignUpActivity.class);
+                        myIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(myIntent);
+
 
                     }else if(status.equals("setting_privacy")){
 
@@ -83,7 +89,6 @@ public class PrivacyPolicyFragment extends Fragment {
         });
 
 
-
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,13 +98,16 @@ public class PrivacyPolicyFragment extends Fragment {
 
                 if(status.equals("sign_Privacy")) {
 
-                    Intent intent=new Intent(getActivity(), SignUpActivity.class);
-                    startActivity(intent);
+                    Intent myIntent = new Intent(getActivity(), SignUpActivity.class);
+                    myIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(myIntent);
+
 
                 }else if(status.equals("setting_privacy")){
 
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("privacy", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
                 }
 
             }
@@ -107,8 +115,10 @@ public class PrivacyPolicyFragment extends Fragment {
 
 
         try {
+
             lngObject = new JSONObject(sessionManager.getRegId("language"));
             privacypolicytxt.setText(lngObject.getString("PrivacyPolicy"));
+
         } catch (JSONException e) {
             e.printStackTrace();
         }

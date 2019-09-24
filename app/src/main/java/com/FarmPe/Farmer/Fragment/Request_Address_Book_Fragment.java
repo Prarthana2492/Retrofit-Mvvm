@@ -93,7 +93,7 @@ public class Request_Address_Book_Fragment extends Fragment {
 
                     selectedFragment = MapFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                    transaction.commit();
 
 //                       FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -113,7 +113,7 @@ public class Request_Address_Book_Fragment extends Fragment {
 
                 selectedFragment = MapFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.commit();
             }
         });

@@ -58,7 +58,9 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
         this.productList = moviesList;
         this.activity=activity;
 
-            sessionManager = new SessionManager(activity);
+
+
+        sessionManager = new SessionManager(activity);
     }
 
 
@@ -67,7 +69,6 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
         public ImageView image,fav_request;
 
         public TextView brand_name,select,model,hp_power,brochure;
-
 
 
 
@@ -91,7 +92,6 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
     }
 
 
-
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -110,6 +110,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
              holder.fav_request.setImageResource(R.drawable.ic_star_filled);
 
+
           }else{
 
              holder.fav_request.setImageResource(R.drawable.ic_star);
@@ -117,18 +118,20 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
         }
 
-        model_id = products.getId();
-         System.out.println("ffdgfdgvd" + products.getId());
-        brochure_pdf = products.getPdf_brochure();
 
-        holder.brand_name.setText(products.getBrand_name());
-        holder.model.setText(products.getModel_name());
+         model_id = products.getId();
+         System.out.println("ffdgfdgvd" + products.getId());
+
+
+          holder.brand_name.setText(products.getBrand_name());
+         holder.model.setText(products.getModel_name());
 
         String drive_type = products.getDrive_type()+",";
         String steering = products.getSteering()+",";
         String clutch_type=products.getClutch_type()+",";
         String transmission_type= products.getTransmission_type()+",";
         String horse_power= products.getHorse_power();
+
 
 
         if (products.getSteering().equals("")){
@@ -144,7 +147,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
             drive_type=" ";
         }
 
-             holder.hp_power.setText(drive_type+steering+clutch_type+transmission_type+horse_power)   ;
+             holder.hp_power.setText(drive_type+steering+clutch_type+transmission_type+horse_power);
 
 
 
@@ -197,8 +200,10 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
 
                 }else {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("brochur_status", brochure_pdf);
+
+                        brochure_pdf = products.getPdf_brochure();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("brochur_status", brochure_pdf);
                     selectedFragment = Model_Brochure_Fragment.newInstance();
                     FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_menu, selectedFragment);

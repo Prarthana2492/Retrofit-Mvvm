@@ -113,6 +113,9 @@ public class AaProfileFragment extends Fragment {
 
 
 
+
+
+
         backfeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -183,7 +186,6 @@ public class AaProfileFragment extends Fragment {
 
                   mBottomSheetDialog = new BottomSheetDialog(getActivity());
                   sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
-
                   new KeyboardUtil(getActivity(), sheetView);
                   TextView positiveText = sheetView.findViewById(R.id.positive_text);
                   TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
@@ -307,24 +309,26 @@ public class AaProfileFragment extends Fragment {
         });
 
 
-
         about_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
 
-                new KeyboardUtil(getActivity(), sheetView);
-                TextView positiveText = sheetView.findViewById(R.id.positive_text);
-                TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
-                TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
-                abt_text = sheetView.findViewById(R.id.user_text);
+                 new KeyboardUtil(getActivity(), sheetView);
+                 TextView positiveText = sheetView.findViewById(R.id.positive_text);
+                 TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
+                 TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
+                 abt_text = sheetView.findViewById(R.id.user_text);
              //   abt_text.setFilters(new InputFilter[]{EMOJI_FILTER, new InputFilter.LengthFilter(50)});
+                   abt_text.setVisibility(View.VISIBLE);
 
-                abt_text.setVisibility(View.VISIBLE);
-                abt_text.setText(aboutText.getText().toString());
 
-                descriptionText.setVisibility(View.GONE);
+                   abt_text.setText(aboutText.getText().toString());
+
+                   descriptionText.setVisibility(View.GONE);
                 titleText.setText("Add about");
                 descriptionText.setText("Are you sure you want to exit?");
                 positiveText.setText("Save");
@@ -359,7 +363,6 @@ public class AaProfileFragment extends Fragment {
 
                             snackbar.show();
                             mBottomSheetDialog.show();
-
 
 
                         }else{
@@ -412,7 +415,16 @@ public class AaProfileFragment extends Fragment {
                         String profile_description = jsonObject1.getString("About");
 
                         profname.setText(profnamestr);
-                        aboutText.setText(profile_description);
+
+                        if(aboutText.getText().toString().equals("")){
+
+                            aboutText.setText("I Love Farming");
+
+                        }else{
+
+                            aboutText.setText(profile_description);
+                        }
+
 
 
                         //phone_no.setText(ProfilePhone.substring(3));
@@ -477,13 +489,13 @@ public class AaProfileFragment extends Fragment {
                         transaction.commit();
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getActivity(),error.toString(),Toast.LENGTH_LONG).show();
-                    }
+        new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity(),error.toString(),Toast.LENGTH_LONG).show();
+            }
 
-                }){
+        }){
             @Override
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<String, String>();
@@ -517,17 +529,17 @@ public class AaProfileFragment extends Fragment {
                     imageStream = getActivity().getContentResolver().openInputStream(imageUri);
                     bitmap = BitmapFactory.decodeStream(imageStream);
                     g_vision_controller.callCloudVision(bitmap,getActivity(),"profile");
-                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
+                    bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
 
               //  prod_img.setImageBitmap(bitmap);
              //   uploadImage(getResizedBitmap(bitmap,100,100));
-                int duration = 1000;
-                Snackbar snackbar = Snackbar
+                  int duration = 1000;
+                   Snackbar snackbar = Snackbar
                         .make(linearLayout, "You Changed Your Profile Photo", duration);
-                View snackbarView = snackbar.getView();
-                TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                tv.setTextColor(Color.WHITE);
+                 View snackbarView = snackbar.getView();
+                 TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                 tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                 tv.setTextColor(Color.WHITE);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                     tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);

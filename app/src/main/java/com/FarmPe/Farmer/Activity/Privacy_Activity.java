@@ -122,8 +122,6 @@ public class Privacy_Activity extends AppCompatActivity implements ConnectivityR
 
 
 
-
-
         try {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
 

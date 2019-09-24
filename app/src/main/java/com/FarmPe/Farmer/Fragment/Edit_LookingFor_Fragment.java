@@ -70,7 +70,7 @@ public class Edit_LookingFor_Fragment extends Fragment {
                 bundle.putString("status","edit_for");
                 selectedFragment = Preview_Edit_Looking_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.addToBackStack("editpage");
                 selectedFragment.setArguments(bundle);
                 transaction.commit();

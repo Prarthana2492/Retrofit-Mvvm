@@ -26,12 +26,13 @@
         android:orientation="vertical"
         >
 
+
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="15"
+            android:layout_height="wrap_content"
             android:text="Request a Price"
             android:fontFamily="@font/segoeui"
+            android:layout_marginTop="12dp"
             android:paddingHorizontal="10dp"
             android:gravity="center_vertical"
             android:textSize="14dp"
@@ -40,11 +41,12 @@
 
             />
 
-
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:overScrollMode="never"
             android:layout_marginHorizontal="2dp"
             android:layout_weight="85"
            />
@@ -95,10 +97,6 @@
             android:paddingHorizontal="14dp"
 
             >
-
-
-
-
 
             <ImageView
 

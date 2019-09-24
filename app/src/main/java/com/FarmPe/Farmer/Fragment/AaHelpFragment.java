@@ -315,7 +315,6 @@ public class AaHelpFragment extends Fragment {
 
 
 
-
         }catch (Exception e){
             e.printStackTrace();
         }

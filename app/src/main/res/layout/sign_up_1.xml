@@ -230,6 +230,7 @@
             android:layout_height="0dp"
             android:layout_weight="30"
             android:gravity="center"
+            android:padding="20dp"
             android:orientation="vertical"
             >
 
@@ -241,7 +242,6 @@
                 android:gravity="center"
                 android:text="Privacy Policy and Terms of use."
                 android:layout_marginHorizontal="20dp"
-                android:padding="20dp"
                 android:textColor="#000"
                 android:textSize="14dp" />
 

@@ -127,17 +127,18 @@ public class  Add_New_Address_Fragment extends Fragment {
 
         getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
-        select_address = view.findViewById(R.id.add_type);
-        name = view.findViewById(R.id.full_name);
-        mobile = view.findViewById(R.id.mob_no);
-        back_feed = view.findViewById(R.id.back_feed);
-        pincode_no = view.findViewById(R.id.pincode);
-        house_numb = view.findViewById(R.id.house_no);
-        street_name = view.findViewById(R.id.colny_street);
-        mobile_edit = view.findViewById(R.id.mobile_edit);
-        pincode_edittxt = view.findViewById(R.id.pincode_edittxt);
+
+         select_address = view.findViewById(R.id.add_type);
+         name = view.findViewById(R.id.full_name);
+         mobile = view.findViewById(R.id.mob_no);
+         back_feed = view.findViewById(R.id.back_feed);
+         pincode_no = view.findViewById(R.id.pincode);
+         house_numb = view.findViewById(R.id.house_no);
+         street_name = view.findViewById(R.id.colny_street);
+         mobile_edit = view.findViewById(R.id.mobile_edit);
+         pincode_edittxt = view.findViewById(R.id.pincode_edittxt);
        // landmrk = view.findViewById(R.id.landmrk);
-        search = view.findViewById(R.id.search);
+         search = view.findViewById(R.id.search);
         // main_layout = view.findViewById(R.id.drawer_layout_op);
         state_txt = view.findViewById(R.id.state_txt);
         district_txt = view.findViewById(R.id.district_txt);
@@ -183,7 +184,7 @@ public class  Add_New_Address_Fragment extends Fragment {
         district_txt.setText(getArguments().getString("Addr_district"));
         tehsil_txt.setText(getArguments().getString("Addr_taluk"));
         // block_txt.setText(getArguments().getString("Addr_hobli"));
-        village_txt.setText(getArguments().getString("Addr_village"));
+        village_txt.setText(getArguments().getString("Addr_hobli"));
         address_type.setText(getArguments().getString("Addr_pickup_from"));
         selected_addresstype = getArguments().getString("Addr_pickup_from");
 
@@ -267,8 +268,8 @@ public class  Add_New_Address_Fragment extends Fragment {
                 }else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")){
 
 
-                    HomeMenuFragment.onBack_status = "no_request";
-                    selectedFragment = HomeMenuFragment.newInstance();
+                  //  HomeMenuFragment.onBack_status = "no_request";
+                    selectedFragment = Home_Menu_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
@@ -348,7 +349,6 @@ public class  Add_New_Address_Fragment extends Fragment {
             public void onClick(View view) {
 
 
-
                 if (getArguments().getString("navigation_from").equals("yu_ads_frg")) {
 
                     FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -363,6 +363,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
 
                 }else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")){
 

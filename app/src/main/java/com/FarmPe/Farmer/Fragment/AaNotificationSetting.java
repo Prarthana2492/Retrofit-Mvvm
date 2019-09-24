@@ -34,6 +34,7 @@ public class AaNotificationSetting extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.a_n_notisetting_layout, container, false);
 
+
         backfeed=view.findViewById(R.id.back_feed);
         acc_info_lay = view.findViewById(R.id.acc_info_lay);
 
@@ -47,6 +48,7 @@ public class AaNotificationSetting extends Fragment {
         });
 
 
+
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -55,15 +57,17 @@ public class AaNotificationSetting extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
-                //    getFragmentManager().popBackStack("home_menu", android.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    //    getFragmentManager().popBackStack("home_menu", android.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack ("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     return true;
                 }
+
                 return false;
             }
         });
+
 
 
 

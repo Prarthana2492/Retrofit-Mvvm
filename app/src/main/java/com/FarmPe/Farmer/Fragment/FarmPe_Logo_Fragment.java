@@ -65,6 +65,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
     private int[] myImageList = new int[]{R.drawable.banner1, R.drawable.banner2,
             R.drawable.banner3};
 
+
     HomePage_Adapter homePage_adapter;
     TextView Add_make_request, no_make_request, no_list_farm, seeall_request,slide_text;
     ViewPager slider;
@@ -76,15 +77,11 @@ public class FarmPe_Logo_Fragment extends Fragment {
     final long PERIOD_MS = 1000;
     private static int NUM_PAGES = 0;
     private ShimmerFrameLayout mShimmerViewContainer;
-
     RecyclerView recyclerView;
     RecyclerView noimg_recyclerView;
     public static List<AddTractorBean1> newOrderBeansList = new ArrayList<>();
     public static List<AddTractorBean2> newOrderBeansList2 = new ArrayList<>();
     public static List<AddTractorBean2> newOrderBeansList3 = new ArrayList<>();
-
-
-
     public static JSONArray cropsListArray = null;
     public static JSONArray tractorImplementsModelMasterList = null;
     public static JSONArray tractorAccessoriesModelMasterList = null;
@@ -96,6 +93,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
     public static JSONArray miniTruckRFQModelList = null;
     public static JSONArray backhoeAttachmentRFQModelList = null;
     public static JSONArray powerTillerRFQModelList = null;
+
 
     Noimg_Recylr_Adapter noimg_recylr_adapter;
     public static FarmPe_Logo_Fragment newInstance() {
@@ -109,7 +107,6 @@ public class FarmPe_Logo_Fragment extends Fragment {
         timer.cancel();
         super.onDestroy();
     }
-
 
 
 
@@ -171,12 +168,15 @@ public class FarmPe_Logo_Fragment extends Fragment {
 
 
 //        String slide_txt = "<font color=#000000> When a Farmer Cultivates his land,</font> <font color=#EC4848> Hes Cultivating a Dream Alongside.</font>";
+//
 //        slide_text.setText(Html.fromHtml(slide_txt));
 
         slider.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
             }
+
             @Override
             public void onPageSelected(int position) {
                 System.out.println("cddsd = "+position);;
@@ -197,8 +197,8 @@ public class FarmPe_Logo_Fragment extends Fragment {
       //  nameee.setText(sessionManager.getRegId("name"));
 
         try {
-            lngObject = new JSONObject(sessionManager.getRegId("language"));
 
+            lngObject = new JSONObject(sessionManager.getRegId("language"));
             toast_click_back = lngObject.getString("PleaseclickBACKagaintoexit");
 
 
@@ -264,7 +264,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager_farm);
         // recyclerView.addItemDecoration(new ItemDecorator( -80));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        noimg_recyclerView.setItemAnimator(new DefaultItemAnimator());
+       // noimg_recyclerView.setItemAnimator(new DefaultItemAnimator());
 
 
         homePage_adapter = new HomePage_Adapter(getActivity(), newOrderBeansList2);
@@ -294,7 +294,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
                 bundle.putString("status","home_request");
                 selectedFragment = AddFirstFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 selectedFragment.setArguments(bundle);
                 transaction.addToBackStack("farmpe_logo");
                 transaction.commit();
@@ -310,7 +310,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
                 bundle.putString("status","home_request");
                 selectedFragment = AddFirstFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 selectedFragment.setArguments(bundle);
                 transaction.addToBackStack("farmpe_logo");
                 transaction.commit();
@@ -326,7 +326,7 @@ public class FarmPe_Logo_Fragment extends Fragment {
                 bundle.putString("status","hme_request");
                 selectedFragment = LookingForFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 selectedFragment.setArguments(bundle);
                 transaction.addToBackStack("home");
                 transaction.commit();

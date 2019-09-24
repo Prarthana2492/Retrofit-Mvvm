@@ -297,6 +297,7 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
             @Override
             public void onClick(View v) {
                 privacy_policy="privacy";
+
                 Intent intent = new Intent(SignUpActivity.this, Privacy_Activity.class);
                 startActivity(intent);
             }

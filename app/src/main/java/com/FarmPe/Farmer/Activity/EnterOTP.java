@@ -377,7 +377,7 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
 
                                         System.out.println("fgddgdfgdfgffffffffff"+ message);
 
-                                       Intent intent=new Intent(EnterOTP.this, LandingPageActivity.class);
+                                       Intent intent=new Intent(EnterOTP.this, HomePage_With_Bottom_Navigation.class);
                                         startActivity(intent);
 
                                     }
