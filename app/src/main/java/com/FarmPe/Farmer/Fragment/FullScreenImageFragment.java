@@ -169,14 +169,14 @@ LinearLayout back_feed;
                     if (getArguments().getString("status").equals("HOME_IMG")){
                         selectedFragment = HomeMenuFragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_layout, selectedFragment);
+                        transaction.replace(R.id.frame_menu, selectedFragment);
                         // transaction.addToBackStack("looking");
                         transaction.commit();
 
                     }else if(getArguments().getString("status").equals("ACC_IMG")){
                         selectedFragment = UpdateAccDetailsFragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_layout, selectedFragment);
+                        transaction.replace(R.id.frame_menu, selectedFragment);
                         // transaction.addToBackStack("looking");
                         transaction.commit();
                     }

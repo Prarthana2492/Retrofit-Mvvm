@@ -201,7 +201,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
                     bundle.putString("brochur_status", brochure_pdf);
                     selectedFragment = Model_Brochure_Fragment.newInstance();
                     FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     selectedFragment.setArguments(bundle);
                     transaction.addToBackStack("pdf");
                     transaction.commit();
@@ -233,7 +233,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
                 selectedFragment = MapFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.addToBackStack("currentlocation");
                 transaction.commit();
 

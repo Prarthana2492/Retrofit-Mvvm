@@ -80,9 +80,9 @@ public class AddFirstFragment extends Fragment {
                 }else if (getArguments().getString("status").equals("home_request")) {
 
                     HomeMenuFragment.onBack_status = "no_request";
-                    selectedFragment = HomeMenuFragment.newInstance();
+                    selectedFragment = Home_Menu_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
 
 
@@ -109,18 +109,18 @@ public class AddFirstFragment extends Fragment {
                       }else if (getArguments().getString("status").equals("home_request")) {
 
                         HomeMenuFragment.onBack_status = "no_request";
-                        selectedFragment = HomeMenuFragment.newInstance();
+                        selectedFragment = Home_Menu_Fragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.add(R.id.frame_layout, selectedFragment);
+                        transaction.add(R.id.frame_menu, selectedFragment);
                         transaction.commit();
 
 
                     }else if (getArguments().getString("status").equals("menu_request")) {
 
                     HomeMenuFragment.onBack_status = "no_request";
-                    selectedFragment = HomeMenuFragment.newInstance();
+                    selectedFragment = Home_Menu_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.add(R.id.frame_layout, selectedFragment);
+                    transaction.add(R.id.frame_menu, selectedFragment);
                     transaction.commit();
 
                 }

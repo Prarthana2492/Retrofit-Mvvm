@@ -270,7 +270,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                     HomeMenuFragment.onBack_status = "no_request";
                     selectedFragment = HomeMenuFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
 
 
@@ -316,9 +316,9 @@ public class  Add_New_Address_Fragment extends Fragment {
                     }else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")){
 
                         HomeMenuFragment.onBack_status = "no_request";
-                        selectedFragment = HomeMenuFragment.newInstance();
+                        selectedFragment = Home_Menu_Fragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_layout, selectedFragment);
+                        transaction.replace(R.id.frame_menu, selectedFragment);
                         transaction.commit();
 
 
@@ -330,9 +330,9 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                     } else{
 
-                        selectedFragment = HomeMenuFragment.newInstance();
+                        selectedFragment = Home_Menu_Fragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_layout, selectedFragment);
+                        transaction.replace(R.id.frame_menu, selectedFragment);
                         transaction.commit();
                     }
 
@@ -370,7 +370,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                     HomeMenuFragment.onBack_status = "no_request";
                     selectedFragment = HomeMenuFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
 
                 }else if(getArguments().getString("navigation_from").equals("edit_lokng_frg")) {
@@ -383,9 +383,9 @@ public class  Add_New_Address_Fragment extends Fragment {
                 } else{
 
 
-                    selectedFragment = HomeMenuFragment.newInstance();
+                    selectedFragment = Home_Menu_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
                 }
 
@@ -398,7 +398,7 @@ public class  Add_New_Address_Fragment extends Fragment {
             public void onClick(View v) {
                 selectedFragment = MapFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.addToBackStack("currentlocation");
                 transaction.commit();
             }
@@ -1292,7 +1292,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                                     selectedFragment = Request_Details_New_Fragment.newInstance();
                                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                    transaction.replace(R.id.frame_layout, selectedFragment);
+                                    transaction.replace(R.id.frame_menu, selectedFragment);
                                     transaction.addToBackStack("home");
                                     selectedFragment.setArguments(bundle1);
                                     transaction.commit();
@@ -1319,7 +1319,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                                     selectedFragment = You_Address_Fragment.newInstance();
                                     FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
-                                    transaction.replace(R.id.frame_layout, selectedFragment);
+                                    transaction.replace(R.id.frame_menu, selectedFragment);
                                     transaction.commit();
 
 

@@ -99,7 +99,7 @@ public class Setting_Request_Fragment extends Fragment {
                 bundle.putString("status","setting_request");
                 selectedFragment = AddFirstFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 selectedFragment.setArguments(bundle);
                 transaction.addToBackStack("setting_req");
                 transaction.commit();
@@ -117,7 +117,7 @@ public class Setting_Request_Fragment extends Fragment {
                 bundle.putString("status","setting_your_request");
                 selectedFragment = LookingForFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 selectedFragment.setArguments(bundle);
                 transaction.addToBackStack("setting_req");
                 transaction.commit();
@@ -131,7 +131,7 @@ public class Setting_Request_Fragment extends Fragment {
 
                 selectedFragment = Request_Favorite_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.addToBackStack("req_fav");
                 transaction.commit();
 

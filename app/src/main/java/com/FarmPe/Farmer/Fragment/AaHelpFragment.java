@@ -113,7 +113,7 @@ public class AaHelpFragment extends Fragment {
                 selectedFragment = PrivacyPolicyFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 selectedFragment.setArguments(bundle);
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.addToBackStack("privacy");
                 transaction.commit();
 
@@ -126,7 +126,7 @@ public class AaHelpFragment extends Fragment {
 
                 selectedFragment = AboutfarmpeFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.addToBackStack("abt_farmpe");
                 transaction.commit();
 
@@ -276,7 +276,7 @@ public class AaHelpFragment extends Fragment {
                             snackbar.show();
                             selectedFragment = AaSettingFragment.newInstance();
                             FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
-                            transaction.replace(R.id.frame_layout, selectedFragment);
+                            transaction.replace(R.id.frame_menu, selectedFragment);
                             transaction.commit();
 
                             mBottomSheetDialog.dismiss();
@@ -302,7 +302,6 @@ public class AaHelpFragment extends Fragment {
 
 
                         }
-
 
 
                     }catch (Exception e){

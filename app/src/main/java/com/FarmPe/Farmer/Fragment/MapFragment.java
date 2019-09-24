@@ -151,7 +151,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     selectedFragment.setArguments(bundle);
                     transaction.addToBackStack("currentlocation");
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
 
 
@@ -159,7 +159,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
                     selectedFragment = Request_Address_Book_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.addToBackStack("currentlocation");
                     transaction.commit();
 

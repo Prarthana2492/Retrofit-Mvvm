@@ -77,9 +77,9 @@ public class AaSettingFragment extends Fragment {
         backfeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedFragment = HomeMenuFragment.newInstance();
+                selectedFragment = Home_Menu_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.commit();
             }
         });
@@ -94,9 +94,9 @@ public class AaSettingFragment extends Fragment {
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
                 //    getFragmentManager().popBackStack("home_menu", android.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                    selectedFragment = HomeMenuFragment.newInstance();
+                    selectedFragment = Home_Menu_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
 
                     return  true;
@@ -114,7 +114,7 @@ public class AaSettingFragment extends Fragment {
 
                     selectedFragment = AaAccountFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.addToBackStack("setting");
                     transaction.commit();
 
@@ -128,7 +128,7 @@ public class AaSettingFragment extends Fragment {
 
                     selectedFragment = AaNotificationSetting.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.addToBackStack("setting");
                     transaction.commit();
 
@@ -142,7 +142,7 @@ public class AaSettingFragment extends Fragment {
 
                 selectedFragment = ChangeLanguageFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.addToBackStack("setting");
                 transaction.commit();
 
@@ -156,13 +156,12 @@ public class AaSettingFragment extends Fragment {
 
                 selectedFragment = Setting_Request_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.addToBackStack("request_profile");
                 transaction.commit();
 
             }
         });
-
 
 
 
@@ -172,12 +171,13 @@ public class AaSettingFragment extends Fragment {
 
                     selectedFragment = AaHelpFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.addToBackStack("setting");
                     transaction.commit();
 
             }
         });
+
 
         invi_lay.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -73,9 +73,9 @@ public class NotificationFragment extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
-                   selectedFragment = HomeMenuFragment.newInstance();
+                   selectedFragment =Home_Menu_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
 
                     return true;
@@ -92,9 +92,9 @@ public class NotificationFragment extends Fragment {
 
 
               //  back_arrw.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
-                selectedFragment = HomeMenuFragment.newInstance();
+                selectedFragment = Home_Menu_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.commit();
 
             }

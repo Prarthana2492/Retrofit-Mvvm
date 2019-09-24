@@ -41,10 +41,10 @@ public class Comming_soon_looking extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
-                    HomeMenuFragment.onBack_status = "looking_frg";
-                    selectedFragment = HomeMenuFragment.newInstance();
+                  //  HomeMenuFragment.onBack_status = "looking_frg";
+                    selectedFragment = Home_Menu_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     // transaction.addToBackStack("looking");
                     transaction.commit();
 
@@ -60,9 +60,9 @@ public class Comming_soon_looking extends Fragment {
             public void onClick(View v) {
 
                 HomeMenuFragment.onBack_status = "looking_frg";
-                selectedFragment = HomeMenuFragment.newInstance();
+                selectedFragment = Home_Menu_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 // transaction.addToBackStack("looking");
                 transaction.commit();
 

@@ -217,7 +217,7 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
                 bundle.putString("brochur_status",brochure_pdf);
                 selectedFragment = Model_Brochure_Fragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 selectedFragment.setArguments(bundle);
                 transaction.addToBackStack("pdf");
                 transaction.commit();

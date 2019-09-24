@@ -403,15 +403,17 @@ public class Request_Details_New_Fragment extends Fragment {
                         tv.setTextColor(Color.WHITE);
 
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+
                             tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
                         } else {
                             tv.setGravity(Gravity.CENTER_HORIZONTAL);
                         }
 
                         snackbar.show();
-                        selectedFragment = HomeMenuFragment.newInstance();
+                        selectedFragment = Home_Menu_Fragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_layout, selectedFragment);
+                        transaction.replace(R.id.frame_menu, selectedFragment);
                         transaction.commit();
 
 

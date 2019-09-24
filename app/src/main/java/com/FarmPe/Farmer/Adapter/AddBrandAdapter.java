@@ -109,7 +109,7 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
                     brandId = products.getId();
                     selectedFragment = AddModelFragment.newInstance();
                     FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.addToBackStack("third");
                     transaction.commit();
 

@@ -118,16 +118,16 @@ public class AaProfileFragment extends Fragment {
             public void onClick(View v) {
                 if (getArguments().getString("status").equals("HOME_IMG")){
 
-                    selectedFragment = HomeMenuFragment.newInstance();
+                    selectedFragment = Home_Menu_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     // transaction.addToBackStack("looking");
                     transaction.commit();
 
                 }else if(getArguments().getString("status").equals("ACC_IMG")){
                     selectedFragment = AaAccountFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     // transaction.addToBackStack("looking");
                     transaction.commit();
                 }
@@ -146,15 +146,15 @@ public class AaProfileFragment extends Fragment {
                     //    getFragmentManager().popBackStack("home_menu", android.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
                     if (getArguments().getString("status").equals("HOME_IMG")){
-                        selectedFragment = HomeMenuFragment.newInstance();
+                        selectedFragment = Home_Menu_Fragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_layout, selectedFragment);
+                        transaction.replace(R.id.frame_menu, selectedFragment);
                         // transaction.addToBackStack("looking");
                         transaction.commit();
                     }else if(getArguments().getString("status").equals("ACC_IMG")){
                         selectedFragment = AaAccountFragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_layout, selectedFragment);
+                        transaction.replace(R.id.frame_menu, selectedFragment);
                         // transaction.addToBackStack("looking");
                         transaction.commit();
                     }
@@ -176,7 +176,6 @@ public class AaProfileFragment extends Fragment {
 
             }
         });
-
 
         acc_info_lay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -262,7 +261,7 @@ public class AaProfileFragment extends Fragment {
                                             bundle.putString("status", "HOME_IMG");
                                             selectedFragment = AaProfileFragment.newInstance();
                                             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                            transaction.replace(R.id.frame_layout, selectedFragment);
+                                            transaction.replace(R.id.frame_menu, selectedFragment);
                                             selectedFragment.setArguments(bundle);
                                             transaction.commit();
                                         }
@@ -473,7 +472,7 @@ public class AaProfileFragment extends Fragment {
                         bundle.putString("status","HOME_IMG");
                         selectedFragment = AaProfileFragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_layout, selectedFragment);
+                        transaction.replace(R.id.frame_menu, selectedFragment);
                         selectedFragment.setArguments(bundle);
                         transaction.commit();
                     }

@@ -15,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Adapter.SelectLanguageAdapter;
 import com.FarmPe.Farmer.Bean.SelectLanguageBean;
 import com.FarmPe.Farmer.R;
@@ -52,7 +54,7 @@ public class ChangeLanguageFragment extends Fragment {
         View view = inflater.inflate(R.layout.select_language_layout, container, false);
 
 
-
+        HomePage_With_Bottom_Navigation.bottomNavigation.setVisibility(View.GONE);
         back_feed=view.findViewById(R.id.back_feed);
         lang_title=view.findViewById(R.id.lang_title);
         continue_lang=view.findViewById(R.id.continue_lang);
@@ -95,7 +97,7 @@ public class ChangeLanguageFragment extends Fragment {
 
                 selectedFragment = AaSettingFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.commit();
             }
         });

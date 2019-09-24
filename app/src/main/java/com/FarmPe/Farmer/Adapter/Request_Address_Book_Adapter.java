@@ -165,7 +165,7 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
 
                 selectedFragment = Request_Details_New_Fragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.addToBackStack("address_book");
                 selectedFragment.setArguments(bundle);
                 transaction.commit();

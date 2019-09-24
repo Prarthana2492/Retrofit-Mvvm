@@ -167,7 +167,7 @@ public class You_Address_Fragment extends Fragment {
                 bundle.putString("navigation_from", "yu_ads_frg");
                 selectedFragment = Add_New_Address_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 selectedFragment.setArguments(bundle);
                 transaction.addToBackStack("yu_ads_frg");
                 transaction.commit();
@@ -296,7 +296,7 @@ public class You_Address_Fragment extends Fragment {
                 bundle.putString("navigation_from", "yu_ads_frg");
                 selectedFragment = Add_New_Address_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 selectedFragment.setArguments(bundle);
                 transaction.addToBackStack("yu_ads_frg");
                 transaction.commit();

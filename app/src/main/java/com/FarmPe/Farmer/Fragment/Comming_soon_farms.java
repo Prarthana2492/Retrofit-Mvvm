@@ -40,10 +40,10 @@ public class Comming_soon_farms extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
-                    HomeMenuFragment.onBack_status = "farms";
+                   // HomeMenuFragment.onBack_status = "farms";
                     selectedFragment = HomeMenuFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     // transaction.addToBackStack("looking");
                     transaction.commit();
                     return true;
@@ -56,10 +56,10 @@ public class Comming_soon_farms extends Fragment {
         backfeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomeMenuFragment.onBack_status = "farms";
-                selectedFragment = HomeMenuFragment.newInstance();
+               // HomeMenuFragment.onBack_status = "farms";
+                selectedFragment = Home_Menu_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 // transaction.addToBackStack("looking");
                 transaction.commit();
 

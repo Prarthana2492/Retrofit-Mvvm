@@ -110,7 +110,7 @@ public class LookingForFragment extends Fragment {
 
                     selectedFragment = HomeMenuFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.addToBackStack("home");
                     transaction.commit();
 

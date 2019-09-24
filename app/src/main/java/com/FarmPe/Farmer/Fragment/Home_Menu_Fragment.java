@@ -64,8 +64,7 @@ public class Home_Menu_Fragment extends Fragment  {
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 4);
 
-
-       // GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3, GridLayoutManager.HORIZONTAL, false);
+        // GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3, GridLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         Request_Class_HomePage_Bean item1 = new Request_Class_HomePage_Bean("Lorem");
         newOrderBeansList.add(item1);
@@ -151,6 +150,7 @@ public class Home_Menu_Fragment extends Fragment  {
                 return false;
             }
         });
+
 
 
 

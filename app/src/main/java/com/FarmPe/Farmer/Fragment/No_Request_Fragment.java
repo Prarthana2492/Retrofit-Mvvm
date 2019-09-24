@@ -51,9 +51,9 @@ public class No_Request_Fragment extends Fragment {
               //  b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
                 HomeMenuFragment.onBack_status = "no_request";
 
-                selectedFragment = HomeMenuFragment.newInstance();
+                selectedFragment = Home_Menu_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.commit();
 
             }
@@ -70,9 +70,9 @@ public class No_Request_Fragment extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     HomeMenuFragment.onBack_status = "no_request";
-                    selectedFragment = HomeMenuFragment.newInstance();
+                    selectedFragment = Home_Menu_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
 
                     return true;
@@ -92,7 +92,7 @@ public class No_Request_Fragment extends Fragment {
                 bundle.putString("status","home_request");
                 selectedFragment = AddFirstFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 selectedFragment.setArguments(bundle);
                 transaction.addToBackStack("home");
                 transaction.commit();

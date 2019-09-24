@@ -136,7 +136,7 @@ public class AaAccountFragment extends Fragment {
                 bundle.putString("status", "ACC_IMG");
                 selectedFragment = AaProfileFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 selectedFragment.setArguments(bundle);
                 transaction.commit();
             }
@@ -397,7 +397,7 @@ public class AaAccountFragment extends Fragment {
                             mBottomSheetDialog.dismiss();
                             selectedFragment = AaAccountFragment.newInstance();
                             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                            transaction.replace(R.id.frame_layout, selectedFragment);
+                            transaction.replace(R.id.frame_menu, selectedFragment);
                             transaction.commit();
 
                         }
