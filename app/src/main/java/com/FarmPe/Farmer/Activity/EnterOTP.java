@@ -346,6 +346,7 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
                         postjsonObject1.put("objUser",postjsonObject);
                         System.out.println("ffffffffffffff"+postjsonObject1);
 
+
                         Login_post.VerifyOTP(EnterOTP.this, postjsonObject1, new VoleyJsonObjectCallback() {
                             @Override
                             public void onSuccessResponse(JSONObject result) {
@@ -425,7 +426,6 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
         startActivity(intent);
         finish();
     }
-
 
 
     public void setupUI(View view) {

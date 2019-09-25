@@ -199,7 +199,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                     bundle.putString("add_id","1");
                     selectedFragment = Request_Details_New_Fragment .newInstance();
                     FragmentTransaction transaction =getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.addToBackStack("map_fragment");
                     selectedFragment.setArguments(bundle);
                     transaction.commit();

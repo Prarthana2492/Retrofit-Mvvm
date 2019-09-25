@@ -128,10 +128,9 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                 }
                 snackbar.show();
 
-
-
                 connectivity_check=false;
             }
+
 
         }  else {
             message = "No Internet Connection";

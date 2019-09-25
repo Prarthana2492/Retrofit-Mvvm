@@ -316,7 +316,6 @@ public class Request_Details_New_Fragment extends Fragment {
 
 
 
-
         demo_yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

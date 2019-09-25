@@ -54,6 +54,7 @@ public class Home_Menu_Fragment extends Fragment  {
         return fragment;
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home_page_layout, container, false);

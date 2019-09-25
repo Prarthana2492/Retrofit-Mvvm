@@ -115,6 +115,7 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
     private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
     private static final int MAX_LABEL_RESULTS = 10;
 
+
     @Override
     protected void onStop()
 
@@ -122,6 +123,7 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
         unregisterReceiver(connectivityReceiver);
         super.onStop();
     }
+
 
     private void checkConnection() {
         boolean isConnected = ConnectivityReceiver.isConnected();

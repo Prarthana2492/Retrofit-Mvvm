@@ -64,8 +64,9 @@ public class Preview_Edit_Looking_Fragment extends Fragment {
 
                  if(getArguments().getString("status").equals("edit_for")) {
 
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                     FragmentManager fm = getActivity().getSupportFragmentManager();
                      fm.popBackStack("editpage", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
 
                  }else if(getArguments().getString("status").equals("looking_For")) {
 
@@ -75,7 +76,6 @@ public class Preview_Edit_Looking_Fragment extends Fragment {
 
 
                  }
-
 
              }
          });

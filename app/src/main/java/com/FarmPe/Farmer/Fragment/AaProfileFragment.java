@@ -192,10 +192,13 @@ public class AaProfileFragment extends Fragment {
                   TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
                   userInput = sheetView.findViewById(R.id.user_text);
 
-            //    userInput.setFilters(new InputFilter[] {EMOJI_FILTER,new InputFilter.LengthFilter(30)});
 
-                userInput.setVisibility(View.VISIBLE);
-                userInput.setText(profname.getText().toString());
+
+                   userInput.setVisibility(View.VISIBLE);
+                   userInput.setText(profname.getText().toString());
+
+
+                userInput.setFilters(new InputFilter[] {EMOJI_FILTER,new InputFilter.LengthFilter(30)});
                 descriptionText.setVisibility(View.GONE);
                 titleText.setText("Enter your name");
                 descriptionText.setText("Are you sure you want to exit?");
@@ -253,19 +256,18 @@ public class AaProfileFragment extends Fragment {
 
                                             } else {
 
-
                                                 tv.setGravity(Gravity.CENTER_HORIZONTAL);
                                             }
 
                                             snackbar.show();
                                             mBottomSheetDialog.dismiss();
-                                            Bundle bundle = new Bundle();
-                                            bundle.putString("status", "HOME_IMG");
-                                            selectedFragment = AaProfileFragment.newInstance();
-                                            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                            transaction.replace(R.id.frame_menu, selectedFragment);
-                                            selectedFragment.setArguments(bundle);
-                                            transaction.commit();
+//                                            Bundle bundle = new Bundle();
+//                                            bundle.putString("status", "HOME_IMG");
+//                                            selectedFragment = AaProfileFragment.newInstance();
+//                                            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                                            transaction.replace(R.id.frame_menu, selectedFragment);
+//                                            selectedFragment.setArguments(bundle);
+//                                            transaction.commit();
                                         }
                                     },
                                     new Response.ErrorListener() {
@@ -283,6 +285,7 @@ public class AaProfileFragment extends Fragment {
                                     params.put("FullName",userInput.getText().toString());
                                     params.put("PhoneNo", sessionManager.getRegId("phone"));
                                     System.out.println("fhsdfhjf" + params);
+
                                     return params;
                                 }
 
@@ -399,6 +402,7 @@ public class AaProfileFragment extends Fragment {
             JSONObject post_object = new JSONObject();
             jsonObject.put("Id",sessionManager.getRegId("userId"));
             post_object.put("objUser",jsonObject);
+
             Crop_Post.crop_posting(getActivity(), Urls.Get_Profile_Details, post_object, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
@@ -416,15 +420,14 @@ public class AaProfileFragment extends Fragment {
 
                         profname.setText(profnamestr);
 
-                        if(aboutText.getText().toString().equals("")){
+                        if(profile_description.equalsIgnoreCase("")){
 
-                            aboutText.setText("I Love Farming");
+                            aboutText.setText("Farming is a way of life");
 
                         }else{
 
                             aboutText.setText(profile_description);
                         }
-
 
 
                         //phone_no.setText(ProfilePhone.substring(3));
@@ -480,13 +483,13 @@ public class AaProfileFragment extends Fragment {
 
                         snackbar.show();
                         mBottomSheetDialog.dismiss();
-                        Bundle bundle = new Bundle();
-                        bundle.putString("status","HOME_IMG");
-                        selectedFragment = AaProfileFragment.newInstance();
-                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_menu, selectedFragment);
-                        selectedFragment.setArguments(bundle);
-                        transaction.commit();
+//                        Bundle bundle = new Bundle();
+//                        bundle.putString("status","HOME_IMG");
+//                        selectedFragment = AaProfileFragment.newInstance();
+//                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                        transaction.replace(R.id.frame_menu, selectedFragment);
+//                        selectedFragment.setArguments(bundle);
+//                        transaction.commit();
                     }
                 },
         new Response.ErrorListener() {

@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.FarmPe.Farmer.Fragment.AaSettingFragment;
 import com.FarmPe.Farmer.Fragment.Home_Menu_Fragment;
+import com.FarmPe.Farmer.Fragment.LookingForFragment;
 import com.FarmPe.Farmer.Fragment.NotificationFragment;
 import com.FarmPe.Farmer.R;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
@@ -43,7 +44,6 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
 
 
         System.out.println("aaaaaaaaaaHome"+nav_switch);
-
 
         bottomNavigation = findViewById(R.id.bottom_navigation_land);
         AHBottomNavigationItem item1 = new AHBottomNavigationItem("Home",R.drawable.ic_home);
@@ -94,6 +94,16 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
                         break;
 
 
+                    case 1:
+                        selectedFragment = LookingForFragment.newInstance();
+                        FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
+                        transaction1.replace(R.id.frame_menu, selectedFragment);
+                        transaction1.addToBackStack("bussiness");
+                        transaction1.commit();
+
+                        break;
+
+
 
                     case 3:
 
@@ -125,14 +135,10 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
 
 
 
-
-
-
-
     }
 
-
-
-
-
 }
+
+
+
+

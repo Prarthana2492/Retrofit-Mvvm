@@ -1064,13 +1064,11 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }
+}
             });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
+                    } catch (Exception e) {
+                    e.printStackTrace();
+                    }
     }
 
     private void register() {

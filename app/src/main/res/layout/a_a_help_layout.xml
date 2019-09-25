@@ -18,7 +18,6 @@
         tools:ignore="MissingConstraints">
 
 
-
         <LinearLayout
             android:id="@+id/back_feed"
             android:layout_width="50dp"

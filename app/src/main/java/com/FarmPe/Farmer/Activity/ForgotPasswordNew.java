@@ -30,8 +30,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-
-
 public class ForgotPasswordNew extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener{
     TextView forgot_submit, forgot_pass_text, forgt_pass_detail;
     LinearLayout forgot_back;
@@ -51,8 +49,8 @@ public class ForgotPasswordNew extends AppCompatActivity implements Connectivity
         super.onStop();
     }
 
-    JSONObject lngObject;
 
+    JSONObject lngObject;
     String localize_text,toast_mobile,toast_mob_digits,toast_number_not_registered,toast_number_exceeded,toast_internet,toast_nointernet;
 
 

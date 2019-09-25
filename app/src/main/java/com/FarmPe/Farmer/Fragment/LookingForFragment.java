@@ -70,8 +70,6 @@ public class LookingForFragment extends Fragment {
 
 
 
-
-
     public static LookingForFragment newInstance() {
         LookingForFragment fragment = new LookingForFragment();
         return fragment;
@@ -89,7 +87,7 @@ public class LookingForFragment extends Fragment {
 
         sessionManager = new SessionManager(getActivity());
       // System.out.println("bbbbbbbbbbbbbbbbb"+ "+1-333-444-5678".replaceAll("[^\\d\\+]", "").replaceAll("\\d(?=\\d{4})", "*"));
-       System.out.println("bbbbbbbbbbbbbbbbb"+ "+1-333-444-5678".replaceAll("\\d{4}(?=\\d)", "*"));
+        System.out.println("bbbbbbbbbbbbbbbbb"+ "+1-333-444-5678".replaceAll("\\d{4}(?=\\d)", "*"));
       // System.out.println("bbbbbbbbbbbbbbbbbbbb"+ "+1-333-444-5678".replaceAll("\\d{4}(?=\\d)", "*"));
 
 
@@ -106,9 +104,8 @@ public class LookingForFragment extends Fragment {
 
                 } else if(getArguments().getString("status").equals("hme_request")){
 
-                    HomeMenuFragment.onBack_status="no_request";
-
-                    selectedFragment = HomeMenuFragment.newInstance();
+                  //  HomeMenuFragment.onBack_status="no_request";
+                    selectedFragment = Home_Menu_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.addToBackStack("home");
@@ -116,13 +113,11 @@ public class LookingForFragment extends Fragment {
 
                 }
 
-
             }
         });
 
 
         LookingForList();
-
 
 
         view.setFocusableInTouchMode(true);
@@ -144,7 +139,7 @@ public class LookingForFragment extends Fragment {
 
                     } else if(getArguments().getString("status").equals("hme_request")){
 
-                        HomeMenuFragment.onBack_status="no_request";
+                    //    HomeMenuFragment.onBack_status="no_request";
 
                         selectedFragment = HomeMenuFragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -236,7 +231,7 @@ public class LookingForFragment extends Fragment {
 
                             selectedFragment = No_Request_Fragment.newInstance();
                             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                            transaction.replace(R.id.frame_layout, selectedFragment);
+                            transaction.replace(R.id.frame_menu, selectedFragment);
                             transaction.commit();
 
 

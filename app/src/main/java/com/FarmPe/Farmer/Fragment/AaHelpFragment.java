@@ -49,10 +49,12 @@ public class AaHelpFragment extends Fragment {
     EditText feedback_edit;
     JSONObject lngObject;
     String status,message;
+
     public static AaHelpFragment newInstance() {
         AaHelpFragment fragment = new AaHelpFragment();
         return fragment;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -70,9 +72,9 @@ public class AaHelpFragment extends Fragment {
         feedback=view.findViewById(R.id.feedback);
 
         sessionManager = new SessionManager(getActivity());
-
         getActivity().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
 
 
         backfeed.setOnClickListener(new View.OnClickListener() {
