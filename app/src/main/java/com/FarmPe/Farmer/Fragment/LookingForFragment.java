@@ -96,15 +96,15 @@ public class LookingForFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if(getArguments().getString("status").equals("setting_your_request")) {
+                if (getArguments().getString("status").equals("setting_your_request")) {
 
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("setting_req", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 
-                } else if(getArguments().getString("status").equals("hme_request")){
+                } else if (getArguments().getString("status").equals("hme_request")) {
 
-                  //  HomeMenuFragment.onBack_status="no_request";
+                    //  HomeMenuFragment.onBack_status="no_request";
                     selectedFragment = Home_Menu_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_menu, selectedFragment);
@@ -112,7 +112,6 @@ public class LookingForFragment extends Fragment {
                     transaction.commit();
 
                 }
-
             }
         });
 
@@ -141,9 +140,9 @@ public class LookingForFragment extends Fragment {
 
                     //    HomeMenuFragment.onBack_status="no_request";
 
-                        selectedFragment = HomeMenuFragment.newInstance();
+                        selectedFragment = Home_Menu_Fragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_layout, selectedFragment);
+                        transaction.replace(R.id.frame_menu, selectedFragment);
                         transaction.addToBackStack("home");
                         transaction.commit();
 

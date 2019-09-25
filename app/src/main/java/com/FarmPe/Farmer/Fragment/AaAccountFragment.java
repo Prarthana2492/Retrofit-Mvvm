@@ -45,6 +45,8 @@ import com.FarmPe.Farmer.G_Vision_Controller;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
 import com.FarmPe.Farmer.Urls;
+import com.FarmPe.Farmer.Volly_class.Crop_Post;
+import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
 import com.FarmPe.Farmer.volleypost.VolleyMultipartRequest;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -54,7 +56,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.JsonArray;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
@@ -70,11 +74,13 @@ public class AaAccountFragment extends Fragment {
     View sheetView;
     Fragment selectedFragment;
     LinearLayout backfeed, acc_info_lay, change_pass_lay, main_layout, logout_lay,linearLayout;
-    TextView notificatn, change_language, your_addresss, acc_info1, refer_ern, feedbk, help_1, abt_frmpe, polic_1, logot, setting_tittle;
+    TextView notificatn, change_language, your_addresss, acc_info1, refer_ern, feedbk, help_1, abt_frmpe, polic_1, logot, setting_tittle,your_addrss;
     SessionManager sessionManager;
     JSONObject lngObject;
     DatabaseHelper myDb;
     EditText userInputedt;
+    String pickUPFrom;
+    public static JSONArray get_address_array;
 
     public static AaAccountFragment newInstance() {
         AaAccountFragment fragment = new AaAccountFragment();
@@ -91,6 +97,7 @@ public class AaAccountFragment extends Fragment {
 
         main_layout = view.findViewById(R.id.main_layout);
         logout_lay = view.findViewById(R.id.logout_lay);
+        your_addrss = view.findViewById(R.id.your_addrss);
         linearLayout = view.findViewById(R.id.main_layout);
         myDb = new DatabaseHelper(getActivity());
         // LandingPageActivity.editname.setVisibility(View.GONE);
@@ -139,6 +146,63 @@ public class AaAccountFragment extends Fragment {
                 transaction.replace(R.id.frame_menu, selectedFragment);
                 selectedFragment.setArguments(bundle);
                 transaction.commit();
+            }
+        });
+
+        your_addrss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                try{
+                    final JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("UserId",sessionManager.getRegId("userId"));
+                    jsonObject.put("PickUpFrom",pickUPFrom);
+                    System.out.println("aaaaaaaaaaaaadddd" + sessionManager.getRegId("userId"));
+                    System.out.println("ggggggggggaaaaaaa"+jsonObject);
+
+
+                    Crop_Post.crop_posting(getActivity(), Urls.Get_New_Address, jsonObject, new VoleyJsonObjectCallback() {
+                        @Override
+                        public void onSuccessResponse(JSONObject result) {
+                            System.out.println("ggggggggggaaaaaaa"+result);
+
+                            try{
+                                get_address_array = result.getJSONArray("UserAddressDetails");
+
+                                if(get_address_array.length()== 0){
+
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("navigation_from","HOME_FRAGMENT");
+                                    selectedFragment = Add_New_Address_Fragment.newInstance();
+                                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                    selectedFragment.setArguments(bundle);
+                                    //   transaction.addToBackStack("HOME_FRAGMENT");
+                                    transaction.replace(R.id.frame_menu, selectedFragment);
+                                    transaction.commit();
+
+
+                                }else {
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("navigation_from","HOME_FRAGMENT");
+                                    selectedFragment = You_Address_Fragment.newInstance();
+                                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.frame_menu, selectedFragment);
+                                    selectedFragment.setArguments(bundle);
+                                    transaction.commit();
+
+                                }
+
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+
+                        }
+                    });
+
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             }
         });
 

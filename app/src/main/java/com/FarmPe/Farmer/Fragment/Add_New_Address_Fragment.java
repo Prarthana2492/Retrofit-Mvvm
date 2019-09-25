@@ -114,7 +114,6 @@ public class  Add_New_Address_Fragment extends Fragment {
     int selected_id_time;
 
 
-
     public static Add_New_Address_Fragment newInstance() {
         Add_New_Address_Fragment fragment = new Add_New_Address_Fragment();
         return fragment;
@@ -369,7 +368,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
                     HomeMenuFragment.onBack_status = "no_request";
-                    selectedFragment = HomeMenuFragment.newInstance();
+                    selectedFragment = AaAccountFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
@@ -1261,10 +1260,10 @@ public class  Add_New_Address_Fragment extends Fragment {
                                     }
 
 
-                                    HomeMenuFragment.onBack_status="no_request";
-                                    selectedFragment = HomeMenuFragment.newInstance();
+                                //    HomeMenuFragment.onBack_status="no_request";
+                                    selectedFragment = AaAccountFragment.newInstance();
                                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                    transaction.replace(R.id.frame_layout, selectedFragment);
+                                    transaction.replace(R.id.frame_menu, selectedFragment);
                                     transaction.addToBackStack("home");
                                     transaction.commit();
                                     snackbar.show();
@@ -1290,7 +1289,6 @@ public class  Add_New_Address_Fragment extends Fragment {
                                     Bundle bundle1 = new Bundle();
                                     bundle1.putString("request_navigation","ADD_FRAGMENT");
                                     bundle.putString("add_id",status);
-
                                     selectedFragment = Request_Details_New_Fragment.newInstance();
                                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                                     transaction.replace(R.id.frame_menu, selectedFragment);

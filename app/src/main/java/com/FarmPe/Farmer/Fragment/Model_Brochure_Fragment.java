@@ -105,11 +105,11 @@ public class Model_Brochure_Fragment extends Fragment {
 
 
     private class Callback extends WebViewClient {
-        @Override
-        public boolean shouldOverrideUrlLoading(
-                WebView view, String url) {
-            return (false);
-        }
+       @Override
+    public boolean shouldOverrideUrlLoading(
+            WebView view, String url) {
+        return (false);
     }
+}
 }
 

@@ -66,8 +66,6 @@ public class You_Address_Fragment extends Fragment {
     }
 
 
-
-
     @SuppressLint("NewApi")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -115,9 +113,9 @@ public class You_Address_Fragment extends Fragment {
 
                     if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")){
 
-                        selectedFragment = HomeMenuFragment.newInstance();
+                        selectedFragment = AaAccountFragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_layout, selectedFragment);
+                        transaction.replace(R.id.frame_menu, selectedFragment);
                         transaction.commit();
 
                     } else if(getArguments().getString("navigation_from").equals("SETTING_FRAG1")){
@@ -142,9 +140,9 @@ public class You_Address_Fragment extends Fragment {
 
                 if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")){
 
-                    selectedFragment = HomeMenuFragment.newInstance();
+                    selectedFragment = AaAccountFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
 
 
@@ -153,8 +151,7 @@ public class You_Address_Fragment extends Fragment {
                     fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 }
 
-                FragmentManager fm = getActivity().getSupportFragmentManager();
-                fm.popBackStack ("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
             }
         });
 

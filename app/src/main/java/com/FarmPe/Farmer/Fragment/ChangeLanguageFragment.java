@@ -54,7 +54,8 @@ public class ChangeLanguageFragment extends Fragment {
         View view = inflater.inflate(R.layout.select_language_layout, container, false);
 
 
-       // HomePage_With_Bottom_Navigation.bottomNavigation.setVisibility(View.GONE);
+        //HomePage_With_Bottom_Navigation.linear_bottonsheet.setVisibility(View.GONE);
+
         back_feed=view.findViewById(R.id.back_feed);
         lang_title=view.findViewById(R.id.lang_title);
         continue_lang=view.findViewById(R.id.continue_lang);

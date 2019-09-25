@@ -63,7 +63,6 @@
         android:orientation="vertical"
         >
 
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -120,9 +119,6 @@
                 />
 
 
-
-
-
         </LinearLayout>
 
         <LinearLayout
@@ -166,9 +162,6 @@
                 android:fontFamily="@font/segoeui"
                 android:textColor="#000"
                 />
-
-
-
 
 
 
@@ -232,7 +225,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:paddingHorizontal="16dp"
+                android:paddingHorizontal="17dp"
 
                 >
 

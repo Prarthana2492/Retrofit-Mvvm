@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.FarmPe.Farmer.Bean.Request_Class_HomePage_Bean;
 import com.FarmPe.Farmer.R;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.Date;
 import java.util.List;
@@ -65,40 +67,54 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
 
         if (position==0){
             holder.name.setText("Tractor");
-            holder.pay_img.setImageResource(R.drawable.tractor);
+           // holder.pay_img.setImageResource(R.drawable.tractor);
+            image_loading(R.drawable.tractor, holder.pay_img);
         }else if (position==1){
-            holder.name.setText("Farm Truck");
-            holder.pay_img.setImageResource(R.drawable.farm_truck);
+            holder.name.setText("Farm\nTruck");
+            //holder.pay_img.setImageResource(R.drawable.farm_truck);
+            image_loading(R.drawable.farm_truck, holder.pay_img);
+
         }else if (position==2){
-            holder.name.setText("Backhoe Loader");
-            holder.pay_img.setImageResource(R.drawable.backhoe_loader);
+            holder.name.setText("Backhoe\nLoader");
+            image_loading(R.drawable.backhoe_acessories, holder.pay_img);
+          //  holder.pay_img.setImageResource(R.drawable.backhoe_loader);
+
         }else if (position==3){
             holder.name.setText("Harvester");
-            holder.pay_img.setImageResource(R.drawable.harvesting);
+            image_loading(R.drawable.harvesting, holder.pay_img);
+           // holder.pay_img.setImageResource(R.drawable.harvesting);
         }else if (position==4){
-            holder.name.setText("Farm Machines");
-            holder.pay_img.setImageResource(R.drawable.farm_machines);
+            holder.name.setText("Farm\nMachines");
+            image_loading(R.drawable.machinary, holder.pay_img);
+           // holder.pay_img.setImageResource(R.drawable.farm_machines);
         }else if (position==5){
-            holder.name.setText("Power Tillers");
-            holder.pay_img.setImageResource(R.drawable.power_tiller);
+            holder.name.setText("Power\nTillers");
+            image_loading(R.drawable.tiller, holder.pay_img);
+           // holder.pay_img.setImageResource(R.drawable.power_tiller);
         }else if (position==6){
-            holder.name.setText("Tractor Implements");
-            holder.pay_img.setImageResource(R.drawable.tractor_implements);
+            holder.name.setText("Tractor\nImplements");
+            image_loading(R.drawable.tractor_implements, holder.pay_img);
+          //  holder.pay_img.setImageResource(R.drawable.tractor_implements);
         }else if (position==7){
-            holder.name.setText("Backhoe Attachment");
-            holder.pay_img.setImageResource(R.drawable.bachhoe_attachment);
+            holder.name.setText("Backhoe\nAttachment");
+            image_loading(R.drawable.backhoe, holder.pay_img);
+            //holder.pay_img.setImageResource(R.drawable.bachhoe_attachment);
         }else if (position==8){
-            holder.name.setText("Irrigation System");
-            holder.pay_img.setImageResource(R.drawable.sprinkler);
+            holder.name.setText("Irrigation\nSystem");
+            image_loading(R.drawable.sprinkler, holder.pay_img);
+          //  holder.pay_img.setImageResource(R.drawable.sprinkler);
         }else if (position==9){
-            holder.name.setText("Tractor Accessories");
-            holder.pay_img.setImageResource(R.drawable.tractor_accesories);
+            holder.name.setText("Tractor\n Accessories");
+            image_loading(R.drawable.accessories, holder.pay_img);
+           // holder.pay_img.setImageResource(R.drawable.tractor_accesories);
         }else if (position==10){
             holder.name.setText("Tyres");
-            holder.pay_img.setImageResource(R.drawable.tyres);
+            image_loading(R.drawable.tyre, holder.pay_img);
+          //  holder.pay_img.setImageResource(R.drawable.tyres);
         }else if (position==11){
-            holder.name.setText("Fence Wires");
-            holder.pay_img.setImageResource(R.drawable.fencing_wire);
+            holder.name.setText("Fence\nWires");
+            image_loading(R.drawable.fencing_wire, holder.pay_img);
+           // holder.pay_img.setImageResource(R.drawable.fencing_wire);
         }
 
 
@@ -122,6 +138,17 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
                 ft.commit();
             }
         });*/
+
+
+    }
+
+    private void image_loading(int request_image,ImageView imageView) {
+
+        Glide.with(activity).load(request_image)
+                .thumbnail(0.5f)
+                .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(imageView);
 
 
     }

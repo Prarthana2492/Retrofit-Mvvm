@@ -5,7 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="#ffffff"
-    android:paddingBottom="10dp"
     android:tag="cards main container">
 
     <LinearLayout
@@ -13,7 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:paddingBottom="2dp"
+
         >
         <!--<de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/my_photo"
@@ -30,8 +29,8 @@
             android:id="@+id/pay_img"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/tractor_red"
             android:padding="10dp"
+            android:src="@drawable/tractor_red"
 
 
             />
@@ -47,16 +46,7 @@
             android:textColor="#000" />
 
 
-
-
-
-
-
     </LinearLayout>
-
-
-
-
 
 </LinearLayout>
 

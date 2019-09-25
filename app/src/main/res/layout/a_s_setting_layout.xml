@@ -121,7 +121,7 @@
                 android:id="@+id/sub_acc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Profile,Change Password,Logout"
+                android:text="Profile,Your Address,Change Password,Logout"
                 android:textSize="14dp"
                 />
 
