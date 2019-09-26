@@ -103,8 +103,7 @@ public class AaAccountFragment extends Fragment {
         // LandingPageActivity.editname.setVisibility(View.GONE);
 
         sessionManager = new SessionManager(getActivity());
-        getActivity().getWindow().setSoftInputMode(
-                WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
 
 
@@ -116,7 +115,6 @@ public class AaAccountFragment extends Fragment {
                 fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
-
 
 
         view.setFocusableInTouchMode(true);
@@ -148,6 +146,8 @@ public class AaAccountFragment extends Fragment {
                 transaction.commit();
             }
         });
+
+
 
         your_addrss.setOnClickListener(new View.OnClickListener() {
             @Override
