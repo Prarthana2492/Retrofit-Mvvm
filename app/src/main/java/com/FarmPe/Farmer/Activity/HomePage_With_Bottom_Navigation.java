@@ -30,7 +30,9 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
     public static AHBottomNavigation bottomNavigation;
     boolean doubleBackToExitPressedOnce = false;
     String nav_switch = "HOME";
-   public static LinearLayout linear_bottonsheet;
+
+
+   public static LinearLayout linear_bottom;
     LinearLayout linear_home,linear_mailbox,noti_layout,profile_layout;
     TextView mail_text,text_home,noti_text,profile_text;
     ImageView mail_icon,home_icon,noti_icon,profile_icon;
@@ -49,29 +51,30 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
         transaction.replace(R.id.frame_menu, selectedFragment);
         transaction.commit();
 
-
-
         System.out.println("aaaaaaaaaaHome"+nav_switch);
 
       //  bottomNavigation = findViewById(R.id.bottom_navigation_land);
-        linear_home = findViewById(R.id.linear_home);
-       // linear_bottonsheet = findViewById(R.id.linear_bottonsheet);
-        linear_mailbox = findViewById(R.id.linear_mailbox);
-        noti_layout = findViewById(R.id.noti_layout);
-        profile_layout = findViewById(R.id.profile_layout);
-        mail_text = findViewById(R.id.mail_text);
-        mail_icon = findViewById(R.id.mail_icon);
-        home_icon = findViewById(R.id.home_icon);
-        text_home = findViewById(R.id.text_home);
-
-        noti_icon = findViewById(R.id.noti_icon);
-        noti_text = findViewById(R.id.noti_text);
-
-        profile_text = findViewById(R.id.profile_text);
-        profile_icon = findViewById(R.id.profile_icon);
+         linear_home = findViewById(R.id.linear_home);
+         linear_bottom = findViewById(R.id.linear_bottom);
+         linear_mailbox = findViewById(R.id.linear_mailbox);
+         noti_layout = findViewById(R.id.noti_layout);
+         profile_layout = findViewById(R.id.profile_layout);
+         mail_text = findViewById(R.id.mail_text);
+         mail_icon = findViewById(R.id.mail_icon);
+         home_icon = findViewById(R.id.home_icon);
+         text_home = findViewById(R.id.text_home);
+         noti_icon = findViewById(R.id.noti_icon);
+         noti_text = findViewById(R.id.noti_text);
+         profile_text = findViewById(R.id.profile_text);
+         profile_icon = findViewById(R.id.profile_icon);
 
 
-        linear_home.setOnClickListener(new View.OnClickListener() {
+
+
+
+            linear_bottom.setVisibility(View.VISIBLE);
+
+          linear_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 text_home.setTextColor(Color.parseColor("#18a360"));
@@ -108,9 +111,11 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
                 noti_icon.setImageResource(R.drawable.ic_notification_home);
                 profile_icon.setImageResource(R.drawable.ic_user_home);
 
-
+               Bundle bundle = new Bundle();
+               bundle.putString("status","hme_request");
                 selectedFragment = LookingForFragment.newInstance();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                selectedFragment.setArguments(bundle);
                 transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.commit();
 
@@ -147,6 +152,7 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
         profile_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 profile_text.setTextColor(Color.parseColor("#18a360"));
                 mail_text.setTextColor(Color.parseColor("#595959"));
                 text_home.setTextColor(Color.parseColor("#595959"));

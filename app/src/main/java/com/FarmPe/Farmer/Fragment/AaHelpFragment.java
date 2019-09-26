@@ -71,6 +71,7 @@ public class AaHelpFragment extends Fragment {
         privacy=view.findViewById(R.id.privacy);
         feedback=view.findViewById(R.id.feedback);
 
+
         sessionManager = new SessionManager(getActivity());
         getActivity().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
@@ -126,6 +127,7 @@ public class AaHelpFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+
                 selectedFragment = AboutfarmpeFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
@@ -144,11 +146,14 @@ public class AaHelpFragment extends Fragment {
                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.feedback_bottom_sheet, null);
 
+
                 new KeyboardUtil(getActivity(), sheetView);
                 TextView cancel = sheetView.findViewById(R.id.cancel_feedback);
                 TextView save = sheetView.findViewById(R.id.save_feedback);
                 feedback_edit = sheetView.findViewById(R.id.feedback_edit);
                 feedback_edit.setFilters(new InputFilter[]{EMOJI_FILTER,new InputFilter.LengthFilter(100)});
+
+
 
                 save.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -193,7 +198,6 @@ public class AaHelpFragment extends Fragment {
                 mBottomSheetDialog.show();
             }
         });
-
 
 
 

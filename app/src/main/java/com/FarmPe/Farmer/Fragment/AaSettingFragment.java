@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Activity.LandingPageActivity;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
@@ -50,6 +51,7 @@ public class AaSettingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.a_s_setting_layout, container, false);
 
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.VISIBLE);
         backfeed=view.findViewById(R.id.back_feed);
         acc_info_lay=view.findViewById(R.id.acc_info_lay);
         not_lay=view.findViewById(R.id.not_lay);
@@ -60,12 +62,10 @@ public class AaSettingFragment extends Fragment {
         request_lay=view.findViewById(R.id.setting_request);
         sub_lang=view.findViewById(R.id.sub_lang);
 
-
         sessionManager = new SessionManager(getActivity());
 
 
         sub_lang.setText(sessionManager.getRegId("language_name"));
-
         Resources resources = getResources();
         PackageManager pm = getActivity().getPackageManager();
         Intent sendIntent = new Intent(Intent.ACTION_SEND);

@@ -27,9 +27,9 @@
 
         <ImageView
             android:id="@+id/pay_img"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:padding="10dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="7dp"
             android:src="@drawable/tractor_red"
 
 

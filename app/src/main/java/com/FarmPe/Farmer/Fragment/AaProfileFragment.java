@@ -343,6 +343,7 @@ public class AaProfileFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
 
+
                         if(abt_text.getText().toString().equals("")){
 
                             InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -367,13 +368,9 @@ public class AaProfileFragment extends Fragment {
                             snackbar.show();
                             mBottomSheetDialog.show();
 
-
-                        }else{
-
+                        }else {
 
                             save_description();
-
-
                         }
 
 
@@ -483,13 +480,13 @@ public class AaProfileFragment extends Fragment {
 
                         snackbar.show();
                         mBottomSheetDialog.dismiss();
-//                        Bundle bundle = new Bundle();
-//                        bundle.putString("status","HOME_IMG");
-//                        selectedFragment = AaProfileFragment.newInstance();
-//                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                        transaction.replace(R.id.frame_menu, selectedFragment);
-//                        selectedFragment.setArguments(bundle);
-//                        transaction.commit();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("status","HOME_IMG");
+                        selectedFragment = AaProfileFragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_menu, selectedFragment);
+                        selectedFragment.setArguments(bundle);
+                        transaction.commit();
                     }
                 },
         new Response.ErrorListener() {
@@ -503,7 +500,7 @@ public class AaProfileFragment extends Fragment {
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<String, String>();
                 params.put("UserId",sessionManager.getRegId("userId"));
-                params.put("FullName",sessionManager.getRegId("name"));
+                params.put("FullName",profname.getText().toString());
                 params.put("PhoneNo",sessionManager.getRegId("phone"));
                 params.put("About",abt_text.getText().toString());
                 System.out.println("dfsdfAAAAAAAAAAAAAAAAAAAAAAA" + abt_text.getText().toString());

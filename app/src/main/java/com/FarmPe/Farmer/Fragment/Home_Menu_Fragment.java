@@ -24,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Adapter.Home_Page_Lookinfor_Adapter;
 
 import com.FarmPe.Farmer.Adapter.Home_Page_Request_Adapter;
@@ -62,7 +63,7 @@ public class Home_Menu_Fragment extends Fragment  {
         linearLayout = view.findViewById(R.id.linearLayout);
        // upi_send=view.findViewById(R.id.upiSendMoney);
 
-
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.VISIBLE);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 4);
 
 

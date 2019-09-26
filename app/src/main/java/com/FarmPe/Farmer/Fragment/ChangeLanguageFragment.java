@@ -1,7 +1,5 @@
 package com.FarmPe.Farmer.Fragment;
 
-
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Adapter.SelectLanguageAdapter;
 import com.FarmPe.Farmer.Bean.SelectLanguageBean;
@@ -29,6 +26,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
+
+
+
 
 public class ChangeLanguageFragment extends Fragment {
     private List<SelectLanguageBean> newOrderBeansList = new ArrayList<>();
@@ -54,7 +54,7 @@ public class ChangeLanguageFragment extends Fragment {
         View view = inflater.inflate(R.layout.select_language_layout, container, false);
 
 
-        //HomePage_With_Bottom_Navigation.linear_bottonsheet.setVisibility(View.GONE);
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
 
         back_feed=view.findViewById(R.id.back_feed);
         lang_title=view.findViewById(R.id.lang_title);
@@ -88,7 +88,6 @@ public class ChangeLanguageFragment extends Fragment {
                 return false;
             }
         });
-
 
 
         continue_lang.setOnClickListener(new View.OnClickListener() {
