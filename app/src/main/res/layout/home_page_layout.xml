@@ -9,15 +9,15 @@
     android:background="#f0f4f5">
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
 
 
             <include
@@ -29,7 +29,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginBottom="15dp"
                 android:background="#ffffff"
                 android:orientation="vertical"
@@ -62,208 +62,208 @@
             </LinearLayout>
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="22"
-                android:background="#ffffff"
-                android:orientation="vertical"
-                >
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_weight="22"-->
+                <!--android:background="#ffffff"-->
+                <!--android:orientation="vertical"-->
+                <!--&gt;-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="What are you looking for?"
-                    android:fontFamily="@font/segoeui"
-                    android:paddingHorizontal="10dp"
-                    android:textSize="14dp"
-                    android:layout_marginTop="5dp"
-                    android:textStyle="bold"
-                    android:textColor="#000"
-                    android:layout_marginHorizontal="10dp"
-                    />
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:text="What are you looking for?"-->
+                    <!--android:fontFamily="@font/segoeui"-->
+                    <!--android:paddingHorizontal="10dp"-->
+                    <!--android:textSize="14dp"-->
+                    <!--android:layout_marginTop="5dp"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:textColor="#000"-->
+                    <!--android:layout_marginHorizontal="10dp"-->
+                    <!--/>-->
 
 
-                    <LinearLayout
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:paddingHorizontal="14dp"
-                        >
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="15dp"-->
+                    <!--android:layout_marginBottom="10dp"-->
+                    <!--android:orientation="horizontal">-->
 
 
-                        <ImageView
+                    <!--<LinearLayout-->
 
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/circle_border"
-                            android:padding="10dp"
-                            android:src="@drawable/ic_flower" />
-
-                        <TextView
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Consultancy"
-                            android:gravity="center"
-                            android:textSize="12dp"
-                            android:fontFamily="@font/segoeui"
-                            android:textColor="#000"
-                            />
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="vertical"-->
+                        <!--android:gravity="center"-->
+                        <!--android:paddingHorizontal="14dp"-->
+                        <!--&gt;-->
 
 
-                    </LinearLayout>
+                        <!--<ImageView-->
+                            <!--android:id="@+id/consultancy_look"-->
 
-                    <LinearLayout
+                            <!--android:layout_width="50dp"-->
+                            <!--android:layout_height="50dp"-->
+                            <!--android:layout_gravity="center"-->
+                            <!--android:layout_marginTop="5dp"-->
+                            <!--android:background="@drawable/circle_border"-->
+                            <!--android:padding="10dp"-->
+                            <!--android:src="@drawable/ic_flower" />-->
 
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:paddingHorizontal="14dp"
+                        <!--<TextView-->
 
-                        >
-
-                        <!-- <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/my_photo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@drawable/ic_credit_cards_payment"
-                        app:civ_border_color="#000000"
-                        app:civ_border_width="0.5dp" />-->
-
-
-                        <ImageView
-
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:background="@drawable/circle_border"
-                            android:padding="10dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_plus_black" />
-
-                        <TextView
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Bussiness Plan"
-                            android:gravity="center"
-                            android:textSize="12dp"
-                            android:fontFamily="@font/segoeui"
-                            android:textColor="#000"
-                            />
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="Consultancy"-->
+                            <!--android:gravity="center"-->
+                            <!--android:textSize="12dp"-->
+                            <!--android:fontFamily="@font/segoeui"-->
+                            <!--android:textColor="#000"-->
+                            <!--/>-->
 
 
-                    </LinearLayout>
+                    <!--</LinearLayout>-->
+
+                    <!--<LinearLayout-->
+
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="vertical"-->
+                        <!--android:gravity="center"-->
+                        <!--android:paddingHorizontal="14dp"-->
+
+                        <!--&gt;-->
+
+                        <!--&lt;!&ndash; <de.hdodenhof.circleimageview.CircleImageView-->
+                        <!--android:id="@+id/my_photo"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:background="@drawable/ic_credit_cards_payment"-->
+                        <!--app:civ_border_color="#000000"-->
+                        <!--app:civ_border_width="0.5dp" />&ndash;&gt;-->
 
 
-                    <LinearLayout
+                        <!--<ImageView-->
+                            <!--android:id="@+id/bussiness_for"-->
+                            <!--android:layout_width="50dp"-->
+                            <!--android:layout_height="50dp"-->
+                            <!--android:background="@drawable/circle_border"-->
+                            <!--android:padding="10dp"-->
+                            <!--android:layout_marginTop="5dp"-->
+                            <!--android:layout_gravity="center"-->
+                            <!--android:src="@drawable/ic_plus_black" />-->
 
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:paddingHorizontal="14dp"
+                        <!--<TextView-->
 
-                        >
-
-                        <!-- <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/my_photo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@drawable/ic_credit_cards_payment"
-                        app:civ_border_color="#000000"
-                        app:civ_border_width="0.5dp" />-->
-
-
-                        <ImageView
-
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:background="@drawable/circle_border"
-                            android:padding="10dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_plus_black" />
-
-                        <TextView
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Legal"
-                            android:gravity="center"
-                            android:textSize="12dp"
-                            android:fontFamily="@font/segoeui"
-                            android:textColor="#000"
-                            />
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="Bussiness Plan"-->
+                            <!--android:gravity="center"-->
+                            <!--android:textSize="12dp"-->
+                            <!--android:fontFamily="@font/segoeui"-->
+                            <!--android:textColor="#000"-->
+                            <!--/>-->
 
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/recharge_item"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:paddingHorizontal="17dp"
-
-                        >
-
-                        <!-- <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/my_photo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@drawable/ic_credit_cards_payment"
-                        app:civ_border_color="#000000"
-                        app:civ_border_width="0.5dp" />-->
+                    <!--</LinearLayout>-->
 
 
-                        <TextView
-                            android:id="@+id/pay_recharge_img"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:background="@drawable/circle_border"
-                            android:padding="10dp"
-                            android:text="+9"
-                            android:gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:src="@drawable/ic_plus_black" />
+                    <!--<LinearLayout-->
 
-                        <TextView
-                            android:id="@+id/pay_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="More"
-                            android:gravity="center"
-                            android:textSize="12dp"
-                            android:fontFamily="@font/segoeui"
-                            android:textColor="#000"
-                            />
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="vertical"-->
+                        <!--android:gravity="center"-->
+                        <!--android:paddingHorizontal="14dp"-->
+
+                        <!--&gt;-->
+
+                        <!--&lt;!&ndash; <de.hdodenhof.circleimageview.CircleImageView-->
+                        <!--android:id="@+id/my_photo"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:background="@drawable/ic_credit_cards_payment"-->
+                        <!--app:civ_border_color="#000000"-->
+                        <!--app:civ_border_width="0.5dp" />&ndash;&gt;-->
 
 
-                    </LinearLayout>
+                        <!--<ImageView-->
+                            <!--android:id="@+id/legal_for"-->
+                            <!--android:layout_width="50dp"-->
+                            <!--android:layout_height="50dp"-->
+                            <!--android:background="@drawable/circle_border"-->
+                            <!--android:padding="10dp"-->
+                            <!--android:layout_marginTop="5dp"-->
+                            <!--android:layout_gravity="center"-->
+                            <!--android:src="@drawable/ic_plus_black" />-->
 
-                </LinearLayout>
+                        <!--<TextView-->
 
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="Legal"-->
+                            <!--android:gravity="center"-->
+                            <!--android:textSize="12dp"-->
+                            <!--android:fontFamily="@font/segoeui"-->
+                            <!--android:textColor="#000"-->
+                            <!--/>-->
+
+
+                    <!--</LinearLayout>-->
+
+                    <!--<LinearLayout-->
+                        <!--android:id="@+id/recharge_item"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="vertical"-->
+                        <!--android:gravity="center"-->
+                        <!--android:paddingHorizontal="17dp"-->
+
+                        <!--&gt;-->
+
+                        <!--&lt;!&ndash; <de.hdodenhof.circleimageview.CircleImageView-->
+                        <!--android:id="@+id/my_photo"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:background="@drawable/ic_credit_cards_payment"-->
+                        <!--app:civ_border_color="#000000"-->
+                        <!--app:civ_border_width="0.5dp" />&ndash;&gt;-->
+
+
+                        <!--<ImageView-->
+                            <!--android:id="@+id/more_icon"-->
+                            <!--android:layout_width="50dp"-->
+                            <!--android:layout_height="50dp"-->
+                            <!--android:background="@drawable/circle_border"-->
+                            <!--android:padding="10dp"-->
+                            <!--android:gravity="center"-->
+                            <!--android:layout_marginTop="5dp"-->
+                            <!--android:src="@drawable/ic_plus_black" />-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/pay_text"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="More"-->
+                            <!--android:gravity="center"-->
+                            <!--android:textSize="12dp"-->
+                            <!--android:fontFamily="@font/segoeui"-->
+                            <!--android:textColor="#000"-->
+                            <!--/>-->
+
+
+                    <!--</LinearLayout>-->
+
+                <!--</LinearLayout>-->
+
+            <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
+    <!--</ScrollView>-->
 </LinearLayout>

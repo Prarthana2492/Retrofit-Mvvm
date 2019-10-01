@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#000"
+    android:background="#FFF"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:titleTextColor="@android:color/white"
-        android:background="#000"
+        android:background="#FFF"
         android:gravity="left"
         android:layout_gravity="left"
         android:contentInsetLeft="0dp"
@@ -41,7 +41,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="10dp"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_go_back_left_arrow_"
+                android:src="@drawable/ic_go_back_left_arrow"
                 />
         </LinearLayout>
 
@@ -75,9 +75,21 @@
 
 
     <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/nandi_icon"/>
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/coming_soon"/>
+        android:text="Coming Soon"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="#000"/>
 
 
 

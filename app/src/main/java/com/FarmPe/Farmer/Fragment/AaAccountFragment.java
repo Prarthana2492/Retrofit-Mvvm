@@ -40,6 +40,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.DB.DatabaseHelper;
 import com.FarmPe.Farmer.G_Vision_Controller;
 import com.FarmPe.Farmer.R;
@@ -103,8 +104,8 @@ public class AaAccountFragment extends Fragment {
         // LandingPageActivity.editname.setVisibility(View.GONE);
 
         sessionManager = new SessionManager(getActivity());
-        getActivity().getWindow().setSoftInputMode(
-                WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
 
 
@@ -218,14 +219,15 @@ public class AaAccountFragment extends Fragment {
                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.change_password_layout, null);
 
-                new KeyboardUtil(getActivity(),sheetView);
-                TextView positiveText = sheetView.findViewById(R.id.positive_text);
-                TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
-                TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
+                 new KeyboardUtil(getActivity(),sheetView);
+                 TextView positiveText = sheetView.findViewById(R.id.positive_text);
+                 TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
+                 TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
+
 
                  userInputedt= sheetView.findViewById(R.id.user_text);
 
-                userInputedt.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                 userInputedt.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
 
 
@@ -235,6 +237,7 @@ public class AaAccountFragment extends Fragment {
                 Log.d("liugekuyhg",""+titleText.getText().toString());
                 descriptionText.setText("Are you sure, you want to exit?");
                 descriptionText.setVisibility(View.GONE);
+
 
                // userInputedt.setFilters(new InputFilter[]{EMOJI_FILTER, new InputFilter.LengthFilter(12)});
 
@@ -266,7 +269,6 @@ public class AaAccountFragment extends Fragment {
 
                         if(userInputedt.getText().toString().equals("")) {
 
-
                             InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
                             inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
                             //Toast.makeText(getActivity(), "Please Enter Password", Toast.LENGTH_LONG).show();
@@ -287,18 +289,22 @@ public class AaAccountFragment extends Fragment {
 
 
 
+
+
                         } else if(userInputedt.length()<6){
 
                             InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
                             inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
                             //Toast.makeText(getActivity(), "Please Enter Password", Toast.LENGTH_LONG).show();
                             int duration = 1000;
+
                             Snackbar snackbar = Snackbar
                                     .make(mBottomSheetDialog.getWindow().getDecorView(), "Password Should Be Minimum 6 Characters", duration);
                             View snackbarView = snackbar.getView();
                             TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                             tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
                             tv.setTextColor(Color.WHITE);
+
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                                 tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                             } else {
@@ -337,7 +343,6 @@ public class AaAccountFragment extends Fragment {
 
                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
-
                 new KeyboardUtil(getActivity(), sheetView);
                 TextView positiveText = sheetView.findViewById(R.id.positive_text);
                 TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
@@ -349,6 +354,7 @@ public class AaAccountFragment extends Fragment {
                 positiveText.setText("Yes");
                 TextView negetiveText = sheetView.findViewById(R.id.negetive_text);
                 negetiveText.setText("No");
+
                 positiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -357,7 +363,8 @@ public class AaAccountFragment extends Fragment {
                         mBottomSheetDialog.dismiss();
                     }
                 });
-                negetiveText.setOnClickListener(new View.OnClickListener() {
+
+               negetiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         mBottomSheetDialog.dismiss();
@@ -435,10 +442,30 @@ public class AaAccountFragment extends Fragment {
 
                         if(userInputedt.getText().toString().length()<=12 && userInputedt.getText().toString().length()>=6){
                             if(myDb.isEmailExists(sessionManager.getRegId("phone").substring(3))) {
-                                System.out.println("lhhhhhhhhhhhhhhhhhhhhhhhhp"+userInputedt.getText().toString());
+                                System.out.println("lhhhhhhhhhhhhhhhhhhhhhhhhp"+sessionManager.getRegId("phone").substring(3));
                                 //    System.out.println("lhhhhhhhhhhhhhhhhhhhhhhhhp"+profile_phone.getText().toString());
                                 // AddData(profile_phone.getText().toString(), profile_passwrd.getText().toString());
                                 myDb.updateContact(sessionManager.getRegId("phone").substring(3),userInputedt.getText().toString());
+
+
+                                int duration = 1000;
+                                Snackbar snackbar = Snackbar
+                                        .make(main_layout, "Password Updated Successfully", duration);
+                                View snackbarView = snackbar.getView();
+                                TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                                tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
+                                tv.setTextColor(Color.WHITE);
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                    tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                } else {
+                                    tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                                }
+                                snackbar.show();
+                                mBottomSheetDialog.dismiss();
+                                selectedFragment = AaAccountFragment.newInstance();
+                                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                transaction.replace(R.id.frame_menu, selectedFragment);
+                                transaction.commit();
                             }
                         }
 
@@ -457,6 +484,7 @@ public class AaAccountFragment extends Fragment {
                             } else {
                                 tv.setGravity(Gravity.CENTER_HORIZONTAL);
                             }
+
                             snackbar.show();
                             mBottomSheetDialog.dismiss();
                             selectedFragment = AaAccountFragment.newInstance();
@@ -464,7 +492,7 @@ public class AaAccountFragment extends Fragment {
                             transaction.replace(R.id.frame_menu, selectedFragment);
                             transaction.commit();
 
-                        }
+                    }
                     }
                 },
 

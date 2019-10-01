@@ -133,6 +133,8 @@ public class SettingFragment extends Fragment {
        logout_layout.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
+
+
                final TextView yes1,no1,text_desctxt,popup_headingtxt;
                final LinearLayout close_layout;
                System.out.println("aaaaaaaaaaaa");

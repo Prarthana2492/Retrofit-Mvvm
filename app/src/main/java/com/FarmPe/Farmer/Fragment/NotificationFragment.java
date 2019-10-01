@@ -1,6 +1,7 @@
 package com.FarmPe.Farmer.Fragment;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Adapter.NotificationAdapter;
 import com.FarmPe.Farmer.Bean.FarmsImageBean;
 import com.FarmPe.Farmer.Bean.Notification_Home_Bean;
@@ -55,6 +58,8 @@ public class NotificationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.notification_recy, container, false);
+
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
         recyclerView=view.findViewById(R.id.recycler_noti);
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
@@ -73,7 +78,12 @@ public class NotificationFragment extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
-                   selectedFragment =Home_Menu_Fragment.newInstance();
+                    HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
+                    HomePage_With_Bottom_Navigation.noti_icon.setImageResource(R.drawable.ic_notification_home);
+                    HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
+                    HomePage_With_Bottom_Navigation.noti_text.setTextColor(Color.parseColor("#595959"));
+
+                   selectedFragment = Home_Menu_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
@@ -90,7 +100,10 @@ public class NotificationFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-
+                HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
+                HomePage_With_Bottom_Navigation.noti_icon.setImageResource(R.drawable.ic_notification_home);
+                HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
+                HomePage_With_Bottom_Navigation.noti_text.setTextColor(Color.parseColor("#595959"));
               //  back_arrw.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
                 selectedFragment = Home_Menu_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();

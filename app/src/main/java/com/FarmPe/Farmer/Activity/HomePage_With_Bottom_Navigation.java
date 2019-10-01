@@ -3,8 +3,6 @@ package com.FarmPe.Farmer.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -12,14 +10,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.FarmPe.Farmer.Fragment.AaSettingFragment;
 import com.FarmPe.Farmer.Fragment.Home_Menu_Fragment;
 import com.FarmPe.Farmer.Fragment.LookingForFragment;
 import com.FarmPe.Farmer.Fragment.NotificationFragment;
 import com.FarmPe.Farmer.R;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 
 
 
@@ -34,8 +30,8 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
 
    public static LinearLayout linear_bottom;
     LinearLayout linear_home,linear_mailbox,noti_layout,profile_layout;
-    TextView mail_text,text_home,noti_text,profile_text;
-    ImageView mail_icon,home_icon,noti_icon,profile_icon;
+   public static TextView mail_text,text_home,noti_text,profile_text;
+    public static ImageView mail_icon,home_icon,noti_icon,profile_icon;
 
 
 
@@ -69,6 +65,8 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
          profile_icon = findViewById(R.id.profile_icon);
 
 
+        home_icon.setImageResource(R.drawable.ic_home_green);
+        text_home.setTextColor(Color.parseColor("#18a360"));
 
 
 
@@ -101,6 +99,7 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
         linear_mailbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 mail_text.setTextColor(Color.parseColor("#18a360"));
                 text_home.setTextColor(Color.parseColor("#595959"));
                 noti_text.setTextColor(Color.parseColor("#595959"));
@@ -111,8 +110,9 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
                 noti_icon.setImageResource(R.drawable.ic_notification_home);
                 profile_icon.setImageResource(R.drawable.ic_user_home);
 
-               Bundle bundle = new Bundle();
-               bundle.putString("status","hme_request");
+
+                Bundle bundle = new Bundle();
+                bundle.putString("status","hme_request");
                 selectedFragment = LookingForFragment.newInstance();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 selectedFragment.setArguments(bundle);
@@ -123,9 +123,11 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
         });
 
 
+
         noti_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 noti_text.setTextColor(Color.parseColor("#18a360"));
                 mail_text.setTextColor(Color.parseColor("#595959"));
                 text_home.setTextColor(Color.parseColor("#595959"));
@@ -143,9 +145,6 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
 
             }
         });
-
-
-
 
 
 
@@ -253,15 +252,13 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
 //                }
 //                return true;
 //            }
-//        });
-
-
-
+//        }
 
 
 
 
     }
+
 
 }
 

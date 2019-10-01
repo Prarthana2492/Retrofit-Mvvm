@@ -75,6 +75,7 @@ LinearLayout back_feed;
         profile_name = view.findViewById(R.id.profile_name);
         profile_phone = view.findViewById(R.id.profile_phone);
 
+
         cam.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NewApi")
             @Override
@@ -83,6 +84,9 @@ LinearLayout back_feed;
                 startActivityForResult(i, 100); // on activity method will execute*/
             }
         });
+
+
+
         imgFullImage.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NewApi")
             @Override
@@ -91,6 +95,8 @@ LinearLayout back_feed;
                 startActivityForResult(i, 100); // on activity method will execute*/
             }
         });
+
+
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,20 +115,21 @@ LinearLayout back_feed;
                     // transaction.addToBackStack("looking");
                     transaction.commit();
                 }
-
-
             }
         });
+
         try{
             JSONObject jsonObject = new JSONObject();
             JSONObject post_object = new JSONObject();
             jsonObject.put("Id",sessionManager.getRegId("userId"));
             post_object.put("objUser",jsonObject);
 
+
             Crop_Post.crop_posting(getActivity(), Urls.Get_Profile_Details, post_object, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("ggpgpgpg" + result);
+
 
                     try{
                         JSONObject jsonObject1 = result.getJSONObject("user");
@@ -132,7 +139,7 @@ LinearLayout back_feed;
                         String ProfileImage = jsonObject1.getString("ProfilePic");
 
 
-                    profile_name.setText(ProfileName);
+                        profile_name.setText(ProfileName);
                         //phone_no.setText(ProfilePhone.substring(3));
 
                         profile_phone.setText(ProfilePhone); // masking + deleting last line
@@ -159,6 +166,8 @@ LinearLayout back_feed;
         }catch (Exception e){
             e.printStackTrace();
         }
+
+
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -185,6 +194,7 @@ LinearLayout back_feed;
                 return false;
             }
         });
+
         return view;
     }
 
@@ -212,6 +222,7 @@ LinearLayout back_feed;
         }
 
     }
+
         private Bitmap decodeImage(String data) {
         byte[] b = Base64.decode(data, Base64.DEFAULT);
         Bitmap bmp = BitmapFactory.decodeByteArray(b, 0, b.length);
@@ -223,6 +234,7 @@ LinearLayout back_feed;
         bitmap1.compress(Bitmap.CompressFormat.PNG, 80, byteArrayOutputStream);
         return byteArrayOutputStream.toByteArray();
     }
+
 
     private void uploadImage(final Bitmap bitmap2){
         final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "",
@@ -246,6 +258,7 @@ LinearLayout back_feed;
 //                        ft.commit();
                     }
                 },
+
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
@@ -253,6 +266,7 @@ LinearLayout back_feed;
                         progressDialog.dismiss();
                     }
                 }) {
+
 
             @Override
             protected Map<String, DataPart> getByteData() {

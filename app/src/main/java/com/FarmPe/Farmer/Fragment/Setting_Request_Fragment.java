@@ -53,6 +53,7 @@ public class Setting_Request_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile_request_layout, container, false);
 
+
         make_requst=view.findViewById(R.id.make_requst);
         request_favo=view.findViewById(R.id.request_favo);
         your_request_profile=view.findViewById(R.id.your_request_profile);

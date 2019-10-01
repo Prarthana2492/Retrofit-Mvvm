@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.R;
 
 public class Comming_soon_looking extends Fragment {
@@ -28,10 +29,10 @@ public class Comming_soon_looking extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.comming_layout, container, false);
         backfeed= view.findViewById(R.id.back_feed1);
-        backfeed.setVisibility(View.GONE);
 
 
 
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -41,11 +42,10 @@ public class Comming_soon_looking extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
-                  //  HomeMenuFragment.onBack_status = "looking_frg";
+
                     selectedFragment = Home_Menu_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_menu, selectedFragment);
-                    // transaction.addToBackStack("looking");
                     transaction.commit();
 
                     return true;
@@ -59,11 +59,10 @@ public class Comming_soon_looking extends Fragment {
             @Override
             public void onClick(View v) {
 
-                HomeMenuFragment.onBack_status = "looking_frg";
+
                 selectedFragment = Home_Menu_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
-                // transaction.addToBackStack("looking");
                 transaction.commit();
 
 

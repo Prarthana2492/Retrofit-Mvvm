@@ -35,6 +35,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Activity.LoginActivity;
 import com.FarmPe.Farmer.Bean.AgriBean;
 import com.FarmPe.Farmer.R;
@@ -73,6 +74,7 @@ public class FeedbackFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.feedback, container, false);
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
         back_feed=view.findViewById(R.id.back_feed);
         feedback_title=view.findViewById(R.id.fd_title);
         feedback_title.setFilters(new InputFilter[]{EMOJI_FILTER});

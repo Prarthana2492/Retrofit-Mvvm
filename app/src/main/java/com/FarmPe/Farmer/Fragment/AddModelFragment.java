@@ -21,6 +21,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Adapter.AddBrandAdapter;
 import com.FarmPe.Farmer.Adapter.AddFirstAdapter;
 
@@ -79,6 +81,7 @@ public class AddModelFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.select_model_recy, container, false);
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
         recyclerView=view.findViewById(R.id.recycler_what_looking);
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
@@ -154,7 +157,7 @@ public class AddModelFragment extends Fragment {
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager_farm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        farmadapter=new AddModelAdapter(getActivity(),modelBeanArrayList);
+        farmadapter = new AddModelAdapter(getActivity(),modelBeanArrayList);
                     recyclerView.setAdapter(farmadapter);
 
 
@@ -170,7 +173,7 @@ public class AddModelFragment extends Fragment {
           JSONObject jsonObject = new JSONObject();
 
             jsonObject.put("CreatedBy",sessionManager.getRegId("userId"));
-            jsonObject.put("LookingForDetailsId",AddFirstAdapter.looinkgId);
+            jsonObject.put("LookingForDetailsId",AddBrandFragment.request_looking_id);
             jsonObject.put("BrandId",AddBrandAdapter.brandId);
             System.out.println("fgfggdfcxxg" + jsonObject);
 
@@ -183,11 +186,11 @@ public class AddModelFragment extends Fragment {
                         modelBeanArrayList.clear();
 
                         model_list_array = result.getJSONArray("TractorModelMasterList");
-
                         tractorImplementsModelMasterList = result.getJSONArray("TractorImplementsModelMasterList");
                         tractorAccessoriesModelMasterList = result.getJSONArray("TractorAccessoriesModelMasterList");
                         harvesterModelMasterList = result.getJSONArray("HarvesterModelMasterList");
                         jCBRFQModelList = result.getJSONArray("JCBModelMasterList");
+
                         FarmMachineryModelMasterList = result.getJSONArray("FarmMachineryModelMasterList");
                         FenceWireModelMasterList = result.getJSONArray("FenceWireModelMasterList");
                         TyreModelMasterList = result.getJSONArray("TyreModelMasterList");
@@ -225,6 +228,7 @@ public class AddModelFragment extends Fragment {
                             modelBeanArrayList.add(modelBean);
 
                         }
+
 
                       for(int i=0;i<FarmMachineryModelMasterList.length();i++){
                         JSONObject jsonObject1 = FarmMachineryModelMasterList.getJSONObject(i);

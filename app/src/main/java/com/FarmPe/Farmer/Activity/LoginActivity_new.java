@@ -500,7 +500,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                                         status=jsonObject.getString("Status");
                                         userId=jsonObject.getString("UserId");
 
-                                        System.out.println("useridddd"+userId);
+                                        System.out.println("useridddd"+mobile_no.getText().toString());
 
                                         if(status.equals("1")){
                                             System.out.println("jdhyusulogin"+status);

@@ -51,7 +51,7 @@ public class AaSettingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.a_s_setting_layout, container, false);
 
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.VISIBLE);
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
         backfeed=view.findViewById(R.id.back_feed);
         acc_info_lay=view.findViewById(R.id.acc_info_lay);
         not_lay=view.findViewById(R.id.not_lay);
@@ -77,6 +77,12 @@ public class AaSettingFragment extends Fragment {
         backfeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
+                HomePage_With_Bottom_Navigation.profile_icon.setImageResource(R.drawable.ic_user_home);
+                HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
+                HomePage_With_Bottom_Navigation.profile_text.setTextColor(Color.parseColor("#595959"));
+
                 selectedFragment = Home_Menu_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
@@ -91,7 +97,13 @@ public class AaSettingFragment extends Fragment {
 
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
+
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+
+                    HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
+                    HomePage_With_Bottom_Navigation.profile_icon.setImageResource(R.drawable.ic_user_home);
+                    HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
+                    HomePage_With_Bottom_Navigation.profile_text.setTextColor(Color.parseColor("#595959"));
 
                 //    getFragmentManager().popBackStack("home_menu", android.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     selectedFragment = Home_Menu_Fragment.newInstance();
@@ -216,6 +228,7 @@ public class AaSettingFragment extends Fragment {
                             }
 
                         }else {
+
                             Toast.makeText(getActivity(), "Whatsapp is not installed on this device.", Toast.LENGTH_SHORT);
 
                         }

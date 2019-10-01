@@ -21,8 +21,10 @@ import android.view.ViewGroup;
 
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Adapter.AddFirstAdapter;
 import com.FarmPe.Farmer.Adapter.AddModelAdapter;
 import com.FarmPe.Farmer.Bean.Add_New_Address_Bean;
@@ -45,11 +47,12 @@ public class Request_Details_New_Fragment extends Fragment {
     public static List<FarmsImageBean> newOrderBeansList = new ArrayList<>();
     ArrayList<Add_New_Address_Bean> new_address_beanArrayList = new ArrayList<>();
     public static RecyclerView recyclerView;
+
     TextView immediate_btn,one_month_btn,two_month_btn,three_month_btn,aftr_three_month_btn,demo_yes,demo_no,insuranc_yes,insuranc_no,fin_yes,fin_no;
-    LinearLayout request_price_layout,linearLayout,back_feed;
+    LinearLayout request_price_layout,linearLayout,back_feed,purchase_linear;
     Fragment selectedFragment = null;
     SessionManager sessionManager;
-    String purchase_plan,looking_finance,looking_demo;
+    String purchase_plan,looking_finance,looking_demo,looking_insurance;
 
 
 
@@ -77,6 +80,8 @@ public class Request_Details_New_Fragment extends Fragment {
         fin_yes=view.findViewById(R.id.fin_yes);
         fin_no=view.findViewById(R.id.fin_no);
         linearLayout=view.findViewById(R.id.linearLayout);
+        purchase_linear=view.findViewById(R.id.purchase_linear);
+
         sessionManager = new SessionManager(getActivity());
 
 
@@ -288,6 +293,8 @@ public class Request_Details_New_Fragment extends Fragment {
         insuranc_yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                looking_insurance = insuranc_yes.getText().toString();
                 insuranc_yes.setTextColor(Color.parseColor("#FFFFFF"));
                 insuranc_no.setTextColor(Color.parseColor("#000000"));
 
@@ -303,6 +310,7 @@ public class Request_Details_New_Fragment extends Fragment {
         insuranc_no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                looking_insurance = insuranc_no.getText().toString();
                 insuranc_no.setTextColor(Color.parseColor("#FFFFFF"));
                 insuranc_yes.setTextColor(Color.parseColor("#000000"));
 
@@ -319,6 +327,7 @@ public class Request_Details_New_Fragment extends Fragment {
         demo_yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 looking_demo = demo_yes.getText().toString();
                 demo_yes.setTextColor(Color.parseColor("#FFFFFF"));
                 demo_no.setTextColor(Color.parseColor("#000000"));
@@ -353,8 +362,28 @@ public class Request_Details_New_Fragment extends Fragment {
             public void onClick(View view) {
 
 
+                if(purchase_plan==null){
+
+                    Toast.makeText(getActivity(), "Please Select purchase plan", Toast.LENGTH_SHORT).show();
+
+                }else if(looking_finance == null){
+
+                    Toast.makeText(getActivity(), "Please Select finance", Toast.LENGTH_SHORT).show();
+
+
+                }else if(looking_insurance == null){
+
+                    Toast.makeText(getActivity(), "Please select insurance", Toast.LENGTH_SHORT).show();
+
+                }else if(looking_demo == null){
+
+                    Toast.makeText(getActivity(), "Please select demo/test drive", Toast.LENGTH_SHORT).show();
+
+
+                }else{
 
                 request_price();
+            }
 
             }
         });
@@ -364,6 +393,10 @@ public class Request_Details_New_Fragment extends Fragment {
     }
 
     private void request_price() {
+
+
+        System.out.println("postObjmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmccfc"+purchase_plan);
+
 
         try {
 
@@ -375,7 +408,7 @@ public class Request_Details_New_Fragment extends Fragment {
             userRequestjsonObject.put("AddressId",getArguments().getString("add_id"));
             userRequestjsonObject.put("IsAgreed", "True");
             userRequestjsonObject.put("ModelId", AddModelAdapter.model_id);
-            userRequestjsonObject.put("LookingForDetailsId", AddFirstAdapter.looinkgId);
+            userRequestjsonObject.put("LookingForDetailsId", AddBrandFragment.request_looking_id);
 
 
             System.out.println("postObjmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"+userRequestjsonObject.toString());
@@ -385,6 +418,7 @@ public class Request_Details_New_Fragment extends Fragment {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("cropsresult"+result);
+
 
                     newOrderBeansList.clear();
 
@@ -410,6 +444,13 @@ public class Request_Details_New_Fragment extends Fragment {
                         }
 
                         snackbar.show();
+
+                        HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
+                        HomePage_With_Bottom_Navigation.profile_icon.setImageResource(R.drawable.ic_user_home);
+                        HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
+                        HomePage_With_Bottom_Navigation.profile_text.setTextColor(Color.parseColor("#595959"));
+
+
                         selectedFragment = Home_Menu_Fragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frame_menu, selectedFragment);

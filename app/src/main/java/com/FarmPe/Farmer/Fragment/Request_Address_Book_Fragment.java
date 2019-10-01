@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Adapter.Request_Address_Book_Adapter;
 import com.FarmPe.Farmer.Adapter.You_Address_Adapter;
 import com.FarmPe.Farmer.Bean.Add_New_Address_Bean;
@@ -73,6 +74,8 @@ public class Request_Address_Book_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.adress_book_recy_layout, container, false);
         //  getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
 
         recyclerView = view.findViewById(R.id.recycler_2);
         back_feed = view.findViewById(R.id.back_feed);

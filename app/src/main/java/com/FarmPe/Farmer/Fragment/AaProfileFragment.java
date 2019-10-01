@@ -39,6 +39,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Activity.LandingPageActivity;
 import com.FarmPe.Farmer.DB.DatabaseHelper;
 import com.FarmPe.Farmer.G_Vision_Controller;
@@ -98,6 +99,7 @@ public class AaProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.a_a_profile_layout, container, false);
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
 
         backfeed=view.findViewById(R.id.back_feed);
         acc_info_lay=view.findViewById(R.id.acc_info_lay);
@@ -261,13 +263,13 @@ public class AaProfileFragment extends Fragment {
 
                                             snackbar.show();
                                             mBottomSheetDialog.dismiss();
-//                                            Bundle bundle = new Bundle();
-//                                            bundle.putString("status", "HOME_IMG");
-//                                            selectedFragment = AaProfileFragment.newInstance();
-//                                            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                                            transaction.replace(R.id.frame_menu, selectedFragment);
-//                                            selectedFragment.setArguments(bundle);
-//                                            transaction.commit();
+                                            Bundle bundle = new Bundle();
+                                            bundle.putString("status", "HOME_IMG");
+                                            selectedFragment = AaProfileFragment.newInstance();
+                                            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                            transaction.replace(R.id.frame_menu, selectedFragment);
+                                            selectedFragment.setArguments(bundle);
+                                            transaction.commit();
                                         }
                                     },
                                     new Response.ErrorListener() {
@@ -324,7 +326,7 @@ public class AaProfileFragment extends Fragment {
                  TextView positiveText = sheetView.findViewById(R.id.positive_text);
                  TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
                  TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
-                 abt_text = sheetView.findViewById(R.id.user_text);
+                  abt_text = sheetView.findViewById(R.id.user_text);
              //   abt_text.setFilters(new InputFilter[]{EMOJI_FILTER, new InputFilter.LengthFilter(50)});
                    abt_text.setVisibility(View.VISIBLE);
 
@@ -332,11 +334,11 @@ public class AaProfileFragment extends Fragment {
                    abt_text.setText(aboutText.getText().toString());
 
                    descriptionText.setVisibility(View.GONE);
-                titleText.setText("Add about");
+                 titleText.setText("Add about");
                 descriptionText.setText("Are you sure you want to exit?");
                 positiveText.setText("Save");
-                TextView negetiveText = sheetView.findViewById(R.id.negetive_text);
-                negetiveText.setText("Cancel");
+                 TextView negetiveText = sheetView.findViewById(R.id.negetive_text);
+                 negetiveText.setText("Cancel");
 
 
                 positiveText.setOnClickListener(new View.OnClickListener() {
@@ -372,7 +374,6 @@ public class AaProfileFragment extends Fragment {
 
                             save_description();
                         }
-
 
                     }
                 });
@@ -423,8 +424,8 @@ public class AaProfileFragment extends Fragment {
 
                         }else{
 
-                            aboutText.setText(profile_description);
-                        }
+                        aboutText.setText(profile_description);
+                    }
 
 
                         //phone_no.setText(ProfilePhone.substring(3));
@@ -442,6 +443,7 @@ public class AaProfileFragment extends Fragment {
                                 .crossFade()
                                 .error(R.drawable.avatarmale)
                                 .into(prod_img);
+
                     }catch (Exception e){
                         e.printStackTrace();
                     }
@@ -462,7 +464,7 @@ public class AaProfileFragment extends Fragment {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        sessionManager.save_name(profname.getText().toString(),profile_phone.getText().toString(),aboutText.getText().toString());
+                      //  sessionManager.save_name(profname.getText().toString(),profile_phone.getText().toString(),aboutText.getText().toString());
 
                         int duration = 1000;
                         Snackbar snackbar = Snackbar
@@ -488,6 +490,7 @@ public class AaProfileFragment extends Fragment {
                         selectedFragment.setArguments(bundle);
                         transaction.commit();
                     }
+
                 },
         new Response.ErrorListener() {
             @Override
@@ -510,7 +513,6 @@ public class AaProfileFragment extends Fragment {
         Volley.newRequestQueue(getActivity()).add(stringRequest);
 
     }
-
 
 
     @Override

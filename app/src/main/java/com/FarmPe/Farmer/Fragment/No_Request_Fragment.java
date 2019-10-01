@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Adapter.AddFirstAdapter;
 import com.FarmPe.Farmer.R;
 
@@ -37,6 +38,8 @@ public class No_Request_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.no_requst_new, container, false);
+
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
 
         make_request = view.findViewById(R.id.make_requesttttt);
         back_feed1 = view.findViewById(R.id.back_feed1);

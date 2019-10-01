@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Adapter.AddFirstAdapter;
 
 import com.FarmPe.Farmer.Adapter.AddModelAdapter;
@@ -54,6 +55,7 @@ ImageView b_arrow;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.add_first_recy, container, false);
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
         recyclerView=view.findViewById(R.id.recycler_what_looking);
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
@@ -76,6 +78,7 @@ ImageView b_arrow;
                 fm.popBackStack("second", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
+
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();

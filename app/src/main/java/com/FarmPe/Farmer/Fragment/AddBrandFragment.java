@@ -1,18 +1,12 @@
 package com.FarmPe.Farmer.Fragment;
 
-import android.graphics.Color;
-import android.os.Build;
+
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,20 +15,23 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Adapter.AddBrandAdapter;
 import com.FarmPe.Farmer.Adapter.AddFirstAdapter;
+import com.FarmPe.Farmer.Adapter.Home_Page_Request_Adapter;
 import com.FarmPe.Farmer.Bean.AddTractorBean;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.Urls;
 import com.FarmPe.Farmer.Volly_class.Login_post;
 import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
+
+
+
 
 public class AddBrandFragment extends Fragment {
 
@@ -45,7 +42,8 @@ public class AddBrandFragment extends Fragment {
     TextView toolbar_title,sub_label;
     LinearLayout back_feed,linearLayout;
     TextView continue_button;
-ImageView b_arrow;
+    ImageView b_arrow;
+   public static String request_looking_id;
 
 
     public static AddBrandFragment newInstance() {
@@ -56,21 +54,29 @@ ImageView b_arrow;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.brand_recy_layout, container, false);
+
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
         recyclerView=view.findViewById(R.id.recycler_what_looking);
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
-        sub_label=view.findViewById(R.id.sub_label);
-        continue_button=view.findViewById(R.id.continue_button);
-        linearLayout=view.findViewById(R.id.linearLayout);
-        b_arrow=view.findViewById(R.id.b_arrow);
+        sub_label = view.findViewById(R.id.sub_label);
+        continue_button = view.findViewById(R.id.continue_button);
+        linearLayout = view.findViewById(R.id.linearLayout);
+        b_arrow = view.findViewById(R.id.b_arrow);
+
        // toolbar_title.setText("Select Brand");
 
      //   sub_label.setText("let us know the manufacturer/brand name you are interested to buy");
+
+
+        request_looking_id = getArguments().getString("request_status");
+
 
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
               // b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
+
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("req_price", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
@@ -165,10 +171,19 @@ ImageView b_arrow;
         try {
             newOrderBeansList.clear();
 
-            JSONObject userRequestjsonObject = new JSONObject();
+              JSONObject userRequestjsonObject = new JSONObject();
 
-             userRequestjsonObject.put("LookingForDetailsId", AddFirstAdapter.looinkgId);
+
+
+              userRequestjsonObject.put("LookingForDetailsId", request_looking_id);
+
+
+
+
+
+
             System.out.println("sdfsdfsdf" + AddFirstAdapter.looinkgId );
+
 
             JSONObject postjsonObject = new JSONObject();
             System.out.println("postObj"+userRequestjsonObject.toString());

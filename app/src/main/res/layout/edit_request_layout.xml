@@ -396,7 +396,6 @@
                             android:clickable="false"
                             android:focusableInTouchMode="false"
                             android:inputType="textNoSuggestions"
-
                             android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColorHint="#000"
@@ -535,6 +534,7 @@
 
                 </LinearLayout>
 
+
                 <LinearLayout
                     android:id="@+id/name_linear_lafyoutf"
                     android:layout_width="match_parent"
@@ -637,20 +637,20 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_marginTop="20dp"
                     android:background="@color/light_gray"/>
 
 
-            </LinearLayout>
+
 
 
             <LinearLayout
                 android:id="@+id/name_linear_layout"
                 android:layout_width="match_parent"
                 android:background="#fff"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="18dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -661,8 +661,8 @@
                     android:layout_height="wrap_content"
                     android:weightSum="60"
                     android:layout_marginLeft="15dp"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
+
 
                     <TextView
                         android:id="@+id/prodnamdfe"
@@ -699,6 +699,7 @@
                     android:textColor="#000"
                     android:textSize="14dp" />
 
+            </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

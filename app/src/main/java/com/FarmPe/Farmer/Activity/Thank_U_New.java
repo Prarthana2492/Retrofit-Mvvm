@@ -137,26 +137,19 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
 
     }
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         checkConnection();
         setContentView(R.layout.thank_you_otp1);
-        linearLayout=findViewById(R.id.main_layout);
-        back_thank_u=findViewById(R.id.back_feed);
-        thanktu_submit=findViewById(R.id.thanktu_submit);
-        enter_otp=findViewById(R.id.otp_pass);
+         linearLayout=findViewById(R.id.main_layout);
+         back_thank_u=findViewById(R.id.back_feed);
+         thanktu_submit=findViewById(R.id.thanktu_submit);
+         enter_otp=findViewById(R.id.otp_pass);
        // otp_text=findViewById(R.id.thanktu);
-        thank_title=findViewById(R.id.thank);
-        resend_otp=findViewById(R.id.resend);
-
-
-
-
-
+         thank_title=findViewById(R.id.thank);
+         resend_otp=findViewById(R.id.resend);
 
         setupUI(linearLayout);
         sessionId= getIntent().getStringExtra("otp_forgot");

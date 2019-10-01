@@ -2,6 +2,7 @@ package com.FarmPe.Farmer.Adapter;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -99,10 +100,13 @@ public class AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyView
                 AddFirstFragment.tracter_title = holder.prod_price.getText().toString().toLowerCase().replace(" price","");
                 looinkgId=products.getId();
 
-              //  AddBrandAdapter.brandId = null;
+                //  AddBrandAdapter.brandId = null;
+                Bundle bundle = new Bundle();
+                bundle.putString("request_status",looinkgId);
                 selectedFragment = AddBrandFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
+                selectedFragment.setArguments(bundle);
                 transaction.addToBackStack("req_price");
                 transaction.commit();
 

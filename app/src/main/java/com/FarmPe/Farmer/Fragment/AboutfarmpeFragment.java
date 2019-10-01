@@ -14,6 +14,8 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Bean.AgriBean;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
@@ -41,6 +43,7 @@ public class AboutfarmpeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.privacy_policy, container, false);
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
         back_feed=view.findViewById(R.id.back_feed);
         terms=view.findViewById(R.id.web_terms);
         privacypolicytxt=view.findViewById(R.id.toolbar_title);

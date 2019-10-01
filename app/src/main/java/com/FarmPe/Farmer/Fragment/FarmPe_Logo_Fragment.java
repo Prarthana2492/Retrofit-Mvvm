@@ -349,14 +349,13 @@ public class FarmPe_Logo_Fragment extends Fragment {
                         newOrderBeansList.clear();
                         newOrderBeansList2.clear();
 
-
                      //   String farm_count = String.valueOf(result.getInt("FarmsCount"));
-                        String request_count = String.valueOf(result.getInt("RFQCount"));
-                        String notificatn_count = String.valueOf(result.getInt("NotificationCount"));
+                         String request_count = String.valueOf(result.getInt("RFQCount"));
+                         String notificatn_count = String.valueOf(result.getInt("NotificationCount"));
 
-                        JSONObject rfqListObject=result.getJSONObject("RFQList");
-                        cropsListArray = rfqListObject.getJSONArray("TractorRFQModelList");
-                        tractorImplementsModelMasterList = rfqListObject.getJSONArray("TractorImplementsRFQModelList");
+                         JSONObject rfqListObject=result.getJSONObject("RFQList");
+                         cropsListArray = rfqListObject.getJSONArray("TractorRFQModelList");
+                         tractorImplementsModelMasterList = rfqListObject.getJSONArray("TractorImplementsRFQModelList");
                         tractorAccessoriesModelMasterList = rfqListObject.getJSONArray("TractorAccesoriesRFQModelList");
                         harvesterModelMasterList = rfqListObject.getJSONArray("HarvesterRFQModelList");
                         jCBRFQModelList = rfqListObject.getJSONArray("JCBRFQModelList");

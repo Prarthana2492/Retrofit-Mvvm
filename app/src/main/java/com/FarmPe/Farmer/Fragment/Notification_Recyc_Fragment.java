@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Adapter.Notification_Adapter1;
 import com.FarmPe.Farmer.Adapter.Notification_Adapter2;
 import com.FarmPe.Farmer.Bean.Notification_recy_bean;
@@ -61,6 +62,8 @@ public class Notification_Recyc_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.notification_recyc, container, false);
+
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
         recyclerView=view.findViewById(R.id.recycler_noti);
         recyclerView1=view.findViewById(R.id.recycler_noti1);
         toolbar_title=view.findViewById(R.id.toolbar_title);

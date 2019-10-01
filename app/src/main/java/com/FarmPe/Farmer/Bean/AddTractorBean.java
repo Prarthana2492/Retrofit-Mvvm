@@ -3,7 +3,17 @@ package com.FarmPe.Farmer.Bean;
 public class AddTractorBean {
 
    private String image;
-    private String prod_name,id;
+    private String prod_name;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private String id;
 
     public boolean isSelected() {
         return isSelected;
@@ -30,9 +40,7 @@ public class AddTractorBean {
         return prod_name;
     }
 
-    public String getId() {
-        return id;
-    }
+
 
     public String getImage() {
         return image;

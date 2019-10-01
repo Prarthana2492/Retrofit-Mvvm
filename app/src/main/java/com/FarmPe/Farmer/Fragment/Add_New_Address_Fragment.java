@@ -43,6 +43,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Adapter.AddFirstAdapter;
 import com.FarmPe.Farmer.Adapter.DistrictAdapter;
 import com.FarmPe.Farmer.Adapter.DistrictAdapter1;
@@ -126,6 +127,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
         getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
+       // HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
 
          select_address = view.findViewById(R.id.add_type);
          name = view.findViewById(R.id.full_name);

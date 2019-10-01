@@ -30,6 +30,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
 import com.FarmPe.Farmer.Urls;
@@ -91,6 +93,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.get_lat_long_map_layout, container, false);
+
+
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
         displayLocationSettingsRequest(getActivity());
         resutText = (TextView) view.findViewById(R.id.curr_address);
         b_arrow = view.findViewById(R.id.b_arrow);

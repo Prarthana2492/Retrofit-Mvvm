@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 
 import com.FarmPe.Farmer.Bean.ModelBean;
+import com.FarmPe.Farmer.Fragment.AddBrandFragment;
 import com.FarmPe.Farmer.Fragment.AddModelFragment;
 import com.FarmPe.Farmer.Fragment.MapFragment;
 import com.FarmPe.Farmer.Fragment.Model_Brochure_Fragment;
@@ -233,8 +234,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
                 model_id = products.getId();
                 System.out.println("ffdgfdgvdreftrg" + products.getId());
-                looking_for_id = AddFirstAdapter.looinkgId;
-
+                looking_for_id = AddBrandFragment.request_looking_id;
 
                 selectedFragment = MapFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
@@ -284,7 +284,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("ModelId",model_id);
-            jsonObject.put("LookingForDetailsId",AddFirstAdapter.looinkgId);
+            jsonObject.put("LookingForDetailsId",AddBrandFragment.request_looking_id);
             jsonObject.put("IsShortlisted",true);
             jsonObject.put("CreatedBy",sessionManager.getRegId("userId"));
 

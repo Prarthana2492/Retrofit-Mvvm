@@ -14,6 +14,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.textclassifier.SelectionEvent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -106,15 +107,23 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
                 }else {
 
 
-                    brandId = products.getId();
-                    selectedFragment = AddModelFragment.newInstance();
-                    FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_menu, selectedFragment);
-                    transaction.addToBackStack("third");
-                    transaction.commit();
+                     brandId = products.getId();
+                     selectedFragment = AddModelFragment.newInstance();
+                     FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+                     transaction.replace(R.id.frame_menu, selectedFragment);
+                     transaction.addToBackStack("third");
+                     transaction.commit();
 
                 }
-//                for (int i = 0; i < productList.size(); i++) {
+
+
+
+
+
+
+
+
+//           for (int i = 0; i < productList.size(); i++) {
 //                    productList.get(i).setSelected(false);
 //                }
 //                productList.get(position).setSelected(true);
@@ -124,17 +133,17 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
         });
 
 
-       /* holder.image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AddHpAdapter.hp_model = null;
-                selectedFragment = AddHpFragment.newInstance();
-                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-                transaction.add(R.id.frame_layout, selectedFragment);
-                transaction.addToBackStack("second");
-                transaction.commit();
-            }
-        });*/
+//        holder.image.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                AddHpAdapter.hp_model = null;
+//                selectedFragment = AddHpFragment.newInstance();
+//                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+//                transaction.add(R.id.frame_layout, selectedFragment);
+//                transaction.addToBackStack("second");
+//                transaction.commit();
+//            }
+//        });
 
         Glide.with(activity).load(products.getImage())
 

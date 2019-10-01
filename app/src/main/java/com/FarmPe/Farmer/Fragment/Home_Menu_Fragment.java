@@ -20,6 +20,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -41,10 +42,11 @@ public class Home_Menu_Fragment extends Fragment  {
     private RecyclerView recyclerView,recyclerView2;
 
     private Home_Page_Request_Adapter mAdapter;
-  //  private Home_Page_Lookinfor_Adapter mAdapter2;
+    //  private Home_Page_Lookinfor_Adapter mAdapter2;
     boolean doubleBackToExitPressedOnce = false;
     LinearLayout linearLayout;
     Fragment selectedFragment;
+    ImageView  legal_for,bussiness_for,consultancy_look,more_icon;
 
     public static TabLayout tabLayout;
     private ViewPager viewPager;
@@ -59,9 +61,16 @@ public class Home_Menu_Fragment extends Fragment  {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home_page_layout, container, false);
+
+
         recyclerView = view.findViewById(R.id.recycler_view1);
         linearLayout = view.findViewById(R.id.linearLayout);
-       // upi_send=view.findViewById(R.id.upiSendMoney);
+
+//        legal_for = view.findViewById(R.id.legal_for);
+//        bussiness_for = view.findViewById(R.id.bussiness_for);
+//        consultancy_look = view.findViewById(R.id.consultancy_look);
+//        more_icon = view.findViewById(R.id.more_icon);
+        // upi_send=view.findViewById(R.id.upiSendMoney);
 
         HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.VISIBLE);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 4);
@@ -75,21 +84,39 @@ public class Home_Menu_Fragment extends Fragment  {
         };
 
 
+
+
         // GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3, GridLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
-        Request_Class_HomePage_Bean item1 = new Request_Class_HomePage_Bean("Lorem");
+        Request_Class_HomePage_Bean item1 = new Request_Class_HomePage_Bean("Tractor","1",R.drawable.tractor);
+        Request_Class_HomePage_Bean item2 = new Request_Class_HomePage_Bean("Farm\nTruck","9",R.drawable.farm_truck);
+        Request_Class_HomePage_Bean item3 = new Request_Class_HomePage_Bean("Backhoe\nLoader","4",R.drawable.backhoe_acessories);
+        Request_Class_HomePage_Bean item4 = new Request_Class_HomePage_Bean("Harvester","5",R.drawable.harvesting);
+        Request_Class_HomePage_Bean item5 = new Request_Class_HomePage_Bean("Farm\nMachines","6",R.drawable.machinary);
+        Request_Class_HomePage_Bean item6 = new Request_Class_HomePage_Bean("Power\nTillers","12",R.drawable.tiller);
+        Request_Class_HomePage_Bean item7 = new Request_Class_HomePage_Bean("Tractor\nImplements","2",R.drawable.tractor_implements);
+        Request_Class_HomePage_Bean item8 = new Request_Class_HomePage_Bean("Backhoe\nAttachment","10",R.drawable.backhoe);
+        Request_Class_HomePage_Bean item9 = new Request_Class_HomePage_Bean("Irrigation\nSystem","11",R.drawable.sprinkler);
+        Request_Class_HomePage_Bean item10 = new Request_Class_HomePage_Bean("Tractor\\n Accessories\"","3",R.drawable.accessories);
+        Request_Class_HomePage_Bean item11 = new Request_Class_HomePage_Bean("Tyres","8",R.drawable.tyre);
+        Request_Class_HomePage_Bean item12 = new Request_Class_HomePage_Bean("Fence\nWires","7",R.drawable.fencing_wire);
+
+
+        newOrderBeansList.clear();
+
         newOrderBeansList.add(item1);
-        newOrderBeansList.add(item1);
-        newOrderBeansList.add(item1);
-        newOrderBeansList.add(item1);
-        newOrderBeansList.add(item1);
-        newOrderBeansList.add(item1);
-        newOrderBeansList.add(item1);
-        newOrderBeansList.add(item1);
-        newOrderBeansList.add(item1);
-        newOrderBeansList.add(item1);
-        newOrderBeansList.add(item1);
-        newOrderBeansList.add(item1);
+        newOrderBeansList.add(item2);
+        newOrderBeansList.add(item3);
+        newOrderBeansList.add(item4);
+        newOrderBeansList.add(item5);
+        newOrderBeansList.add(item6);
+        newOrderBeansList.add(item7);
+        newOrderBeansList.add(item8);
+        newOrderBeansList.add(item9);
+        newOrderBeansList.add(item10);
+        newOrderBeansList.add(item11);
+        newOrderBeansList.add(item12);
+
 
         System.out.println("newOrderBeansListvsdvdv"+newOrderBeansList.size());
         mAdapter = new Home_Page_Request_Adapter(getActivity(),newOrderBeansList);
@@ -163,7 +190,59 @@ public class Home_Menu_Fragment extends Fragment  {
         });
 
 
-
+//        consultancy_look.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                selectedFragment = Comming_soon_looking.newInstance();
+//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.frame_menu, selectedFragment);
+//                transaction.addToBackStack("home_page");
+//                transaction.commit();
+//
+//            }
+//        });
+//
+//        bussiness_for.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                selectedFragment = Comming_soon_looking.newInstance();
+//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.frame_menu, selectedFragment);
+//                transaction.addToBackStack("home_page");
+//                transaction.commit();
+//
+//            }
+//        });
+//
+//
+//        legal_for.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                selectedFragment = Comming_soon_looking.newInstance();
+//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.frame_menu, selectedFragment);
+//                transaction.addToBackStack("home_page");
+//                transaction.commit();
+//
+//            }
+//        });
+//
+//
+//        more_icon.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                selectedFragment = Comming_soon_looking.newInstance();
+//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.frame_menu, selectedFragment);
+//                transaction.addToBackStack("home_page");
+//                transaction.commit();
+//
+//            }
+//        });
 
         return view;
     }

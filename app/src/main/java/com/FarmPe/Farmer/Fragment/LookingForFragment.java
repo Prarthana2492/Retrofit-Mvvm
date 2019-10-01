@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Adapter.FarmsImageAdapter;
 import com.FarmPe.Farmer.Bean.FarmsImageBean;
 import com.FarmPe.Farmer.R;
@@ -78,6 +79,8 @@ public class LookingForFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.looking_for_recy, container, false);
+
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
         recyclerView=view.findViewById(R.id.recycler_looking);
         filter_text=view.findViewById(R.id.filter_text);
         delete_req =view.findViewById(R.id.delete_req);
@@ -95,6 +98,10 @@ public class LookingForFragment extends Fragment {
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
+                HomePage_With_Bottom_Navigation.mail_icon.setImageResource(R.drawable.ic_mailbox);
+                HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
+                HomePage_With_Bottom_Navigation.mail_text.setTextColor(Color.parseColor("#595959"));
 
                 if (getArguments().getString("status").equals("setting_your_request")) {
 
@@ -128,12 +135,18 @@ public class LookingForFragment extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
+                    HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
+                    HomePage_With_Bottom_Navigation.mail_icon.setImageResource(R.drawable.ic_mailbox);
+                    HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
+                    HomePage_With_Bottom_Navigation.mail_text.setTextColor(Color.parseColor("#595959"));
+
 
 
                     if(getArguments().getString("status").equals("setting_your_request")){
 
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack("setting_req", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
 
 
                     } else if(getArguments().getString("status").equals("hme_request")){
@@ -147,7 +160,6 @@ public class LookingForFragment extends Fragment {
                         transaction.commit();
 
                     }
-
 
 //                    }else{
 //
@@ -210,6 +222,8 @@ public class LookingForFragment extends Fragment {
 
                     try {
 
+
+
                         cropsListArray = result.getJSONArray("TractorRFQModelList");
 
                          tractorImplementsModelMasterList = result.getJSONArray("TractorImplementsRFQModelList");
@@ -252,7 +266,7 @@ public class LookingForFragment extends Fragment {
 
                         }
 
-
+                       // Collections.reverse(newOrderBeansList);
                         farmadapter = new FarmsImageAdapter(getActivity(),  newOrderBeansList);
                         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
                         recyclerView.setLayoutManager(mLayoutManager_farm);
@@ -369,8 +383,13 @@ public class LookingForFragment extends Fragment {
 
             System.out.println("madelslistt" +jsonObject1.getString("ModelId"));
 
+
             FarmsImageBean crops = new FarmsImageBean(image, "Tractor Price", model, hp_range, purchaseTimeline, name, location, id, location_det);
             newOrderBeansList.add(crops);
+
+
+
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
