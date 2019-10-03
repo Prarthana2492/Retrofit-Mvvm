@@ -93,6 +93,8 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
 
         if(selected_position == position){
 
+            sessionManager.saveLanguage_name(products1.getVendor());
+
             holder.lang_txt.setChecked(true);
             holder.lang_txt.setTypeface(null, Typeface.BOLD);
 

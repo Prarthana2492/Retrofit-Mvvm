@@ -158,7 +158,6 @@ public class LookingForFragment extends Fragment {
                         transaction.replace(R.id.frame_menu, selectedFragment);
                         transaction.addToBackStack("home");
                         transaction.commit();
-
                     }
 
 //                    }else{

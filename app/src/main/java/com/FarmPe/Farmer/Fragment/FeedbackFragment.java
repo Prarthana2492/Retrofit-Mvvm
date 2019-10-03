@@ -63,13 +63,15 @@ public class FeedbackFragment extends Fragment {
     public static String refer_code;
     RadioGroup fdType;
     String stat="3";
-
     private Context context;
+
+
 
     public static FeedbackFragment newInstance() {
         FeedbackFragment fragment = new FeedbackFragment();
         return fragment;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.FarmPe.Farmer.Fragment.AaSettingFragment;
+import com.FarmPe.Farmer.Fragment.AskNandi;
 import com.FarmPe.Farmer.Fragment.Home_Menu_Fragment;
 import com.FarmPe.Farmer.Fragment.LookingForFragment;
 import com.FarmPe.Farmer.Fragment.NotificationFragment;
@@ -29,7 +30,7 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
 
 
    public static LinearLayout linear_bottom;
-    LinearLayout linear_home,linear_mailbox,noti_layout,profile_layout;
+    LinearLayout linear_home,linear_mailbox,noti_layout,profile_layout,ask_nandi_layout;
    public static TextView mail_text,text_home,noti_text,profile_text;
     public static ImageView mail_icon,home_icon,noti_icon,profile_icon;
 
@@ -53,6 +54,7 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
          linear_home = findViewById(R.id.linear_home);
          linear_bottom = findViewById(R.id.linear_bottom);
          linear_mailbox = findViewById(R.id.linear_mailbox);
+         ask_nandi_layout = findViewById(R.id.ask_nandi_layout);
          noti_layout = findViewById(R.id.noti_layout);
          profile_layout = findViewById(R.id.profile_layout);
          mail_text = findViewById(R.id.mail_text);
@@ -169,6 +171,21 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
 
             }
         });
+
+        ask_nandi_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                selectedFragment = AskNandi.newInstance();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_menu, selectedFragment);
+                transaction.addToBackStack("ask_nandi");
+                transaction.commit();
+
+            }
+        });
+
+
 
 
 

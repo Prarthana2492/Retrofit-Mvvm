@@ -22,7 +22,7 @@
             android:id="@+id/frame_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="87"
+            android:layout_weight="90"
             android:layout_gravity="top"
             tools:background="#FFF" />
 
@@ -54,9 +54,10 @@
             android:layout_height="wrap_content"
             android:weightSum="100"
             android:background="#fff"
+            android:gravity="center"
             android:layout_marginBottom="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="bottom"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_vertical"
             android:orientation="horizontal"
             >
 
@@ -123,6 +124,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ask_nandi_layout"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="20"

@@ -60,6 +60,7 @@ public class ChangeLanguageFragment extends Fragment {
         lang_title=view.findViewById(R.id.lang_title);
         continue_lang=view.findViewById(R.id.continue_lang);
         recyclerView =view.findViewById(R.id.recycler_view1);
+
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -79,7 +80,6 @@ public class ChangeLanguageFragment extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
 
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 

@@ -290,8 +290,8 @@ public class AaAccountFragment extends Fragment {
 
 
 
-
                         } else if(userInputedt.length()<6){
+
 
                             InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
                             inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
@@ -314,10 +314,11 @@ public class AaAccountFragment extends Fragment {
                             snackbar.show();
                             mBottomSheetDialog.show();
 
-
                             //Toast.makeText(getActivity(), "Password Should Be Minimum 12 Characters", Toast.LENGTH_SHORT).show();
 
+
                         }else{
+
 
                             save_password();
                         }
@@ -461,6 +462,8 @@ public class AaAccountFragment extends Fragment {
                                     tv.setGravity(Gravity.CENTER_HORIZONTAL);
                                 }
                                 snackbar.show();
+
+
                                 mBottomSheetDialog.dismiss();
                                 selectedFragment = AaAccountFragment.newInstance();
                                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -496,12 +499,14 @@ public class AaAccountFragment extends Fragment {
                     }
                 },
 
+
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(getActivity(),error.toString(), Toast.LENGTH_LONG).show();
                     }
                 }){
+
             @Override
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<String, String>();

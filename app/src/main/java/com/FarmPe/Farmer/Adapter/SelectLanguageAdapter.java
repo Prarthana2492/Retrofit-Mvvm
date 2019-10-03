@@ -96,7 +96,7 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
 
         lng_list = products.getVendor();
 
-        if (selected_position == position) {
+        if (lng_list.equals(sessionManager.getRegId("language_name"))) {
 
             holder.lang_txt.setChecked(true);
             holder.lang_txt.setTypeface(null, Typeface.BOLD);
@@ -168,7 +168,6 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
 //            }
 //        }
 
-
     }
 
     private void getLang(int id) {
@@ -202,6 +201,7 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
                     }
                 }
             });
+
 
         }catch (Exception e){
             e.printStackTrace();

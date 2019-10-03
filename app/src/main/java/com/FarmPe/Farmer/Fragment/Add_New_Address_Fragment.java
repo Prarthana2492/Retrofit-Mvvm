@@ -89,18 +89,18 @@ public class  Add_New_Address_Fragment extends Fragment {
     HoblisAdapter hoblisAdapter;
     VillageAdapter villageAdapter;
 
-    LinearLayout back_feed,state,district,tehsil,block,village,adrss_type_linear;
+    LinearLayout back_feed,state,district,tehsil,village,adrss_type_linear;
     public static DrawerLayout drawer,main_layout;
 
       String state_id,district_id,tehsil_id,hobli_id;
     TextView toolbar_titletxt,current_loc,ortext,norecords;
-    JSONArray jsonArray,state_array,tal_array,hobli_array,village_array;
+    JSONArray jsonArray,state_array,tal_array,hobli_array;
     StateBean stateBean;
-    String new_add_toast;
-    EditText search,add_type;
+
+    EditText search;
     public static TextView save_1;
     public static String search_status="status";
-    public static TextView add_new_address;
+
     Fragment selectedFragment = null;
     String selected_addresstype;
     JSONObject lngObject;
@@ -111,7 +111,6 @@ public class  Add_New_Address_Fragment extends Fragment {
     String status,message;
     String Id;
     SessionManager sessionManager;
-    public static Dialog grade_dialog;
     int selected_id_time;
 
 
@@ -125,9 +124,10 @@ public class  Add_New_Address_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.select_your_region_layout, container, false);
 
+
         getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
-       // HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
 
          select_address = view.findViewById(R.id.add_type);
          name = view.findViewById(R.id.full_name);
@@ -138,65 +138,66 @@ public class  Add_New_Address_Fragment extends Fragment {
          street_name = view.findViewById(R.id.colny_street);
          mobile_edit = view.findViewById(R.id.mobile_edit);
          pincode_edittxt = view.findViewById(R.id.pincode_edittxt);
-       // landmrk = view.findViewById(R.id.landmrk);
+
          search = view.findViewById(R.id.search);
-        // main_layout = view.findViewById(R.id.drawer_layout_op);
-        state_txt = view.findViewById(R.id.state_txt);
-        district_txt = view.findViewById(R.id.district_txt);
-        tehsil_txt = view.findViewById(R.id.tehsil_txt);
-        // block_txt = view.findViewById(R.id.block_txt);
-        village_txt = view.findViewById(R.id.village_txt);
-        address_type = view.findViewById(R.id.address_type);
-        adrss_type_linear = view.findViewById(R.id.adrss_type_linear);
-        edit_state = view.findViewById(R.id.ed_state);
-        edit_districr = view.findViewById(R.id.ed_dstrt);
-        edit_village = view.findViewById(R.id.ed_vill);
-        // add_type = view.findViewById(R.id.add_type);
-        ortext = view.findViewById(R.id.ortext);
-        save_1 = view.findViewById(R.id.save_1);
-        recyclerView = view.findViewById(R.id.recycler_view);
-        drawer = (DrawerLayout) view.findViewById(R.id.drawer_layout_op);
-        state = view.findViewById(R.id.state_1);
-        // city = view.findViewById(R.id.city_1);
-        district = view.findViewById(R.id.district_1);
-        tehsil = view.findViewById(R.id.tehsil_1);
-        //  block = view.findViewById(R.id.block_1);
-        village = view.findViewById(R.id.village_1);
-        name_txt = view.findViewById(R.id.name_txt);
-        cancel_add = view.findViewById(R.id.cancel_add);
 
-        linearLayout = view.findViewById(R.id.linear_layout);
-        norecords = view.findViewById(R.id.norecords);
+         state_txt = view.findViewById(R.id.state_txt);
+         district_txt = view.findViewById(R.id.district_txt);
+         tehsil_txt = view.findViewById(R.id.tehsil_txt);
 
-        toolbar_titletxt=view.findViewById(R.id.toolbar_title);
+         village_txt = view.findViewById(R.id.village_txt);
+         address_type = view.findViewById(R.id.address_type);
+         adrss_type_linear = view.findViewById(R.id.adrss_type_linear);
+         edit_state = view.findViewById(R.id.ed_state);
+         edit_districr = view.findViewById(R.id.ed_dstrt);
+         edit_village = view.findViewById(R.id.ed_vill);
+
+         ortext = view.findViewById(R.id.ortext);
+         save_1 = view.findViewById(R.id.save_1);
+         recyclerView = view.findViewById(R.id.recycler_view);
+         drawer = (DrawerLayout) view.findViewById(R.id.drawer_layout_op);
+         state = view.findViewById(R.id.state_1);
+         district = view.findViewById(R.id.district_1);
+         tehsil = view.findViewById(R.id.tehsil_1);
+         village = view.findViewById(R.id.village_1);
+         name_txt = view.findViewById(R.id.name_txt);
+         cancel_add = view.findViewById(R.id.cancel_add);
+
+         linearLayout = view.findViewById(R.id.linear_layout);
+         norecords = view.findViewById(R.id.norecords);
+
+         toolbar_titletxt=view.findViewById(R.id.toolbar_title);
 
 
-        System.out.println("selecteddddd_iddd"+selected_id_time);
-        name.setText(getArguments().getString("Addr_name"));
-        System.out.println("selecteddddd_idddnz"+getArguments().getString("Addr_name"));
-        mobile.setText(getArguments().getString("Addr_mobile"));
-        pincode_no.setText(getArguments().getString("Addr_pincode"));
-         house_numb.setText(getArguments().getString("Addr_Houseno"));
-        street_name.setText(getArguments().getString("Addr_Street"));
+         System.out.println("selecteddddd_iddd"+selected_id_time);
+         name.setText(getArguments().getString("Addr_name"));
+         System.out.println("selecteddddd_idddnz"+getArguments().getString("Addr_name"));
+         mobile.setText(getArguments().getString("Addr_mobile"));
+         pincode_no.setText(getArguments().getString("Addr_pincode"));
+          house_numb.setText(getArguments().getString("Addr_Houseno"));
+         street_name.setText(getArguments().getString("Addr_Street"));
+
        //   landmrk.setText(getArguments().getString("Addr_landmark"));
         //city.setText(getArguments().getString("Addr_city"));
 
-        state_txt.setText(getArguments().getString("Addr_state"));
-        district_txt.setText(getArguments().getString("Addr_district"));
-        tehsil_txt.setText(getArguments().getString("Addr_taluk"));
+          state_txt.setText(getArguments().getString("Addr_state"));
+          district_txt.setText(getArguments().getString("Addr_district"));
+           tehsil_txt.setText(getArguments().getString("Addr_taluk"));
         // block_txt.setText(getArguments().getString("Addr_hobli"));
-        village_txt.setText(getArguments().getString("Addr_hobli"));
-        address_type.setText(getArguments().getString("Addr_pickup_from"));
-        selected_addresstype = getArguments().getString("Addr_pickup_from");
+          village_txt.setText(getArguments().getString("Addr_hobli"));
+          address_type.setText(getArguments().getString("Addr_pickup_from"));
+          selected_addresstype = getArguments().getString("Addr_pickup_from");
 
-        name.setFilters(new InputFilter[] { EMOJI_FILTER,new InputFilter.LengthFilter(30)});
-        street_name.setFilters(new InputFilter[] {EMOJI_FILTER,new InputFilter.LengthFilter(50)});
+
+          name.setFilters(new InputFilter[] { EMOJI_FILTER,new InputFilter.LengthFilter(30)});
+          street_name.setFilters(new InputFilter[] {EMOJI_FILTER,new InputFilter.LengthFilter(50)});
+
 
         setupUI(drawer);
 
 
                  state_id = StateApdater.stateid;
-                 district_id = DistrictAdapter.districtid;
+               district_id = DistrictAdapter.districtid;
                  tehsil_id = TalukAdapter.talukid;
                  hobli_id = HoblisAdapter.hobliid;
 
@@ -249,8 +250,9 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
                 }else   if (getArguments().getString("navigation_from").equals("MAP_FRAGMENT")){
+
                     FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("currentlocation", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    fm.popBackStack("map_location", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 }
 
                 else if(getArguments().getString("navigation_from").equals("your_add")){
@@ -310,6 +312,12 @@ public class  Add_New_Address_Fragment extends Fragment {
                         fm.popBackStack("your_add", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 
+                    }else   if (getArguments().getString("navigation_from").equals("MAP_FRAGMENT")){
+
+                        FragmentManager fm = getActivity().getSupportFragmentManager();
+                        fm.popBackStack("map_location", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+
                     }else if(getArguments().getString("navigation_from").equals("SETTING_FRAG")){
 
                         FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -355,6 +363,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
+
                 }else if(getArguments().getString("navigation_from").equals("your_add")){
 
                     FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -366,6 +375,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                     fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 
+
                 }else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")){
 
 
@@ -374,6 +384,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
+
 
                 }else if(getArguments().getString("navigation_from").equals("edit_lokng_frg")) {
 

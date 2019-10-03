@@ -66,6 +66,7 @@ public class AaSettingFragment extends Fragment {
 
 
         sub_lang.setText(sessionManager.getRegId("language_name"));
+
         Resources resources = getResources();
         PackageManager pm = getActivity().getPackageManager();
         Intent sendIntent = new Intent(Intent.ACTION_SEND);

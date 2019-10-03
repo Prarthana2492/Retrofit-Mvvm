@@ -235,7 +235,7 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
             public void onClick(View view) {
                 model_id = products.getId();
                 Bundle bundle=new Bundle();
-                bundle.putString("navigation_from","fav");
+                bundle.putString("navigation_from","fav_fragment");
                 bundle.putString("MOD_ID",model_id);
                 bundle.putString("LOOKING_ID",products.getLookingForDetailsId());
 
@@ -243,7 +243,7 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
                 selectedFragment.setArguments(bundle);
-                transaction.addToBackStack("fourth");
+                transaction.addToBackStack("favo_req");
                 transaction.commit();
             }
         });

@@ -21,9 +21,10 @@ import com.FarmPe.Farmer.SessionManager;
 
 import org.json.JSONObject;
 
-public class AskNandi extends Fragment {
-    Fragment selectedFragment;
 
+public class AskNandi extends Fragment {
+
+    Fragment selectedFragment;
     LinearLayout back_feed;
     public static String status;
     private ArrayAdapter<AgriBean> arrayAdapter;
@@ -45,15 +46,16 @@ public class AskNandi extends Fragment {
 
         back_feed=view.findViewById(R.id.back_feed);
         privacypolicytxt=view.findViewById(R.id.toolbar_title);
-        privacypolicytxt.setText("View Brochure");
+        privacypolicytxt.setText("Ask Nandi");
 
-        brochure = getArguments().getString("brochur_status");
+      //  brochure = getArguments().getString("brochur_status");
 
         terms=view.findViewById(R.id.web_terms);
 
         terms.getSettings().setJavaScriptEnabled(true);
         terms.getSettings().setPluginState(WebSettings.PluginState.ON);
         terms.setWebViewClient(new Callback());
+
         // terms.loadUrl("http://docs.google.com/gview?embedded=true&url=" + brochure);
         terms.loadUrl("https://webchat.botframework.com/embed/OxkartEn?s=VQ69g0k8DXo.AKCjyyk5ccMtFADrld2_Y6lA2vkFV7WIBhKzC492zN4");
 
@@ -73,7 +75,8 @@ public class AskNandi extends Fragment {
 
 
                     FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("pdf", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    fm.popBackStack("ask_nandi", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
                     return true;
                 }
                 return false;
@@ -81,13 +84,12 @@ public class AskNandi extends Fragment {
         });
 
 
-
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 FragmentManager fm = getActivity().getSupportFragmentManager();
-                fm.popBackStack("pdf", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fm.popBackStack("ask_nandi", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
             }
         });

@@ -236,10 +236,13 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
                 System.out.println("ffdgfdgvdreftrg" + products.getId());
                 looking_for_id = AddBrandFragment.request_looking_id;
 
+                Bundle bundle = new Bundle();
+                bundle.putString("navigation_from","model_frg");
                 selectedFragment = MapFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
-                transaction.addToBackStack("currentlocation");
+                selectedFragment.setArguments(bundle);
+                transaction.addToBackStack("model_page");
                 transaction.commit();
 
             /*    Bundle bundle=new Bundle();
@@ -253,6 +256,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
         transaction.replace(R.id.frame_layout, selectedFragment);
         transaction.addToBackStack("fourth");
         transaction.commit();*/
+
             }
         });
 

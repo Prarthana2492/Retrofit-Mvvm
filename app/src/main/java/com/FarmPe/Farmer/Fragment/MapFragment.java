@@ -122,9 +122,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("currentlocation", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    if(getArguments().getString("navigation_from").equals("model_frg")){
 
+                        FragmentManager fm = getActivity().getSupportFragmentManager();
+                        fm.popBackStack("model_page", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                    }else if(getArguments().getString("navigation_from").equals("fav_fragment")) {
+
+                        FragmentManager fm = getActivity().getSupportFragmentManager();
+                        fm.popBackStack("favo_req", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    }
                 }
                 return false;
             }
@@ -135,8 +142,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         b_arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fm = getActivity().getSupportFragmentManager();
-                fm.popBackStack("currentlocation", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                if(getArguments().getString("navigation_from").equals("model_frg")){
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("model_page", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                }else if(getArguments().getString("navigation_from").equals("fav_fragment")) {
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("favo_req", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                }
             }
         });
 
@@ -155,7 +170,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                     selectedFragment = Add_New_Address_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     selectedFragment.setArguments(bundle);
-                    transaction.addToBackStack("currentlocation");
+                    transaction.addToBackStack("map_location");
                     transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
 
@@ -248,7 +263,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                             addressbook.setText("Select From Address Book");
 
                         }
-
 
 
 

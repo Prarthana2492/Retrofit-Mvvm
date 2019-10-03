@@ -202,7 +202,8 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
 
         forgot_pass.setTypeface(ResourcesCompat.getFont(getApplicationContext(), R.font.segoeui));
-       // remember_me.setTypeface(ResourcesCompat.getFont(getApplicationContext(), R.font.segoeui));
+
+        // remember_me.setTypeface(ResourcesCompat.getFont(getApplicationContext(), R.font.segoeui));
 
 
        // forgot_pass.setTypeface(null, Typeface.BOLD);
@@ -397,6 +398,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
             @Override
             public void onClick(View v) {
 
+
 //                if (change_lang.getText().toString().equals("English")){
 //                    isEng = true;
 //                    Log.d("GGGGGGGG", "Here: "+LoginActivity_new.isEng);
@@ -405,6 +407,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 //                    isEng = false;
 //                    Log.d("GGGGGGGG", "Here: "+LoginActivity_new.isEng);
 //                }
+
 
                 mobile_string=mobile_no.getText().toString();
                 mob_no =loc_text+ mobile_no.getText().toString();
