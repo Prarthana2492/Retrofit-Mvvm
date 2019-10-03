@@ -93,9 +93,9 @@ public class  Add_New_Address_Fragment extends Fragment {
     public static DrawerLayout drawer,main_layout;
 
       String state_id,district_id,tehsil_id,hobli_id;
-    TextView toolbar_titletxt,current_loc,ortext,norecords;
-    JSONArray jsonArray,state_array,tal_array,hobli_array;
-    StateBean stateBean;
+      TextView toolbar_titletxt,current_loc,ortext,norecords;
+      JSONArray jsonArray,state_array,tal_array,hobli_array;
+     StateBean stateBean;
 
     EditText search;
     public static TextView save_1;
@@ -105,13 +105,15 @@ public class  Add_New_Address_Fragment extends Fragment {
     String selected_addresstype;
     JSONObject lngObject;
     LinearLayout linearLayout;
+
     public static TextView state_txt,district_txt,tehsil_txt,village_txt,block_txt,cancel_add;
-    String s_addtype,entername,entermno,inncrtmno,enterstreetad,enterpincode,selectstate,selectdistrict,selecttaluk,selecthobli,selectvillage,newaddressadded,addnotadded ;
-    public static EditText name,mobile,pincode_no,house_numb,street_name,select_address,landmrk,address_type,edit_state,edit_districr,pincode_edittxt,edit_village,name_txt,mobile_edit;
+    String s_addtype,entername,entermno,inncrtmno,enterstreetad,enterpincode,selectstate,selectdistrict,selecthobli,newaddressadded,addnotadded ;
+    public static EditText name,mobile,pincode_no,house_numb,street_name,select_address,address_type,edit_state,edit_districr,pincode_edittxt,edit_village,name_txt,mobile_edit;
     String status,message;
     String Id;
     SessionManager sessionManager;
     int selected_id_time;
+
 
 
     public static Add_New_Address_Fragment newInstance() {
@@ -127,7 +129,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
         getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+      //  HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
 
          select_address = view.findViewById(R.id.add_type);
          name = view.findViewById(R.id.full_name);
@@ -162,10 +164,8 @@ public class  Add_New_Address_Fragment extends Fragment {
          village = view.findViewById(R.id.village_1);
          name_txt = view.findViewById(R.id.name_txt);
          cancel_add = view.findViewById(R.id.cancel_add);
-
          linearLayout = view.findViewById(R.id.linear_layout);
          norecords = view.findViewById(R.id.norecords);
-
          toolbar_titletxt=view.findViewById(R.id.toolbar_title);
 
 
@@ -177,16 +177,16 @@ public class  Add_New_Address_Fragment extends Fragment {
           house_numb.setText(getArguments().getString("Addr_Houseno"));
          street_name.setText(getArguments().getString("Addr_Street"));
 
-       //   landmrk.setText(getArguments().getString("Addr_landmark"));
+         //landmrk.setText(getArguments().getString("Addr_landmark"));
         //city.setText(getArguments().getString("Addr_city"));
 
-          state_txt.setText(getArguments().getString("Addr_state"));
-          district_txt.setText(getArguments().getString("Addr_district"));
+           state_txt.setText(getArguments().getString("Addr_state"));
+           district_txt.setText(getArguments().getString("Addr_district"));
            tehsil_txt.setText(getArguments().getString("Addr_taluk"));
         // block_txt.setText(getArguments().getString("Addr_hobli"));
-          village_txt.setText(getArguments().getString("Addr_hobli"));
-          address_type.setText(getArguments().getString("Addr_pickup_from"));
-          selected_addresstype = getArguments().getString("Addr_pickup_from");
+           village_txt.setText(getArguments().getString("Addr_hobli"));
+           address_type.setText(getArguments().getString("Addr_pickup_from"));
+           selected_addresstype = getArguments().getString("Addr_pickup_from");
 
 
           name.setFilters(new InputFilter[] { EMOJI_FILTER,new InputFilter.LengthFilter(30)});
@@ -197,13 +197,12 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
                  state_id = StateApdater.stateid;
-               district_id = DistrictAdapter.districtid;
+                 district_id = DistrictAdapter.districtid;
                  tehsil_id = TalukAdapter.talukid;
                  hobli_id = HoblisAdapter.hobliid;
 
         sessionManager = new SessionManager(getActivity());
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(mLayoutManager);
+
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
@@ -577,12 +576,11 @@ public class  Add_New_Address_Fragment extends Fragment {
                     districtAdapter= new DistrictAdapter( districtBeanList,getActivity());
                     recyclerView.setAdapter(districtAdapter);
 
-
-
                     prepareDistricData();
 
 
                 }else{
+
                     Snackbar snackbar = Snackbar
                             .make(linearLayout, "Please Select State", Snackbar.LENGTH_LONG);
                     View snackbarView = snackbar.getView();
@@ -695,6 +693,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                     recyclerView.setAdapter(villageAdapter);
 
                     prepareHobliData();
+
 
                 }else {
 
@@ -862,6 +861,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
                 }
+
                 else {
 
                     InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -879,6 +879,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
             }
         });
+
 
         try {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
@@ -901,7 +902,6 @@ public class  Add_New_Address_Fragment extends Fragment {
             entername = lngObject.getString("Enteryourname");
             entermno = lngObject.getString("EnterPhoneNo");
             inncrtmno = lngObject.getString("Entervalidmobilenumber");
-
             enterstreetad = lngObject.getString("EnterStreetaddress");
 
             enterpincode = lngObject.getString("Enterpincode");
@@ -911,6 +911,7 @@ public class  Add_New_Address_Fragment extends Fragment {
             selecthobli = lngObject.getString("Selecthobli");
             newaddressadded = lngObject.getString("NewAddressaddedsuccessfully");
             addnotadded = lngObject.getString("YourAddressnotAdded");
+
 
         } catch (JSONException e) {
             e.printStackTrace();

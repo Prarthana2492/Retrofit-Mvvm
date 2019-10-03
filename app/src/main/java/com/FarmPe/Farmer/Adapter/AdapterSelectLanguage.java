@@ -40,7 +40,6 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
 
     public static int selected_position=0;
 
-
     public static CardView cardView;
     public AdapterSelectLanguage(Activity activity, List<SelectLanguageBean> moviesList) {
         this.productList = moviesList;
@@ -98,7 +97,9 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
             holder.lang_txt.setChecked(true);
             holder.lang_txt.setTypeface(null, Typeface.BOLD);
 
+
         }else{
+
 
             holder.lang_txt.setChecked(false);
             holder.lang_txt.setTypeface(null, Typeface.NORMAL);

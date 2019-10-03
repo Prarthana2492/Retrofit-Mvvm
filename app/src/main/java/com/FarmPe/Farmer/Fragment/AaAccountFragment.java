@@ -83,10 +83,12 @@ public class AaAccountFragment extends Fragment {
     String pickUPFrom;
     public static JSONArray get_address_array;
 
+
     public static AaAccountFragment newInstance() {
         AaAccountFragment fragment = new AaAccountFragment();
         return fragment;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -170,7 +172,12 @@ public class AaAccountFragment extends Fragment {
                             System.out.println("ggggggggggaaaaaaa"+result);
 
                             try{
+
                                 get_address_array = result.getJSONArray("UserAddressDetails");
+
+
+
+
 
                                 if(get_address_array.length()== 0){
 
@@ -182,6 +189,7 @@ public class AaAccountFragment extends Fragment {
                                     //   transaction.addToBackStack("HOME_FRAGMENT");
                                     transaction.replace(R.id.frame_menu, selectedFragment);
                                     transaction.commit();
+
 
 
                                 }else {
@@ -216,6 +224,7 @@ public class AaAccountFragment extends Fragment {
         change_pass_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.change_password_layout, null);
 
@@ -229,14 +238,11 @@ public class AaAccountFragment extends Fragment {
 
                  userInputedt.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
-
-
-
-                userInputedt.setVisibility(View.VISIBLE);
-                titleText.setText("Change password");
-                Log.d("liugekuyhg",""+titleText.getText().toString());
-                descriptionText.setText("Are you sure, you want to exit?");
-                descriptionText.setVisibility(View.GONE);
+                  userInputedt.setVisibility(View.VISIBLE);
+                 titleText.setText("Change password");
+                 Log.d("liugekuyhg",""+titleText.getText().toString());
+                 descriptionText.setText("Are you sure, you want to exit?");
+                 descriptionText.setVisibility(View.GONE);
 
 
                // userInputedt.setFilters(new InputFilter[]{EMOJI_FILTER, new InputFilter.LengthFilter(12)});
@@ -517,8 +523,9 @@ public class AaAccountFragment extends Fragment {
                 params.put("PhoneNo",sessionManager.getRegId("phone"));
                 params.put("Password",userInputedt.getText().toString());
                 Log.e(TAG,"jdfhjsfhj" + params);
-                return params;
-            }
+
+                    return params;
+        }
         };
 
         Volley.newRequestQueue(getActivity()).add(stringRequest);

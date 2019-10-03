@@ -13,8 +13,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="91"
+        android:layout_height="0dp"
+        android:layout_weight="92"
         android:fillViewport="true">
 
         <LinearLayout
@@ -25,12 +25,12 @@
             android:weightSum="100">
 
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 >
-
 
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbar"
@@ -618,6 +618,7 @@
                             android:maxLength="30"
                             android:layout_marginLeft="6dp"
                             android:editable="false"
+
                             android:paddingRight="10dp"
                             android:backgroundTint="#d3d3d3"
                             android:fontFamily="@font/segoeui"
@@ -641,6 +642,7 @@
                             />
 
                     </LinearLayout>
+
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -681,6 +683,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="90">
+
 
 
                         <EditText
@@ -837,6 +840,7 @@
                         android:layout_weight="100">
 
 
+
                         <EditText
                             android:id="@+id/pincode_edittxt"
                             android:layout_width="wrap_content"
@@ -851,7 +855,6 @@
                             android:backgroundTint="#d3d3d3"
                             android:fontFamily="@font/segoeui"
                             android:textColorHint="#000"/>
-
 
                         <EditText
                             android:id="@+id/pincode"
@@ -880,6 +883,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0.75dp"
                     android:layout_marginHorizontal="5dp"
+                    android:layout_marginBottom="20dp"
                     android:background="#dcdcdc"/>
 
             </LinearLayout>
@@ -888,21 +892,19 @@
     </ScrollView>
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="#FAFAFA"
+        android:layout_weight="8"
         android:orientation="vertical"
         >
-
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#e6e6e6"
             />
-
 
 
         <LinearLayout
@@ -927,6 +929,8 @@
                 android:paddingVertical="10dp"
                 android:paddingHorizontal="20dp"
                 />
+
+
 
             <TextView
                 android:id="@+id/save_1"

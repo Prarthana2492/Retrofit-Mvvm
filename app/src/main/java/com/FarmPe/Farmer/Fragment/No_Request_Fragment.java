@@ -30,6 +30,7 @@ public class No_Request_Fragment extends Fragment {
     Fragment selectedFragment = null;
     ImageView b_arrow;
 
+
     public static No_Request_Fragment newInstance() {
         No_Request_Fragment fragment = new No_Request_Fragment();
         return fragment;

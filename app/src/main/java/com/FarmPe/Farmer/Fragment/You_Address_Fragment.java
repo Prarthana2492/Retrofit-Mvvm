@@ -36,13 +36,13 @@ import java.util.ArrayList;
 public class You_Address_Fragment extends Fragment {
 
     Fragment selectedFragment;
-    TextView name,mobile_no,street_addrss,landmrk,pincode,add_new_address,select_address_type,filter;
-    EditText doc_number,doc_name;
+    TextView name,add_new_address,select_address_type,filter;
+
     private RecyclerView recyclerView;
     public static TextView address_list;
     LinearLayout back_feed;
     You_Address_Adapter mAdapter;
-    ImageView back_arrow;
+
     SessionManager sessionManager;
     public static String navigation_all;
     public static String item_list,address;
@@ -86,6 +86,7 @@ public class You_Address_Fragment extends Fragment {
         recyclerView = view.findViewById(R.id.recycler_2);
         //address_list= view.findViewById(R.id.items);
 
+
         toolbar_titletxt = view.findViewById(R.id.toolbar_title);
         filter = view.findViewById(R.id.filter_text);
         add_visible = view.findViewById(R.id.layoutt_lnr);
@@ -93,8 +94,6 @@ public class You_Address_Fragment extends Fragment {
         noadd_here = view.findViewById(R.id.text);
         add_adrs = view.findViewById(R.id.make_requesttttt);
         linearLayout = view.findViewById(R.id.linearLayout);
-
-
         noadd_here.setText("No Address here");
         add_adrs.setText("Add Address");
         sessionManager = new SessionManager(getActivity());
