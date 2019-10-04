@@ -81,7 +81,7 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
 
 
             name = view.findViewById(R.id.name1);
-            mobile_no= view.findViewById(R.id.mobile_no1);
+            //mobile_no= view.findViewById(R.id.mobile_no1);
             street_addrss= view.findViewById(R.id.street_address1);
             city_1= view.findViewById(R.id.city_1);
             edit_1= view.findViewById(R.id.edit_1);
@@ -124,34 +124,34 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
 
 
         holder.name.setText(products.getAdd_name());
-        holder.street_addrss.setText(products.getAdd_door_no());
-        holder.colony.setText(products.getAdd_street());
+        holder.street_addrss.setText(products.getAdd_door_no() + products.getAdd_street());
+       // holder.colony.setText(products.getAdd_street());
 
 
         if(products.getAdd_hobli().equals("")){
             System.out.println("hsfhhfdfhjhjhjhjhjhjhjhjhjhjhjhjhjhj");
 
-            holder.area_district.setText(products.getAdd_district()+","+products.getAdd_taluk());
+            holder.colony.setText(products.getAdd_district()+","+products.getAdd_taluk());
 
 
         }else{
 
-            holder.area_district.setText(products.getAdd_district()+","+products.getAdd_taluk()+","+products.getAdd_hobli());
+            holder.colony.setText(products.getAdd_district()+","+products.getAdd_taluk()+","+products.getAdd_hobli());
 
         }
 
 
 
         if(products.getAdd_pincode().equals("")){
-            holder.city_1.setText(products.getAdd_state());
+            holder.area_district.setText(products.getAdd_state()+" , " + "Phone No - " + products.getAdd_mobile());
 
         }else{
 
-            holder.city_1.setText(products.getAdd_state()+" - " + products.getAdd_pincode());
+            holder.area_district.setText(products.getAdd_state()+" - " + products.getAdd_pincode() +" , " + "Phone No - " + products.getAdd_mobile());
 
         }
 
-        holder.mobile_no.setText("Phone No - " + products.getAdd_mobile());
+      //  holder.mobile_no.setText("Phone No - " + products.getAdd_mobile());
         // holder.landmrk.setText(products.getAdd_landmark());
 
 

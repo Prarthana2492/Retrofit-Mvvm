@@ -67,6 +67,7 @@ public class ActivitySelectLang extends AppCompatActivity {
          Langauges();
 
 
+
         continue_lang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

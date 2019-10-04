@@ -10,6 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -32,24 +35,21 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
     Activity activity;
     Fragment selectedFragment;
     public static String looinkgId;
-    Date o_date;
-    //    SessionManager session;
+
+
     public static CardView cardView;
     public Home_Page_Request_Adapter(Activity activity,List< Request_Class_HomePage_Bean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
-//        session=new SessionManager(activity);
+
 
     }
-
-
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView pay_img;
         public TextView name;
-        // public TextView confirmbutton;
-        //public TextView accept;
+
           LinearLayout item_layout;
 
 
@@ -71,11 +71,10 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final  Request_Class_HomePage_Bean products = productList.get(position);
 
-     //  looking_id = products.getId();
-        //System.out.println("dfsfsfsaaa" + products.getId());
+
 
 
        holder.name.setText(products.getVeg_name());
@@ -92,6 +91,13 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
             @Override
             public void onClick(View v) {
 
+
+                v.clearAnimation();
+                Animation mAnimation = new AlphaAnimation(1, 0);
+                mAnimation.setInterpolator(new LinearInterpolator());
+                mAnimation.setRepeatMode(Animation.REVERSE);
+                holder.item_layout.startAnimation(mAnimation);
+
              //   AddFirstFragment.tracter_title = holder.name.getText().toString().toLowerCase().replace(" price","");
                 looinkgId = products.getId();
                 System.out.println("asaAAAA" + products.getId());
@@ -99,13 +105,14 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
 
                 Bundle bundle = new Bundle();
                 bundle.putString("request_status",looinkgId);
-
                 selectedFragment = AddBrandFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.addToBackStack("req_price");
                 selectedFragment.setArguments(bundle);
                 transaction.commit();
+
+
 
 //                for (int i = 0; i < productList.size(); i++) {
 //                    productList.get(i).setSelected(false);

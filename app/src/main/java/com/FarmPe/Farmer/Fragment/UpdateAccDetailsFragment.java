@@ -44,6 +44,7 @@ import android.widget.Toast;
 
 import com.FarmPe.Farmer.Activity.ForgotPasswordNew;
 import com.FarmPe.Farmer.Activity.LoginActivity;
+import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
 import com.FarmPe.Farmer.DB.DatabaseHelper;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -116,6 +117,7 @@ public class UpdateAccDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.update_acc_details, container, false);
        // getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        Status_bar_change_singleton.getInstance().color_change(getActivity());
         name_tick = view.findViewById(R.id.name_tick);
         phone_tick = view.findViewById(R.id.phone_tick);
         pass_tick = view.findViewById(R.id.pass_tick);

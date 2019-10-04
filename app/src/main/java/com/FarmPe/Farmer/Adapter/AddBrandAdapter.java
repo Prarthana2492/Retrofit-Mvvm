@@ -14,6 +14,9 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.view.textclassifier.SelectionEvent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -76,7 +79,7 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final AddTractorBean products = productList.get(position);
         brandId=products.getId();
         holder.prod_price.setText(products.getProd_name());
@@ -86,6 +89,13 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                v.clearAnimation();
+                Animation mAnimation = new AlphaAnimation(1, 0);
+                mAnimation.setInterpolator(new LinearInterpolator());
+                mAnimation.setRepeatMode(Animation.REVERSE);
+                holder.item.startAnimation(mAnimation);
 
 
 
@@ -145,9 +155,14 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
 //            }
 //        });
 
+
+//
+
+
         Glide.with(activity).load(products.getImage())
 
                 .thumbnail(0.5f)
+                .centerCrop()
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.image);

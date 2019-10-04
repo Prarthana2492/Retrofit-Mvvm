@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
+import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
 import com.FarmPe.Farmer.Adapter.SelectLanguageAdapter;
 import com.FarmPe.Farmer.Bean.SelectLanguageBean;
 import com.FarmPe.Farmer.R;
@@ -52,6 +53,8 @@ public class ChangeLanguageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.select_language_layout, container, false);
+
+        Status_bar_change_singleton.getInstance().color_change(getActivity());
 
 
         HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);

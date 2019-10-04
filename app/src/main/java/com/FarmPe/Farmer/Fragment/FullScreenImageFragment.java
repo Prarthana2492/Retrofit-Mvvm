@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
 import com.FarmPe.Farmer.G_Vision_Controller;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
@@ -67,6 +68,8 @@ LinearLayout back_feed;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_full_image, container, false);
+
+        Status_bar_change_singleton.getInstance().color_change(getActivity());
        //findViewBYID
         imgFullImage = (CircleImageView) view.findViewById(R.id.prod_imgg);
         cam = (CircleImageView) view.findViewById(R.id.iv_camera);

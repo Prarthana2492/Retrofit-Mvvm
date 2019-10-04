@@ -32,6 +32,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
+import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
 import com.FarmPe.Farmer.Urls;
@@ -94,7 +95,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.get_lat_long_map_layout, container, false);
 
-
+        Status_bar_change_singleton.getInstance().color_change(getActivity());
         HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
         displayLocationSettingsRequest(getActivity());
         resutText = (TextView) view.findViewById(R.id.curr_address);

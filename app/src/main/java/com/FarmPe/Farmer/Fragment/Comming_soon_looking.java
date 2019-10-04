@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 
 
 import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
+import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
 import com.FarmPe.Farmer.R;
 
 public class Comming_soon_looking extends Fragment {
@@ -30,7 +31,7 @@ public class Comming_soon_looking extends Fragment {
         View view = inflater.inflate(R.layout.comming_layout, container, false);
         backfeed= view.findViewById(R.id.back_feed1);
 
-
+        Status_bar_change_singleton.getInstance().color_change(getActivity());
 
         HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
         view.setFocusableInTouchMode(true);
@@ -41,6 +42,7 @@ public class Comming_soon_looking extends Fragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+
 
 
                     selectedFragment = Home_Menu_Fragment.newInstance();

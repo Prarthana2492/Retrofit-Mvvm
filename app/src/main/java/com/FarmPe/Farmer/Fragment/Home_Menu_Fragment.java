@@ -26,6 +26,7 @@ import android.widget.TextView;
 
 
 import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
+import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
 import com.FarmPe.Farmer.Adapter.Home_Page_Lookinfor_Adapter;
 
 import com.FarmPe.Farmer.Adapter.Home_Page_Request_Adapter;
@@ -44,12 +45,13 @@ public class Home_Menu_Fragment extends Fragment  {
     private Home_Page_Request_Adapter mAdapter;
     //  private Home_Page_Lookinfor_Adapter mAdapter2;
     boolean doubleBackToExitPressedOnce = false;
-    LinearLayout linearLayout;
+    LinearLayout linearLayout,dealer_linear_layout,offers_linear_layout,book_nw_linear,search_linear;
     Fragment selectedFragment;
     ImageView  legal_for,bussiness_for,consultancy_look,more_icon;
 
     public static TabLayout tabLayout;
     private ViewPager viewPager;
+
 
 
     public static Home_Menu_Fragment newInstance() {
@@ -62,9 +64,14 @@ public class Home_Menu_Fragment extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home_page_layout, container, false);
 
+        Status_bar_change_singleton.getInstance().home_change(getActivity());
 
         recyclerView = view.findViewById(R.id.recycler_view1);
         linearLayout = view.findViewById(R.id.linearLayout);
+        dealer_linear_layout = view.findViewById(R.id.dealer_linear_layout);
+        offers_linear_layout = view.findViewById(R.id.offers_linear_layout);
+        book_nw_linear = view.findViewById(R.id.book_nw_linear);
+        search_linear = view.findViewById(R.id.search_layout);
 
 //        legal_for = view.findViewById(R.id.legal_for);
 //        bussiness_for = view.findViewById(R.id.bussiness_for);
@@ -190,59 +197,63 @@ public class Home_Menu_Fragment extends Fragment  {
         });
 
 
-//        consultancy_look.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                selectedFragment = Comming_soon_looking.newInstance();
-//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.frame_menu, selectedFragment);
-//                transaction.addToBackStack("home_page");
-//                transaction.commit();
-//
-//            }
-//        });
-//
-//        bussiness_for.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                selectedFragment = Comming_soon_looking.newInstance();
-//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.frame_menu, selectedFragment);
-//                transaction.addToBackStack("home_page");
-//                transaction.commit();
-//
-//            }
-//        });
-//
-//
-//        legal_for.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                selectedFragment = Comming_soon_looking.newInstance();
-//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.frame_menu, selectedFragment);
-//                transaction.addToBackStack("home_page");
-//                transaction.commit();
-//
-//            }
-//        });
-//
-//
-//        more_icon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                selectedFragment = Comming_soon_looking.newInstance();
-//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.frame_menu, selectedFragment);
-//                transaction.addToBackStack("home_page");
-//                transaction.commit();
-//
-//            }
-//        });
+        book_nw_linear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                selectedFragment = Comming_soon_looking.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_menu, selectedFragment);
+                transaction.addToBackStack("home_page");
+                transaction.commit();
+
+            }
+        });
+
+
+
+
+        offers_linear_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                selectedFragment = Comming_soon_looking.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_menu, selectedFragment);
+                transaction.addToBackStack("home_page");
+                transaction.commit();
+
+            }
+        });
+
+
+        dealer_linear_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                selectedFragment = Comming_soon_looking.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_menu, selectedFragment);
+                transaction.addToBackStack("home_page");
+                transaction.commit();
+
+            }
+        });
+
+
+        search_linear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                selectedFragment = Comming_soon_looking.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_menu, selectedFragment);
+                transaction.addToBackStack("home_page");
+                transaction.commit();
+
+            }
+        });
+
 
         return view;
     }

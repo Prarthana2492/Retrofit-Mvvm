@@ -43,7 +43,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="1dp"
                 android:layout_marginLeft="10dp">
 
 
@@ -81,22 +81,9 @@
                     android:textColor="@color/dot_dark_screen1"
                     android:text="Area District"/>
 
-                <TextView
-                    android:id="@+id/city_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="@color/dot_dark_screen1"
-                    android:text="State,Pincode"/>
 
 
-                <TextView
-                    android:id="@+id/mobile_no1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="@color/dot_dark_screen1"
-                    android:text="Phone Number - 7895632412"/>
+
 
 
             </LinearLayout>

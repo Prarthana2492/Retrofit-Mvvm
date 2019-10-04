@@ -44,6 +44,7 @@ import android.widget.TextView;
 
 
 import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
+import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
 import com.FarmPe.Farmer.Adapter.AddFirstAdapter;
 import com.FarmPe.Farmer.Adapter.DistrictAdapter;
 import com.FarmPe.Farmer.Adapter.DistrictAdapter1;
@@ -125,6 +126,8 @@ public class  Add_New_Address_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.select_your_region_layout, container, false);
+
+        Status_bar_change_singleton.getInstance().color_change(getActivity());
 
 
         getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);

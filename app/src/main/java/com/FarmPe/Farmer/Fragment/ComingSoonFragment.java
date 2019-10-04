@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 
+import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
 import com.FarmPe.Farmer.R;
 
 public class ComingSoonFragment extends Fragment {
@@ -28,7 +29,7 @@ public class ComingSoonFragment extends Fragment {
         backfeed1= view.findViewById(R.id.back_feed1);
 
 
-
+        Status_bar_change_singleton.getInstance().color_change(getActivity());
 
 
         backfeed1.setOnClickListener(new View.OnClickListener() {

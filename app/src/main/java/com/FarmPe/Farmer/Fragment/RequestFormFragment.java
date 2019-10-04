@@ -22,6 +22,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
 import com.FarmPe.Farmer.Adapter.AddFirstAdapter;
 //import com.FarmPe.Farmer.Adapter.AddHpAdapter;
 import com.FarmPe.Farmer.Adapter.AddModelAdapter;
@@ -79,6 +80,8 @@ public class RequestFormFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = getView() != null ? getView() :
                 inflater.inflate(R.layout.request_form, container, false);
+
+        Status_bar_change_singleton.getInstance().color_change(getActivity());
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
         b_arrow=view.findViewById(R.id.b_arrow);

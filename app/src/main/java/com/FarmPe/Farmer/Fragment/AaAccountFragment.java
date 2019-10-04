@@ -41,6 +41,7 @@ import android.widget.Toast;
 
 
 import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
+import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
 import com.FarmPe.Farmer.DB.DatabaseHelper;
 import com.FarmPe.Farmer.G_Vision_Controller;
 import com.FarmPe.Farmer.R;
@@ -94,6 +95,8 @@ public class AaAccountFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.a_a_acount_layout, container, false);
 
+        Status_bar_change_singleton.getInstance().color_change(getActivity());
+
         backfeed = view.findViewById(R.id.back_feed);
         acc_info_lay = view.findViewById(R.id.acc_info_lay);
         change_pass_lay = view.findViewById(R.id.change_pass_lay);
@@ -107,7 +110,7 @@ public class AaAccountFragment extends Fragment {
 
         sessionManager = new SessionManager(getActivity());
 
-        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
 
 
 

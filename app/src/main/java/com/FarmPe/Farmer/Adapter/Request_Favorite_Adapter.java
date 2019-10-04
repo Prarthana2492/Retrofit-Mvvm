@@ -80,7 +80,7 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
 
             brand_name=view.findViewById(R.id.brand_name);
             model=view.findViewById(R.id.model);
-            hp_power=view.findViewById(R.id.hp_power);
+           // hp_power=view.findViewById(R.id.hp_power);
             image=view.findViewById(R.id.imageff);
             select=view.findViewById(R.id.selectt);
             brochure=view.findViewById(R.id.brochure);
@@ -117,23 +117,23 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
         String steering = products.getSteering()+",";
         String clutch_type=products.getClutch_type()+",";
         String transmission_type= products.getTransmission_type()+",";
-        String horse_power= products.getHorse_power();
+       // String horse_power= products.getHorse_power();
 
 
         if (products.getSteering().equals("")){
             steering=" ";
         } if (products.getClutch_type().equals("")){
             clutch_type=" ";
-        } if (products.getTransmission_type().equals("")){
-            transmission_type=" ";
-        }if (products.getHorse_power().equals("")){
-            horse_power=" ";
-        }
-        if (products.getDrive_type().equals("")){
+        } if (products.getTransmission_type().equals("")) {
+            transmission_type = " ";
+//        }if (products.getHorse_power().equals("")){
+//            horse_power=" ";
+//        }
+        } if (products.getDrive_type().equals("")){
             drive_type=" ";
         }
 
-        holder.hp_power.setText(drive_type+steering+clutch_type+transmission_type+horse_power)   ;
+       // holder.hp_power.setText(drive_type+steering+clutch_type+transmission_type+horse_power)   ;
        // holder.hp_power.setText(products.getDrive_type()+ " , " + products.getSteering()+ " , " + products.getHorse_power() + " , " + products.getClutch_type()+ " , " + products.getTransmission_type());
 
         System.out.println("fhjhgf" + products.getPdf_brochure());

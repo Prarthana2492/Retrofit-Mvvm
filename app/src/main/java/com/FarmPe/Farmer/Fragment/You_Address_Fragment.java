@@ -20,6 +20,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
 import com.FarmPe.Farmer.Adapter.You_Address_Adapter;
 import com.FarmPe.Farmer.Bean.Add_New_Address_Bean;
 import com.FarmPe.Farmer.R;
@@ -39,14 +41,14 @@ public class You_Address_Fragment extends Fragment {
     TextView name,add_new_address,select_address_type,filter;
 
     private RecyclerView recyclerView;
-    public static TextView address_list;
+
     LinearLayout back_feed;
     You_Address_Adapter mAdapter;
 
     SessionManager sessionManager;
     public static String navigation_all;
     public static String item_list,address;
-   public static LinearLayout linearLayout;
+    public static LinearLayout linearLayout;
 
     TextView toolbar_titletxt,noadd_here,add_adrs;
     JSONObject lngObject;
@@ -70,6 +72,7 @@ public class You_Address_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.address_recyc_layout, container, false);
+        Status_bar_change_singleton.getInstance().color_change(getActivity());
       //  getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
 

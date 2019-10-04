@@ -17,6 +17,9 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -80,7 +83,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
             brand_name=view.findViewById(R.id.brand_name);
             model=view.findViewById(R.id.model);
-            hp_power=view.findViewById(R.id.hp_power);
+           // hp_power=view.findViewById(R.id.hp_power);
             image=view.findViewById(R.id.imageff);
             select=view.findViewById(R.id.selectt);
             brochure=view.findViewById(R.id.brochure);
@@ -131,7 +134,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
         String steering = products.getSteering()+",";
         String clutch_type=products.getClutch_type()+",";
         String transmission_type= products.getTransmission_type()+",";
-        String horse_power= products.getHorse_power();
+     //   String horse_power= products.getHorse_power();
 
 
 
@@ -139,16 +142,16 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
             steering=" ";
         } if (products.getClutch_type().equals("")){
             clutch_type=" ";
-        } if (products.getTransmission_type().equals("")){
-            transmission_type=" ";
-        }if (products.getHorse_power().equals("")){
-            horse_power=" ";
-        }
-        if (products.getDrive_type().equals("")){
+        } if (products.getTransmission_type().equals("")) {
+            transmission_type = " ";
+//        }if (products.getHorse_power().equals("")){
+//            horse_power=" ";
+//        }
+        }  if (products.getDrive_type().equals("")){
             drive_type=" ";
         }
 
-             holder.hp_power.setText(drive_type+steering+clutch_type+transmission_type+horse_power);
+          //   holder.hp_power.setText(drive_type+steering+clutch_type+transmission_type+horse_power);
 
 
 
@@ -231,6 +234,14 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
         holder.select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
+                view.clearAnimation();
+                Animation mAnimation = new AlphaAnimation(1, 0);
+                mAnimation.setInterpolator(new LinearInterpolator());
+                mAnimation.setRepeatMode(Animation.REVERSE);
+                holder.select.startAnimation(mAnimation);
 
                 model_id = products.getId();
                 System.out.println("ffdgfdgvdreftrg" + products.getId());

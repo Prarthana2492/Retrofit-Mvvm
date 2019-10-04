@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 
 
 import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
+import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
 import com.FarmPe.Farmer.R;
 
 public class Comming_soon_farms extends Fragment {
@@ -30,6 +31,8 @@ public class Comming_soon_farms extends Fragment {
         backfeed= view.findViewById(R.id.back_feed1);
         backfeed.setVisibility(View.GONE);
 
+
+        Status_bar_change_singleton.getInstance().color_change(getActivity());
         HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
 
         view.setFocusableInTouchMode(true);

@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
+import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
 import com.FarmPe.Farmer.Bean.FarmsImageBean;
 import com.FarmPe.Farmer.R;
 
@@ -48,7 +49,7 @@ public class Preview_Edit_Looking_Fragment extends Fragment {
      public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.edit_request_layout, container, false);
         // getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-
+         Status_bar_change_singleton.getInstance().color_change(getActivity());
          HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
 
 

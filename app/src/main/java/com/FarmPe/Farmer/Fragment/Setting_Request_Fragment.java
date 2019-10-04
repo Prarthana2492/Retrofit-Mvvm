@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.FarmPe.Farmer.Activity.LandingPageActivity;
+import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
 import com.FarmPe.Farmer.Urls;
@@ -52,7 +53,7 @@ public class Setting_Request_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile_request_layout, container, false);
-
+        Status_bar_change_singleton.getInstance().color_change(getActivity());
 
         make_requst=view.findViewById(R.id.make_requst);
         request_favo=view.findViewById(R.id.request_favo);

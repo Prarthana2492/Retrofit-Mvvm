@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
 import com.FarmPe.Farmer.Bean.AgriBean;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
@@ -61,6 +62,7 @@ public class ReferAndEarncopy extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.refer_n_earn, container, false);
         back_feed=view.findViewById(R.id.back_feed);
+        Status_bar_change_singleton.getInstance().color_change(getActivity());
        // wallet_balance=view.findViewById(R.id.wallet_blnc);
        // referal_code=view.findViewById(R.id.refer_code);
         whatsapp=view.findViewById(R.id.whatsapp);

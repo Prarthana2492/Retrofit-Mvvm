@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="370dp"
     xmlns:card_view="http://schemas.android.com/tools"
     android:id="@+id/linear_looking_main"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -107,7 +107,7 @@
                     android:layout_marginLeft="10dp"
                     android:text="Tracter Price"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:textColor="#000"
                     android:textSize="14dp"
                     android:textStyle="bold" />
@@ -136,7 +136,7 @@
                      android:weightSum="20"
                      android:gravity="bottom"
                      android:layout_gravity="bottom"
-                     android:layout_marginTop="15dp">
+                    >
 
 
                   <TextView
@@ -151,7 +151,6 @@
                       android:layout_gravity="center_vertical"
                       android:drawableLeft="@drawable/ic_file_grey"
                       android:textStyle="normal"
-                      android:layout_marginTop="5dp"
                       android:layout_marginLeft="10dp"
                       android:padding="10dp"
                       android:textSize="14dp" />
@@ -164,8 +163,7 @@
                     android:layout_weight="10"
                     android:background="@drawable/border_red2"
                     android:drawableLeft="@drawable/snowflakes"
-                    android:paddingHorizontal="15dp"
-                    android:paddingVertical="7dp"
+                    android:paddingHorizontal="14dp"
                     android:text="   Select"
                     android:visibility="gone"
                     android:gravity="center_vertical"
@@ -174,7 +172,6 @@
                     android:textSize="14dp"
                     android:textStyle="bold"
                     android:fontFamily="@font/segoeui"
-                    android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"/>
 
 
@@ -187,14 +184,12 @@
                          android:background="@drawable/border_grey_background"
                          android:drawableLeft="@drawable/ic_edit_pencil_red"
                          android:paddingHorizontal="15dp"
-                         android:paddingVertical="7dp"
                          android:text="Edit"
                          android:drawablePadding="10dp"
                          android:gravity="center_vertical"
                          android:textAllCaps="true"
                          android:textColor="#666666"
                          android:textSize="14dp"
-                         android:layout_marginTop="10dp"
                          android:layout_marginRight="20dp"/>
 
                  </LinearLayout>

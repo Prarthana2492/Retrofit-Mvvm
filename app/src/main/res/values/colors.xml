@@ -2,6 +2,7 @@
 <resources>
     <color name="colorPrimary">#26A541</color>
     <color name="colorPrimaryDark">#26A541</color>
+    <color name="dark_green">#1e8434</color>
     <color name="colorAccent">#F72C1D</color>
 
     <color name="gold_color">#e8bc1a</color>
@@ -22,7 +23,7 @@
     <color name="menu_green">#26A541</color>
     <color name="placeholder_bg">#dddddd</color>
 
-
+    #1e8434
 
 </resources>
 

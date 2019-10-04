@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 
+import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
 import com.FarmPe.Farmer.Bean.AgriBean;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
@@ -46,6 +47,8 @@ public class HelpandSupportFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.privacy_policy, container, false);
+
+        Status_bar_change_singleton.getInstance().color_change(getActivity());
         back_feed=view.findViewById(R.id.back_feed);
         terms=view.findViewById(R.id.web_terms);
         terms.loadUrl("http://farmpe.in/help-support.html");

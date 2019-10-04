@@ -41,6 +41,7 @@ import android.widget.Toast;
 
 import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Activity.LandingPageActivity;
+import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
 import com.FarmPe.Farmer.DB.DatabaseHelper;
 import com.FarmPe.Farmer.G_Vision_Controller;
 import com.FarmPe.Farmer.R;
@@ -100,6 +101,8 @@ public class AaProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.a_a_profile_layout, container, false);
         HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
+        Status_bar_change_singleton.getInstance().color_change(getActivity());
 
         backfeed=view.findViewById(R.id.back_feed);
         acc_info_lay=view.findViewById(R.id.acc_info_lay);

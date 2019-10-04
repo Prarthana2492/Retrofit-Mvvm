@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 
 import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
+import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
 import com.FarmPe.Farmer.Adapter.AddFirstAdapter;
 import com.FarmPe.Farmer.Adapter.AddModelAdapter;
 import com.FarmPe.Farmer.Bean.Add_New_Address_Bean;
@@ -64,7 +65,7 @@ public class Request_Details_New_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.request_form_layout, container, false);
-
+        Status_bar_change_singleton.getInstance().color_change(getActivity());
         immediate_btn=view.findViewById(R.id.immediate_btn);
         one_month_btn=view.findViewById(R.id.one_month_btn);
         two_month_btn=view.findViewById(R.id.two_month_btn);

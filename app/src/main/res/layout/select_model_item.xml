@@ -99,18 +99,18 @@
 
 
 
-                        <TextView
-                            android:id="@+id/hp_power"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/segoeui"
-                            android:layout_marginLeft="10dp"
-                            android:singleLine="true"
-                            android:layout_marginTop="2dp"
-                            android:text="ghghjg"
-                            android:textColor="#000"
-                            android:textStyle="bold"
-                            android:textSize="14dp" />
+                        <!--<TextView-->
+                            <!--android:id="@+id/hp_power"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:fontFamily="@font/segoeui"-->
+                            <!--android:layout_marginLeft="10dp"-->
+                            <!--android:singleLine="true"-->
+                            <!--android:layout_marginTop="2dp"-->
+                            <!--android:text="ghghjg"-->
+                            <!--android:textColor="#000"-->
+                            <!--android:textStyle="bold"-->
+                            <!--android:textSize="14dp" />-->
 
                     </LinearLayout>
 
@@ -124,7 +124,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginBottom="10dp"
                     android:weightSum="20"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="7dp">
 
 
                     <TextView
