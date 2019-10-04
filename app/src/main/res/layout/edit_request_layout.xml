@@ -70,7 +70,7 @@
                 android:drawablePadding="3dp"
                 android:gravity="right"
                 android:visibility="gone"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="15dp"
                 android:layout_gravity="right" />
             <TextView
                 android:id="@+id/preview"
@@ -502,7 +502,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:weightSum="60"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginLeft="15dp"
                     android:orientation="horizontal"
                     >
