@@ -91,8 +91,6 @@ public class Home_Menu_Fragment extends Fragment  {
         };
 
 
-
-
         // GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3, GridLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         Request_Class_HomePage_Bean item1 = new Request_Class_HomePage_Bean("Tractor","1",R.drawable.tractor);
@@ -110,7 +108,6 @@ public class Home_Menu_Fragment extends Fragment  {
 
 
         newOrderBeansList.clear();
-
         newOrderBeansList.add(item1);
         newOrderBeansList.add(item2);
         newOrderBeansList.add(item3);

@@ -75,16 +75,16 @@ public class AskNandi extends Fragment {
 
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
+
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
                     HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
                     HomePage_With_Bottom_Navigation.nandi_icon.setImageResource(R.drawable.ic_agronomy);
                     HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
                     HomePage_With_Bottom_Navigation.nandi_text.setTextColor(Color.parseColor("#595959"));
-
-
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("ask_nandi", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
 
                     return true;
                 }

@@ -57,6 +57,7 @@ public class Preview_Edit_Looking_Fragment extends Fragment {
          image_lgooking = view.findViewById(R.id.image_lgooking);
          image_loovking = view.findViewById(R.id.image_loovking);
 
+
          imageView.setVisibility(View.VISIBLE);
          image_looking.setVisibility(View.GONE);
          image_loofking.setVisibility(View.GONE);
