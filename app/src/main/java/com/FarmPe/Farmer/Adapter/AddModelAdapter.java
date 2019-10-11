@@ -42,7 +42,7 @@ import org.json.JSONObject;
 
 
 import java.util.List;
-import java.util.concurrent.Callable;
+
 
 public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyViewHolder>  {
     private List<ModelBean> productList;
@@ -92,9 +92,9 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
 
 
+
         }
     }
-
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -108,6 +108,8 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final ModelBean products = productList.get(position);
+
+
 
 
          if(products.getIsshortlisted()){
@@ -203,6 +205,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
                     snackbar.show();
 
 
+
                 }else {
 
                         brochure_pdf = products.getPdf_brochure();
@@ -236,7 +239,6 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
             public void onClick(View view) {
 
 
-
                 view.clearAnimation();
                 Animation mAnimation = new AlphaAnimation(1, 0);
                 mAnimation.setInterpolator(new LinearInterpolator());
@@ -255,6 +257,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
                 selectedFragment.setArguments(bundle);
                 transaction.addToBackStack("model_page");
                 transaction.commit();
+
 
             /*    Bundle bundle=new Bundle();
         bundle.putString("navigation_from","mod");

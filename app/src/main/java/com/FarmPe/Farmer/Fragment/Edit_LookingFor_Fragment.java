@@ -55,7 +55,7 @@ public class Edit_LookingFor_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                HomeMenuFragment.onBack_status = "looking_frg";
+
 
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("edit_looking", FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -78,7 +78,6 @@ public class Edit_LookingFor_Fragment extends Fragment {
                 transaction.commit();
             }
         });
-
 
 
 

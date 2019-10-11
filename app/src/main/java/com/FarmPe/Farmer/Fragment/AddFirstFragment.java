@@ -104,6 +104,7 @@ public class AddFirstFragment extends Fragment {
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
 
+
                     if (getArguments().getString("status").equals("setting_request")){
 
                         FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -127,6 +128,7 @@ public class AddFirstFragment extends Fragment {
                     transaction.add(R.id.frame_menu, selectedFragment);
                     transaction.commit();
 
+
                 }
                     return true;
                 }
@@ -145,6 +147,7 @@ public class AddFirstFragment extends Fragment {
         return view;
     }
 
+
     private void AddLookigFor() {
 
         try {
@@ -152,7 +155,6 @@ public class AddFirstFragment extends Fragment {
 
             JSONObject userRequestjsonObject = new JSONObject();
             userRequestjsonObject.put("Id", 3);
-
 
             JSONObject postjsonObject = new JSONObject();
             postjsonObject.put("LookingForObj", userRequestjsonObject);

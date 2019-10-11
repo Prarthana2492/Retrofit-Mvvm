@@ -584,14 +584,14 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
     private void getLang(int id) {
 
-        try{
+        try {
 
 
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("Id",id);
+            jsonObject.put("Id", id);
 
 
-            System.out.print("iiidddddd"+ id);
+            System.out.print("iiidddddd" + id);
 
             Crop_Post.crop_posting(LoginActivity_new.this, Urls.CHANGE_LANGUAGE, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
@@ -599,52 +599,49 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
                     System.out.println("qqqqqqvv" + result);
 
-                    try{
+                    try {
                         sessionManager.saveLanguage(result.toString());
 
 
                         String lang_title1 = result.getString("ChangeLanguage");
 
-                       // String log_login = result.getString("Login");
+                        // String log_login = result.getString("Login");
                         String log_mobile = result.getString("PhoneNo");
                         String log_password = result.getString("Password");
                         String log_remember_me = result.getString("RememberMe");
                         String log_forgot_passwrd = result.getString("ForgotPassword");
-                       // String log_register = result.getString(" " + "SignUp");
+                        // String log_register = result.getString(" " + "SignUp");
                         String log_farmpe = result.getString("NewtoFarmPe");
 
                         mob_toast = result.getString("EnterPhoneNo");
                         pass_toast = result.getString("EnterPassword");
-                     //   toast_invalid = result.getString("InvalidCredentials");
+                        //   toast_invalid = result.getString("InvalidCredentials");
                         toast_click_back = result.getString("PleaseclickBACKagaintoexit");
                         toast_internet = result.getString("GoodConnectedtoInternet");
                         toast_nointernet = result.getString("NoInternetConnection");
 
 
-
                         popup_heading.setText(lang_title1);
                         remember_me.setText(log_remember_me);
-                       // log_in.setText(log_login);
+                        // log_in.setText(log_login);
                         text_mobile.setHint(log_mobile);
-                        new_farmpe.setText(log_farmpe+"?");
+                        new_farmpe.setText(log_farmpe + "?");
 
-                        forgot_pass.setText(log_forgot_passwrd+"?");
+                        forgot_pass.setText(log_forgot_passwrd + "?");
                         text_pass.setHint(log_password);
-                       // welcome_back.setText(log_login);
-                       // createaccount.setText(log_register);
+                        // welcome_back.setText(log_login);
+                        // createaccount.setText(log_register);
 
 
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
             });
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
-
 
 
     }
@@ -762,6 +759,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
         }
     }
+
     private void DeleteData(String userId,String pass) {
         System.out.println("kkkkkkkkkkkkk"+userId);
         System.out.println("sssssssssssss"+pass);

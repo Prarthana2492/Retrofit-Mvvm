@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,55 +14,99 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:orientation="vertical">
+        android:padding="8dp"
+        android:orientation="horizontal"
+        android:background="@color/menu_green"
+        tools:ignore="MissingConstraints">
 
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:minHeight="?attr/actionBarSize"
-            android:layout_width="match_parent"
+
+        <LinearLayout
+            android:id="@+id/back_feed"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_filter_state"
+            android:gravity="center">
+
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_go_back_left_arrow_"
+
+                />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:titleTextColor="@android:color/white"
-            android:background="@color/menu_green">
+            android:text="Language"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:id="@+id/lang_title" />
 
-
-            <LinearLayout
-                android:id="@+id/back_feed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_filter_state"
-                android:padding="10dp"
-                >
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_left_arrow_white"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-
-                    />
-
-            </LinearLayout>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Language"
-                android:textSize="20dp"
-                android:layout_marginHorizontal="25dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/segoeui"
-                android:textColor="#fff"
-                android:textStyle="bold"
-                android:layout_marginBottom="15dp"
-                android:id="@+id/lang_title" />
-
-        </android.support.v7.widget.Toolbar>
 
     </LinearLayout>
+
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:fitsSystemWindows="true"-->
+        <!--android:orientation="vertical">-->
+
+
+        <!--<android.support.v7.widget.Toolbar-->
+            <!--android:id="@+id/toolbar"-->
+            <!--android:minHeight="?attr/actionBarSize"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:titleTextColor="@android:color/white"-->
+            <!--android:background="@color/menu_green">-->
+
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/back_feed"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/ic_filter_state"-->
+                <!--android:padding="10dp"-->
+                <!--&gt;-->
+
+                <!--<ImageView-->
+                    <!--android:layout_width="20dp"-->
+                    <!--android:layout_height="20dp"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:src="@drawable/ic_left_arrow_white"-->
+                    <!--android:background="?attr/selectableItemBackgroundBorderless"-->
+
+                    <!--/>-->
+
+            <!--</LinearLayout>-->
+
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Language"-->
+                <!--android:textSize="20dp"-->
+                <!--android:layout_marginHorizontal="25dp"-->
+                <!--android:layout_marginTop="15dp"-->
+                <!--android:fontFamily="@font/segoeui"-->
+                <!--android:textColor="#fff"-->
+                <!--android:textStyle="bold"-->
+                <!--android:layout_marginBottom="15dp"-->
+                <!--android:id="@+id/lang_title" />-->
+
+        <!--</android.support.v7.widget.Toolbar>-->
+
+    <!--</LinearLayout>-->
     <!-- <View
          android:layout_width="match_parent"
          android:layout_height="2dp"

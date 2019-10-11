@@ -15,36 +15,22 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-
 import com.FarmPe.Farmer.Bean.Add_New_Address_Bean;
-import com.FarmPe.Farmer.Fragment.Add_New_Address_Fragment;
-import com.FarmPe.Farmer.Fragment.MapFragment;
 import com.FarmPe.Farmer.Fragment.Request_Details_New_Fragment;
-import com.FarmPe.Farmer.Fragment.You_Address_Fragment;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
-import com.FarmPe.Farmer.Urls;
-import com.FarmPe.Farmer.Utils;
-import com.FarmPe.Farmer.Volly_class.Crop_Post;
-import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
-
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Date;
 import java.util.List;
 
 public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_Address_Book_Adapter.MyViewHolder>{
+
 
 
     private List<Add_New_Address_Bean> productList;
@@ -92,7 +78,6 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
             area_district = view.findViewById(R.id.districttt);
             colony = view.findViewById(R.id.colony);
             address_book = view.findViewById(R.id.address_book);
-
             add_new_adress = view.findViewById(R.id.linear_frame);
             sessionManager = new SessionManager(activity);
 
@@ -111,10 +96,6 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final Add_New_Address_Bean products = productList.get(position);
-
-
-
-
 
 
         add_id =products.getAdd_id();
@@ -140,8 +121,6 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
 
         }
 
-
-
         if(products.getAdd_pincode().equals("")){
             holder.area_district.setText(products.getAdd_state()+" , " + "Phone No - " + products.getAdd_mobile());
 
@@ -162,6 +141,7 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
                 Bundle bundle = new Bundle();
                 bundle.putString("request_navigation","ADDRESS_BOOK");
                 bundle.putString("add_id",products.getAdd_id());
+
 
                 selectedFragment = Request_Details_New_Fragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();

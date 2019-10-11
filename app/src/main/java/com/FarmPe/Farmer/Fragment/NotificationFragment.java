@@ -84,7 +84,8 @@ public class NotificationFragment extends Fragment {
                     HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
                     HomePage_With_Bottom_Navigation.noti_text.setTextColor(Color.parseColor("#595959"));
 
-                   selectedFragment = Home_Menu_Fragment.newInstance();
+
+                    selectedFragment = Home_Menu_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
@@ -100,6 +101,7 @@ public class NotificationFragment extends Fragment {
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
                 HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
                 HomePage_With_Bottom_Navigation.noti_icon.setImageResource(R.drawable.ic_notification_home);
@@ -144,7 +146,7 @@ public class NotificationFragment extends Fragment {
                     System.out.println("sdffdffds" + result);
 
                     try{
-
+                        newOrderBeansList.clear();
                         notifn_array = result.getJSONArray("NotificationList");
 
                         for(int i=0;i<notifn_array.length();i++){
@@ -175,7 +177,6 @@ public class NotificationFragment extends Fragment {
 
                 }
             });
-
 
 
 

@@ -56,18 +56,17 @@ public class LookingForFragment extends Fragment {
 
 
 
-
     public static JSONArray cropsListArray = null;
-   public static JSONArray tractorImplementsModelMasterList = null;
-   public static JSONArray tractorAccessoriesModelMasterList = null;
-   public static JSONArray harvesterModelMasterList = null;
-   public static JSONArray jCBRFQModelList = null;
-   public static JSONArray farmMachineryRFQModelList = null;
-   public static JSONArray fenceWireRFQModelList = null;
-   public static JSONArray tyreRFQModelList = null;
-   public static JSONArray miniTruckRFQModelList = null;
-   public static JSONArray backhoeAttachmentRFQModelList = null;
-   public static JSONArray powerTillerRFQModelList = null;
+    public static JSONArray tractorImplementsModelMasterList = null;
+    public static JSONArray tractorAccessoriesModelMasterList = null;
+    public static JSONArray harvesterModelMasterList = null;
+    public static JSONArray jCBRFQModelList = null;
+    public static JSONArray farmMachineryRFQModelList = null;
+    public static JSONArray fenceWireRFQModelList = null;
+    public static JSONArray tyreRFQModelList = null;
+    public static JSONArray miniTruckRFQModelList = null;
+    public static JSONArray backhoeAttachmentRFQModelList = null;
+    public static JSONArray powerTillerRFQModelList = null;
 
 
 
@@ -100,6 +99,7 @@ public class LookingForFragment extends Fragment {
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
                 HomePage_With_Bottom_Navigation.mail_icon.setImageResource(R.drawable.ic_mailbox);
                 HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
@@ -136,6 +136,7 @@ public class LookingForFragment extends Fragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+
 
                     HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
                     HomePage_With_Bottom_Navigation.mail_icon.setImageResource(R.drawable.ic_mailbox);
@@ -223,10 +224,7 @@ public class LookingForFragment extends Fragment {
 
                     try {
 
-
-
-                        cropsListArray = result.getJSONArray("TractorRFQModelList");
-
+                         cropsListArray = result.getJSONArray("TractorRFQModelList");
                          tractorImplementsModelMasterList = result.getJSONArray("TractorImplementsRFQModelList");
                          tractorAccessoriesModelMasterList = result.getJSONArray("TractorAccesoriesRFQModelList");
                          harvesterModelMasterList = result.getJSONArray("HarvesterRFQModelList");

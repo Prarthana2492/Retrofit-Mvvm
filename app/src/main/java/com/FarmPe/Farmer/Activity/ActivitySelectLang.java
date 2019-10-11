@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 
 import com.FarmPe.Farmer.Adapter.AdapterSelectLanguage;
+import com.FarmPe.Farmer.Adapter.SelectLanguageAdapter;
 import com.FarmPe.Farmer.Bean.SelectLanguageBean;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
@@ -59,13 +60,31 @@ public class ActivitySelectLang extends AppCompatActivity {
         continue_lang =findViewById(R.id.continue_lang);
 
 
+        SelectLanguageBean item1 = new SelectLanguageBean("English","1","");
+        SelectLanguageBean item2 = new SelectLanguageBean("हिंदी","2","");
+        SelectLanguageBean item3 = new SelectLanguageBean("ಕನ್ನಡ","3","");
+        SelectLanguageBean item4 = new SelectLanguageBean("తెలుగు","4","");
+        SelectLanguageBean item5 = new SelectLanguageBean("தமிழ்","5","");
+        SelectLanguageBean item6 = new SelectLanguageBean("മലയാളം","6","");
+        SelectLanguageBean item7 = new SelectLanguageBean("मराठी","7","");
+
+
+        newOrderBeansList.add(item1);
+        newOrderBeansList.add(item2);
+        newOrderBeansList.add(item3);
+        newOrderBeansList.add(item4);
+        newOrderBeansList.add(item5);
+        newOrderBeansList.add(item6);
+        newOrderBeansList.add(item7);
+
 
          GridLayoutManager mLayoutManager_farm = new GridLayoutManager(ActivitySelectLang.this, 1, GridLayoutManager.VERTICAL, false);
          recyclerView.setLayoutManager(mLayoutManager_farm);
          recyclerView.setItemAnimator(new DefaultItemAnimator());
          linearLayout= findViewById(R.id.main_layout);
-         Langauges();
-
+         mAdapter = new AdapterSelectLanguage(ActivitySelectLang.this, newOrderBeansList);
+        recyclerView.setAdapter(mAdapter);
+         //Langauges();
 
 
         continue_lang.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +99,6 @@ public class ActivitySelectLang extends AppCompatActivity {
         });
 
     }
-
 
     private void Langauges() {
         try {
@@ -102,8 +120,8 @@ public class ActivitySelectLang extends AppCompatActivity {
                             String language=jsonObject1.getString("Language");
                             int langCode=jsonObject1.getInt("Id");
                             String langimg=jsonObject1.getString("ImageIcon");
-                            SelectLanguageBean stateBean=new SelectLanguageBean(language,langCode,langimg);
-                            newOrderBeansList.add(stateBean);
+                           // SelectLanguageBean stateBean=new SelectLanguageBean(language,langCode,langimg);
+                            //newOrderBeansList.add(stateBean);
 
                         }
 

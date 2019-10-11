@@ -118,7 +118,6 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.addToBackStack("edit_looking");
-
                 transaction.commit();
             }
         });
@@ -128,8 +127,7 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putString("status","looking_For");
-
+                bundle.putString("status","lookng_for");
                 selectedFragment = Preview_Edit_Looking_Fragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);

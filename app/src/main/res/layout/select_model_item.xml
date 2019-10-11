@@ -56,7 +56,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:layout_margin="10dp"
-                        android:duplicateParentState="true"
                         android:src="@drawable/ic_star" />
 
                 </FrameLayout>

@@ -15,15 +15,14 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.FarmPe.Farmer.Activity.LoginActivity_new;
+
 import com.FarmPe.Farmer.Bean.SelectLanguageBean;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
 import com.FarmPe.Farmer.Urls;
 import com.FarmPe.Farmer.Volly_class.Crop_Post;
 import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
 
 import org.json.JSONObject;
 
@@ -136,9 +135,9 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
             System.out.println("iiiddddddkkkkkkkkkkkkkkkkkkkkkkkkkkk" + products1.getLanguageid());
 
             sessionManager.saveLanguage_name(products1.getVendor());
-            getLang(products1.getLanguageid());
+          getLang(Integer.parseInt(products1.getLanguageid()));
             lng_list = products1.getVendor();
-
+            //sessionManager.saveLanguage(lng_list);
             selected_position = position;
             notifyDataSetChanged();
 
@@ -167,7 +166,8 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
                          try{
                              sessionManager.saveLanguage(result.toString());
 
-/*
+
+                             /*
 
                         String lang_title1 = result.getString("ChangeLanguage");
                         System.out.println("ckkkkkkk"+result.getString("ChangeLanguage"));

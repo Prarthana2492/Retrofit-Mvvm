@@ -33,6 +33,8 @@ public class Comming_soon_looking extends Fragment {
 
         Status_bar_change_singleton.getInstance().color_change(getActivity());
 
+
+
         HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
         view.setFocusableInTouchMode(true);
         view.requestFocus();
@@ -44,11 +46,11 @@ public class Comming_soon_looking extends Fragment {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
 
-
                     selectedFragment = Home_Menu_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
+
 
                     return true;
                 }

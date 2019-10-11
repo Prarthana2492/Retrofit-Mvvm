@@ -48,6 +48,7 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
     public static int selected_position=0;
     String lng_list;
 
+
     public static CardView cardView;
     public SelectLanguageAdapter(Activity activity, List<SelectLanguageBean> moviesList) {
         this.productList = moviesList;
@@ -87,6 +88,7 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
 
     }
 
+
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final SelectLanguageBean products = productList.get(position);
@@ -115,9 +117,8 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
                 System.out.println("iiiddddddkkkkkkkkkkkkkkkkkkkkkkkkkkk" + products.getLanguageid());
 
                 sessionManager.saveLanguage_name(products.getVendor());
-                getLang(products.getLanguageid());
+                getLang(Integer.parseInt(products.getLanguageid()));
                 lng_list = products.getVendor();
-
                 selected_position = position;
                 notifyDataSetChanged();
 
@@ -209,7 +210,6 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
 
 
     }
-
 
     @Override
     public int getItemCount() {

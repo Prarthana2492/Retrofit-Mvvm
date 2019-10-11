@@ -76,6 +76,7 @@ public class AskNandi extends Fragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
 
+
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
                     HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
@@ -91,6 +92,7 @@ public class AskNandi extends Fragment {
                 return false;
             }
         });
+
 
 
         back_feed.setOnClickListener(new View.OnClickListener() {

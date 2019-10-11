@@ -59,12 +59,12 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
     String brochure_pdf,looking_for_id;
 
 
+
     public Request_Favorite_Adapter(Activity activity, List<ModelBean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
         sessionManager = new SessionManager(activity);
     }
-
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -84,7 +84,7 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
             image=view.findViewById(R.id.imageff);
             select=view.findViewById(R.id.selectt);
             brochure=view.findViewById(R.id.brochure);
-            fav_request=view.findViewById(R.id.fav_request);
+           fav_request=view.findViewById(R.id.fav_request);
 
         }
 
@@ -144,7 +144,9 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
                 .thumbnail(0.5f)
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .centerCrop()
                 .into(holder.image);
+
 
         holder.fav_request.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,7 +175,6 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
 
                                 if(status.equals("1")){
 
-
                                     int duration = 1000;
                                     Snackbar snackbar = Snackbar
                                             .make(Request_Favorite_Fragment.linearLayout,"Your Request is Unfavorited", duration);
@@ -192,8 +193,10 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
                                     //  Toast.makeText(activity, "Your request is favorited", Toast.LENGTH_SHORT).show();
                                 }
 
+
                                 productList.remove(position);
                                 notifyDataSetChanged();
+
 
                             }catch (Exception e){
                                 e.printStackTrace();

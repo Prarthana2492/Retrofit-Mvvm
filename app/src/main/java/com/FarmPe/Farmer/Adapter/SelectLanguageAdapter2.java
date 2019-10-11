@@ -105,7 +105,7 @@ public class SelectLanguageAdapter2 extends RecyclerView.Adapter<SelectLanguageA
                 System.out.println("iiiddddddkkkkkkkkkkkkkkkkkkkkkkkkkkk" + products1.getLanguageid());
 
                 sessionManager.saveLanguage_name(products1.getVendor());
-                getLang(products1.getLanguageid());
+                getLang(Integer.parseInt(products1.getLanguageid()));
                 lng_list = products1.getVendor();
 
                 selected_position = position;
@@ -163,6 +163,7 @@ public class SelectLanguageAdapter2 extends RecyclerView.Adapter<SelectLanguageA
                           String log_forgot_passwrd = result.getString("ForgotPassword");
                           String log_register = result.getString("Register");
                           String log_farmpe = result.getString("NewtoFarmPe");
+
 
 
                            LoginActivity.popup_heading.setText(lang_title1);

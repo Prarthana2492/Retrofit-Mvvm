@@ -112,7 +112,6 @@ public class You_Address_Fragment extends Fragment {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
 
-
                     if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")){
 
                         selectedFragment = AaAccountFragment.newInstance();
@@ -350,8 +349,8 @@ public class You_Address_Fragment extends Fragment {
 
 
                                      add_new_address_bean = new Add_New_Address_Bean(jsonObject1.getString("Name"),jsonObject1.getString("StreeAddress"),jsonObject1.getString("StreeAddress1"),jsonObject1.getString("LandMark"),jsonObject1.getString("City"),jsonObject1.getString("Pincode"),jsonObject1.getString("MobileNo"), jsonObject1.getString("PickUpFrom"),jsonObject1.getString("State"),jsonObject1.getString("District"),jsonObject1.getString("Taluk"),jsonObject1.getString("Hoblie"),jsonObject1.getString("Village"),jsonObject1.getString("Id"),
-                                    jsonObject1.getBoolean("IsDefaultAddress"),jsonObject1.getString("StateId"),jsonObject1.getString("DistrictId"),jsonObject1.getString("TalukId"),jsonObject1.getString("HobliId"));
-                                    new_address_beanArrayList.add(add_new_address_bean);
+                                     jsonObject1.getBoolean("IsDefaultAddress"),jsonObject1.getString("StateId"),jsonObject1.getString("DistrictId"),jsonObject1.getString("TalukId"),jsonObject1.getString("HobliId"));
+                                     new_address_beanArrayList.add(add_new_address_bean);
 
                         }
 

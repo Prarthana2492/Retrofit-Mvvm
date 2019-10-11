@@ -159,6 +159,7 @@ public class AaProfileFragment extends Fragment {
                         transaction.replace(R.id.frame_menu, selectedFragment);
                         // transaction.addToBackStack("looking");
                         transaction.commit();
+
                     }else if(getArguments().getString("status").equals("ACC_IMG")){
                         selectedFragment = AaAccountFragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -264,6 +265,7 @@ public class AaProfileFragment extends Fragment {
                                                 tv.setGravity(Gravity.CENTER_HORIZONTAL);
                                             }
 
+
                                             snackbar.show();
                                             mBottomSheetDialog.dismiss();
                                             Bundle bundle = new Bundle();
@@ -322,8 +324,8 @@ public class AaProfileFragment extends Fragment {
             public void onClick(View v) {
 
 
-                mBottomSheetDialog = new BottomSheetDialog(getActivity());
-                sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
+                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
+                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
 
                  new KeyboardUtil(getActivity(), sheetView);
                  TextView positiveText = sheetView.findViewById(R.id.positive_text);
@@ -337,16 +339,19 @@ public class AaProfileFragment extends Fragment {
                    abt_text.setText(aboutText.getText().toString());
 
                    descriptionText.setVisibility(View.GONE);
-                 titleText.setText("Add about");
-                descriptionText.setText("Are you sure you want to exit?");
-                positiveText.setText("Save");
-                 TextView negetiveText = sheetView.findViewById(R.id.negetive_text);
-                 negetiveText.setText("Cancel");
+                   titleText.setText("Add about");
+                   descriptionText.setText("Are you sure you want to exit?");
+                   positiveText.setText("Save");
+                   TextView negetiveText = sheetView.findViewById(R.id.negetive_text);
+                   negetiveText.setText("Cancel");
+
+
 
 
                 positiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
 
 
                         if(abt_text.getText().toString().equals("")){
@@ -380,7 +385,6 @@ public class AaProfileFragment extends Fragment {
 
                     }
                 });
-
 
                 negetiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -459,6 +463,7 @@ public class AaProfileFragment extends Fragment {
         }
 
         return view;
+
     }
 
 
@@ -484,6 +489,7 @@ public class AaProfileFragment extends Fragment {
                         }
 
                         snackbar.show();
+
                         mBottomSheetDialog.dismiss();
                         Bundle bundle = new Bundle();
                         bundle.putString("status","HOME_IMG");

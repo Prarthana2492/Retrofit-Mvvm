@@ -95,10 +95,13 @@ public class Request_Address_Book_Fragment extends Fragment {
 
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
+                    Bundle bundle = new Bundle();
+                    bundle.putString("navigation_from","model_frg");
                     selectedFragment = MapFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_menu, selectedFragment);
-                   transaction.commit();
+                    selectedFragment.setArguments(bundle);
+                    transaction.commit();
 
 //                       FragmentManager fm = getActivity().getSupportFragmentManager();
 //                       fm.popBackStack("currentlocation", FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -115,15 +118,15 @@ public class Request_Address_Book_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                Bundle bundle = new Bundle();
+                bundle.putString("navigation_from","model_frg");
                 selectedFragment = MapFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
+                selectedFragment.setArguments(bundle);
                 transaction.commit();
             }
         });
-
-
-
 
 
 

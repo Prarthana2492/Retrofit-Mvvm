@@ -59,6 +59,8 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
     public static boolean connectivity_check;
 
     ConnectivityReceiver connectivityReceiver;
+
+
     @Override
     protected void onStop()
     {
@@ -123,12 +125,6 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
 
         }
     }
-
-
-
-
-
-
 
     @Override
     public void onResume() {

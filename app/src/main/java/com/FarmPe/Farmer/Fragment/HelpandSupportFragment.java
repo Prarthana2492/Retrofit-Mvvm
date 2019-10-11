@@ -56,6 +56,8 @@ public class HelpandSupportFragment extends Fragment {
         privacypolicytxt=view.findViewById(R.id.toolbar_title);
         privacypolicytxt.setText("Help & Support");
         sessionManager = new SessionManager(getActivity());
+
+
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -72,6 +74,7 @@ public class HelpandSupportFragment extends Fragment {
             }
         });
 
+
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,12 +82,16 @@ public class HelpandSupportFragment extends Fragment {
                 fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
+
+
         try {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
             privacypolicytxt.setText(lngObject.getString("Help_Support"));
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
         return view;
     }
 }

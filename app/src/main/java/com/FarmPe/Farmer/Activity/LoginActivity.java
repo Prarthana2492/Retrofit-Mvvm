@@ -327,43 +327,43 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                 recyclerView.setAdapter(mAdapter);
 
 
-                try{
-
-
-                        JSONObject jsonObject = new JSONObject();
-
-                        Crop_Post.crop_posting(LoginActivity.this, Urls.Languages, jsonObject, new VoleyJsonObjectCallback() {
-                              @Override
-                              public void onSuccessResponse(JSONObject result) {
-                                  System.out.print("111111ang" + result);
-                                  try{
-
-                                       language_arrayBeanList.clear();
-                                          lng_array = result.getJSONArray("LanguagesList");
-                                          for(int i=0;i<lng_array.length();i++){
-                                              JSONObject  jsonObject1 = lng_array.getJSONObject(i);
-
-                                              selectLanguageBean = new SelectLanguageBean(jsonObject1.getString("Language"),jsonObject1.getInt("Id"),"");
-                                              language_arrayBeanList.add(selectLanguageBean);
-
-
-                                      }
-
-                                      mAdapter.notifyDataSetChanged();
-
-
-
-                                  }catch (Exception e){
-                                      e.printStackTrace();
-                                  }
-
-                              }
-                          });
-
-
-                      }catch (Exception e){
-                          e.printStackTrace();
-                      }
+//                try{
+//
+//
+//                        JSONObject jsonObject = new JSONObject();
+//
+//                        Crop_Post.crop_posting(LoginActivity.this, Urls.Languages, jsonObject, new VoleyJsonObjectCallback() {
+//                              @Override
+//                              public void onSuccessResponse(JSONObject result) {
+//                                  System.out.print("111111ang" + result);
+//                                  try{
+//
+//                                       language_arrayBeanList.clear();
+//                                          lng_array = result.getJSONArray("LanguagesList");
+//                                          for(int i=0;i<lng_array.length();i++){
+//                                              JSONObject  jsonObject1 = lng_array.getJSONObject(i);
+//
+//                                              selectLanguageBean = new SelectLanguageBean(jsonObject1.getString("Language"),jsonObject1.getInt("Id"),"");
+//                                              language_arrayBeanList.add(selectLanguageBean);
+//
+//
+//                                      }
+//
+//                                      mAdapter.notifyDataSetChanged();
+//
+//
+//
+//                                  }catch (Exception e){
+//                                      e.printStackTrace();
+//                                  }
+//
+//                              }
+//                          });
+//
+//
+//                      }catch (Exception e){
+//                          e.printStackTrace();
+//                      }
 
 
 

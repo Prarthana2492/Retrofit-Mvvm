@@ -68,6 +68,7 @@ public class AddModelFragment extends Fragment {
     LinearLayout back_feed;
     SessionManager sessionManager;
 
+
     public static LinearLayout linearLayout;
     ImageView b_arrow;
 
@@ -160,6 +161,9 @@ public class AddModelFragment extends Fragment {
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager_farm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        modelBeanArrayList.clear();
+
         farmadapter = new AddModelAdapter(getActivity(),modelBeanArrayList);
                     recyclerView.setAdapter(farmadapter);
 

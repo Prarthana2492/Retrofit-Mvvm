@@ -82,7 +82,6 @@ public class Request_Details_New_Fragment extends Fragment {
         fin_no=view.findViewById(R.id.fin_no);
         linearLayout=view.findViewById(R.id.linearLayout);
         purchase_linear=view.findViewById(R.id.purchase_linear);
-
         sessionManager = new SessionManager(getActivity());
 
 
@@ -190,14 +189,11 @@ public class Request_Details_New_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 purchase_plan = two_month_btn.getText().toString();
-
-
                 two_month_btn.setTextColor(Color.parseColor("#FFFFFF"));
                 one_month_btn.setTextColor(Color.parseColor("#000000"));
                 immediate_btn.setTextColor(Color.parseColor("#000000"));
                 three_month_btn.setTextColor(Color.parseColor("#000000"));
                 aftr_three_month_btn.setTextColor(Color.parseColor("#000000"));
-
 
 
 
@@ -214,13 +210,12 @@ public class Request_Details_New_Fragment extends Fragment {
             public void onClick(View view) {
 
                 purchase_plan = three_month_btn.getText().toString();
-
-
                 three_month_btn.setTextColor(Color.parseColor("#FFFFFF"));
                 two_month_btn.setTextColor(Color.parseColor("#000000"));
                 one_month_btn.setTextColor(Color.parseColor("#000000"));
                 immediate_btn.setTextColor(Color.parseColor("#000000"));
                 aftr_three_month_btn.setTextColor(Color.parseColor("#000000"));
+
 
                 three_month_btn.setBackgroundResource(R.drawable.black_border_blue_filled);
                 immediate_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
@@ -236,15 +231,11 @@ public class Request_Details_New_Fragment extends Fragment {
             public void onClick(View view) {
 
                 purchase_plan = aftr_three_month_btn.getText().toString();
-
                 aftr_three_month_btn.setTextColor(Color.parseColor("#FFFFFF"));
                 three_month_btn.setTextColor(Color.parseColor("#000000"));
                 two_month_btn.setTextColor(Color.parseColor("#000000"));
                 one_month_btn.setTextColor(Color.parseColor("#000000"));
                 immediate_btn.setTextColor(Color.parseColor("#000000"));
-
-
-
 
 
                 aftr_three_month_btn.setBackgroundResource(R.drawable.black_border_blue_filled);
@@ -266,7 +257,6 @@ public class Request_Details_New_Fragment extends Fragment {
                 looking_finance = fin_yes.getText().toString();
                 fin_yes.setTextColor(Color.parseColor("#FFFFFF"));
                 fin_no.setTextColor(Color.parseColor("#000000"));
-
                 fin_yes.setBackgroundResource(R.drawable.black_border_blue_filled);
                 fin_no.setBackgroundResource(R.drawable.black_bordr_white_filled);
 
@@ -393,6 +383,7 @@ public class Request_Details_New_Fragment extends Fragment {
         return view;
     }
 
+
     private void request_price() {
 
 
@@ -412,7 +403,9 @@ public class Request_Details_New_Fragment extends Fragment {
             userRequestjsonObject.put("LookingForDetailsId", AddBrandFragment.request_looking_id);
 
 
+
             System.out.println("postObjmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"+userRequestjsonObject.toString());
+
 
 
             Login_post.login_posting(getActivity(), Urls.AddRequestForQuotation,userRequestjsonObject,new VoleyJsonObjectCallback() {
@@ -421,7 +414,7 @@ public class Request_Details_New_Fragment extends Fragment {
                     System.out.println("cropsresult"+result);
 
 
-                    newOrderBeansList.clear();
+                     newOrderBeansList.clear();
 
 
                     try {

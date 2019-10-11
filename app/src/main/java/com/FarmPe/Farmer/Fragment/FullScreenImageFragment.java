@@ -79,6 +79,7 @@ LinearLayout back_feed;
         profile_phone = view.findViewById(R.id.profile_phone);
 
 
+
         cam.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NewApi")
             @Override
@@ -120,6 +121,7 @@ LinearLayout back_feed;
                 }
             }
         });
+
 
         try{
             JSONObject jsonObject = new JSONObject();

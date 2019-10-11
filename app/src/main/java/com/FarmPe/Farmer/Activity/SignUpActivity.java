@@ -817,7 +817,7 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
                         passwrd_toast = result.getString("Enterpasswordoflength6characters");
                         mob_toast = result.getString("Entervalidmobilenumber");
                         name_toast = result.getString("Enteryourname");
-                       mobile_registered_toast = result.getString("Thismobilehasalreadyregistered");
+                        mobile_registered_toast = result.getString("Thismobilehasalreadyregistered");
                         toast_internet = lngObject.getString("GoodConnectedtoInternet");
                         toast_nointernet = lngObject.getString("NoInternetConnection");
 
@@ -1026,7 +1026,6 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
             e.printStackTrace();
         }
 
-
     }
 
     private void ValidateUser() {
@@ -1086,7 +1085,6 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
             userRequestjsonObject.put("DeviceType", "Android");
             userRequestjsonObject.put("FullName", name.getText().toString());
 
-
             postjsonObject.putOpt("objUser", userRequestjsonObject);
 
             System.out.println("post_oobject" + postjsonObject);
@@ -1112,7 +1110,6 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
                             tv.setTextColor(Color.WHITE);
                             snackbar.show();
 
-
                         } else {
                             jsonObject = result.getJSONObject("user");
                             status = jsonObject.getString("OTP");
@@ -1124,7 +1121,6 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
                             intent.putExtra("otpnumber", status);
                             startActivity(intent);
                         }
-
 
                     } catch (JSONException e) {
                         e.printStackTrace();

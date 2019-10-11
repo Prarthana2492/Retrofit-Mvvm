@@ -74,18 +74,20 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     SupportMapFragment mapFrag;
     GoogleApiClient mGoogleApiClient;
     ImageView b_arrow;
+    LinearLayout back_feed;
     Location mLastLocation;
     SessionManager sessionManager;
     String pickUPFrom;
-   public static JSONArray get_address_array;
+    public static JSONArray get_address_array;
     Button confirm_loc;
     LinearLayout main_layout;
     Marker mCurrLocationMarker;
+
     private TextView resutText,currentaddress,addressbook;
     String address_txt;
     protected static final int REQUEST_CHECK_SETTINGS = 0x1;
     String state;
-    public static MapFragment newInstance() {
+     public static MapFragment newInstance() {
         MapFragment fragment = new MapFragment();
 
         return fragment;
@@ -100,11 +102,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         displayLocationSettingsRequest(getActivity());
         resutText = (TextView) view.findViewById(R.id.curr_address);
         b_arrow = view.findViewById(R.id.b_arrow);
+        back_feed = view.findViewById(R.id.back_feed);
         confirm_loc = view.findViewById(R.id.confirm_loc);
         currentaddress = view.findViewById(R.id.curr_address);
         addressbook = view.findViewById(R.id.addressbook);
         sessionManager = new SessionManager(getActivity());
-
         main_layout = view.findViewById(R.id.main_layout);
         //getSupportActionBar().setTitle("Map Location Activity");
         mapFrag = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
@@ -123,15 +125,27 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
+
                     if(getArguments().getString("navigation_from").equals("model_frg")){
 
-                        FragmentManager fm = getActivity().getSupportFragmentManager();
-                        fm.popBackStack("model_page", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                        selectedFragment = AddModelFragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_menu, selectedFragment);
+                        transaction.commit();
+
 
                     }else if(getArguments().getString("navigation_from").equals("fav_fragment")) {
 
+
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack("favo_req", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+
+                        selectedFragment = Request_Favorite_Fragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_menu, selectedFragment);
+                        transaction.commit();
                     }
                 }
                 return false;
@@ -140,18 +154,25 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
 
 
-        b_arrow.setOnClickListener(new View.OnClickListener() {
+        back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 if(getArguments().getString("navigation_from").equals("model_frg")){
 
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("model_page", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    selectedFragment = AddModelFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_menu, selectedFragment);
+                    transaction.commit();
 
                 }else if(getArguments().getString("navigation_from").equals("fav_fragment")) {
 
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("favo_req", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    selectedFragment = Request_Favorite_Fragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_menu, selectedFragment);
+                    transaction.commit();
+
                 }
             }
         });
@@ -174,7 +195,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                     transaction.addToBackStack("map_location");
                     transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
-
 
                 }else {
 
@@ -207,9 +227,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                     tv.setTextColor(Color.WHITE);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
                     } else {
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
+
                     snackbar.show();
 
 
@@ -236,7 +258,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
     private void address_page() {
 
-
         try{
             final JSONObject jsonObject = new JSONObject();
             jsonObject.put("UserId",sessionManager.getRegId("userId"));
@@ -258,15 +279,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                           addressbook.setText("Add New Address");
 
 
-
                         }else {
 
                             addressbook.setText("Select From Address Book");
 
                         }
-
-
-
 
                     }catch (Exception e){
                         e.printStackTrace();

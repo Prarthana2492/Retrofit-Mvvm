@@ -193,6 +193,7 @@ public class ForgotPasswordNew extends AppCompatActivity implements Connectivity
             }
         });
 
+
                 forgot_submit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -283,6 +284,7 @@ public class ForgotPasswordNew extends AppCompatActivity implements Connectivity
                                                 }
                                                 snackbar.show();
                                             }
+
 
                                             else{
 

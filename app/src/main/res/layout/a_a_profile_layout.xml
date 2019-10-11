@@ -15,12 +15,14 @@
         android:orientation="horizontal"
         android:background="@color/menu_green"
         tools:ignore="MissingConstraints">
+
         <LinearLayout
             android:id="@+id/back_feed"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/ic_filter_state"
             android:gravity="center">
+
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
@@ -34,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:text="Profile"
             android:textStyle="bold"
             android:textColor="#fff"

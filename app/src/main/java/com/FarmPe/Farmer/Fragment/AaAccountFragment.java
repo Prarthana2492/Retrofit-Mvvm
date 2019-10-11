@@ -100,7 +100,6 @@ public class AaAccountFragment extends Fragment {
         backfeed = view.findViewById(R.id.back_feed);
         acc_info_lay = view.findViewById(R.id.acc_info_lay);
         change_pass_lay = view.findViewById(R.id.change_pass_lay);
-
         main_layout = view.findViewById(R.id.main_layout);
         logout_lay = view.findViewById(R.id.logout_lay);
         your_addrss = view.findViewById(R.id.your_addrss);
@@ -189,7 +188,7 @@ public class AaAccountFragment extends Fragment {
                                     selectedFragment = Add_New_Address_Fragment.newInstance();
                                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                                     selectedFragment.setArguments(bundle);
-                                    //   transaction.addToBackStack("HOME_FRAGMENT");
+                                    transaction.addToBackStack("HOME_FRAGMENT");
                                     transaction.replace(R.id.frame_menu, selectedFragment);
                                     transaction.commit();
 
@@ -228,24 +227,23 @@ public class AaAccountFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                mBottomSheetDialog = new BottomSheetDialog(getActivity());
-                sheetView = getActivity().getLayoutInflater().inflate(R.layout.change_password_layout, null);
+                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
+                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.change_password_layout, null);
 
-                 new KeyboardUtil(getActivity(),sheetView);
-                 TextView positiveText = sheetView.findViewById(R.id.positive_text);
-                 TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
-                 TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
+                  new KeyboardUtil(getActivity(),sheetView);
+                  TextView positiveText = sheetView.findViewById(R.id.positive_text);
+                  TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
+                  TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
 
+                  userInputedt= sheetView.findViewById(R.id.user_text);
+                  userInputedt.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
-                 userInputedt= sheetView.findViewById(R.id.user_text);
+                   userInputedt.setVisibility(View.VISIBLE);
+                   titleText.setText("Change password");
+                   Log.d("liugekuyhg",""+titleText.getText().toString());
+                   descriptionText.setText("Are you sure, you want to exit?");
+                   descriptionText.setVisibility(View.GONE);
 
-                 userInputedt.setTransformationMethod(PasswordTransformationMethod.getInstance());
-
-                  userInputedt.setVisibility(View.VISIBLE);
-                 titleText.setText("Change password");
-                 Log.d("liugekuyhg",""+titleText.getText().toString());
-                 descriptionText.setText("Are you sure, you want to exit?");
-                 descriptionText.setVisibility(View.GONE);
 
 
                // userInputedt.setFilters(new InputFilter[]{EMOJI_FILTER, new InputFilter.LengthFilter(12)});

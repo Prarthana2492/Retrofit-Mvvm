@@ -45,14 +45,20 @@ public class AboutfarmpeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.privacy_policy, container, false);
 
+
+
         Status_bar_change_singleton.getInstance().color_change(getActivity());
         HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
         back_feed=view.findViewById(R.id.back_feed);
         terms=view.findViewById(R.id.web_terms);
-        privacypolicytxt=view.findViewById(R.id.toolbar_title);
-        privacypolicytxt.setText("About FarmPe");
+       // privacypolicytxt=view.findViewById(R.id.toolbar_title);
+        //privacypolicytxt.setText("About FarmPe");
         terms.loadUrl("http://farmpe.in/about-us.html");
         sessionManager = new SessionManager(getActivity());
+
+
+
+
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();
@@ -74,6 +80,8 @@ public class AboutfarmpeFragment extends Fragment {
 
 
 
+
+
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,6 +90,8 @@ public class AboutfarmpeFragment extends Fragment {
             }
         });
 
+
+
         try {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
             privacypolicytxt.setText(lngObject.getString("AboutFarmPe"));
@@ -89,6 +99,9 @@ public class AboutfarmpeFragment extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+
+
         return view;
     }
 }

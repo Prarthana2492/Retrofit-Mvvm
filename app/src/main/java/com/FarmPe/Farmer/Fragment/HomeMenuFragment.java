@@ -262,6 +262,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
 
 
                                 }else {
+
                                     Bundle bundle = new Bundle();
                                     bundle.putString("navigation_from","HOME_FRAGMENT");
                                     selectedFragment = You_Address_Fragment.newInstance();

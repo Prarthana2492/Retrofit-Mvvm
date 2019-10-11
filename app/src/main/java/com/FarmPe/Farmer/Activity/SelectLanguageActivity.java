@@ -81,7 +81,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
                         for (int i=0;i<jsonArray.length();i++){
                             JSONObject jsonObject1=jsonArray.getJSONObject(i);
                             String language=jsonObject1.getString("Language");
-                            int langCode=jsonObject1.getInt("Id");
+                          String langCode=jsonObject1.getString("Id");
                             String langimg=jsonObject1.getString("ImageIcon");
                             SelectLanguageBean stateBean=new SelectLanguageBean(language,langCode,langimg);
                             newOrderBeansList.add(stateBean);

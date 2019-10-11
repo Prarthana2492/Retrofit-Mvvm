@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:id="@+id/main_layout"
@@ -46,24 +47,13 @@
             android:src="@drawable/location_pin_location" />
 
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:padding="8dp"
+            android:orientation="horizontal"
             android:background="@color/menu_green"
-            android:contentInsetStart="0dp"
-            android:contentInsetLeft="0dp"
-            android:contentInsetEnd="0dp"
-            android:contentInsetRight="0dp"
-            android:gravity="left"
-            android:minHeight="?attr/actionBarSize"
-            app:contentInsetEnd="0dp"
-            app:contentInsetLeft="0dp"
-            app:contentInsetRight="0dp"
-            app:contentInsetStart="10dp"
-            app:titleTextColor="@android:color/white">
-
+            tools:ignore="MissingConstraints">
 
             <LinearLayout
                 android:id="@+id/back_feed"
@@ -72,28 +62,75 @@
                 android:background="@drawable/ic_filter_state"
                 android:gravity="center">
 
-
                 <ImageView
-                    android:id="@+id/b_arrow"
-                    android:layout_width="wrap_content"
+                    android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="15dp"
-                    android:src="@drawable/ic_go_back_left_arrow_" />
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_go_back_left_arrow_"
+                    />
             </LinearLayout>
 
-
             <TextView
-                android:id="@+id/toolbar_title"
+                android:id="@+id/setting_tittle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
                 android:text="Your Address"
+                android:textStyle="bold"
                 android:textColor="#fff"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textSize="20dp" />
+        </LinearLayout>
 
-        </android.support.v7.widget.Toolbar>
+
+        <!--<android.support.v7.widget.Toolbar-->
+            <!--android:id="@+id/toolbar"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="left"-->
+            <!--android:background="@color/menu_green"-->
+            <!--android:contentInsetStart="0dp"-->
+            <!--android:contentInsetLeft="0dp"-->
+            <!--android:contentInsetEnd="0dp"-->
+            <!--android:contentInsetRight="0dp"-->
+            <!--android:gravity="left"-->
+            <!--android:minHeight="?attr/actionBarSize"-->
+            <!--app:contentInsetEnd="0dp"-->
+            <!--app:contentInsetLeft="0dp"-->
+            <!--app:contentInsetRight="0dp"-->
+            <!--app:contentInsetStart="10dp"-->
+            <!--app:titleTextColor="@android:color/white">-->
+
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/back_feed"-->
+                <!--android:layout_width="50dp"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:background="@drawable/ic_filter_state"-->
+                <!--android:gravity="center">-->
+
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/b_arrow"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="20dp"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:layout_marginRight="15dp"-->
+                    <!--android:src="@drawable/ic_go_back_left_arrow_" />-->
+            <!--</LinearLayout>-->
+
+
+            <!--<TextView-->
+                <!--android:id="@+id/toolbar_title"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Your Address"-->
+                <!--android:textColor="#fff"-->
+                <!--android:textSize="20dp"-->
+                <!--android:textStyle="bold" />-->
+
+        <!--</android.support.v7.widget.Toolbar>-->
     </RelativeLayout>
 
 
