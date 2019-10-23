@@ -159,7 +159,7 @@ public class AddFirstFragment extends Fragment {
             JSONObject postjsonObject = new JSONObject();
             postjsonObject.put("LookingForObj", userRequestjsonObject);
 
-            System.out.println("postObj"+postjsonObject.toString());
+            //System.out.println("postObj"+postjsonObject.toString());
 
             Login_post.login_posting(getActivity(), Urls.GetLookingForItems,postjsonObject,new VoleyJsonObjectCallback() {
                 @Override
