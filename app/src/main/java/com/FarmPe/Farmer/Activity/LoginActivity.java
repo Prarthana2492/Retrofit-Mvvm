@@ -306,7 +306,6 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                 try {
 
                     lngObject = new JSONObject(sessionManager.getRegId("language"));
-
                     popup_heading.setText(lngObject.getString("ChangeLanguage"));
 
 

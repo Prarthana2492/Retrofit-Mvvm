@@ -24,7 +24,7 @@
 
 
         <activity
-            android:name=".Activity.HomePage_With_Bottom_Navigation"
+            android:name=".Activity.ActivitySelectLang"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +32,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
 
 
 
@@ -57,7 +56,7 @@
 
 
         <activity
-            android:name=".Activity.SelectLanguageActivity"
+            android:name=".Activity.HomePage_With_Bottom_Navigation"
             android:screenOrientation="portrait" />
 
 
@@ -73,40 +72,34 @@
 
 
         <activity
-        android:name=".Activity.ActivitySelectLang"
-        android:resizeableActivity="false"
-        android:screenOrientation="portrait" />
-
-
-
-
-        <activity
             android:name=".Activity.LandingPageActivity"
             android:resizeableActivity="false"
             android:screenOrientation="portrait" />
 
 
-        <activity
-            android:name=".Activity.ResetPasswordNew"
+           <activity
+            android:name=".Activity.SelectLanguageActivity"
+            android:resizeableActivity="false"
             android:screenOrientation="portrait" />
 
 
-
-        <activity
-            android:name=".Activity.SignUpActivity"
-            android:screenOrientation="portrait" />
-
+             <activity
+               android:name=".Activity.ResetPasswordNew"
+              android:screenOrientation="portrait" />
 
 
 
+           <activity
+               android:name=".Activity.SignUpActivity"
+               android:screenOrientation="portrait" />
+        
+            <activity
+               android:name=".Activity.Privacy_Activity"
+               android:screenOrientation="portrait" />
 
-        <activity
-            android:name=".Activity.Privacy_Activity"
-            android:screenOrientation="portrait" />
-
-        <service
-            android:name=".GpsService"
-            />
+               <service
+                android:name=".GpsService"
+               />
 
 
 
@@ -121,6 +114,7 @@
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
+
         </service>
         <service android:name=".MyFirebaseInstanceIDService">
             <intent-filter>

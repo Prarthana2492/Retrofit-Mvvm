@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.MediaCas;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -106,7 +107,9 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
     private void showSnack(boolean isConnected) {
         String message = null;
         int color=0;
+
         if (isConnected) {
+
 
             if(connectivity_check) {
                 message = "Good! Connected to Internet";
@@ -127,6 +130,8 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
                 connectivity_check=false;
             }
+
+
 
         }  else {
             message = "No Internet Connection";
@@ -398,6 +403,9 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
             @Override
             public void onClick(View v) {
 
+                System.out.println("aaaaaaaaaaa" +sessionManager.getRegId("language_name"));
+
+
 
 //                if (change_lang.getText().toString().equals("English")){
 //                    isEng = true;
@@ -492,6 +500,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                             @Override
                             public void onSuccessResponse(JSONObject result) {
                                 System.out.println("111111user" + result);
+
                                 try{
                                     JSONObject jsonObject;
                                     JSONObject userObject;
@@ -503,7 +512,9 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                                         status=jsonObject.getString("Status");
                                         userId=jsonObject.getString("UserId");
 
+
                                         System.out.println("useridddd"+mobile_no.getText().toString());
+
 
                                         if(status.equals("1")){
                                             System.out.println("jdhyusulogin"+status);
@@ -523,12 +534,14 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                                                 AddData(mobile_no.getText().toString(),password);
                                             }
 
+
                                            }else {
 
                                             if(myDb.isEmailExists(mobile_no.getText().toString())){
 
                                                 DeleteData(mobile_no.getText().toString(),password);
                                             }
+
                                            /* if(remember_me.isChecked()){
 
                                                 if(!myDb.isEmailExists(mobile_no.getText().toString())){
@@ -541,6 +554,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                                                     DeleteData(mobile_no.getText().toString(),password);
                                                 }
                                             }*/
+
                                         }
 
                                     } else{
@@ -552,11 +566,14 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                                         TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                                         tv.setBackgroundColor(ContextCompat.getColor(LoginActivity_new.this,R.color.orange));
                                         tv.setTextColor(Color.WHITE);
+
                                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                                             tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
                                         } else {
                                             tv.setGravity(Gravity.CENTER_HORIZONTAL);
                                         }
+
                                         snackbar.show();
                                         snackbar.show();
 

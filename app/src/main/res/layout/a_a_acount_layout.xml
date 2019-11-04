@@ -59,6 +59,8 @@
         android:weightSum="100"
         >
 
+
+
     <LinearLayout
         android:id="@+id/acc_info_lay"
         android:layout_width="match_parent"
@@ -68,6 +70,7 @@
         android:layout_marginTop="20dp"
         android:weightSum="100"
         >
+
 
         <LinearLayout
             android:layout_width="0dp"
@@ -79,6 +82,7 @@
 
 
             <ImageView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -175,6 +179,7 @@
             android:orientation="horizontal"
             android:paddingVertical="20dp"
             android:weightSum="100"
+
             >
 
             <LinearLayout
@@ -183,6 +188,7 @@
                 android:layout_weight="25"
                 android:gravity="center"
                 android:layout_gravity="center_vertical"
+
                 >
 
 
@@ -195,6 +201,7 @@
                     />
 
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -224,6 +231,7 @@
 
 
         <LinearLayout
+
             android:id="@+id/logout_lay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -233,6 +241,7 @@
             >
 
             <LinearLayout
+
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="25"
@@ -242,6 +251,7 @@
 
 
                 <ImageView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -251,7 +261,9 @@
 
             </LinearLayout>
 
+
             <LinearLayout
+
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="75"
@@ -260,6 +272,7 @@
                 >
 
                 <TextView
+
                     android:id="@+id/notifi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

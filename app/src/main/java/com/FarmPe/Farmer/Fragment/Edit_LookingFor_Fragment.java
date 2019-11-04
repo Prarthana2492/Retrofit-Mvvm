@@ -64,7 +64,6 @@ public class Edit_LookingFor_Fragment extends Fragment {
         });
 
 
-
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

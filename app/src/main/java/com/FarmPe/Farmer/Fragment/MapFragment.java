@@ -138,10 +138,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                     }else if(getArguments().getString("navigation_from").equals("fav_fragment")) {
 
 
-                        FragmentManager fm = getActivity().getSupportFragmentManager();
-                        fm.popBackStack("favo_req", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-
                         selectedFragment = Request_Favorite_Fragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frame_menu, selectedFragment);
@@ -165,6 +161,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
+
 
                 }else if(getArguments().getString("navigation_from").equals("fav_fragment")) {
 
@@ -196,11 +193,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                     transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
 
+
+
                 }else {
 
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("back_status",getArguments().getString("navigation_from"));
                     selectedFragment = Request_Address_Book_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_menu, selectedFragment);
+                    selectedFragment.setArguments(bundle);
                     transaction.addToBackStack("currentlocation");
                     transaction.commit();
 

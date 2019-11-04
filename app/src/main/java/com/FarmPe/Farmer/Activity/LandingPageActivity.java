@@ -261,6 +261,10 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
 
 
         sessionManager = new SessionManager(this);
+        selectedFragment = HomeMenuFragment.newInstance();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_layout, selectedFragment);
+        transaction.commit();
         activity = this;
 
         System.out.println("landiiiiiing");
@@ -286,10 +290,7 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
 
         System.out.println("landiiiiiing");
 
-        selectedFragment = HomeMenuFragment.newInstance();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, selectedFragment);
-        transaction.commit();
+
 
 
         Profile = findViewById(R.id.profile_view);

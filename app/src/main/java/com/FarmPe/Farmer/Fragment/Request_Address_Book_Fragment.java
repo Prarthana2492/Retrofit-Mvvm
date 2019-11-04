@@ -96,7 +96,7 @@ public class Request_Address_Book_Fragment extends Fragment {
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
                     Bundle bundle = new Bundle();
-                    bundle.putString("navigation_from","model_frg");
+                    bundle.putString("navigation_from",getArguments().getString("back_status"));
                     selectedFragment = MapFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_menu, selectedFragment);
@@ -105,7 +105,6 @@ public class Request_Address_Book_Fragment extends Fragment {
 
 //                       FragmentManager fm = getActivity().getSupportFragmentManager();
 //                       fm.popBackStack("currentlocation", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
 
                 }
                 return false;
@@ -119,7 +118,7 @@ public class Request_Address_Book_Fragment extends Fragment {
             public void onClick(View view) {
 
                 Bundle bundle = new Bundle();
-                bundle.putString("navigation_from","model_frg");
+                bundle.putString("navigation_from",getArguments().getString("back_status"));
                 selectedFragment = MapFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
@@ -152,6 +151,7 @@ public class Request_Address_Book_Fragment extends Fragment {
             jsonObject.put("PickUpFrom",pickUPFrom);
             System.out.println("aaaaaaaaaaaaadddd" + sessionManager.getRegId("userId"));
 
+
             Crop_Post.crop_posting(getActivity(), Urls.Get_New_Address, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
@@ -170,7 +170,6 @@ public class Request_Address_Book_Fragment extends Fragment {
                             new_address_beanArrayList.add(add_new_address_bean);
 
                         }
-
 
 
                         mAdapter.notifyDataSetChanged();

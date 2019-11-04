@@ -68,6 +68,7 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
 
         public MyViewHolder(View view) {
             super(view);
+
             language_name = view.findViewById(R.id.lang_text);
             submit_langu = view.findViewById(R.id.submit_langu_layout);
             lang_icon = view.findViewById(R.id.radiogrp);
@@ -102,10 +103,26 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
 
             holder.lang_txt.setChecked(true);
             holder.lang_txt.setTypeface(null, Typeface.BOLD);
-        } else {
 
-            holder.lang_txt.setChecked(false);
-            holder.lang_txt.setTypeface(null, Typeface.NORMAL);
+       } else {
+
+            System.out.println("sfdsdfsdxvvvv" + sessionManager.getRegId("language_name"));
+
+
+            if((sessionManager.getRegId("language_name").equals(""))){
+                if(position == 0){
+                    holder.lang_txt.setChecked(true);
+                    holder.lang_txt.setTypeface(null, Typeface.NORMAL);
+
+                }
+
+
+
+           }else{
+                holder.lang_txt.setChecked(false);
+                holder.lang_txt.setTypeface(null, Typeface.NORMAL);
+            }
+
         }
 
 

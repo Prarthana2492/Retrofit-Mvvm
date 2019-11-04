@@ -36,6 +36,8 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
     Activity activity;
     Fragment selectedFragment;
 
+
+
     public LinearLayout linearLayout;
     public static String first;
     public static CardView cardView;
@@ -57,7 +59,6 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
 
 
 
-
         public MyViewHolder(View view) {
             super(view);
             prod_price=view.findViewById(R.id.prod_price);
@@ -70,6 +71,7 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
 
     }
 
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -81,6 +83,7 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final AddTractorBean products = productList.get(position);
+
         brandId=products.getId();
         holder.prod_price.setText(products.getProd_name());
         System.out.println("croptttt"+ brandId);
@@ -114,7 +117,8 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
                     }
                     snackbar.show();
 
-                }else {
+
+               }else {
 
 
                      brandId = products.getId();

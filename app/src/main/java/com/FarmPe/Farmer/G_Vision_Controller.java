@@ -1,5 +1,6 @@
 package com.FarmPe.Farmer;
 
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
@@ -40,26 +41,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.android.volley.VolleyLog.TAG;
 
 
 public class G_Vision_Controller {
 
     // static variable single_instance of type Singleton
-    private static G_Vision_Controller g_vision_controller_single_instance = null;
-    Activity activity;
-    Bitmap scaled_bitmap;
-    SafeSearchAnnotation annotation;
-    private static final int MAX_LABEL_RESULTS = 10;
+     private static G_Vision_Controller g_vision_controller_single_instance = null;
+     Activity activity;
+     Bitmap scaled_bitmap;
+     SafeSearchAnnotation annotation;
+     private static final int MAX_LABEL_RESULTS = 10;
 
-    private static final String CLOUD_VISION_API_KEY = "AIzaSyASLfdH5Tr931zKrsdH2alWHPxMg6NzD-A";
-    private static final String ANDROID_CERT_HEADER = "X-Android-Cert";
-    private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
-    private  String TAG="G_Vission_controller";
-    String currentStatus;
+     private static final String CLOUD_VISION_API_KEY = "AIzaSyASLfdH5Tr931zKrsdH2alWHPxMg6NzD-A";
+     private static final String ANDROID_CERT_HEADER = "X-Android-Cert";
+     private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
+     private  String TAG="G_Vission_controller";
+     String currentStatus;
 
-  SessionManager sessionManager;
-    private G_Vision_Controller() {
+
+
+     SessionManager sessionManager;
+      private G_Vision_Controller() {
     }
 
 
@@ -94,6 +96,7 @@ public class G_Vision_Controller {
     }
 
 
+
     private Vision.Images.Annotate prepareAnnotationRequest(final Bitmap bitmap) throws IOException {
         HttpTransport httpTransport = AndroidHttp.newCompatibleTransport();
         JsonFactory jsonFactory = GsonFactory.getDefaultInstance();
@@ -117,6 +120,8 @@ public class G_Vision_Controller {
                         visionRequest.getRequestHeaders().set(ANDROID_CERT_HEADER, sig);
                     }
                 };
+
+
 
         Vision.Builder builder = new Vision.Builder(httpTransport, jsonFactory, null);
         builder.setVisionRequestInitializer(requestInitializer);
@@ -152,6 +157,7 @@ public class G_Vision_Controller {
             // Add the list of one thing to the request
             add(annotateImageRequest);
         }});
+
 
         Vision.Images.Annotate annotateRequest =
                 vision.images().annotate(batchAnnotateImagesRequest);
@@ -204,6 +210,7 @@ public class G_Vision_Controller {
             return "Cloud Vision API request failed. Check logs for details.";
         }
 
+
         protected void onPostExecute(String result) {
 
             Activity activity = mActivityWeakReference.get();
@@ -223,9 +230,6 @@ public class G_Vision_Controller {
 
                     }
 
-
-
-
                    /* Toast.makeText(LandingPageActivity.this,"Image contain below details"+annotation.getViolence()+"\n"
                             +annotation.getSpoof()+"\n"+annotation.getMedical()+"\n"+annotation.getAdult(),Toast.LENGTH_LONG).show();*/
 
@@ -234,8 +238,6 @@ public class G_Vision_Controller {
                   //  Toast.makeText(activity,"Image is inappropriate, choose related image.",Toast.LENGTH_LONG).show();
 
                 }
-
-
             }
         }
     }
@@ -261,6 +263,8 @@ public class G_Vision_Controller {
     }
 
 
+
+
     private String convertResponseToString(BatchAnnotateImagesResponse response) {
         StringBuilder message = new StringBuilder("");
 
@@ -284,14 +288,13 @@ public class G_Vision_Controller {
 
             }
 
-
-
         } else {
             message.append("nothing");
         }
 
         return message.toString();
     }
+
 
     private void uploadImage(final Bitmap bitmap2){
         final ProgressDialog progressDialog = ProgressDialog.show(activity, "",
@@ -314,6 +317,7 @@ public class G_Vision_Controller {
 //                        ft.replace(R.id.frame_layout,selectedFragment);
 //                        ft.commit();
                     }
+
                 },
                 new Response.ErrorListener() {
                     @Override

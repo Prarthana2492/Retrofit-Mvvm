@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ActivitySelectLang extends AppCompatActivity {
+
     private List<SelectLanguageBean> newOrderBeansList = new ArrayList<>();
     private RecyclerView recyclerView;
     private AdapterSelectLanguage mAdapter;

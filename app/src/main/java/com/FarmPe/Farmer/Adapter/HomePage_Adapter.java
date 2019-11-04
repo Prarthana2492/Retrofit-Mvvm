@@ -8,9 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.FarmPe.Farmer.Bean.AddPhotoBean;
-import com.FarmPe.Farmer.Bean.AddTractorBean;
-import com.FarmPe.Farmer.Bean.AddTractorBean1;
 import com.FarmPe.Farmer.Bean.AddTractorBean2;
 import com.FarmPe.Farmer.R;
 import com.bumptech.glide.Glide;
@@ -18,7 +15,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class HomePage_Adapter extends RecyclerView.Adapter<HomePage_Adapter.MyViewHolder> {
 

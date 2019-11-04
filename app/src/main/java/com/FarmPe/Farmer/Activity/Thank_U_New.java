@@ -199,7 +199,6 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
 
 
 
-
         resend_otp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -270,7 +269,6 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
                 }
             }
         });
-
 
 
 

@@ -116,8 +116,11 @@ public class UpdateAccDetailsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.update_acc_details, container, false);
+
        // getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
         Status_bar_change_singleton.getInstance().color_change(getActivity());
+
         name_tick = view.findViewById(R.id.name_tick);
         phone_tick = view.findViewById(R.id.phone_tick);
         pass_tick = view.findViewById(R.id.pass_tick);
@@ -132,11 +135,11 @@ public class UpdateAccDetailsFragment extends Fragment {
         prod_img = view.findViewById(R.id.prod_imgg);
         update_btn = view.findViewById(R.id.update_btn);
         linearLayout = view.findViewById(R.id.main_layout);
-
         sessionManager = new SessionManager(getActivity());
         myDb = new DatabaseHelper(getActivity());
 
         setupUI(linearLayout);
+
 
         prod_img.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NewApi")
@@ -152,6 +155,7 @@ public class UpdateAccDetailsFragment extends Fragment {
 
             }
         });
+
 
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,6 +187,8 @@ public class UpdateAccDetailsFragment extends Fragment {
 
 
         try {
+
+
             lngObject = new JSONObject(sessionManager.getRegId("language"));
             toolbar_title.setText(lngObject.getString("UpdateYourAccountDetails"));
             update_btn_txt.setText(lngObject.getString("Update"));
@@ -218,14 +224,13 @@ public class UpdateAccDetailsFragment extends Fragment {
 
                     }
                 }
+
                 return filtered;
             }
 
         };
 
         profile_passwrd.setFilters(new InputFilter[] {filter1,new InputFilter.LengthFilter(12) });
-
-
 
 
         try{
@@ -541,6 +546,8 @@ public class UpdateAccDetailsFragment extends Fragment {
         bitmap.compress(Bitmap.CompressFormat.PNG, 80, byteArrayOutputStream);
         return byteArrayOutputStream.toByteArray();
     }
+
+
     private void uploadImage(final Bitmap bitmap){
         final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "",
                 "Loading....Please wait.");
@@ -627,6 +634,7 @@ public class UpdateAccDetailsFragment extends Fragment {
 
                 return params;
             }
+
             @Override
             protected Map<String, DataPart> getByteData() {
                 Map<String, DataPart> params = new HashMap<>();

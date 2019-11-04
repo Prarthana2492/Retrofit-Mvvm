@@ -36,6 +36,7 @@ public class AskNandi extends Fragment {
     TextView privacypolicytxt;
     WebView terms;
 
+
     public static AskNandi newInstance() {
         AskNandi fragment = new AskNandi();
         return fragment;
@@ -44,8 +45,8 @@ public class AskNandi extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.brochure_webview_layout, container, false);
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
 
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
         Status_bar_change_singleton.getInstance().color_change(getActivity());
 
         back_feed=view.findViewById(R.id.back_feed);

@@ -190,7 +190,6 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                 System.out.println("edittttttttttttttttttttttttttttttttttttttttttt"+bundle);
                 bundle.putString("navigation_from","your_add");
 
-
                 selectedFragment = Add_New_Address_Fragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
@@ -234,6 +233,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
 
 
                 confirm.setOnClickListener(new View.OnClickListener() {
@@ -471,7 +471,6 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                                     tv.setBackgroundColor(ContextCompat.getColor(activity,R.color.orange));
                                     tv.setTextColor(Color.WHITE);
 
-
                                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                                         tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                                     } else {
@@ -483,7 +482,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
                                     selectedFragment = You_Address_Fragment.newInstance();
                                     FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-                                    transaction.replace(R.id.frame_layout, selectedFragment);
+                                    transaction.replace(R.id.frame_menu, selectedFragment);
                                     transaction.commit();
                                 }
 
@@ -500,7 +499,6 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
             }
         });
-
 
         try {
 

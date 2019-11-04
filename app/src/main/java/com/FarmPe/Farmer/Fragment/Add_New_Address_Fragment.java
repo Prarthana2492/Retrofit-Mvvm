@@ -127,6 +127,7 @@ public class  Add_New_Address_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.select_your_region_layout, container, false);
 
+
         Status_bar_change_singleton.getInstance().color_change(getActivity());
 
 
@@ -156,6 +157,7 @@ public class  Add_New_Address_Fragment extends Fragment {
          edit_state = view.findViewById(R.id.ed_state);
          edit_districr = view.findViewById(R.id.ed_dstrt);
          edit_village = view.findViewById(R.id.ed_vill);
+
 
          ortext = view.findViewById(R.id.ortext);
          save_1 = view.findViewById(R.id.save_1);
@@ -196,8 +198,7 @@ public class  Add_New_Address_Fragment extends Fragment {
           street_name.setFilters(new InputFilter[] {EMOJI_FILTER,new InputFilter.LengthFilter(50)});
 
 
-        setupUI(drawer);
-
+          setupUI(drawer);
 
                  state_id = StateApdater.stateid;
                  district_id = DistrictAdapter.districtid;
@@ -214,16 +215,19 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
         current_loc = view.findViewById(R.id.current_loc);
+
         if (getArguments().getString("navigation_from").equals("REQ_NEW")){
             current_loc.setVisibility(View.VISIBLE);
             ortext.setVisibility(View.VISIBLE);
-        }else {
+
+       }else {
             current_loc.setVisibility(View.GONE);
             ortext.setVisibility(View.GONE);
         }
 
         if(getArguments().getString("navigation_from").equals("your_add")){
             toolbar_titletxt.setText("Edit Your Address");
+
         }
 
 
@@ -528,7 +532,6 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
 
-
         state.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -537,7 +540,6 @@ public class  Add_New_Address_Fragment extends Fragment {
                 drawer.openDrawer(GravityCompat.END);
                 search_status="state";
                 search.setText("");
-
 
                 stateBeanList.clear();
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
@@ -1155,11 +1157,14 @@ public class  Add_New_Address_Fragment extends Fragment {
                             districtBeanList.add(stateBean);
                         }
 
+
                         sorting(districtBeanList);
+
 
 
                         districtAdapter.notifyDataSetChanged();
                         // grade_dialog.show();
+
 
                     } else {
                             recyclerView.setVisibility(View.GONE);

@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Activity.LandingPageActivity;
 import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
+import com.FarmPe.Farmer.Adapter.SelectLanguageAdapter;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
 
@@ -52,6 +53,7 @@ public class AaSettingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.a_s_setting_layout, container, false);
 
+
         Status_bar_change_singleton.getInstance().color_change(getActivity());
 
         HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
@@ -67,14 +69,19 @@ public class AaSettingFragment extends Fragment {
 
         sessionManager = new SessionManager(getActivity());
 
+        if(!(sessionManager.getRegId("language_name").equals(""))){
 
-        sub_lang.setText(sessionManager.getRegId("language_name"));
+            sub_lang.setText(sessionManager.getRegId("language_name"));
+
+        }
+
 
         Resources resources = getResources();
         PackageManager pm = getActivity().getPackageManager();
         Intent sendIntent = new Intent(Intent.ACTION_SEND);
         sendIntent.setType("text/plain");
         packageName = pm.queryIntentActivities(sendIntent, 0).toString();
+
 
 
 
@@ -86,7 +93,6 @@ public class AaSettingFragment extends Fragment {
                 HomePage_With_Bottom_Navigation.profile_icon.setImageResource(R.drawable.ic_user_home);
                 HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
                 HomePage_With_Bottom_Navigation.profile_text.setTextColor(Color.parseColor("#595959"));
-
                 selectedFragment = Home_Menu_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
@@ -96,11 +102,12 @@ public class AaSettingFragment extends Fragment {
 
 
         view.setFocusableInTouchMode(true);
-        view.requestFocus();
-        view.setOnKeyListener(new View.OnKeyListener() {
+                view.requestFocus();
+                view.setOnKeyListener(new View.OnKeyListener() {
 
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    @Override
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
+
 
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
@@ -156,6 +163,7 @@ public class AaSettingFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+
                 selectedFragment = ChangeLanguageFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
@@ -195,6 +203,8 @@ public class AaSettingFragment extends Fragment {
         });
 
 
+
+
         invi_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -225,7 +235,6 @@ public class AaSettingFragment extends Fragment {
                             try {
                                 startActivity(whatsappIntent);
                             } catch (android.content.ActivityNotFoundException ex) {
-
 
 
                                 Toast.makeText(getActivity(), "Whatsapp is not installed on this device.", Toast.LENGTH_SHORT);

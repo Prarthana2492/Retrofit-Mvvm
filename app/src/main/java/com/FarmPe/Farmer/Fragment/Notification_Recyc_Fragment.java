@@ -132,8 +132,7 @@ public class Notification_Recyc_Fragment extends Fragment {
         recyclerView1.setAdapter(farmadapter1);
 
 
-        notification_status();
-
+           notification_status();
 
 
           enable_all.setVisibility(View.GONE);

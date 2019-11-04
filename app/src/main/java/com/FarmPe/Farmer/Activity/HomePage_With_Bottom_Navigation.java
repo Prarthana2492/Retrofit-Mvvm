@@ -20,13 +20,14 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 
 
 
+
 public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
 
 
-    Fragment selectedFragment = null;
-    public static AHBottomNavigation bottomNavigation;
-    boolean doubleBackToExitPressedOnce = false;
-    String nav_switch = "HOME";
+     Fragment selectedFragment = null;
+     public static AHBottomNavigation bottomNavigation;
+     boolean doubleBackToExitPressedOnce = false;
+     String nav_switch = "HOME";
 
 
      public static LinearLayout linear_bottom;
@@ -155,6 +156,7 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.commit();
+
 
             }
         });

@@ -121,7 +121,7 @@ public class Login_post {
    //     progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
 
-        JsonObjectRequest jobReq = new JsonObjectRequest(Request.Method.POST, Urls.                                                                                                                                                                                                                                                                                                                                                             VerifyOTPNewUser, jsonObject,
+        JsonObjectRequest jobReq = new JsonObjectRequest(Request.Method.POST, Urls.VerifyOTPNewUser, jsonObject,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {

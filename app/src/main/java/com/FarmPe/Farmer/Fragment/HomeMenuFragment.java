@@ -192,7 +192,6 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
 //        });
 
 
-
         ur_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

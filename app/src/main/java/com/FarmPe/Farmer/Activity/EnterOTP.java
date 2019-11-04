@@ -164,16 +164,16 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
         //otp_text=findViewById(R.id.thanktu);
         linearLayout=findViewById(R.id.main_layout);
 
+
+
         left_arrow=findViewById(R.id.back_feed);
 
-
-
-        sessionId= getIntent().getStringExtra("otpnumber");
-
+        sessionId = getIntent().getStringExtra("otpnumber");
 
 
         resendotp=findViewById(R.id.resend);
         resendotp.setVisibility(View.VISIBLE);
+
         resendotp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -312,7 +312,7 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                otp_get_text=otpedittext.getText().toString();
+                otp_get_text = otpedittext.getText().toString();
                 System.out.println("entered_otp"+otp_get_text);
 
 
@@ -348,6 +348,7 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
                             public void onSuccessResponse(JSONObject result) {
                                 System.out.println("llllllllllllllllllllllllllll"+result);
                                 try {
+
                                     System.out.println("nnnnnmnm" + result.toString());
                                     JSONObject responseobject = new JSONObject(result.toString());
                                     JSONObject response = responseobject.getJSONObject("Response");
@@ -422,6 +423,7 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
         startActivity(intent);
         finish();
     }
+
 
 
     public void setupUI(View view) {

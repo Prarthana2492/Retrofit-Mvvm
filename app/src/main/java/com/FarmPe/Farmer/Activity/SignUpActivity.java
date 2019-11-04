@@ -271,7 +271,6 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
                // privacy_terms.setText(lngObject.getString("ByRegisteringyouacceptourPrivacyPolicyandTermsofuse"));
 
 
-
                 passwrd_toast = lngObject.getString("Enterpasswordoflength6characters");
                 mob_toast = lngObject.getString("Entervalidmobilenumber");
                 minimum_character_toast = lngObject.getString("NameShouldContainMinimum2Characters");
@@ -1070,24 +1069,25 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
                     }
     }
 
-    private void register() {
 
-        try {
+            private void register() {
 
-            // mobile=mob_no;
-            JSONObject userRequestjsonObject = new JSONObject();
-            JSONObject postjsonObject = new JSONObject();
+                try {
+
+                    // mobile=mob_no;
+                    JSONObject userRequestjsonObject = new JSONObject();
+                    JSONObject postjsonObject = new JSONObject();
 
 
-            userRequestjsonObject.put("PhoneNo", contact);
-            userRequestjsonObject.put("Password", password.getText().toString());
-            userRequestjsonObject.put("DeviceId", "123");
-            userRequestjsonObject.put("DeviceType", "Android");
-            userRequestjsonObject.put("FullName", name.getText().toString());
+                    userRequestjsonObject.put("PhoneNo", contact);
+                    userRequestjsonObject.put("Password", password.getText().toString());
+                    userRequestjsonObject.put("DeviceId", "123");
+                    userRequestjsonObject.put("DeviceType", "Android");
+                    userRequestjsonObject.put("FullName", name.getText().toString());
 
-            postjsonObject.putOpt("objUser", userRequestjsonObject);
+                    postjsonObject.putOpt("objUser", userRequestjsonObject);
 
-            System.out.println("post_oobject" + postjsonObject);
+                    System.out.println("post_oobject" + postjsonObject);
 
 
 
@@ -1100,14 +1100,19 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
 
                     try {
                         if (result.isNull("user")) {
-                            jsonObject_resp = result.getJSONObject("Response");
-                            status_resp = jsonObject_resp.getString("Status");
+                           // jsonObject_resp = result.getJSONObject("Response");
+                         //   status_resp = jsonObject_resp.getString("Status");
                             Snackbar snackbar = Snackbar
                                     .make(linearLayout,mobile_registered_toast, Snackbar.LENGTH_LONG);
                             View snackbarView = snackbar.getView();
                             TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                             tv.setBackgroundColor(ContextCompat.getColor(SignUpActivity.this,R.color.orange));
                             tv.setTextColor(Color.WHITE);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                                tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                            } else {
+                                tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                            }
                             snackbar.show();
 
                         } else {
@@ -1116,11 +1121,14 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
                             String userid = jsonObject.getString("Id");
                             System.out.println("useerrrriidd" + userid);
                             sessionManager.saveUserId(userid);
+
                             sessionManager.save_name(jsonObject.getString("FullName"), jsonObject.getString("PhoneNo"),jsonObject.getString("ProfilePic"));
                             Intent intent = new Intent(SignUpActivity.this, EnterOTP.class);
                             intent.putExtra("otpnumber", status);
                             startActivity(intent);
                         }
+
+
 
                     } catch (JSONException e) {
                         e.printStackTrace();

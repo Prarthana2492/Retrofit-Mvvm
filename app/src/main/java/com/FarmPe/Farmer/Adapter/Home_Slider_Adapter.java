@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
+
 
 import com.FarmPe.Farmer.R;
 
@@ -31,6 +31,7 @@ public class Home_Slider_Adapter extends PagerAdapter {
         }
         @SuppressLint("ClickableViewAccessibility")
         @Override
+
 
 
 

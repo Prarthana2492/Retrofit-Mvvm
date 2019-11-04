@@ -55,6 +55,7 @@ public class AddFirstFragment extends Fragment {
         return fragment;
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.request_price_recyc_layout, container, false);
@@ -67,6 +68,7 @@ public class AddFirstFragment extends Fragment {
         back_feed=view.findViewById(R.id.back_feed);
         linearLayout=view.findViewById(R.id.linearLayout);
         b_arrow=view.findViewById(R.id.b_arrow);
+
 
 
         back_feed.setOnClickListener(new View.OnClickListener() {
@@ -137,6 +139,7 @@ public class AddFirstFragment extends Fragment {
         });
 
 
+
         AddLookigFor();
         newOrderBeansList.clear();
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 3, GridLayoutManager.VERTICAL, false);
@@ -161,11 +164,13 @@ public class AddFirstFragment extends Fragment {
 
             System.out.println("postObj"+postjsonObject.toString());
 
+
             Login_post.login_posting(getActivity(), Urls.GetLookingForItems,postjsonObject,new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("cropsresult"+result);
                     JSONArray cropsListArray=null;
+
                     try {
                         cropsListArray=result.getJSONArray("LookingForDetailsList");
                         System.out.println("e     e e ddd"+cropsListArray.length());
@@ -183,6 +188,7 @@ public class AddFirstFragment extends Fragment {
                             newOrderBeansList.add(crops);
 
                         }
+
                         farmadapter=new AddFirstAdapter(getActivity(),newOrderBeansList);
                         recyclerView.setAdapter(farmadapter);
                     } catch (JSONException e) {

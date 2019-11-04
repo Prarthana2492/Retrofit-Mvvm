@@ -33,6 +33,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
     SessionManager sessionManager;
     boolean doubleBackToExitPressedOnce = false;
 
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -47,6 +48,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_language_layout);
         //select_lang=findViewById(R.id.select_lang);
+
         recyclerView =findViewById(R.id.recycler_view1);
 
         /*select_lang.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +58,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });*/
+
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);

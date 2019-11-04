@@ -9,7 +9,6 @@ import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -20,28 +19,29 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
 import com.FarmPe.Farmer.Volly_class.Login_post;
 import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
+
+
 public class ForgotPasswordNew extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener{
+
     TextView forgot_submit, forgot_pass_text, forgt_pass_detail;
     LinearLayout forgot_back;
     public static EditText mobileno;
     SessionManager sessionManager;
-
     public static String otp, forgot_mob_no, Message,mob_trim;
     LinearLayout coordinatorLayout;
     int status;
 
     public static boolean connectivity_check;
     ConnectivityReceiver connectivityReceiver;
+
     @Override
     protected void onStop()
     {
@@ -136,8 +136,7 @@ public class ForgotPasswordNew extends AppCompatActivity implements Connectivity
         mobileno = findViewById(R.id.mobile_no);
         coordinatorLayout = findViewById(R.id.main_layou1);
         forgot_pass_text = findViewById(R.id.forgot);
-
-         forgt_pass_detail = findViewById(R.id.tocnt);
+        forgt_pass_detail = findViewById(R.id.tocnt);
 
         setupUI(coordinatorLayout);
 
@@ -152,7 +151,7 @@ public class ForgotPasswordNew extends AppCompatActivity implements Connectivity
             lngObject = new JSONObject(sessionManager.getRegId("language"));
 
             // forgt_pass_detail.setText(lngObject.getString("ForgotPasswordText"));
-           mobileno.setHint(lngObject.getString("PhoneNo"));
+            mobileno.setHint(lngObject.getString("PhoneNo"));
             forgot_pass_text.setText(lngObject.getString("ForgotPassword"));
             forgot_submit.setText(lngObject.getString("ResetPassword"));
 
@@ -236,11 +235,13 @@ public class ForgotPasswordNew extends AppCompatActivity implements Connectivity
                                 localize_text="+91";
                                 JSONObject postjsonObject = new JSONObject();
                                 postjsonObject.put("UserName", localize_text + mobileno.getText().toString());
+
                                 System.out.println("aaaaaaaaaaaa" + postjsonObject);
                                 Login_post.Forgot_Passsword(ForgotPasswordNew.this, postjsonObject, new VoleyJsonObjectCallback() {
                                     @Override
                                     public void onSuccessResponse(JSONObject result) {
                                         System.out.println("nnnnnmnm" + result.toString());
+
                                         try {
 
                                             otp = result.getString("OTP");

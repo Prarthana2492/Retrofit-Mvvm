@@ -338,6 +338,7 @@ public class You_Address_Fragment extends Fragment {
             Crop_Post.crop_posting(getActivity(), Urls.Get_New_Address, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
+
                     System.out.println("ggggggggggaaaaaaa"+result);
                     try{
                         new_address_beanArrayList.clear();
@@ -365,15 +366,12 @@ public class You_Address_Fragment extends Fragment {
 
                         }else{
 
+
                             add_visible.setVisibility(View.GONE);
 
                         }
 
-
                         mAdapter.notifyDataSetChanged();
-
-
-
 
                     }catch (Exception e){
                         e.printStackTrace();
@@ -386,8 +384,6 @@ public class You_Address_Fragment extends Fragment {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
 
     }
 }

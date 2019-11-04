@@ -54,6 +54,11 @@ public class ChangeLanguageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.select_language_layout, container, false);
 
+
+
+
+
+
         Status_bar_change_singleton.getInstance().color_change(getActivity());
 
 

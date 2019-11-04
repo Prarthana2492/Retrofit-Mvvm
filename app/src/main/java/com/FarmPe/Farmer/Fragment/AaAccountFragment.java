@@ -95,7 +95,9 @@ public class AaAccountFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.a_a_acount_layout, container, false);
 
+
         Status_bar_change_singleton.getInstance().color_change(getActivity());
+
 
         backfeed = view.findViewById(R.id.back_feed);
         acc_info_lay = view.findViewById(R.id.acc_info_lay);
@@ -176,6 +178,7 @@ public class AaAccountFragment extends Fragment {
                             try{
 
                                 get_address_array = result.getJSONArray("UserAddressDetails");
+
 
 
 

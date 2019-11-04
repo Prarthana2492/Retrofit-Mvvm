@@ -98,6 +98,8 @@ public class RequestFormFragment extends Fragment {
         toolbar_title.setText("Request for Quotation");
         sessionManager=new SessionManager(getActivity());
         Bundle bundle=getArguments();
+
+
         if (bundle==null){
             gettingAddress();
 
@@ -144,7 +146,6 @@ public class RequestFormFragment extends Fragment {
                 bundle.putInt("selected_id2",finance_selected);
                 bundle.putInt("selected_id_time1",time_selected);
                 bundle.putString("add_id",addId);
-
 
 
 
@@ -278,8 +279,6 @@ public class RequestFormFragment extends Fragment {
     private void RequestForm() {
 
 
-
-
         System.out.println("purchase"+time_period);
         System.out.println("finance"+time_period);
 
@@ -294,8 +293,6 @@ public class RequestFormFragment extends Fragment {
             userRequestjsonObject.put("ModelId", AddModelAdapter.tractor_id);
             userRequestjsonObject.put("IsAgreed", "True");
             userRequestjsonObject.put("LookingForDetailsId", AddFirstAdapter.looinkgId);
-
-
 
 
             System.out.println("postObjmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"+userRequestjsonObject.toString());

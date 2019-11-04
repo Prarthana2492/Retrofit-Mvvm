@@ -60,10 +60,12 @@ LinearLayout back_feed;
     EditText profile_name,profile_phone;
     SessionManager sessionManager;
     G_Vision_Controller g_vision_controller;
+
     public static FullScreenImageFragment newInstance() {
         FullScreenImageFragment fragment = new FullScreenImageFragment();
         return fragment;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

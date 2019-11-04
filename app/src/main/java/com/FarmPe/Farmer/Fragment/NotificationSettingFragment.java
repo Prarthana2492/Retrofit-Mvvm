@@ -55,6 +55,8 @@ public class NotificationSettingFragment extends Fragment {
         accountinfo3=view.findViewById(R.id.actninfo3);
         notificatn_set=view.findViewById(R.id.toolbar_title);
 
+
+
         sessionManager = new SessionManager(getActivity());
 
         back_feed.setOnClickListener(new View.OnClickListener() {

@@ -34,6 +34,7 @@ public class AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyView
     public static LinearLayout next_arw;
     public static String first,looinkgId,purchase_tractor;
     public static CardView cardView;
+
     public AddFirstAdapter(Activity activity, List<AddTractorBean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;

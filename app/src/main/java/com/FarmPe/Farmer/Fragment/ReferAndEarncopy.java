@@ -65,17 +65,21 @@ public class ReferAndEarncopy extends Fragment {
         Status_bar_change_singleton.getInstance().color_change(getActivity());
        // wallet_balance=view.findViewById(R.id.wallet_blnc);
        // referal_code=view.findViewById(R.id.refer_code);
+
         whatsapp=view.findViewById(R.id.whatsapp);
         facebook=view.findViewById(R.id.facebook);
         insta=view.findViewById(R.id.insta);
         twitter=view.findViewById(R.id.twitter);
         message=view.findViewById(R.id.msg);
         more = view.findViewById(R.id.more);
+
       //  getscratchtxt=view.findViewById(R.id.getscratch);
        // winuptxt=view.findViewById(R.id.winup);
       //  wallet_blnctxtt=view.findViewById(R.id.wallet_blnctxt);
+
         referearntxt=view.findViewById(R.id.toolbar_title);
         sessionManager=new SessionManager(getActivity());
+
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();
@@ -85,6 +89,7 @@ public class ReferAndEarncopy extends Fragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
@@ -96,15 +101,18 @@ public class ReferAndEarncopy extends Fragment {
         });
 
 
+
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 
             }
         });
+
 
 
         try {
@@ -117,12 +125,6 @@ public class ReferAndEarncopy extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-
-
-
-
 
 
         Resources resources = getResources();
@@ -205,8 +207,6 @@ public class ReferAndEarncopy extends Fragment {
                         e.printStackTrace();
                     }
 
-
-
                 }
             });
 
@@ -221,6 +221,8 @@ public class ReferAndEarncopy extends Fragment {
         twitter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkonclick");
                 try
                 {
@@ -234,6 +236,7 @@ public class ReferAndEarncopy extends Fragment {
                     startActivity(intent);
 
                 }
+
                 catch (Exception e)
                 {
                     Toast.makeText(getActivity(),"Twitter is not installed on this device",Toast.LENGTH_LONG).show();
@@ -362,6 +365,7 @@ public class ReferAndEarncopy extends Fragment {
         shareIntent.setType("text/plain");
         PackageManager pm = getActivity().getPackageManager();
         List<ResolveInfo> resInfos = pm.queryIntentActivities(shareIntent, 0);
+
         if (!resInfos.isEmpty()) {
             System.out.println("Have package");
             for (ResolveInfo resInfo : resInfos) {

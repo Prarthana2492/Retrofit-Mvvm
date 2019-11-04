@@ -66,6 +66,7 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
     }
 
 
+
     private void showSnack(boolean isConnected) {
         String message = null;
         int color=0;
@@ -155,18 +156,14 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
 
         setupUI(linearLayout);
 
-
-
-
-
         sessionManager = new SessionManager(this);
 
         JSONObject lngObject;
 
 
         try {
-            lngObject=new JSONObject(sessionManager.getRegId("language"));
 
+            lngObject=new JSONObject(sessionManager.getRegId("language"));
 
             reset_text.setText(lngObject.getString("ResetPassword"));
            // to_continue_text.setText(lngObject.getString("TocontinuewithFarmPeFarmer"));
@@ -185,9 +182,12 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
             e.printStackTrace();
         }
 
+
+
         forgot_username=ForgotPasswordNew.forgot_mob_no.substring(3);
 
-        back_reset_pass.setOnClickListener(new View.OnClickListener() {
+
+         back_reset_pass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(ResetPasswordNew.this,Thank_U_New.class);
@@ -195,9 +195,6 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
                 finish();
             }
         });
-
-
-
 
 
 
@@ -241,6 +238,7 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
                     snackbar.show();
 
 
+
                 }else if (password.contains(" ")) {
                     passwd.requestFocus();
 
@@ -257,6 +255,7 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
                     snackbar.show();
+
                 }
 
                 else if (password.length()<6){
@@ -276,8 +275,9 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
                     }
                     snackbar.show();
 
-
                 }
+
+
                 else if (confirmP.equals("")) {
                     conf_pass.requestFocus();
 
@@ -294,6 +294,7 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
                     snackbar.show();
+
 
 
                 }else if (!(password.equals(confirmP))){
@@ -313,6 +314,7 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
                     snackbar.show();
 
                 }
+
                 else
 
                 {
@@ -329,10 +331,13 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
                         System.out.println("111111111111111111111111"+postjsonObject1);
 
 
+
                         Login_post.ChangePassword(ResetPasswordNew.this, postjsonObject1, new VoleyJsonObjectCallback() {
                             @Override
                             public void onSuccessResponse(JSONObject result) {
+
                                 System.out.println("nnnnnmnmrenewwwwwwwrenewwwwwww" + result.toString());
+
                                 try {
                                     JSONObject responseobject = new JSONObject(result.toString());
                                     if (result.isNull("Result")) {
@@ -343,13 +348,17 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
                                         String message=user.getString("Message");
                                         System.out.println("renewwwwwww"+message);
                                         System.out.println("sttrenewwwwwwwrenewwwwwwwrenewwwwwww"+status);
+
                                         if (status.equals("1")){
 
-
                                             System.out.println("qwertyuioaaa" + password + ForgotPasswordNew.forgot_mob_no);
+
+
                                             if (myDb.isEmailExists(ForgotPasswordNew.mob_trim)){
                                                 myDb.updateContact(ForgotPasswordNew.mob_trim,conf_pass.getText().toString().trim());
                                             }
+
+
                                             System.out.println("hhhhhgggere" +message);
                                             Toast.makeText(ResetPasswordNew.this, message, Toast.LENGTH_SHORT).show();
                                             Intent intent=new Intent(ResetPasswordNew.this, LoginActivity_new.class);
@@ -357,11 +366,13 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
 
 
                                         }else {
+
                                             Toast.makeText(ResetPasswordNew.this, "Password not Updated", Toast.LENGTH_SHORT).show();
                                         }
 
 
                                     } else {
+
                                         JSONObject response = responseobject.getJSONObject("Response");
                                         Toast.makeText(ResetPasswordNew.this, response.getString("Errors"), Toast.LENGTH_SHORT).show();
                                     }
@@ -381,8 +392,8 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
                 }
             }
         });
-
     }
+
     @Override
     public void onBackPressed() {
         //System.exit(0);
@@ -390,7 +401,6 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
         startActivity(intent);
         finish();
     }
-
 
 
 
@@ -416,6 +426,7 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
 
             if (keepOriginal)
                 return null;
+
             else {
                 if (source instanceof Spanned) {
                     SpannableString sp = new SpannableString(sb);
@@ -427,6 +438,8 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
             }
         }
     };
+
+
 
     public void edittext_move(final EditText et1, final EditText et2) {
         et1.addTextChangedListener(new TextWatcher() {
