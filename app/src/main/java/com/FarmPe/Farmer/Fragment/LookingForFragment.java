@@ -70,11 +70,11 @@ public class LookingForFragment extends Fragment {
 
 
 
-
     public static LookingForFragment newInstance() {
         LookingForFragment fragment = new LookingForFragment();
         return fragment;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

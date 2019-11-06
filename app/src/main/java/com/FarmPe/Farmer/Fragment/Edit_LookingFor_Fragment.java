@@ -48,13 +48,12 @@ public class Edit_LookingFor_Fragment extends Fragment {
         Status_bar_change_singleton.getInstance().color_change(getActivity());
         HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
 
-          back_feed = view.findViewById(R.id.back_feed);
-         textView = view.findViewById(R.id.preview);
+           back_feed = view.findViewById(R.id.back_feed);
+           textView = view.findViewById(R.id.preview);
 
-          back_feed.setOnClickListener(new View.OnClickListener() {
+            back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
+             public void onClick(View v) {
 
 
                 FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -67,6 +66,7 @@ public class Edit_LookingFor_Fragment extends Fragment {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Bundle bundle = new Bundle();
                 bundle.putString("status","edit_for");
                 selectedFragment = Preview_Edit_Looking_Fragment.newInstance();
@@ -77,7 +77,6 @@ public class Edit_LookingFor_Fragment extends Fragment {
                 transaction.commit();
             }
         });
-
 
 
         return view;

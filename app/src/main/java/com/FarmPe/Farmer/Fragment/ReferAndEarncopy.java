@@ -302,7 +302,6 @@ public class ReferAndEarncopy extends Fragment {
             @Override
             public void onClick(View v) {
 
-
                 if (packageName.contains("com.facebook.katana")) {
                     Intent sendIntent = new Intent();
                     sendIntent.setAction(Intent.ACTION_SEND);
@@ -374,10 +373,10 @@ public class ReferAndEarncopy extends Fragment {
 
                 if (packageName.contains("com.twitter.android") || packageName.contains("com.facebook.katana")
                          || packageName.contains("com.google.android.apps.plus")
-                        || packageName.contains("com.google.android.talk") || packageName.contains("com.slack")
-                        || packageName.contains("com.google.android.gm") || packageName.contains("com.facebook.orca")
-                        || packageName.contains("com.yahoo.mobile") || packageName.contains("com.skype.raider")
-                        || packageName.contains("com.linkedin.android")) {
+                         || packageName.contains("com.google.android.talk") || packageName.contains("com.slack")
+                         || packageName.contains("com.google.android.gm") || packageName.contains("com.facebook.orca")
+                         || packageName.contains("com.yahoo.mobile") || packageName.contains("com.skype.raider")
+                         || packageName.contains("com.linkedin.android")) {
                     Intent intent = new Intent();
 
                     intent.setComponent(new ComponentName(packageName, resInfo.activityInfo.name));
@@ -407,7 +406,6 @@ public class ReferAndEarncopy extends Fragment {
             }
         }
     }
-
 
 }
 

@@ -1077,8 +1077,6 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
                     // mobile=mob_no;
                     JSONObject userRequestjsonObject = new JSONObject();
                     JSONObject postjsonObject = new JSONObject();
-
-
                     userRequestjsonObject.put("PhoneNo", contact);
                     userRequestjsonObject.put("Password", password.getText().toString());
                     userRequestjsonObject.put("DeviceId", "123");
@@ -1095,6 +1093,7 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("statussssss" + result);
+
                     JSONObject jsonObject = new JSONObject();
                     JSONObject jsonObject_resp = new JSONObject();
 

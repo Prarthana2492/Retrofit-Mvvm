@@ -513,6 +513,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
 
                                             FirebaseMessaging.getInstance().subscribeToTopic("FARMERNEWS");// to register in topic(subcribe)
                                             FirebaseMessaging.getInstance().subscribeToTopic("NEWS");// to register in topic(subcribe)
+
                                             if(remember_me.isChecked()){
 
                                                 if(!myDb.isEmailExists(mobile_no.getText().toString())){

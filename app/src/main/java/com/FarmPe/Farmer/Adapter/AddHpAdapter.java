@@ -32,6 +32,7 @@ public class AddHpAdapter extends RecyclerView.Adapter<AddHpAdapter.MyViewHolder
     public static String first;
     public static  String hp_model;
     public static CardView cardView;
+
     public AddHpAdapter(Activity activity, List<AddTractorBean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
@@ -86,6 +87,7 @@ public class AddHpAdapter extends RecyclerView.Adapter<AddHpAdapter.MyViewHolder
             }
         });
 
+
         Glide.with(activity).load(products.getImage())
 
                 .thumbnail(0.5f)
@@ -97,6 +99,7 @@ public class AddHpAdapter extends RecyclerView.Adapter<AddHpAdapter.MyViewHolder
             holder.item.setBackgroundResource(R.drawable.grey_background_drawable);
 
         }else {
+
             holder.item.setBackgroundResource(R.drawable.border_transperent);
 
         }

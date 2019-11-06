@@ -36,17 +36,13 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
     private List<Add_New_Address_Bean> productList;
     Activity activity;
     Fragment selectedFragment = null;
-    String status,message,status1,message1;
-
     SessionManager sessionManager;
-    public static TextView name,variety,loc,grade,quantity,uom,price,edit;
+    public static TextView name,price,edit;
     public static String add_id;
     public static CardView cardView;
-    JSONObject lngObject;
     LinearLayout linearLayout;
-    String deleted, default_addrs_updtd;
-    BottomSheetDialog mBottomSheetDialog;
-    View sheetView;
+
+
 
     public Request_Address_Book_Adapter(List<Add_New_Address_Bean> moviesList, Activity activity) {
 
@@ -58,7 +54,7 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name,mobile_no,street_addrss,landmrk,city_1,edit_1,delete_1,default_1,default_add,area_district,colony;
+        TextView name,street_addrss,city_1,edit_1,delete_1,default_1,default_add,area_district,colony;
         LinearLayout add_new_adress,address_book;
 
 
@@ -67,7 +63,6 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
 
 
             name = view.findViewById(R.id.name1);
-            //mobile_no= view.findViewById(R.id.mobile_no1);
             street_addrss= view.findViewById(R.id.street_address1);
             city_1= view.findViewById(R.id.city_1);
             edit_1= view.findViewById(R.id.edit_1);
@@ -122,11 +117,12 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
         }
 
         if(products.getAdd_pincode().equals("")){
-            holder.area_district.setText(products.getAdd_state()+" , " + "Phone No - " + products.getAdd_mobile());
+
+            holder.area_district.setText(products.getAdd_state()+ " , " + "Phone No - " + products.getAdd_mobile());
 
         }else{
 
-            holder.area_district.setText(products.getAdd_state()+" - " + products.getAdd_pincode() +" , " + "Phone No - " + products.getAdd_mobile());
+            holder.area_district.setText(products.getAdd_state()+ " - " + products.getAdd_pincode() + " , " + "Phone No - " + products.getAdd_mobile());
 
         }
 
@@ -138,11 +134,10 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
         holder.address_book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Bundle bundle = new Bundle();
                 bundle.putString("request_navigation","ADDRESS_BOOK");
                 bundle.putString("add_id",products.getAdd_id());
-
-
                 selectedFragment = Request_Details_New_Fragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
@@ -153,8 +148,8 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
             }
         });
 
-
     }
+
 
     @Override
     public int getItemCount() {

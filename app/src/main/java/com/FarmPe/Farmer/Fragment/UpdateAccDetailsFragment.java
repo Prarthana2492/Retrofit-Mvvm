@@ -107,6 +107,7 @@ public class UpdateAccDetailsFragment extends Fragment {
     Fragment selectedFragment;
 
 
+
     public static UpdateAccDetailsFragment newInstance() {
         UpdateAccDetailsFragment fragment = new UpdateAccDetailsFragment();
         return fragment;
@@ -138,7 +139,10 @@ public class UpdateAccDetailsFragment extends Fragment {
         sessionManager = new SessionManager(getActivity());
         myDb = new DatabaseHelper(getActivity());
 
+
         setupUI(linearLayout);
+
+
 
 
         prod_img.setOnClickListener(new View.OnClickListener() {

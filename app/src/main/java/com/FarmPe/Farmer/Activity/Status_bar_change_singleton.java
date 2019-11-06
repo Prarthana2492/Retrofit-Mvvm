@@ -7,8 +7,6 @@ import com.FarmPe.Farmer.R;
 
 
 
-
-
 public class Status_bar_change_singleton {
 
 
@@ -23,7 +21,8 @@ public class Status_bar_change_singleton {
             status_color = new Status_bar_change_singleton();
 
 
-      return status_color;
+
+        return status_color;
     }
 
 
