@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#f1f1f1"
+    android:tag="cards main container">
+
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+
+        card_view:cardCornerRadius="4dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#fff"
+            android:layout_marginBottom="10dp"
+            >
+
+
+            <RelativeLayout
+                android:id="@+id/menu"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:background="@drawable/border_grey"
+                android:fitsSystemWindows="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#fff"
+                    android:fitsSystemWindows="true"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/prod_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:id="@+id/dealer_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
+                            android:text="Vinayaka Motors"
+                            android:singleLine="true"
+                            android:ellipsize="end"
+                            android:paddingTop="5dp"
+                            android:textColor="#f1f1f1"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/product"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
+                            android:text="Tractor, Farm Truck Dealer"
+                            android:singleLine="true"
+                            android:ellipsize="end"
+                            android:paddingTop="10dp"
+                            android:textColor="#f1f1f1"
+                            android:textSize="12dp" />
+
+                        <!-- <TextView
+                             android:id="@+id/farmer_name"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:gravity="center_vertical"
+                             android:paddingLeft="10dp"
+                             android:text="Dairy Farm"
+                             android:textColor="#f1f1f1"
+                             android:textSize="12dp" />
+         -->
+                        <TextView
+                            android:id="@+id/location"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="5dp"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="Rajarajeshwari Nagar, Bangalore"
+                            android:textColor="#f1f1f1"
+                            android:textSize="12dp" />
+
+
+
+                    </LinearLayout>
+                    <!--
+                                <TextView
+                                    android:id="@+id/connect"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/segoeui"
+                                    android:text="Connect"
+                                    android:paddingVertical="5dp"
+                                    android:gravity="center_vertical"
+                                    android:paddingHorizontal="5dp"
+                                    android:drawableLeft="@drawable/ic_air_conditioner"
+                                    android:drawablePadding="10dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:textColor="#fff"
+                                    android:textSize="14dp"
+                                    android:textStyle="bold" />
+                    -->
+
+
+
+                </LinearLayout>
+
+
+
+            </RelativeLayout>
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginHorizontal="10dp"-->
+                <!--android:weightSum="100"-->
+                <!--&gt;-->
+
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/shortlist_layout"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="50"-->
+                    <!--android:orientation="horizontal">-->
+
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/preview_prof"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:fontFamily="@font/segoeui"-->
+                        <!--android:text="Preview"-->
+                        <!--android:layout_marginBottom="10dp"-->
+                        <!--android:paddingTop="6dp"-->
+                        <!--android:drawablePadding="5dp"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:drawableLeft="@drawable/ic_file"-->
+                        <!--android:textSize="14dp"-->
+                        <!--android:textStyle="bold" />-->
+
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="50"-->
+                    <!--android:gravity="right">-->
+
+
+                    <!--&lt;!&ndash; <TextView-->
+                         <!--android:id="@+id/interested"-->
+                         <!--android:layout_width="wrap_content"-->
+                         <!--android:layout_height="wrap_content"-->
+                         <!--android:fontFamily="@font/segoeui"-->
+                         <!--android:text="Interested"-->
+                         <!--android:background="@drawable/border_red"-->
+                         <!--android:paddingVertical="6dp"-->
+                         <!--android:paddingHorizontal="16dp"-->
+                         <!--android:layout_gravity="right"-->
+                         <!--android:drawablePadding="10dp"-->
+                         <!--android:drawableLeft="@drawable/ic_pass_mark"-->
+                         <!--android:textColor="#E50914"-->
+                         <!--android:textSize="16dp"-->
+                         <!--android:textStyle="bold" />-->
+ <!--&ndash;&gt;-->
+                    <!--<TextView-->
+                        <!--android:id="@+id/edit_prof"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:fontFamily="@font/segoeui"-->
+                        <!--android:text="Edit"-->
+                        <!--android:background="@drawable/border_grey"-->
+                        <!--android:paddingVertical="6dp"-->
+                        <!--android:paddingHorizontal="16dp"-->
+                        <!--android:layout_gravity="right"-->
+                        <!--android:drawablePadding="10dp"-->
+                        <!--android:drawableLeft="@drawable/ic_edit_red"-->
+                        <!--android:textSize="16dp"-->
+                        <!--android:textStyle="bold" />-->
+
+                <!--</LinearLayout>-->
+
+            <!--</LinearLayout>-->
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+    <!--
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="100"
+
+           android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:orientation="vertical">-->
+
+    <!--
+        <LinearLayout
+            android:id="@+id/item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="100"
+            android:background="#fff"
+            android:gravity="center"
+            android:padding="5dp"
+            android:orientation="vertical">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+
+
+                <ImageView
+                    android:id="@+id/prod_img"
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/fruits_banner_img"
+
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:weightSum="100"
+                    android:layout_marginHorizontal="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/prod_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeui"
+                        android:text="Tracter Price"
+                        android:textColor="#000"
+                        android:gravity="center"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                   &lt;!&ndash; <TextView
+                        android:id="@+id/prod_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeui"
+                        android:text="Mahindra Jivo mahi"
+                        android:textColor="#000"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        android:textSize="10dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/duration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeui"
+                        android:layout_gravity="center"
+                        android:text="Immediately"
+                        android:textColor="#000"
+                        android:textSize="14dp"
+                        />
+    &ndash;&gt;
+                    <TextView
+                        android:id="@+id/farmer_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeui"
+
+                        android:text="Farmer Name"
+                        android:layout_marginTop="20dp"
+                        android:textColor="#000"
+                        android:textSize="14dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeui"
+                        android:text="Rampura, Bahjoi"
+                        android:drawablePadding="3dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:drawableLeft="@drawable/ic_location_sign"
+                        android:textColor="#000"
+                        android:textSize="10dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/connect"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeui"
+                        android:layout_gravity="center"
+                        android:text="Connect"
+                        android:background="@drawable/border_empty"
+                        android:paddingVertical="8dp"
+                        android:paddingHorizontal="30dp"
+                        android:gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:textColor="#000"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+    -->
+
+</LinearLayout>

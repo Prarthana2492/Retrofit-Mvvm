@@ -30,7 +30,7 @@ import java.util.Date;
 import java.util.List;
 
 
-public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Request_Adapter.MyViewHolder>  {
+public class Book_Now_Request_Price_Adapter extends RecyclerView.Adapter<Book_Now_Request_Price_Adapter.MyViewHolder>  {
     private List< Request_Class_HomePage_Bean> productList;
     Activity activity;
     Fragment selectedFragment;
@@ -38,7 +38,7 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
 
 
     public static CardView cardView;
-    public Home_Page_Request_Adapter(Activity activity,List< Request_Class_HomePage_Bean> moviesList) {
+    public Book_Now_Request_Price_Adapter(Activity activity,List< Request_Class_HomePage_Bean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
 
@@ -50,7 +50,7 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
         public ImageView pay_img;
         public TextView name;
 
-          LinearLayout item_layout;
+        LinearLayout item_layout;
 
 
         public MyViewHolder(View view) {
@@ -77,7 +77,7 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
 
 
 
-       holder.name.setText(products.getVeg_name());
+        holder.name.setText(products.getVeg_name());
 
         Glide.with(activity).load(products.getImage())
 
@@ -98,14 +98,14 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
                 mAnimation.setRepeatMode(Animation.REVERSE);
                 holder.item_layout.startAnimation(mAnimation);
 
-             //   AddFirstFragment.tracter_title = holder.name.getText().toString().toLowerCase().replace(" price","");
+                //   AddFirstFragment.tracter_title = holder.name.getText().toString().toLowerCase().replace(" price","");
                 looinkgId = products.getId();
                 System.out.println("asaAAAA" + products.getId());
 
 
                 Bundle bundle = new Bundle();
                 bundle.putString("request_status",looinkgId);
-                bundle.putString("status_home","HOME_REQ_PRICE");
+                bundle.putString("status_home","REQ_PRICE");
                 selectedFragment = AddBrandFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);

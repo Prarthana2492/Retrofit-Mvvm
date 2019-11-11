@@ -199,6 +199,7 @@ public class Home_Menu_Fragment extends Fragment  {
         });
 
 
+
         book_nw_linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -235,7 +236,7 @@ public class Home_Menu_Fragment extends Fragment  {
             @Override
             public void onClick(View view) {
 
-                selectedFragment = Comming_soon_looking.newInstance();
+                selectedFragment = DealerProfile.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.addToBackStack("home_page");

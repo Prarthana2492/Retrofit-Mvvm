@@ -72,7 +72,7 @@ public class AddModelFragment extends Fragment {
     public static LinearLayout linearLayout;
     ImageView b_arrow;
 
-
+   public static String text_box;
 
 
     public static AddModelFragment newInstance() {
@@ -97,6 +97,9 @@ public class AddModelFragment extends Fragment {
         linearLayout=view.findViewById(R.id.linearLayout);
         sub_label=view.findViewById(R.id.sub_label);
         sessionManager = new SessionManager(getActivity());
+
+        text_box = getArguments().getString("status_home");
+
 
        /* toolbar_title.setText("Select Model");
 
@@ -186,6 +189,7 @@ public class AddModelFragment extends Fragment {
             jsonObject.put("LookingForDetailsId",AddBrandFragment.request_looking_id);
             jsonObject.put("BrandId",AddBrandAdapter.brandId);
             System.out.println("fgfggdfcxxg" + jsonObject);
+
 
             Crop_Post.crop_posting(getActivity(), Urls.Model_List, jsonObject, new VoleyJsonObjectCallback() {
                 @Override

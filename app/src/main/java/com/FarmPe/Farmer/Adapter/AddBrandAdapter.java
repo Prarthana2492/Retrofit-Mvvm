@@ -3,6 +3,7 @@ package com.FarmPe.Farmer.Adapter;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -22,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.FarmPe.Farmer.Fragment.AddBrandFragment;
 import com.FarmPe.Farmer.Fragment.AddModelFragment;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -89,6 +91,8 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
         System.out.println("croptttt"+ brandId);
 
 
+
+
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,9 +126,12 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
 
 
                      brandId = products.getId();
+                     Bundle bundle = new Bundle();
+                     bundle.putString("status_home",AddBrandFragment.price);
                      selectedFragment = AddModelFragment.newInstance();
                      FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                      transaction.replace(R.id.frame_menu, selectedFragment);
+                     selectedFragment.setArguments(bundle);
                      transaction.addToBackStack("third");
                      transaction.commit();
 

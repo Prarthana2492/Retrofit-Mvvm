@@ -98,6 +98,7 @@ public class ChangeLanguageFragment extends Fragment {
         });
 
 
+
         continue_lang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -105,6 +105,7 @@ public class Book_Nw_Request_Adapter extends RecyclerView.Adapter<Book_Nw_Reques
 
                 Bundle bundle = new Bundle();
                 bundle.putString("request_status",looinkgId);
+
                 selectedFragment = AddBrandFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);

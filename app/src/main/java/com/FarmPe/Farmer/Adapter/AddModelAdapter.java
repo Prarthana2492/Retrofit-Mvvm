@@ -49,7 +49,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
     Activity activity;
     Fragment selectedFragment;
     SessionManager sessionManager;
-
+   String sssss;
     LinearLayout linearLayout;
     public static String first,tractor_id,model_id,looking_for_id;
 
@@ -92,7 +92,6 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
 
 
-
         }
     }
 
@@ -124,13 +123,23 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
         }
 
+         if(AddModelFragment.text_box.equals("REQ_PRICE")){
+
+             holder.select.setText(" Book Now");
+         }else {
+
+             holder.select.setText(" Select");
+         }
+
+
 
          model_id = products.getId();
          System.out.println("ffdgfdgvd" + products.getId());
 
 
           holder.brand_name.setText(products.getBrand_name());
-         holder.model.setText(products.getModel_name());
+          holder.model.setText(products.getModel_name());
+
 
         String drive_type = products.getDrive_type()+",";
         String steering = products.getSteering()+",";
@@ -209,14 +218,14 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
                 }else {
 
                         brochure_pdf = products.getPdf_brochure();
-                        Bundle bundle = new Bundle();
-                        bundle.putString("brochur_status", brochure_pdf);
-                    selectedFragment = Model_Brochure_Fragment.newInstance();
-                    FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_menu, selectedFragment);
-                    selectedFragment.setArguments(bundle);
-                    transaction.addToBackStack("pdf");
-                    transaction.commit();
+                          Bundle bundle = new Bundle();
+                         bundle.putString("brochur_status", brochure_pdf);
+                          selectedFragment = Model_Brochure_Fragment.newInstance();
+                         FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_menu, selectedFragment);
+                        selectedFragment.setArguments(bundle);
+                        transaction.addToBackStack("pdf");
+                        transaction.commit();
                 }
 
 //                Bundle bundle = new Bundle();

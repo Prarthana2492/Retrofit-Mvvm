@@ -44,6 +44,7 @@ public class AddBrandFragment extends Fragment {
     LinearLayout back_feed,linearLayout;
     TextView continue_button;
     ImageView b_arrow;
+    public static String price;
    public static String request_looking_id;
 
 
@@ -67,6 +68,10 @@ public class AddBrandFragment extends Fragment {
         continue_button = view.findViewById(R.id.continue_button);
         linearLayout = view.findViewById(R.id.linearLayout);
         b_arrow = view.findViewById(R.id.b_arrow);
+
+
+
+        price = getArguments().getString("status_home");
 
        // toolbar_title.setText("Select Brand");
 

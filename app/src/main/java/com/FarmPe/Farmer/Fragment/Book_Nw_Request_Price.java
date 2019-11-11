@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -27,6 +29,7 @@ import android.widget.TextView;
 
 import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
+import com.FarmPe.Farmer.Adapter.Book_Now_Request_Price_Adapter;
 import com.FarmPe.Farmer.Adapter.Home_Page_Lookinfor_Adapter;
 
 import com.FarmPe.Farmer.Adapter.Home_Page_Request_Adapter;
@@ -42,10 +45,10 @@ public class Book_Nw_Request_Price extends Fragment  {
     private List<Request_Class_HomePage_Bean> newOrderBeansList2 = new ArrayList<>();
     private RecyclerView recyclerView,recyclerView2;
 
-    private Home_Page_Request_Adapter mAdapter;
+    private Book_Now_Request_Price_Adapter mAdapter;
     //  private Home_Page_Lookinfor_Adapter mAdapter2;
     boolean doubleBackToExitPressedOnce = false;
-    LinearLayout linearLayout,dealer_linear_layout,offers_linear_layout,book_nw_linear,search_linear;
+    LinearLayout linearLayout,dealer_linear_layout,offers_linear_layout,book_nw_linear,search_linear,back_feed;
     Fragment selectedFragment;
     TextView toolbar_title;
     ImageView  legal_for,bussiness_for,consultancy_look,more_icon;
@@ -61,6 +64,7 @@ public class Book_Nw_Request_Price extends Fragment  {
     }
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.brand_recy_layout, container, false);
@@ -74,6 +78,8 @@ public class Book_Nw_Request_Price extends Fragment  {
         offers_linear_layout = view.findViewById(R.id.offers_linear_layout);
         book_nw_linear = view.findViewById(R.id.book_nw_linear);
         search_linear = view.findViewById(R.id.search_layout);
+        search_linear = view.findViewById(R.id.search_layout);
+        back_feed = view.findViewById(R.id.back_feed);
         toolbar_title = view.findViewById(R.id.setting_tittle);
 
         toolbar_title.setText("Book Now");
@@ -83,6 +89,37 @@ public class Book_Nw_Request_Price extends Fragment  {
 //        consultancy_look = view.findViewById(R.id.consultancy_look);
 //        more_icon = view.findViewById(R.id.more_icon);
         // upi_send=view.findViewById(R.id.upiSendMoney);
+
+
+
+        back_feed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                fm.popBackStack("home_page", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+            }
+        });
+
+
+
+        view.setFocusableInTouchMode(true);
+        view.requestFocus();
+        view.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("home_page", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                    return true;
+                }
+                return false;
+            }
+        });
+
 
         HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 4);
@@ -112,6 +149,7 @@ public class Book_Nw_Request_Price extends Fragment  {
       //  Request_Class_HomePage_Bean item12   =  new Request_Class_HomePage_Bean("Fence\nWires","7",R.drawable.fencing_wire);
 
 
+
         newOrderBeansList.clear();
         newOrderBeansList.add(item1);
         newOrderBeansList.add(item2);
@@ -129,7 +167,7 @@ public class Book_Nw_Request_Price extends Fragment  {
 
 
         System.out.println("newOrderBeansListvsdvdv"+newOrderBeansList.size());
-        mAdapter = new Home_Page_Request_Adapter(getActivity(),newOrderBeansList);
+        mAdapter = new Book_Now_Request_Price_Adapter(getActivity(),newOrderBeansList);
         recyclerView.setAdapter(mAdapter);
 
 
@@ -152,58 +190,7 @@ public class Book_Nw_Request_Price extends Fragment  {
 //        recyclerView2.setAdapter(mAdapter2);
 
 
-        view.setFocusableInTouchMode(true);
-        view.requestFocus();
-        view.setOnKeyListener(new View.OnKeyListener() {
 
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                        // this.finishAffinity();
-
-
-
-                        if (doubleBackToExitPressedOnce) {
-                            Intent intent = new Intent(Intent.ACTION_MAIN);
-                            intent.addCategory(Intent.CATEGORY_HOME);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
-                            startActivity(intent);
-                            getActivity().finish();
-                            System.exit(0);
-                        }
-
-
-
-                        doubleBackToExitPressedOnce = true;
-                        // Toast.makeText(getActivity().getApplicationContext(), "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-                        int duration = 1000;
-                        Snackbar snackbar = Snackbar
-                                .make(linearLayout,"Please Click Back To Exit", duration);
-                        View snackbarView = snackbar.getView();
-                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                        tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                        tv.setTextColor(Color.WHITE);
-
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                        } else {
-                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                        }
-                        snackbar.show();
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                doubleBackToExitPressedOnce = false;
-                            }
-                        }, 3000);
-                    }
-
-                    return true;
-                }
-                return false;
-            }
-        });
 
 
         return view;

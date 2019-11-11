@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/linearLayout"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="#fff">
+
+
+        <LinearLayout
+            android:id="@+id/back_feed"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+android:layout_weight="10"
+            android:background="@color/colorPrimary"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_go_back_left_arrow_"
+
+                />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:minHeight="?actionBarSize"
+                android:text="ADD BHIM UPI ID"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="80"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/farm_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/textbene"
+            android:layout_marginTop="35dp"
+            android:textColor="#000000"
+            android:paddingRight="10dp"
+            />
+        <TextView
+            android:id="@+id/bene"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Beneficiary BHIM UPI ID"
+            android:layout_marginTop="35dp"
+            android:textColor="#000000"
+            android:paddingRight="10dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+ <EditText
+                 android:id="@+id/mobile_no"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="left"
+                 android:layout_marginLeft="10dp"
+                 android:layout_marginTop="10dp"
+                 android:textColor="#000000"
+                 android:hint="BHIM UPI ID"
+                 android:textColorHint="#B4B0B0"
+                 android:textSize="18dp"
+                 android:paddingRight="10dp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#fff"
+        android:layout_weight="10"
+        >
+        <TextView
+            android:id="@+id/continue_4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Confirm"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:background="@color/colorPrimary"
+            android:padding="15dp"
+            android:textAllCaps="true"
+            android:textSize="20dp"
+            />
+    </LinearLayout>
+</LinearLayout>
