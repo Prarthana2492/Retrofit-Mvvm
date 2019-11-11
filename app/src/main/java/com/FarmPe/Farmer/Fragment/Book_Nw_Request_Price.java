@@ -36,7 +36,7 @@ import com.FarmPe.Farmer.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Home_Menu_Fragment extends Fragment  {
+public class Book_Nw_Request_Price extends Fragment  {
 
     private List<Request_Class_HomePage_Bean> newOrderBeansList = new ArrayList<>();
     private List<Request_Class_HomePage_Bean> newOrderBeansList2 = new ArrayList<>();
@@ -47,6 +47,7 @@ public class Home_Menu_Fragment extends Fragment  {
     boolean doubleBackToExitPressedOnce = false;
     LinearLayout linearLayout,dealer_linear_layout,offers_linear_layout,book_nw_linear,search_linear;
     Fragment selectedFragment;
+    TextView toolbar_title;
     ImageView  legal_for,bussiness_for,consultancy_look,more_icon;
 
     public static TabLayout tabLayout;
@@ -54,25 +55,28 @@ public class Home_Menu_Fragment extends Fragment  {
 
 
 
-    public static Home_Menu_Fragment newInstance() {
-        Home_Menu_Fragment fragment = new Home_Menu_Fragment();
+    public static Book_Nw_Request_Price newInstance() {
+        Book_Nw_Request_Price fragment = new Book_Nw_Request_Price();
         return fragment;
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.home_page_layout, container, false);
+        View view = inflater.inflate(R.layout.brand_recy_layout, container, false);
 
 
         Status_bar_change_singleton.getInstance().home_change(getActivity());
 
-        recyclerView = view.findViewById(R.id.recycler_view1);
+        recyclerView = view.findViewById(R.id.recycler_what_looking);
         linearLayout = view.findViewById(R.id.linearLayout);
         dealer_linear_layout = view.findViewById(R.id.dealer_linear_layout);
         offers_linear_layout = view.findViewById(R.id.offers_linear_layout);
         book_nw_linear = view.findViewById(R.id.book_nw_linear);
         search_linear = view.findViewById(R.id.search_layout);
+        toolbar_title = view.findViewById(R.id.setting_tittle);
+
+        toolbar_title.setText("Book Now");
 
 //        legal_for = view.findViewById(R.id.legal_for);
 //        bussiness_for = view.findViewById(R.id.bussiness_for);
@@ -80,7 +84,7 @@ public class Home_Menu_Fragment extends Fragment  {
 //        more_icon = view.findViewById(R.id.more_icon);
         // upi_send=view.findViewById(R.id.upiSendMoney);
 
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.VISIBLE);
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 4);
 
 
@@ -94,18 +98,18 @@ public class Home_Menu_Fragment extends Fragment  {
 
         // GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3, GridLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
-        Request_Class_HomePage_Bean item1   = new Request_Class_HomePage_Bean("Tractor","1",R.drawable.tractor);
-        Request_Class_HomePage_Bean item2   = new Request_Class_HomePage_Bean("Farm\nTruck","9",R.drawable.farm_truck);
-        Request_Class_HomePage_Bean item3   = new Request_Class_HomePage_Bean("Backhoe\nLoader","4",R.drawable.backhoe_acessories);
-        Request_Class_HomePage_Bean item4   = new Request_Class_HomePage_Bean("Harvester","5",R.drawable.harvesting);
-        Request_Class_HomePage_Bean item5   =  new Request_Class_HomePage_Bean("Farm\nMachines","6",R.drawable.machinary);
-        Request_Class_HomePage_Bean item6   =  new Request_Class_HomePage_Bean("Power\nTillers","12",R.drawable.tiller);
-        Request_Class_HomePage_Bean item7   =  new Request_Class_HomePage_Bean("Tractor\nImplements","2",R.drawable.tractor_implements);
-        Request_Class_HomePage_Bean item8   =  new Request_Class_HomePage_Bean("Backhoe\nAttachment","10",R.drawable.backhoe);
-        Request_Class_HomePage_Bean item9   =  new Request_Class_HomePage_Bean("Irrigation\nSystem","11",R.drawable.sprinkler);
-        Request_Class_HomePage_Bean item10  = new Request_Class_HomePage_Bean("Tractor\n Accessories","3",R.drawable.accessories);
-        Request_Class_HomePage_Bean item11  = new Request_Class_HomePage_Bean("Tyres","8",R.drawable.tyre);
-        Request_Class_HomePage_Bean item12  = new Request_Class_HomePage_Bean("Fence\nWires","7",R.drawable.fencing_wire);
+        Request_Class_HomePage_Bean item1    =  new Request_Class_HomePage_Bean("Tractor","1",R.drawable.tractor);
+        Request_Class_HomePage_Bean item2    =  new Request_Class_HomePage_Bean("Farm\nTruck","9",R.drawable.farm_truck);
+        Request_Class_HomePage_Bean item3    =  new Request_Class_HomePage_Bean("Backhoe\nLoader","4",R.drawable.backhoe_acessories);
+        Request_Class_HomePage_Bean item4    =  new Request_Class_HomePage_Bean("Harvester","5",R.drawable.harvesting);
+        Request_Class_HomePage_Bean item5    =  new Request_Class_HomePage_Bean("Farm\nMachines","6",R.drawable.machinary);
+        Request_Class_HomePage_Bean item6    =  new Request_Class_HomePage_Bean("Power\nTillers","12",R.drawable.tiller);
+        Request_Class_HomePage_Bean item7    =  new Request_Class_HomePage_Bean("Tractor\nImplements","2",R.drawable.tractor_implements);
+        Request_Class_HomePage_Bean item8    =  new Request_Class_HomePage_Bean("Backhoe\nAttachment","10",R.drawable.backhoe);
+       // Request_Class_HomePage_Bean item9    =  new Request_Class_HomePage_Bean("Irrigation\nSystem","11",R.drawable.sprinkler);
+      //  Request_Class_HomePage_Bean item10   =  new Request_Class_HomePage_Bean("Tractor\n Accessories","3",R.drawable.accessories);
+        Request_Class_HomePage_Bean item11   =  new Request_Class_HomePage_Bean("Tyres","8",R.drawable.tyre);
+      //  Request_Class_HomePage_Bean item12   =  new Request_Class_HomePage_Bean("Fence\nWires","7",R.drawable.fencing_wire);
 
 
         newOrderBeansList.clear();
@@ -117,15 +121,18 @@ public class Home_Menu_Fragment extends Fragment  {
         newOrderBeansList.add(item6);
         newOrderBeansList.add(item7);
         newOrderBeansList.add(item8);
-        newOrderBeansList.add(item9);
-        newOrderBeansList.add(item10);
+       // newOrderBeansList.add(item9);
+       // newOrderBeansList.add(item10);
         newOrderBeansList.add(item11);
-        newOrderBeansList.add(item12);
+        // newOrderBeansList.add(item12);
+
 
 
         System.out.println("newOrderBeansListvsdvdv"+newOrderBeansList.size());
         mAdapter = new Home_Page_Request_Adapter(getActivity(),newOrderBeansList);
         recyclerView.setAdapter(mAdapter);
+
+
 //
 //        newOrderBeansList2.clear();
 //      //  recyclerView2 = view.findViewById(R.id.recycler_view2);
@@ -195,66 +202,6 @@ public class Home_Menu_Fragment extends Fragment  {
                     return true;
                 }
                 return false;
-            }
-        });
-
-
-        book_nw_linear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                selectedFragment = Book_Nw_Request_Price.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_menu, selectedFragment);
-                transaction.addToBackStack("home_page");
-                transaction.commit();
-
-            }
-        });
-
-
-
-
-        offers_linear_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                selectedFragment = Comming_soon_looking.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_menu, selectedFragment);
-                transaction.addToBackStack("home_page");
-                transaction.commit();
-
-            }
-        });
-
-
-        dealer_linear_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                selectedFragment = Comming_soon_looking.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_menu, selectedFragment);
-                transaction.addToBackStack("home_page");
-                transaction.commit();
-
-            }
-        });
-
-
-        search_linear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                selectedFragment = Comming_soon_looking.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_menu, selectedFragment);
-                transaction.addToBackStack("home_page");
-                transaction.commit();
-
             }
         });
 

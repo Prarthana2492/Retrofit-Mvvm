@@ -77,6 +77,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -380,6 +381,7 @@ public class UpdateAccDetailsFragment extends Fragment {
                 if(profile_passwrd.getText().toString().length()<=12 && profile_passwrd.getText().toString().length()>=6){
                     pass_tick.setVisibility(View.VISIBLE);
                 }
+
                 else{
                     pass_tick.setVisibility(View.INVISIBLE);
                 }
@@ -391,6 +393,7 @@ public class UpdateAccDetailsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //   System.out.println("nnbchcxbhchvcvccgcv"+profile_passwrd.getText().toString());
+
                 if(profile_name.getText().toString().equals("")) {
                     int duration = 1000;
                     Snackbar snackbar = Snackbar
@@ -407,6 +410,9 @@ public class UpdateAccDetailsFragment extends Fragment {
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
                     snackbar.show();
+
+
+
                 } else if(profile_name.getText().toString().length()<2) {
                     int duration = 1000;
                     Snackbar snackbar = Snackbar
@@ -422,6 +428,10 @@ public class UpdateAccDetailsFragment extends Fragment {
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
                     snackbar.show();
+
+
+
+
                 }else if(profile_phone.getText().toString().equals("")) {
                     int duration = 1000;
                     Snackbar snackbar = Snackbar
@@ -431,6 +441,9 @@ public class UpdateAccDetailsFragment extends Fragment {
                     tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
                     tv.setTextColor(Color.WHITE);
                     snackbar.show();
+
+
+
                 }else if(profile_phone.getText().toString().length()<10) {
                     int duration = 1000;
                     Snackbar snackbar = Snackbar
@@ -447,8 +460,13 @@ public class UpdateAccDetailsFragment extends Fragment {
                     }
                     snackbar.show();
 
-                }else if((!profile_passwrd.getText().toString().equals("")&&(profile_passwrd.getText().toString().length()<6))){
+
+
+
+
+                }else if((!profile_passwrd.getText().toString().equals("") && (profile_passwrd.getText().toString().length()<6))){
                     int duration = 1000;
+
                     Snackbar snackbar = Snackbar
                             .make(linearLayout, toast_passwrd, duration);
                     View snackbarView = snackbar.getView();
@@ -474,6 +492,293 @@ public class UpdateAccDetailsFragment extends Fragment {
 
         return view;
     }
+
+//
+//    public class LargeSmallest{
+//        public static void main(String[] args){
+//
+//            int a[] = new int[] {1,33,44,22,11};
+//
+//            int min = a[0];
+//            int max = a[0];
+//
+//            for(int i = 1;i<=a.length ;i++){
+//
+//                if(a[i]>max){
+//
+//                    max = a[i];
+//
+//                }
+//
+//                if(a[i] <min){
+//
+//                }
+//            }
+//        }
+//    }
+
+
+
+//    public class LargestSmallest
+//    {
+//        public static void main(String[] args)
+//        {
+//            int a[] = new int[] { 23, 34, 13, 64, 72, 90, 10, 15, 9, 27 };
+//
+//            int min = a[0]; //  assume first elements as smallest number
+//            int max = a[0]; //  assume first elements as largest number
+//
+//            for (int i = 1; i < a.length; i++)  // iterate for loop from arrays 1st index (second element)
+//            {
+//                if (a[i] > max)
+//                {
+//                    max = a[i];
+//                }
+//                if (a[i] < min)
+//                {
+//                    min = a[i];
+//                }
+//            }
+//
+//            System.out.println("Largest Number in a given array is : " + max);
+//            System.out.println("Smallest Number in a given array is : " + min);
+//        }
+//
+//    }
+//
+
+
+
+
+
+//    class CheckEvenOdd
+//    {
+//        public static void main(String args[])
+//        {
+//            int num;
+//            System.out.println("Enter an Integer number:");
+//
+//            //The input provided by user is stored in num
+//            Scanner input = new Scanner(System.in);
+//            num = input.nextInt();
+//
+//            /* If number is divisible by 2 then it's an even number
+//             * else odd number*/
+//            if ( num % 2 == 0 )
+//                System.out.println("Entered number is even");
+//            else
+//                System.out.println("Entered number is odd");
+//        }
+//    }
+//
+
+//    class RemoveWhiteSpaces
+//
+//    {
+//
+//        public static void main(String[] args)
+//
+//        {
+//
+//            String str1 = "Saket Saurav        is a QualityAna    list";
+//
+//
+//
+//            //1. Using replaceAll() Method
+//
+//
+//
+//            String str2 = str1.replaceAll("\\s", "");
+//
+//
+//            System.out.println(str2);
+//
+//        }
+//
+//    }
+//
+//}
+
+
+
+//    public class SecondHighestNumberInArray {
+//
+//        public static void main(String[] args)
+//
+//        {
+//
+//            int arr[] = { 14, 46, 47, 94, 94, 52, 86, 36, 94, 89 };
+//
+//            int largest = arr[0];
+//
+//            int secondLargest = arr[0];
+//
+//            System.out.println("The given array is:");
+//
+//            for (int i = 0; i < arr.length; i++)
+//
+//            {
+//
+//                System.out.print(arr[i] + "\t");
+//
+//            }
+//
+//            for (int i = 0; i < arr.length; i++)
+//
+//            {
+//
+//                if (arr[i] > largest)
+//
+//                {
+//
+//                    secondLargest = largest;
+//
+//                    largest = arr[i];
+//
+//                }
+//
+//            else if (arr[i] > secondLargest && arr[i] != largest)
+//
+//                {
+//
+//                    secondLargest = arr[i];
+//
+//                }
+//
+//            }
+//
+//            System.out.println("\nSecond largest number is:" + secondLargest);
+//
+//        }
+//
+//    }
+
+
+
+
+
+//
+//    public class Prime {
+//
+//
+//
+//        public static void main(String[] args) {
+//
+//            // TODO Auto-generated method stub
+//
+//            int temp, num;
+//
+//            boolean isPrime = true;
+//
+//            Scanner in = new Scanner(System.in);
+//
+//            num = in.nextInt();
+//
+//            in.close();
+//
+//            for (int i = 2; i<= num/2; i++) {
+//
+//                temp = num%i;
+//
+//                if (temp == 0) {
+//
+//                    isPrime = false;
+//
+//                    break;
+//
+//                }
+//
+//            }
+//
+//            if(isPrime)
+//
+//            System.out.println(num + "number is prime");
+//
+//            else
+//
+//            System.out.println(num + "number is not a prime");
+//
+//
+//        }
+//
+//    }
+
+
+
+
+//
+//    public class Palindrome {
+//
+//        public static void main (String[] args) {
+//
+//            String palindrom, reverse = "";
+//
+//            Scanner in = new Scanner(System.in);
+//
+//            int length;
+//            System.out.println("Enter the number or String");
+//            palindrom = in.nextLine();
+//
+//            length = palindrom.length();
+//
+//            for (int i =length -1; i>=0; i--) {
+//
+//                reverse = reverse + palindrom.charAt(i);
+//
+//            }
+//
+//            System.out.println("reverse is:" +reverse);
+//
+//            if(palindrom.equals(reverse))
+//
+//            System.out.println("The number is palindrome");
+//
+//        else
+//
+//            System.out.println("The number is not a palindrome");
+//
+//
+//        }
+//
+//    }
+
+
+
+
+//
+//    public class Fibonacci {
+//
+//        public static void main(String[] args) {
+//
+//
+//
+//            int num, a = 0,b=0, c =1;
+//
+//            Scanner in = new Scanner(System.in);
+//
+//            System.out.println("Enter the number of times");
+//
+//            num = in.nextInt();
+//
+//            System.out.println("Fibonacci Series of the number is:");
+//
+//            for (int i=0; i<=num; i++) {
+//
+//                a = b;
+//
+//                b = c;
+//
+//                c = a + b;
+//
+//                System.out.println(a + "");    //if you want to print on the same line, use print()
+//
+//            }
+//
+//        }
+//
+//    }
+
+
     public static InputFilter EMOJI_FILTER = new InputFilter() {
         @Override
         public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
@@ -511,6 +816,8 @@ public class UpdateAccDetailsFragment extends Fragment {
             }
         }
     };
+
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

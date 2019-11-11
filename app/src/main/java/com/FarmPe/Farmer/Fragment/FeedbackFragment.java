@@ -187,6 +187,7 @@ public class FeedbackFragment extends Fragment {
                     }
                     snackbar.show();
 
+
                 }else if((fdType.getCheckedRadioButtonId()==-1)){
                     //Toast.makeText(getActivity(), "Select Feedback Type", Toast.LENGTH_SHORT).show();
                     int duration = 1000;

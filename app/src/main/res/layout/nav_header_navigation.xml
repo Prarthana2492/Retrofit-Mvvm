@@ -203,8 +203,6 @@
 
 
 
-
-
          <TextView
              android:id="@+id/ur_rqst"
              android:layout_width="match_parent"

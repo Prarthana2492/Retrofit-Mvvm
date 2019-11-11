@@ -135,6 +135,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                         transaction.commit();
 
 
+
                     }else if(getArguments().getString("navigation_from").equals("fav_fragment")) {
 
 

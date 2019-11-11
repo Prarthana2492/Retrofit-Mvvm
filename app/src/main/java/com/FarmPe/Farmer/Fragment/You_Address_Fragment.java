@@ -147,11 +147,11 @@ public class You_Address_Fragment extends Fragment {
                     transaction.commit();
 
 
+
                 }else if(getArguments().getString("navigation_from").equals("SETTING_FRAG1")){
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 }
-
 
             }
         });
@@ -185,11 +185,9 @@ public class You_Address_Fragment extends Fragment {
                 dialog.setContentView(R.layout.select_address_popup);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 final TextView home = (TextView) dialog.findViewById(R.id.home_1);
-
                 final TextView ware_house = (TextView)dialog.findViewById(R.id.ware_hus) ;
                 final TextView farm = (TextView)dialog.findViewById(R.id.farm) ;
                 final TextView others = (TextView)dialog.findViewById(R.id.othrs) ;
-
                 final TextView popuptxt = (TextView)dialog.findViewById(R.id.popup_heading) ;
 
                 try {
@@ -207,6 +205,7 @@ public class You_Address_Fragment extends Fragment {
                 LinearLayout image = (LinearLayout) dialog.findViewById(R.id.close_popup);
                 image.setOnClickListener(new View.OnClickListener() {
                     @Override
+
                     public void onClick(View v) {
                         dialog.dismiss();
                     }
@@ -217,6 +216,7 @@ public class You_Address_Fragment extends Fragment {
                 home.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
                         select_address_type.setText(home.getText().toString());
                         gettingAddress("Home");
                         dialog.dismiss();
@@ -228,6 +228,7 @@ public class You_Address_Fragment extends Fragment {
                 ware_house.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
                         select_address_type.setText(ware_house.getText().toString());
                         dialog.dismiss();
                         gettingAddress("Warehouse");
@@ -239,9 +240,9 @@ public class You_Address_Fragment extends Fragment {
                 farm.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
                         select_address_type.setText(farm.getText().toString());
                         dialog.dismiss();
-
                         gettingAddress("Farm");
 
 
@@ -251,6 +252,7 @@ public class You_Address_Fragment extends Fragment {
                 others.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
                         select_address_type.setText(others.getText().toString());
                         dialog.dismiss();
                         gettingAddress("Others");
@@ -306,6 +308,7 @@ public class You_Address_Fragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
+
 
         gettingAddress(" ");
 

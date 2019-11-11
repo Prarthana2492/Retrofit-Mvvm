@@ -27,7 +27,7 @@ import org.json.JSONObject;
 
 
 
-public class PrivacyPolicyFragment extends Fragment {
+public class                                                                                                                                                                                                                                                  PrivacyPolicyFragment extends Fragment {
     Fragment selectedFragment;
 
     LinearLayout  back_feed;

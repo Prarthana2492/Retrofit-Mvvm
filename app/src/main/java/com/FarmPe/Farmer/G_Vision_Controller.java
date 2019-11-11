@@ -46,22 +46,21 @@ import java.util.Map;
 public class G_Vision_Controller {
 
     // static variable single_instance of type Singleton
-     private static G_Vision_Controller g_vision_controller_single_instance = null;
-     Activity activity;
-     Bitmap scaled_bitmap;
-     SafeSearchAnnotation annotation;
-     private static final int MAX_LABEL_RESULTS = 10;
+      private static G_Vision_Controller g_vision_controller_single_instance = null;
+      Activity activity;
+      Bitmap scaled_bitmap;
+      SafeSearchAnnotation annotation;
+      private static final int MAX_LABEL_RESULTS = 10;
 
-     private static final String CLOUD_VISION_API_KEY = "AIzaSyASLfdH5Tr931zKrsdH2alWHPxMg6NzD-A";
-     private static final String ANDROID_CERT_HEADER = "X-Android-Cert";
-     private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
-     private  String TAG="G_Vission_controller";
-     String currentStatus;
+      private static final String CLOUD_VISION_API_KEY = "AIzaSyASLfdH5Tr931zKrsdH2alWHPxMg6NzD-A";
+      private static final String ANDROID_CERT_HEADER = "X-Android-Cert";
+      private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
+      private  String TAG = "G_Vission_controller";
+      String currentStatus;
 
-
-
-     SessionManager sessionManager;
+      SessionManager sessionManager;
       private G_Vision_Controller() {
+
     }
 
 
@@ -77,6 +76,7 @@ public class G_Vision_Controller {
 
     public Bitmap callCloudVision(final Bitmap bitmap,Activity activity,String currentStatus) {
         scaled_bitmap=scaleBitmapDown(bitmap,400);
+
         this.activity=activity;
         this.currentStatus=currentStatus;
         sessionManager=new SessionManager(activity);

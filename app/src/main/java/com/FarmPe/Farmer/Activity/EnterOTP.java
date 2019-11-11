@@ -379,6 +379,7 @@ public class EnterOTP extends AppCompatActivity implements ConnectivityReceiver.
                                         startActivity(intent);
 
                                     }
+
                                     else {
                                         Toast.makeText(EnterOTP.this,"OTP has not verified",Toast.LENGTH_SHORT).show();
                                     }

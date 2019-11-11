@@ -93,7 +93,6 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
     JSONObject lngObject;
     static boolean fragloaded;
     String pickUPFrom;
-
     LinearLayout linearLayout,plus_sign_add;
     public static String onBack_status=null;
 
@@ -157,6 +156,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
         });
 
 
+
 //        nw_request.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -214,6 +214,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
             @SuppressLint("NewApi")
             @Override
             public void onClick(View view) {
+
                 Bundle bundle = new Bundle();
                 bundle.putString("status","HOME_IMG");
                 selectedFragment = AaProfileFragment.newInstance();

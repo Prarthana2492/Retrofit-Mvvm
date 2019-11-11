@@ -36,7 +36,6 @@ public class AskNandi extends Fragment {
     TextView privacypolicytxt;
     WebView terms;
 
-
     public static AskNandi newInstance() {
         AskNandi fragment = new AskNandi();
         return fragment;
@@ -69,7 +68,6 @@ public class AskNandi extends Fragment {
 
 
 ///
-
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {

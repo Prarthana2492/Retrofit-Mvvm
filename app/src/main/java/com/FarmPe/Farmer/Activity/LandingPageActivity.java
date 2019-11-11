@@ -119,16 +119,19 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
     @Override
     protected void onStop()
 
+
     {
         unregisterReceiver(connectivityReceiver);
         super.onStop();
     }
 
 
+
     private void checkConnection() {
         boolean isConnected = ConnectivityReceiver.isConnected();
         showSnack(isConnected);
     }
+
 
 
     private void showSnack(boolean isConnected) {

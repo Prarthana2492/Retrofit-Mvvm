@@ -74,10 +74,12 @@ public class AddModelFragment extends Fragment {
 
 
 
+
     public static AddModelFragment newInstance() {
         AddModelFragment fragment = new AddModelFragment();
         return fragment;
     }
+
 
 
     @Override
@@ -86,6 +88,7 @@ public class AddModelFragment extends Fragment {
 
         Status_bar_change_singleton.getInstance().color_change(getActivity());
         HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
         recyclerView=view.findViewById(R.id.recycler_what_looking);
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
@@ -212,6 +215,7 @@ public class AddModelFragment extends Fragment {
                             modelBeanArrayList.add(modelBean);
 
                         }
+
                         System.out.println("fgfggdfcxxggggggggggggggggggggggggggg" + tractorAccessoriesModelMasterList);
 
                         for(int i=0;i<tractorImplementsModelMasterList.length();i++){
