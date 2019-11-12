@@ -52,14 +52,10 @@ public class AddBrandFragment extends Fragment {
         AddBrandFragment fragment = new AddBrandFragment();
         return fragment;
     }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.brand_recy_layout, container, false);
         Status_bar_change_singleton.getInstance().color_change(getActivity());
-
-
         HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
         recyclerView=view.findViewById(R.id.recycler_what_looking);
         toolbar_title=view.findViewById(R.id.toolbar_title);
@@ -77,45 +73,28 @@ public class AddBrandFragment extends Fragment {
 
      //   sub_label.setText("let us know the manufacturer/brand name you are interested to buy");
 
-
         request_looking_id = getArguments().getString("request_status");
-
-
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
               // b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
-
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("req_price", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
-
-
-
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("req_price", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
                     return true;
                 }
-
                 return false;
             }
         });
-
-
-
-
-
-
 //        continue_button.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -165,37 +144,20 @@ public class AddBrandFragment extends Fragment {
 //
 
         BrandList();
-
         newOrderBeansList.clear();
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 3, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager_farm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         return view;
     }
-
     private void BrandList() {
-
-
         try {
             newOrderBeansList.clear();
-
               JSONObject userRequestjsonObject = new JSONObject();
-
-
-
               userRequestjsonObject.put("LookingForDetailsId", request_looking_id);
-
-
-
-
-
-
             System.out.println("sdfsdfsdf" + AddFirstAdapter.looinkgId );
-
-
             JSONObject postjsonObject = new JSONObject();
             System.out.println("postObj"+userRequestjsonObject.toString());
-
             Login_post.login_posting(getActivity(), Urls.GetBrandList,userRequestjsonObject,new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
@@ -206,18 +168,11 @@ public class AddBrandFragment extends Fragment {
                         System.out.println("e     e e ddd"+cropsListArray.length());
                         for (int i=0;i<cropsListArray.length();i++){
                             JSONObject jsonObject1=cropsListArray.getJSONObject(i);
-
                             String brand_name=jsonObject1.getString("BrandName");
-
                             String id=jsonObject1.getString("Id");
-
                             String BrandIcon=jsonObject1.getString("BrandIcon");
-
-
                            AddTractorBean crops = new AddTractorBean(BrandIcon, brand_name,id,false);
                            newOrderBeansList.add(crops);
-
-
                         }
                         farmadapter=new AddBrandAdapter(getActivity(),newOrderBeansList);
                         recyclerView.setAdapter(farmadapter);
@@ -229,8 +184,5 @@ public class AddBrandFragment extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-
-
 }

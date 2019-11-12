@@ -21,9 +21,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.FarmPe.Finance.Adapter.RecyclerViewAdapter;
-import com.FarmPe.Finance.Bean.ContactVO;
-import com.FarmPe.Finance.R;
+
+import com.FarmPe.Farmer.Adapter.RecyclerViewAdapter;
+import com.FarmPe.Farmer.Bean.ContactVO;
+import com.FarmPe.Farmer.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,6 +66,7 @@ public class FragmentC extends Fragment {
         String selection = ContactsContract.Contacts.HAS_PHONE_NUMBER;
         Cursor cursor = getActivity().getContentResolver().query(uri, new String[]{ContactsContract.CommonDataKinds.Phone.NUMBER,   ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone._ID, ContactsContract.Contacts._ID}, selection, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC");
         cursor.moveToFirst();
+
         while (cursor.isAfterLast() == false) {
             String contactNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
             String contactName = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));

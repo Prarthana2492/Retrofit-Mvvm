@@ -13,8 +13,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 
-import com.FarmPe.Finance.Bean.ContactVO;
-import com.FarmPe.Finance.R;
+import com.FarmPe.Farmer.Bean.ContactVO;
+import com.FarmPe.Farmer.R;
 
 import java.util.ArrayList;
 

@@ -45,7 +45,7 @@ public class Book_Nw_Request_Price extends Fragment  {
     private List<Request_Class_HomePage_Bean> newOrderBeansList2 = new ArrayList<>();
     private RecyclerView recyclerView,recyclerView2;
 
-    private Book_Now_Request_Price_Adapter mAdapter;
+    private Home_Page_Request_Adapter mAdapter;
     //  private Home_Page_Lookinfor_Adapter mAdapter2;
     boolean doubleBackToExitPressedOnce = false;
     LinearLayout linearLayout,dealer_linear_layout,offers_linear_layout,book_nw_linear,search_linear,back_feed;
@@ -167,7 +167,7 @@ public class Book_Nw_Request_Price extends Fragment  {
 
 
         System.out.println("newOrderBeansListvsdvdv"+newOrderBeansList.size());
-        mAdapter = new Book_Now_Request_Price_Adapter(getActivity(),newOrderBeansList);
+        mAdapter = new Home_Page_Request_Adapter(getActivity(),newOrderBeansList,"request_book");
         recyclerView.setAdapter(mAdapter);
 
 

@@ -124,7 +124,7 @@ public class Home_Menu_Fragment extends Fragment  {
 
 
         System.out.println("newOrderBeansListvsdvdv"+newOrderBeansList.size());
-        mAdapter = new Home_Page_Request_Adapter(getActivity(),newOrderBeansList);
+        mAdapter = new Home_Page_Request_Adapter(getActivity(),newOrderBeansList,"home_menu");
         recyclerView.setAdapter(mAdapter);
 //
 //        newOrderBeansList2.clear();

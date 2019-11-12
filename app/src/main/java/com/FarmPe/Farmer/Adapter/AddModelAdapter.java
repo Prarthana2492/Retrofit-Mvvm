@@ -107,10 +107,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final ModelBean products = productList.get(position);
-
-
-
-
+      //constructor called and values set
          if(products.getIsshortlisted()){
 
              holder.fav_request.setImageResource(R.drawable.ic_star_filled);

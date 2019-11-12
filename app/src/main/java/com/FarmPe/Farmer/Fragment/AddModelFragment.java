@@ -132,13 +132,9 @@ public class AddModelFragment extends Fragment {
             }
         });
 
-
-
         filter_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 final Dialog dialog = new Dialog(getActivity());
                 dialog.setContentView(R.layout.layout_filterpopup);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -256,16 +252,12 @@ public class AddModelFragment extends Fragment {
                             JSONObject jsonObject1 = FenceWireModelMasterList.getJSONObject(i);
                             modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));
                             modelBeanArrayList.add(modelBean);
-
                         }
-
                         for(int i=0;i<TyreModelMasterList.length();i++){
                             JSONObject jsonObject1 = TyreModelMasterList.getJSONObject(i);
                             modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));
                             modelBeanArrayList.add(modelBean);
-
                         }
-
                         for(int i=0;i<MiniTruckModelMasterList.length();i++){
                             JSONObject jsonObject1 = MiniTruckModelMasterList.getJSONObject(i);
                             modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));

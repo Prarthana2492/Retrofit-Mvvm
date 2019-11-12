@@ -35,12 +35,14 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
     Activity activity;
     Fragment selectedFragment;
     public static String looinkgId;
+    String classname;
 
 
     public static CardView cardView;
-    public Home_Page_Request_Adapter(Activity activity,List< Request_Class_HomePage_Bean> moviesList) {
+    public Home_Page_Request_Adapter(Activity activity,List< Request_Class_HomePage_Bean> moviesList,String classname) {
         this.productList = moviesList;
-        this.activity=activity;
+        this.activity = activity;
+        this.classname =classname;
 
 
     }
@@ -91,6 +93,7 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
             @Override
             public void onClick(View v) {
 
+System.out.println("dfsdfsdf" + classname);
 
                 v.clearAnimation();
                 Animation mAnimation = new AlphaAnimation(1, 0);
@@ -104,8 +107,18 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
 
 
                 Bundle bundle = new Bundle();
-                bundle.putString("request_status",looinkgId);
-                bundle.putString("status_home","HOME_REQ_PRICE");
+                if (classname.equals("home_menu")){
+
+                    bundle.putString("request_status",looinkgId);
+                    bundle.putString("status_home","HOME_REQ_PRICE");
+
+                }else {
+
+
+                    bundle.putString("request_status", looinkgId);
+                    bundle.putString("status_home", "REQ_PRICE");
+
+                }
                 selectedFragment = AddBrandFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
