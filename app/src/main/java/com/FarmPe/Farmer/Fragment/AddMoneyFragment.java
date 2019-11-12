@@ -166,7 +166,7 @@ public class AddMoneyFragment extends Fragment {
                 Toast.makeText(getActivity(), "Transaction successful.", Toast.LENGTH_SHORT).show();
            selectedFragment = Home_Menu_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.commit();
                 Log.d("UPI", "responseStr: "+approvalRefNo);
             }

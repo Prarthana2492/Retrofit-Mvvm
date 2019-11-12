@@ -202,6 +202,7 @@ public class FragmentA extends Fragment {
         {
             Toast.makeText(getActivity(),"CONTACTS permission allows us to Access CONTACTS app", Toast.LENGTH_LONG).show();
         } else {
+
             ActivityCompat.requestPermissions(getActivity(),new String[]{
                     Manifest.permission.READ_CONTACTS}, RequestPermissionCode);
         }

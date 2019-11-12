@@ -36,53 +36,34 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
     Fragment selectedFragment;
     public static String looinkgId;
     String classname;
-
-
     public static CardView cardView;
     public Home_Page_Request_Adapter(Activity activity,List< Request_Class_HomePage_Bean> moviesList,String classname) {
         this.productList = moviesList;
         this.activity = activity;
         this.classname =classname;
-
-
     }
-
-
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView pay_img;
         public TextView name;
-
           LinearLayout item_layout;
-
-
         public MyViewHolder(View view) {
             super(view);
             name=view.findViewById(R.id.crop_loan);
             pay_img=view.findViewById(R.id.pay_img);
             item_layout=view.findViewById(R.id.item_layout);
-
         }
     }
-
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.homepage_requestprice_adapter_layout, parent, false);
         return new MyViewHolder(itemView);
-
     }
-
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final  Request_Class_HomePage_Bean products = productList.get(position);
-
-
-
-
        holder.name.setText(products.getVeg_name());
-
         Glide.with(activity).load(products.getImage())
-
                 .thumbnail(0.5f)
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -92,32 +73,22 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
         holder.item_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 System.out.println("dfsdfsdf" + classname);
-
                 v.clearAnimation();
                 Animation mAnimation = new AlphaAnimation(1, 0);
                 mAnimation.setInterpolator(new LinearInterpolator());
                 mAnimation.setRepeatMode(Animation.REVERSE);
                 holder.item_layout.startAnimation(mAnimation);
-
              //   AddFirstFragment.tracter_title = holder.name.getText().toString().toLowerCase().replace(" price","");
                 looinkgId = products.getId();
                 System.out.println("asaAAAA" + products.getId());
-
-
                 Bundle bundle = new Bundle();
                 if (classname.equals("home_menu")){
-
                     bundle.putString("request_status",looinkgId);
                     bundle.putString("status_home","HOME_REQ_PRICE");
-
                 }else {
-
-
                     bundle.putString("request_status", looinkgId);
                     bundle.putString("status_home", "REQ_PRICE");
-
                 }
                 selectedFragment = AddBrandFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();

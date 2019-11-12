@@ -123,30 +123,18 @@ public class Book_Nw_Requirement_Details extends Fragment {
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 if(getArguments().getString("request_navigation").equals("ADDRESS_BOOK")){
-
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("address_book", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-
                 }else if(getArguments().getString("request_navigation").equals("MAP_FRAGMENT")){
-
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("map_fragment", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-
                 }  else if(getArguments().getString("request_navigation").equals("ADD_FRAGMENT")){
-
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
                 }
-
             }
         });
-
         immediate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -156,7 +144,6 @@ public class Book_Nw_Requirement_Details extends Fragment {
                 two_month_btn.setTextColor(Color.parseColor("#000000"));
                 three_month_btn.setTextColor(Color.parseColor("#000000"));
                 aftr_three_month_btn.setTextColor(Color.parseColor("#000000"));
-
                 immediate_btn.setBackgroundResource(R.drawable.black_border_blue_filled);
                 one_month_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
                 two_month_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
@@ -171,19 +158,16 @@ public class Book_Nw_Requirement_Details extends Fragment {
             @Override
             public void onClick(View view) {
                 purchase_plan = one_month_btn.getText().toString();
-
                 one_month_btn.setTextColor(Color.parseColor("#FFFFFF"));
                 immediate_btn.setTextColor(Color.parseColor("#000000"));
                 two_month_btn.setTextColor(Color.parseColor("#000000"));
                 three_month_btn.setTextColor(Color.parseColor("#000000"));
                 aftr_three_month_btn.setTextColor(Color.parseColor("#000000"));
-
                 one_month_btn.setBackgroundResource(R.drawable.black_border_blue_filled);
                 immediate_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
                 two_month_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
                 three_month_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
                 aftr_three_month_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
-
             }
         });
 
@@ -197,27 +181,22 @@ public class Book_Nw_Requirement_Details extends Fragment {
                 immediate_btn.setTextColor(Color.parseColor("#000000"));
                 three_month_btn.setTextColor(Color.parseColor("#000000"));
                 aftr_three_month_btn.setTextColor(Color.parseColor("#000000"));
-
                 two_month_btn.setBackgroundResource(R.drawable.black_border_blue_filled);
                 immediate_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
                 one_month_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
                 three_month_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
                 aftr_three_month_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
-
             }
         });
         three_month_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 purchase_plan = three_month_btn.getText().toString();
                 three_month_btn.setTextColor(Color.parseColor("#FFFFFF"));
                 two_month_btn.setTextColor(Color.parseColor("#000000"));
                 one_month_btn.setTextColor(Color.parseColor("#000000"));
                 immediate_btn.setTextColor(Color.parseColor("#000000"));
                 aftr_three_month_btn.setTextColor(Color.parseColor("#000000"));
-
-
                 three_month_btn.setBackgroundResource(R.drawable.black_border_blue_filled);
                 immediate_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
                 one_month_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);

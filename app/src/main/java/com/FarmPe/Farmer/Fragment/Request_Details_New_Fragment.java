@@ -91,61 +91,36 @@ public class Request_Details_New_Fragment extends Fragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-
                     if(getArguments().getString("request_navigation").equals("ADDRESS_BOOK")){
-
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack("address_book", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-
                     }else if(getArguments().getString("request_navigation").equals("MAP_FRAGMENT")){
-
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack("map_fragment", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-
                     }  else if(getArguments().getString("request_navigation").equals("ADD_FRAGMENT")){
-
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
                     }
-
                     return true;
                 }
                 return false;
             }
         });
-
-
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 if(getArguments().getString("request_navigation").equals("ADDRESS_BOOK")){
-
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("address_book", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-
                 }else if(getArguments().getString("request_navigation").equals("MAP_FRAGMENT")){
-
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("map_fragment", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-
                 }  else if(getArguments().getString("request_navigation").equals("ADD_FRAGMENT")){
-
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
                 }
-
             }
         });
-
-
         immediate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

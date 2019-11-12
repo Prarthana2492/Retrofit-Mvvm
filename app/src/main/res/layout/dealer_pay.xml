@@ -77,7 +77,7 @@
                 <ImageView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-
+                    android:src="@drawable/jk"
                     />
 
             </LinearLayout>
@@ -190,6 +190,7 @@
                 android:textColor="#000"
                 android:background="@drawable/border_transperent"
                 android:drawablePadding="5dp"
+                android:drawableLeft="@drawable/ic_rupee_indian"
                 android:layout_marginHorizontal="10dp"
                 />
         </LinearLayout>

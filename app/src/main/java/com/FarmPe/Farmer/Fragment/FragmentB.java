@@ -47,7 +47,7 @@ public class FragmentB extends Fragment{
             public void onClick(View v) {
                 selectedFragment = Addbhimfragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
+                transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.commit();
                // easyUpiPayment.startPayment();
             }

@@ -73,7 +73,7 @@ public class Addbhimfragment extends Fragment{
                     System.out.println("hjhkh" + bundle);
                     selectedFragment = AddMoneyFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.frame_menu, selectedFragment);
                     selectedFragment.setArguments(bundle);
                     transaction.addToBackStack("yu_ads_frg");
                     transaction.commit();
