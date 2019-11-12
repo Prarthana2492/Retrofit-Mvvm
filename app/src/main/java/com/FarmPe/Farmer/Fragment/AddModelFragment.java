@@ -216,6 +216,7 @@ public class AddModelFragment extends Fragment {
 
                         }
 
+
                         System.out.println("fgfggdfcxxggggggggggggggggggggggggggg" + tractorAccessoriesModelMasterList);
 
                         for(int i=0;i<tractorImplementsModelMasterList.length();i++){

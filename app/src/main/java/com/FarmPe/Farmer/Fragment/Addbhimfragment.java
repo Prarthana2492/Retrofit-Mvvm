@@ -61,12 +61,14 @@ public class Addbhimfragment extends Fragment{
        // easyUpiPayment.setPaymentStatusListener(this);
         System.out.println("fasfasfa"+upiid.getText().toString().trim());
         //Proceed for Payment on click
+
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
               String upiId = upiid.getText().toString();
               if(upiId.contains("@")){
-                    Bundle bundle = new Bundle();
+
+                  Bundle bundle = new Bundle();
                     bundle.putString("edttext", upiid.getText().toString());
                     System.out.println("hjhkh" + bundle);
                     selectedFragment = AddMoneyFragment.newInstance();
@@ -75,11 +77,13 @@ public class Addbhimfragment extends Fragment{
                     selectedFragment.setArguments(bundle);
                     transaction.addToBackStack("yu_ads_frg");
                     transaction.commit();
-                }
-              else
-                  {
-                    Toast.makeText(getActivity(),"Payee VPA address should be valid (For e.g. example@upi and example@ybl)", Toast.LENGTH_LONG).show();
 
+               }
+              else
+
+                  {
+
+                    Toast.makeText(getActivity(),"Payee VPA address should be valid (For e.g. example@upi and example@ybl)", Toast.LENGTH_LONG).show();
                   }
             }
         });
@@ -106,6 +110,7 @@ public class Addbhimfragment extends Fragment{
                 return false;
             }
         });
+
 //   java.lang.ClassCastException: com.example.easyupipayment.MainActivity cannot be cast to com.shreyaspatil.EasyUpiPayment.listener.PaymentStatusListener
         back.setOnClickListener(new View.OnClickListener() {
             @Override

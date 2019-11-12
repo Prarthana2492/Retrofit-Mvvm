@@ -257,6 +257,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
                 Bundle bundle = new Bundle();
                 bundle.putString("navigation_from","model_frg");
+                bundle.putString("status_map",AddModelFragment.text_box);
                 selectedFragment = MapFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);

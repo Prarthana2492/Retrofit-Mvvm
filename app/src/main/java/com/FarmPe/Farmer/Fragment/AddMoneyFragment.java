@@ -22,21 +22,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 import static android.app.Activity.RESULT_OK;
 
+
+
 import com.FarmPe.Farmer.R;
-
-
 import java.util.ArrayList;
 public class AddMoneyFragment extends Fragment {
     TextView save;
     LinearLayout back;
     Fragment selectedFragment;
-EditText amountEt,noteEt,nameEt;
+    EditText amountEt,noteEt,nameEt;
     final int UPI_PAYMENT = 0;
     String strtext;
     public static AddMoneyFragment newInstance() {
         AddMoneyFragment fragment = new AddMoneyFragment();
         return fragment;
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dealer_pay, container, false);

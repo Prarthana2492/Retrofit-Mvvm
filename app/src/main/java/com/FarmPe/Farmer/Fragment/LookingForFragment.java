@@ -55,7 +55,6 @@ public class LookingForFragment extends Fragment {
     SessionManager sessionManager;
 
 
-
     public static JSONArray cropsListArray = null;
     public static JSONArray tractorImplementsModelMasterList = null;
     public static JSONArray tractorAccessoriesModelMasterList = null;
@@ -67,6 +66,7 @@ public class LookingForFragment extends Fragment {
     public static JSONArray miniTruckRFQModelList = null;
     public static JSONArray backhoeAttachmentRFQModelList = null;
     public static JSONArray powerTillerRFQModelList = null;
+
 
 
 
@@ -260,7 +260,6 @@ public class LookingForFragment extends Fragment {
                             addingToarraylist(miniTruckRFQModelList);
                             addingToarraylist(backhoeAttachmentRFQModelList);
                             addingToarraylist(powerTillerRFQModelList);
-
 
 
                         }

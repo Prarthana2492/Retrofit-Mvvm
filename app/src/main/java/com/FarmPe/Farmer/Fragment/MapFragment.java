@@ -82,6 +82,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     Button confirm_loc;
     LinearLayout main_layout;
     Marker mCurrLocationMarker;
+    String map_string;
 
     private TextView resutText,currentaddress,addressbook;
     String address_txt;
@@ -111,6 +112,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         //getSupportActionBar().setTitle("Map Location Activity");
         mapFrag = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFrag.getMapAsync(this);
+
+        map_string = getArguments().getString("status_map");
 
         final LocationManager lm = (LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE);
 
@@ -241,16 +244,40 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
 
                } else {
-                    System.out.println("hrrrjjkj");
-                    Bundle bundle = new Bundle();
-                    bundle.putString("request_navigation","MAP_FRAGMENT");
-                    bundle.putString("add_id","1");
-                    selectedFragment = Request_Details_New_Fragment .newInstance();
-                    FragmentTransaction transaction =getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_menu, selectedFragment);
-                    transaction.addToBackStack("map_fragment");
-                    selectedFragment.setArguments(bundle);
-                    transaction.commit();
+
+                    if(map_string.equals("REQ_PRICE")){
+
+                        selectedFragment = DealerProfile.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_menu, selectedFragment);
+                        transaction.commit();
+
+
+
+                    }else{
+                        System.out.println("hrrrjjkj");
+                        Bundle bundle = new Bundle();
+                        bundle.putString("request_navigation","MAP_FRAGMENT");
+                        bundle.putString("add_id","1");
+                        selectedFragment = Request_Details_New_Fragment .newInstance();
+                        FragmentTransaction transaction =getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_menu, selectedFragment);
+                        transaction.addToBackStack("map_fragment");
+                        selectedFragment.setArguments(bundle);
+                        transaction.commit();
+
+                    }
+
+//                    System.out.println("hrrrjjkj");
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("request_navigation","MAP_FRAGMENT");
+//                    bundle.putString("add_id","1");
+//                    selectedFragment = Request_Details_New_Fragment .newInstance();
+//                    FragmentTransaction transaction =getActivity().getSupportFragmentManager().beginTransaction();
+//                    transaction.replace(R.id.frame_menu, selectedFragment);
+//                    transaction.addToBackStack("map_fragment");
+//                    selectedFragment.setArguments(bundle);
+//                    transaction.commit();
 
                 }
 

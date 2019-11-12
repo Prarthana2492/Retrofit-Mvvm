@@ -1,9 +1,7 @@
 package com.FarmPe.Farmer.Adapter;
 
 import android.app.Activity;
-
 import android.content.Context;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -14,26 +12,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-
 import com.FarmPe.Farmer.Bean.ContactVO;
 import com.FarmPe.Farmer.Fragment.Addbhimfragment;
 import com.FarmPe.Farmer.R;
-
-
 import java.util.List;
+
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     private List<ContactVO> contactVOList;
     private Context mContext;
     Activity activity;
-Fragment selectedFragment;
+    Fragment selectedFragment;
     public static String stateid;
     public static int selected_position=0;
+
+
     public RecyclerViewAdapter(Activity activity, List<ContactVO> contactVOList) {
         this.contactVOList = contactVOList;
         this.activity = activity;
     }
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image;
@@ -45,6 +43,7 @@ Fragment selectedFragment;
             prod_name = view.findViewById(R.id.text2);
         }
     }
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -58,9 +57,11 @@ Fragment selectedFragment;
         System.out.println("lengthhhhhhh" + contactVOList.size());
         holder.prod_price.setText(contactVO.getContactNumber());
         holder.prod_name.setText(contactVO.getContactName());
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 selected_position = position;
                 stateid=contactVO.getContactNumber();
                 System.out.println("lengthhhhhhh" + stateid);
@@ -75,6 +76,7 @@ Fragment selectedFragment;
             }
         });
     }
+
     @Override
     public int getItemCount() {
         System.out.println("lengthhhhhhh" + contactVOList.size());

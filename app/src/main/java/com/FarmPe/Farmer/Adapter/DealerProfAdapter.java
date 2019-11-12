@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.FarmPe.Farmer.Bean.DealerProfBean;
+import com.FarmPe.Farmer.Fragment.Book_Nw_Requirement_Details;
 import com.FarmPe.Farmer.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -84,6 +85,20 @@ public class DealerProfAdapter extends RecyclerView.Adapter<DealerProfAdapter.My
         }
 
 
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                selectedFragment = Book_Nw_Requirement_Details.newInstance();
+                FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_menu, selectedFragment);
+                 transaction.commit();
+
+
+            }
+        });
+
 //        holder.edit_prof.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -105,7 +120,6 @@ public class DealerProfAdapter extends RecyclerView.Adapter<DealerProfAdapter.My
 //                transaction.commit();
 //            }
 //        });
-
 
     }
 

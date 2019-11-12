@@ -143,7 +143,6 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
 
 
 
-
 //           for (int i = 0; i < productList.size(); i++) {
 //                    productList.get(i).setSelected(false);
 //                }
