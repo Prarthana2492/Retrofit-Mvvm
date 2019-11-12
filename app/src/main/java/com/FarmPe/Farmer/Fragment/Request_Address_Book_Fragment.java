@@ -54,6 +54,7 @@ public class Request_Address_Book_Fragment extends Fragment {
     public static LinearLayout linearLayout;
 
     JSONObject lngObject;
+   public static String address_string;
 
     ArrayList<Add_New_Address_Bean> new_address_beanArrayList = new ArrayList<>();
     Add_New_Address_Bean add_new_address_bean;
@@ -82,6 +83,7 @@ public class Request_Address_Book_Fragment extends Fragment {
         back_feed = view.findViewById(R.id.back_feed);
 
         sessionManager =new SessionManager(getActivity());
+        address_string = getArguments().getString("status_map");
 
 
 

@@ -1,4 +1,7 @@
 package com.FarmPe.Farmer.Fragment;
+
+
+
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -63,6 +66,9 @@ import java.io.IOException;
 import java.util.List;
 
 import static com.android.volley.VolleyLog.TAG;
+
+
+
 public class MapFragment extends Fragment implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
@@ -88,6 +94,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     String address_txt;
     protected static final int REQUEST_CHECK_SETTINGS = 0x1;
     String state;
+
+
      public static MapFragment newInstance() {
         MapFragment fragment = new MapFragment();
 
@@ -113,6 +121,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         mapFrag = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFrag.getMapAsync(this);
 
+
         map_string = getArguments().getString("status_map");
 
         final LocationManager lm = (LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE);
@@ -131,11 +140,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
                     if(getArguments().getString("navigation_from").equals("model_frg")){
 
+                             Bundle bundle = new Bundle();
+                            bundle.putString("status_home",AddBrandFragment.price);
+                            selectedFragment = AddModelFragment.newInstance();
+                            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                            selectedFragment.setArguments(bundle);
+                            transaction.replace(R.id.frame_menu, selectedFragment);
+                            transaction.commit();
 
-                        selectedFragment = AddModelFragment.newInstance();
-                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_menu, selectedFragment);
-                        transaction.commit();
 
 
 
@@ -162,13 +174,18 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
                 if(getArguments().getString("navigation_from").equals("model_frg")){
 
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("status_home",AddBrandFragment.price);
                     selectedFragment = AddModelFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    selectedFragment.setArguments(bundle);
                     transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
 
 
                 }else if(getArguments().getString("navigation_from").equals("fav_fragment")) {
+
 
                     selectedFragment = Request_Favorite_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -191,6 +208,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
                     Bundle bundle = new Bundle();
                     bundle.putString("navigation_from","MAP_FRAGMENT");
+                    bundle.putString("status_add_map",map_string);
                     selectedFragment = Add_New_Address_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     selectedFragment.setArguments(bundle);
@@ -199,12 +217,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                     transaction.commit();
 
 
-
                 }else {
-
 
                     Bundle bundle = new Bundle();
                     bundle.putString("back_status",getArguments().getString("navigation_from"));
+                    bundle.putString("status_map",map_string);
                     selectedFragment = Request_Address_Book_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_menu, selectedFragment);
@@ -247,9 +264,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
                     if(map_string.equals("REQ_PRICE")){
 
+                        Bundle bundle = new Bundle();
+                        bundle.putString("dealer_status","Map_Dealer");
                         selectedFragment = DealerProfile.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frame_menu, selectedFragment);
+                        transaction.addToBackStack("map_fragment");
+                        selectedFragment.setArguments(bundle);
                         transaction.commit();
 
 

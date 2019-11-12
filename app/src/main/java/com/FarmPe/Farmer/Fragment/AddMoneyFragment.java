@@ -65,6 +65,7 @@ public class AddMoneyFragment extends Fragment {
                 transaction.commit();*/
             }
         });
+
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -79,6 +80,7 @@ public class AddMoneyFragment extends Fragment {
                 return false;
             }
         });
+
         back = view.findViewById(R.id.back_feed);
         back.setOnClickListener(new View.OnClickListener() {
             @Override

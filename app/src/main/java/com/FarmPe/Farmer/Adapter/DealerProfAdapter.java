@@ -1,6 +1,7 @@
 package com.FarmPe.Farmer.Adapter;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -20,6 +21,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
 
+
+
 public class DealerProfAdapter extends RecyclerView.Adapter<DealerProfAdapter.MyViewHolder>  {
     private List<DealerProfBean> productList;
     Activity activity;
@@ -28,10 +31,12 @@ public class DealerProfAdapter extends RecyclerView.Adapter<DealerProfAdapter.My
 
 
 
+
     public static CardView cardView;
     public DealerProfAdapter(Activity activity, List<DealerProfBean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
+
     }
 
 
@@ -90,9 +95,10 @@ public class DealerProfAdapter extends RecyclerView.Adapter<DealerProfAdapter.My
             @Override
             public void onClick(View view) {
 
-                selectedFragment = Book_Nw_Requirement_Details.newInstance();
-                FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_menu, selectedFragment);
+                 selectedFragment = Book_Nw_Requirement_Details.newInstance();
+                 FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
+                 transaction.replace(R.id.frame_menu, selectedFragment);
+                 transaction.addToBackStack("dealer_page");
                  transaction.commit();
 
 

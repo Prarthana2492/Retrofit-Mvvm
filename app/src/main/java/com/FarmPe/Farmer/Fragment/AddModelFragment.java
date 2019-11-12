@@ -247,7 +247,7 @@ public class AddModelFragment extends Fragment {
                         modelBean = new ModelBean(jsonObject1.getString("BrandName"),jsonObject1.getString("Model"),"","","","","","",jsonObject1.getString("ModelImage"),jsonObject1.getString("Brochure"),jsonObject1.getString("Id"),"",jsonObject1.getBoolean("IsShortlisted"));
                         modelBeanArrayList.add(modelBean);
 
-                    }
+                       }
                         for(int i=0;i<FenceWireModelMasterList.length();i++){
 
                             JSONObject jsonObject1 = FenceWireModelMasterList.getJSONObject(i);

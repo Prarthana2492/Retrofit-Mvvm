@@ -64,7 +64,6 @@ public class Home_Menu_Fragment extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home_page_layout, container, false);
 
-
         Status_bar_change_singleton.getInstance().home_change(getActivity());
 
         recyclerView = view.findViewById(R.id.recycler_view1);
@@ -94,18 +93,18 @@ public class Home_Menu_Fragment extends Fragment  {
 
         // GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3, GridLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
-        Request_Class_HomePage_Bean item1   = new Request_Class_HomePage_Bean("Tractor","1",R.drawable.tractor);
-        Request_Class_HomePage_Bean item2   = new Request_Class_HomePage_Bean("Farm\nTruck","9",R.drawable.farm_truck);
-        Request_Class_HomePage_Bean item3   = new Request_Class_HomePage_Bean("Backhoe\nLoader","4",R.drawable.backhoe_acessories);
-        Request_Class_HomePage_Bean item4   = new Request_Class_HomePage_Bean("Harvester","5",R.drawable.harvesting);
-        Request_Class_HomePage_Bean item5   =  new Request_Class_HomePage_Bean("Farm\nMachines","6",R.drawable.machinary);
-        Request_Class_HomePage_Bean item6   =  new Request_Class_HomePage_Bean("Power\nTillers","12",R.drawable.tiller);
-        Request_Class_HomePage_Bean item7   =  new Request_Class_HomePage_Bean("Tractor\nImplements","2",R.drawable.tractor_implements);
-        Request_Class_HomePage_Bean item8   =  new Request_Class_HomePage_Bean("Backhoe\nAttachment","10",R.drawable.backhoe);
-        Request_Class_HomePage_Bean item9   =  new Request_Class_HomePage_Bean("Irrigation\nSystem","11",R.drawable.sprinkler);
-        Request_Class_HomePage_Bean item10  = new Request_Class_HomePage_Bean("Tractor\n Accessories","3",R.drawable.accessories);
-        Request_Class_HomePage_Bean item11  = new Request_Class_HomePage_Bean("Tyres","8",R.drawable.tyre);
-        Request_Class_HomePage_Bean item12  = new Request_Class_HomePage_Bean("Fence\nWires","7",R.drawable.fencing_wire);
+        Request_Class_HomePage_Bean item1    = new Request_Class_HomePage_Bean("Tractor","1",R.drawable.tractor);
+        Request_Class_HomePage_Bean item2    = new Request_Class_HomePage_Bean("Farm\nTruck","9",R.drawable.farm_truck);
+        Request_Class_HomePage_Bean item3    = new Request_Class_HomePage_Bean("Backhoe\nLoader","4",R.drawable.backhoe_acessories);
+        Request_Class_HomePage_Bean item4    = new Request_Class_HomePage_Bean("Harvester","5",R.drawable.harvesting);
+        Request_Class_HomePage_Bean item5    =  new Request_Class_HomePage_Bean("Farm\nMachines","6",R.drawable.machinary);
+        Request_Class_HomePage_Bean item6    =  new Request_Class_HomePage_Bean("Power\nTillers","12",R.drawable.tiller);
+        Request_Class_HomePage_Bean item7    =  new Request_Class_HomePage_Bean("Tractor\nImplements","2",R.drawable.tractor_implements);
+        Request_Class_HomePage_Bean item8    =  new Request_Class_HomePage_Bean("Backhoe\nAttachment","10",R.drawable.backhoe);
+        Request_Class_HomePage_Bean item9    =  new Request_Class_HomePage_Bean("Irrigation\nSystem","11",R.drawable.sprinkler);
+        Request_Class_HomePage_Bean item10   = new Request_Class_HomePage_Bean("Tractor\n Accessories","3",R.drawable.accessories);
+        Request_Class_HomePage_Bean item11   = new Request_Class_HomePage_Bean("Tyres","8",R.drawable.tyre);
+        Request_Class_HomePage_Bean item12   = new Request_Class_HomePage_Bean("Fence\nWires","7",R.drawable.fencing_wire);
 
 
         newOrderBeansList.clear();
@@ -236,9 +235,12 @@ public class Home_Menu_Fragment extends Fragment  {
             @Override
             public void onClick(View view) {
 
+                Bundle bundle = new Bundle();
+                bundle.putString("dealer_status","Home_Dealer");
                 selectedFragment = DealerProfile.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
+                selectedFragment.setArguments(bundle);
                 transaction.addToBackStack("home_page");
                 transaction.commit();
 

@@ -123,6 +123,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
          if(AddModelFragment.text_box.equals("REQ_PRICE")){
 
              holder.select.setText(" Book Now");
+
          }else {
 
              holder.select.setText(" Select");

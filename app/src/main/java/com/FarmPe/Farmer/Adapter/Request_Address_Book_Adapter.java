@@ -21,6 +21,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.FarmPe.Farmer.Bean.Add_New_Address_Bean;
+import com.FarmPe.Farmer.Fragment.Book_Nw_Requirement_Details;
+import com.FarmPe.Farmer.Fragment.DealerProfile;
+import com.FarmPe.Farmer.Fragment.Request_Address_Book_Fragment;
 import com.FarmPe.Farmer.Fragment.Request_Details_New_Fragment;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
@@ -135,16 +138,33 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
             @Override
             public void onClick(View view) {
 
-                Bundle bundle = new Bundle();
-                bundle.putString("request_navigation","ADDRESS_BOOK");
-                bundle.putString("add_id",products.getAdd_id());
-                selectedFragment = Request_Details_New_Fragment.newInstance();
-                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_menu, selectedFragment);
-                transaction.addToBackStack("address_book");
-                selectedFragment.setArguments(bundle);
-                transaction.commit();
+                if (Request_Address_Book_Fragment.address_string.equals("REQ_PRICE")) {
 
+                    Bundle bundle = new Bundle();
+                    bundle.putString("dealer_status","Req_Book");
+                    selectedFragment = DealerProfile.newInstance();
+                    FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_menu, selectedFragment);
+                    selectedFragment.setArguments(bundle);
+                    transaction.addToBackStack("address_book");
+                    transaction.commit();
+
+
+                } else {
+
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("request_navigation", "ADDRESS_BOOK");
+                    bundle.putString("add_id", products.getAdd_id());
+                    selectedFragment = Request_Details_New_Fragment.newInstance();
+                    FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_menu, selectedFragment);
+                    transaction.addToBackStack("address_book");
+                    selectedFragment.setArguments(bundle);
+                    transaction.commit();
+
+
+                }
             }
         });
 

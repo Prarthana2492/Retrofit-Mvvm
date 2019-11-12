@@ -56,7 +56,7 @@ public class MenuFragment extends Fragment implements TabLayout.OnTabSelectedLis
             @Override
             public void onClick(View v) {
                 FragmentManager fm = ((FragmentActivity)getActivity()).getSupportFragmentManager();
-                fm.popBackStack ("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fm.popBackStack ("book_payment", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
 
@@ -67,7 +67,7 @@ public class MenuFragment extends Fragment implements TabLayout.OnTabSelectedLis
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
                     FragmentManager fm = ((FragmentActivity)getActivity()).getSupportFragmentManager();
-                    fm.popBackStack ("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    fm.popBackStack ("book_payment", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
                     return true;
                 }

@@ -104,6 +104,7 @@ public class AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyView
                 //  AddBrandAdapter.brandId = null;
                 Bundle bundle = new Bundle();
                 bundle.putString("request_status",looinkgId);
+                bundle.putString("status_home","HOME_REQ_PRICE");
                 selectedFragment = AddBrandFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);

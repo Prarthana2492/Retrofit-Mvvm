@@ -88,6 +88,7 @@ public class  Add_New_Address_Fragment extends Fragment {
     DistrictAdapter districtAdapter;
     TalukAdapter talukAdapter;
     HoblisAdapter hoblisAdapter;
+
     VillageAdapter villageAdapter;
 
     LinearLayout back_feed,state,district,tehsil,village,adrss_type_linear;
@@ -97,10 +98,10 @@ public class  Add_New_Address_Fragment extends Fragment {
       TextView toolbar_titletxt,current_loc,ortext,norecords;
       JSONArray jsonArray,state_array,tal_array,hobli_array;
      StateBean stateBean;
-
-    EditText search;
-    public static TextView save_1;
-    public static String search_status="status";
+     String add_new_status;
+      EditText search;
+     public static TextView save_1;
+     public static String search_status="status";
 
     Fragment selectedFragment = null;
     String selected_addresstype;
@@ -114,6 +115,8 @@ public class  Add_New_Address_Fragment extends Fragment {
     String Id;
     SessionManager sessionManager;
     int selected_id_time;
+
+
 
 
 
@@ -198,6 +201,9 @@ public class  Add_New_Address_Fragment extends Fragment {
           street_name.setFilters(new InputFilter[] {EMOJI_FILTER,new InputFilter.LengthFilter(50)});
 
 
+          add_new_status = getArguments().getString("status_add_map");
+
+
           setupUI(drawer);
 
                  state_id = StateApdater.stateid;
@@ -229,7 +235,6 @@ public class  Add_New_Address_Fragment extends Fragment {
             toolbar_titletxt.setText("Edit Your Address");
 
         }
-
 
 
 
@@ -1292,7 +1297,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                                     snackbar.show();
 
 
-                                } else if(getArguments().getString("navigation_from").equals("MAP_FRAGMENT")){
+                                } else if(getArguments().getString("navigation_from").equals("MAP_FRAGMENT")) {
 
                                     int duration = 1000;
                                     Snackbar snackbar = Snackbar
@@ -1309,18 +1314,36 @@ public class  Add_New_Address_Fragment extends Fragment {
                                     }
 
 
-                                    Bundle bundle1 = new Bundle();
-                                    bundle1.putString("request_navigation","ADD_FRAGMENT");
-                                    bundle.putString("add_id",status);
-                                    selectedFragment = Request_Details_New_Fragment.newInstance();
-                                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                    transaction.replace(R.id.frame_menu, selectedFragment);
-                                    transaction.addToBackStack("home");
-                                    selectedFragment.setArguments(bundle1);
-                                    transaction.commit();
-                                    snackbar.show();
+                                    if(add_new_status.equals("REQ_PRICE")){
 
 
+
+                                        Bundle bundle1 = new Bundle();
+                                        bundle1.putString("dealer_status", "Add_Add_Dealer_Book");
+                                        bundle.putString("add_id", status);
+                                        selectedFragment = DealerProfile.newInstance();
+                                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                        transaction.replace(R.id.frame_menu, selectedFragment);
+                                        transaction.addToBackStack("home");
+                                        selectedFragment.setArguments(bundle1);
+                                        transaction.commit();
+                                        snackbar.show();
+
+
+                                    }else{
+
+                                        Bundle bundle1 = new Bundle();
+                                        bundle1.putString("request_navigation", "ADD_FRAGMENT");
+                                        bundle.putString("add_id", status);
+                                        selectedFragment = Request_Details_New_Fragment.newInstance();
+                                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                        transaction.replace(R.id.frame_menu, selectedFragment);
+                                        transaction.addToBackStack("home");
+                                        selectedFragment.setArguments(bundle1);
+                                        transaction.commit();
+                                        snackbar.show();
+
+                                    }
 
                                 } else if (getArguments().getString("navigation_from").equals("SETTING_FRAG")) {
                                     int duration = 1000;

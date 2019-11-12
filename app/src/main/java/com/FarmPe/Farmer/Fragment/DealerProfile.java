@@ -44,14 +44,36 @@ public class DealerProfile extends Fragment {
      //   status_text=view.findViewById(R.id.status_text);
         HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
 
+
+
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fm = getActivity().getSupportFragmentManager();
-                fm.popBackStack ("home_page", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-            }
-        });
 
+
+                if(getArguments().getString("dealer_status").equals("Map_Dealer")){
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack ("map_fragment", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                }else if(getArguments().getString("dealer_status").equals("Home_Dealer")) {
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack ("home_page", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                  }else if(getArguments().getString("dealer_status").equals("Req_Book")) {
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                   fm.popBackStack ("address_book", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                  }else if(getArguments().getString("dealer_status").equals("Add_Add_Dealer_Book")) {
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                }
+        }
+        });
 
 
 
@@ -62,11 +84,35 @@ public class DealerProfile extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
+
+                    if(getArguments().getString("dealer_status").equals("Map_Dealer")){
+
+                        FragmentManager fm = getActivity().getSupportFragmentManager();
+                        fm.popBackStack ("map_fragment", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                    }else if(getArguments().getString("dealer_status").equals("Home_Dealer")) {
+
+
+                        FragmentManager fm = getActivity().getSupportFragmentManager();
+                        fm.popBackStack ("home_page", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+
+                     }else if(getArguments().getString("dealer_status").equals("Req_Book")) {
+
+                        FragmentManager fm = getActivity().getSupportFragmentManager();
+                        fm.popBackStack("address_book", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+
+                    }else if(getArguments().getString("dealer_status").equals("Add_Add_Dealer_Book")) {
+
                     FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("home_page", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                }
 
                     return true;
                 }
+
                 return false;
             }
         });

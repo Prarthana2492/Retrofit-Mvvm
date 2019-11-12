@@ -94,24 +94,10 @@ public class Book_Nw_Requirement_Details extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
-                    if(getArguments().getString("request_navigation").equals("ADDRESS_BOOK")){
 
                         FragmentManager fm = getActivity().getSupportFragmentManager();
-                        fm.popBackStack("address_book", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                        fm.popBackStack("dealer_page", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-
-                    }else if(getArguments().getString("request_navigation").equals("MAP_FRAGMENT")){
-
-                        FragmentManager fm = getActivity().getSupportFragmentManager();
-                        fm.popBackStack("map_fragment", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-
-                    }  else if(getArguments().getString("request_navigation").equals("ADD_FRAGMENT")){
-
-                        FragmentManager fm = getActivity().getSupportFragmentManager();
-                        fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-                    }
 
                     return true;
                 }
@@ -123,18 +109,13 @@ public class Book_Nw_Requirement_Details extends Fragment {
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(getArguments().getString("request_navigation").equals("ADDRESS_BOOK")){
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("address_book", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                }else if(getArguments().getString("request_navigation").equals("MAP_FRAGMENT")){
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("map_fragment", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                }  else if(getArguments().getString("request_navigation").equals("ADD_FRAGMENT")){
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                }
+
+
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                fm.popBackStack("dealer_page", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
+
         immediate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -157,6 +138,7 @@ public class Book_Nw_Requirement_Details extends Fragment {
         one_month_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 purchase_plan = one_month_btn.getText().toString();
                 one_month_btn.setTextColor(Color.parseColor("#FFFFFF"));
                 immediate_btn.setTextColor(Color.parseColor("#000000"));
@@ -175,6 +157,7 @@ public class Book_Nw_Requirement_Details extends Fragment {
         two_month_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 purchase_plan = two_month_btn.getText().toString();
                 two_month_btn.setTextColor(Color.parseColor("#FFFFFF"));
                 one_month_btn.setTextColor(Color.parseColor("#000000"));
@@ -351,10 +334,13 @@ public class Book_Nw_Requirement_Details extends Fragment {
 
                 }else{
 
+
+
                         selectedFragment = MenuFragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frame_menu, selectedFragment);
-                       transaction.commit();
+                        transaction.addToBackStack("book_payment");
+                        transaction.commit();
                 }
 
             }
