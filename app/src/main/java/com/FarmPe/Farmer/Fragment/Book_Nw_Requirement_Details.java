@@ -87,13 +87,13 @@ public class Book_Nw_Requirement_Details extends Fragment {
 
 
 
+
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-
 
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack("dealer_page", FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -110,15 +110,16 @@ public class Book_Nw_Requirement_Details extends Fragment {
             @Override
             public void onClick(View view) {
 
-
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("dealer_page", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
 
+
         immediate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 purchase_plan = immediate_btn.getText().toString();
                 immediate_btn.setTextColor(Color.parseColor("#FFFFFF"));
                 one_month_btn.setTextColor(Color.parseColor("#000000"));
@@ -139,6 +140,7 @@ public class Book_Nw_Requirement_Details extends Fragment {
             @Override
             public void onClick(View view) {
 
+
                 purchase_plan = one_month_btn.getText().toString();
                 one_month_btn.setTextColor(Color.parseColor("#FFFFFF"));
                 immediate_btn.setTextColor(Color.parseColor("#000000"));
@@ -151,6 +153,7 @@ public class Book_Nw_Requirement_Details extends Fragment {
                 three_month_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
                 aftr_three_month_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
             }
+
         });
 
 
@@ -169,11 +172,15 @@ public class Book_Nw_Requirement_Details extends Fragment {
                 one_month_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
                 three_month_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
                 aftr_three_month_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
+
             }
         });
+
         three_month_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 purchase_plan = three_month_btn.getText().toString();
                 three_month_btn.setTextColor(Color.parseColor("#FFFFFF"));
                 two_month_btn.setTextColor(Color.parseColor("#000000"));
@@ -189,6 +196,8 @@ public class Book_Nw_Requirement_Details extends Fragment {
             }
         });
 
+
+
         aftr_three_month_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -200,22 +209,20 @@ public class Book_Nw_Requirement_Details extends Fragment {
                 one_month_btn.setTextColor(Color.parseColor("#000000"));
                 immediate_btn.setTextColor(Color.parseColor("#000000"));
 
-
                 aftr_three_month_btn.setBackgroundResource(R.drawable.black_border_blue_filled);
                 three_month_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
                 immediate_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
                 one_month_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
                 two_month_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
 
-
             }
         });
-
 
 
         fin_yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
                 looking_finance = fin_yes.getText().toString();
                 fin_yes.setTextColor(Color.parseColor("#FFFFFF"));
@@ -231,6 +238,7 @@ public class Book_Nw_Requirement_Details extends Fragment {
         fin_no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 looking_finance = fin_no.getText().toString();
                 fin_no.setTextColor(Color.parseColor("#FFFFFF"));
                 fin_yes.setTextColor(Color.parseColor("#000000"));
@@ -249,7 +257,6 @@ public class Book_Nw_Requirement_Details extends Fragment {
                 looking_insurance = insuranc_yes.getText().toString();
                 insuranc_yes.setTextColor(Color.parseColor("#FFFFFF"));
                 insuranc_no.setTextColor(Color.parseColor("#000000"));
-
                 insuranc_yes.setBackgroundResource(R.drawable.black_border_blue_filled);
                 insuranc_no.setBackgroundResource(R.drawable.black_bordr_white_filled);
 
@@ -265,15 +272,11 @@ public class Book_Nw_Requirement_Details extends Fragment {
                 looking_insurance = insuranc_no.getText().toString();
                 insuranc_no.setTextColor(Color.parseColor("#FFFFFF"));
                 insuranc_yes.setTextColor(Color.parseColor("#000000"));
-
                 insuranc_no.setBackgroundResource(R.drawable.black_border_blue_filled);
                 insuranc_yes.setBackgroundResource(R.drawable.black_bordr_white_filled);
 
-
-
             }
         });
-
 
 
         demo_yes.setOnClickListener(new View.OnClickListener() {
@@ -283,7 +286,6 @@ public class Book_Nw_Requirement_Details extends Fragment {
                 looking_demo = demo_yes.getText().toString();
                 demo_yes.setTextColor(Color.parseColor("#FFFFFF"));
                 demo_no.setTextColor(Color.parseColor("#000000"));
-
                 demo_yes.setBackgroundResource(R.drawable.black_border_blue_filled);
                 demo_no.setBackgroundResource(R.drawable.black_bordr_white_filled);
 
@@ -296,10 +298,10 @@ public class Book_Nw_Requirement_Details extends Fragment {
         demo_no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 looking_demo = demo_no.getText().toString();
                 demo_no.setTextColor(Color.parseColor("#FFFFFF"));
                 demo_yes.setTextColor(Color.parseColor("#000000"));
-
                 demo_no.setBackgroundResource(R.drawable.black_border_blue_filled);
                 demo_yes.setBackgroundResource(R.drawable.black_bordr_white_filled);
 
@@ -318,6 +320,7 @@ public class Book_Nw_Requirement_Details extends Fragment {
 
                     Toast.makeText(getActivity(), "Please Select purchase plan", Toast.LENGTH_SHORT).show();
 
+
                 }else if(looking_finance == null){
 
                     Toast.makeText(getActivity(), "Please Select finance", Toast.LENGTH_SHORT).show();
@@ -327,15 +330,13 @@ public class Book_Nw_Requirement_Details extends Fragment {
 
                     Toast.makeText(getActivity(), "Please select insurance", Toast.LENGTH_SHORT).show();
 
+
                 }else if(looking_demo == null){
 
                     Toast.makeText(getActivity(), "Please select demo/test drive", Toast.LENGTH_SHORT).show();
 
 
                 }else{
-
-
-
                         selectedFragment = MenuFragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frame_menu, selectedFragment);

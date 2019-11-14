@@ -3,15 +3,14 @@ package com.FarmPe.Farmer;
 
   public class Urls {
 
- // private static final String ROOT_URL = "http://13.232.185.209:909/api/";///DEV
-  private static final String ROOT_URL = "http://13.233.184.72:909/api/";///pro
+  private static final String ROOT_URL = "http://13.232.185.209:909/api/";///DEV
+ // private static final String ROOT_URL = "http://13.233.184.72:909/api/";///pro
 
     public static final String IMAGE_ROOT_URL = "http://13.233.184.72:909";//Image root
     public static final String Add_New_Address = ROOT_URL+"MasterTable/AddUserAddress";
     public static final String GetFarmerDetailsList = ROOT_URL+"MasterTable/GetFarmersList";
     public static final String LOGIN=ROOT_URL+"Auth/ValidateUser";
     public static final String SIGNUP=ROOT_URL+"Auth/RegisterUser";
-
 
     public static final String Languages=ROOT_URL+"MasterTable/GetLanguages";
     public static final String Forgot_Password=ROOT_URL+"Auth/ForgotPassword";
@@ -61,9 +60,12 @@ package com.FarmPe.Farmer;
     public static final String Update_Profile_Details= ROOT_URL + "Auth/UpdateUserProfile";
 
    //Notification
-   public static final String GET_NOTIFICATION= ROOT_URL + "MasterTable/GetNotificationMaster";
-   public static final String GET_NOTIFICATIONLIST= ROOT_URL + "MasterTable/GetNotifications";
-   public static final String UPDATEUSERNOTIFICATIONSETTING= ROOT_URL + "Auth/UpdateUserNotificationSettings";
+
+      public static final String GET_NOTIFICATION= ROOT_URL + "MasterTable/GetNotificationMaster";
+      public static final String GET_NOTIFICATIONLIST= ROOT_URL + "MasterTable/GetNotifications";
+      public static final String UPDATEUSERNOTIFICATIONSETTING= ROOT_URL + "Auth/UpdateUserNotificationSettings";
+
+
 
 
     public static final String Districts=ROOT_URL+"MasterTable/GetDistricts";
@@ -82,9 +84,12 @@ package com.FarmPe.Farmer;
     public static final String Model_List = ROOT_URL+"MasterTable/GetRFQModelMasterList";
 
 
+
+
     //Favorites
      public static final String Get_Favorites = ROOT_URL+"MasterTable/GetFarmerFavouriteModelLists";
      public static final String Add_Favorites = ROOT_URL+"MasterTable/AddUpdateFarmerFavouriteModelList";
+
 
 
 

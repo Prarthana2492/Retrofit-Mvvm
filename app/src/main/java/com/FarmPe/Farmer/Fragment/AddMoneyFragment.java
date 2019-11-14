@@ -112,6 +112,7 @@ public class AddMoneyFragment extends Fragment {
             Toast.makeText(getActivity(),"No UPI app found, please install one to continue",Toast.LENGTH_SHORT).show();
         }
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -137,6 +138,7 @@ public class AddMoneyFragment extends Fragment {
                     dataList.add("nothing");
                     upiPaymentDataOperation(dataList);
                 }
+
                 break;
         }
     }
@@ -145,6 +147,7 @@ public class AddMoneyFragment extends Fragment {
             String str = data.get(0);
             Log.d("UPIPAY", "upiPaymentDataOperation: "+str);
             String paymentCancel = "";
+
             if(str == null) str = "discard";
             String status = "";
             String approvalRefNo = "";
@@ -152,6 +155,7 @@ public class AddMoneyFragment extends Fragment {
             for (int i = 0; i < response.length; i++) {
                 String equalStr[] = response[i].split("=");
                 if(equalStr.length >= 2) {
+
                     if (equalStr[0].toLowerCase().equals("Status".toLowerCase())) {
                         status = equalStr[1].toLowerCase();
                     }
@@ -166,7 +170,7 @@ public class AddMoneyFragment extends Fragment {
             if (status.equals("success")) {
                 //Code to handle successful transaction here.
                 Toast.makeText(getActivity(), "Transaction successful.", Toast.LENGTH_SHORT).show();
-           selectedFragment = Home_Menu_Fragment.newInstance();
+              selectedFragment = Home_Menu_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.commit();
@@ -182,6 +186,7 @@ public class AddMoneyFragment extends Fragment {
             Toast.makeText(getActivity(), "Internet connection is not available. Please check and try again", Toast.LENGTH_SHORT).show();
         }
     }
+
     public static boolean isConnectionAvailable(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager != null) {

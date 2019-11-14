@@ -29,7 +29,9 @@ public class Addbhimfragment extends Fragment{
     Activity activity;
     String numberstr;
 
-    public static Addbhimfragment newInstance() {
+
+
+   public static Addbhimfragment newInstance() {
         Addbhimfragment fragment = new Addbhimfragment();
         return fragment;
     }
@@ -43,11 +45,14 @@ public class Addbhimfragment extends Fragment{
        /* MainActivity.linearlayout.setVisibility(View.GONE);
         FragmentB.linearlayouttest.setVisibility(View.GONE);*/
         upiid = view.findViewById(R.id.mobile_no);
+
         final String stramount= System.currentTimeMillis()+"abcdefgh";
         numberstr = getArguments().getString("numberid");
         upiid.setText(numberstr);
+
         //Create instance of EasyUpiPayment
         //"8904845510@upi"
+
         System.out.println("fasfasfa"+upiid.getText().toString().trim());
        /* easyUpiPayment= new EasyUpiPayment.Builder()
                 .with(getActivity())
@@ -66,9 +71,10 @@ public class Addbhimfragment extends Fragment{
             @Override
             public void onClick(View v) {
               String upiId = upiid.getText().toString();
+
               if(upiId.contains("@")){
 
-                  Bundle bundle = new Bundle();
+                    Bundle bundle = new Bundle();
                     bundle.putString("edttext", upiid.getText().toString());
                     System.out.println("hjhkh" + bundle);
                     selectedFragment = AddMoneyFragment.newInstance();
@@ -83,10 +89,11 @@ public class Addbhimfragment extends Fragment{
 
                   {
 
-                    Toast.makeText(getActivity(),"Payee VPA address should be valid (For e.g. example@upi and example@ybl)", Toast.LENGTH_LONG).show();
+                      Toast.makeText(getActivity(),"Payee VPA address should be valid (For e.g. example@upi and example@ybl)", Toast.LENGTH_LONG).show();
                   }
             }
         });
+
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();
@@ -115,6 +122,7 @@ public class Addbhimfragment extends Fragment{
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Bundle bundle = new Bundle();
                 bundle.putString("status", "ORDER_LIST");
                 System.out.println("hjhkh" + bundle);

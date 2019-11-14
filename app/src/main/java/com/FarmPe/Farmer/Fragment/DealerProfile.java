@@ -64,7 +64,7 @@ public class DealerProfile extends Fragment {
                   }else if(getArguments().getString("dealer_status").equals("Req_Book")) {
 
                     FragmentManager fm = getActivity().getSupportFragmentManager();
-                   fm.popBackStack ("address_book", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    fm.popBackStack ("address_book", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
                   }else if(getArguments().getString("dealer_status").equals("Add_Add_Dealer_Book")) {
 
@@ -85,10 +85,12 @@ public class DealerProfile extends Fragment {
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
 
+
                     if(getArguments().getString("dealer_status").equals("Map_Dealer")){
 
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack ("map_fragment", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
 
                     }else if(getArguments().getString("dealer_status").equals("Home_Dealer")) {
 
@@ -96,17 +98,15 @@ public class DealerProfile extends Fragment {
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack ("home_page", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-
-                     }else if(getArguments().getString("dealer_status").equals("Req_Book")) {
+                    }else if(getArguments().getString("dealer_status").equals("Req_Book")) {
 
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack("address_book", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-
                     }else if(getArguments().getString("dealer_status").equals("Add_Add_Dealer_Book")) {
 
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                     FragmentManager fm = getActivity().getSupportFragmentManager();
+                     fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
                 }
 
@@ -118,24 +118,23 @@ public class DealerProfile extends Fragment {
         });
 
 
-
-
         newOrderBeansList.clear();
         GridLayoutManager mLayoutManager3 = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
         recycler_sales.setLayoutManager(mLayoutManager3);
         recycler_sales.setItemAnimator(new DefaultItemAnimator());
 
+
         DealerProfBean bean=new DealerProfBean(R.drawable.dealer_prof,"Vinayaka Motors","Tractor ","Farm Trucks Dealer","Rajarajeshwari Nagar, Bangalore");
         DealerProfBean bean1=new DealerProfBean(R.drawable.tractor_red,"Mahindra Motors","Tractor ","Farm Trucks Dealer","Jayanagar, Bangalore");
-        newOrderBeansList.add(bean);
-        newOrderBeansList.add(bean1);
-        newOrderBeansList.add(bean);
-        newOrderBeansList.add(bean1);
-        newOrderBeansList.add(bean);
-        newOrderBeansList.add(bean1);
-        newOrderBeansList.add(bean);
-        newOrderBeansList.add(bean1);
 
+        newOrderBeansList.add(bean);
+        newOrderBeansList.add(bean1);
+        newOrderBeansList.add(bean);
+        newOrderBeansList.add(bean1);
+        newOrderBeansList.add(bean);
+        newOrderBeansList.add(bean1);
+        newOrderBeansList.add(bean);
+        newOrderBeansList.add(bean1);
         newOrderBeansList.add(bean);
         madapter=new DealerProfAdapter(getActivity(),newOrderBeansList);
         recycler_sales.setAdapter(madapter);

@@ -607,19 +607,17 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("Id", id);
 
-
             System.out.print("iiidddddd" + id);
 
             Crop_Post.crop_posting(LoginActivity_new.this, Urls.CHANGE_LANGUAGE, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
 
+
                     System.out.println("qqqqqqvv" + result);
 
                     try {
                         sessionManager.saveLanguage(result.toString());
-
-
                         String lang_title1 = result.getString("ChangeLanguage");
 
                         // String log_login = result.getString("Login");
@@ -630,9 +628,11 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                         // String log_register = result.getString(" " + "SignUp");
                         String log_farmpe = result.getString("NewtoFarmPe");
 
+
                         mob_toast = result.getString("EnterPhoneNo");
                         pass_toast = result.getString("EnterPassword");
                         //   toast_invalid = result.getString("InvalidCredentials");
+
                         toast_click_back = result.getString("PleaseclickBACKagaintoexit");
                         toast_internet = result.getString("GoodConnectedtoInternet");
                         toast_nointernet = result.getString("NoInternetConnection");
@@ -646,6 +646,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
                         forgot_pass.setText(log_forgot_passwrd + "?");
                         text_pass.setHint(log_password);
+
                         // welcome_back.setText(log_login);
                         // createaccount.setText(log_register);
 
