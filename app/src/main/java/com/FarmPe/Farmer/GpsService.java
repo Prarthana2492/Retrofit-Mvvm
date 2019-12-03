@@ -7,6 +7,8 @@ import android.os.IBinder;
 public class GpsService extends Service {
 
     int count;
+
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 

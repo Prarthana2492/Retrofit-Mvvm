@@ -126,7 +126,6 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
         request_count=view.findViewById(R.id.request_count);
         ur_request=view.findViewById(R.id.ur_rqst);
         your_addrss=view.findViewById(R.id.your_addrss);
-
         plus_sign_add=view.findViewById(R.id.plus_sign_add);
         user_name_menu=view.findViewById(R.id.user_name_menu);
         sessionManager = new SessionManager(getActivity());
@@ -210,6 +209,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
         });
 
 
+
         prod_img1.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NewApi")
             @Override
@@ -250,6 +250,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
                                 get_address_array = result.getJSONArray("UserAddressDetails");
 
                                 if(get_address_array.length()== 0){
+
                                     drawer.closeDrawers();
                                     Bundle bundle = new Bundle();
                                     bundle.putString("navigation_from","HOME_FRAGMENT");
@@ -287,6 +288,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
 
             }
         });
+
 
 
         user_name_menu.setText(sessionManager.getRegId("name"));
@@ -516,7 +518,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
 
-               prod_img1.setImageBitmap(bitmap);
+                prod_img1.setImageBitmap(bitmap);
                 prod_img.setImageBitmap(bitmap);
                 uploadImage(getResizedBitmap(bitmap,100,100));
                 Toast.makeText(getActivity(), "You Changed Your Profile Photo", Toast.LENGTH_SHORT).show();

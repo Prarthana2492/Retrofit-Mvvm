@@ -1,17 +1,21 @@
 package com.FarmPe.Farmer.Fragment;
 
-
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,49 +24,128 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+
+import com.FarmPe.Farmer.Fragment.Home_Menu_Fragment;
+import com.FarmPe.Farmer.R;
+
+import java.util.ArrayList;
+
 import static android.app.Activity.RESULT_OK;
 
-
-
-import com.FarmPe.Farmer.R;
-import java.util.ArrayList;
 public class AddMoneyFragment extends Fragment {
     TextView save;
-    LinearLayout back;
+    LinearLayout back,linearLayout;
     Fragment selectedFragment;
-    EditText amountEt,noteEt,nameEt;
+    EditText amountEt,noteEt,nameEt,addbhimEt;
     final int UPI_PAYMENT = 0;
     String strtext;
     public static AddMoneyFragment newInstance() {
         AddMoneyFragment fragment = new AddMoneyFragment();
         return fragment;
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dealer_pay, container, false);
         save = view.findViewById(R.id.requst_price);
-        amountEt = view.findViewById(R.id.address_text);
-        noteEt = view.findViewById(R.id.noteedt);
-        nameEt = view.findViewById(R.id.fullc_name);
+        noteEt = view.findViewById(R.id.des);
+        amountEt = view.findViewById(R.id.amount);
+        nameEt = view.findViewById(R.id.bn);
+        addbhimEt = view.findViewById(R.id.addbhim);
+        linearLayout = view.findViewById(R.id.linearLayout);
+
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String amount = amountEt.getText().toString();
-                String note = noteEt.getText().toString();
-                String name = nameEt.getText().toString();
-                strtext = getArguments().getString("edttext");
-                System.out.println("fghfhfgfhfhf"+amount);
-                System.out.println("fghfhfgfhfhf"+name);
-                System.out.println("fghfhfgfhfhf"+note);
-                System.out.println("fghfhfgfhfhf"+strtext);
-                payUsingUpi(amount, strtext, name, note);
+
+                if(addbhimEt.getText().toString().equals("")){
+
+                    Snackbar snackbar = Snackbar
+                            .make(linearLayout,"Add Your BHIM UPI ID", Snackbar.LENGTH_LONG);
+                    View snackbarView = snackbar.getView();
+                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                    tv.setTextColor(Color.WHITE);
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+
+                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                    } else {
+                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                    }
+
+                    snackbar.show();
+
+
+
+                  //  Toast.makeText(getActivity(), "Add Your BHIM UPI ID", Toast.LENGTH_SHORT).show();
+
+                }else if(nameEt.getText().toString().equals("")){
+
+
+                    Snackbar snackbar = Snackbar
+                            .make(linearLayout,"Enter the Name", Snackbar.LENGTH_LONG);
+                    View snackbarView = snackbar.getView();
+                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                    tv.setTextColor(Color.WHITE);
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+
+                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                    } else {
+                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                    }
+
+                    snackbar.show();
+
+
+                  //  Toast.makeText(getActivity(), "Add Your BHIM UPI ID", Toast.LENGTH_SHORT).show();
+
+                }else if(amountEt.getText().toString().equals("")) {
+
+                   // Toast.makeText(getActivity(), "Enter the Amount", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar
+                            .make(linearLayout,"Enter the Amount", Snackbar.LENGTH_LONG);
+                    View snackbarView = snackbar.getView();
+                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                    tv.setTextColor(Color.WHITE);
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+
+                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                    } else {
+
+                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                    }
+
+                    snackbar.show();
+
+                }else {
+
+
+                    String amount = amountEt.getText().toString();
+                    String note = noteEt.getText().toString();
+                    String name = nameEt.getText().toString();
+                    String addbhim = addbhimEt.getText().toString();
+                    //    strtext = getArguments().getString("edttext");
+                    System.out.println("fghfhfgfhfhf" + amount);
+                    System.out.println("fghfhfgfhfhf" + name);
+                    System.out.println("fghfhfgfhfhf" + note);
+                    payUsingUpi(amount, addbhim, name, note);
                /* //Register Listener for Event
                 selectedFragment = Addbhimfragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
                 transaction.addToBackStack("add");
                 transaction.commit();*/
+
+                }
             }
         });
 
@@ -72,30 +155,37 @@ public class AddMoneyFragment extends Fragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-                    FragmentManager fm = ((FragmentActivity)getActivity()).getSupportFragmentManager();
+                 /*   FragmentManager fm = ((FragmentActivity)getActivity()).getSupportFragmentManager();
                     fm.popBackStack ("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
+*/
+                    FragmentManager fm = ((FragmentActivity)getActivity()).getSupportFragmentManager();
+                    fm.popBackStack ("book_payment", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     return true;
                 }
                 return false;
             }
         });
 
+
         back = view.findViewById(R.id.back_feed);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fm = ((FragmentActivity)getActivity()).getSupportFragmentManager();
+               /* FragmentManager fm = ((FragmentActivity)getActivity()).getSupportFragmentManager();
                 fm.popBackStack ("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
+*/
+                FragmentManager fm = ((FragmentActivity)getActivity()).getSupportFragmentManager();
+                fm.popBackStack ("book_payment", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
 
         return view;
     }
-    void payUsingUpi(String amount, String upiId, String name, String note) {
+
+
+    void payUsingUpi(String amount, String addbhim, String name, String note) {
         Uri uri = Uri.parse("upi://pay").buildUpon()
-                .appendQueryParameter("pa", upiId)
+                .appendQueryParameter("pa", addbhim)
                 .appendQueryParameter("pn", name)
                 .appendQueryParameter("tn", note)
                 .appendQueryParameter("am", amount)
@@ -138,24 +228,24 @@ public class AddMoneyFragment extends Fragment {
                     dataList.add("nothing");
                     upiPaymentDataOperation(dataList);
                 }
-
                 break;
         }
     }
+
     private void upiPaymentDataOperation(ArrayList<String> data) {
+
         if (isConnectionAvailable(getActivity())) {
             String str = data.get(0);
             Log.d("UPIPAY", "upiPaymentDataOperation: "+str);
             String paymentCancel = "";
-
             if(str == null) str = "discard";
             String status = "";
             String approvalRefNo = "";
             String response[] = str.split("&");
+
             for (int i = 0; i < response.length; i++) {
                 String equalStr[] = response[i].split("=");
                 if(equalStr.length >= 2) {
-
                     if (equalStr[0].toLowerCase().equals("Status".toLowerCase())) {
                         status = equalStr[1].toLowerCase();
                     }
@@ -163,16 +253,20 @@ public class AddMoneyFragment extends Fragment {
                         approvalRefNo = equalStr[1];
                     }
                 }
+
                 else {
+
                     paymentCancel = "Payment cancelled by user.";
                 }
             }
+
+
             if (status.equals("success")) {
                 //Code to handle successful transaction here.
                 Toast.makeText(getActivity(), "Transaction successful.", Toast.LENGTH_SHORT).show();
-              selectedFragment = Home_Menu_Fragment.newInstance();
+                selectedFragment = Home_Menu_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_menu, selectedFragment);
+                transaction.replace(R.id.frame_layout, selectedFragment);
                 transaction.commit();
                 Log.d("UPI", "responseStr: "+approvalRefNo);
             }
@@ -186,7 +280,6 @@ public class AddMoneyFragment extends Fragment {
             Toast.makeText(getActivity(), "Internet connection is not available. Please check and try again", Toast.LENGTH_SHORT).show();
         }
     }
-
     public static boolean isConnectionAvailable(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager != null) {

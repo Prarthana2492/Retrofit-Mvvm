@@ -41,7 +41,7 @@ import java.util.ArrayList;
 public class Request_Address_Book_Fragment extends Fragment {
 
     Fragment selectedFragment;
-    TextView name,mobile_no,street_addrss,landmrk,pincode,add_new_address,select_address_type,filter;
+    TextView name,add_address,mobile_no,street_addrss,landmrk,pincode,add_new_address,select_address_type,filter;
     EditText doc_number,doc_name;
     private RecyclerView recyclerView;
     public static TextView address_list;
@@ -72,6 +72,7 @@ public class Request_Address_Book_Fragment extends Fragment {
 
 
     @SuppressLint("NewApi")
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.adress_book_recy_layout, container, false);
@@ -81,6 +82,7 @@ public class Request_Address_Book_Fragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recycler_2);
         back_feed = view.findViewById(R.id.back_feed);
+        add_address = view.findViewById(R.id.add_address);
 
         sessionManager =new SessionManager(getActivity());
         address_string = getArguments().getString("status_map");
@@ -115,6 +117,23 @@ public class Request_Address_Book_Fragment extends Fragment {
 
 
 
+        add_address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Bundle bundle = new Bundle();
+                bundle.putString("navigation_from","Address_book");
+                selectedFragment = Add_New_Address_Fragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_menu, selectedFragment);
+                selectedFragment.setArguments(bundle);
+                transaction.addToBackStack("request_adress_book");
+                transaction.commit();
+
+            }
+        });
+
+
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,6 +147,8 @@ public class Request_Address_Book_Fragment extends Fragment {
                 transaction.commit();
             }
         });
+
+
 
 
 

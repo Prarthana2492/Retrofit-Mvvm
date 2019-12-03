@@ -33,6 +33,7 @@ public class Login_post {
 
 
         JsonObjectRequest jobReq = new JsonObjectRequest(Request.Method.POST, url, jsonObject,
+
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
@@ -48,6 +49,7 @@ public class Login_post {
                         }
                     }
                 },
+
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
@@ -93,6 +95,7 @@ public class Login_post {
                         }
                     }
                 },
+
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
@@ -148,6 +151,7 @@ public class Login_post {
 
                     }
                 });
+
         jobReq.setRetryPolicy(new DefaultRetryPolicy(
                 (int) TimeUnit.SECONDS.toMillis(60),
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
@@ -183,6 +187,7 @@ public class Login_post {
                         }
                     }
                 },
+
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
@@ -201,6 +206,7 @@ public class Login_post {
     }
 
 
+
     public static void SignUp(final Activity activity, final JSONObject jsonObject, final VoleyJsonObjectCallback callback){
 
 
@@ -212,9 +218,11 @@ public class Login_post {
       //  progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
 
+
         JsonObjectRequest jobReq = new JsonObjectRequest(Request.Method.POST, Urls.SIGNUP, jsonObject,
                 new Response.Listener<JSONObject>() {
                     @Override
+
                     public void onResponse(JSONObject jsonObject) {
                         progressDialog.cancel();
                         System.out.println("jsonobject"+jsonObject);
@@ -230,6 +238,8 @@ public class Login_post {
                         }
                     }
                 },
+
+
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
@@ -239,6 +249,8 @@ public class Login_post {
 
                     }
                 });
+
+
         jobReq.setRetryPolicy(new DefaultRetryPolicy(
                 (int) TimeUnit.SECONDS.toMillis(60),
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,

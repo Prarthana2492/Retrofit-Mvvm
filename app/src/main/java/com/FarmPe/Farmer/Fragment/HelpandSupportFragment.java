@@ -26,19 +26,19 @@ import org.json.JSONObject;
 
 public class HelpandSupportFragment extends Fragment {
     Fragment selectedFragment;
-    TextView first_text, second_text;
-    LinearLayout back, more, whatsapp, insta, facebook, back_feed, twitter;
+
+    LinearLayout back, back_feed;
     public static String status;
     Intent intent;
     private ArrayAdapter<AgriBean> arrayAdapter;
     private ListView listView;
     String packageName;
     SessionManager sessionManager;
-    public static String refer_code;
     JSONObject lngObject;
-    TextView editText,privacypolicytxt,privacypolicytxt1,second_textxt,privacypolicytxt2,second_tx,privacypolicytxt3,second_t;
+    TextView privacypolicytxt;
     private Context context;
     WebView terms;
+
     public static HelpandSupportFragment newInstance() {
         HelpandSupportFragment fragment = new HelpandSupportFragment();
         return fragment;
@@ -53,9 +53,10 @@ public class HelpandSupportFragment extends Fragment {
         terms=view.findViewById(R.id.web_terms);
         terms.loadUrl("http://farmpe.in/help-support.html");
         System.out.println("termssssss");
-        privacypolicytxt=view.findViewById(R.id.toolbar_title);
+        privacypolicytxt=view.findViewById(R.id.setting_tittle);
         privacypolicytxt.setText("Help & Support");
         sessionManager = new SessionManager(getActivity());
+
 
 
         view.setFocusableInTouchMode(true);
@@ -65,12 +66,13 @@ public class HelpandSupportFragment extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    fm.popBackStack("help_supp", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 
                     return true;
                 }
                 return false;
+
             }
         });
 
@@ -79,7 +81,7 @@ public class HelpandSupportFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
-                fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fm.popBackStack("help_supp", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
 
@@ -87,6 +89,7 @@ public class HelpandSupportFragment extends Fragment {
         try {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
             privacypolicytxt.setText(lngObject.getString("Help_Support"));
+
 
         } catch (JSONException e) {
             e.printStackTrace();

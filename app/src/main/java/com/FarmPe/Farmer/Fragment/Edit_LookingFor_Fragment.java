@@ -3,25 +3,22 @@ package com.FarmPe.Farmer.Fragment;
 
 
 import android.os.Bundle;
-
 import android.support.v4.app.Fragment;
-
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
 import com.FarmPe.Farmer.Bean.FarmsImageBean;
 import com.FarmPe.Farmer.R;
 import java.util.ArrayList;
 import java.util.List;
+
 
 
 public class Edit_LookingFor_Fragment extends Fragment {

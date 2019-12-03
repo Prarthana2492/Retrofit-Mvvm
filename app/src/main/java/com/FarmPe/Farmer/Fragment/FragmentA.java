@@ -49,6 +49,7 @@ public class FragmentA extends Fragment {
         return fragment;
     }
     @Nullable
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment, container, false);
@@ -66,7 +67,9 @@ public class FragmentA extends Fragment {
                 EnableRuntimePermission();
             }
         }
+
         else {
+
             getAllContacts();
         }
 
@@ -76,49 +79,64 @@ public class FragmentA extends Fragment {
         return view;
     }
 
-  void getAllContacts() {
-      long startnow;
-      long endnow;
 
-      startnow = android.os.SystemClock.uptimeMillis();
-      ArrayList arrContacts = new ArrayList();
+    void getAllContacts() {
 
-      Uri uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
-      String selection = ContactsContract.Contacts.HAS_PHONE_NUMBER;
-      Cursor cursor = getActivity().getContentResolver().query(uri, new String[]{ContactsContract.CommonDataKinds.Phone.NUMBER,   ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone._ID, ContactsContract.Contacts._ID}, selection, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC");
-      cursor.moveToFirst();
-      while (cursor.isAfterLast() == false) {
-          String contactNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-          String contactName = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
-          int phoneContactID = cursor.getInt(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone._ID));
-          int contactID = cursor.getInt(cursor.getColumnIndex(ContactsContract.Contacts._ID));
-          Log.d("con ", "name " + contactName + " " + " PhoeContactID " + phoneContactID + "  ContactID " + contactID);
-          contactVO = new ContactVO(contactName,contactNumber);
-          newmember_List.add(contactVO);
-          RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(),newmember_List);
-          LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-          recyclerView.setLayoutManager(layoutManager);
-          recyclerView.setAdapter(adapter);
-          cursor.moveToNext();
-      }
+       long startnow;
+       long endnow;
+
+        startnow = android.os.SystemClock.uptimeMillis();
+        ArrayList arrContacts = new ArrayList();
+
+        Uri uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
+        String selection = ContactsContract.Contacts.HAS_PHONE_NUMBER;
+        Cursor cursor = getActivity().getContentResolver().query(uri, new String[]{ContactsContract.CommonDataKinds.Phone.NUMBER,   ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone._ID, ContactsContract.Contacts._ID}, selection, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC");
+        cursor.moveToFirst();
+
+
+
+
+        while (cursor.isAfterLast() == false) {
+            String contactNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+            String contactName = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+            int phoneContactID = cursor.getInt(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone._ID));
+            int contactID = cursor.getInt(cursor.getColumnIndex(ContactsContract.Contacts._ID));
+            Log.d("con ", "name " + contactName + " " + " PhoneContactID " + phoneContactID + "  ContactID " + contactID);
+            contactVO = new ContactVO(contactName,contactNumber);
+            newmember_List.add(contactVO);
+            RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(),newmember_List);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(adapter);
+            cursor.moveToNext();
+        }
+
+
+
       cursor.close();
       cursor = null;
 
       endnow = android.os.SystemClock.uptimeMillis();
       Log.d("END", "TimeForContacts " + (endnow - startnow) + " ms");
+
   }
+
+
     public void EnableRuntimePermission(){
         if (ActivityCompat.shouldShowRequestPermissionRationale(
                 getActivity(),
                 Manifest.permission.READ_CONTACTS))
         {
             Toast.makeText(getActivity(),"CONTACTS permission allows us to Access CONTACTS app", Toast.LENGTH_LONG).show();
+
         } else {
 
             ActivityCompat.requestPermissions(getActivity(),new String[]{
                     Manifest.permission.READ_CONTACTS}, RequestPermissionCode);
         }
     }
+
+
     @Override
     public void onRequestPermissionsResult(int RC, String per[], int[] PResult) {
         switch (RC) {
@@ -126,10 +144,12 @@ public class FragmentA extends Fragment {
                 if (PResult.length > 0 && PResult[0] == PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(getActivity(),"Permission Granted, Now your application can access CONTACTS.", Toast.LENGTH_LONG).show();
                 } else {
+
                     Toast.makeText(getActivity(),"Permission Canceled, Now your application cannot access CONTACTS.", Toast.LENGTH_LONG).show();
                 }
                 break;
         }
     }
 }
+
 

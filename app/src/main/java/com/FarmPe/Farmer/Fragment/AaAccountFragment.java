@@ -9,8 +9,7 @@ import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.design.widget.BottomSheetBehavior;
+
 import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -85,6 +84,7 @@ public class AaAccountFragment extends Fragment {
     public static JSONArray get_address_array;
 
 
+
     public static AaAccountFragment newInstance() {
         AaAccountFragment fragment = new AaAccountFragment();
         return fragment;
@@ -92,7 +92,7 @@ public class AaAccountFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.a_a_acount_layout, container, false);
 
 
@@ -146,6 +146,7 @@ public class AaAccountFragment extends Fragment {
         acc_info_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Bundle bundle = new Bundle();
                 bundle.putString("status", "ACC_IMG");
                 selectedFragment = AaProfileFragment.newInstance();
@@ -180,12 +181,7 @@ public class AaAccountFragment extends Fragment {
                                 get_address_array = result.getJSONArray("UserAddressDetails");
 
 
-
-
-
-
                                 if(get_address_array.length()== 0){
-
                                     Bundle bundle = new Bundle();
                                     bundle.putString("navigation_from","HOME_FRAGMENT");
                                     selectedFragment = Add_New_Address_Fragment.newInstance();

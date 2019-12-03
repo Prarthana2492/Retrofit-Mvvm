@@ -102,6 +102,9 @@ public class You_Address_Fragment extends Fragment {
         sessionManager = new SessionManager(getActivity());
         add_visible.setVisibility(View.GONE);
 
+
+
+
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -109,6 +112,7 @@ public class You_Address_Fragment extends Fragment {
 
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
+
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
 
@@ -119,11 +123,11 @@ public class You_Address_Fragment extends Fragment {
                         transaction.replace(R.id.frame_menu, selectedFragment);
                         transaction.commit();
 
+
                     } else if(getArguments().getString("navigation_from").equals("SETTING_FRAG1")){
 
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack ("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
                     }
 
                     return true;
@@ -155,6 +159,7 @@ public class You_Address_Fragment extends Fragment {
 
             }
         });
+
 
 
         add_new_address.setOnClickListener(new View.OnClickListener() {
@@ -189,6 +194,7 @@ public class You_Address_Fragment extends Fragment {
                 final TextView farm = (TextView)dialog.findViewById(R.id.farm) ;
                 final TextView others = (TextView)dialog.findViewById(R.id.othrs) ;
                 final TextView popuptxt = (TextView)dialog.findViewById(R.id.popup_heading) ;
+
 
                 try {
                     lngObject = new JSONObject(sessionManager.getRegId("language"));
@@ -267,6 +273,7 @@ public class You_Address_Fragment extends Fragment {
         });
 
 
+
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -289,6 +296,7 @@ public class You_Address_Fragment extends Fragment {
         });
 
 
+
         add_adrs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -303,14 +311,16 @@ public class You_Address_Fragment extends Fragment {
             }
         });
 
+
         mAdapter = new You_Address_Adapter(new_address_beanArrayList,getActivity());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
+        gettingAddress("");
 
-        gettingAddress(" ");
+
 
         try {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
@@ -342,22 +352,20 @@ public class You_Address_Fragment extends Fragment {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
 
+
                     System.out.println("ggggggggggaaaaaaa"+result);
                     try{
                         new_address_beanArrayList.clear();
-
 
                         get_address_array = result.getJSONArray("UserAddressDetails");
                         for(int i=0;i<get_address_array.length();i++){
                             JSONObject jsonObject1 = get_address_array.getJSONObject(i);
 
-
-                                     add_new_address_bean = new Add_New_Address_Bean(jsonObject1.getString("Name"),jsonObject1.getString("StreeAddress"),jsonObject1.getString("StreeAddress1"),jsonObject1.getString("LandMark"),jsonObject1.getString("City"),jsonObject1.getString("Pincode"),jsonObject1.getString("MobileNo"), jsonObject1.getString("PickUpFrom"),jsonObject1.getString("State"),jsonObject1.getString("District"),jsonObject1.getString("Taluk"),jsonObject1.getString("Hoblie"),jsonObject1.getString("Village"),jsonObject1.getString("Id"),
+                            add_new_address_bean = new Add_New_Address_Bean(jsonObject1.getString("Name"),jsonObject1.getString("StreeAddress"),jsonObject1.getString("StreeAddress1"),jsonObject1.getString("LandMark"),jsonObject1.getString("City"),jsonObject1.getString("Pincode"),jsonObject1.getString("MobileNo"), jsonObject1.getString("PickUpFrom"),jsonObject1.getString("State"),jsonObject1.getString("District"),jsonObject1.getString("Taluk"),jsonObject1.getString("Hoblie"),jsonObject1.getString("Village"),jsonObject1.getString("Id"),
                                      jsonObject1.getBoolean("IsDefaultAddress"),jsonObject1.getString("StateId"),jsonObject1.getString("DistrictId"),jsonObject1.getString("TalukId"),jsonObject1.getString("HobliId"));
                                      new_address_beanArrayList.add(add_new_address_bean);
 
                         }
-
 
                         if(new_address_beanArrayList.size()==0){
 
@@ -366,9 +374,7 @@ public class You_Address_Fragment extends Fragment {
                             addnew_linear.setVisibility(View.GONE);
                             select_add_address.setVisibility(View.GONE);
 
-
                         }else{
-
 
                             add_visible.setVisibility(View.GONE);
 

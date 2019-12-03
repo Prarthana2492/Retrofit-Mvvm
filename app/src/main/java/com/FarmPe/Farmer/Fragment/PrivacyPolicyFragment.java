@@ -1,6 +1,5 @@
 package com.FarmPe.Farmer.Fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,10 +11,7 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
-
-import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Activity.SignUpActivity;
 import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
 import com.FarmPe.Farmer.Bean.AgriBean;
@@ -27,7 +23,7 @@ import org.json.JSONObject;
 
 
 
-public class                                                                                                                                                                                                                                                  PrivacyPolicyFragment extends Fragment {
+public class PrivacyPolicyFragment extends Fragment {
     Fragment selectedFragment;
 
     LinearLayout  back_feed;
@@ -51,12 +47,11 @@ public class                                                                    
       //   HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
          Status_bar_change_singleton.getInstance().color_change(getActivity());
         back_feed=view.findViewById(R.id.back_feed);
-        privacypolicytxt=view.findViewById(R.id.toolbar_title);
+        privacypolicytxt=view.findViewById(R.id.setting_tittle);
         privacypolicytxt.setText("Privacy Policy");
         terms=view.findViewById(R.id.web_terms);
         terms.loadUrl("http://farmpe.in/privacy.html");
         sessionManager = new SessionManager(getActivity());
-
 
 
     System.out.println("eewqewqe" + getArguments().getString("status"));
@@ -86,7 +81,7 @@ public class                                                                    
                     }else if(status.equals("setting_privacy")){
 
                         FragmentManager fm = getActivity().getSupportFragmentManager();
-                        fm.popBackStack("privacy", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                        fm.popBackStack("Policy", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     }
                     return true;
                 }
@@ -112,7 +107,7 @@ public class                                                                    
                 }else if(status.equals("setting_privacy")){
 
                     FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("privacy", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    fm.popBackStack("Policy", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
                 }
 

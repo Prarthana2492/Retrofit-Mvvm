@@ -131,6 +131,7 @@ public class AaSettingFragment extends Fragment {
             }
         });
 
+
         acc_info_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -314,7 +315,10 @@ public class AaSettingFragment extends Fragment {
                             startActivity(intent);
 
                         }
+
+
                         catch (Exception e)
+
                         {
                             Toast.makeText(getActivity(),"Twitter is not installed on this device",Toast.LENGTH_LONG).show();
 

@@ -131,6 +131,7 @@ public class FeedbackFragment extends Fragment {
                 if (v == null) {
                     v = new View(getActivity());
                 }
+
                 imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
                 FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -269,6 +270,7 @@ public class FeedbackFragment extends Fragment {
             enterallfields=lngObject.getString("EnterAllTextFields");
 
 
+
         } catch (
                 JSONException e) {
             e.printStackTrace();
@@ -288,6 +290,7 @@ public class FeedbackFragment extends Fragment {
 
                 public boolean onTouch(View v, MotionEvent event) {
                     hideSoftKeyboard(getActivity());
+
                     return false;
                 }
 

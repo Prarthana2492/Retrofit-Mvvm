@@ -60,6 +60,8 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
     BottomSheetDialog mBottomSheetDialog;
     View sheetView;
 
+
+
     public You_Address_Adapter(List<Add_New_Address_Bean> moviesList, Activity activity) {
 
         this.productList = moviesList;
@@ -68,9 +70,10 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
     }
 
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name,mobile_no,street_addrss,landmrk,city_1,edit_1,delete_1,default_1,default_add,area_district,colony;
+        TextView name,mobile_no,street_addrss,city_1,edit_1,delete_1,default_1,default_add,area_district,colony;
         LinearLayout add_new_adress;
 
 
@@ -117,6 +120,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
 
         }else{
+            System.out.println("111eewrrwrr" + products.getDefault_addr());
 
             holder.default_add.setVisibility(View.GONE);
             holder.default_1.setVisibility(View.VISIBLE);
@@ -127,8 +131,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
         add_id =products.getAdd_id();
 
         System.out.println("1123213213" + products.getAdd_id() );
-        System.out.println("1123213213name" + products.getAdd_name() );
-
+        System.out.println("1123213213name" + products.getAdd_name());
 
         holder.name.setText(products.getAdd_name());
         holder.street_addrss.setText(products.getAdd_door_no());
@@ -148,7 +151,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
         }
 
 
-
+//microsysis
         if(products.getAdd_pincode().equals("")){
             holder.city_1.setText(products.getAdd_state());
 
@@ -166,7 +169,6 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
         holder.edit_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 add_id =products.getAdd_id();
                 Bundle bundle = new Bundle();
@@ -190,6 +192,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                 System.out.println("edittttttttttttttttttttttttttttttttttttttttttt"+bundle);
                 bundle.putString("navigation_from","your_add");
 
+
                 selectedFragment = Add_New_Address_Fragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
@@ -199,7 +202,6 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
             }
         });
-
 
         holder.delete_1.setOnClickListener(new View.OnClickListener() {
             @Override

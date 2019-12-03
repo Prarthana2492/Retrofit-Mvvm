@@ -87,6 +87,7 @@ public class Request_Favorite_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.select_model_recy, container, false);
 
         Status_bar_change_singleton.getInstance().color_change(getActivity());
+
         recyclerView=view.findViewById(R.id.recycler_what_looking);
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
@@ -100,7 +101,7 @@ public class Request_Favorite_Fragment extends Fragment {
         sessionManager = new SessionManager(getActivity());
 
                toolbar_title.setText("Favorites");
-        recently_added_layout.setVisibility(View.GONE);
+               recently_added_layout.setVisibility(View.GONE);
 
 
         b_arrow=view.findViewById(R.id.b_arrow);
@@ -191,6 +192,7 @@ public class Request_Favorite_Fragment extends Fragment {
 
 
                         if(model_list_array.length()==0 && tractorImplementsModelMasterList.length()==0 && tractorAccessoriesModelMasterList.length()==0 && harvesterModelMasterList.length()==0 && jCBRFQModelList.length()==0
+
                          && FarmMachineryModelMasterList.length()==0 && FenceWireModelMasterList.length()==0 && TyreModelMasterList.length()==0 && MiniTruckModelMasterList.length()==0 && BackhoeAttachmentModelMasterList.length() ==0 && PowerTillerModelMasterList.length()==0){
 
                             no_favo_added.setVisibility(View.VISIBLE);
@@ -198,7 +200,6 @@ public class Request_Favorite_Fragment extends Fragment {
 
 
                         }else {
-
 
 
                             for (int i = 0; i < model_list_array.length(); i++) {
@@ -225,12 +226,14 @@ public class Request_Favorite_Fragment extends Fragment {
 
                             }
 
+
                             for (int i = 0; i < harvesterModelMasterList.length(); i++) {
                                 JSONObject jsonObject1 = harvesterModelMasterList.getJSONObject(i);
                                 modelBean = new ModelBean(jsonObject1.getString("BrandName"), jsonObject1.getString("Model"),"", "", "", "", "", "", jsonObject1.getString("ModelImage"), jsonObject1.getString("Brochure"), jsonObject1.getString("Id"),jsonObject1.getString("LookingForDetailsId"),jsonObject1.getBoolean("IsShortlisted"));
                                 modelBeanArrayList.add(modelBean);
 
                             }
+
 
                             for (int i = 0; i < jCBRFQModelList.length(); i++) {
                                 JSONObject jsonObject1 = jCBRFQModelList.getJSONObject(i);
@@ -240,12 +243,14 @@ public class Request_Favorite_Fragment extends Fragment {
                             }
 
 
+
                             for (int i = 0; i < FarmMachineryModelMasterList.length(); i++) {
                                 JSONObject jsonObject1 = FarmMachineryModelMasterList.getJSONObject(i);
                                 modelBean = new ModelBean(jsonObject1.getString("BrandName"), jsonObject1.getString("Model"), "", "", "", "", "", "", jsonObject1.getString("ModelImage"), jsonObject1.getString("Brochure"), jsonObject1.getString("Id"),jsonObject1.getString("LookingForDetailsId"),jsonObject1.getBoolean("IsShortlisted"));
                                 modelBeanArrayList.add(modelBean);
 
                             }
+
 
                             for (int i = 0; i < FenceWireModelMasterList.length(); i++) {
                                 JSONObject jsonObject1 = FenceWireModelMasterList.getJSONObject(i);
@@ -254,12 +259,15 @@ public class Request_Favorite_Fragment extends Fragment {
 
                             }
 
+
+
                             for (int i = 0; i < TyreModelMasterList.length(); i++) {
                                 JSONObject jsonObject1 = TyreModelMasterList.getJSONObject(i);
                                 modelBean = new ModelBean(jsonObject1.getString("BrandName"), jsonObject1.getString("Model"), "", "", "", "", "", "", jsonObject1.getString("ModelImage"), jsonObject1.getString("Brochure"), jsonObject1.getString("Id"),jsonObject1.getString("LookingForDetailsId"),jsonObject1.getBoolean("IsShortlisted"));
                                 modelBeanArrayList.add(modelBean);
 
                             }
+
 
 
                             for (int i = 0; i < MiniTruckModelMasterList.length(); i++) {
@@ -270,12 +278,14 @@ public class Request_Favorite_Fragment extends Fragment {
                             }
 
 
+
                             for (int i = 0; i < BackhoeAttachmentModelMasterList.length(); i++) {
                                 JSONObject jsonObject1 = BackhoeAttachmentModelMasterList.getJSONObject(i);
                                 modelBean = new ModelBean(jsonObject1.getString("BrandName"), jsonObject1.getString("Model"), "", "", "", "", "", "", jsonObject1.getString("ModelImage"), jsonObject1.getString("Brochure"), jsonObject1.getString("Id"),jsonObject1.getString("LookingForDetailsId"),jsonObject1.getBoolean("IsShortlisted"));
                                 modelBeanArrayList.add(modelBean);
 
                             }
+
 
 
                             for (int i = 0; i < PowerTillerModelMasterList.length(); i++) {

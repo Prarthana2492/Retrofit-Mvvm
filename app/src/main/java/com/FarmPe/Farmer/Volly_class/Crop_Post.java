@@ -3,7 +3,6 @@ package com.FarmPe.Farmer.Volly_class;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Handler;
-
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -14,16 +13,20 @@ import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONObject;
 
-import java.util.concurrent.TimeUnit;
+
+
 
 
 public class Crop_Post {
+
 
     private static Handler handler = new Handler();
     public static StringRequest stringRequest;
     public static ProgressDialog progressDialog;
     public static JSONObject jsonObject, questionsRequest;
     static int pStatus = 0;
+
+
 
     public static void crop_posting(Activity activity, String url, JSONObject postObject, final VoleyJsonObjectCallback callback) {
         final ProgressDialog progressDialog = ProgressDialog.show(activity, "",
@@ -44,6 +47,7 @@ public class Crop_Post {
         JsonObjectRequest jobReq = new JsonObjectRequest(Request.Method.POST, url, postObject,
                 new Response.Listener<JSONObject>() {
                     @Override
+
                     public void onResponse(JSONObject jsonObject) {
                         progressDialog.cancel();
 
@@ -61,11 +65,11 @@ public class Crop_Post {
 
                 new Response.ErrorListener() {
                     @Override
+
                     public void onErrorResponse(VolleyError volleyError) {
                         System.out.println("jsonobjectAppointments" + volleyError.getMessage());
                         progressDialog.cancel();
                         //  volleyError.printStackTrace();
-
                     }
                 });
 
@@ -75,6 +79,7 @@ public class Crop_Post {
                 60000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
 
         VolleySingletonQuee.getInstance(activity).addToRequestQueue(jobReq);
 //            stringRequest.setRetryPolicy(new DefaultRetryPolicy(40 * 1000,0,

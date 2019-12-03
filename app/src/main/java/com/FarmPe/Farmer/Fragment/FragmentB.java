@@ -28,12 +28,14 @@ public class FragmentB extends Fragment{
     ArrayList<ContactVO> newmember_List = new ArrayList<>();
     ContactVO contactVO;
   //  public static List<ContactVO> newmember_List = new ArrayList<>();
-  public static FragmentB newInstance() {
+
+     public static FragmentB newInstance() {
       FragmentB fragment = new FragmentB();
       return fragment;
   }
+
     @Nullable
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
         payButton = view.findViewById(R.id.button_pay);
@@ -42,9 +44,12 @@ public class FragmentB extends Fragment{
         String stramount= System.currentTimeMillis()+"abcdefgh";
         //Create instance of EasyUpiPayment
         //Proceed for Payment on click
+
+
        payButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 selectedFragment = Addbhimfragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);

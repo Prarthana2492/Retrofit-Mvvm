@@ -1,7 +1,5 @@
 package com.FarmPe.Farmer.Fragment;
 
-
-
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -24,9 +22,8 @@ public class MenuFragment extends Fragment implements TabLayout.OnTabSelectedLis
      ViewPager viewPager;
 
 
-    public static MenuFragment newInstance() {
-
-        MenuFragment fragment = new MenuFragment();
+      public static MenuFragment newInstance() {
+         MenuFragment fragment = new MenuFragment();
         return fragment;
     }
 
@@ -74,6 +71,7 @@ public class MenuFragment extends Fragment implements TabLayout.OnTabSelectedLis
                 return false;
             }
         });
+
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();

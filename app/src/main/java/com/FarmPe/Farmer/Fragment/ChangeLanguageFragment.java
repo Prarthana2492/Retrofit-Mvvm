@@ -54,11 +54,6 @@ public class ChangeLanguageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.select_language_layout, container, false);
 
-
-
-
-
-
         Status_bar_change_singleton.getInstance().color_change(getActivity());
 
 
@@ -89,7 +84,7 @@ public class ChangeLanguageFragment extends Fragment {
 
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    fm.popBackStack("lang_setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
                     return true;
                 }
@@ -103,9 +98,10 @@ public class ChangeLanguageFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                selectedFragment = AaSettingFragment.newInstance();
+                selectedFragment = SellersettingFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
+                transaction.addToBackStack("setting");
                 transaction.commit();
             }
         });
@@ -126,7 +122,7 @@ public class ChangeLanguageFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
-                fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fm.popBackStack("lang_setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 
             }

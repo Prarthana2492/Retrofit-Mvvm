@@ -37,12 +37,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
-import com.FarmPe.Farmer.Activity.LandingPageActivity;
 import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
-import com.FarmPe.Farmer.DB.DatabaseHelper;
 import com.FarmPe.Farmer.G_Vision_Controller;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
@@ -59,43 +55,41 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
-
 import org.json.JSONObject;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-
 import de.hdodenhof.circleimageview.CircleImageView;
-
 import static android.app.Activity.RESULT_OK;
-import static com.FarmPe.Farmer.Activity.LandingPageActivity.mBottomSheetBehavior6;
 import static com.android.volley.VolleyLog.TAG;
+
 
 
 public class AaProfileFragment extends Fragment {
 
-
     BottomSheetDialog mBottomSheetDialog;
     View sheetView;
-   public static CircleImageView prod_img;
+    public static CircleImageView prod_img;
     Fragment selectedFragment;
     EditText abt_text,userInput;
     LinearLayout backfeed,acc_info_lay,linearLayout,about_lay;
-    TextView notificatn,change_language,your_addresss,acc_info1,refer_ern,feedbk,help_1,abt_frmpe,polic_1,logot,setting_tittle,aboutText;
+    TextView aboutText;
     SessionManager sessionManager;
     public static EditText profile_phone,profname;
     JSONObject lngObject;
     Bitmap bitmap;
     G_Vision_Controller g_vision_controller;
-    public  static String ProfilePhone;
+    public  static String ProfilePhone,ProfileImage,profile_description,profnamestr;
+
+
 
     public static AaProfileFragment newInstance() {
         AaProfileFragment fragment = new AaProfileFragment();
         return fragment;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -103,6 +97,7 @@ public class AaProfileFragment extends Fragment {
         HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
 
         Status_bar_change_singleton.getInstance().color_change(getActivity());
+
 
         backfeed=view.findViewById(R.id.back_feed);
         acc_info_lay=view.findViewById(R.id.acc_info_lay);
@@ -118,12 +113,10 @@ public class AaProfileFragment extends Fragment {
 
 
 
-
-
-
         backfeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (getArguments().getString("status").equals("HOME_IMG")){
 
                     selectedFragment = Home_Menu_Fragment.newInstance();
@@ -132,7 +125,9 @@ public class AaProfileFragment extends Fragment {
                     // transaction.addToBackStack("looking");
                     transaction.commit();
 
+
                 }else if(getArguments().getString("status").equals("ACC_IMG")){
+
                     selectedFragment = AaAccountFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_menu, selectedFragment);
@@ -141,6 +136,7 @@ public class AaProfileFragment extends Fragment {
                 }
        /* FragmentManager fm = getActivity().getSupportFragmentManager();
         fm.popBackStack ("aaAccount", FragmentManager.POP_BACK_STACK_INCLUSIVE);*/
+
             }
         });
 
@@ -151,6 +147,7 @@ public class AaProfileFragment extends Fragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+
                     //    getFragmentManager().popBackStack("home_menu", android.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
                     if (getArguments().getString("status").equals("HOME_IMG")){
@@ -159,6 +156,7 @@ public class AaProfileFragment extends Fragment {
                         transaction.replace(R.id.frame_menu, selectedFragment);
                         // transaction.addToBackStack("looking");
                         transaction.commit();
+
 
                     }else if(getArguments().getString("status").equals("ACC_IMG")){
                         selectedFragment = AaAccountFragment.newInstance();
@@ -176,32 +174,33 @@ public class AaProfileFragment extends Fragment {
 
         linearLayout.setBackgroundColor(Color.parseColor("#f5f5f5"));
         //  mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_COLLAPSED);
+
         prod_img.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NewApi")
             @Override
             public void onClick(View view) {
+
                 Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI); // to go to gallery
                 startActivityForResult(i, 100); // on activity method will execute*/
 
             }
         });
 
+
         acc_info_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                  mBottomSheetDialog = new BottomSheetDialog(getActivity());
-                  sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
-                  new KeyboardUtil(getActivity(), sheetView);
-                  TextView positiveText = sheetView.findViewById(R.id.positive_text);
-                  TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
-                  TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
-                  userInput = sheetView.findViewById(R.id.user_text);
+                mBottomSheetDialog = new BottomSheetDialog(getActivity());
+                sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
+                new KeyboardUtil(getActivity(), sheetView);
+                TextView positiveText = sheetView.findViewById(R.id.positive_text);
+                TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
+                TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
+                userInput = sheetView.findViewById(R.id.user_text);
+                userInput.setVisibility(View.VISIBLE);
+                userInput.setText(profname.getText().toString());
 
-
-
-                   userInput.setVisibility(View.VISIBLE);
-                   userInput.setText(profname.getText().toString());
 
 
                 userInput.setFilters(new InputFilter[] {EMOJI_FILTER,new InputFilter.LengthFilter(30)});
@@ -214,11 +213,13 @@ public class AaProfileFragment extends Fragment {
 
 
 
+
                 positiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
                         if (userInput.getText().toString().equals("")) {
+
 
                             InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
                             inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
@@ -230,17 +231,20 @@ public class AaProfileFragment extends Fragment {
                             TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                             tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
                             tv.setTextColor(Color.WHITE);
+
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                                 tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
                             } else {
                                 tv.setGravity(Gravity.CENTER_HORIZONTAL);
                             }
+
                             snackbar.show();
                             mBottomSheetDialog.show();
 
 
-
                         } else {
+
 
                             StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.Update_Profile_Details,
                                     new Response.Listener<String>() {
@@ -277,6 +281,7 @@ public class AaProfileFragment extends Fragment {
                                             transaction.commit();
                                         }
                                     },
+
                                     new Response.ErrorListener() {
                                         @Override
                                         public void onErrorResponse(VolleyError error) {
@@ -285,18 +290,22 @@ public class AaProfileFragment extends Fragment {
                                     }) {
 
 
+
                                 @Override
                                 protected Map<String, String> getParams() {
                                     Map<String, String> params = new HashMap<String, String>();
                                     params.put("UserId", sessionManager.getRegId("userId"));
-                                    params.put("FullName",userInput.getText().toString());
+                                     params.put("FullName",userInput.getText().toString());
+                                  //  params.put("FullName",sessionManager.getRegId("name"));
                                     params.put("PhoneNo", sessionManager.getRegId("phone"));
+                                  //  params.put("About", abt_text.getText().toString());
                                     System.out.println("fhsdfhjf" + params);
 
                                     return params;
                                 }
 
                             };
+
                             Volley.newRequestQueue(getActivity()).add(stringRequest);
 //  Toast.makeText(getActivity(),"Save was clicked",Toast.LENGTH_LONG).show();
 
@@ -305,12 +314,14 @@ public class AaProfileFragment extends Fragment {
                     }
                 });
 
+
                 negetiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         mBottomSheetDialog.dismiss();
                     }
                 });
+
 
                 mBottomSheetDialog.setContentView(sheetView);
                 mBottomSheetDialog.show();
@@ -323,28 +334,89 @@ public class AaProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                mBottomSheetDialog = new BottomSheetDialog(getActivity());
+                sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
 
-                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
-                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
+                new KeyboardUtil(getActivity(), sheetView);
+                TextView positiveText = sheetView.findViewById(R.id.positive_text);
+                TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
+                TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
+                abt_text = sheetView.findViewById(R.id.user_text);
+                //   abt_text.setFilters(new InputFilter[]{EMOJI_FILTER, new InputFilter.LengthFilter(50)});
+                abt_text.setVisibility(View.VISIBLE);
+                abt_text.setText(aboutText.getText().toString());
+                descriptionText.setVisibility(View.GONE);
+                titleText.setText("Add about");
+                descriptionText.setText("Are you sure you want to exit?");
+                positiveText.setText("Save");
+                TextView negetiveText = sheetView.findViewById(R.id.negetive_text);
+                negetiveText.setText("Cancel");
 
-                 new KeyboardUtil(getActivity(), sheetView);
-                 TextView positiveText = sheetView.findViewById(R.id.positive_text);
-                 TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
-                 TextView descriptionText = sheetView.findViewById(R.id.bottom_sheet_description);
-                  abt_text = sheetView.findViewById(R.id.user_text);
-             //   abt_text.setFilters(new InputFilter[]{EMOJI_FILTER, new InputFilter.LengthFilter(50)});
-                   abt_text.setVisibility(View.VISIBLE);
 
 
-                   abt_text.setText(aboutText.getText().toString());
-
-                   descriptionText.setVisibility(View.GONE);
-                   titleText.setText("Add about");
-                   descriptionText.setText("Are you sure you want to exit?");
-                   positiveText.setText("Save");
-                   TextView negetiveText = sheetView.findViewById(R.id.negetive_text);
-                   negetiveText.setText("Cancel");
-
+//
+//
+//public abstract class AAbstE {
+//
+//    public  abstract  void glass();
+//
+//    void car_light(){
+//
+//      //  car green
+//
+//
+//
+//    }
+//
+//
+//    interface Maruthi{
+//
+//
+//        void color_car_light();
+//            //  c
+//
+//
+//    class Swift extends AAbstE implements  Maruthi{
+//
+//
+//        @Override
+//        public void glass() {
+//
+//        }
+//
+//        @Override
+//        void car_light() {
+//            super.car_light();
+//            red//
+//        }
+//
+//        @Override
+//        public void color_car_light() {
+//
+//        }
+//    }
+//
+//}
+//
+//
+//class A{
+//    void a(){
+//
+//    }
+//}
+//
+//interface  B{
+//    void a();
+//
+//
+//}
+//class C extends A implements B{
+//
+//    @Override
+//    public void a() {
+//
+//    }
+//}
 
 
 
@@ -353,8 +425,8 @@ public class AaProfileFragment extends Fragment {
                     public void onClick(View view) {
 
 
-
                         if(abt_text.getText().toString().equals("")){
+
 
                             InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
                             inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
@@ -386,6 +458,7 @@ public class AaProfileFragment extends Fragment {
                     }
                 });
 
+
                 negetiveText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -401,12 +474,13 @@ public class AaProfileFragment extends Fragment {
         });
 
 
-
         try{
+
             JSONObject jsonObject = new JSONObject();
             JSONObject post_object = new JSONObject();
             jsonObject.put("Id",sessionManager.getRegId("userId"));
             post_object.put("objUser",jsonObject);
+
 
             Crop_Post.crop_posting(getActivity(), Urls.Get_Profile_Details, post_object, new VoleyJsonObjectCallback() {
                 @Override
@@ -415,15 +489,17 @@ public class AaProfileFragment extends Fragment {
 
 
                     try{
+
                         JSONObject jsonObject1 = result.getJSONObject("user");
-                        String profnamestr = jsonObject1.getString("FullName");
+                        profnamestr = jsonObject1.getString("FullName");
                         System.out.println("ggpgpgpg" + profnamestr);
                         ProfilePhone = jsonObject1.getString("PhoneNo");
                         //String ProfileEmail = jsonObject1.getString("EmailId");
-                        String ProfileImage = jsonObject1.getString("ProfilePic");
-                        String profile_description = jsonObject1.getString("About");
+                        ProfileImage = jsonObject1.getString("ProfilePic");
+                        profile_description = jsonObject1.getString("About");
 
                         profname.setText(profnamestr);
+
 
                         if(profile_description.equalsIgnoreCase("")){
 
@@ -431,8 +507,8 @@ public class AaProfileFragment extends Fragment {
 
                         }else{
 
-                        aboutText.setText(profile_description);
-                    }
+                            aboutText.setText(profile_description);
+                        }
 
 
                         //phone_no.setText(ProfilePhone.substring(3));
@@ -440,16 +516,17 @@ public class AaProfileFragment extends Fragment {
                         profile_phone.setText(ProfilePhone); // masking + deleting last line
 
 
-                       // profname.setFilters(new InputFilter[]{EMOJI_FILTER});
-                       // profile_phone.setFilters(new InputFilter[]{EMOJI_FILTER});
-                       // aboutText.setFilters(new InputFilter[]{EMOJI_FILTER});
+                        // profname.setFilters(new InputFilter[]{EMOJI_FILTER});
+                        // profile_phone.setFilters(new InputFilter[]{EMOJI_FILTER});
+                        // aboutText.setFilters(new InputFilter[]{EMOJI_FILTER});
 
 
-                      Glide.with(getActivity()).load(ProfileImage)
+                        Glide.with(getActivity()).load(ProfileImage)
                                 .thumbnail(0.5f)
                                 .crossFade()
                                 .error(R.drawable.avatarmale)
                                 .into(prod_img);
+
 
                     }catch (Exception e){
                         e.printStackTrace();
@@ -472,7 +549,7 @@ public class AaProfileFragment extends Fragment {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                      //  sessionManager.save_name(profname.getText().toString(),profile_phone.getText().toString(),aboutText.getText().toString());
+                        sessionManager.save_name(profname.getText().toString(),profile_phone.getText().toString(),aboutText.getText().toString());
 
                         int duration = 1000;
                         Snackbar snackbar = Snackbar
@@ -501,13 +578,14 @@ public class AaProfileFragment extends Fragment {
                     }
 
                 },
-        new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(),error.toString(),Toast.LENGTH_LONG).show();
-            }
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getActivity(),error.toString(),Toast.LENGTH_LONG).show();
+                    }
 
-        }){
+                }){
+
             @Override
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<String, String>();
@@ -515,6 +593,7 @@ public class AaProfileFragment extends Fragment {
                 params.put("FullName",profname.getText().toString());
                 params.put("PhoneNo",sessionManager.getRegId("phone"));
                 params.put("About",abt_text.getText().toString());
+
                 System.out.println("dfsdfAAAAAAAAAAAAAAAAAAAAAAA" + abt_text.getText().toString());
                 return params;
             }
@@ -529,28 +608,32 @@ public class AaProfileFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
 
+
             //getting the image Uri
             Uri imageUri = data.getData();
             try {
                 g_vision_controller = G_Vision_Controller.getInstance( );
 //getting the image Uri
 
+
                 final InputStream imageStream;
 
-                    imageStream = getActivity().getContentResolver().openInputStream(imageUri);
-                    bitmap = BitmapFactory.decodeStream(imageStream);
-                    g_vision_controller.callCloudVision(bitmap,getActivity(),"profile");
-                    bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
+                imageStream = getActivity().getContentResolver().openInputStream(imageUri);
+                bitmap = BitmapFactory.decodeStream(imageStream);
+                g_vision_controller.callCloudVision(bitmap,getActivity(),"profile");
+                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
 
-              //  prod_img.setImageBitmap(bitmap);
-             //   uploadImage(getResizedBitmap(bitmap,100,100));
-                  int duration = 1000;
-                   Snackbar snackbar = Snackbar
+                //  prod_img.setImageBitmap(bitmap);
+                //   uploadImage(getResizedBitmap(bitmap,100,100));
+
+                int duration = 1000;
+
+                Snackbar snackbar = Snackbar
                         .make(linearLayout, "You Changed Your Profile Photo", duration);
-                 View snackbarView = snackbar.getView();
-                 TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                 tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                 tv.setTextColor(Color.WHITE);
+                View snackbarView = snackbar.getView();
+                TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                tv.setTextColor(Color.WHITE);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                     tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
@@ -567,22 +650,31 @@ public class AaProfileFragment extends Fragment {
         }
     }
 
+
+
+
     public byte[] getFileDataFromDrawable(Bitmap bitmap) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 80, byteArrayOutputStream);
         return byteArrayOutputStream.toByteArray();
+
     }
+
+
     private void uploadImage(final Bitmap bitmap){
         final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "",
                 "Loading....Please wait.");
         progressDialog.show();
+
         VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, Urls.Update_Profile_Details,
                 new Response.Listener<NetworkResponse>(){
                     @Override
                     public void onResponse(NetworkResponse response) {
                         Log.e(TAG,"afaeftagsbillvalue"+response);
                         Log.e(TAG,"afaeftagsbillvalue"+response);
+
                         progressDialog.dismiss();
+
 /*
                         if(profile_passwrd.getText().toString().length()<=12 && profile_passwrd.getText().toString().length()>=6){
                             if(myDb.isEmailExists(profile_phone.getText().toString().substring(3))) {
@@ -598,6 +690,7 @@ public class AaProfileFragment extends Fragment {
                         HomeMenuFragment.prod_img.setImageBitmap(bitmap);
                         HomeMenuFragment.prod_img1.setImageBitmap(bitmap);
                         // sessionManager.save_name(userObject.getString("FullName"),userObject.getString("PhoneNo"),userObject.getString("ProfilePic"));
+
                         int duration = 1000;
                         Snackbar snackbar = Snackbar
                                 .make(linearLayout, "Profile Details Updated Successfully", duration);
@@ -611,6 +704,8 @@ public class AaProfileFragment extends Fragment {
                             tv.setGravity(Gravity.CENTER_HORIZONTAL);
                         }
                         snackbar.show();
+
+
                         Toast.makeText(getActivity(),"Profile Details Updated Successfully", Toast.LENGTH_SHORT).show();
                     /*    selectedFragment = SettingFragment.newInstance();
                         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
@@ -618,6 +713,7 @@ public class AaProfileFragment extends Fragment {
                         ft.commit();*/
                     }
                 },
+
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
@@ -625,6 +721,7 @@ public class AaProfileFragment extends Fragment {
                         progressDialog.dismiss();
                     }
                 }) {
+
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
@@ -647,6 +744,7 @@ public class AaProfileFragment extends Fragment {
                 return params;
             }
         };
+
         volleyMultipartRequest.setRetryPolicy(new DefaultRetryPolicy(1000 * 60, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         //adding the request to volley
@@ -663,6 +761,7 @@ public class AaProfileFragment extends Fragment {
                 }
             });
         }
+
         //If a layout container, iterate over children and seed recursion.
         if (view instanceof ViewGroup) {
             for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
@@ -741,14 +840,18 @@ public class AaProfileFragment extends Fragment {
     else
         keepOriginal = false;*/
             }
+
             if (keepOriginal)
                 return null;
+
             else {
                 if (source instanceof Spanned) {
                     SpannableString sp = new SpannableString(sb);
                     TextUtils.copySpansFrom((Spanned) source, start, sb.length(), null, sp, 0);
                     return sp;
+
                 } else {
+
                     return sb;
                 }
             }

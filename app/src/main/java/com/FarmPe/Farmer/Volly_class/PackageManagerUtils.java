@@ -27,7 +27,11 @@ public class PackageManagerUtils {
                     || packageInfo.signatures[0] == null) {
                 return null;
             }
+
+
             return signatureDigest(packageInfo.signatures[0]);
+
+
         } catch (PackageManager.NameNotFoundException e) {
             return null;
         }
@@ -36,9 +40,11 @@ public class PackageManagerUtils {
     private static String signatureDigest(Signature sig) {
         byte[] signature = sig.toByteArray();
         try {
+
             MessageDigest md = MessageDigest.getInstance("SHA1");
             byte[] digest = md.digest(signature);
             return BaseEncoding.base16().lowerCase().encode(digest);
+
         } catch (NoSuchAlgorithmException e) {
             return null;
         }

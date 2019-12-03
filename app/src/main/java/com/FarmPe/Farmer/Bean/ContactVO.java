@@ -1,8 +1,12 @@
 package com.FarmPe.Farmer.Bean;
 
 public class ContactVO {
+
+
     private String ContactName;
     private String ContactNumber;
+
+
 
     public String getContactName() {
         return ContactName;
@@ -20,6 +24,7 @@ public class ContactVO {
         ContactNumber = contactNumber;
     }
     public ContactVO(String ContactName, String ContactNumber) {
+
 
     this.ContactName = ContactName;
     this.ContactNumber = ContactNumber;

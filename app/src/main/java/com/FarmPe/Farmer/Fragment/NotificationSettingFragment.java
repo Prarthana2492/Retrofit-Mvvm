@@ -94,6 +94,7 @@ public class NotificationSettingFragment extends Fragment {
             accountinfo1.setText(lngObject.getString("AccountInfo"));
             accountinfo2.setText(lngObject.getString("AccountInfo"));
             accountinfo3.setText(lngObject.getString("AccountInfo"));
+
         } catch (JSONException e) {
             e.printStackTrace();
         }

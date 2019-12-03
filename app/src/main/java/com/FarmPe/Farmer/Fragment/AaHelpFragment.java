@@ -52,10 +52,12 @@ public class AaHelpFragment extends Fragment {
     JSONObject lngObject;
     String status,message;
 
+
     public static AaHelpFragment newInstance() {
         AaHelpFragment fragment = new AaHelpFragment();
         return fragment;
     }
+
 
 
     @Override
@@ -112,6 +114,8 @@ public class AaHelpFragment extends Fragment {
         });
 
 
+
+
         privacy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -127,6 +131,7 @@ public class AaHelpFragment extends Fragment {
 
             }
         });
+
 
         farmpe_abt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,7 +200,6 @@ public class AaHelpFragment extends Fragment {
                     }
                 });
 
-
                 cancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -211,6 +215,8 @@ public class AaHelpFragment extends Fragment {
 
         return view;
     }
+
+
 
     public static InputFilter EMOJI_FILTER = new InputFilter() {
         @Override
@@ -235,9 +241,13 @@ public class AaHelpFragment extends Fragment {
             else
                 keepOriginal = false;*/
             }
+
             if (keepOriginal)
                 return null;
+
+
             else {
+
                 if (source instanceof Spanned) {
                     SpannableString sp = new SpannableString(sb);
                     TextUtils.copySpansFrom((Spanned) source, start, sb.length(), null, sp, 0);
@@ -248,6 +258,8 @@ public class AaHelpFragment extends Fragment {
             }
         }
     };
+
+
 
     private void feedback() {
 

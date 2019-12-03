@@ -36,6 +36,7 @@ public class RequsestAdd {
 
         // progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
+
         JsonObjectRequest jobReq = new JsonObjectRequest(Request.Method.POST, url, postObject,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -55,6 +56,7 @@ public class RequsestAdd {
                     }
                 },
 
+
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
@@ -64,6 +66,7 @@ public class RequsestAdd {
 
                     }
                 });
+
 
 
         jobReq.setRetryPolicy(new DefaultRetryPolicy(8000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));

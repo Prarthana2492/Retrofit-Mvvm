@@ -311,6 +311,7 @@ LinearLayout back_feed;
         //adding the request to volley
         Volley.newRequestQueue(getActivity()).add(volleyMultipartRequest);
     }
+
     public Bitmap getResizedBitmap(Bitmap bm1, int newWidth, int newHeight) {
         if (bm1==null){
 

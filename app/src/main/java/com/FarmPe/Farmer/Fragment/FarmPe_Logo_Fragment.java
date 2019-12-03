@@ -77,8 +77,10 @@ public class FarmPe_Logo_Fragment extends Fragment {
     final long PERIOD_MS = 1000;
     private static int NUM_PAGES = 0;
     private ShimmerFrameLayout mShimmerViewContainer;
+
     RecyclerView recyclerView;
     RecyclerView noimg_recyclerView;
+
     public static List<AddTractorBean1> newOrderBeansList = new ArrayList<>();
     public static List<AddTractorBean2> newOrderBeansList2 = new ArrayList<>();
     public static List<AddTractorBean2> newOrderBeansList3 = new ArrayList<>();

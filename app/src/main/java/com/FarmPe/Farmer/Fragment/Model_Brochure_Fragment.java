@@ -43,6 +43,7 @@ public class Model_Brochure_Fragment extends Fragment {
     TextView privacypolicytxt;
     WebView terms;
 
+
     public static Model_Brochure_Fragment newInstance() {
         Model_Brochure_Fragment fragment = new Model_Brochure_Fragment();
         return fragment;
@@ -54,6 +55,7 @@ public class Model_Brochure_Fragment extends Fragment {
         HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
 
         Status_bar_change_singleton.getInstance().color_change(getActivity());
+
 
         back_feed=view.findViewById(R.id.back_feed);
         privacypolicytxt=view.findViewById(R.id.toolbar_title);
@@ -69,9 +71,8 @@ public class Model_Brochure_Fragment extends Fragment {
         terms.loadUrl(
                 "http://docs.google.com/gview?embedded=true&url=" + brochure);
 
+
         sessionManager = new SessionManager(getActivity());
-
-
 
 
 
@@ -103,7 +104,6 @@ public class Model_Brochure_Fragment extends Fragment {
 
             }
         });
-
 
 
         return view;

@@ -58,6 +58,7 @@ public class NotificationList extends Fragment {
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
 
+
         sessionManager = new SessionManager(getActivity());
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override

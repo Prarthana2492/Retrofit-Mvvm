@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linear_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:weightSum="100"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:background="@color/green"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:id="@+id/back_feed"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/ripple_effect"
+            android:gravity="center">
+
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_go_back_left_arrow_"
+
+                />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Address"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:layout_marginHorizontal="10dp"
+            android:id="@+id/toolbar_title" />
+
+
+    </LinearLayout>
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="20"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp">
+
+
+        <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        android:layout_weight="5"
+        android:backgroundTint="@color/green"
+        android:buttonTint="@color/green"
+        >
+
+         </RadioButton>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Work"
+            android:backgroundTint="@color/green"
+            android:buttonTint="@color/green"
+           >
+        </RadioButton>
+    </RadioGroup>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="90"
+        android:fillViewport="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="16dp"
+        >
+
+        <EditText
+            android:id="@+id/fulname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"
+            android:textColorHint="#9D9D9D"
+            android:fontFamily="@font/segoeui"
+            android:paddingLeft="10dp"
+            android:paddingVertical="13dp"
+            android:background="@drawable/request_price_white_border2"
+            />
+
+        <EditText
+            android:id="@+id/mobno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mobile Number"
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"
+            android:textColorHint="#9D9D9D"
+            android:fontFamily="@font/segoeui"
+            android:paddingLeft="10dp"
+            android:paddingVertical="13dp"
+            android:background="@drawable/request_price_white_border2"
+
+            />
+
+        <EditText
+            android:id="@+id/addressss"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Address"
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"
+            android:textColorHint="#9D9D9D"
+            android:fontFamily="@font/segoeui"
+            android:paddingLeft="10dp"
+            android:paddingVertical="13dp"
+            android:background="@drawable/request_price_white_border2"
+
+            />
+        <EditText
+            android:id="@+id/lnd_mr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Land Mark"
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"
+            android:textColorHint="#9D9D9D"
+            android:fontFamily="@font/segoeui"
+            android:paddingLeft="10dp"
+            android:paddingVertical="13dp"
+            android:background="@drawable/request_price_white_border2"
+
+            />
+        <EditText
+            android:id="@+id/pincodeee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pincode"
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"
+            android:textColorHint="#9D9D9D"
+            android:fontFamily="@font/segoeui"
+            android:paddingLeft="10dp"
+            android:paddingVertical="13dp"
+            android:background="@drawable/request_price_white_border2"
+
+            />
+
+
+        <EditText
+            android:id="@+id/st"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="State"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColorHint="#9D9D9D"
+            android:fontFamily="@font/segoeui"
+            android:paddingVertical="13dp"
+            android:background="@drawable/request_price_white_border2"
+            android:textSize="16dp"
+            android:drawableRight="@drawable/ic_down_arrow"
+            />
+
+
+
+        <LinearLayout
+            android:id="@+id/loan_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="100"
+            >
+
+            <EditText
+                android:id="@+id/dt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="District"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingRight="10dp"
+                android:drawableRight="@drawable/ic_down_arrow"
+                android:textSize="16dp"
+                android:textColorHint="#9D9D9D"
+                android:fontFamily="@font/segoeui"
+                android:paddingVertical="13dp"
+                android:background="@drawable/request_price_white_border2"
+
+                />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/bk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Block"
+            android:textSize="16dp"
+            android:layout_marginTop="10dp"
+            android:textColorHint="#9D9D9D"
+            android:paddingLeft="10dp"
+            android:fontFamily="@font/segoeui"
+            android:drawableRight="@drawable/ic_down_arrow"
+            android:paddingVertical="13dp"
+            android:paddingRight="10dp"
+            android:background="@drawable/request_price_white_border2"
+
+            />
+
+
+
+        <EditText
+            android:id="@+id/nt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="NyayPanchayat"
+            android:textSize="16dp"
+            android:textColorHint="#9D9D9D"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/segoeui"
+            android:paddingLeft="10dp"
+            android:paddingVertical="13dp"
+            android:background="@drawable/request_price_white_border2"
+            />
+        <EditText
+            android:id="@+id/gt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Gram Panchayat"
+            android:textSize="16dp"
+            android:textColorHint="#9D9D9D"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/segoeui"
+            android:paddingVertical="13dp"
+            android:background="@drawable/request_price_white_border2"
+
+            />
+
+
+        <EditText
+            android:id="@+id/ve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Village"
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"
+            android:textColorHint="#9D9D9D"
+            android:fontFamily="@font/segoeui"
+            android:paddingLeft="10dp"
+            android:paddingVertical="13dp"
+            android:background="@drawable/request_price_white_border2"
+            android:layout_marginBottom="30dp"
+
+            />
+
+    </LinearLayout>
+</ScrollView>
+
+    <LinearLayout
+        android:id="@+id/continuebtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_filled_red"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+        <TextView
+            android:id="@+id/apply_loan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Continue"
+            android:textAllCaps="true"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:padding="15dp"
+            android:fontFamily="@font/segoeui"
+            android:textColor="#ffffff"
+            />
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:src="@drawable/ic_right_arrow2"/>
+    </LinearLayout>
+
+
+</LinearLayout>

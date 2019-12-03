@@ -156,6 +156,7 @@ public class AddBrandFragment extends Fragment {
               JSONObject userRequestjsonObject = new JSONObject();
               userRequestjsonObject.put("LookingForDetailsId", request_looking_id);
 
+
             System.out.println("sdfsdfsdf" + AddFirstAdapter.looinkgId );
             JSONObject postjsonObject = new JSONObject();
             System.out.println("postObj"+userRequestjsonObject.toString());
@@ -166,7 +167,7 @@ public class AddBrandFragment extends Fragment {
                     JSONArray cropsListArray=null;
                     try {
                         cropsListArray=result.getJSONArray("BrandList");
-                        System.out.println("e     e e ddd"+cropsListArray.length());
+                        System.out.println("ee e ddd"+cropsListArray.length());
                         for (int i=0;i<cropsListArray.length();i++){
                             JSONObject jsonObject1=cropsListArray.getJSONObject(i);
                             String brand_name=jsonObject1.getString("BrandName");

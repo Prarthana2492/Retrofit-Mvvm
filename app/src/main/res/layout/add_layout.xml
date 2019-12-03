@@ -18,19 +18,40 @@
             android:background="@color/colorPrimary"
             android:gravity="center_vertical">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_go_back_left_arrow_"
 
-                />
+            <LinearLayout
+                android:id="@+id/back_feed1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_filter_state"
+                android:gravity="center">
+
+
+                <ImageView
+                    android:id="@+id/back_arrw"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_go_back_left_arrow_"
+
+                    />
+
+            </LinearLayout>
+
+
+            <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="20dp"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:src="@drawable/ic_go_back_left_arrow_"-->
+
+                <!--/>-->
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="5dp"
                 android:gravity="center_vertical"
                 android:minHeight="?actionBarSize"
                 android:text="ADD BHIM UPI ID"
@@ -56,36 +77,39 @@
             android:textColor="#000000"
             android:paddingRight="10dp"
             />
+
         <TextView
             android:id="@+id/bene"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Beneficiary BHIM UPI ID"
             android:layout_marginTop="35dp"
-            android:textColor="#000000"
-            android:paddingRight="10dp"
-            />
+            android:layout_marginLeft="1dp"
+            android:text="Beneficiary BHIM UPI ID"
+            android:textColor="#000000" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:orientation="vertical">
- <EditText
-                 android:id="@+id/mobile_no"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_gravity="left"
-                 android:layout_marginLeft="10dp"
-                 android:layout_marginTop="10dp"
-                 android:textColor="#000000"
-                 android:hint="BHIM UPI ID"
-                 android:textColorHint="#B4B0B0"
-                 android:textSize="18dp"
-                 android:paddingRight="10dp"/>
+
+              <EditText
+                  android:id="@+id/mobile_no"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="left"
+                  android:layout_marginLeft="1dp"
+                  android:layout_marginTop="10dp"
+                  android:textColor="#000000"
+                  android:hint="BHIM UPI ID"
+                  android:textColorHint="#B4B0B0"
+                  android:textSize="18dp"
+                  android:paddingRight="10dp"/>
         </LinearLayout>
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -93,6 +117,7 @@
         android:background="#fff"
         android:layout_weight="9"
         >
+
         <TextView
             android:id="@+id/continue_4"
             android:layout_width="match_parent"

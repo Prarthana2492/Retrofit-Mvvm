@@ -56,6 +56,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
     public static CardView cardView;
     ImageView fav_request;
     String brochure_pdf;
+    Boolean shortlisted = false;
 
 
     public AddModelAdapter(Activity activity, List<ModelBean> moviesList) {
@@ -107,15 +108,32 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final ModelBean products = productList.get(position);
+
+        shortlisted = products.getIsshortlisted();
+
       //constructor called and values set
-         if(products.getIsshortlisted()){
+//         if(products.getIsshortlisted()){
+//
+//             holder.fav_request.setImageResource(R.drawable.ic_star_filled);
+//
+//
+//          }else{
+//
+//             holder.fav_request.setImageResource(R.drawable.ic_star);
+//
+//
+//        }
 
-             holder.fav_request.setImageResource(R.drawable.ic_star_filled);
 
 
-          }else{
+        if(products.getIsshortlisted()){
 
-             holder.fav_request.setImageResource(R.drawable.ic_star);
+            holder.fav_request.setImageResource(R.drawable.ic_star_filled);
+
+
+        }else{
+
+            holder.fav_request.setImageResource(R.drawable.ic_star);
 
 
         }
@@ -285,11 +303,68 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
       holder.fav_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
+
                 model_id = products.getId();
 
-                holder.fav_request.setImageResource(R.drawable.ic_star_filled);
+                    holder.fav_request.setImageResource(R.drawable.ic_star_filled);
 
-                request_fav(model_id);
+                try{
+
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("ModelId",model_id);
+                    jsonObject.put("LookingForDetailsId",AddBrandFragment.request_looking_id);
+                    jsonObject.put("IsShortlisted",true);
+                    System.out.println("sadgfygux c" + shortlisted);
+                    jsonObject.put("CreatedBy",sessionManager.getRegId("userId"));
+
+
+                    System.out.println("gfjgfgjdfmmmmmmmmmmm" + jsonObject);
+
+                    Crop_Post.crop_posting(activity, Urls.Add_Favorites, jsonObject, new VoleyJsonObjectCallback() {
+                        @Override
+                        public void onSuccessResponse(JSONObject result) {
+                            System.out.println("gfjgfgjdf" + result);
+                            try{
+
+                                String status = result.getString("Status");
+
+                                if(status.equals("1")){
+
+
+                                    int duration = 1000;
+                                    Snackbar snackbar = Snackbar
+                                            .make(AddModelFragment.linearLayout,"Your Request is Favorited", duration);
+                                    View snackbarView2 = snackbar.getView();
+                                    TextView tv = (TextView) snackbarView2.findViewById(android.support.design.R.id.snackbar_text);
+                                    tv.setBackgroundColor(ContextCompat.getColor(activity,R.color.orange));
+                                    tv.setTextColor(Color.WHITE);
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                    else {
+                                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                                    }
+                                    snackbar.show();
+
+                                    //  Toast.makeText(activity, "Your request is favorited", Toast.LENGTH_SHORT).show();
+
+                                }
+
+                            }catch (Exception e){
+                                e.printStackTrace();
+
+                            }
+                        }
+                    });
+
+
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+
+             //   request_fav(model_id);
 
             }
         });
@@ -311,7 +386,8 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("ModelId",model_id);
             jsonObject.put("LookingForDetailsId",AddBrandFragment.request_looking_id);
-            jsonObject.put("IsShortlisted",true);
+            jsonObject.put("IsShortlisted",shortlisted);
+            System.out.println("sadgfygux c" + shortlisted);
             jsonObject.put("CreatedBy",sessionManager.getRegId("userId"));
 
 
@@ -344,7 +420,25 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
                           //  Toast.makeText(activity, "Your request is favorited", Toast.LENGTH_SHORT).show();
 
-                        }
+                        }else {
+
+
+                                fav_request.setImageResource(R.drawable.ic_star_filled);
+                                int duration = 1000;
+                                Snackbar snackbar = Snackbar
+                                        .make(AddModelFragment.linearLayout,"Your Request is UnFavorited", duration);
+                                View snackbarView2 = snackbar.getView();
+                                TextView tv = (TextView) snackbarView2.findViewById(android.support.design.R.id.snackbar_text);
+                                tv.setBackgroundColor(ContextCompat.getColor(activity,R.color.orange));
+                                tv.setTextColor(Color.WHITE);
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                                    tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                else {
+                                    tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                                }
+                                snackbar.show();
+
+                            }
 
                     }catch (Exception e){
                         e.printStackTrace();

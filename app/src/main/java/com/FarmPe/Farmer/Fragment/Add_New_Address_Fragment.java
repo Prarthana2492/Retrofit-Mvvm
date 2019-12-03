@@ -41,6 +41,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
@@ -128,7 +129,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.select_your_region_layout, container, false);
+        View view = inflater.inflate(R.layout.new_address_list, container, false);
 
 
         Status_bar_change_singleton.getInstance().color_change(getActivity());
@@ -136,7 +137,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
         getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
-      //  HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
 
          select_address = view.findViewById(R.id.add_type);
          name = view.findViewById(R.id.full_name);
@@ -161,7 +162,6 @@ public class  Add_New_Address_Fragment extends Fragment {
          edit_districr = view.findViewById(R.id.ed_dstrt);
          edit_village = view.findViewById(R.id.ed_vill);
 
-
          ortext = view.findViewById(R.id.ortext);
          save_1 = view.findViewById(R.id.save_1);
          recyclerView = view.findViewById(R.id.recycler_view);
@@ -174,7 +174,7 @@ public class  Add_New_Address_Fragment extends Fragment {
          cancel_add = view.findViewById(R.id.cancel_add);
          linearLayout = view.findViewById(R.id.linear_layout);
          norecords = view.findViewById(R.id.norecords);
-         toolbar_titletxt=view.findViewById(R.id.toolbar_title);
+         toolbar_titletxt=view.findViewById(R.id.setting_tittle);
 
 
          System.out.println("selecteddddd_iddd"+selected_id_time);
@@ -260,10 +260,12 @@ public class  Add_New_Address_Fragment extends Fragment {
                     fm.popBackStack("yu_ads_frg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 
-                }else   if (getArguments().getString("navigation_from").equals("MAP_FRAGMENT")){
+
+                }else if(getArguments().getString("navigation_from").equals("MAP_FRAGMENT")){
 
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("map_location", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
                 }
 
                 else if(getArguments().getString("navigation_from").equals("your_add")){
@@ -274,13 +276,18 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                 }else if(getArguments().getString("navigation_from").equals("SETTING_FRAG")){
 
-
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 
-                }else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")){
+                }else if(getArguments().getString("navigation_from").equals("Address_book")){
 
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("request_adress_book", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+
+
+                }else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")){
 
                   //  HomeMenuFragment.onBack_status = "no_request";
                     selectedFragment = AaAccountFragment.newInstance();
@@ -292,6 +299,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                 } else if(getArguments().getString("navigation_from").equals("edit_lokng_frg")) {
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("edit", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
                 }
 
 //                }else{
@@ -333,6 +341,13 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+
+                    }else if(getArguments().getString("navigation_from").equals("Address_book")){
+
+                        FragmentManager fm = getActivity().getSupportFragmentManager();
+                        fm.popBackStack("request_adress_book", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
 
 
                     }else if(getArguments().getString("navigation_from").equals("HOME_FRAGMENT")){
@@ -398,6 +413,13 @@ public class  Add_New_Address_Fragment extends Fragment {
                     transaction.commit();
 
 
+                }else if(getArguments().getString("navigation_from").equals("Address_book")){
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack("request_adress_book", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+
+
                 }else if(getArguments().getString("navigation_from").equals("edit_lokng_frg")) {
 
 
@@ -406,7 +428,6 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
                 } else{
-
 
                     selectedFragment = Home_Menu_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -722,6 +743,9 @@ public class  Add_New_Address_Fragment extends Fragment {
                     }
                     snackbar.show();
 
+
+                    Toast.makeText(getActivity(), "Please Select Tehsil", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
@@ -767,6 +791,8 @@ public class  Add_New_Address_Fragment extends Fragment {
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
                     snackbar.show();
+
+                    Toast.makeText(getActivity(), "Enter Name", Toast.LENGTH_SHORT).show();
 
 
 
@@ -914,7 +940,6 @@ public class  Add_New_Address_Fragment extends Fragment {
             entermno = lngObject.getString("EnterPhoneNo");
             inncrtmno = lngObject.getString("Entervalidmobilenumber");
             enterstreetad = lngObject.getString("EnterStreetaddress");
-
             enterpincode = lngObject.getString("Enterpincode");
             selectstate = lngObject.getString("Selectstate");
             selectdistrict = lngObject.getString("SelectDistrict");
@@ -1090,7 +1115,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
         try{
 
-            JSONObject jsonObject = new JSONObject();
+            final JSONObject jsonObject = new JSONObject();
 
             Crop_Post.crop_posting(getActivity(), Urls.State, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
@@ -1110,6 +1135,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                                 stateBeanList.add(stateBean);
                             }
 
+                            jsonObject.getString("District").trim().replace("&amp;","&");
                             sorting(stateBeanList);
 
                             stateApdater.notifyDataSetChanged();
@@ -1367,6 +1393,31 @@ public class  Add_New_Address_Fragment extends Fragment {
                                     transaction.commit();
 
 
+
+
+
+                                } else if (getArguments().getString("navigation_from").equals("Address_book")) {
+                                    int duration = 1000;
+                                    Snackbar snackbar = Snackbar
+                                            .make(linearLayout, newaddressadded, duration);
+                                    View snackbarView = snackbar.getView();
+                                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
+                                    tv.setTextColor(Color.WHITE);
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                    } else {
+                                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                                    }
+
+
+                                    snackbar.show();
+                                    selectedFragment = Request_Details_New_Fragment.newInstance();
+                                    FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.frame_menu, selectedFragment);
+                                    transaction.commit();
+
+
                                 } else if (getArguments().getString("navigation_from").equals("your_add")) {
                                     int duration = 1000;
                                     Snackbar snackbar1 = Snackbar
@@ -1614,9 +1665,11 @@ public class  Add_New_Address_Fragment extends Fragment {
                 }
             }
 
+
             if (searchresultAraaylist.size()==0){
                 recyclerView.setVisibility(View.GONE);
                 norecords.setVisibility(View.VISIBLE);
+
             }else {
                 recyclerView.setVisibility(View.VISIBLE);
                 norecords.setVisibility(View.GONE);
@@ -1646,6 +1699,7 @@ public class  Add_New_Address_Fragment extends Fragment {
             if (searchresultAraaylist.size() == 0) {
                 recyclerView.setVisibility(View.GONE);
                 norecords.setVisibility(View.VISIBLE);
+
             } else {
                 recyclerView.setVisibility(View.VISIBLE);
                 norecords.setVisibility(View.GONE);
@@ -1664,10 +1718,10 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                 }
             }
-
             if (searchresultAraaylist.size()==0){
                 recyclerView.setVisibility(View.GONE);
                 norecords.setVisibility(View.VISIBLE);
+
             }else {
                 recyclerView.setVisibility(View.VISIBLE);
                 norecords.setVisibility(View.GONE);

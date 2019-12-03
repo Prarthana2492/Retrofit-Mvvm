@@ -12,7 +12,9 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONObject;
+
 public class HomePage_Post {
+
     private static Handler handler = new Handler();
     public static StringRequest stringRequest;
     public static JSONObject jsonObject, questionsRequest;
@@ -31,6 +33,7 @@ public class HomePage_Post {
 
 
         // progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
         System.out.println("ggggggggggggggggggggBookingAppointmentObj" + postObject);
 
         JsonObjectRequest jobReq = new JsonObjectRequest(Request.Method.POST, url, postObject,
@@ -60,7 +63,6 @@ public class HomePage_Post {
 
                     }
                 });
-
 
 
         jobReq.setRetryPolicy(new DefaultRetryPolicy(

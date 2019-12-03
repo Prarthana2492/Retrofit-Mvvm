@@ -151,14 +151,15 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
          thank_title=findViewById(R.id.thank);
          resend_otp=findViewById(R.id.resend);
 
-        setupUI(linearLayout);
-        sessionId= getIntent().getStringExtra("otp_forgot");
-        sessionManager = new SessionManager(this);
+         setupUI(linearLayout);
+         sessionId= getIntent().getStringExtra("otp_forgot");
+         sessionManager = new SessionManager(this);
 
 
 
 
         try {
+
             lngObject = new JSONObject(sessionManager.getRegId("language"));
 
            // thanktu_submit.setText(lngObject.getString("SendOTP"));
@@ -172,10 +173,10 @@ public class Thank_U_New extends AppCompatActivity implements ConnectivityReceiv
             toast_number_exceeded = lngObject.getString("Youhaveexceededthelimitofresendingotp");
             //resend_otp.setText(lngObject.getString("Resend"));
 
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
 
 
         back_thank_u.setOnClickListener(new View.OnClickListener() {

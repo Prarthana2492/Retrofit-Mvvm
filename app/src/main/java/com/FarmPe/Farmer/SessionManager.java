@@ -168,7 +168,7 @@ public class SessionManager {
 
 
         //if language code not stored will return 1(English)
-        int s1=pref.getInt(KEY_LNG_SELECTED, 1); // getting String
+        int s1 = pref.getInt(KEY_LNG_SELECTED, 1); // getting String
 
         return s1;
     }
@@ -221,6 +221,7 @@ public class SessionManager {
     public boolean isLoggedIn(){
         return pref.getBoolean(IS_LOGIN, false);
     }
+
 
     public String checkRememberMe(String phone, String password){
         String rememberMe="uncheck";

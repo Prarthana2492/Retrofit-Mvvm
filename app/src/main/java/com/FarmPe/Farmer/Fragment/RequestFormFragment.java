@@ -79,7 +79,7 @@ public class RequestFormFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = getView() != null ? getView() :
-                inflater.inflate(R.layout.request_form, container, false);
+                  inflater.inflate(R.layout.request_form, container, false);
 
         Status_bar_change_singleton.getInstance().color_change(getActivity());
         toolbar_title=view.findViewById(R.id.toolbar_title);
@@ -104,6 +104,7 @@ public class RequestFormFragment extends Fragment {
             gettingAddress();
 
         }else{
+
             finance_selected=bundle.getInt("selected_id2");
             time_selected=bundle.getInt("selected_id_time1");
             addId=bundle.getString("add_id");
@@ -112,6 +113,7 @@ public class RequestFormFragment extends Fragment {
             radioGroup.check(bundle.getInt("selected_id_time1"));
             radioGroup_finance.check(finance_selected);
         }
+
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -345,7 +347,6 @@ public class RequestFormFragment extends Fragment {
     }
 
 
-
     public void gettingAddress(){
 
         try{
@@ -378,7 +379,6 @@ public class RequestFormFragment extends Fragment {
                             }
 
                         }
-
                         // item_list = String.valueOf(new_address_beanArrayList.size());
                         //  address_list.setText(item_list+" " + ad_list );
 

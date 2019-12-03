@@ -122,7 +122,6 @@ public class Edit_Looking_For_Fragment extends Fragment {
         return fragment;
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.farmers_detail_page, container, false);
@@ -151,8 +150,6 @@ public class Edit_Looking_For_Fragment extends Fragment {
         radio_group_time=view.findViewById(R.id.radio_group_time);
         radioGroup_finance=view.findViewById(R.id.radioGroup_finance);
         address=view.findViewById(R.id.address_layout);
-
-
 
         try {
 

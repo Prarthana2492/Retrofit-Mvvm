@@ -104,6 +104,7 @@
                 android:layout_height="wrap_content"
                 android:text="All Notifications"
                 android:textSize="14dp"
+                android:layout_marginTop="10dp"
                 android:textColor="#666666"
                 />
 
@@ -140,177 +141,177 @@
             />
 
 
-        <LinearLayout
-            android:id="@+id/farmer_acti_lay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingVertical="20dp"
-            android:layout_marginHorizontal="20dp"
-            android:weightSum="100"
-            >
+        <!--<LinearLayout-->
+            <!--android:id="@+id/farmer_acti_lay"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:paddingVertical="20dp"-->
+            <!--android:layout_marginHorizontal="20dp"-->
+            <!--android:weightSum="100"-->
+            <!--&gt;-->
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="75"
-                android:gravity="center"
-                >
+            <!--<LinearLayout-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_weight="75"-->
+                <!--android:gravity="center"-->
+                <!--&gt;-->
 
-                <TextView
-                    android:id="@+id/farmer_acti"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Farmer Activities"
-                    android:textSize="16dp"
-                    android:textStyle="bold"
-                    android:textColor="#279E5E"
-                    />
+                <!--<TextView-->
+                    <!--android:id="@+id/farmer_acti"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Farmer Activities"-->
+                    <!--android:textSize="16dp"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:textColor="#279E5E"-->
+                    <!--/>-->
 
-                <TextView
-                    android:id="@+id/farmer_request"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Requests"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="3dp"
-                    android:textSize="18dp"
-                    android:textStyle="bold"
-                    android:textColor="#000"
-                    />
+                <!--<TextView-->
+                    <!--android:id="@+id/farmer_request"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Requests"-->
+                    <!--android:layout_marginTop="5dp"-->
+                    <!--android:layout_marginLeft="3dp"-->
+                    <!--android:textSize="18dp"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:textColor="#000"-->
+                    <!--/>-->
 
-                <TextView
-                    android:id="@+id/new_req_int"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:textColor="#666666"
-                    android:text="New requests and interests"
-                    android:textSize="14dp"
-                    />
+                <!--<TextView-->
+                    <!--android:id="@+id/new_req_int"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="3dp"-->
+                    <!--android:textColor="#666666"-->
+                    <!--android:text="New requests and interests"-->
+                    <!--android:textSize="14dp"-->
+                    <!--/>-->
 
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="25"
-                android:gravity="center"
-                android:layout_gravity="center_vertical"
-                >
-
-                <android.support.v7.widget.SwitchCompat
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:checked="true"
-                    android:theme="@style/SCBSwitch" />
+            <!--</LinearLayout>-->
 
 
+            <!--<LinearLayout-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="25"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_gravity="center_vertical"-->
+                <!--&gt;-->
 
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#dcdcdc"
-            android:layout_marginTop="10dp"
-            />
+                <!--<android.support.v7.widget.SwitchCompat-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:checked="true"-->
+                    <!--android:theme="@style/SCBSwitch" />-->
 
 
 
 
-        <LinearLayout
-            android:id="@+id/acc_info_lay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingVertical="20dp"
-            android:layout_marginHorizontal="20dp"
-            android:weightSum="100"
-            >
+            <!--</LinearLayout>-->
 
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="75"
-                android:gravity="center"
-                >
+        <!--</LinearLayout>-->
 
-                <TextView
-                    android:id="@+id/farmpe_acti"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="FarmPe Activities"
-                    android:textSize="16dp"
-                    android:textStyle="bold"
-                    android:textColor="#279E5E"
-                    />
-
-                <TextView
-                    android:id="@+id/farmpe_news"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="News"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="3dp"
-                    android:textSize="18dp"
-                    android:textStyle="bold"
-                    android:textColor="#000"
-                    />
-
-
-                <TextView
-                    android:id="@+id/news"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:textColor="#666666"
-                    android:text="Farmer related news from FarmPe"
-                    android:textSize="14dp"
-                    />
-
-            </LinearLayout>
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:background="#dcdcdc"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--/>-->
 
 
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="25"
-                android:gravity="center"
-                android:layout_gravity="center_vertical"
-                >
+
+        <!--<LinearLayout-->
+            <!--android:id="@+id/acc_info_lay"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:paddingVertical="20dp"-->
+            <!--android:layout_marginHorizontal="20dp"-->
+            <!--android:weightSum="100"-->
+            <!--&gt;-->
 
 
-                <android.support.v7.widget.SwitchCompat
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:checked="true"
-                    android:theme="@style/SCBSwitch" />
+            <!--<LinearLayout-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_weight="75"-->
+                <!--android:gravity="center"-->
+                <!--&gt;-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/farmpe_acti"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="FarmPe Activities"-->
+                    <!--android:textSize="16dp"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:textColor="#279E5E"-->
+                    <!--/>-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/farmpe_news"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="News"-->
+                    <!--android:layout_marginTop="5dp"-->
+                    <!--android:layout_marginLeft="3dp"-->
+                    <!--android:textSize="18dp"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:textColor="#000"-->
+                    <!--/>-->
+
+
+                <!--<TextView-->
+                    <!--android:id="@+id/news"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="3dp"-->
+                    <!--android:textColor="#666666"-->
+                    <!--android:text="Farmer related news from FarmPe"-->
+                    <!--android:textSize="14dp"-->
+                    <!--/>-->
+
+            <!--</LinearLayout>-->
 
 
 
-            </LinearLayout>
+            <!--<LinearLayout-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="25"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_gravity="center_vertical"-->
+                <!--&gt;-->
 
 
-        </LinearLayout>
+                <!--<android.support.v7.widget.SwitchCompat-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:checked="true"-->
+                    <!--android:theme="@style/SCBSwitch" />-->
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#dcdcdc"
-            android:layout_marginTop="10dp"
-            />
+
+
+            <!--</LinearLayout>-->
+
+
+        <!--</LinearLayout>-->
+
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:background="#dcdcdc"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--/>-->
 
 
 

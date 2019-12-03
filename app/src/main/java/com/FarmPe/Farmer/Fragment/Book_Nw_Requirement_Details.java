@@ -305,39 +305,116 @@ public class Book_Nw_Requirement_Details extends Fragment {
                 demo_no.setBackgroundResource(R.drawable.black_border_blue_filled);
                 demo_yes.setBackgroundResource(R.drawable.black_bordr_white_filled);
 
-
-
             }
         });
-
 
         request_price_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-
                 if(purchase_plan==null){
 
-                    Toast.makeText(getActivity(), "Please Select purchase plan", Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(getActivity(), "Please Select purchase plan", Toast.LENGTH_SHORT).show();
+
+
+                    Snackbar snackbar = Snackbar
+                            .make(linearLayout,"Please Select purchase plan", Snackbar.LENGTH_LONG);
+                    View snackbarView = snackbar.getView();
+                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                    tv.setTextColor(Color.WHITE);
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+
+                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                    } else {
+                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                    }
+
+                    snackbar.show();
+
+                  //  Toast.makeText(getActivity(), "fgdgdgdgfdg", Toast.LENGTH_SHORT).show();
 
 
                 }else if(looking_finance == null){
 
-                    Toast.makeText(getActivity(), "Please Select finance", Toast.LENGTH_SHORT).show();
+
+                    Snackbar snackbar = Snackbar
+                            .make(linearLayout,"Please Select finance", Snackbar.LENGTH_LONG);
+                    View snackbarView = snackbar.getView();
+                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                    tv.setTextColor(Color.WHITE);
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+
+                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                    } else {
+                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                    }
+
+                    snackbar.show();
+
+
+                   // Toast.makeText(getActivity(), "Please Select finance", Toast.LENGTH_SHORT).show();
 
 
                 }else if(looking_insurance == null){
 
-                    Toast.makeText(getActivity(), "Please select insurance", Toast.LENGTH_SHORT).show();
+
+                    Snackbar snackbar = Snackbar
+                            .make(linearLayout,"Please select insurance", Snackbar.LENGTH_LONG);
+                    View snackbarView = snackbar.getView();
+                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                    tv.setTextColor(Color.WHITE);
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+
+                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                    } else {
+                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                    }
+
+                    snackbar.show();
+
+
+
+                 //   Toast.makeText(getActivity(), "Please select insurance", Toast.LENGTH_SHORT).show();
 
 
                 }else if(looking_demo == null){
 
-                    Toast.makeText(getActivity(), "Please select demo/test drive", Toast.LENGTH_SHORT).show();
+
+                    Snackbar snackbar = Snackbar
+                            .make(linearLayout,"Please select demo/test drive", Snackbar.LENGTH_LONG);
+                    View snackbarView = snackbar.getView();
+                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                    tv.setTextColor(Color.WHITE);
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+
+                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                    } else {
+                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                    }
+
+                    snackbar.show();
+
+
+
+
+                  //  Toast.makeText(getActivity(), "Please select demo/test drive", Toast.LENGTH_SHORT).show();
 
 
                 }else{
-                        selectedFragment = MenuFragment.newInstance();
+
+                        selectedFragment = AddMoneyFragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frame_menu, selectedFragment);
                         transaction.addToBackStack("book_payment");

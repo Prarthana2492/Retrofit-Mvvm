@@ -15,6 +15,7 @@ import com.FarmPe.Farmer.Fragment.AskNandi;
 import com.FarmPe.Farmer.Fragment.Home_Menu_Fragment;
 import com.FarmPe.Farmer.Fragment.LookingForFragment;
 import com.FarmPe.Farmer.Fragment.NotificationFragment;
+import com.FarmPe.Farmer.Fragment.SellersettingFragment;
 import com.FarmPe.Farmer.R;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 
@@ -155,6 +156,7 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
                 selectedFragment = NotificationFragment.newInstance();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
+                transaction.addToBackStack("");
                 transaction.commit();
 
 
@@ -166,6 +168,7 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
         profile_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
                 profile_text.setTextColor(Color.parseColor("#18a360"));
                 mail_text.setTextColor(Color.parseColor("#595959"));
@@ -179,9 +182,11 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
                 mail_icon.setImageResource(R.drawable.ic_mailbox);
                 nandi_icon.setImageResource(R.drawable.ic_agronomy);
 
-                selectedFragment = AaSettingFragment.newInstance();
+
+                selectedFragment = SellersettingFragment.newInstance();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
+                transaction.addToBackStack("settingglist");
                 transaction.commit();
 
             }

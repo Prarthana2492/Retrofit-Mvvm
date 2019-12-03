@@ -106,6 +106,7 @@ public class Request_Details_New_Fragment extends Fragment {
                 return false;
             }
         });
+
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,6 +122,8 @@ public class Request_Details_New_Fragment extends Fragment {
                 }
             }
         });
+
+
         immediate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -180,6 +183,7 @@ public class Request_Details_New_Fragment extends Fragment {
 
             }
         });
+
         three_month_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -276,6 +280,7 @@ public class Request_Details_New_Fragment extends Fragment {
         insuranc_no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 looking_insurance = insuranc_no.getText().toString();
                 insuranc_no.setTextColor(Color.parseColor("#FFFFFF"));
                 insuranc_yes.setTextColor(Color.parseColor("#000000"));
@@ -310,6 +315,7 @@ public class Request_Details_New_Fragment extends Fragment {
         demo_no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 looking_demo = demo_no.getText().toString();
                 demo_no.setTextColor(Color.parseColor("#FFFFFF"));
                 demo_yes.setTextColor(Color.parseColor("#000000"));
@@ -323,30 +329,108 @@ public class Request_Details_New_Fragment extends Fragment {
         });
 
 
+        System.out.println("fdgfjdgfdgd" + purchase_plan);
+
         request_price_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
-                if(purchase_plan==null){
+               if(purchase_plan == null) {
 
-                    Toast.makeText(getActivity(), "Please Select purchase plan", Toast.LENGTH_SHORT).show();
 
-                }else if(looking_finance == null){
+                   Snackbar snackbar = Snackbar
+                           .make(linearLayout,"Please Select purchase plan", Snackbar.LENGTH_LONG);
+                   View snackbarView = snackbar.getView();
+                   TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                   tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                   tv.setTextColor(Color.WHITE);
 
-                    Toast.makeText(getActivity(), "Please Select finance", Toast.LENGTH_SHORT).show();
+                   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+
+                       tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                   } else {
+                       tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                   }
+
+                   snackbar.show();
+
+                  //   Toast.makeText(getActivity(), "Please Select purchase plan", Toast.LENGTH_LONG).show();
+
+
+               }else   if(looking_finance == null){
+
+
+                   Snackbar snackbar = Snackbar
+                           .make(linearLayout,"Please Select finance", Snackbar.LENGTH_LONG);
+                   View snackbarView = snackbar.getView();
+                   TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                   tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                   tv.setTextColor(Color.WHITE);
+
+                   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+
+                       tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                   } else {
+                       tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                   }
+
+                   snackbar.show();
+
+                  //  Toast.makeText(getActivity(), "Please Select finance", Toast.LENGTH_SHORT).show();
 
 
                 }else if(looking_insurance == null){
 
-                    Toast.makeText(getActivity(), "Please select insurance", Toast.LENGTH_SHORT).show();
+                   Snackbar snackbar = Snackbar
+                           .make(linearLayout,"Please select insurance", Snackbar.LENGTH_LONG);
+                   View snackbarView = snackbar.getView();
+                   TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                   tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                   tv.setTextColor(Color.WHITE);
+
+                   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+
+                       tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                   } else {
+                       tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                   }
+
+                   snackbar.show();
+
+                   // Toast.makeText(getActivity(), "Please select insurance", Toast.LENGTH_SHORT).show();
+
 
                 }else if(looking_demo == null){
 
-                    Toast.makeText(getActivity(), "Please select demo/test drive", Toast.LENGTH_SHORT).show();
+
+                //   Please select insurance
+
+                   Snackbar snackbar = Snackbar
+                           .make(linearLayout,"Please select demo/test drive", Snackbar.LENGTH_LONG);
+                   View snackbarView = snackbar.getView();
+                   TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                   tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                   tv.setTextColor(Color.WHITE);
+
+                   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+
+                       tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                   } else {
+                       tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                   }
+
+                   snackbar.show();
+
+                 //   Toast.makeText(getActivity(), "Please select demo/test drive", Toast.LENGTH_LONG).show();
 
 
                 }else{
+
 
                 request_price();
             }
@@ -371,12 +455,12 @@ public class Request_Details_New_Fragment extends Fragment {
 
             userRequestjsonObject.put("UserId",sessionManager.getRegId("userId"));
             userRequestjsonObject.put("PurchaseTimeline",purchase_plan);
+            System.out.println("fdgfjdgfdgd" + purchase_plan);
             userRequestjsonObject.put("LookingForFinance",looking_finance);
             userRequestjsonObject.put("AddressId",getArguments().getString("add_id"));
             userRequestjsonObject.put("IsAgreed", "True");
             userRequestjsonObject.put("ModelId", AddModelAdapter.model_id);
             userRequestjsonObject.put("LookingForDetailsId", AddBrandFragment.request_looking_id);
-
 
 
             System.out.println("postObjmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"+userRequestjsonObject.toString());

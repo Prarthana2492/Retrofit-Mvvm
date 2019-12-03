@@ -49,9 +49,22 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:textColor="#fff"
-            android:layout_marginLeft="10dp"
+
             android:layout_gravity="center"
             android:id="@+id/setting_tittle" />
+
+
+        <TextView
+            android:id="@+id/add_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Address"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:layout_gravity="center"
+            android:gravity="end"
+           />
 
 
     </LinearLayout>

@@ -47,7 +47,7 @@ public class AaNotificationSetting extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
-                fm.popBackStack ("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fm.popBackStack ("noti_setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
 
@@ -64,7 +64,7 @@ public class AaNotificationSetting extends Fragment {
                     //    getFragmentManager().popBackStack("home_menu", android.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
                     FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack ("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    fm.popBackStack ("noti_setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     return true;
                 }
 

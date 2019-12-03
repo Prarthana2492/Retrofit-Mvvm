@@ -85,7 +85,6 @@ package com.FarmPe.Farmer;
 
 
 
-
     //Favorites
      public static final String Get_Favorites = ROOT_URL+"MasterTable/GetFarmerFavouriteModelLists";
      public static final String Add_Favorites = ROOT_URL+"MasterTable/AddUpdateFarmerFavouriteModelList";

@@ -10,8 +10,6 @@
     android:weightSum="100"
     >
 
-
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -279,12 +277,14 @@
                     android:layout_marginHorizontal="5dp"
                     android:background="#dcdcdc" />
 
+
                 <LinearLayout
                     android:id="@+id/mobile_linear_layout"
                     android:layout_width="match_parent"
                     android:layout_height="59dp"
                     android:orientation="horizontal"
                     android:weightSum="100">
+
 
                     <LinearLayout
 

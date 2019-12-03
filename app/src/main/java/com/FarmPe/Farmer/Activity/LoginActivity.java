@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
      public static String mobile,loc_text;
      public String status,userId;
      boolean doubleBackToExitPressedOnce = false;
-    String newfarmpelng,signuplng;
+     String newfarmpelng,signuplng;
      List<SelectLanguageBean>language_arrayBeanList = new ArrayList<>();
      SelectLanguageBean selectLanguageBean;
      SelectLanguageAdapter2 mAdapter;
@@ -154,7 +154,6 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
 
         }
     }
-
 
     @Override
     protected void onResume() {
@@ -566,7 +565,6 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
     }
 
 
-
     private void getLang(int id) {
 
         try{
@@ -590,13 +588,13 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
 
                         String lang_title1 = result.getString("ChangeLanguage");
 
-                        String log_login = result.getString("Login");
-                        String log_mobile = result.getString("PhoneNo");
-                        String log_password = result.getString("Password");
-                        String log_remember_me = result.getString("RememberMe");
-                        String log_forgot_passwrd = result.getString("ForgotPassword");
-                        String log_register = result.getString(" " + "SignUp");
-                       String log_farmpe = result.getString("NewtoFarmPe");
+                         String log_login = result.getString("Login");
+                         String log_mobile = result.getString("PhoneNo");
+                         String log_password = result.getString("Password");
+                         String log_remember_me = result.getString("RememberMe");
+                         String log_forgot_passwrd = result.getString("ForgotPassword");
+                         String log_register = result.getString(" " + "SignUp");
+                         String log_farmpe = result.getString("NewtoFarmPe");
 
                         mob_toast = result.getString("EnterPhoneNo");
                         pass_toast = result.getString("EnterPassword");

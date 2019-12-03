@@ -139,10 +139,7 @@ public class UpdateAccDetailsFragment extends Fragment {
         linearLayout = view.findViewById(R.id.main_layout);
         sessionManager = new SessionManager(getActivity());
         myDb = new DatabaseHelper(getActivity());
-
-
         setupUI(linearLayout);
-
 
 
 
@@ -182,7 +179,6 @@ public class UpdateAccDetailsFragment extends Fragment {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
 
                     return true;
                 }
@@ -247,6 +243,7 @@ public class UpdateAccDetailsFragment extends Fragment {
             post_object.put("objUser",jsonObject);
 
 
+
             Crop_Post.crop_posting(getActivity(), Urls.Get_Profile_Details, post_object, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
@@ -261,8 +258,6 @@ public class UpdateAccDetailsFragment extends Fragment {
                         String ProfileEmail = jsonObject1.getString("EmailId");
                         String ProfileImage = jsonObject1.getString("ProfilePic");
                         System.out.println("11111" + ProfileName1);
-
-
 
                         profile_name.setText(ProfileName1);
                         profile_phone.setText(ProfilePhone);
@@ -378,6 +373,7 @@ public class UpdateAccDetailsFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
+
                 if(profile_passwrd.getText().toString().length()<=12 && profile_passwrd.getText().toString().length()>=6){
                     pass_tick.setVisibility(View.VISIBLE);
                 }
@@ -412,9 +408,9 @@ public class UpdateAccDetailsFragment extends Fragment {
                     snackbar.show();
 
 
-
                 } else if(profile_name.getText().toString().length()<2) {
                     int duration = 1000;
+
                     Snackbar snackbar = Snackbar
                             .make(linearLayout, toast_minimum_toast, duration);
                     View snackbarView = snackbar.getView();
@@ -434,6 +430,7 @@ public class UpdateAccDetailsFragment extends Fragment {
 
                 }else if(profile_phone.getText().toString().equals("")) {
                     int duration = 1000;
+
                     Snackbar snackbar = Snackbar
                             .make(linearLayout, toast_new_mobile, duration);
                     View snackbarView = snackbar.getView();
@@ -446,6 +443,7 @@ public class UpdateAccDetailsFragment extends Fragment {
 
                 }else if(profile_phone.getText().toString().length()<10) {
                     int duration = 1000;
+
                     Snackbar snackbar = Snackbar
                             .make(linearLayout, toast_mobile, duration);
                     View snackbarView = snackbar.getView();
@@ -459,8 +457,6 @@ public class UpdateAccDetailsFragment extends Fragment {
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
                     snackbar.show();
-
-
 
 
 
@@ -481,11 +477,12 @@ public class UpdateAccDetailsFragment extends Fragment {
                     }
                     snackbar.show();
 
+
+
                 } else  {
 
                     uploadImage(getResizedBitmap(bitmap,100,100));
                 }
-
             }
         });
 
@@ -937,8 +934,6 @@ public class UpdateAccDetailsFragment extends Fragment {
                 params.put("FullName",profile_name.getText().toString());
                 params.put("PhoneNo",profile_phone.getText().toString());
                 params.put("EmailId","abcd@gmail.com");
-
-
                 params.put("Password",profile_passwrd.getText().toString());
                 Log.e(TAG,"afaeftagsparams"+params);
 

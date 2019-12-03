@@ -46,6 +46,7 @@ import java.util.Map;
 public class G_Vision_Controller {
 
     // static variable single_instance of type Singleton
+
       private static G_Vision_Controller g_vision_controller_single_instance = null;
       Activity activity;
       Bitmap scaled_bitmap;
@@ -62,6 +63,7 @@ public class G_Vision_Controller {
       private G_Vision_Controller() {
 
     }
+
 
 
     // static method to create instance of Singleton class
@@ -122,7 +124,6 @@ public class G_Vision_Controller {
                 };
 
 
-
         Vision.Builder builder = new Vision.Builder(httpTransport, jsonFactory, null);
         builder.setVisionRequestInitializer(requestInitializer);
 
@@ -165,14 +166,21 @@ public class G_Vision_Controller {
         annotateRequest.setDisableGZipContent(true);
         Log.d(TAG, "created Cloud Vision request object, sending request");
 
+
+
         return annotateRequest;
+
     }
+
+
 
     private class LableDetectionTask extends AsyncTask<Object, Void, String> {
         private final WeakReference<Activity> mActivityWeakReference;
         private Vision.Images.Annotate mRequest;
         ProgressDialog progressDialog ;
         Activity activity2;
+
+
 
         LableDetectionTask(Activity activity1, Vision.Images.Annotate annotate) {
             mActivityWeakReference = new WeakReference<>(activity1);
@@ -181,6 +189,7 @@ public class G_Vision_Controller {
             this.activity2=activity1;
 
         }
+
 
         @Override
         protected void onPreExecute() {
@@ -211,6 +220,7 @@ public class G_Vision_Controller {
         }
 
 
+
         protected void onPostExecute(String result) {
 
             Activity activity = mActivityWeakReference.get();
@@ -227,8 +237,8 @@ public class G_Vision_Controller {
 
                         uploadImage(scaled_bitmap);
 
-
                     }
+
 
                    /* Toast.makeText(LandingPageActivity.this,"Image contain below details"+annotation.getViolence()+"\n"
                             +annotation.getSpoof()+"\n"+annotation.getMedical()+"\n"+annotation.getAdult(),Toast.LENGTH_LONG).show();*/
@@ -241,6 +251,7 @@ public class G_Vision_Controller {
             }
         }
     }
+
 
     private Bitmap scaleBitmapDown(Bitmap bitmap, int maxDimension) {
 
@@ -283,7 +294,9 @@ public class G_Vision_Controller {
                 message.append("DECLINE");
 
             }
+
             else {
+
                 message.append("APPROVE");
 
             }
@@ -327,11 +340,12 @@ public class G_Vision_Controller {
                     }
                 }) {
 
+
             @Override
             protected Map<String, DataPart> getByteData() {
                 Map<String, DataPart> params = new HashMap<>();
-                long imagename = System.currentTimeMillis();
 
+                long imagename = System.currentTimeMillis();
 
 
                 Log.e(TAG,"Im here " + params);
@@ -351,7 +365,7 @@ public class G_Vision_Controller {
                 params.put("UserId",sessionManager.getRegId("userId"));
                 params.put("FullName",sessionManager.getRegId("name"));
                 params.put("PhoneNo",sessionManager.getRegId("phone"));
-                params.put("Password",sessionManager.getRegId("pass"));
+                //params.put("About",sessionManager.getRegId("pass"));
                 Log.e(TAG,"afaeftagsparams"+params);
                 return params;
             }
@@ -361,12 +375,18 @@ public class G_Vision_Controller {
         volleyMultipartRequest.setRetryPolicy(new DefaultRetryPolicy(1000 * 60, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         //adding the request to volley
+
         Volley.newRequestQueue(activity).add(volleyMultipartRequest);
     }
+
+
     public byte[] getFileDataFromDrawable(Bitmap bitmap1) {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap1.compress(Bitmap.CompressFormat.PNG, 80, byteArrayOutputStream);
-        return byteArrayOutputStream.toByteArray();
+
+          ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+          bitmap1.compress(Bitmap.CompressFormat.PNG, 80, byteArrayOutputStream);
+
+          return byteArrayOutputStream.toByteArray();
     }
 
 }
