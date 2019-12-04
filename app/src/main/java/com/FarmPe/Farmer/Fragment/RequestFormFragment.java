@@ -373,6 +373,7 @@ public class RequestFormFragment extends Fragment {
                             // new_address_beanArrayList.add(add_new_address_bean);
 
                             if (jsonObject1.getBoolean("IsDefaultAddress")){
+
                                 addId=jsonObject1.getString("Id");
                                 address_text.setText(jsonObject1.getString("Hoblie")+","+jsonObject1.getString("District"));
 

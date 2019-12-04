@@ -109,9 +109,9 @@ public class AaAccountFragment extends Fragment {
         myDb = new DatabaseHelper(getActivity());
         // LandingPageActivity.editname.setVisibility(View.GONE);
 
+
+
         sessionManager = new SessionManager(getActivity());
-
-
 
 
 
@@ -171,6 +171,7 @@ public class AaAccountFragment extends Fragment {
                     System.out.println("ggggggggggaaaaaaa"+jsonObject);
 
 
+
                     Crop_Post.crop_posting(getActivity(), Urls.Get_New_Address, jsonObject, new VoleyJsonObjectCallback() {
                         @Override
                         public void onSuccessResponse(JSONObject result) {
@@ -190,7 +191,6 @@ public class AaAccountFragment extends Fragment {
                                     transaction.addToBackStack("HOME_FRAGMENT");
                                     transaction.replace(R.id.frame_menu, selectedFragment);
                                     transaction.commit();
-
 
 
                                 }else {

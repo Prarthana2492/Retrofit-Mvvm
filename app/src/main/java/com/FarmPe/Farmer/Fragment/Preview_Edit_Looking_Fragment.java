@@ -5,7 +5,6 @@ package com.FarmPe.Farmer.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -58,7 +57,6 @@ public class Preview_Edit_Looking_Fragment extends Fragment {
          image_loovking = view.findViewById(R.id.image_loovking);
 
 
-
          imageView.setVisibility(View.GONE);
          image_looking.setVisibility(View.GONE);
          image_loofking.setVisibility(View.GONE);
@@ -66,11 +64,14 @@ public class Preview_Edit_Looking_Fragment extends Fragment {
          image_loovking.setVisibility(View.GONE);
 
 
+
          preview = view.findViewById(R.id.preview);
          preview.setVisibility(View.GONE);
          back_feed = view.findViewById(R.id.back_feed);
          toolbar_title = view.findViewById(R.id.toolbar_title);
          toolbar_title.setText("Preview");
+
+
 
 
          view.setFocusableInTouchMode(true);
@@ -90,7 +91,6 @@ public class Preview_Edit_Looking_Fragment extends Fragment {
 
                      }else if(getArguments().getString("status").equals("edit_for")) {
 
-
                          FragmentManager fm = getActivity().getSupportFragmentManager();
                          fm.popBackStack("editpage", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
@@ -103,9 +103,11 @@ public class Preview_Edit_Looking_Fragment extends Fragment {
          });
 
 
+
          back_feed.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
+
                  if(getArguments().getString("status").equals("lookng_for")){
 
                      FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -114,16 +116,13 @@ public class Preview_Edit_Looking_Fragment extends Fragment {
 
                  }else if(getArguments().getString("status").equals("edit_for")) {
 
-
                      FragmentManager fm = getActivity().getSupportFragmentManager();
                      fm.popBackStack("editpage", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
                  }
 
-
              }
          });
-
 
 
         return view;

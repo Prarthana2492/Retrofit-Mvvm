@@ -326,7 +326,6 @@ public class  Add_New_Address_Fragment extends Fragment {
 
 
                     }else if(getArguments().getString("navigation_from").equals("your_add")){
-
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack("your_add", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
@@ -341,6 +340,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
 
 
                     }else if(getArguments().getString("navigation_from").equals("Address_book")){
@@ -744,7 +744,6 @@ public class  Add_New_Address_Fragment extends Fragment {
                     snackbar.show();
 
 
-                    Toast.makeText(getActivity(), "Please Select Tehsil", Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -792,7 +791,7 @@ public class  Add_New_Address_Fragment extends Fragment {
                     }
                     snackbar.show();
 
-                    Toast.makeText(getActivity(), "Enter Name", Toast.LENGTH_SHORT).show();
+
 
 
 
@@ -1115,7 +1114,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
         try{
 
-            final JSONObject jsonObject = new JSONObject();
+            JSONObject jsonObject = new JSONObject();
 
             Crop_Post.crop_posting(getActivity(), Urls.State, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
@@ -1135,7 +1134,6 @@ public class  Add_New_Address_Fragment extends Fragment {
                                 stateBeanList.add(stateBean);
                             }
 
-                            jsonObject.getString("District").trim().replace("&amp;","&");
                             sorting(stateBeanList);
 
                             stateApdater.notifyDataSetChanged();
@@ -1233,6 +1231,7 @@ public class  Add_New_Address_Fragment extends Fragment {
             jsonObject.put("StreeAddress1",street_name.getText().toString());
             jsonObject.put("UserId",sessionManager.getRegId("userId"));
           ///  jsonObject.put("Id", You_Address_Adapter.add_id);
+
 
             System.out.println("Add_New_AddresssssssssssssssssjsonObject"+jsonObject);
 
@@ -1665,11 +1664,9 @@ public class  Add_New_Address_Fragment extends Fragment {
                 }
             }
 
-
             if (searchresultAraaylist.size()==0){
                 recyclerView.setVisibility(View.GONE);
                 norecords.setVisibility(View.VISIBLE);
-
             }else {
                 recyclerView.setVisibility(View.VISIBLE);
                 norecords.setVisibility(View.GONE);
@@ -1699,7 +1696,6 @@ public class  Add_New_Address_Fragment extends Fragment {
             if (searchresultAraaylist.size() == 0) {
                 recyclerView.setVisibility(View.GONE);
                 norecords.setVisibility(View.VISIBLE);
-
             } else {
                 recyclerView.setVisibility(View.VISIBLE);
                 norecords.setVisibility(View.GONE);
@@ -1718,10 +1714,10 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                 }
             }
+
             if (searchresultAraaylist.size()==0){
                 recyclerView.setVisibility(View.GONE);
                 norecords.setVisibility(View.VISIBLE);
-
             }else {
                 recyclerView.setVisibility(View.VISIBLE);
                 norecords.setVisibility(View.GONE);

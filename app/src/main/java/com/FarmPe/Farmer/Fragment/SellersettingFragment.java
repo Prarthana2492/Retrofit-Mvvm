@@ -112,7 +112,6 @@ public class SellersettingFragment extends Fragment {
         invite=view.findViewById(R.id.invite);
         profile_image=view.findViewById(R.id.profile_image);
         linearLayout=view.findViewById(R.id.linearLayout);
-
         bank_account=view.findViewById(R.id.acc_info);
         lang_setting=view.findViewById(R.id.lang_setting);
      //   your_address=view.findViewById(R.id.ur_address);
@@ -128,9 +127,10 @@ public class SellersettingFragment extends Fragment {
         help=view.findViewById(R.id.help);
         change_password=view.findViewById(R.id.change_pass);
         sessionManager = new SessionManager(getActivity());
-
-
         lang_setting.setText(sessionManager.getRegId("language_name"));
+
+
+
 
 
         back_feed.setOnClickListener(new View.OnClickListener() {
@@ -142,6 +142,7 @@ public class SellersettingFragment extends Fragment {
 
             }
         });
+
 
 
         view.setFocusableInTouchMode(true);
@@ -170,8 +171,6 @@ public class SellersettingFragment extends Fragment {
 
             }
         });
-
-
 
 
         try{
@@ -368,7 +367,8 @@ public class SellersettingFragment extends Fragment {
         your_addresss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             selectedFragment = NewAddressDetails_Fragment.newInstance();
+
+                selectedFragment = NewAddressDetails_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.addToBackStack("settingg");
@@ -702,6 +702,7 @@ public class SellersettingFragment extends Fragment {
                 new Response.Listener<NetworkResponse>(){
                     @Override
                     public void onResponse(NetworkResponse response) {
+
                         Log.e(TAG,"afaeftagsbillvalue"+response);
                         Log.e(TAG,"afaeftagsbillvalue"+response);
 
@@ -768,6 +769,8 @@ public class SellersettingFragment extends Fragment {
                 Log.e(TAG,"afaeftagsparams"+params);
                 return params;
             }
+
+
             @Override
             protected Map<String, DataPart> getByteData() {
                 Map<String, DataPart> params = new HashMap<>();

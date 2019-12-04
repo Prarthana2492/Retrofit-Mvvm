@@ -1,5 +1,7 @@
 package com.FarmPe.Farmer.Fragment;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,6 +19,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -63,12 +66,13 @@ public class ChangePassword_Fragment extends Fragment {
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
 
 
-
         back_feed = view.findViewById(R.id.back_feed);
         verfiybtn=view.findViewById(R.id.verfiybtn);
         mob_no=view.findViewById(R.id.mob_no);
         new_password=view.findViewById(R.id.new_password);
         main_layout=view.findViewById(R.id.main_layout);
+
+        setupUI(main_layout);
 
 
     sessionManager = new SessionManager(getActivity());
@@ -142,10 +146,6 @@ public class ChangePassword_Fragment extends Fragment {
         });
 
 
-
-
-
-
         mob_no.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -153,6 +153,8 @@ public class ChangePassword_Fragment extends Fragment {
                 return false;
             }
         });
+
+
         new_password.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -263,4 +265,56 @@ public class ChangePassword_Fragment extends Fragment {
         l2.setBackgroundResource(R.drawable.request_price_white_border);
 
     }
+
+
+
+
+
+    public void setupUI(View view) {
+
+
+        if(!(view instanceof EditText)) {
+
+            view.setOnTouchListener(new View.OnTouchListener() {
+
+                public boolean onTouch(View v, MotionEvent event) {
+                    hideSoftKeyboard(getActivity());
+                    return false;
+                }
+
+            });
+        }
+
+
+        if (view instanceof ViewGroup) {
+
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+
+                View innerView = ((ViewGroup) view).getChildAt(i);
+
+                setupUI(innerView);
+            }
+        }
+    }
+
+    public static void hideSoftKeyboard(Activity activity) {
+
+
+        InputMethodManager inputManager = (InputMethodManager)
+                activity.getSystemService(
+                        Context.INPUT_METHOD_SERVICE);
+        View focusedView = activity.getCurrentFocus();
+
+        if (focusedView != null) {
+
+            try{
+                assert inputManager != null;
+                inputManager.hideSoftInputFromWindow(focusedView.getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
+            }catch(AssertionError e){
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

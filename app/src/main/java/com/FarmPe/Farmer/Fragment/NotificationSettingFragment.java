@@ -25,6 +25,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class NotificationSettingFragment extends Fragment {
 
     public static List<FarmsImageBean> newOrderBeansList = new ArrayList<>();
@@ -41,6 +42,7 @@ public class NotificationSettingFragment extends Fragment {
         return fragment;
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.noti_setting_layout, container, false);
@@ -54,18 +56,20 @@ public class NotificationSettingFragment extends Fragment {
         accountinfo2=view.findViewById(R.id.actninfo2);
         accountinfo3=view.findViewById(R.id.actninfo3);
         notificatn_set=view.findViewById(R.id.toolbar_title);
-
-
-
         sessionManager = new SessionManager(getActivity());
+
+
 
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
+
+
 
 
         view.setFocusableInTouchMode(true);
@@ -75,7 +79,9 @@ public class NotificationSettingFragment extends Fragment {
 
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
+
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
@@ -87,13 +93,17 @@ public class NotificationSettingFragment extends Fragment {
         });
 
 
+
         try {
+
             lngObject = new JSONObject(sessionManager.getRegId("language"));
             notificatn_set.setText(lngObject.getString("NotificationSetting"));
             accountinfo.setText(lngObject.getString("AccountInfo"));
             accountinfo1.setText(lngObject.getString("AccountInfo"));
             accountinfo2.setText(lngObject.getString("AccountInfo"));
             accountinfo3.setText(lngObject.getString("AccountInfo"));
+
+
 
         } catch (JSONException e) {
             e.printStackTrace();
