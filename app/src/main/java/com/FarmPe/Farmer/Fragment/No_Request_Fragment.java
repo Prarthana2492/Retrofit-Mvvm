@@ -42,7 +42,6 @@ public class No_Request_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.no_requst_new, container, false);
         Status_bar_change_singleton.getInstance().color_change(getActivity());
         HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
-
         make_request = view.findViewById(R.id.make_requesttttt);
         back_feed1 = view.findViewById(R.id.back_feed1);
         b_arrow=view.findViewById(R.id.b_arrow);
@@ -54,16 +53,14 @@ public class No_Request_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
               //  b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
-                HomeMenuFragment.onBack_status = "no_request";
 
+                HomeMenuFragment.onBack_status = "no_request";
                 selectedFragment = Home_Menu_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.commit();
-
             }
         });
-
 
 
         view.setFocusableInTouchMode(true);
@@ -73,7 +70,9 @@ public class No_Request_Fragment extends Fragment {
 
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
+
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+
                     HomeMenuFragment.onBack_status = "no_request";
                     selectedFragment = Home_Menu_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -82,7 +81,10 @@ public class No_Request_Fragment extends Fragment {
 
                     return true;
                 }
+
+
                 return false;
+
             }
         });
 
@@ -91,6 +93,7 @@ public class No_Request_Fragment extends Fragment {
         make_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
                 AddFirstAdapter.looinkgId = null;
                 Bundle bundle = new Bundle();

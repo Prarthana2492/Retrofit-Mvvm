@@ -39,9 +39,11 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
     Fragment selectedFragment;
     JSONObject lngObject;
     public LinearLayout linearLayout;
-    public static String first,looking_forId,model_id,timeline,looking_for,address,location_det;
+    public static String first,looking_forId,model_id,timeline,looking_for,address,id;
     SessionManager session;;
     public static CardView cardView;
+
+
 
     public FarmsImageAdapter(Activity activity, List<FarmsImageBean> moviesList) {
         this.productList = moviesList;
@@ -52,16 +54,18 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+
         public ImageView image,image_looking,edit;
-        public TextView prod_price,prod_name,duration,farmer_name,location,edit_looking,selectt,preview_model;
+        public TextView looking_fr_details,item_model_name,duration,farmer_name,location,edit_looking,selectt,preview_model;
         public  LinearLayout linear_looking_main;
+
 
 
         public MyViewHolder(View view) {
             super(view);
 
-            prod_price=view.findViewById(R.id.prod_price);
-            prod_name=view.findViewById(R.id.prod_name);
+            looking_fr_details=view.findViewById(R.id.looking_fr_details);
+            item_model_name=view.findViewById(R.id.item_model_name);
             linear_looking_main=view.findViewById(R.id.linear_looking_main);
             image_looking=view.findViewById(R.id.image_looking);
             edit=view.findViewById(R.id.edit);
@@ -85,35 +89,31 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
         final FarmsImageBean products = productList.get(position);
 
 
+        System.out.println("dhfuifuisah" + products.getId());
         holder.selectt.setVisibility(View.GONE);
+
 
         try {
 
-            holder.prod_price.setText(products.getProd_price());
-            holder.prod_name.setText(products.getModelname() + " " + products.getHp());
-
-            model_id = products.getModelname();
-            timeline = products.getDuration();
-            address = products.getLocation();
+            holder.looking_fr_details.setText(products.getLooking_fordetails());
+            holder.item_model_name.setText(products.getModelname() + " " + products.getHorse_power());
 
 
         }catch (Exception e){
+            e.printStackTrace();
 
         }
-
-
-
-
-     System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"+products.getImage());
 
         holder.edit_looking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-//                location_det= products.getLocation_details();
-//                looking_forId=products.getId();
 
-
+                model_id = products.getModelid();
+                id = products.getId();
+                address = products.getLocation();
+                looking_forId = products.getLookingfordetails_id();
+                System.out.println("dhfuifuisah" + products.getId());
                 selectedFragment = Edit_LookingFor_Fragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
@@ -123,9 +123,12 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
         });
 
 
+
         holder.preview_model.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 Bundle bundle = new Bundle();
                 bundle.putString("status","lookng_for");
                 selectedFragment = Preview_Edit_Looking_Fragment.newInstance();
@@ -140,7 +143,8 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
 
 
         try {
-            Glide.with(activity).load(products.getImage())
+
+            Glide.with(activity).load(products.getModel_image())
                     //  Glide.with(activity).load(R.drawable.tractor_sonalika)
 
                     .thumbnail(0.5f)
@@ -148,14 +152,15 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .centerCrop()
                     .into(holder.image_looking);
+
         } catch (
                 Exception e) {
-            e.printStackTrace();
+             e.printStackTrace();
         }
 
 
-
         try {
+
         DisplayMetrics displayMetrics = new DisplayMetrics();
         activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int width_px = Resources.getSystem().getDisplayMetrics().widthPixels;
@@ -164,25 +169,27 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
         System.out.println("height&Width"+width_px+","+height_px);
 
 
+
         LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(width_px,height_set);
             holder.linear_looking_main.setLayoutParams(parms);
 
-        } catch (
-                Exception e) {
-            e.printStackTrace();
-        }
 
-
+                  } catch (
+                    Exception e) {
+                   e.printStackTrace();
+                 }
 
 
         try {
+
             lngObject = new JSONObject(session.getRegId("language"));
+
            // holder.connect.setText(lngObject.getString("connect"));
 
-
-        } catch (JSONException e) {
-            e.printStackTrace();
+             } catch (JSONException e) {
+              e.printStackTrace();
         }
+
     }
 
 

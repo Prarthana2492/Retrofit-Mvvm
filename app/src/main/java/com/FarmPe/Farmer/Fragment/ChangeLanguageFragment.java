@@ -98,7 +98,7 @@ public class ChangeLanguageFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                selectedFragment = SellersettingFragment.newInstance();
+                selectedFragment = New_Profile_Setting_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.addToBackStack("setting");

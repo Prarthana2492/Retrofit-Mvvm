@@ -41,17 +41,15 @@ import java.util.ArrayList;
 public class Request_Address_Book_Fragment extends Fragment {
 
     Fragment selectedFragment;
-    TextView name,add_address,mobile_no,street_addrss,landmrk,pincode,add_new_address,select_address_type,filter;
-    EditText doc_number,doc_name;
+    TextView name,add_address,filter;
     private RecyclerView recyclerView;
-    public static TextView address_list;
     LinearLayout back_feed;
     Request_Address_Book_Adapter mAdapter;
     String pickUPFrom;
     SessionManager sessionManager;
-    public static String navigation_all;
-    public static String item_list,address;
+    public static String address;
     public static LinearLayout linearLayout;
+
 
     JSONObject lngObject;
    public static String address_string;
@@ -59,8 +57,8 @@ public class Request_Address_Book_Fragment extends Fragment {
     ArrayList<Add_New_Address_Bean> new_address_beanArrayList = new ArrayList<>();
     Add_New_Address_Bean add_new_address_bean;
     JSONArray get_address_array;
-    LinearLayout back,select_add_address,addnew_linear,add_visible;
-    String Id,ad_list,adrs_are_added;
+    LinearLayout back;
+    String Id;
     ImageView b_arrow;
 
 
@@ -134,9 +132,11 @@ public class Request_Address_Book_Fragment extends Fragment {
         });
 
 
+
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
                 Bundle bundle = new Bundle();
                 bundle.putString("navigation_from",getArguments().getString("back_status"));
@@ -147,9 +147,6 @@ public class Request_Address_Book_Fragment extends Fragment {
                 transaction.commit();
             }
         });
-
-
-
 
 
         mAdapter = new Request_Address_Book_Adapter(new_address_beanArrayList,getActivity());
@@ -165,8 +162,9 @@ public class Request_Address_Book_Fragment extends Fragment {
         return view;
     }
 
-    private void addressbook_list() {
 
+
+    private void addressbook_list() {
 
         try{
             final JSONObject jsonObject = new JSONObject();
@@ -179,14 +177,14 @@ public class Request_Address_Book_Fragment extends Fragment {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("ggggggggggaaaaaaa"+result);
+
                     try{
                         new_address_beanArrayList.clear();
 
-
                         get_address_array = result.getJSONArray("UserAddressDetails");
-                        for(int i=0;i<get_address_array.length();i++){
-                            JSONObject jsonObject1 = get_address_array.getJSONObject(i);
 
+                         for(int i=0;i<get_address_array.length();i++){
+                            JSONObject jsonObject1 = get_address_array.getJSONObject(i);
 
                             add_new_address_bean = new Add_New_Address_Bean(jsonObject1.getString("Name"),jsonObject1.getString("StreeAddress"),jsonObject1.getString("StreeAddress1"),jsonObject1.getString("LandMark"),jsonObject1.getString("City"),jsonObject1.getString("Pincode"),jsonObject1.getString("MobileNo"), jsonObject1.getString("PickUpFrom"),jsonObject1.getString("State"),jsonObject1.getString("District"),jsonObject1.getString("Taluk"),jsonObject1.getString("Hoblie"),jsonObject1.getString("Village"),jsonObject1.getString("Id"),
                                     jsonObject1.getBoolean("IsDefaultAddress"),jsonObject1.getString("StateId"),jsonObject1.getString("DistrictId"),jsonObject1.getString("TalukId"),jsonObject1.getString("VillageId"));
@@ -194,19 +192,14 @@ public class Request_Address_Book_Fragment extends Fragment {
 
                         }
 
-
                         mAdapter.notifyDataSetChanged();
-
-
 
 
                     }catch (Exception e){
                         e.printStackTrace();
                     }
-
                 }
             });
-
 
         }catch (Exception e){
             e.printStackTrace();

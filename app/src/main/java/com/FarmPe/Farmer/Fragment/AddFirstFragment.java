@@ -78,6 +78,7 @@ public class AddFirstFragment extends Fragment {
 
                 if (getArguments().getString("status").equals("setting_request")) {
 
+
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("setting_req", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
@@ -90,7 +91,6 @@ public class AddFirstFragment extends Fragment {
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_menu, selectedFragment);
                     transaction.commit();
-
 
                 }
 
@@ -105,15 +105,13 @@ public class AddFirstFragment extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
-
-
                     if (getArguments().getString("status").equals("setting_request")){
 
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack("setting_req", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 
-                      }else if (getArguments().getString("status").equals("home_request")) {
+                    }else if (getArguments().getString("status").equals("home_request")) {
 
                         HomeMenuFragment.onBack_status = "no_request";
                         selectedFragment = Home_Menu_Fragment.newInstance();
@@ -124,12 +122,11 @@ public class AddFirstFragment extends Fragment {
 
                     }else if (getArguments().getString("status").equals("menu_request")) {
 
-                    HomeMenuFragment.onBack_status = "no_request";
-                    selectedFragment = Home_Menu_Fragment.newInstance();
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.add(R.id.frame_menu, selectedFragment);
-                    transaction.commit();
-
+                        HomeMenuFragment.onBack_status = "no_request";
+                        selectedFragment = Home_Menu_Fragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.add(R.id.frame_menu, selectedFragment);
+                        transaction.commit();
 
                 }
                     return true;
@@ -139,12 +136,12 @@ public class AddFirstFragment extends Fragment {
         });
 
 
-
         AddLookigFor();
         newOrderBeansList.clear();
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 3, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager_farm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
 
 
         return view;
@@ -154,6 +151,7 @@ public class AddFirstFragment extends Fragment {
     private void AddLookigFor() {
 
         try {
+
             newOrderBeansList.clear();
 
             JSONObject userRequestjsonObject = new JSONObject();
@@ -164,25 +162,26 @@ public class AddFirstFragment extends Fragment {
 
             //System.out.println("postObj"+postjsonObject.toString());
 
-
             Login_post.login_posting(getActivity(), Urls.GetLookingForItems,postjsonObject,new VoleyJsonObjectCallback() {
                 @Override
+
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("cropsresult"+result);
                     JSONArray cropsListArray=null;
 
                     try {
                         cropsListArray=result.getJSONArray("LookingForDetailsList");
-                        System.out.println("e     e e ddd"+cropsListArray.length());
-                        for (int i=0;i<cropsListArray.length();i++){
-                            JSONObject jsonObject1=cropsListArray.getJSONObject(i);
+                        System.out.println("eeeddd"+cropsListArray.length());
 
+
+                        for (int i=0;i<cropsListArray.length();i++){
+
+                            JSONObject jsonObject1=cropsListArray.getJSONObject(i);
                             String getPrice=jsonObject1.getString("LookingForDetails");
                             String LookingForDetailsIcon=jsonObject1.getString("LookingForDetailsIcon");
 
                             // String lookingForId=jsonObject1.getString("LookingForId");
                             String lookingForId=jsonObject1.getString("Id");
-
 
                             AddTractorBean crops = new AddTractorBean(LookingForDetailsIcon, getPrice,lookingForId,false);
                             newOrderBeansList.add(crops);
@@ -191,16 +190,19 @@ public class AddFirstFragment extends Fragment {
 
                         farmadapter=new AddFirstAdapter(getActivity(),newOrderBeansList);
                         recyclerView.setAdapter(farmadapter);
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
+
             });
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
-
 
 }

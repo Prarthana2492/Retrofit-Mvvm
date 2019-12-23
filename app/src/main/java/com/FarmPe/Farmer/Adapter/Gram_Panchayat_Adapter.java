@@ -9,20 +9,25 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+
 import com.FarmPe.Farmer.Bean.StateBean;
+
 import com.FarmPe.Farmer.Fragment.Add_New_Address_Fragment;
+import com.FarmPe.Farmer.Fragment.Profile_Add_New_Address_Fragment;
 import com.FarmPe.Farmer.R;
+
 import java.util.List;
 
-public class DistrictAdapter extends RecyclerView.Adapter<DistrictAdapter.MyStateHolder> {
+public class Gram_Panchayat_Adapter extends RecyclerView.Adapter<Gram_Panchayat_Adapter.MyStateHolder> {
     List<StateBean> stateBeans;
     Activity activity;
-    public static String districtid,district_name;
+    public static String gram_panchayat_id;
+    public static String gram_panchayat_name;
 
 
 
-
-    public DistrictAdapter(List<StateBean> stateBeans,Activity activity) {
+    public Gram_Panchayat_Adapter(List<StateBean> stateBeans,Activity activity) {
         this.stateBeans = stateBeans;
         this.activity=activity;
     }
@@ -32,7 +37,6 @@ public class DistrictAdapter extends RecyclerView.Adapter<DistrictAdapter.MyStat
     @Override
     public MyStateHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View stateview=LayoutInflater.from(parent.getContext()).inflate(R.layout.state_name,parent,false);
-
         return new MyStateHolder(stateview);
     }
 
@@ -52,18 +56,22 @@ public class DistrictAdapter extends RecyclerView.Adapter<DistrictAdapter.MyStat
 //Find the currently focused view, so we can grab the correct window token from it.
                 view = activity.getCurrentFocus();
 //If no view currently has focus, create a new one, just so we can grab a window token from it
-                if (view == null) {
+                if (view  == null) {
                     view = new View(activity);
                 }
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
-                districtid=stateBean.getId();
-                district_name=stateBean.getName();
+                gram_panchayat_id=stateBean.getId();
+                gram_panchayat_name=stateBean.getName();
+
+                Profile_Add_New_Address_Fragment.grampanchayath.setText(holder.statename.getText().toString());
+                Profile_Add_New_Address_Fragment .drawer.closeDrawers();
+                // Add_New_Address_Fragment .search.setText("");
 
 
-                Add_New_Address_Fragment.district_txt.setText(holder.statename.getText().toString());
-                Add_New_Address_Fragment.drawer.closeDrawers();
-              //  Add_New_Address_Fragment.grade_dialog.dismiss();
+
+
+
             }
         });
 
@@ -80,12 +88,10 @@ public class DistrictAdapter extends RecyclerView.Adapter<DistrictAdapter.MyStat
         TextView statename;
         LinearLayout state_name_layout;
 
-
         public MyStateHolder(View itemView) {
             super(itemView);
             statename=itemView.findViewById(R.id.state_item);
             state_name_layout=itemView.findViewById(R.id.state_name_layout);
-
 
         }
     }

@@ -3,8 +3,6 @@ package com.FarmPe.Farmer;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-
-import com.google.android.gms.flags.zzc;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -22,9 +20,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     }
 
-
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void sendMyNotification(String message) {
+
 
 //        String stop = "stop";
 //       // registerReceiver(stopReceiver, new IntentFilter(stop));
@@ -47,6 +45,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 //                .setPriority(Notification.PRIORITY_DEFAULT)
 //                .build();
 //        startForeground(0, notification);
+
 
     }
 }

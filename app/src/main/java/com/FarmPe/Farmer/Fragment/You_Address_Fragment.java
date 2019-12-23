@@ -35,13 +35,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
+
 public class You_Address_Fragment extends Fragment {
 
     Fragment selectedFragment;
     TextView name,add_new_address,select_address_type,filter;
 
     private RecyclerView recyclerView;
-
     LinearLayout back_feed;
     You_Address_Adapter mAdapter;
 
@@ -67,7 +67,6 @@ public class You_Address_Fragment extends Fragment {
 
     }
 
-
     @SuppressLint("NewApi")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -89,7 +88,6 @@ public class You_Address_Fragment extends Fragment {
         recyclerView = view.findViewById(R.id.recycler_2);
         //address_list= view.findViewById(R.id.items);
 
-
         toolbar_titletxt = view.findViewById(R.id.toolbar_title);
         filter = view.findViewById(R.id.filter_text);
         add_visible = view.findViewById(R.id.layoutt_lnr);
@@ -101,7 +99,6 @@ public class You_Address_Fragment extends Fragment {
         add_adrs.setText("Add Address");
         sessionManager = new SessionManager(getActivity());
         add_visible.setVisibility(View.GONE);
-
 
 
 
@@ -204,11 +201,16 @@ public class You_Address_Fragment extends Fragment {
                     ware_house.setText(lngObject.getString("Warehouse"));
                     farm.setText(lngObject.getString("Farm"));
                     others.setText(lngObject.getString("Others"));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+
+
+                   } catch (JSONException e) {
+                     e.printStackTrace();
+                    }
+
 
                 LinearLayout image = (LinearLayout) dialog.findViewById(R.id.close_popup);
+
+
                 image.setOnClickListener(new View.OnClickListener() {
                     @Override
 
@@ -218,17 +220,16 @@ public class You_Address_Fragment extends Fragment {
                 });
 
 
-
                 home.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
 
                         select_address_type.setText(home.getText().toString());
                         gettingAddress("Home");
                         dialog.dismiss();
                     }
                 });
-
 
 
                 ware_house.setOnClickListener(new View.OnClickListener() {
@@ -246,6 +247,7 @@ public class You_Address_Fragment extends Fragment {
                 farm.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
 
                         select_address_type.setText(farm.getText().toString());
                         dialog.dismiss();
@@ -277,6 +279,7 @@ public class You_Address_Fragment extends Fragment {
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 final Dialog dialog = new Dialog(getActivity());
                 dialog.setContentView(R.layout.layout_filterpopup);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -331,7 +334,6 @@ public class You_Address_Fragment extends Fragment {
            // select_address_type.setText(lngObject.getString("Home"));
             //ad_list=(lngObject.getString("addressesareaddedin"));
 
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -347,6 +349,8 @@ public class You_Address_Fragment extends Fragment {
             jsonObject.put("UserId",sessionManager.getRegId("userId"));
             jsonObject.put("PickUpFrom",pickUPFrom);
             System.out.println("aaaaaaaaaaaaadddd" + sessionManager.getRegId("userId"));
+
+
 
             Crop_Post.crop_posting(getActivity(), Urls.Get_New_Address, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
@@ -367,12 +371,14 @@ public class You_Address_Fragment extends Fragment {
 
                         }
 
+
                         if(new_address_beanArrayList.size()==0){
 
                             add_visible.setVisibility(View.VISIBLE);
                             recyclerView.setVisibility(View.GONE);
                             addnew_linear.setVisibility(View.GONE);
                             select_add_address.setVisibility(View.GONE);
+
 
                         }else{
 

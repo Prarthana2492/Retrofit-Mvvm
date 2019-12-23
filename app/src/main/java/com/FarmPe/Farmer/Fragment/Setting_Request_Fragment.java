@@ -148,11 +148,6 @@ public class Setting_Request_Fragment extends Fragment {
             }
         });
 
-
-
-
-
-
         return view;
     }
 

@@ -69,8 +69,10 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
     SelectLanguageAdapter2 mAdapter;
     LinearLayout back_feed;
 
+
     public static TextInputLayout text_pass;
     public static EditText text_mobile;
+
 
 
     ConnectivityReceiver connectivityReceiver;
@@ -81,6 +83,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
         unregisterReceiver(connectivityReceiver);
         super.onStop();
     }
+
 
     LinearLayout coordinatorLayout;
     public static CheckBox remember_me;
@@ -109,7 +112,6 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
         int color=0;
 
         if (isConnected) {
-
 
             if(connectivity_check) {
                 message = "Good! Connected to Internet";
@@ -156,7 +158,6 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
         }
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -184,26 +185,27 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
         text_pass = findViewById(R.id.text_pass);
         back_feed = findViewById(R.id.back_feed);
 
-
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
         log_in = findViewById(R.id.login_button);
 
-        forgot_pass =findViewById(R.id.forgot_pass_login);
 
+        forgot_pass =findViewById(R.id.forgot_pass_login);
         mobile_no = findViewById(R.id.mob_no);
        // new_farmpe = findViewById(R.id.new_to_fp);
 
-        pass = findViewById(R.id.pass);
+         pass = findViewById(R.id.pass);
 
-        coordinatorLayout =findViewById(R.id.main_layou1);
+         coordinatorLayout =findViewById(R.id.main_layou1);
        // remember_me = findViewById(R.id.remember_me);
-        loc_text="+91";
-        setupUI(coordinatorLayout);
-        myDb = new DatabaseHelper(this);
-        edittext_move(mobile_no, pass);
-       // remember_me.setChecked(true);
+         loc_text="+91";
 
+
+         setupUI(coordinatorLayout);
+         myDb = new DatabaseHelper(this);
+         edittext_move(mobile_no, pass);
+
+       // remember_me.setChecked(true);
 
 
         forgot_pass.setTypeface(ResourcesCompat.getFont(getApplicationContext(), R.font.segoeui));
@@ -232,11 +234,13 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
         System.out.println("llllllllllllbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" + sessionManager.getRegId("language"));
 
         try {
+
             if ((sessionManager.getRegId("language")).equals("")) {
+
                 getLang(1);
 
-            } else {
 
+            } else {
 
                 lngObject = new JSONObject(sessionManager.getRegId("language"));
 
@@ -249,8 +253,8 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                // log_in.setText(lngObject.getString("Login"));
                // welcome_back.setText(lngObject.getString("Login"));
 
-                newfarmpelng = lngObject.getString("NewtoFarmPe");
-                signuplng = lngObject.getString("Register");
+                   newfarmpelng = lngObject.getString("NewtoFarmPe");
+                   signuplng = lngObject.getString("Register");
 
 //                new_farmpe.setText(newfarmpelng + "?");
                   createaccount.setText(" " + signuplng.toUpperCase());
@@ -261,15 +265,19 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                   toast_internet = lngObject.getString("GoodConnectedtoInternet");
                   toast_nointernet = lngObject.getString("NoInternetConnection");
 
-
         }
+
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
+
+
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent=new Intent(LoginActivity_new.this,ActivitySelectLang.class);
                 startActivity(intent);
                 finish();
@@ -280,6 +288,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
         createaccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(LoginActivity_new.this, SignUpActivity.class);
                 startActivity(intent);
             }
@@ -290,6 +299,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
         forgot_pass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(LoginActivity_new.this,ForgotPasswordNew.class);
                 startActivity(intent);
             }
@@ -339,7 +349,6 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
 
                 try{
-
 
                     JSONObject jsonObject = new JSONObject();
 
@@ -406,7 +415,6 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                 System.out.println("aaaaaaaaaaa" +sessionManager.getRegId("language_name"));
 
 
-
 //                if (change_lang.getText().toString().equals("English")){
 //                    isEng = true;
 //                    Log.d("GGGGGGGG", "Here: "+LoginActivity_new.isEng);
@@ -417,9 +425,11 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 //                }
 
 
+
                 mobile_string=mobile_no.getText().toString();
                 mob_no =loc_text+ mobile_no.getText().toString();
                 password = pass.getText().toString();
+
 
                 if (mobile_string.equals("")) {
                     mobile_no.requestFocus();
@@ -459,7 +469,6 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                     }
 
                     snackbar.show();
-
 
 
 
@@ -520,8 +529,8 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                                             System.out.println("jdhyusulogin"+status);
                                             Intent intent = new Intent(LoginActivity_new.this, HomePage_With_Bottom_Navigation.class);
                                             startActivity(intent);
-                                            sessionManager.createLoginSession(password,mob_no);
 
+                                            sessionManager.createLoginSession(password,mob_no);
                                             sessionManager.save_name(userObject.getString("FullName"),userObject.getString("PhoneNo"),userObject.getString("ProfilePic"));
                                             sessionManager.saveUserId(userObject.getString("Id"));
 
@@ -575,8 +584,6 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                                         }
 
                                         snackbar.show();
-                                        snackbar.show();
-
 
                                     }
 
@@ -643,6 +650,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                         // log_in.setText(log_login);
                         text_mobile.setHint(log_mobile);
                         new_farmpe.setText(log_farmpe + "?");
+
 
                         forgot_pass.setText(log_forgot_passwrd + "?");
                         text_pass.setHint(log_password);

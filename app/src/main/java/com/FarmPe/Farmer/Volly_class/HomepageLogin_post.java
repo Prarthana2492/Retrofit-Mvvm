@@ -17,11 +17,11 @@ import org.json.JSONObject;
 import java.util.concurrent.TimeUnit;
 
 
-
-
 public class HomepageLogin_post {
+
     public static StringRequest stringRequest;
     public static ProgressBar progressBar;
+
 
     public static void login_posting(final Activity activity, String url, final JSONObject jsonObject, final VoleyJsonObjectCallback callback){
 
@@ -39,7 +39,6 @@ public class HomepageLogin_post {
                     public void onResponse(JSONObject jsonObject) {
                       //  progressDialog.cancel();
 
-
                         try {
                             callback.onSuccessResponse(jsonObject);
 
@@ -49,6 +48,8 @@ public class HomepageLogin_post {
                         }
                     }
                 },
+
+
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {

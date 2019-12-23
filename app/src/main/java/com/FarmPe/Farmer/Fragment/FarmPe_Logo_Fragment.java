@@ -103,7 +103,6 @@ public class FarmPe_Logo_Fragment extends Fragment {
         return fragment;
     }
 
-
     @Override
     public void onDestroy() {
         timer.cancel();

@@ -186,7 +186,6 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
 //            holder.item.setBackgroundResource(R.drawable.border_transperent);
 //        }
 
-
     }
 
     @Override

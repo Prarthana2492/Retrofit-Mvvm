@@ -70,6 +70,7 @@ public class Addbhimfragment extends Fragment{
                 .setAmount("1.00")
                 .build();*/
        // easyUpiPayment.setPaymentStatusListener(this);
+
         System.out.println("fasfasfa"+upiid.getText().toString().trim());
         //Proceed for Payment on click
 

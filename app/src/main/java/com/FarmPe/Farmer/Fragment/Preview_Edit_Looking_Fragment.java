@@ -16,8 +16,16 @@ import android.widget.TextView;
 
 import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
+import com.FarmPe.Farmer.Bean.BankBean;
 import com.FarmPe.Farmer.Bean.FarmsImageBean;
 import com.FarmPe.Farmer.R;
+import com.FarmPe.Farmer.SessionManager;
+import com.FarmPe.Farmer.Urls;
+import com.FarmPe.Farmer.Volly_class.Crop_Post;
+import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +40,9 @@ public class Preview_Edit_Looking_Fragment extends Fragment {
     LinearLayout back_feed;
     Fragment selectedFragment = null;
     ImageView imageView,image_looking,image_loofking,image_lgooking,image_loovking;
-    TextView textView,toolbar_title,preview;
+    TextView brand_name,toolbar_title,preview,purchase_plan,finance_req,insurance;
+    SessionManager sessionManager;
+
 
 
 
@@ -40,6 +50,7 @@ public class Preview_Edit_Looking_Fragment extends Fragment {
         Preview_Edit_Looking_Fragment fragment = new Preview_Edit_Looking_Fragment();
         return fragment;
     }
+
 
      @Override
      public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -57,6 +68,12 @@ public class Preview_Edit_Looking_Fragment extends Fragment {
          image_loovking = view.findViewById(R.id.image_loovking);
 
 
+         brand_name = view.findViewById(R.id.brand_name);
+         purchase_plan = view.findViewById(R.id.purchase_plan);
+         finance_req = view.findViewById(R.id.finance_req);
+         insurance = view.findViewById(R.id.insurance);
+
+
          imageView.setVisibility(View.GONE);
          image_looking.setVisibility(View.GONE);
          image_loofking.setVisibility(View.GONE);
@@ -64,12 +81,11 @@ public class Preview_Edit_Looking_Fragment extends Fragment {
          image_loovking.setVisibility(View.GONE);
 
 
-
-         preview = view.findViewById(R.id.preview);
-         preview.setVisibility(View.GONE);
-         back_feed = view.findViewById(R.id.back_feed);
-         toolbar_title = view.findViewById(R.id.toolbar_title);
-         toolbar_title.setText("Preview");
+          preview.setVisibility(View.GONE);
+          back_feed = view.findViewById(R.id.back_feed);
+          toolbar_title = view.findViewById(R.id.toolbar_title);
+          toolbar_title.setText("Preview");
+          sessionManager = new SessionManager(getActivity());
 
 
 
@@ -81,6 +97,7 @@ public class Preview_Edit_Looking_Fragment extends Fragment {
 
              @Override
              public boolean onKey(View v, int keyCode, KeyEvent event) {
+
                  if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
                      if(getArguments().getString("status").equals("lookng_for")){
@@ -93,11 +110,11 @@ public class Preview_Edit_Looking_Fragment extends Fragment {
 
                          FragmentManager fm = getActivity().getSupportFragmentManager();
                          fm.popBackStack("editpage", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
                      }
 
                      return true;
                  }
+
                  return false;
              }
          });
@@ -106,6 +123,7 @@ public class Preview_Edit_Looking_Fragment extends Fragment {
 
          back_feed.setOnClickListener(new View.OnClickListener() {
              @Override
+
              public void onClick(View v) {
 
                  if(getArguments().getString("status").equals("lookng_for")){

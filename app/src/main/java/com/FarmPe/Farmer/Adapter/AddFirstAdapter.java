@@ -26,41 +26,39 @@ import com.FarmPe.Farmer.R;
 import java.util.List;
 
 public class AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyViewHolder>  {
+
     private List<AddTractorBean> productList;
     Activity activity;
     Fragment selectedFragment;
-
     public LinearLayout linearLayout;
-    public static LinearLayout next_arw;
     public static String first,looinkgId,purchase_tractor;
     public static CardView cardView;
+
+
+
 
     public AddFirstAdapter(Activity activity, List<AddTractorBean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
 
-
     }
-
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public ImageView image;
-        public LinearLayout item;
-        public TextView prod_price,prod_name,duration,farmer_name,location,connect;
+         public ImageView image;
+         public LinearLayout item;
+         public TextView prod_price,prod_name,duration,location;
 
 
 
+         public MyViewHolder(View view) {
 
-        public MyViewHolder(View view) {
-            super(view);
-
-            prod_price=view.findViewById(R.id.prod_price);
-            image=view.findViewById(R.id.prod_img);
-            item=view.findViewById(R.id.item);
-
+              super(view);
+              prod_price = view.findViewById(R.id.prod_price);
+              image = view.findViewById(R.id.prod_img);
+              item = view.findViewById(R.id.item);
         }
-
     }
+
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -70,10 +68,13 @@ public class AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyView
 
     }
 
+
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, final int position) {
+     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final AddTractorBean products = productList.get(position);
        // looinkgId=products.getId();
+
+
 
         holder.prod_price.setText(products.getProd_name());
 
@@ -85,6 +86,7 @@ public class AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyView
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.image);
+
 
 //        if (productList.get(position).isSelected()){
 //            holder.item.setBackgroundResource(R.drawable.grey_background_drawable);
@@ -98,19 +100,21 @@ public class AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyView
             @Override
             public void onClick(View v) {
 
-                AddFirstFragment.tracter_title = holder.prod_price.getText().toString().toLowerCase().replace(" price","");
-                looinkgId=products.getId();
+                 AddFirstFragment.tracter_title = holder.prod_price.getText().toString().toLowerCase().replace(" price","");
+                 looinkgId=products.getId();
 
                 //  AddBrandAdapter.brandId = null;
-                Bundle bundle = new Bundle();
-                bundle.putString("request_status",looinkgId);
-                bundle.putString("status_home","HOME_REQ_PRICE");
-                selectedFragment = AddBrandFragment.newInstance();
-                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_menu, selectedFragment);
-                selectedFragment.setArguments(bundle);
-                transaction.addToBackStack("req_price");
-                transaction.commit();
+
+                 Bundle bundle = new Bundle();
+                 bundle.putString("request_status",looinkgId);
+                 bundle.putString("status_home","HOME_REQ_PRICE");
+                 selectedFragment = AddBrandFragment.newInstance();
+                 FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+                 transaction.replace(R.id.frame_menu, selectedFragment);
+                 selectedFragment.setArguments(bundle);
+                 transaction.addToBackStack("req_price");
+                 transaction.commit();
+
 
 //                for (int i = 0; i < productList.size(); i++) {
 //                    productList.get(i).setSelected(false);
@@ -118,13 +122,10 @@ public class AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyView
 //                productList.get(position).setSelected(true);
 //                notifyDataSetChanged();
 
-            }
+             }
         });
-
-
-
-
     }
+
 
     @Override
     public int getItemCount() {

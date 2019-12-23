@@ -19,6 +19,8 @@ public class Add_New_Address_Bean {
     String add_state_id;
     String add_district_id;
 
+
+
     public String getAdd_state_id() {
         return add_state_id;
     }
@@ -129,7 +131,6 @@ public class Add_New_Address_Bean {
     }
 
 
-
     public Boolean getDefault_addr() {
         return default_addr;
     }
@@ -137,7 +138,6 @@ public class Add_New_Address_Bean {
     public void setDefault_addr(Boolean default_addr) {
         this.default_addr = default_addr;
     }
-
 
     public String getAdd_id() {
         return add_id;
@@ -210,6 +210,7 @@ public class Add_New_Address_Bean {
         this.add_district_id = add_district_id;
         this.add_tehsil_id = add_tehsil_id;
         this.add_hobli_id = add_hobli_id;
+
 
     }
 }

@@ -110,8 +110,8 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
         if(products.getAdd_hobli().equals("")){
             System.out.println("hsfhhfdfhjhjhjhjhjhjhjhjhjhjhjhjhjhj");
 
-            holder.colony.setText(products.getAdd_district()+","+products.getAdd_taluk());
 
+            holder.colony.setText(products.getAdd_district()+","+products.getAdd_taluk());
 
         }else{
 
@@ -121,15 +121,17 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
 
         if(products.getAdd_pincode().equals("")){
 
+
             holder.area_district.setText(products.getAdd_state()+ " , " + "Phone No - " + products.getAdd_mobile());
 
         }else{
+
 
             holder.area_district.setText(products.getAdd_state()+ " - " + products.getAdd_pincode() + " , " + "Phone No - " + products.getAdd_mobile());
 
         }
 
-      //  holder.mobile_no.setText("Phone No - " + products.getAdd_mobile());
+         //  holder.mobile_no.setText("Phone No - " + products.getAdd_mobile());
         // holder.landmrk.setText(products.getAdd_landmark());
 
 
@@ -152,7 +154,6 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
 
                 } else {
 
-
                     Bundle bundle = new Bundle();
                     bundle.putString("request_navigation", "ADDRESS_BOOK");
                     bundle.putString("add_id", products.getAdd_id());
@@ -162,7 +163,6 @@ public class Request_Address_Book_Adapter extends RecyclerView.Adapter<Request_A
                     transaction.addToBackStack("address_book");
                     selectedFragment.setArguments(bundle);
                     transaction.commit();
-
 
                 }
             }

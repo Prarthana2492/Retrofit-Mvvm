@@ -43,6 +43,7 @@ public class AaSettingFragment extends Fragment {
     SessionManager sessionManager;
     JSONObject lngObject;
     boolean newState=false;
+
     public static AaSettingFragment newInstance() {
         AaSettingFragment fragment = new AaSettingFragment();
         return fragment;
@@ -93,6 +94,7 @@ public class AaSettingFragment extends Fragment {
                 HomePage_With_Bottom_Navigation.profile_icon.setImageResource(R.drawable.ic_user_home);
                 HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
                 HomePage_With_Bottom_Navigation.profile_text.setTextColor(Color.parseColor("#595959"));
+
                 selectedFragment = Home_Menu_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);

@@ -44,15 +44,18 @@ public class Crop_Post {
        // progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         System.out.println("ggggggggggggggggggggBookingAppointmentObj" + postObject);
 
+
         JsonObjectRequest jobReq = new JsonObjectRequest(Request.Method.POST, url, postObject,
                 new Response.Listener<JSONObject>() {
                     @Override
 
                     public void onResponse(JSONObject jsonObject) {
+
                         progressDialog.cancel();
 
                         try {
                             System.out.println("jsonobjectAppointments" + jsonObject);
+
                             callback.onSuccessResponse(jsonObject);
 
 
@@ -68,6 +71,7 @@ public class Crop_Post {
 
                     public void onErrorResponse(VolleyError volleyError) {
                         System.out.println("jsonobjectAppointments" + volleyError.getMessage());
+
                         progressDialog.cancel();
                         //  volleyError.printStackTrace();
                     }
@@ -75,15 +79,20 @@ public class Crop_Post {
 
 
 
+
         jobReq.setRetryPolicy(new DefaultRetryPolicy(
                 60000,
+
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
 
 
         VolleySingletonQuee.getInstance(activity).addToRequestQueue(jobReq);
 //            stringRequest.setRetryPolicy(new DefaultRetryPolicy(40 * 1000,0,
 //                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+
     }
 
 

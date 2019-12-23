@@ -101,7 +101,6 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
 
     private static final String TAG = LandingPageActivity.class.getSimpleName();
 
-
     public static boolean connectivity_check;
     ConnectivityReceiver connectivityReceiver;
 

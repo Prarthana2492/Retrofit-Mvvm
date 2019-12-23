@@ -10,12 +10,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.FarmPe.Farmer.Fragment.AaSettingFragment;
+
 import com.FarmPe.Farmer.Fragment.AskNandi;
 import com.FarmPe.Farmer.Fragment.Home_Menu_Fragment;
 import com.FarmPe.Farmer.Fragment.LookingForFragment;
 import com.FarmPe.Farmer.Fragment.NotificationFragment;
-import com.FarmPe.Farmer.Fragment.SellersettingFragment;
+import com.FarmPe.Farmer.Fragment.New_Profile_Setting_Fragment;
 import com.FarmPe.Farmer.R;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 
@@ -38,11 +38,11 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
 
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page_withbottom_navigation);
+
         Intent intent = getIntent();
 
 
@@ -69,16 +69,17 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
          noti_text = findViewById(R.id.noti_text);
          profile_text = findViewById(R.id.profile_text);
          profile_icon = findViewById(R.id.profile_icon);
-        nandi_text = findViewById(R.id.nandi_text);
-        nandi_icon = findViewById(R.id.nandi_icon);
+         nandi_text = findViewById(R.id.nandi_text);
+         nandi_icon = findViewById(R.id.nandi_icon);
 
 
-        home_icon.setImageResource(R.drawable.ic_home_green);
-        text_home.setTextColor(Color.parseColor("#18a360"));
+            home_icon.setImageResource(R.drawable.ic_home_green);
+            text_home.setTextColor(Color.parseColor("#18a360"));
 
 
 
             linear_bottom.setVisibility(View.VISIBLE);
+
 
 
           linear_home.setOnClickListener(new View.OnClickListener() {
@@ -91,17 +92,17 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
                 profile_text.setTextColor(Color.parseColor("#595959"));
                 nandi_text.setTextColor(Color.parseColor("#595959"));
 
-
                 home_icon.setImageResource(R.drawable.ic_home_green);
                 mail_icon.setImageResource(R.drawable.ic_mailbox);
                 noti_icon.setImageResource(R.drawable.ic_notification_home);
                 profile_icon.setImageResource(R.drawable.ic_user_home);
                 nandi_icon.setImageResource(R.drawable.ic_agronomy);
 
-                        selectedFragment = Home_Menu_Fragment.newInstance();
-                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_menu, selectedFragment);
-                        transaction.commit();
+
+                selectedFragment = Home_Menu_Fragment.newInstance();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_menu, selectedFragment);
+                transaction.commit();
 
             }
         });
@@ -110,6 +111,7 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
         linear_mailbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
                 mail_text.setTextColor(Color.parseColor("#18a360"));
                 text_home.setTextColor(Color.parseColor("#595959"));
@@ -182,8 +184,7 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
                 mail_icon.setImageResource(R.drawable.ic_mailbox);
                 nandi_icon.setImageResource(R.drawable.ic_agronomy);
 
-
-                selectedFragment = SellersettingFragment.newInstance();
+                selectedFragment = New_Profile_Setting_Fragment.newInstance();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.addToBackStack("settingglist");
@@ -193,9 +194,11 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
         });
 
 
+
         ask_nandi_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
                 nandi_text.setTextColor(Color.parseColor("#18a360"));
                 profile_text.setTextColor(Color.parseColor("#595959"));
@@ -203,11 +206,13 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
                 text_home.setTextColor(Color.parseColor("#595959"));
                 noti_text.setTextColor(Color.parseColor("#595959"));
 
+
                 nandi_icon.setImageResource(R.drawable.ic_agronomy_green);
                 profile_icon.setImageResource(R.drawable.ic_user_home);
                 home_icon.setImageResource(R.drawable.ic_home);
                 noti_icon.setImageResource(R.drawable.ic_notification_home);
                 mail_icon.setImageResource(R.drawable.ic_mailbox);
+
 
                 selectedFragment = AskNandi.newInstance();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -299,7 +304,6 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
 //                return true;
 //            }
 //        }
-
 
 
 

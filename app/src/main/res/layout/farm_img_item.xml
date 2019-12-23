@@ -101,7 +101,7 @@
                                 />-->
 
                 <TextView
-                    android:id="@+id/prod_price"
+                    android:id="@+id/looking_fr_details"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="10"
@@ -118,7 +118,7 @@
 
 
                 <TextView
-                    android:id="@+id/prod_name"
+                    android:id="@+id/item_model_name"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="10"

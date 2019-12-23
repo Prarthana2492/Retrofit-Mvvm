@@ -44,6 +44,8 @@ public class FragmentA extends Fragment {
     ContactVO contactVO;
     Cursor cursor;
     ProgressDialog progressdialog;
+
+
     public static FragmentA newInstance() {
         FragmentA fragment = new FragmentA();
         return fragment;

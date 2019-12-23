@@ -10,45 +10,107 @@
     android:weightSum="100"
     >
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
-        android:background="@color/green"
-        android:gravity="center_vertical">
+        android:layout_weight="100"
+        android:fillViewport="true">
+
 
         <LinearLayout
-            android:id="@+id/back_feed"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/ripple_effect"
-            android:gravity="center">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
 
 
-            <ImageView
-                android:layout_width="20dp"
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_go_back_left_arrow_"
-
-                />
-
-        </LinearLayout>
+                android:padding="8dp"
+                android:orientation="horizontal"
+                android:background="@color/menu_green"
+                tools:ignore="MissingConstraints">
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add Address"
-            android:textSize="20dp"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            android:layout_marginHorizontal="10dp"
-            android:id="@+id/toolbar_title" />
+
+                <LinearLayout
+                    android:id="@+id/back_feed"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_filter_state"
+                    android:gravity="center">
 
 
-    </LinearLayout>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_go_back_left_arrow_"
+
+                        />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Address"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    />
+
+
+            </LinearLayout>
+
+
+
+
+            <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="10"-->
+        <!--android:background="@color/menu_green"-->
+        <!--android:gravity="center_vertical">-->
+
+        <!--<LinearLayout-->
+            <!--android:id="@+id/back_feed"-->
+            <!--android:layout_width="40dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:background="@drawable/ripple_effect"-->
+            <!--android:gravity="center">-->
+
+
+            <!--<ImageView-->
+                <!--android:layout_width="20dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_vertical"-->
+                <!--android:src="@drawable/ic_go_back_left_arrow_"-->
+
+                <!--/>-->
+
+        <!--</LinearLayout>-->
+
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Add Address"-->
+            <!--android:textSize="20dp"-->
+            <!--android:textColor="#fff"-->
+            <!--android:textStyle="bold"-->
+            <!--android:layout_marginHorizontal="10dp"-->
+            <!--android:id="@+id/toolbar_title" />-->
+
+
+    <!--</LinearLayout>-->
 
 
     <RadioGroup
@@ -56,7 +118,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="20"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp">
 
 
@@ -70,7 +132,6 @@
         >
 
          </RadioButton>
-
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,11 +141,6 @@
            >
         </RadioButton>
     </RadioGroup>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="90"
-        android:fillViewport="true">
 
 
     <LinearLayout
@@ -102,7 +158,9 @@
             android:hint="Full Name"
             android:layout_marginTop="10dp"
             android:textSize="16dp"
+            android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ "
             android:textColorHint="#9D9D9D"
+            android:maxLength="30"
             android:fontFamily="@font/segoeui"
             android:paddingLeft="10dp"
             android:paddingVertical="13dp"
@@ -119,6 +177,8 @@
             android:textColorHint="#9D9D9D"
             android:fontFamily="@font/segoeui"
             android:paddingLeft="10dp"
+            android:inputType="number"
+            android:maxLength="10"
             android:paddingVertical="13dp"
             android:background="@drawable/request_price_white_border2"
 
@@ -161,6 +221,8 @@
             android:textSize="16dp"
             android:textColorHint="#9D9D9D"
             android:fontFamily="@font/segoeui"
+            android:inputType="number"
+            android:maxLength="6"
             android:paddingLeft="10dp"
             android:paddingVertical="13dp"
             android:background="@drawable/request_price_white_border2"
@@ -178,12 +240,14 @@
             android:paddingRight="10dp"
             android:textColorHint="#9D9D9D"
             android:fontFamily="@font/segoeui"
+            android:editable="false"
+            android:focusable="false"
+            android:clickable="false"
             android:paddingVertical="13dp"
             android:background="@drawable/request_price_white_border2"
             android:textSize="16dp"
             android:drawableRight="@drawable/ic_down_arrow"
             />
-
 
 
         <LinearLayout
@@ -202,6 +266,9 @@
                 android:paddingLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:paddingRight="10dp"
+                android:editable="false"
+                android:focusable="false"
+                android:clickable="false"
                 android:drawableRight="@drawable/ic_down_arrow"
                 android:textSize="16dp"
                 android:textColorHint="#9D9D9D"
@@ -220,41 +287,14 @@
             android:textSize="16dp"
             android:layout_marginTop="10dp"
             android:textColorHint="#9D9D9D"
+            android:editable="false"
+            android:focusable="false"
+            android:clickable="false"
             android:paddingLeft="10dp"
             android:fontFamily="@font/segoeui"
             android:drawableRight="@drawable/ic_down_arrow"
             android:paddingVertical="13dp"
             android:paddingRight="10dp"
-            android:background="@drawable/request_price_white_border2"
-
-            />
-
-
-
-        <EditText
-            android:id="@+id/nt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="NyayPanchayat"
-            android:textSize="16dp"
-            android:textColorHint="#9D9D9D"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/segoeui"
-            android:paddingLeft="10dp"
-            android:paddingVertical="13dp"
-            android:background="@drawable/request_price_white_border2"
-            />
-        <EditText
-            android:id="@+id/gt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Gram Panchayat"
-            android:textSize="16dp"
-            android:textColorHint="#9D9D9D"
-            android:paddingLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/segoeui"
-            android:paddingVertical="13dp"
             android:background="@drawable/request_price_white_border2"
 
             />
@@ -269,21 +309,28 @@
             android:textSize="16dp"
             android:textColorHint="#9D9D9D"
             android:fontFamily="@font/segoeui"
+            android:paddingRight="10dp"
             android:paddingLeft="10dp"
             android:paddingVertical="13dp"
+            android:editable="false"
+            android:focusable="false"
+            android:clickable="false"
+            android:drawableRight="@drawable/ic_down_arrow"
             android:background="@drawable/request_price_white_border2"
             android:layout_marginBottom="30dp"
 
             />
 
     </LinearLayout>
+        </LinearLayout>
+
 </ScrollView>
 
     <LinearLayout
         android:id="@+id/continuebtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/border_filled_red"
+        android:background="@drawable/border_filled_red_not_curved"
         android:orientation="horizontal"
         android:gravity="center"
         >
@@ -299,6 +346,7 @@
             android:fontFamily="@font/segoeui"
             android:textColor="#ffffff"
             />
+
 <ImageView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

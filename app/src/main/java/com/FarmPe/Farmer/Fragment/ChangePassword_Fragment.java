@@ -11,6 +11,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -24,7 +26,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.FarmPe.Farmer.DB.DatabaseHelper;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
@@ -41,8 +42,12 @@ import java.util.Map;
 import static com.android.volley.VolleyLog.TAG;
 
 
+
+
+
+
 public class ChangePassword_Fragment extends Fragment {
-    EditText mob_no,otp,new_password;
+    EditText old_password,new_password;
     String status;
     LinearLayout back_feed,linearLayout,verfiybtn,main_layout;
     Fragment selectedFragment;
@@ -51,42 +56,68 @@ public class ChangePassword_Fragment extends Fragment {
 
 
 
-
     public static ChangePassword_Fragment newInstance() {
         ChangePassword_Fragment fragment = new ChangePassword_Fragment();
         return fragment;
     }
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.changepassword_layout, container, false);
 
+
         Window window = getActivity().getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.dark_green));
 
 
         back_feed = view.findViewById(R.id.back_feed);
         verfiybtn=view.findViewById(R.id.verfiybtn);
-        mob_no=view.findViewById(R.id.mob_no);
         new_password=view.findViewById(R.id.new_password);
         main_layout=view.findViewById(R.id.main_layout);
+        old_password = view.findViewById(R.id.old_password);
 
         setupUI(main_layout);
 
 
-    sessionManager = new SessionManager(getActivity());
-        myDb = new DatabaseHelper(getActivity());
+
+         sessionManager = new SessionManager(getActivity());
+         myDb = new DatabaseHelper(getActivity());
+
+
+
+        final InputFilter filter = new InputFilter() {
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+
+                String filtered = "";
+                for (int i = start; i < end; i++) {
+                    char character = source.charAt(i);
+                    if (!Character.isWhitespace(character)) {
+                        filtered += character;
+                    }
+                }
+
+                return filtered;
+            }
+        };
+
+
+
+        new_password.setFilters(new InputFilter[] {filter,new InputFilter.LengthFilter(12) });
+        old_password.setFilters(new InputFilter[] {filter,new InputFilter.LengthFilter(12) });
+
 
 
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack ("settingg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
-
 
 
 
@@ -100,6 +131,7 @@ public class ChangePassword_Fragment extends Fragment {
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack ("settingg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
+
                     return true;
                 }
 
@@ -109,16 +141,35 @@ public class ChangePassword_Fragment extends Fragment {
 
 
 
-
         verfiybtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(new_password.getText().toString().equals("")){
+
+                if (old_password.getText().toString().equals("")) {
 
 
                     int duration = 1000;
 
+                    Snackbar snackbar = Snackbar
+                            .make(main_layout, "Enter Old Password", duration);
+                    View snackbarView = snackbar.getView();
+                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
+                    tv.setTextColor(Color.WHITE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    } else {
+                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                    }
+
+                    snackbar.show();
+
+
+                } else if (new_password.getText().toString().equals("")) {
+
+
+                    int duration = 1000;
                     Snackbar snackbar = Snackbar
                             .make(main_layout, "Enter New Password", duration);
                     View snackbarView = snackbar.getView();
@@ -130,41 +181,47 @@ public class ChangePassword_Fragment extends Fragment {
                     } else {
                         tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
+
                     snackbar.show();
 
 
-                }else{
+                } else {
 
 
                     save_password();
 
+
                 }
-
-
-
             }
         });
 
 
-        mob_no.setOnTouchListener(new View.OnTouchListener() {
+
+        old_password.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                linear_layout_selection(mob_no,new_password);
+
+                linear_layout_selection(old_password,new_password);
                 return false;
+
             }
         });
+
 
 
         new_password.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                linear_layout_selection(new_password,mob_no);
+
+                linear_layout_selection(new_password,old_password);
                 return false;
+
             }
         });
 
         return view;
     }
+
 
     private void save_password() {
 
@@ -191,14 +248,16 @@ public class ChangePassword_Fragment extends Fragment {
                                 tv.setTextColor(Color.WHITE);
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                                     tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
                                 } else {
+
                                     tv.setGravity(Gravity.CENTER_HORIZONTAL);
                                 }
+
                                 snackbar.show();
 
 
-
-                                selectedFragment = SellersettingFragment.newInstance();
+                                selectedFragment = New_Profile_Setting_Fragment.newInstance();
                                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                                 transaction.replace(R.id.frame_menu, selectedFragment);
                                 transaction.commit();
@@ -222,7 +281,7 @@ public class ChangePassword_Fragment extends Fragment {
                             }
 
                             snackbar.show();
-                            selectedFragment = SellersettingFragment.newInstance();
+                            selectedFragment = New_Profile_Setting_Fragment.newInstance();
                             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                             transaction.replace(R.id.frame_menu, selectedFragment);
                             transaction.commit();
@@ -259,15 +318,11 @@ public class ChangePassword_Fragment extends Fragment {
 
     }
 
-
     public void linear_layout_selection(EditText selectdl1, EditText l2){
         selectdl1.setBackgroundResource(R.drawable.border_1_layout);
         l2.setBackgroundResource(R.drawable.request_price_white_border);
 
     }
-
-
-
 
 
     public void setupUI(View view) {
@@ -296,6 +351,7 @@ public class ChangePassword_Fragment extends Fragment {
             }
         }
     }
+
 
     public static void hideSoftKeyboard(Activity activity) {
 

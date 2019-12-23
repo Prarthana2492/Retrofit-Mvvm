@@ -183,7 +183,7 @@
 
 
                 <TextView
-                    android:id="@+id/prod_priced"
+                    android:id="@+id/brand_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
@@ -210,7 +210,7 @@
 
 
                 <FrameLayout
-                    android:layout_width="250dp"
+                    android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:gravity="center"
                     android:layout_gravity="center">
@@ -219,7 +219,9 @@
                         android:id="@+id/image_lookingd"
                         android:layout_width="match_parent"
                         android:src="@drawable/tractor_red"
+                        android:scaleType="fitXY"
                         android:layout_height="wrap_content" />
+
                 </FrameLayout>
 
 
@@ -310,17 +312,15 @@
 
                         <ImageView
                             android:id="@+id/image3"
-                            android:layout_width="100dp"
+                            android:layout_width = "120dp"
                             android:src="@drawable/tractor_red"
                             android:layout_height="wrap_content" />
-
 
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-
                             >
 
                             <TextView
@@ -334,12 +334,12 @@
 
 
 
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="30dp"
                                 >
-
 
 
                                 <ImageView
@@ -349,6 +349,7 @@
                                     android:layout_marginLeft="15dp"
                                     android:layout_gravity="center_vertical"
                                     android:layout_height="wrap_content" />
+
 
                                 <TextView
                                     android:id="@+id/prod_nae"
@@ -365,11 +366,11 @@
                                     android:textStyle="bold"
                                     android:textSize="10dp" />
 
-
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
+
 
 
                 <View
@@ -381,6 +382,7 @@
                     android:background="@color/light_gray"/>
 
 
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
@@ -389,6 +391,7 @@
                     android:layout_marginLeft="15dp"
                     android:orientation="horizontal"
                     >
+
                     <TextView
                         android:id="@+id/prodnamdef"
                         android:layout_width="match_parent"
@@ -404,6 +407,7 @@
                         android:textStyle="bold"
                         android:textSize="14dp" />
 
+
                     <ImageView
                         android:id="@+id/image_loofking"
                         android:layout_weight="30"
@@ -413,6 +417,8 @@
                         android:layout_height="30dp" />
 
                 </LinearLayout>
+
+
                 <LinearLayout
                     android:id="@+id/name_linear_layoutf"
                     android:layout_width="match_parent"
@@ -438,7 +444,6 @@
                             android:backgroundTint="#d3d3d3"
                             android:fontFamily="@font/segoeui"
                             android:hint="Planning to purchase         : "
-
                             android:focusableInTouchMode="false"
                             android:paddingVertical="2dp"
                             android:paddingRight="10dp"
@@ -446,7 +451,7 @@
                             android:textSize="14dp" />
 
                         <EditText
-                            android:id="@+id/full_namce1"
+                            android:id="@+id/purchase_plan"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Immediately"
@@ -478,7 +483,49 @@
                             android:backgroundTint="#d3d3d3"
                             android:fontFamily="@font/segoeui"
                             android:hint="Finance loan required        : "
+                            android:focusableInTouchMode="false"
+                            android:paddingVertical="2dp"
+                            android:paddingRight="10dp"
+                            android:textColorHint="#000"
+                            android:textSize="14dp" />
 
+
+                        <EditText
+                            android:id="@+id/finance_req"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Yes"
+                            android:paddingVertical="2dp"
+                            android:textSize="14dp"
+                            android:maxLength="30"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:clickable="false"
+                            android:focusableInTouchMode="false"
+                            android:inputType="textNoSuggestions"
+                            android:paddingRight="10dp"
+                            android:fontFamily="@font/segoeui"
+                            android:textColorHint="#000"
+                            android:background="@android:color/transparent"
+                            />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <TextView
+                            android:id="@+id/insurn_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="6dp"
+                            android:background="@android:color/transparent"
+                            android:backgroundTint="#d3d3d3"
+                            android:fontFamily="@font/segoeui"
+                            android:hint="Insurance                            : "
                             android:focusableInTouchMode="false"
                             android:paddingVertical="2dp"
                             android:paddingRight="10dp"
@@ -486,7 +533,7 @@
                             android:textSize="14dp" />
 
                         <EditText
-                            android:id="@+id/full_namecw"
+                            android:id="@+id/insurance"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Yes"
@@ -519,7 +566,7 @@
                             android:background="@android:color/transparent"
                             android:backgroundTint="#d3d3d3"
                             android:fontFamily="@font/segoeui"
-                            android:hint="Need demo/test drive       : "
+                            android:hint="Need demo/test drive        : "
                             android:focusableInTouchMode="false"
                             android:paddingVertical="2dp"
                             android:paddingRight="10dp"
@@ -626,8 +673,8 @@
                             android:textSize="14dp" />
 
 
-                        <EditText
-                            android:id="@+id/full_name1f"
+                        <TextView
+                            android:id="@+id/profile_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="abcccd"
@@ -669,8 +716,8 @@
                             android:textColorHint="#000"
                             android:textSize="14dp" />
 
-                        <EditText
-                            android:id="@+id/full_namewf"
+                        <TextView
+                            android:id="@+id/profile_no"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="12345xxxxx"
@@ -682,12 +729,12 @@
                             android:clickable="false"
                             android:focusableInTouchMode="false"
                             android:inputType="textNoSuggestions"
-
                             android:paddingRight="10dp"
                             android:fontFamily="@font/segoeui"
                             android:textColorHint="#000"
                             android:background="@android:color/transparent"
                             />
+
                     </LinearLayout>
 
                 </LinearLayout>
@@ -713,6 +760,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     >
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -748,7 +796,7 @@
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/prodnamdecf1"
+                        android:id="@+id/user_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/segoeui"

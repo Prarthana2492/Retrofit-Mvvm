@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class FragmentC extends Fragment {
     public  static final int RequestPermissionCode  = 1 ;
     RecyclerView recyclerView;
@@ -67,11 +68,10 @@ public class FragmentC extends Fragment {
 
         }
 
-
-
         return view;
 
     }
+
     void getAllContacts() {
         long startnow;
         long endnow;
@@ -82,6 +82,8 @@ public class FragmentC extends Fragment {
         String selection = ContactsContract.Contacts.HAS_PHONE_NUMBER;
         Cursor cursor = getActivity().getContentResolver().query(uri, new String[]{ContactsContract.CommonDataKinds.Phone.NUMBER,   ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone._ID, ContactsContract.Contacts._ID}, selection, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC");
         cursor.moveToFirst();
+
+
 
         while (cursor.isAfterLast() == false) {
             String contactNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));

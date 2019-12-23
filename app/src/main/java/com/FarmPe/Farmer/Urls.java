@@ -26,12 +26,9 @@ package com.FarmPe.Farmer;
     public static final String Get_New_Address = ROOT_URL+"MasterTable/GetUserAddress";
 
 
-
-
     // Wallet
       public static final String GetFarmDetailsList = ROOT_URL+"MasterTable/GetFarmsList";
       public static final String GetFarmsListByUserId = "MasterTable/GetFarmsListByUserId";
-
 
 
     // Refer n Earn
@@ -52,12 +49,15 @@ package com.FarmPe.Farmer;
 
 
    //feedback
+
     public static final String AddFeedback = ROOT_URL + "MasterTable/AddFeedback";
 
 
      //profile details
-    public static final String Get_Profile_Details= ROOT_URL + "Auth/GetUserDetails";
-    public static final String Update_Profile_Details= ROOT_URL + "Auth/UpdateUserProfile";
+
+       public static final String Get_Profile_Details= ROOT_URL + "Auth/GetUserDetails";
+       public static final String Update_Profile_Details= ROOT_URL + "Auth/UpdateUserProfile";
+
 
    //Notification
 
@@ -67,56 +67,74 @@ package com.FarmPe.Farmer;
 
 
 
-
-    public static final String Districts=ROOT_URL+"MasterTable/GetDistricts";
-    public static final String Taluks=ROOT_URL+"MasterTable/GetTaluks";
-    public static final String Hoblis=ROOT_URL+"MasterTable/GetHoblis";
-    public static final String Villages=ROOT_URL+"MasterTable/GetVillages";
-    public static final String State = ROOT_URL+"MasterTable/GetStates";
-    public static final String GetBrandList = ROOT_URL+"MasterTable/GetBrandList";
-    public static final String ModelList = ROOT_URL+"MasterTable/GetModels";
-    public static final String GetHPList = ROOT_URL+"MasterTable/GetHPList";
-    public static final String AddRequestForQuotation = ROOT_URL+"MasterTable/AddUpdateRequestForQuotation";
-    public static final String GetLookingForItems = ROOT_URL+"MasterTable/GetLookingForDetails";
-    public static final String GetLookingForFirst = ROOT_URL+"MasterTable/GetLookingFor";
-    public static final String GetLookingForList = ROOT_URL+"MasterTable/GetLookingForLists";
-    public static final String YourRequest = ROOT_URL+"MasterTable/GetLookingForListsById";
-    public static final String Model_List = ROOT_URL+"MasterTable/GetRFQModelMasterList";
+         public static final String Districts=ROOT_URL+"MasterTable/GetDistricts";
+         public static final String Taluks=ROOT_URL+"MasterTable/GetTaluks";
+         public static final String Hoblis=ROOT_URL+"MasterTable/GetHoblis";
+         public static final String Villages=ROOT_URL+"MasterTable/GetVillages";
+         public static final String State = ROOT_URL+"MasterTable/GetStates";
+         public static final String GetBrandList = ROOT_URL+"MasterTable/GetBrandList";
+         public static final String ModelList = ROOT_URL+"MasterTable/GetModels";
+         public static final String GetHPList = ROOT_URL+"MasterTable/GetHPList";
+         public static final String AddRequestForQuotation = ROOT_URL+"MasterTable/AddUpdateRequestForQuotation";
+         public static final String GetLookingForItems = ROOT_URL+"MasterTable/GetLookingForDetails";
+         public static final String GetLookingForFirst = ROOT_URL+"MasterTable/GetLookingFor";
+         public static final String GetLookingForList = ROOT_URL+"MasterTable/GetLookingForLists";
+         public static final String YourRequest = ROOT_URL+"MasterTable/GetLookingForListsById";
+         public static final String Model_List = ROOT_URL+"MasterTable/GetRFQModelMasterList";
+         public static final String Get_RFQ_Details = ROOT_URL + "MasterTable/GetRFQDetails";
 
 
 
     //Favorites
-     public static final String Get_Favorites = ROOT_URL+"MasterTable/GetFarmerFavouriteModelLists";
-     public static final String Add_Favorites = ROOT_URL+"MasterTable/AddUpdateFarmerFavouriteModelList";
+      public static final String Get_Favorites = ROOT_URL+"MasterTable/GetFarmerFavouriteModelLists";
+      public static final String Add_Favorites = ROOT_URL+"MasterTable/AddUpdateFarmerFavouriteModelList";
 
 
 
-
-    //List Your Farms
-    public static final String List_Your_Farms = ROOT_URL+"MasterTable/GetFarmCategoryList";
-    public static final String Farm_Type_List = ROOT_URL+"MasterTable/GetFarmTypesList";
-    public static final String Farm_Details = ROOT_URL+"MasterTable/AddUpdateFarms";
-    public static final String AddUpdateFarms = ROOT_URL+"MasterTable/AddUpdateFarms";
-    public static final String Invitation_Farm = ROOT_URL+"MasterTable/GetInvitationList";
-    public static final String Invitn_accpt_cancel = ROOT_URL+"MasterTable/RespondToConnectionRequest";
-
+     //List Your Farms
+       public static final String List_Your_Farms = ROOT_URL+"MasterTable/GetFarmCategoryList";
+       public static final String Farm_Type_List = ROOT_URL+"MasterTable/GetFarmTypesList";
+       public static final String Farm_Details = ROOT_URL+"MasterTable/AddUpdateFarms";
+       public static final String AddUpdateFarms = ROOT_URL+"MasterTable/AddUpdateFarms";
+       public static final String Invitation_Farm = ROOT_URL+"MasterTable/GetInvitationList";
+       public static final String Invitn_accpt_cancel = ROOT_URL+"MasterTable/RespondToConnectionRequest";
 
 
-    //Request Quoatation
-    public static final String Get_Edit_Request = ROOT_URL + "MasterTable/GetLookingForListsById";
-    public static final String Delete_Request = ROOT_URL + "MasterTable/DeleteRequestForQuotation";
+
+     //Request Quoatation
+
+       public static final String Get_Edit_Request = ROOT_URL + "MasterTable/GetLookingForListsById";
+       public static final String Delete_Request = ROOT_URL + "MasterTable/DeleteRequestForQuotation";
+
+
+    //Bank_Account_Details
+
+       public static final String Add_Bank_Details =  ROOT_URL + "MasterTable/AddUpdatBankDetails";
+       public static final String Get_Bank_Details =  ROOT_URL + "MasterTable/GetBankDetails";
+       public static final String Delete_Bank_Details =  ROOT_URL + "MasterTable/DeleteBankDetails";
+
+
+
+    //Profile Address
+     public static final String Profile_Add_Adress_Details = ROOT_URL + "MasterTable/AddUpdateAddressDetails";
+     public static final String Profile_Get_Adress_Details = ROOT_URL + "MasterTable/GetAddressDetailsByUser";
+     public static final String Profile_Delete_Adress_Details =  ROOT_URL +  "MasterTable/DeleteAddressDetails";
+     public static final String Block_List =  ROOT_URL +  "MasterTable/GetBlocks";
+     public static final String Village_Panchayats_List =  ROOT_URL + "MasterTable/GetVillagebyGram";
 
 
   //Connections
 
-   public static final String Get_Connection_List = ROOT_URL + "MasterTable/GetConnectionList";
+      public static final String Get_Connection_List = ROOT_URL + "MasterTable/GetConnectionList";
+
 
    //Homepage_Count
 
       public static final String Home_Page_Count = ROOT_URL + "MasterTable/GetCountForFarmer";
 
+
  //Notification
 
-   public static final String Notification_HomePage = ROOT_URL + "MasterTable/GetNotifications";
+      public static final String Notification_HomePage = ROOT_URL + "MasterTable/GetNotifications";
 
 }

@@ -118,6 +118,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         sessionManager = new SessionManager(getActivity());
         main_layout = view.findViewById(R.id.main_layout);
         //getSupportActionBar().setTitle("Map Location Activity");
+
         mapFrag = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFrag.getMapAsync(this);
 
@@ -364,7 +365,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         }
     }
 
-
     @Override
     public void onMapReady(GoogleMap googleMap)
     {
@@ -421,9 +421,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
                  final Status status = result.getStatus();
                  switch (status.getStatusCode()) {
+
+
                      case LocationSettingsStatusCodes.SUCCESS:
                          Log.i(TAG, "All location settings are satisfied.");
                          break;
+
+
                      case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
                          Log.i(TAG, "Location settings are not satisfied. Show the user a dialog to upgrade location settings ");
                          try {
@@ -434,6 +438,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                              Log.i(TAG, "PendingIntent unable to execute request.");
                          }
                          break;
+
+
                      case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
                          Log.i(TAG, "Location settings are inadequate, and cannot be fixed here. Dialog not created.");
                          break;
@@ -507,11 +513,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         }
     }
 
+
     private void configureCameraIdle() {
         onCameraIdleListener = new GoogleMap.OnCameraIdleListener() {
             @Override
             public void onCameraIdle() {
                 LatLng latLng = mGoogleMap.getCameraPosition().target;
+
                 Geocoder geocoder = new Geocoder(getActivity());
                 try {
                     List<Address> addressList = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
@@ -519,21 +527,26 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                         String locality = addressList.get(0).getAddressLine(0);
                         String country = addressList.get(0).getCountryName();
 
-                       // Toast.makeText(getActivity(), state, Toast.LENGTH_LONG).show();
+                        // Toast.makeText(getActivity(), state, Toast.LENGTH_LONG).show();
+
                         if (!locality.isEmpty() && !country.isEmpty())
                             currentaddress.setText(locality + "  " + country);
-                    state= addressList.get(0).getLocality()+","+addressList.get(0).getAdminArea();
+                        //
+                        LatLng latLng1 = mGoogleMap.getCameraPosition().target;
+
+                        state = addressList.get(0).getLocality() + "," + addressList.get(0).getAdminArea();
 
                     }
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         };
     }
+
     @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_LOCATION: {
 
@@ -543,15 +556,20 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                     if (ContextCompat.checkSelfPermission(getActivity(),
                             Manifest.permission.ACCESS_FINE_LOCATION)
                             == PackageManager.PERMISSION_GRANTED) {
+
                         if (mGoogleApiClient == null) {
                             buildGoogleApiClient();
                         }
-                     mGoogleMap.setMyLocationEnabled(true);
+
+                        mGoogleMap.setMyLocationEnabled(true);
                     }
+
                 } else {
 
                     Toast.makeText(getActivity(), "permission denied", Toast.LENGTH_LONG).show();
+
                 }
+
                 return;
             }
         }

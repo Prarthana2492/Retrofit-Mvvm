@@ -1,6 +1,5 @@
 package com.FarmPe.Farmer.Activity;
 
-
 import android.app.Activity;
 import android.os.Build;
 import com.FarmPe.Farmer.R;
@@ -18,8 +17,8 @@ public class Status_bar_change_singleton {
 
 
         if(status_color == null )
-            status_color = new Status_bar_change_singleton();
 
+            status_color = new Status_bar_change_singleton();
 
 
         return status_color;
@@ -30,13 +29,15 @@ public class Status_bar_change_singleton {
     public void color_change (Activity activity){
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
             activity.getWindow().setStatusBarColor(activity.getResources().getColor(R.color.dark_green, activity.getTheme()));
 
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
             activity.getWindow().setStatusBarColor(activity.getResources().getColor(R.color.dark_green));
+
         }
     }
-
 
 
 
@@ -44,6 +45,7 @@ public class Status_bar_change_singleton {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)                                                                                                                                                                            {
             activity.getWindow().setStatusBarColor(activity.getResources().getColor(R.color.colorPrimary, activity.getTheme()));
+
 
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             activity.getWindow().setStatusBarColor(activity.getResources().getColor(R.color.colorPrimary));

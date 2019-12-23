@@ -67,10 +67,10 @@ public class AddRequestFormAdapter extends RecyclerView.Adapter<AddRequestFormAd
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final FarmsImageBean products = productList.get(position);
 
-        holder.prod_price.setText(products.getProd_price());
+        holder.prod_price.setText(products.getLooking_fordetails());
 
 
-        Glide.with(activity).load(products.getImage())
+        Glide.with(activity).load(products.getModel_image())
 
                 .thumbnail(0.5f)
                 .crossFade()

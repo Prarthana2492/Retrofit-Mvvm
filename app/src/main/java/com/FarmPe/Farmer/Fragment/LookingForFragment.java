@@ -40,11 +40,11 @@ import java.util.Collections;
 import java.util.List;
 
 
+
 public class LookingForFragment extends Fragment {
 
     public static List<FarmsImageBean> newOrderBeansList = new ArrayList<>();
     private List<FarmsImageBean> searchresultAraaylist = new ArrayList<>();
-
     public static RecyclerView recyclerView;
     public static FarmsImageAdapter farmadapter;
     Fragment selectedFragment = null;
@@ -53,6 +53,8 @@ public class LookingForFragment extends Fragment {
     LinearLayout back_feed;
     TextView filter_text,delete_req;
     SessionManager sessionManager;
+
+
 
 
     public static JSONArray cropsListArray = null;
@@ -66,7 +68,6 @@ public class LookingForFragment extends Fragment {
     public static JSONArray miniTruckRFQModelList = null;
     public static JSONArray backhoeAttachmentRFQModelList = null;
     public static JSONArray powerTillerRFQModelList = null;
-
 
 
 
@@ -93,6 +94,7 @@ public class LookingForFragment extends Fragment {
       // System.out.println("bbbbbbbbbbbbbbbbb"+ "+1-333-444-5678".replaceAll("[^\\d\\+]", "").replaceAll("\\d(?=\\d{4})", "*"));
         System.out.println("bbbbbbbbbbbbbbbbb"+ "+1-333-444-5678".replaceAll("\\d{4}(?=\\d)", "*"));
       // System.out.println("bbbbbbbbbbbbbbbbbbbb"+ "+1-333-444-5678".replaceAll("\\d{4}(?=\\d)", "*"));
+
 
 
 
@@ -144,23 +146,21 @@ public class LookingForFragment extends Fragment {
                     HomePage_With_Bottom_Navigation.mail_text.setTextColor(Color.parseColor("#595959"));
 
 
-
                     if(getArguments().getString("status").equals("setting_your_request")){
 
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack("setting_req", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 
-
                     } else if(getArguments().getString("status").equals("hme_request")){
 
                     //    HomeMenuFragment.onBack_status="no_request";
-
                         selectedFragment = Home_Menu_Fragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frame_menu, selectedFragment);
                         transaction.addToBackStack("home");
                         transaction.commit();
+
                     }
 
 //                    }else{
@@ -216,11 +216,11 @@ public class LookingForFragment extends Fragment {
             jsonObject.put("UserId", sessionManager.getRegId("userId"));
             System.out.println("aaaaaaaaaaaaadddd" + sessionManager.getRegId("userId"));
 
+
             Crop_Post.crop_posting(getActivity(), Urls.YourRequest, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("YourRequestttttttttttttttttt" + result);
-
 
                     try {
 
@@ -241,6 +241,7 @@ public class LookingForFragment extends Fragment {
                         && farmMachineryRFQModelList.length()==0 && fenceWireRFQModelList.length()==0 && tyreRFQModelList.length()==0 && miniTruckRFQModelList.length()==0
                         && backhoeAttachmentRFQModelList.length()==0 && powerTillerRFQModelList.length()==0 ){
 
+
                             selectedFragment = No_Request_Fragment.newInstance();
                             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                             transaction.replace(R.id.frame_menu, selectedFragment);
@@ -260,8 +261,6 @@ public class LookingForFragment extends Fragment {
                             addingToarraylist(miniTruckRFQModelList);
                             addingToarraylist(backhoeAttachmentRFQModelList);
                             addingToarraylist(powerTillerRFQModelList);
-
-
                         }
 
                        // Collections.reverse(newOrderBeansList);
@@ -270,6 +269,7 @@ public class LookingForFragment extends Fragment {
                         recyclerView.setLayoutManager(mLayoutManager_farm);
                         recyclerView.setItemAnimator(new DefaultItemAnimator());
                         recyclerView.setAdapter(farmadapter);
+
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -350,47 +350,67 @@ public class LookingForFragment extends Fragment {
     public void addingToarraylist(JSONArray selectedArray){
         for (int i = 0; i < selectedArray.length(); i++) {
             JSONObject jsonObject1 = null;
+
+
             try {
                 jsonObject1 = selectedArray.getJSONObject(i);
-                String hp_range = "";
-            JSONObject jsonObject2 = jsonObject1.getJSONObject("Address");
-            String model = jsonObject1.getString("Model");
-            String purchaseTimeline = jsonObject1.getString("PurchaseTimeline");
-            String image = jsonObject1.getString("ModelImage");
-            String id = jsonObject1.getString("Id");
+                 String hp_range = "";
+                 JSONObject jsonObject2 = jsonObject1.getJSONObject("Address");
+
+                 String model = jsonObject1.getString("Model");
+                 String purchaseTimeline = jsonObject1.getString("PurchaseTimeline");
+                 String model_image = jsonObject1.getString("ModelImage");
+                  String id = jsonObject1.getString("Id");
+                  String lookingfor_details = jsonObject1.getString("LookingForDetails");
+                 String brand_name = jsonObject1.getString("BrandName");
+
+
+            String looking_finance = jsonObject1.getString("LookingForFinance");
+            String brandId = jsonObject1.getString("BrandId");
+            String lookingfor_id = jsonObject1.getString("LookingForDetailsId");
+            String model_id = jsonObject1.getString("ModelId");
+            String model_adress_id = jsonObject1.getString("AddressId");
+
             String name = jsonObject2.getString("Name");
+            String mobile_no = jsonObject2.getString("MobileNo");
+
+          //  String adress_id = jsonObject2.getString("Id");
+
             String city = jsonObject2.getString("City");
             String state = jsonObject2.getString("State");
             String area = jsonObject2.getString("Hoblie");
+
+
             if (selectedArray.equals(cropsListArray)){
+
+
+
             hp_range = jsonObject1.getString("HorsePower");
 
             }else {
-                hp_range = "";
 
+                hp_range = "";
             }
+
+
             location = city + ", " + state + "," + area;
 
 
             String location_det = jsonObject2.getString("Name") + "," + jsonObject2.getString("MobileNo")
-                    + "," + jsonObject2.getString("StreeAddress1") + "," + jsonObject2.getString("PickUpFrom")
+                    + "," +  jsonObject2.getString("StreeAddress")+ "," + jsonObject2.getString("StreeAddress1") + "," + jsonObject2.getString("LandMark")+" , "+jsonObject2.getString("PickUpFrom")
                     + "," + jsonObject2.getString("State") + "," + jsonObject2.getString("District")
                     + "," + jsonObject2.getString("Taluk") + "," + jsonObject2.getString("Hoblie")
                     + "," + jsonObject2.getString("Pincode");
 
 
-            System.out.println("madelslistt" +jsonObject1.getString("ModelId"));
-
-
-            FarmsImageBean crops = new FarmsImageBean(image, "Tractor Price", model, hp_range, purchaseTimeline, name, location, id, location_det);
+            FarmsImageBean crops = new FarmsImageBean(model,lookingfor_details,brand_name, hp_range,model_image, looking_finance,purchaseTimeline,name,mobile_no, location_det, id,model_id,lookingfor_id);
             newOrderBeansList.add(crops);
-
-
 
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
     }}
 
 }

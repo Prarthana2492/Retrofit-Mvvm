@@ -1,5 +1,6 @@
 package com.FarmPe.Farmer.Fragment;
 
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -98,7 +99,6 @@ public class AaProfileFragment extends Fragment {
 
         Status_bar_change_singleton.getInstance().color_change(getActivity());
 
-
         backfeed=view.findViewById(R.id.back_feed);
         acc_info_lay=view.findViewById(R.id.acc_info_lay);
         linearLayout=view.findViewById(R.id.main_layout);
@@ -126,6 +126,7 @@ public class AaProfileFragment extends Fragment {
                     transaction.commit();
 
 
+
                 }else if(getArguments().getString("status").equals("ACC_IMG")){
 
                     selectedFragment = AaAccountFragment.newInstance();
@@ -139,6 +140,7 @@ public class AaProfileFragment extends Fragment {
 
             }
         });
+
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();
@@ -172,8 +174,10 @@ public class AaProfileFragment extends Fragment {
             }
         });
 
+
         linearLayout.setBackgroundColor(Color.parseColor("#f5f5f5"));
         //  mBottomSheetBehavior6.setState(BottomSheetBehavior.STATE_COLLAPSED);
+
 
         prod_img.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NewApi")
@@ -185,6 +189,7 @@ public class AaProfileFragment extends Fragment {
 
             }
         });
+
 
 
         acc_info_lay.setOnClickListener(new View.OnClickListener() {
@@ -200,8 +205,6 @@ public class AaProfileFragment extends Fragment {
                 userInput = sheetView.findViewById(R.id.user_text);
                 userInput.setVisibility(View.VISIBLE);
                 userInput.setText(profname.getText().toString());
-
-
 
                 userInput.setFilters(new InputFilter[] {EMOJI_FILTER,new InputFilter.LengthFilter(30)});
                 descriptionText.setVisibility(View.GONE);
@@ -281,6 +284,7 @@ public class AaProfileFragment extends Fragment {
                                             transaction.commit();
                                         }
                                     },
+
 
                                     new Response.ErrorListener() {
                                         @Override

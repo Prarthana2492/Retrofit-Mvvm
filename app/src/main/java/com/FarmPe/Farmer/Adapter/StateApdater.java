@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -45,6 +46,17 @@ public class StateApdater extends RecyclerView.Adapter<StateApdater.MyStateHolde
         holder.state_name_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+//Find the currently focused view, so we can grab the correct window token from it.
+                view = activity.getCurrentFocus();
+//If no view currently has focus, create a new one, just so we can grab a window token from it
+                if (view == null) {
+                    view = new View(activity);
+                }
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
 
                 stateid=stateBean.getId();
                 Add_New_Address_Fragment.state_txt.setText(holder.statename.getText().toString());

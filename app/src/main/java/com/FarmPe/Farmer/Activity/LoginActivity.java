@@ -222,11 +222,14 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
         }
 
 
+
         pass.setFilters(new InputFilter[] {EMOJI_FILTER1,new InputFilter.LengthFilter(12) });
+
 
         System.out.println("llllllllllll" + sessionManager.getRegId("language"));
 
         try {
+
             if ((sessionManager.getRegId("language")).equals("")){
                 getLang(1);
 
@@ -238,7 +241,6 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                 System.out.println("llllllllllllkkkkkkkkkkkkkkk" +lngObject.getString("EnterPhoneNo"));
 
 
-
                 text_mobile.setHint(lngObject.getString("PhoneNo"));
                 text_pass.setHint(lngObject.getString("Password"));
                 remember_me.setText(lngObject.getString("RememberMe"));
@@ -247,18 +249,20 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                 welcome_back.setText(lngObject.getString("Login"));
                 newfarmpelng=lngObject.getString("NewtoFarmPe");
                 signuplng = lngObject.getString("SignUp");
-
                 new_farmpe.setText(newfarmpelng+"?");
                 createaccount.setText(" "+signuplng);
 
                 pass_toast = lngObject.getString("EnterPassword");
                 mob_toast = lngObject.getString("EnterPhoneNo");
-              //  toast_invalid = lngObject.getString("InvalidCredentials");
+
+                //  toast_invalid = lngObject.getString("InvalidCredentials");
+
                 toast_click_back = lngObject.getString("PleaseclickBACKagaintoexit");
                 toast_internet = lngObject.getString("GoodConnectedtoInternet");
                 toast_nointernet = lngObject.getString("NoInternetConnection");
 
             }
+
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -366,8 +370,6 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
 
 
 
-
-
                 close_layout.setOnClickListener(new View.OnClickListener() {
 
                     @Override
@@ -383,14 +385,12 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
 
 
 
-
-
-
         log_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 getLang(1);
+
 
                 if (change_lang.getText().toString().equals("English")){
 
@@ -404,6 +404,8 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                     isEng = false;
                     Log.d("GGGGGGGG", "Here: "+LoginActivity.isEng);
                 }
+
+
 
                 mobile_string=mobile_no.getText().toString();
                 mob_no =loc_text+ mobile_no.getText().toString();
@@ -488,6 +490,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                             @Override
                             public void onSuccessResponse(JSONObject result) {
                                 System.out.println("111111user" + result);
+
                                 try{
                                     JSONObject jsonObject;
                                     JSONObject userObject;
@@ -496,12 +499,15 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
 
                                     if(!(jsonObject.isNull("user"))){
                                         userObject = jsonObject.getJSONObject("user");
+
                                         status=jsonObject.getString("Status");
                                         userId=jsonObject.getString("UserId");
 
                                         System.out.println("useridddd"+userId);
 
+
                                         if(status.equals("1")){
+
                                             System.out.println("jdhyusulogin"+status);
                                             Intent intent = new Intent(LoginActivity.this, LandingPageActivity.class);
                                             startActivity(intent);
@@ -513,12 +519,16 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                                             FirebaseMessaging.getInstance().subscribeToTopic("FARMERNEWS");// to register in topic(subcribe)
                                             FirebaseMessaging.getInstance().subscribeToTopic("NEWS");// to register in topic(subcribe)
 
+
                                             if(remember_me.isChecked()){
+
 
                                                 if(!myDb.isEmailExists(mobile_no.getText().toString())){
 
                                                     AddData(mobile_no.getText().toString(),password);
                                                 }
+
+
                                             }else {
                                                 if(myDb.isEmailExists(mobile_no.getText().toString())){
 
@@ -542,8 +552,6 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                                             tv.setGravity(Gravity.CENTER_HORIZONTAL);
                                         }
                                         snackbar.show();
-                                        snackbar.show();
-
 
                                     }
 
@@ -586,8 +594,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                         sessionManager.saveLanguage(result.toString());
 
 
-                        String lang_title1 = result.getString("ChangeLanguage");
-
+                         String lang_title1 = result.getString("ChangeLanguage");
                          String log_login = result.getString("Login");
                          String log_mobile = result.getString("PhoneNo");
                          String log_password = result.getString("Password");
@@ -595,6 +602,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                          String log_forgot_passwrd = result.getString("ForgotPassword");
                          String log_register = result.getString(" " + "SignUp");
                          String log_farmpe = result.getString("NewtoFarmPe");
+
 
                         mob_toast = result.getString("EnterPhoneNo");
                         pass_toast = result.getString("EnterPassword");
@@ -735,6 +743,7 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
 
         }
     }
+
     private void DeleteData(String userId,String pass) {
         System.out.println("kkkkkkkkkkkkk"+userId);
         System.out.println("sssssssssssss"+pass);
@@ -742,7 +751,6 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
         myDb.deleteData(userId);
 
     }
-
 
 
     public void setupUI(View view) {

@@ -9,20 +9,23 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+
 import com.FarmPe.Farmer.Bean.StateBean;
-import com.FarmPe.Farmer.Fragment.Add_New_Address_Fragment;
+import com.FarmPe.Farmer.Fragment.Add_New_Bank_Account_Details_Fragment;
 import com.FarmPe.Farmer.R;
+
 import java.util.List;
 
-public class DistrictAdapter extends RecyclerView.Adapter<DistrictAdapter.MyStateHolder> {
-    List<StateBean> stateBeans;
+
+
+public class Bank_State_Adapter extends RecyclerView.Adapter<Bank_State_Adapter.MyStateHolder> {
+    List<StateBean>stateBeans;
     Activity activity;
-    public static String districtid,district_name;
+    public static String stateid;
 
 
-
-
-    public DistrictAdapter(List<StateBean> stateBeans,Activity activity) {
+    public Bank_State_Adapter(List<StateBean> stateBeans, Activity activity) {
         this.stateBeans = stateBeans;
         this.activity=activity;
     }
@@ -32,15 +35,14 @@ public class DistrictAdapter extends RecyclerView.Adapter<DistrictAdapter.MyStat
     @Override
     public MyStateHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View stateview=LayoutInflater.from(parent.getContext()).inflate(R.layout.state_name,parent,false);
-
         return new MyStateHolder(stateview);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final MyStateHolder holder, int position) {
         final StateBean stateBean=stateBeans.get(position);
-        holder.statename.setText(stateBean.getName());
 
+        holder.statename.setText(stateBean.getName());
 
 
         holder.state_name_layout.setOnClickListener(new View.OnClickListener() {
@@ -48,25 +50,24 @@ public class DistrictAdapter extends RecyclerView.Adapter<DistrictAdapter.MyStat
             public void onClick(View view) {
 
 
+
                 InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
 //Find the currently focused view, so we can grab the correct window token from it.
                 view = activity.getCurrentFocus();
 //If no view currently has focus, create a new one, just so we can grab a window token from it
-                if (view == null) {
+                if (view  == null) {
                     view = new View(activity);
                 }
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
-                districtid=stateBean.getId();
-                district_name=stateBean.getName();
 
+                stateid=stateBean.getId();
+                Add_New_Bank_Account_Details_Fragment.state.setText(holder.statename.getText().toString());
+                Add_New_Bank_Account_Details_Fragment.drawer.closeDrawers();
+                //   Add_New_Address_Fragment.grade_dialog.dismiss();
 
-                Add_New_Address_Fragment.district_txt.setText(holder.statename.getText().toString());
-                Add_New_Address_Fragment.drawer.closeDrawers();
-              //  Add_New_Address_Fragment.grade_dialog.dismiss();
             }
         });
-
 
     }
 
@@ -80,12 +81,10 @@ public class DistrictAdapter extends RecyclerView.Adapter<DistrictAdapter.MyStat
         TextView statename;
         LinearLayout state_name_layout;
 
-
         public MyStateHolder(View itemView) {
             super(itemView);
             statename=itemView.findViewById(R.id.state_item);
             state_name_layout=itemView.findViewById(R.id.state_name_layout);
-
 
         }
     }

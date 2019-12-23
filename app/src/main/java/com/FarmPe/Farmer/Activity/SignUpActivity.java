@@ -253,8 +253,10 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
 
         try {
 
+
             if ((sessionManager.getRegId("language")).equals("")) {
                 getLang(1);
+
 
             }else{
 
@@ -296,7 +298,6 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
             @Override
             public void onClick(View v) {
                 privacy_policy="privacy";
-
                 Intent intent = new Intent(SignUpActivity.this, Privacy_Activity.class);
                 startActivity(intent);
             }
@@ -305,6 +306,7 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(SignUpActivity.this, LoginActivity_new.class);
                 startActivity(intent);
                 finish();
@@ -973,6 +975,7 @@ public class SignUpActivity extends AppCompatActivity implements ConnectivityRec
     }
 
     public static void hideSoftKeyboard(Activity activity) {
+
         /*InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);*/
 

@@ -52,6 +52,7 @@ public class AddBrandFragment extends Fragment {
         AddBrandFragment fragment = new AddBrandFragment();
         return fragment;
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.brand_recy_layout, container, false);
@@ -78,16 +79,20 @@ public class AddBrandFragment extends Fragment {
             @Override
             public void onClick(View v) {
               // b_arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
+
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack("req_price", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
+
+
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("req_price", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     return true;
@@ -95,6 +100,7 @@ public class AddBrandFragment extends Fragment {
                 return false;
             }
         });
+
 //        continue_button.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -160,11 +166,14 @@ public class AddBrandFragment extends Fragment {
             System.out.println("sdfsdfsdf" + AddFirstAdapter.looinkgId );
             JSONObject postjsonObject = new JSONObject();
             System.out.println("postObj"+userRequestjsonObject.toString());
+
             Login_post.login_posting(getActivity(), Urls.GetBrandList,userRequestjsonObject,new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("cropsresult"+result);
                     JSONArray cropsListArray=null;
+
+
                     try {
                         cropsListArray=result.getJSONArray("BrandList");
                         System.out.println("ee e ddd"+cropsListArray.length());
@@ -173,10 +182,14 @@ public class AddBrandFragment extends Fragment {
                             String brand_name=jsonObject1.getString("BrandName");
                             String id=jsonObject1.getString("Id");
                             String BrandIcon=jsonObject1.getString("BrandIcon");
-                           AddTractorBean crops = new AddTractorBean(BrandIcon, brand_name,id,false);
+
+                            AddTractorBean crops = new AddTractorBean(BrandIcon, brand_name,id,false);
                            newOrderBeansList.add(crops);
+
                         }
-                        farmadapter=new AddBrandAdapter(getActivity(),newOrderBeansList);
+
+
+                         farmadapter=new AddBrandAdapter(getActivity(),newOrderBeansList);
                         recyclerView.setAdapter(farmadapter);
                     } catch (JSONException e) {
                         e.printStackTrace();

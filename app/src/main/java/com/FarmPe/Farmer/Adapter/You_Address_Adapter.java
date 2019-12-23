@@ -139,10 +139,9 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
 
         if(products.getAdd_hobli().equals("")){
+
             System.out.println("hsfhhfdfhjhjhjhjhjhjhjhjhjhjhjhjhjhj");
-
             holder.area_district.setText(products.getAdd_district()+","+products.getAdd_taluk());
-
 
         }else{
 
@@ -244,6 +243,7 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                         add_id =products.getAdd_id();
 
                         try{
+
                             JSONObject jsonObject  = new JSONObject();
                             jsonObject.put("Id",add_id);
                             jsonObject.put("UserId",sessionManager.getRegId("userId"));
@@ -257,6 +257,8 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
 
                                         status = result.getString("Status");
                                         message = result.getString("Message");
+
+
 
                                         if(status.equals("1")){
 
@@ -281,7 +283,6 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                                             snackbar.show();
 
                                         }
-
                                         productList.remove(position);
                                         notifyDataSetChanged();
 
@@ -310,6 +311,8 @@ public class You_Address_Adapter extends RecyclerView.Adapter<You_Address_Adapte
                         mBottomSheetDialog.dismiss();
                     }
                 });
+
+
                 mBottomSheetDialog.setContentView(sheetView);
                 mBottomSheetDialog.show();
 

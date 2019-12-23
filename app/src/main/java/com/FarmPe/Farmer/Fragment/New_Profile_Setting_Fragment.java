@@ -3,12 +3,15 @@ package com.FarmPe.Farmer.Fragment;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Binder;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -33,8 +36,9 @@ import android.widget.Toast;
 
 import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
+import com.FarmPe.Farmer.Bean.BankBean;
 import com.FarmPe.Farmer.Bean.FarmsImageBean;
-import com.FarmPe.Farmer.G_Vision_Controller;
+import com.FarmPe.Farmer.Bean.Profile_Address_Bean;
 import com.FarmPe.Farmer.R;
 import com.FarmPe.Farmer.SessionManager;
 import com.FarmPe.Farmer.Urls;
@@ -49,9 +53,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
@@ -67,15 +71,18 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import static android.app.Activity.RESULT_OK;
 import static com.android.volley.VolleyLog.TAG;
 
-public class SellersettingFragment extends Fragment {
+public class New_Profile_Setting_Fragment extends Fragment {
+
     public static List<FarmsImageBean> newOrderBeansList = new ArrayList<>();
+    public static ArrayList<BankBean> newOrderBeansList1 = new ArrayList<>();
+
     public static RecyclerView recyclerView;
     LinearLayout back_feed,invite,your_addresss,noti_setting,refer_earn,feedback,change_lang,policy,bank_account,verify_kyc,help,change_password,linearLayout,invite_frnd;
     Fragment selectedFragment;
     TextView notificatn,change_language,acc_info1,lang_setting,feedbk,help_1,abt_frmpe,polic_1,logot,setting_tittle,logout,profname,profile_phone;
     SessionManager sessionManager;
     JSONObject lngObject;
-    JSONArray get_address_array;
+    JSONArray Bank_list_array,new_address_list_array;
     ImageView b_arrow;
     CircleImageView profile_image;
     String profnamestr,ProfilePhone,ProfileImage;
@@ -85,10 +92,14 @@ public class SellersettingFragment extends Fragment {
     View sheetView;
     String packageName;
 
-    public static SellersettingFragment newInstance() {
-        SellersettingFragment fragment = new SellersettingFragment();
+
+
+    public static New_Profile_Setting_Fragment newInstance() {
+        New_Profile_Setting_Fragment fragment = new New_Profile_Setting_Fragment();
         return fragment;
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -97,7 +108,7 @@ public class SellersettingFragment extends Fragment {
 
         HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
 
-      Status_bar_change_singleton.getInstance().color_change(getActivity());
+        Status_bar_change_singleton.getInstance().color_change(getActivity());
 
         back_feed=view.findViewById(R.id.back_feed);
         invite_frnd=view.findViewById(R.id.invite);
@@ -127,7 +138,17 @@ public class SellersettingFragment extends Fragment {
         help=view.findViewById(R.id.help);
         change_password=view.findViewById(R.id.change_pass);
         sessionManager = new SessionManager(getActivity());
+
+
         lang_setting.setText(sessionManager.getRegId("language_name"));
+
+
+
+        Resources resources = getResources();
+        PackageManager pm = getActivity().getPackageManager();
+        Intent sendIntent = new Intent(Intent.ACTION_SEND);
+        sendIntent.setType("text/plain");
+        packageName = pm.queryIntentActivities(sendIntent, 0).toString();
 
 
 
@@ -142,6 +163,7 @@ public class SellersettingFragment extends Fragment {
 
             }
         });
+
 
 
 
@@ -212,11 +234,14 @@ public class SellersettingFragment extends Fragment {
                         // aboutText.setFilters(new InputFilter[]{EMOJI_FILTER});
 
 
-                        Glide.with(getActivity()).load(ProfileImage)
-                                .thumbnail(0.5f)
-                                .crossFade()
-                                .error(R.drawable.avatarmale)
+                        Glide.with(getActivity())
+                                .load(ProfileImage)
+                                .centerCrop()
+                                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                                .skipMemoryCache(true)
+                                .dontAnimate()
                                 .into(profile_image);
+
 
 
                     }catch (Exception e){
@@ -288,18 +313,75 @@ public class SellersettingFragment extends Fragment {
             }
         });
 
+
+
            bank_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                selectedFragment = BankAccount_Fragment.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_menu, selectedFragment);
-                transaction.addToBackStack("settingg");
-                transaction.commit();
+
+
+
+                try{
+
+                    newOrderBeansList1.clear();
+
+
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("UserId",sessionManager.getRegId("userId"));
+                    System.out.println("ghdfvghsfh" +sessionManager.getRegId("userId"));
+
+                    Crop_Post.crop_posting(getActivity(), Urls.Get_Bank_Details, jsonObject, new VoleyJsonObjectCallback() {
+                        @Override
+                        public void onSuccessResponse(JSONObject result) {
+                            System.out.println("hjgfhsfjksd" + result);
+                            try{
+
+                                Bank_list_array = result.getJSONArray("BankDetails");
+
+                                if(Bank_list_array.length()==0){
+
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("bank_status","Profile_Add_Bank_Details");
+                                    selectedFragment = Add_New_Bank_Account_Details_Fragment.newInstance();
+                                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.frame_menu, selectedFragment);
+                                    selectedFragment.setArguments(bundle);
+                                    transaction.addToBackStack("profile_setting");
+                                    transaction.commit();
+
+
+
+                                }else{
+
+                                    selectedFragment = Get_Bank_List_Fragment.newInstance();
+                                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.frame_menu, selectedFragment);
+                                    transaction.addToBackStack("profile_setting");
+                                    transaction.commit();
+
+
+                                }
+
+
+
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+
+
+
+
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+
             }
         });
-
 
 
         verify_kyc.setOnClickListener(new View.OnClickListener() {
@@ -353,6 +435,8 @@ public class SellersettingFragment extends Fragment {
         });
 
 
+
+
         change_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -364,15 +448,65 @@ public class SellersettingFragment extends Fragment {
             }
         });
 
+
+
         your_addresss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                selectedFragment = NewAddressDetails_Fragment.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_menu, selectedFragment);
-                transaction.addToBackStack("settingg");
-                transaction.commit();
+
+                try{
+
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("UserId",sessionManager.getRegId("userId"));
+
+
+                    Crop_Post.crop_posting(getActivity(), Urls.Profile_Get_Adress_Details, jsonObject, new VoleyJsonObjectCallback() {
+                        @Override
+                        public void onSuccessResponse(JSONObject result) {
+                            System.out.println("dfsdfssaaa" + result);
+
+                            try{
+
+                                new_address_list_array = result.getJSONArray("AddressDetails");
+
+                                if(new_address_list_array.length()==0){
+
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("prof_add_status","profile_add_address");
+                                    selectedFragment = Profile_Add_New_Address_Fragment.newInstance();
+                                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.frame_menu, selectedFragment);
+                                    selectedFragment.setArguments(bundle);
+                                    transaction.addToBackStack("settingg");
+                                    transaction.commit();
+
+
+                                }else{
+
+                                    selectedFragment = Profile_Get_Address_Fragment.newInstance();
+                                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.frame_menu, selectedFragment);
+                                    transaction.addToBackStack("settingg");
+                                    transaction.commit();
+
+                                }
+
+
+
+                            }catch (Exception e){
+                                e.printStackTrace();
+
+                            }
+
+                        }
+                    });
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+
             }
         });
 
@@ -413,6 +547,7 @@ public class SellersettingFragment extends Fragment {
                                 Toast.makeText(getActivity(), "Whatsapp is not installed on this device.", Toast.LENGTH_SHORT);
                             }
 
+
                         }else {
                             Toast.makeText(getActivity(), "Whatsapp is not installed on this device.", Toast.LENGTH_SHORT);
 
@@ -446,9 +581,11 @@ public class SellersettingFragment extends Fragment {
                 });
 
 
+
                 instagram.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
 
                         if (packageName.contains("com.instagram")) {
                             Intent sendIntent = new Intent();
@@ -470,6 +607,8 @@ public class SellersettingFragment extends Fragment {
                     }
                 });
 
+
+
                 twitter.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -486,7 +625,9 @@ public class SellersettingFragment extends Fragment {
                             startActivity(intent);
 
                         }
+
                         catch (Exception e)
+
                         {
                             Toast.makeText(getActivity(),"Twitter is not installed on this device",Toast.LENGTH_LONG).show();
 
@@ -494,6 +635,7 @@ public class SellersettingFragment extends Fragment {
 
                     }
                 });
+
 
 
                 messenger.setOnClickListener(new View.OnClickListener() {
@@ -538,14 +680,12 @@ public class SellersettingFragment extends Fragment {
                             }
 
                         }else {
+
                             Toast.makeText(getActivity(), "Message is not installed on this device.", Toast.LENGTH_SHORT);
 
                         }
-
                     }
                 });
-
-
 
                 cancel.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -557,7 +697,6 @@ public class SellersettingFragment extends Fragment {
                 mBottomSheetDialog.setContentView(sheetView);
                 mBottomSheetDialog.show();
 
-
             }
         });
 
@@ -565,6 +704,7 @@ public class SellersettingFragment extends Fragment {
         noti_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 selectedFragment = AaNotificationSetting.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
@@ -572,6 +712,8 @@ public class SellersettingFragment extends Fragment {
                 transaction.commit();
             }
         });
+
+
 
       /* logout_layout.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -643,23 +785,30 @@ public class SellersettingFragment extends Fragment {
 
             //getting the image Uri
             Uri imageUri = data.getData();
-            try {
-             //   g_vision_controller = G_Vision_Controller.getInstance( );
-//getting the image Uri
 
+            try {
+               //   g_vision_controller = G_Vision_Controller.getInstance( );
+              //getting the image Uri
 
                 final InputStream imageStream;
 
                 imageStream = getActivity().getContentResolver().openInputStream(imageUri);
+
                 bitmap = BitmapFactory.decodeStream(imageStream);
+
              //   g_vision_controller.callCloudVision(bitmap,getActivity(),"profile");
+
+
                 bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
-//
+
+
                    profile_image.setImageBitmap(bitmap);
+               //    AddMoneyFragment.profile_image_payment.setImageBitmap(bitmap);
+
                    uploadImage(getResizedBitmap(bitmap,100,100));
 
-                int duration = 1000;
 
+                int duration = 1000;
                 Snackbar snackbar = Snackbar
                         .make(linearLayout, "You Changed Your Profile Photo", duration);
                 View snackbarView = snackbar.getView();
@@ -669,22 +818,25 @@ public class SellersettingFragment extends Fragment {
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                     tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
                 } else {
+
                     tv.setGravity(Gravity.CENTER_HORIZONTAL);
                 }
+
                 snackbar.show();
+
                 //  Toast.makeText(getActivity(),"Your Changed Your Profile Photo", Toast.LENGTH_SHORT).show();
 
 
-            } catch (IOException e) {
+             } catch (IOException e) {
                 e.printStackTrace();
-            }
+             }
         }
     }
 
 
-
-    public byte[] getFileDataFromDrawable(Bitmap bitmap) {
+        public byte[] getFileDataFromDrawable(Bitmap bitmap) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 80, byteArrayOutputStream);
         return byteArrayOutputStream.toByteArray();
@@ -694,9 +846,11 @@ public class SellersettingFragment extends Fragment {
 
 
     private void uploadImage(final Bitmap bitmap){
+
         final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "",
                 "Loading....Please wait.");
         progressDialog.show();
+
 
         VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, Urls.Update_Profile_Details,
                 new Response.Listener<NetworkResponse>(){
@@ -726,20 +880,23 @@ public class SellersettingFragment extends Fragment {
 
                         profile_image.setImageBitmap(bitmap);
 
+                      //  uploadImage(getResizedBitmap(bitmap,100,100));
 
-                        int duration = 1000;
-                        Snackbar snackbar = Snackbar
-                                .make(linearLayout, "Profile Details Updated Successfully", duration);
-                        View snackbarView = snackbar.getView();
-                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                        tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                        tv.setTextColor(Color.WHITE);
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                        } else {
-                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                        }
-                        snackbar.show();
+//
+//                        int duration = 1000;
+//                        Snackbar snackbar = Snackbar
+//                                .make(linearLayout, "Profile Details Updated Successfully", duration);
+//                        View snackbarView = snackbar.getView();
+//                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+//                        tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+//                        tv.setTextColor(Color.WHITE);
+//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+//                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//                        } else {
+//                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
+//                        }
+//
+//                        snackbar.show();
 
 
                        // Toast.makeText(getActivity(),"Profile Details Updated Successfully", Toast.LENGTH_SHORT).show();
@@ -747,27 +904,36 @@ public class SellersettingFragment extends Fragment {
                         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                         ft.replace(R.id.frame_layout,selectedFragment);
                         ft.commit();*/
+
                     }
                 },
+
 
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_SHORT).show();
+
                         progressDialog.dismiss();
+
                     }
+
                 }) {
+
 
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+
                 params.put("UserId",sessionManager.getRegId("userId"));
                 params.put("FullName",sessionManager.getRegId("name"));
                 params.put("PhoneNo",sessionManager.getRegId("phone"));
                 //  params.put("EmailId","abcd@gmail.com");
                 //    params.put("Password",profile_passwrd.getText().toString());
                 Log.e(TAG,"afaeftagsparams"+params);
+
                 return params;
+
             }
 
 
@@ -775,22 +941,31 @@ public class SellersettingFragment extends Fragment {
             protected Map<String, DataPart> getByteData() {
                 Map<String, DataPart> params = new HashMap<>();
                 long imagename = System.currentTimeMillis();
+
                 Log.e(TAG,"Im here " + params);
+
                 if (bitmap!=null) {
+
                     params.put("File", new DataPart(imagename + ".png", getFileDataFromDrawable(bitmap)));
+
                 }
+
                 return params;
             }
         };
 
         volleyMultipartRequest.setRetryPolicy(new DefaultRetryPolicy(1000 * 60, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
         //adding the request to volley
+
         Volley.newRequestQueue(getActivity()).add(volleyMultipartRequest);
+
     }
 
 
     public Bitmap getResizedBitmap(Bitmap bm, int newWidth, int newHeight) {
+
         if (bm == null) {
 
             return null;
@@ -808,11 +983,12 @@ public class SellersettingFragment extends Fragment {
             // "RECREATE" THE NEW BITMAP
             Bitmap resizedBitmap = Bitmap.createBitmap(
                     bm, 0, 0, width, height, matrix, false);
-            bm.recycle();
+            //bm.recycle();
+
+
+
             return resizedBitmap;
         }
     }
-
-
 
 }

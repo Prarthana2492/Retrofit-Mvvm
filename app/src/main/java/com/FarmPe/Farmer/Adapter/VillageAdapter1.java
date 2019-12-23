@@ -6,12 +6,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
 import com.FarmPe.Farmer.Bean.StateBean;
 import com.FarmPe.Farmer.Fragment.Add_New_Address_Fragment;
+import com.FarmPe.Farmer.Fragment.Profile_Add_New_Address_Fragment;
 import com.FarmPe.Farmer.R;
 
 import java.util.List;
@@ -48,10 +50,21 @@ public class VillageAdapter1 extends RecyclerView.Adapter<VillageAdapter1.Hoblis
         holder.state_name_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
+                InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+//Find the currently focused view, so we can grab the correct window token from it.
+                view = activity.getCurrentFocus();
+//If no view currently has focus, create a new one, just so we can grab a window token from it
+                if (view  == null) {
+                    view = new View(activity);
+                }
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                villageid = stateBean.getId();
 
-                Add_New_Address_Fragment.village_txt.setText(holder.statename.getText().toString());
-                Add_New_Address_Fragment.drawer.closeDrawers();
+                Profile_Add_New_Address_Fragment.village.setText(holder.statename.getText().toString());
+                Profile_Add_New_Address_Fragment.drawer.closeDrawers();
 
 
 

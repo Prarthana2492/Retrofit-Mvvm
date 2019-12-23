@@ -51,6 +51,7 @@ public class SessionManager {
 
     // Constructor
     public SessionManager(Context context){
+
         this._context = context;
         pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         pref1 = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
@@ -144,11 +145,13 @@ public class SessionManager {
     public void save_Language(int code){
 
         // Storing name in pref
+
         loginPrefsEditor.putInt(KEY_LNG_SELECTED, code);
 
 
         // commit changes
         loginPrefsEditor.commit();
+
     }
 
 
@@ -193,8 +196,6 @@ public class SessionManager {
 
 
 
-
-
     /**
      * Clear session details
      * */
@@ -210,7 +211,6 @@ public class SessionManager {
 
         // Staring Login Activity
         _context.startActivity(i);
-
 
     }
 
@@ -230,6 +230,7 @@ public class SessionManager {
         String userpassword=pref1.getString("pass1", null); // getting String
         System.out.println("llllllllllllllllllll"+userId);
         System.out.println("llllllllllllllllllll"+userpassword);
+
         if (phone.equals(userId)){
             rememberMe=userpassword;
         }

@@ -1,8 +1,8 @@
 package com.FarmPe.Farmer.Fragment;
 
-import android.app.Dialog;
+
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
+import com.FarmPe.Farmer.Adapter.AddBrandAdapter;
 import com.FarmPe.Farmer.Adapter.AddFirstAdapter;
 import com.FarmPe.Farmer.Adapter.AddModelAdapter;
 import com.FarmPe.Farmer.Bean.Add_New_Address_Bean;
@@ -62,10 +63,12 @@ public class Request_Details_New_Fragment extends Fragment {
         return fragment;
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.request_form_layout, container, false);
         Status_bar_change_singleton.getInstance().color_change(getActivity());
+
         immediate_btn=view.findViewById(R.id.immediate_btn);
         one_month_btn=view.findViewById(R.id.one_month_btn);
         two_month_btn=view.findViewById(R.id.two_month_btn);
@@ -73,7 +76,6 @@ public class Request_Details_New_Fragment extends Fragment {
         aftr_three_month_btn=view.findViewById(R.id.aftr_three_month_btn);
         request_price_layout=view.findViewById(R.id.request_price_layout);
         back_feed=view.findViewById(R.id.back_feed);
-
         demo_yes=view.findViewById(R.id.demo_yes);
         demo_no=view.findViewById(R.id.demo_no);
         insuranc_yes=view.findViewById(R.id.insuranc_yes);
@@ -82,6 +84,7 @@ public class Request_Details_New_Fragment extends Fragment {
         fin_no=view.findViewById(R.id.fin_no);
         linearLayout=view.findViewById(R.id.linearLayout);
         purchase_linear=view.findViewById(R.id.purchase_linear);
+
         sessionManager = new SessionManager(getActivity());
 
 
@@ -90,17 +93,31 @@ public class Request_Details_New_Fragment extends Fragment {
         view.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
+
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+
+
                     if(getArguments().getString("request_navigation").equals("ADDRESS_BOOK")){
+
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack("address_book", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                    }else if(getArguments().getString("request_navigation").equals("MAP_FRAGMENT")){
+
+
+                    }else if(getArguments().getString("request_navigation").equals("MAP_FRAGMENT")) {
+
+
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack("map_fragment", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                    }  else if(getArguments().getString("request_navigation").equals("ADD_FRAGMENT")){
-                        FragmentManager fm = getActivity().getSupportFragmentManager();
-                        fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
                     }
+
+                      else if(getArguments().getString("request_navigation").equals("ADD_FRAGMENT")){
+
+                        FragmentManager fm = getActivity().getSupportFragmentManager();
+                        fm.popBackStack("add_address", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                    }
+
                     return true;
                 }
                 return false;
@@ -110,15 +127,23 @@ public class Request_Details_New_Fragment extends Fragment {
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if(getArguments().getString("request_navigation").equals("ADDRESS_BOOK")){
+
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("address_book", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                }else if(getArguments().getString("request_navigation").equals("MAP_FRAGMENT")){
+
+                }else if(getArguments().getString("request_navigation").equals("MAP_FRAGMENT")) {
+
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("map_fragment", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                }  else if(getArguments().getString("request_navigation").equals("ADD_FRAGMENT")){
+
+                }else{
+
                     FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    fm.popBackStack("add_address", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+
                 }
             }
         });
@@ -127,13 +152,14 @@ public class Request_Details_New_Fragment extends Fragment {
         immediate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 purchase_plan = immediate_btn.getText().toString();
                 immediate_btn.setTextColor(Color.parseColor("#FFFFFF"));
                 one_month_btn.setTextColor(Color.parseColor("#000000"));
                 two_month_btn.setTextColor(Color.parseColor("#000000"));
                 three_month_btn.setTextColor(Color.parseColor("#000000"));
                 aftr_three_month_btn.setTextColor(Color.parseColor("#000000"));
-
                 immediate_btn.setBackgroundResource(R.drawable.black_border_blue_filled);
                 one_month_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
                 two_month_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
@@ -143,9 +169,11 @@ public class Request_Details_New_Fragment extends Fragment {
             }
         });
 
+
         one_month_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 purchase_plan = one_month_btn.getText().toString();
 
                 one_month_btn.setTextColor(Color.parseColor("#FFFFFF"));
@@ -166,14 +194,13 @@ public class Request_Details_New_Fragment extends Fragment {
         two_month_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 purchase_plan = two_month_btn.getText().toString();
                 two_month_btn.setTextColor(Color.parseColor("#FFFFFF"));
                 one_month_btn.setTextColor(Color.parseColor("#000000"));
                 immediate_btn.setTextColor(Color.parseColor("#000000"));
                 three_month_btn.setTextColor(Color.parseColor("#000000"));
                 aftr_three_month_btn.setTextColor(Color.parseColor("#000000"));
-
-
 
                 two_month_btn.setBackgroundResource(R.drawable.black_border_blue_filled);
                 immediate_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
@@ -194,7 +221,6 @@ public class Request_Details_New_Fragment extends Fragment {
                 one_month_btn.setTextColor(Color.parseColor("#000000"));
                 immediate_btn.setTextColor(Color.parseColor("#000000"));
                 aftr_three_month_btn.setTextColor(Color.parseColor("#000000"));
-
 
                 three_month_btn.setBackgroundResource(R.drawable.black_border_blue_filled);
                 immediate_btn.setBackgroundResource(R.drawable.black_bordr_white_filled);
@@ -233,6 +259,7 @@ public class Request_Details_New_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+
                 looking_finance = fin_yes.getText().toString();
                 fin_yes.setTextColor(Color.parseColor("#FFFFFF"));
                 fin_no.setTextColor(Color.parseColor("#000000"));
@@ -245,13 +272,14 @@ public class Request_Details_New_Fragment extends Fragment {
         });
 
 
+
         fin_no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 looking_finance = fin_no.getText().toString();
                 fin_no.setTextColor(Color.parseColor("#FFFFFF"));
                 fin_yes.setTextColor(Color.parseColor("#000000"));
-
                 fin_no.setBackgroundResource(R.drawable.black_border_blue_filled);
                 fin_yes.setBackgroundResource(R.drawable.black_bordr_white_filled);
 
@@ -264,14 +292,12 @@ public class Request_Details_New_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+
                 looking_insurance = insuranc_yes.getText().toString();
                 insuranc_yes.setTextColor(Color.parseColor("#FFFFFF"));
                 insuranc_no.setTextColor(Color.parseColor("#000000"));
-
                 insuranc_yes.setBackgroundResource(R.drawable.black_border_blue_filled);
                 insuranc_no.setBackgroundResource(R.drawable.black_bordr_white_filled);
-
-
 
             }
         });
@@ -316,13 +342,12 @@ public class Request_Details_New_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+
                 looking_demo = demo_no.getText().toString();
                 demo_no.setTextColor(Color.parseColor("#FFFFFF"));
                 demo_yes.setTextColor(Color.parseColor("#000000"));
-
                 demo_no.setBackgroundResource(R.drawable.black_border_blue_filled);
                 demo_yes.setBackgroundResource(R.drawable.black_bordr_white_filled);
-
 
 
             }
@@ -330,6 +355,7 @@ public class Request_Details_New_Fragment extends Fragment {
 
 
         System.out.println("fdgfjdgfdgd" + purchase_plan);
+
 
         request_price_layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -350,9 +376,12 @@ public class Request_Details_New_Fragment extends Fragment {
 
                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
+
                    } else {
+
                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
                    }
+
 
                    snackbar.show();
 
@@ -396,6 +425,7 @@ public class Request_Details_New_Fragment extends Fragment {
                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
                    } else {
+
                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
                    }
 
@@ -405,7 +435,6 @@ public class Request_Details_New_Fragment extends Fragment {
 
 
                 }else if(looking_demo == null){
-
 
                 //   Please select insurance
 
@@ -421,13 +450,13 @@ public class Request_Details_New_Fragment extends Fragment {
                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
                    } else {
-                       tv.setGravity(Gravity.CENTER_HORIZONTAL);
+
+                      tv.setGravity(Gravity.CENTER_HORIZONTAL);
                    }
 
                    snackbar.show();
 
                  //   Toast.makeText(getActivity(), "Please select demo/test drive", Toast.LENGTH_LONG).show();
-
 
                 }else{
 
@@ -446,7 +475,8 @@ public class Request_Details_New_Fragment extends Fragment {
     private void request_price() {
 
 
-        System.out.println("postObjmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmccfc"+purchase_plan);
+
+        System.out.println("postObjmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmccfc" + purchase_plan);
 
 
         try {
@@ -455,7 +485,7 @@ public class Request_Details_New_Fragment extends Fragment {
 
             userRequestjsonObject.put("UserId",sessionManager.getRegId("userId"));
             userRequestjsonObject.put("PurchaseTimeline",purchase_plan);
-            System.out.println("fdgfjdgfdgd" + purchase_plan);
+            userRequestjsonObject.put("LookingForInsurance",looking_insurance);
             userRequestjsonObject.put("LookingForFinance",looking_finance);
             userRequestjsonObject.put("AddressId",getArguments().getString("add_id"));
             userRequestjsonObject.put("IsAgreed", "True");
@@ -463,7 +493,9 @@ public class Request_Details_New_Fragment extends Fragment {
             userRequestjsonObject.put("LookingForDetailsId", AddBrandFragment.request_looking_id);
 
 
+
             System.out.println("postObjmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"+userRequestjsonObject.toString());
+
 
 
 
@@ -476,7 +508,7 @@ public class Request_Details_New_Fragment extends Fragment {
                      newOrderBeansList.clear();
 
 
-                    try {
+                     try {
                         String status=result.getString("Status");
                         String message=result.getString("Message");
 
@@ -488,15 +520,18 @@ public class Request_Details_New_Fragment extends Fragment {
                         tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
                         tv.setTextColor(Color.WHITE);
 
+
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
 
                             tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
                         } else {
+
                             tv.setGravity(Gravity.CENTER_HORIZONTAL);
                         }
 
                         snackbar.show();
+
 
                         HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
                         HomePage_With_Bottom_Navigation.profile_icon.setImageResource(R.drawable.ic_user_home);
@@ -509,19 +544,18 @@ public class Request_Details_New_Fragment extends Fragment {
                         transaction.replace(R.id.frame_menu, selectedFragment);
                         transaction.commit();
 
-
-                    } catch (JSONException e) {
+                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
             });
 
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-
-
     }
 
 }
+

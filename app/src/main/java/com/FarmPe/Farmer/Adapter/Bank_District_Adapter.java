@@ -10,31 +10,35 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.FarmPe.Farmer.Bean.StateBean;
-import com.FarmPe.Farmer.Fragment.Add_New_Address_Fragment;
+import com.FarmPe.Farmer.Fragment.Add_New_Bank_Account_Details_Fragment;
+
 import com.FarmPe.Farmer.R;
+
 import java.util.List;
 
-public class DistrictAdapter extends RecyclerView.Adapter<DistrictAdapter.MyStateHolder> {
+
+
+public class Bank_District_Adapter extends RecyclerView.Adapter<Bank_District_Adapter.MyStateHolder> {
     List<StateBean> stateBeans;
     Activity activity;
     public static String districtid,district_name;
 
 
 
-
-    public DistrictAdapter(List<StateBean> stateBeans,Activity activity) {
+    public Bank_District_Adapter(List<StateBean> stateBeans,Activity activity) {
         this.stateBeans = stateBeans;
         this.activity=activity;
     }
+
 
 
     @NonNull
     @Override
     public MyStateHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View stateview=LayoutInflater.from(parent.getContext()).inflate(R.layout.state_name,parent,false);
-
         return new MyStateHolder(stateview);
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull final MyStateHolder holder, int position) {
@@ -52,20 +56,22 @@ public class DistrictAdapter extends RecyclerView.Adapter<DistrictAdapter.MyStat
 //Find the currently focused view, so we can grab the correct window token from it.
                 view = activity.getCurrentFocus();
 //If no view currently has focus, create a new one, just so we can grab a window token from it
-                if (view == null) {
+                if (view  == null) {
                     view = new View(activity);
                 }
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
 
                 districtid=stateBean.getId();
                 district_name=stateBean.getName();
 
 
-                Add_New_Address_Fragment.district_txt.setText(holder.statename.getText().toString());
-                Add_New_Address_Fragment.drawer.closeDrawers();
-              //  Add_New_Address_Fragment.grade_dialog.dismiss();
+                Add_New_Bank_Account_Details_Fragment.district.setText(holder.statename.getText().toString());
+                Add_New_Bank_Account_Details_Fragment.drawer.closeDrawers();
+                //  Add_New_Address_Fragment.grade_dialog.dismiss();
             }
         });
+
 
 
     }
@@ -79,7 +85,6 @@ public class DistrictAdapter extends RecyclerView.Adapter<DistrictAdapter.MyStat
 
         TextView statename;
         LinearLayout state_name_layout;
-
 
         public MyStateHolder(View itemView) {
             super(itemView);
