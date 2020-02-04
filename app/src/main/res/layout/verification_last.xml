@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:weightSum="100"
+    >
+
+    <!--<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="100"
+        >-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="92"
+            android:orientation="vertical"
+            >
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:background="@color/green"
+        >
+
+
+        <LinearLayout
+            android:id="@+id/back_feed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:padding="10dp"
+            android:background="@drawable/ripple_effect"
+            android:layout_marginLeft="10dp"
+            >
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_go_back_left_arrow_"
+
+                android:background="?attr/selectableItemBackgroundBorderless"
+
+                />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Verification"
+            android:textSize="20dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/segoeui"
+            android:textColor="#fff"
+            android:layout_marginBottom="15dp"
+            android:textStyle="bold"
+            android:id="@+id/setting_tittle" />
+
+    </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone Number"
+                android:textSize="16dp"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/segoeui"
+                android:textStyle="bold"
+                 />
+            <TextView
+                android:id="@+id/phone_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8920084577"
+                android:textSize="18dp"
+                android:textColor="#000"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/segoeui"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                >
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="70"
+                    android:layout_gravity="center"
+                    >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:textSize="16dp"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/segoeui"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="In Progress"
+                android:textSize="18dp"
+                android:textColor="#090BCD"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/segoeui"
+                />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="30"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="25dp"
+                    android:gravity="right"
+                    >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_reload"
+                    />
+                </LinearLayout>
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="bottom"
+            android:layout_marginHorizontal="20dp"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_phone_call"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Our agent will call you soon to verify Details\n Please be available over call."
+                android:textSize="16dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#000"
+                />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+<!--
+</ScrollView>
+-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fitsSystemWindows="true"
+        android:layout_weight="8"
+        android:background="@drawable/border_filled_red"
+        >
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CONTINUE"
+            android:textSize="16dp"
+            android:padding="15dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:fontFamily="@font/segoeui"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:visibility="visible"
+            android:id="@+id/submit" />
+
+    </LinearLayout>
+
+    </LinearLayout>
+

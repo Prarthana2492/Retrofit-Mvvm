@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.FarmPe.Farmer">
+    package="com.FarmPe.Oxkart">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -13,25 +13,29 @@
     <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
+
+
     <application
-        android:name=".Activity.MyApplication"
+        android:name="com.FarmPe.Oxkart.Activity.MyApplication"
         android:allowBackup="true"
-        android:icon="@drawable/farmer_logoo"
+        android:icon="@drawable/logo_icon"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/farmer_logoo"
+        android:roundIcon="@drawable/logo_icon"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
 
 
+
         <activity
-            android:name=".Activity.ActivitySelectLang"
+            android:name="com.FarmPe.Oxkart.Activity.ActivitySelectLang"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
 
 
 
@@ -42,86 +46,133 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAEC7lt1xYl-YKTfHLwoAo1mTCwbQzRhpk" />
+            android:value="AIzaSyAJr4naBEctkjms6nEo34M_SxuBRFo9I9Y" />
 
 
         <activity
-            android:name=".Activity.LoginActivity_new"
-            android:screenOrientation="portrait" />
-
-
-        <activity
-            android:name=".Activity.ForgotPasswordNew"
-            android:screenOrientation="portrait" />
-
-
-        <activity
-            android:name=".Activity.HomePage_With_Bottom_Navigation"
-            android:screenOrientation="portrait" />
-
-
-        <activity
-            android:name=".Activity.EnterOTP"
+            android:name="com.FarmPe.Oxkart.Activity.LoginActivity_new"
             android:screenOrientation="portrait" />
 
 
 
         <activity
-            android:name=".Activity.Thank_U_New"
+            android:name="com.FarmPe.Oxkart.Activity.ForgotPasswordNew"
             android:screenOrientation="portrait" />
 
 
-        <activity
-            android:name=".Activity.LandingPageActivity"
-            android:resizeableActivity="false"
+          <activity
+            android:name="com.FarmPe.Oxkart.Activity.HomePage_With_Bottom_Navigation"
             android:screenOrientation="portrait" />
 
 
-           <activity
-            android:name=".Activity.SelectLanguageActivity"
-            android:resizeableActivity="false"
+         <activity
+            android:name="com.FarmPe.Oxkart.Activity.EnterOTP"
             android:screenOrientation="portrait" />
 
 
-             <activity
-               android:name=".Activity.ResetPasswordNew"
-              android:screenOrientation="portrait" />
+          <activity
+            android:name="com.FarmPe.Oxkart.Activity.Thank_U_New"
+            android:screenOrientation="portrait" />
+
+
+
+          <activity
+            android:name="com.FarmPe.Oxkart.Activity.Service_Main_Activity"
+            android:screenOrientation="portrait" />
 
 
 
            <activity
-               android:name=".Activity.SignUpActivity"
-               android:screenOrientation="portrait" />
-        
+            android:name="com.FarmPe.Oxkart.Activity.LandingPageActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+
+
+
             <activity
-               android:name=".Activity.Privacy_Activity"
+             android:name="com.FarmPe.Oxkart.Activity.SelectLanguageActivity"
+             android:resizeableActivity="false"
+             android:screenOrientation="portrait" />
+
+
+
+
+        <activity
+            android:name="com.FarmPe.Oxkart.Activity.ResetPasswordNew"
+            android:screenOrientation="portrait" />
+
+
+
+           <activity
+            android:name="com.FarmPe.Oxkart.Activity.Verification_Activity"
+            android:screenOrientation="portrait" />
+
+
+
+
+        <activity
+            android:name="com.FarmPe.Oxkart.Activity.New_OTP_Page_Activity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="com.FarmPe.Oxkart.Activity.New_Login_Activity2"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+               android:name="com.FarmPe.Oxkart.Activity.Slider_Activity"
                android:screenOrientation="portrait" />
 
-               <service
-                android:name=".GpsService"
+
+
+        <activity
+               android:name="com.FarmPe.Oxkart.Activity.SignUpActivity"
+               android:screenOrientation="portrait" />
+
+
+           <activity
+            android:name="com.FarmPe.Oxkart.Activity.FirmShopDetailsActivity"
+            android:screenOrientation="portrait" />
+
+
+        
+              <activity
+               android:name="com.FarmPe.Oxkart.Activity.Privacy_Activity"
+               android:screenOrientation="portrait" />
+
+                <service
+                android:name="com.FarmPe.Oxkart.GpsService"
                />
 
 
+            <receiver
+             android:name="com.FarmPe.Oxkart.Activity.ConnectivityReceiver"
+             android:enabled="true">
 
-        <receiver
-            android:name=".Activity.ConnectivityReceiver"
-            android:enabled="true">
             <intent-filter>
                 <action android:name="android." />
             </intent-filter>
         </receiver> <!-- Firebase Notifications -->
 
-        <service android:name=".MyFirebaseMessagingService">
+
+        <service android:name="com.FarmPe.Oxkart.Activity.Service_Activity" />
+
+        <service android:name="com.FarmPe.Oxkart.MyFirebaseMessagingService">
+
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-
         </service>
-        <service android:name=".MyFirebaseInstanceIDService">
+
+
+        <service android:name="com.FarmPe.Oxkart.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
     </application>
+
 
 </manifest>

@@ -10,51 +10,67 @@
     android:weightSum="100"
     >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
-        android:background="@color/green"
-        android:gravity="center_vertical">
-
-        <LinearLayout
-            android:id="@+id/back_feed"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/ripple_effect"
-            android:gravity="center">
-
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_go_back_left_arrow_"
-
-                />
-
-        </LinearLayout>
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add New Bank Details"
-            android:textSize="20dp"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            android:layout_marginHorizontal="10dp"
-            android:id="@+id/toolbar_title" />
-
-
-    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="90"
+        android:layout_weight="100"
         android:fillViewport="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+          >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:orientation="horizontal"
+                android:background="@color/menu_green"
+                tools:ignore="MissingConstraints">
+
+
+
+                <LinearLayout
+                    android:id="@+id/back_feed"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_filter_state"
+                    android:gravity="center">
+
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_go_back_left_arrow_"
+
+                        />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add New Bank Details"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                  />
+
+
+            </LinearLayout>
+
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -65,7 +81,7 @@
         >
 
         <EditText
-            android:id="@+id/fullname"
+            android:id="@+id/ifsc_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Do you have IFSC"
@@ -73,6 +89,9 @@
             android:paddingRight="10dp"
             android:textColorHint="#9D9D9D"
             android:fontFamily="@font/segoeui"
+            android:editable="false"
+            android:clickable="false"
+            android:focusable="false"
             android:paddingVertical="13dp"
             android:background="@drawable/request_price_white_border2"
             android:textSize="16dp"
@@ -96,6 +115,9 @@
                 android:hint="State"
                 android:paddingLeft="10dp"
                 android:layout_marginTop="10dp"
+                android:editable="false"
+                android:focusable="false"
+                android:clickable="false"
                 android:paddingRight="10dp"
                 android:drawableRight="@drawable/ic_down_arrow"
                 android:textSize="16dp"
@@ -114,6 +136,9 @@
             android:hint="District"
             android:textSize="16dp"
             android:layout_marginTop="10dp"
+            android:editable="false"
+            android:focusable="false"
+            android:clickable="false"
             android:textColorHint="#9D9D9D"
             android:paddingLeft="10dp"
             android:fontFamily="@font/segoeui"
@@ -127,7 +152,7 @@
 
 
         <EditText
-            android:id="@+id/age"
+            android:id="@+id/bank_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Bank Name"
@@ -135,20 +160,23 @@
             android:textColorHint="#9D9D9D"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/segoeui"
+            android:maxLength="20"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
             android:paddingLeft="10dp"
             android:paddingVertical="13dp"
             android:background="@drawable/request_price_white_border2"
             />
         <EditText
-            android:id="@+id/castecategory"
+            android:id="@+id/bank_branch_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Bank Branch Name"
             android:textSize="16dp"
             android:textColorHint="#9D9D9D"
             android:paddingLeft="10dp"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
             android:layout_marginTop="10dp"
-
+            android:maxLength="20"
             android:fontFamily="@font/segoeui"
             android:paddingVertical="13dp"
             android:background="@drawable/request_price_white_border2"
@@ -156,7 +184,7 @@
             />
 
         <EditText
-            android:id="@+id/farmertype"
+            android:id="@+id/account_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Savings Bank A/C Number"
@@ -164,13 +192,15 @@
             android:textColorHint="#9D9D9D"
             android:paddingLeft="10dp"
             android:layout_marginTop="10dp"
+            android:inputType="number"
+            android:maxLength="14"
             android:fontFamily="@font/segoeui"
             android:paddingVertical="13dp"
             android:background="@drawable/request_price_white_border2"
 
             />
         <EditText
-            android:id="@+id/farmercategory"
+            android:id="@+id/confirm_acc_no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Confirm Savings Bank A/C Number"
@@ -178,20 +208,24 @@
             android:textSize="16dp"
             android:textColorHint="#9D9D9D"
             android:fontFamily="@font/segoeui"
+            android:inputType="number"
             android:paddingLeft="10dp"
+            android:maxLength="14"
             android:paddingVertical="13dp"
             android:background="@drawable/request_price_white_border2"
 
             />
 
     </LinearLayout>
+
+        </LinearLayout>
     </ScrollView>
 
     <LinearLayout
         android:id="@+id/continuebtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/border_filled_red"
+        android:background="@drawable/border_filled_red_not_curved"
         android:orientation="horizontal"
         android:gravity="center"
         >

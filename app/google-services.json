@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:297701761208:android:9d5383ff2b352c2d",
         "android_client_info": {
-          "package_name": "com.FarmPe.Farmer"
+          "package_name": "com.FarmPe.Oxkart"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "297701761208-t20t4i6gkemkfhcqu7b72dmkd9d40te9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.FarmPe.Farmer",
+            "package_name": "com.FarmPe.Oxkart",
             "certificate_hash": "8773e7ac3244284bf5b50481ba2e55c7f2f48a7e"
           }
         },

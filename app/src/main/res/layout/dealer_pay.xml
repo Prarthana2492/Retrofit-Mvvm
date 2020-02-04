@@ -10,7 +10,22 @@
     android:weightSum="100"
     >
 
-            <LinearLayout
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="100"
+        android:fillViewport="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
@@ -24,6 +39,7 @@
                     android:layout_height="50dp"
                     android:background="@drawable/ic_filter_state"
                     android:gravity="center">
+
 
                     <ImageView
                         android:id="@+id/b_arrow"
@@ -51,12 +67,6 @@
 
 
 
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="91"
-        >
 
 
 
@@ -98,13 +108,15 @@
                             android:layout_weight="25"
                             android:gravity="center"
                             >
-                            <ImageView
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/profile_image"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:src="@drawable/avatarmale"
                                 />
 
                         </LinearLayout>
+
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -117,15 +129,18 @@
                             >
 
                             <TextView
+                                android:id="@+id/pay_profile_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Jagadeesh Kumar"
                                 android:textStyle="bold"
                                 android:textColor="#000"
                                 android:textSize="14dp"
-
                                 />
+
+
                             <TextView
+                                android:id="@+id/pay_profile_no"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="9867532109"
@@ -133,6 +148,7 @@
                                 android:textSize="14dp"
 
                                 />
+
                         </LinearLayout>
                     </LinearLayout>
 
@@ -168,7 +184,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingLeft="10dp"
-                            android:hint="Insurance Name"
+                            android:hint="Name"
                             android:paddingRight="10dp"
                             android:layout_marginTop="10dp"
                             android:textSize="16dp"
@@ -178,6 +194,8 @@
                             android:paddingVertical="13dp"
                             android:background="@drawable/request_price_white_border"
                             />
+
+
                         <EditText
                             android:id="@+id/amount"
                             android:layout_width="match_parent"
@@ -194,6 +212,7 @@
                             android:paddingVertical="13dp"
                             android:background="@drawable/request_price_white_border"
                             />
+
                         <EditText
                             android:id="@+id/des"
                             android:layout_width="match_parent"
@@ -211,7 +230,6 @@
                             />
 
                     </LinearLayout>
-
 
 
                     <LinearLayout
@@ -277,9 +295,8 @@
 
                                         />
 
-
-
                                 </LinearLayout>
+
 
                             </LinearLayout>
 
@@ -477,7 +494,6 @@
 
             </LinearLayout>
 
-    </ScrollView>
 
 
     <LinearLayout
@@ -499,4 +515,7 @@
             android:textColor="#fff"
             android:textSize="20dp" />
     </LinearLayout>
+</LinearLayout>
+
+    </ScrollView>
 </LinearLayout>

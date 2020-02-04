@@ -55,7 +55,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/farmer_logo_text"
+            android:src="@drawable/oxkart_icon"
             />
 
 
@@ -202,6 +202,25 @@
             android:textColor="#2680EB"
             android:textStyle="bold"
             android:textSize="14dp" />
+
+
+
+
+        <!--<TextView-->
+            <!--android:id="@+id/service"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="5"-->
+            <!--android:layout_gravity="right"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:text="sign in"-->
+            <!--android:textColor="#2680EB"-->
+            <!--android:textStyle="bold"-->
+            <!--android:textSize="14dp" />-->
+
+
+
 
 
         <LinearLayout
