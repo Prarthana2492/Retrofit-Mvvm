@@ -1,4 +1,4 @@
-package com.FarmPe.Oxkart.Adapter;
+package com.FarmPe.Farmer.Adapter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -11,9 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import com.FarmPe.Oxkart.Bean.StateBean;
-import com.FarmPe.Oxkart.Fragment.Add_New_Bank_Account_Details_Fragment;
-import com.FarmPe.Oxkart.R;
+import com.FarmPe.Farmer.Bean.StateBean;
+import com.FarmPe.Farmer.Fragment.Add_New_Bank_Account_Details_Fragment;
+import com.FarmPe.Farmer.R;
 
 import java.util.List;
 

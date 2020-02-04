@@ -1,4 +1,4 @@
-package com.FarmPe.Oxkart.Fragment;
+package com.FarmPe.Farmer.Fragment;
 
 import android.app.Activity;
 import android.content.Context;
@@ -36,19 +36,24 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import com.FarmPe.Oxkart.Adapter.Address_Adapter;
-import com.FarmPe.Oxkart.Adapter.DistrictAdapter1;
-import com.FarmPe.Oxkart.Adapter.Gram_Panchayat_Adapter;
-import com.FarmPe.Oxkart.Adapter.Nyay_Panchayat_Adapter;
-import com.FarmPe.Oxkart.Adapter.StateApdater1;
-import com.FarmPe.Oxkart.Adapter.TalukAdapter1;
-import com.FarmPe.Oxkart.Adapter.VillageAdapter1;
-import com.FarmPe.Oxkart.Bean.StateBean;
-import com.FarmPe.Oxkart.R;
-import com.FarmPe.Oxkart.SessionManager;
-import com.FarmPe.Oxkart.Urls;
-import com.FarmPe.Oxkart.Volly_class.Crop_Post;
-import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
+import com.FarmPe.Farmer.Adapter.Address_Adapter;
+import com.FarmPe.Farmer.Adapter.Bank_District_Adapter;
+import com.FarmPe.Farmer.Adapter.Bank_State_Adapter;
+import com.FarmPe.Farmer.Adapter.DistrictAdapter;
+import com.FarmPe.Farmer.Adapter.DistrictAdapter1;
+import com.FarmPe.Farmer.Adapter.Gram_Panchayat_Adapter;
+import com.FarmPe.Farmer.Adapter.Nyay_Panchayat_Adapter;
+import com.FarmPe.Farmer.Adapter.StateApdater1;
+import com.FarmPe.Farmer.Adapter.TalukAdapter;
+import com.FarmPe.Farmer.Adapter.TalukAdapter1;
+import com.FarmPe.Farmer.Adapter.VillageAdapter1;
+import com.FarmPe.Farmer.Bean.StateBean;
+import com.FarmPe.Farmer.R;
+import com.FarmPe.Farmer.SessionManager;
+import com.FarmPe.Farmer.Urls;
+import com.FarmPe.Farmer.Volly_class.Crop_Post;
+import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
+import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -1139,7 +1144,6 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
                 norecords.setVisibility(View.VISIBLE);
 
             }else {
-
                 recyclerView.setVisibility(View.VISIBLE);
                 norecords.setVisibility(View.GONE);
 
@@ -1169,7 +1173,6 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
             if (searchresultAraaylist.size() == 0) {
                 recyclerView.setVisibility(View.GONE);
                 norecords.setVisibility(View.VISIBLE);
-
             } else {
 
                 recyclerView.setVisibility(View.VISIBLE);

@@ -1,4 +1,4 @@
-package com.FarmPe.Oxkart.Fragment;
+package com.FarmPe.Farmer.Fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,15 +13,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.FarmPe.Oxkart.Activity.HomePage_With_Bottom_Navigation;
-import com.FarmPe.Oxkart.Activity.Status_bar_change_singleton;
-import com.FarmPe.Oxkart.Adapter.Address_Adapter;
-import com.FarmPe.Oxkart.Bean.Profile_Address_Bean;
-import com.FarmPe.Oxkart.R;
-import com.FarmPe.Oxkart.SessionManager;
-import com.FarmPe.Oxkart.Urls;
-import com.FarmPe.Oxkart.Volly_class.Crop_Post;
-import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
+import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
+import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
+import com.FarmPe.Farmer.Adapter.Address_Adapter;
+import com.FarmPe.Farmer.Bean.Profile_Address_Bean;
+import com.FarmPe.Farmer.R;
+import com.FarmPe.Farmer.SessionManager;
+import com.FarmPe.Farmer.Urls;
+import com.FarmPe.Farmer.Volly_class.Crop_Post;
+import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.ArrayList;
@@ -90,7 +90,6 @@ public class Profile_Get_Address_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("settingg", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
@@ -117,7 +116,6 @@ public class Profile_Get_Address_Fragment extends Fragment {
         });
 
 
-
         newOrderBeansList.clear();
         address_adapter=new Address_Adapter(getActivity(),newOrderBeansList);
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
@@ -133,7 +131,6 @@ public class Profile_Get_Address_Fragment extends Fragment {
 //        newOrderBeansList.add(img1);
 
         get_address_profile_details();
-
 
         return view;
     }
@@ -155,8 +152,8 @@ public class Profile_Get_Address_Fragment extends Fragment {
 
                         new_address_list_array = result.getJSONArray("AddressDetails");
 
-                        for (int i = 0; i < new_address_list_array.length(); i++) {
 
+                        for (int i = 0; i < new_address_list_array.length(); i++) {
                             JSONObject jsonObject1 = new_address_list_array.getJSONObject(i);
 
                                     Profile_Address_Bean profile_address_bean = new Profile_Address_Bean(jsonObject1.getString("FullName"), jsonObject1.getString("MobileNo"), jsonObject1.getString("Address"), jsonObject1.getString("LandMark"), jsonObject1.getString("State"),
@@ -167,7 +164,6 @@ public class Profile_Get_Address_Fragment extends Fragment {
                             newOrderBeansList.add(profile_address_bean);
 
                         }
-
                         address_adapter.notifyDataSetChanged();
 
 

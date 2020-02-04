@@ -20,7 +20,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     }
 
-
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void sendMyNotification(String message) {
 

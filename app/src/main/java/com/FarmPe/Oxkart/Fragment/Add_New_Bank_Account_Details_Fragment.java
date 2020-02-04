@@ -1,4 +1,4 @@
-package com.FarmPe.Oxkart.Fragment;
+package com.FarmPe.Farmer.Fragment;
 
 
 import android.app.Activity;
@@ -34,16 +34,22 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import com.FarmPe.Oxkart.Activity.Status_bar_change_singleton;
-import com.FarmPe.Oxkart.Adapter.BankAccount_Adapter;
-import com.FarmPe.Oxkart.Adapter.Bank_District_Adapter;
-import com.FarmPe.Oxkart.Adapter.Bank_State_Adapter;
-import com.FarmPe.Oxkart.Bean.StateBean;
-import com.FarmPe.Oxkart.R;
-import com.FarmPe.Oxkart.SessionManager;
-import com.FarmPe.Oxkart.Urls;
-import com.FarmPe.Oxkart.Volly_class.Crop_Post;
-import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
+import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
+import com.FarmPe.Farmer.Adapter.BankAccount_Adapter;
+import com.FarmPe.Farmer.Adapter.Bank_District_Adapter;
+import com.FarmPe.Farmer.Adapter.Bank_State_Adapter;
+import com.FarmPe.Farmer.Adapter.DistrictAdapter;
+import com.FarmPe.Farmer.Adapter.DistrictAdapter1;
+import com.FarmPe.Farmer.Adapter.HoblisAdapter;
+import com.FarmPe.Farmer.Adapter.StateApdater;
+import com.FarmPe.Farmer.Adapter.TalukAdapter;
+import com.FarmPe.Farmer.Adapter.You_Address_Adapter;
+import com.FarmPe.Farmer.Bean.StateBean;
+import com.FarmPe.Farmer.R;
+import com.FarmPe.Farmer.SessionManager;
+import com.FarmPe.Farmer.Urls;
+import com.FarmPe.Farmer.Volly_class.Crop_Post;
+import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -55,9 +61,12 @@ import java.util.List;
 
 
 public class Add_New_Bank_Account_Details_Fragment extends Fragment {
+
+
  LinearLayout back_feed,linearLayout,continuebtn;
     Fragment selectedFragment;
-   public static EditText do_u_have_ifsc,state,district,confirm_saving_ac;
+
+    public static EditText do_u_have_ifsc,state,district,confirm_saving_ac;
     static List<StateBean> stateBeanList = new ArrayList<>();
     static List<StateBean> districtBeanList = new ArrayList<>();
     private List<StateBean> searchresultAraaylist = new ArrayList<>();
@@ -65,11 +74,9 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
     Bank_State_Adapter stateApdater;
     Bank_District_Adapter districtAdapter;
     JSONArray jsonArray,state_array;
-
     public static EditText state_txt;
     public static DrawerLayout drawer;
     RecyclerView recyclerView;
-
     String status,bankdetails_id;
     EditText account_number,bank_name,bank_branch_name;
     SessionManager sessionManager;
@@ -79,10 +86,13 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
 
 
 
+
     public static Add_New_Bank_Account_Details_Fragment newInstance() {
         Add_New_Bank_Account_Details_Fragment fragment = new Add_New_Bank_Account_Details_Fragment();
         return fragment;
     }
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -107,7 +117,6 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
           state_txt = view.findViewById(R.id.state_txt);
           toolbar_title = view.findViewById(R.id.toolbar_title);
 
-
           bank_branch_name=view.findViewById(R.id.bank_branch_name);
           bank_name=view.findViewById(R.id.bank_name);
           account_number=view.findViewById(R.id.account_number);
@@ -117,6 +126,7 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
           continuebtn=view.findViewById(R.id.continuebtn);
           linearLayout=view.findViewById(R.id.main_layout);
           sessionManager = new SessionManager(getActivity());
+
 
 
          bank_name.setText(getArguments().getString("bank_name"));
@@ -136,6 +146,7 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
 
              toolbar_title.setText("Edit Bank Details");
          }
+
 
 
 
@@ -163,12 +174,12 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
                     transaction.commit();
 
 
+
                 }  else if(getArguments().getString("bank_status").equals("edit_address")){
 
 
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("bank_list_page", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
 
 
                     }else  if(getArguments().getString("bank_status").equals("Get_Add_Bank_Details")) {
@@ -231,6 +242,7 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
                 return false;
             }
         });
+
 
 
 
