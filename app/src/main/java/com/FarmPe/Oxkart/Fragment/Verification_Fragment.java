@@ -21,6 +21,7 @@ public class Verification_Fragment extends Fragment {
     Fragment selectedFragment;
   LinearLayout back_feed;
   TextView voter_id_back,voter_id_front,select_location,selfie_verify;
+  String status_1,status_2;
 
 
 
@@ -45,8 +46,10 @@ public class Verification_Fragment extends Fragment {
      //   linearLayout = view.findViewById(R.id.main_layout);
 
 
+           status_1 = getArguments().getString("verification_status");
 
-        back_feed.setOnClickListener(new View.OnClickListener() {
+
+           back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

@@ -1,4 +1,4 @@
-package com.FarmPe.Farmer.Adapter;
+package com.FarmPe.Oxkart.Adapter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -9,10 +9,11 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.FarmPe.Farmer.Bean.StateBean;
-import com.FarmPe.Farmer.Fragment.Add_New_Bank_Account_Details_Fragment;
 
-import com.FarmPe.Farmer.R;
+
+import com.FarmPe.Oxkart.Bean.StateBean;
+import com.FarmPe.Oxkart.Fragment.Add_New_Bank_Account_Details_Fragment;
+import com.FarmPe.Oxkart.R;
 
 import java.util.List;
 
@@ -72,9 +73,8 @@ public class Bank_District_Adapter extends RecyclerView.Adapter<Bank_District_Ad
             }
         });
 
-
-
     }
+
 
     @Override
     public int getItemCount() {

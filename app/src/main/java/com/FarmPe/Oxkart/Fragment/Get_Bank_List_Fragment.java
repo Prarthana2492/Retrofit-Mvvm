@@ -1,4 +1,4 @@
-package com.FarmPe.Farmer.Fragment;
+package com.FarmPe.Oxkart.Fragment;
 
 
 import android.os.Bundle;
@@ -16,15 +16,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import com.FarmPe.Farmer.Activity.HomePage_With_Bottom_Navigation;
-import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
-import com.FarmPe.Farmer.Adapter.BankAccount_Adapter;
-import com.FarmPe.Farmer.Bean.BankBean;
-import com.FarmPe.Farmer.R;
-import com.FarmPe.Farmer.SessionManager;
-import com.FarmPe.Farmer.Urls;
-import com.FarmPe.Farmer.Volly_class.Crop_Post;
-import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
+import com.FarmPe.Oxkart.Activity.HomePage_With_Bottom_Navigation;
+import com.FarmPe.Oxkart.Activity.Status_bar_change_singleton;
+import com.FarmPe.Oxkart.Adapter.BankAccount_Adapter;
+import com.FarmPe.Oxkart.Bean.BankBean;
+import com.FarmPe.Oxkart.R;
+import com.FarmPe.Oxkart.SessionManager;
+import com.FarmPe.Oxkart.Urls;
+import com.FarmPe.Oxkart.Volly_class.Crop_Post;
+import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

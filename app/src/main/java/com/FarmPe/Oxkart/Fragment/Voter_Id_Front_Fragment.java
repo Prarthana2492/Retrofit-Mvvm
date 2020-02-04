@@ -103,22 +103,29 @@ public class Voter_Id_Front_Fragment extends Fragment implements SurfaceHolder.C
 
                 if(getArguments().getString("VoterFront_Fragment").equals("voter_front")){
 
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                   fm.popBackStack("verify_voter", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-
+                    selectedFragment = Verification_Fragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout1, selectedFragment);
+                    transaction.commit();
 
 
                 }else if(getArguments().getString("VoterFront_Fragment").equals("edit_front_voter")) {
 
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("edit_voter", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    selectedFragment = Edit_Verification_Fragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout1, selectedFragment);
+                    transaction.commit();
 
 
                 } else if(getArguments().getString("VoterFront_Fragment").equals("upload_front")){
 
-                        FragmentManager fm = getActivity().getSupportFragmentManager();
-                        fm.popBackStack("edit_voter", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                    selectedFragment = Edit_Verification_Fragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout1, selectedFragment);
+                    transaction.commit();
+
 
 
                 }
@@ -585,7 +592,6 @@ public class Voter_Id_Front_Fragment extends Fragment implements SurfaceHolder.C
                     Bundle bundle = new Bundle();
                     bundle.putString("name",getPath(imageUri) );
 
-                    bundle.putString("status_add_front",voterstatus_front);
                     selectedFragment = VoterId_Front_Preview_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_layout, selectedFragment);

@@ -1,4 +1,4 @@
-package com.FarmPe.Farmer.Fragment;
+package com.FarmPe.Oxkart.Fragment;
 
 
 import android.app.Activity;
@@ -34,22 +34,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import com.FarmPe.Farmer.Activity.Status_bar_change_singleton;
-import com.FarmPe.Farmer.Adapter.BankAccount_Adapter;
-import com.FarmPe.Farmer.Adapter.Bank_District_Adapter;
-import com.FarmPe.Farmer.Adapter.Bank_State_Adapter;
-import com.FarmPe.Farmer.Adapter.DistrictAdapter;
-import com.FarmPe.Farmer.Adapter.DistrictAdapter1;
-import com.FarmPe.Farmer.Adapter.HoblisAdapter;
-import com.FarmPe.Farmer.Adapter.StateApdater;
-import com.FarmPe.Farmer.Adapter.TalukAdapter;
-import com.FarmPe.Farmer.Adapter.You_Address_Adapter;
-import com.FarmPe.Farmer.Bean.StateBean;
-import com.FarmPe.Farmer.R;
-import com.FarmPe.Farmer.SessionManager;
-import com.FarmPe.Farmer.Urls;
-import com.FarmPe.Farmer.Volly_class.Crop_Post;
-import com.FarmPe.Farmer.Volly_class.VoleyJsonObjectCallback;
+import com.FarmPe.Oxkart.Activity.Status_bar_change_singleton;
+import com.FarmPe.Oxkart.Adapter.BankAccount_Adapter;
+import com.FarmPe.Oxkart.Adapter.Bank_District_Adapter;
+import com.FarmPe.Oxkart.Adapter.Bank_State_Adapter;
+import com.FarmPe.Oxkart.Bean.StateBean;
+import com.FarmPe.Oxkart.R;
+import com.FarmPe.Oxkart.SessionManager;
+import com.FarmPe.Oxkart.Urls;
+import com.FarmPe.Oxkart.Volly_class.Crop_Post;
+import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
+
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -91,6 +86,7 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
         Add_New_Bank_Account_Details_Fragment fragment = new Add_New_Bank_Account_Details_Fragment();
         return fragment;
     }
+
 
 
 
@@ -669,7 +665,7 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
             JSONObject jsonObject = new JSONObject();
             JSONObject post_jsonobject = new JSONObject();
 
-            jsonObject.put("StateId",Bank_State_Adapter.stateid);
+            jsonObject.put("StateId", Bank_State_Adapter.stateid);
             post_jsonobject.put("Districtobj", jsonObject);
 
 
@@ -809,7 +805,7 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
             jsonObject.put("IsIFSCCodeExist","1");
             jsonObject.put("SavingsBankAccountNumber",account_number.getText().toString());
             jsonObject.put("StateId",Bank_State_Adapter.stateid);
-            jsonObject.put("DistrictId",Bank_District_Adapter.districtid);
+            jsonObject.put("DistrictId", Bank_District_Adapter.districtid);
             jsonObject.put("BankName",bank_name.getText().toString());
             jsonObject.put("BankBranchName",bank_branch_name.getText().toString());
             System.out.println("sdfsdfsdf" + bankdetails_id);

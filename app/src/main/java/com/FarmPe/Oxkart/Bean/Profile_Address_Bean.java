@@ -1,4 +1,4 @@
-package com.FarmPe.Farmer.Bean;
+package com.FarmPe.Oxkart.Bean;
 
 public class Profile_Address_Bean {
 

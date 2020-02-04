@@ -1,4 +1,4 @@
-package com.FarmPe.Farmer.Adapter;
+package com.FarmPe.Oxkart.Adapter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -11,11 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import com.FarmPe.Farmer.Bean.StateBean;
-
-import com.FarmPe.Farmer.Fragment.Add_New_Address_Fragment;
-import com.FarmPe.Farmer.Fragment.Profile_Add_New_Address_Fragment;
-import com.FarmPe.Farmer.R;
+import com.FarmPe.Oxkart.Bean.StateBean;
+import com.FarmPe.Oxkart.Fragment.Profile_Add_New_Address_Fragment;
+import com.FarmPe.Oxkart.R;
 
 import java.util.List;
 
@@ -65,7 +63,7 @@ public class Gram_Panchayat_Adapter extends RecyclerView.Adapter<Gram_Panchayat_
                 gram_panchayat_name=stateBean.getName();
 
                 Profile_Add_New_Address_Fragment.grampanchayath.setText(holder.statename.getText().toString());
-                Profile_Add_New_Address_Fragment .drawer.closeDrawers();
+                Profile_Add_New_Address_Fragment.drawer.closeDrawers();
                 // Add_New_Address_Fragment .search.setText("");
 
 

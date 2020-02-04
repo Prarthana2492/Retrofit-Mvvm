@@ -486,21 +486,24 @@ public class Verification_Aadhar_Fragment extends Fragment {
 
         if (get_location_array.length() == 0 && vote_list_array.length() == 0 && vote_bk_list_array.length()== 0 && imagelist_array.length() == 0) {
 
-
+                Bundle bundle = new Bundle();
+                bundle.putString("verification_status","Verify_Page");
                 selectedFragment = Verification_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout1, selectedFragment);
                 transaction.addToBackStack("verify");
+                selectedFragment.setArguments(bundle);
                 transaction.commit();
 
 
             } else {
-
-                selectedFragment = Edit_Verification_Fragment.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout1, selectedFragment);
-                transaction.addToBackStack("verify");
-                transaction.commit();
+                   Bundle bundle = new Bundle();
+                  bundle.putString("verification_status","Edit_Page");
+                  selectedFragment = Edit_Verification_Fragment.newInstance();
+                  FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                  transaction.replace(R.id.frame_layout1, selectedFragment);
+                  transaction.addToBackStack("verify");
+                   transaction.commit();
 
             }
 
