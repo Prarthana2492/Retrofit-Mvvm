@@ -147,7 +147,7 @@ public class VoterId_Front_Preview_Fragment extends Fragment {
             public void onClick(View view) {
 
                 Bundle bundle = new Bundle();
-                bundle.putString("voterid_stats",getArguments().getString("VoterFront_Fragment"));
+                bundle.putString("VoterFront_Fragment","voter_front");
                 selectedFragment = Voter_Id_Front_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout1, selectedFragment);
@@ -160,9 +160,10 @@ public class VoterId_Front_Preview_Fragment extends Fragment {
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //System.out.println("khkvnkhvjhg"+getArguments().getString("VoterFront_Fragment"));
 
                 Bundle bundle = new Bundle();
-                bundle.putString("voterid_stats",getArguments().getString("VoterFront_Fragment"));
+                bundle.putString("VoterFront_Fragment","voter_front");
                 selectedFragment = Voter_Id_Front_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout1, selectedFragment);
@@ -188,7 +189,7 @@ public class VoterId_Front_Preview_Fragment extends Fragment {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
                     Bundle bundle = new Bundle();
-                    bundle.putString("voterid_stats",getArguments().getString("VoterFront_Fragment"));
+                    bundle.putString("VoterFront_Fragment",getArguments().getString("VoterFront_Fragment"));
                     selectedFragment = Voter_Id_Front_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_layout1, selectedFragment);

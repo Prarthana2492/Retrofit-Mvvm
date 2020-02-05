@@ -45,7 +45,7 @@ public class Verification_Aadhar_Fragment extends Fragment {
     LinearLayout sele_loc, selfie_img, main_layout;
     TextView submit, verify_btn, verify_aadhar_st;
     EditText aadhar_no, pan_name, pan_num;
-    String status;
+   public static String status;
     SessionManager sessionManager;
     JSONArray get_location_array,vote_list_array,vote_bk_list_array,imagelist_array;
     Fragment selectedFragment = null;
@@ -488,6 +488,7 @@ public class Verification_Aadhar_Fragment extends Fragment {
 
                 Bundle bundle = new Bundle();
                 bundle.putString("verification_status","Verify_Page");
+                status="Verify_Page";
                 selectedFragment = Verification_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout1, selectedFragment);
@@ -499,7 +500,9 @@ public class Verification_Aadhar_Fragment extends Fragment {
             } else {
                    Bundle bundle = new Bundle();
                   bundle.putString("verification_status","Edit_Page");
-                  selectedFragment = Edit_Verification_Fragment.newInstance();
+            status="Edit_Page";
+
+            selectedFragment = Edit_Verification_Fragment.newInstance();
                   FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                   transaction.replace(R.id.frame_layout1, selectedFragment);
                   transaction.addToBackStack("verify");

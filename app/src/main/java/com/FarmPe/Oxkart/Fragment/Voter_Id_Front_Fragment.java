@@ -101,36 +101,34 @@ public class Voter_Id_Front_Fragment extends Fragment implements SurfaceHolder.C
             @Override
             public void onClick(View view) {
 
-                if(getArguments().getString("VoterFront_Fragment").equals("voter_front")){
+                if (Verification_Aadhar_Fragment.status.equals("Verify_Page")) {
 
-
+                    Bundle bundle = new Bundle();
+                    bundle.putString("verification_status","Verify_Page");
                     selectedFragment = Verification_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_layout1, selectedFragment);
+                    selectedFragment.setArguments(bundle);
                     transaction.commit();
 
 
-                }else if(getArguments().getString("VoterFront_Fragment").equals("edit_front_voter")) {
+                } else {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("verification_status","Edit_Page");
 
                     selectedFragment = Edit_Verification_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_layout1, selectedFragment);
                     transaction.commit();
-
-
-                } else if(getArguments().getString("VoterFront_Fragment").equals("upload_front")){
-
-
-                    selectedFragment = Edit_Verification_Fragment.newInstance();
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout1, selectedFragment);
-                    transaction.commit();
-
-
 
                 }
 
-            }
+
+
+
+
+
+        }
         });
 
 
@@ -591,6 +589,7 @@ public class Voter_Id_Front_Fragment extends Fragment implements SurfaceHolder.C
 
                     Bundle bundle = new Bundle();
                     bundle.putString("name",getPath(imageUri) );
+                    bundle.putString("VoterFront_Fragment",getArguments().getString("VoterFront_Fragment"));
 
                     selectedFragment = VoterId_Front_Preview_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();

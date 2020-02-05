@@ -46,7 +46,7 @@ public class Verification_Fragment extends Fragment {
      //   linearLayout = view.findViewById(R.id.main_layout);
 
 
-           status_1 = getArguments().getString("verification_status");
+//           status_1 = getArguments().getString("verification_status");
 
 
            back_feed.setOnClickListener(new View.OnClickListener() {
