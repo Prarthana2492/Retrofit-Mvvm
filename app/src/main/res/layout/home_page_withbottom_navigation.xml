@@ -42,11 +42,11 @@
     <!--tools:background="#EFEFEF"/>-->
 
 
-    <!--<View-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="2dp"-->
-        <!--android:background="#efefef"-->
-        <!--/>-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#CCCC"
+        />
 
         <LinearLayout
             android:id="@+id/linear_bottom"

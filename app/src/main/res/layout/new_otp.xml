@@ -69,6 +69,7 @@
                 android:fontFamily="@font/segoeui"
                 android:textSize="20dp"
                 android:textStyle="bold"
+                android:textColor="#999999"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
                 />
@@ -85,7 +86,7 @@
                 android:textStyle="bold"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
-                android:textColor="@color/black"
+                android:textColor="#000"
                 />
 
 
@@ -97,6 +98,7 @@
                 android:fontFamily="@font/segoeui"
                 android:textSize="19dp"
                 android:textStyle="bold"
+                android:textColor="#999999"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"/>
 
@@ -153,10 +155,10 @@
                 android:cursorVisible="true"
                 app:cursorWidth="2dp"
                 android:textStyle="bold"
-                android:itemBackground="#DBDBDB"
+                android:itemBackground="#E9E9E9"
                 app:itemCount="4"
                 app:itemHeight="48dp"
-                app:lineColor="#DBDBDB"
+                app:lineColor="#E9E9E9"
                 app:itemSpacing="10dp"
                 app:itemWidth="48dp"
                 app:lineWidth="2dp"
@@ -184,6 +186,7 @@
                 android:fontFamily="@font/segoeui"
                 android:textSize="20dp"
                 android:textStyle="bold"
+                android:textColor="#999999"
                 android:layout_weight="60"
                 android:layout_marginLeft="20dp"
                 />
@@ -208,36 +211,78 @@
         </LinearLayout>
 
 
+        <!--<LinearLayout-->
+            <!--android:id="@+id/otp_sent"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="80dp"-->
+            <!--android:visibility="gone"-->
+            <!--android:orientation="vertical">-->
+
+
+            <!--<ImageView-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:src="@drawable/ic_success__red"-->
+                <!--android:layout_gravity="center"-->
+                <!--/>-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="10"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:text="OTP Sent"-->
+                <!--android:fontFamily="@font/segoeui"-->
+                <!--android:textSize="18dp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:textColor="@color/black"-->
+                <!--/>-->
+
+
+        <!--</LinearLayout>-->
+
+
         <LinearLayout
-            android:id="@+id/otp_sent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:visibility="gone"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
             android:orientation="vertical">
 
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/ic_success__red"
-                android:layout_gravity="center"
-                />
+                <ImageView
+                    android:id="@+id/otpsent"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:adjustViewBounds="true"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_success__red"/>
+
+                <ProgressBar
+                    android:id="@+id/otp_sent"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:indeterminateDrawable="@drawable/progress_style"
+                    android:visibility="visible" />
+            </RelativeLayout>
+
 
             <TextView
+                android:id="@+id/otpsenttxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:layout_marginTop="10dp"
-                android:text="OTP Sent"
                 android:fontFamily="@font/segoeui"
+                android:text="OTP Sent"
+                android:textColor="#000"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                android:layout_gravity="center"
-                android:textColor="@color/black"
-                />
-
-
+                android:visibility="gone" />
         </LinearLayout>
 
 

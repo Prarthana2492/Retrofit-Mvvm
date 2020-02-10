@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#26A541</color>
-    <color name="colorPrimaryDark">#26A541</color>
+    <color name="colorPrimary">#1e8434</color>
+    <color name="colorPrimaryDark">#1e8434</color>
     <color name="dark_green">#1e8434</color>
     <color name="colorAccent">#F72C1D</color>
+
 
     <color name="gold_color">#e8bc1a</color>
     <color name="navy_blue">#3887D6</color>
@@ -19,11 +20,11 @@
     <color name="light_grey1">#F4F4F4</color>
     <color name="red">#EC4848</color>
     <color name="green">#279E5E</color>
-    <color name="sky_blue">#2680EB</color>
+    <color name="sky_blue">#77D4E0</color>
     <color name="menu_green">#26A541</color>
     <color name="light_green">#DEF0F1</color>
+    <color name="lite_blue">#DBEBF1</color>
     <color name="placeholder_bg">#dddddd</color>
-
 
 </resources>
 

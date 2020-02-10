@@ -68,7 +68,6 @@ public class Setting_Request_Fragment extends Fragment {
         });
 
 
-
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -129,6 +128,7 @@ public class Setting_Request_Fragment extends Fragment {
 
             }
         });
+
 
 
         request_favo.setOnClickListener(new View.OnClickListener() {

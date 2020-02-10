@@ -170,12 +170,8 @@ public class VoterId_Front_Preview_Fragment extends Fragment {
                 selectedFragment.setArguments(bundle);
                 transaction.commit();
 
-
-
             }
         });
-
-
 
 
         view.setFocusableInTouchMode(true);
@@ -205,8 +201,6 @@ public class VoterId_Front_Preview_Fragment extends Fragment {
 
 
 
-
-
         upload_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -215,14 +209,12 @@ public class VoterId_Front_Preview_Fragment extends Fragment {
                 uploadImage(getResizedBitmap(Voter_Id_Front_Fragment.selectedImage, 100, 100));
 
 
-
                 // uploadImage(getResizedBitmap(VoterId_Photo_Fragment.selectedImage, 100, 100));
 
 //                selectedFragment = Shop_Camera_Fragment_Edit.newInstance();
 //                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
 //                transaction.replace(R.id.frame_layout1, selectedFragment);
 //                transaction.commit();
-
 
             }
         });

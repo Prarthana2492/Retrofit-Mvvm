@@ -124,13 +124,31 @@ public class VoterId_Back_Preview_Details_Fragment extends Fragment {
           @Override
              public void onClick(View view) {
 
-                  selectedFragment = Voter_Id_Back_Fragment.newInstance();
-                  FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                  transaction.replace(R.id.frame_layout1, selectedFragment);
-                  transaction.commit();
+                   Bundle bundle = new Bundle();
+                   bundle.putString("VoterBack_Fragment","voter_back");
+                   selectedFragment = Voter_Id_Back_Fragment.newInstance();
+                   FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                   transaction.replace(R.id.frame_layout1, selectedFragment);
+                   transaction.commit();
 
                  }
                  });
+
+
+
+        take_voter_photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Bundle bundle = new Bundle();
+                bundle.putString("VoterBack_Fragment","voter_back");
+                selectedFragment = Voter_Id_Back_Fragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout1, selectedFragment);
+                transaction.commit();
+
+            }
+        });
 
 
         view.setFocusableInTouchMode(true);
@@ -143,6 +161,8 @@ public class VoterId_Back_Preview_Details_Fragment extends Fragment {
 
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
+                    Bundle bundle = new Bundle();
+                    bundle.putString("VoterBack_Fragment",getArguments().getString("VoterBack_Fragment"));
                     selectedFragment = Voter_Id_Back_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_layout1, selectedFragment);
@@ -201,18 +221,7 @@ public class VoterId_Back_Preview_Details_Fragment extends Fragment {
 
 
 
-        take_voter_photo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-
-                selectedFragment = Voter_Id_Back_Fragment.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout1, selectedFragment);
-                transaction.commit();
-
-            }
-        });
 
 //        title.setOnClickListener(new View.OnClickListener() {
 //

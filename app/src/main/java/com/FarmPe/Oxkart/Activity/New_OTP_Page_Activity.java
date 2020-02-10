@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.os.Vibrator;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
@@ -22,7 +23,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,13 +44,16 @@ import org.json.JSONObject;
 
 public class New_OTP_Page_Activity extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener{
 
+
     String toast_internet,toast_nointernet;
     JSONObject lngObject;
     SessionManager sessionManager;
-    LinearLayout main_layout,otp_sent,back_feed;
-    TextView register_submit,timer,mobile_number_text;
+    LinearLayout main_layout,back_feed;
+    TextView register_submit,timer,mobile_number_text,otpsenttxt;
     String sessionId;
     EditText edit_tOTP;
+    ProgressBar otp_sent;
+    ImageView otpsentimg;
     BroadcastReceiver receiver;
     PinView pinView;
     Vibrator vibe;
@@ -162,20 +168,54 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
         pinView = findViewById(R.id.pinView);
         main_layout = findViewById(R.id.main_layout);
         mobile_number_text = findViewById(R.id.mobile_number_text);
+        otp_sent = findViewById(R.id.otp_sent);
+        otpsentimg = findViewById(R.id.otpsent);
+        otpsenttxt = findViewById(R.id.otpsenttxt);
 
         sessionManager = new SessionManager(this);
 
         checkConnection();
 
+
+
+        if(getIntent().getExtras().getString("register_status").equals("login_btn")){
+
+
+            register_submit.setText("LOGIN");
+
+
+        }else if(getIntent().getExtras().getString("register_status").equals("register_btn")){
+
+
+            register_submit.setText("REGISTER");
+
+        }
+
+
         setupUI(main_layout);
 
         mobile_number_text.setText(sessionManager.getRegId("phone"));
 
+        System.out.println("djhfjhvxcv" + sessionManager.getRegId("phone"));
+
+
         vibe = (Vibrator)getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
 
+        sessionId = getIntent().getStringExtra("otpnumber");
 
 
-        sessionId= getIntent().getStringExtra("otpnumber");
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                otpsentimg.setVisibility(View.VISIBLE);
+                otpsenttxt.setVisibility(View.VISIBLE);
+                otp_sent.setVisibility(View.GONE);
+
+
+            }
+        }, 7000);
 
 
 
@@ -218,6 +258,7 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
         });
 
 
+
         pinView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -235,10 +276,12 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
                 if(pinView.getText().toString().equals("")){
 
+
                     otp_sent.setVisibility(View.GONE);
 
 
                 }else if(!(pinView.getText().toString().equals(sessionId))){
+
 
                     otp_sent.setVisibility(View.GONE);
 
@@ -295,7 +338,6 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
 
 
-
                 } else if (pinView.getText().toString().equals(sessionId)){
 
                     Intent intent = new Intent(New_OTP_Page_Activity.this,Verification_Activity.class);
@@ -303,9 +345,7 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
                     sessionManager.createRegisterSession(New_Login_Activity2.contact_no);
 
 
-
                 }else{
-
 
                     Toast toast = Toast.makeText(New_OTP_Page_Activity.this, "OTP Not Matching", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
@@ -313,10 +353,6 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
                     toastMessage.setTextColor(Color.WHITE);
                     toast.getView().setBackgroundResource(R.drawable.black_curve_background);
                     toast.show();
-
-
-
-
 
                 }
 
@@ -354,24 +390,40 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
                         if (status==1){
 
-                            Toast toast = Toast.makeText(New_OTP_Page_Activity.this,message, Toast.LENGTH_SHORT);
+
+                            Toast toast = Toast.makeText(New_OTP_Page_Activity.this, message, Toast.LENGTH_SHORT);
                             toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                            TextView toastMessage=(TextView) toast.getView().findViewById(android.R.id.message);
+                            toastMessage.setTextColor(Color.WHITE);
+                            toast.getView().setBackgroundResource(R.drawable.black_curve_background);
                             toast.show();
+
 
 
                         } else if (status==2){
 
-                            Toast toast = Toast.makeText(New_OTP_Page_Activity.this,message, Toast.LENGTH_SHORT);
+
+                            Toast toast = Toast.makeText(New_OTP_Page_Activity.this, message, Toast.LENGTH_SHORT);
                             toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                            TextView toastMessage=(TextView) toast.getView().findViewById(android.R.id.message);
+                            toastMessage.setTextColor(Color.WHITE);
+                            toast.getView().setBackgroundResource(R.drawable.black_curve_background);
                             toast.show();
+
+
 
                         }
 
                         else {
 
-                            Toast toast = Toast.makeText(New_OTP_Page_Activity.this ,message, Toast.LENGTH_SHORT);
+
+                            Toast toast = Toast.makeText(New_OTP_Page_Activity.this, message, Toast.LENGTH_SHORT);
                             toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                            TextView toastMessage=(TextView) toast.getView().findViewById(android.R.id.message);
+                            toastMessage.setTextColor(Color.WHITE);
+                            toast.getView().setBackgroundResource(R.drawable.black_curve_background);
                             toast.show();
+
 
                           //  Toast.makeText(New_OTP_Page_Activity.this, message, Toast.LENGTH_LONG).show();
                         }

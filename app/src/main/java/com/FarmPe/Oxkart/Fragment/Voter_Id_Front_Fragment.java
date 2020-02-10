@@ -115,7 +115,6 @@ public class Voter_Id_Front_Fragment extends Fragment implements SurfaceHolder.C
                 } else {
                     Bundle bundle = new Bundle();
                     bundle.putString("verification_status","Edit_Page");
-
                     selectedFragment = Edit_Verification_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_layout1, selectedFragment);
@@ -143,27 +142,29 @@ public class Voter_Id_Front_Fragment extends Fragment implements SurfaceHolder.C
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
 
-                    if(getArguments().getString("VoterFront_Fragment").equals("voter_front")){
+                    if (Verification_Aadhar_Fragment.status.equals("Verify_Page")) {
 
-                        FragmentManager fm = getActivity().getSupportFragmentManager();
-                        fm.popBackStack("verify_voter", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-
-
-                    }else if(getArguments().getString("VoterFront_Fragment").equals("edit_front_voter")){
-
-                        FragmentManager fm = getActivity().getSupportFragmentManager();
-                        fm.popBackStack("edit_voter", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("verification_status","Verify_Page");
+                        selectedFragment = Verification_Fragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout1, selectedFragment);
+                        selectedFragment.setArguments(bundle);
+                        transaction.commit();
 
 
-
-                } else if(getArguments().getString("VoterFront_Fragment").equals("upload_front")) {
-
-                        FragmentManager fm = getActivity().getSupportFragmentManager();
-                        fm.popBackStack("edit_voter", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
+                    } else {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("verification_status","Edit_Page");
+                        selectedFragment = Edit_Verification_Fragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout1, selectedFragment);
+                        transaction.commit();
 
                     }
+
+
+
 
                     return true;
 

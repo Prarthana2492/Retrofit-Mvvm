@@ -145,9 +145,9 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
            landmark.setText(getArguments().getString("addr_landmark"));
 
            state.setText(getArguments().getString("addr_state"));
-          district.setText(getArguments().getString("addr_district"));
+           district.setText(getArguments().getString("addr_district"));
           block.setText(getArguments().getString("addr_block"));
-         village.setText(getArguments().getString("addr_village"));
+          village.setText(getArguments().getString("addr_village"));
 
 
         if(getArguments().getString("prof_add_status").equals("edit_add_addressss")){
@@ -211,8 +211,6 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
 
 
                     }else if(getArguments().getString("address_toolbar").equals("edit_add_addressss")) {
-
-
 
                         FragmentManager fm = getActivity().getSupportFragmentManager();
                         fm.popBackStack("address_list_page", FragmentManager.POP_BACK_STACK_INCLUSIVE);

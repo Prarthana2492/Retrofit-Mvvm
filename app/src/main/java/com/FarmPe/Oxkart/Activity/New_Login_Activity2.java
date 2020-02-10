@@ -174,7 +174,14 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                     toast.show();
 
 
+                }else if(contact_no.length()<10){
 
+                    Toast toast = Toast.makeText(New_Login_Activity2.this, "Please Enter 10 Digit Mobile Number", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    TextView toastMessage1=(TextView) toast.getView().findViewById(android.R.id.message);
+                    toastMessage1.setTextColor(Color.WHITE);
+                    toast.getView().setBackgroundResource(R.drawable.black_curve_background);
+                    toast.show();
 
 
                 }else{
@@ -199,14 +206,25 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
 
 
 
-                if(contact_no.equals("")){
+                if(contact_no.equals("")) {
 
                     Toast toast = Toast.makeText(New_Login_Activity2.this, "Please Enter Phone Number To Proceed", Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
-                    TextView toastMessage=(TextView) toast.getView().findViewById(android.R.id.message);
+                    toast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 0);
+                    TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
                     toastMessage.setTextColor(Color.WHITE);
                     toast.getView().setBackgroundResource(R.drawable.black_curve_background);
                     toast.show();
+
+
+                }else if(contact_no.length()<10){
+
+                    Toast toast = Toast.makeText(New_Login_Activity2.this, "Please Enter 10 Digit Mobile Number", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                        TextView toastMessage1=(TextView) toast.getView().findViewById(android.R.id.message);
+                        toastMessage1.setTextColor(Color.WHITE);
+                        toast.getView().setBackgroundResource(R.drawable.black_curve_background);
+                        toast.show();
+
 
 //                    Toast toast = Toast.makeText(getApplicationContext(), "Please Enter Phone Number To Proceed", Toast.LENGTH_SHORT);
 //                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
@@ -219,11 +237,8 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                     login_register();
 
                 }
-
             }
         });
-
-
     }
 
     private void check_login_user() {
@@ -266,7 +281,6 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                             System.out.println("useridddd" + mobile_no.getText().toString());
 
 */
-
                             sessionManager.createLoginSession(contact_no);
                             sessionManager.save_name(userObject.getString("PhoneNo"));
                             //   sessionManager.save_name(userObject.getString("FullName"),userObject.getString("PhoneNo"),userObject.getString("ProfilePic"));
@@ -274,20 +288,27 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                             System.out.println("useriddddsaveee"+sessionManager);
 
 
+
                             if ((status.equals("1"))) {
 
                                 System.out.println("jdhyusulogin" + status);
                                 Intent intent = new Intent(New_Login_Activity2.this, New_OTP_Page_Activity.class);
                                 intent.putExtra("otpnumber", status1);
+                                intent.putExtra("register_status","login_btn");
                                 startActivity(intent);
 
                             //    sessionManager.createRegisterSession(contact_no);
-
                         }
 
                         }else{
 
-                            Toast.makeText(New_Login_Activity2.this, "user not registered", Toast.LENGTH_SHORT).show();
+                            Toast toast = Toast.makeText(New_Login_Activity2.this, "User Not Registered", Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 0);
+                            TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+                            toastMessage.setTextColor(Color.WHITE);
+                            toast.getView().setBackgroundResource(R.drawable.black_curve_background);
+                            toast.show();
+
                         }
 
 
@@ -306,8 +327,6 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
     }
 
     private void login_register() {
-
-
 
         try {
             JSONObject userRequestjsonObject = new JSONObject();
@@ -333,8 +352,11 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                             status_resp = jsonObject_resp.getString("Status");
 
 
-                            Toast toast = Toast.makeText(getApplicationContext(), "User  already registered", Toast.LENGTH_LONG);
-                            toast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 40);
+                            Toast toast = Toast.makeText(New_Login_Activity2.this, "User Already Registered", Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 0);
+                            TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+                            toastMessage.setTextColor(Color.WHITE);
+                            toast.getView().setBackgroundResource(R.drawable.black_curve_background);
                             toast.show();
                             // sessionManager.saveUserId(jsonObject_resp.getString("Id"));
                             //  sessionManager.save_name(jsonObject_resp.getString("FullName"),jsonObject_resp.getString("PhoneNo"),jsonObject_resp.getString("ProfilePic"));
@@ -353,10 +375,13 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                             //  sessionManager.createRegisterSession(name_text,contact,password_text);
                             sessionManager.saveUserId(userid);
                             sessionManager.save_name(jsonObject.getString("PhoneNo"));
+
+                            System.out.println("weyfhjxdbfv" + jsonObject.getString("PhoneNo"));
                             // sessionManager.save_name(jsonObject.getString("FullName"), jsonObject.getString("PhoneNo"),jsonObject.getString("ProfilePic"));
 
                             Intent intent = new Intent(New_Login_Activity2.this, New_OTP_Page_Activity.class);
                             intent.putExtra("otpnumber", status);
+                            intent.putExtra("register_status","register_btn");
                             startActivity(intent);
                         }
 

@@ -17,8 +17,11 @@ import com.FarmPe.Oxkart.R;
 
 import java.util.List;
 
-public class Gram_Panchayat_Adapter extends RecyclerView.Adapter<Gram_Panchayat_Adapter.MyStateHolder> {
+  public class Gram_Panchayat_Adapter extends RecyclerView.Adapter<Gram_Panchayat_Adapter.MyStateHolder> {
+
+
     List<StateBean> stateBeans;
+
     Activity activity;
     public static String gram_panchayat_id;
     public static String gram_panchayat_name;

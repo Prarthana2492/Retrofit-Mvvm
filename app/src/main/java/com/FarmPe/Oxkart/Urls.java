@@ -121,11 +121,10 @@ package com.FarmPe.Oxkart;
         public static final String Add_Back_Voter_ID_Details = ROOT_URL + "MasterTable/AddUpdateVoterIdBackDetails";
         public static final String Get_Front_Voter_ID_Details = ROOT_URL + "MasterTable/GetVoterIdFrontList";
         public static final String Get_Back_Voter_ID_Details = ROOT_URL + "MasterTable/GetVoterIdBackList";
-        public static final String GetUser_Verification_Status = ROOT_URL + "GetUserVerificationStatus";
+
         public static final String Add_Update_Aadhar_details = ROOT_URL + "MasterTable/AddUpdateAadhaarDetails";
         public static final String Get_Voter_ID_Details = ROOT_URL + "MasterTable/GetVoterIdList";
-
-
+        public static final String Get_Verification_Status = ROOT_URL + "MasterTable/GetUserVerificationStatus";
 
 
      //Request Quoatation

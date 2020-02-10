@@ -108,6 +108,7 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
         });
 
 
+
         linear_mailbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -160,11 +161,8 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
                 transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.addToBackStack("");
                 transaction.commit();
-
-
             }
         });
-
 
 
         profile_layout.setOnClickListener(new View.OnClickListener() {

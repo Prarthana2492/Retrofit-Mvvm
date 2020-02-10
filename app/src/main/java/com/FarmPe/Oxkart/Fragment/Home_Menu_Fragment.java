@@ -169,20 +169,21 @@ public class Home_Menu_Fragment extends Fragment  {
 
                         doubleBackToExitPressedOnce = true;
                         // Toast.makeText(getActivity().getApplicationContext(), "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-                        int duration = 1000;
-                        Snackbar snackbar = Snackbar
-                                .make(linearLayout,"Please Click Back To Exit", duration);
-                        View snackbarView = snackbar.getView();
-                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                        tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                        tv.setTextColor(Color.WHITE);
+//                        int duration = 1000;
+//                        Snackbar snackbar = Snackbar
+//                                .make(linearLayout,"Please Click Back To Exit", duration);
+//                        View snackbarView = snackbar.getView();
+//                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+//                        tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
+//                        tv.setTextColor(Color.WHITE);
+//
+//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//                        } else {
+//                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
+//                        }
+//                        snackbar.show();
 
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                        } else {
-                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                        }
-                        snackbar.show();
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {

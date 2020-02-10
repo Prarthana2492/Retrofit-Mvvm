@@ -259,7 +259,7 @@ public class Shop_Current_Location_Fragment extends Fragment implements
     public void onMapReady(GoogleMap googleMap)
     {
         mGoogleMap=googleMap;
-captured_location();
+        captured_location();
         configureCameraIdle();
         mGoogleMap.setOnCameraIdleListener(onCameraIdleListener);
 
@@ -488,7 +488,7 @@ captured_location();
         mGoogleMap.addCircle(new CircleOptions()
                 .center(latLng)
                 .radius(100)
-                .fillColor(R.color.light_gray)
+                .fillColor(getResources().getColor(R.color.lite_blue))
                 .strokeWidth(0));
 
         //   mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 18));

@@ -9,6 +9,7 @@
     android:background="#fff"
     >
 
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -21,11 +22,12 @@
             android:orientation="vertical"
             >
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fitsSystemWindows="true"
-                android:background="@color/green"
+                android:background="@color/menu_green"
                 >
 
 
@@ -128,10 +130,10 @@
                             android:layout_height="wrap_content"
                             android:text="Select"
                             android:fontFamily="@font/segoeui"
-                            android:textColor="#090BCD"
+                            android:textColor="#2E34C8"
                             android:textSize="14dp"
                             android:layout_marginTop="5dp"
-                            android:drawableLeft="@drawable/ic_marker"
+                            android:drawableLeft="@drawable/ic_marker_pin"
                             android:drawablePadding="5dp"
                             />
 
@@ -211,7 +213,7 @@
                             android:layout_height="wrap_content"
                             android:text="Click"
                             android:fontFamily="@font/segoeui"
-                            android:textColor="#090BCD"
+                            android:textColor="#2E34C8"
                             android:textSize="14dp"
                             android:layout_marginTop="5dp"
                             android:drawableLeft="@drawable/ic_upload"
@@ -286,7 +288,7 @@
                             android:layout_height="wrap_content"
                             android:text="Upload"
                             android:fontFamily="@font/segoeui"
-                            android:textColor="#090BCD"
+                            android:textColor="#2E34C8"
                             android:textSize="14dp"
                             android:layout_marginTop="5dp"
                             android:drawableLeft="@drawable/ic_upload"
@@ -352,16 +354,7 @@
                             android:textColor="#000"
                             android:fontFamily="@font/segoeui"
                             />
-                        <TextView
-                            android:id="@+id/pending_text_b"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Compressing Image"
-                            android:textSize="14dp"
-                            android:textColor="#999999"
-                            android:visibility="gone"
-                            android:fontFamily="@font/segoeui"
-                            />
+
 
                         <TextView
                             android:id="@+id/voter_id_back"
@@ -369,7 +362,7 @@
                             android:layout_height="wrap_content"
                             android:text="Upload"
                             android:fontFamily="@font/segoeui"
-                            android:textColor="#090BCD"
+                            android:textColor="#2E34C8"
                             android:textSize="14dp"
                             android:layout_marginTop="5dp"
                             android:drawableLeft="@drawable/ic_upload"
@@ -401,7 +394,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CONTINUE"
+            android:text="PROCEED"
             android:textSize="20dp"
             android:padding="15dp"
             android:layout_gravity="center"

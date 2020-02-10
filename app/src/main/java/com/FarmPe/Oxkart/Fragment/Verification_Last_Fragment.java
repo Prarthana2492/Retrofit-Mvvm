@@ -1,14 +1,11 @@
 package com.FarmPe.Oxkart.Fragment;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.view.Gravity;
+import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,18 +13,23 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.FarmPe.Oxkart.Activity.HomePage_With_Bottom_Navigation;
+import com.FarmPe.Oxkart.Activity.New_Login_Activity2;
+import com.FarmPe.Oxkart.Activity.New_OTP_Page_Activity;
 import com.FarmPe.Oxkart.R;
 import com.FarmPe.Oxkart.SessionManager;
 import com.FarmPe.Oxkart.Urls;
 import com.FarmPe.Oxkart.Volly_class.Crop_Post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
-
 import org.json.JSONObject;
 
 
+
+
 public class Verification_Last_Fragment extends Fragment {
+
    Fragment selectedFragment;
-   LinearLayout linear_layout;
+   LinearLayout linear_layout,cont_btn;
    boolean doubleBackToExitPressedOnce = false;
    JSONObject verify_status;
    TextView user_status,ph_no;
@@ -42,8 +44,6 @@ public class Verification_Last_Fragment extends Fragment {
 
    }
 
-
-
    @Override
    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
        View view = inflater.inflate(R.layout.verify_last_layout, container, false);
@@ -53,11 +53,12 @@ public class Verification_Last_Fragment extends Fragment {
        linear_layout = view.findViewById(R.id.linear_layout);
        user_status = view.findViewById(R.id.user_status);
        ph_no = view.findViewById(R.id.ph_no);
+       cont_btn = view.findViewById(R.id.cont_btn);
 
        sessionManager = new SessionManager(getActivity());
 
-
        ph_no.setText(sessionManager.getRegId("phone"));
+       System.out.println("dhfgfjh" + sessionManager.getRegId("phone"));
 
 
        view.setFocusableInTouchMode(true);
@@ -66,7 +67,9 @@ public class Verification_Last_Fragment extends Fragment {
 
            @Override
            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
                if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+
                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                        // this.finishAffinity();
 
@@ -112,13 +115,27 @@ public class Verification_Last_Fragment extends Fragment {
            }
        });
 
+
+       cont_btn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+
+               Intent intent = new Intent(getActivity(), HomePage_With_Bottom_Navigation.class);
+               startActivity(intent);
+
+           }
+       });
+
+
+
        try{
 
 
            JSONObject jsonObject = new JSONObject();
            jsonObject.put("UserId",sessionManager.getRegId("userId"));
+           System.out.println("deyuiirwe" + sessionManager.getRegId("userId"));
 
-           Crop_Post.crop_posting(getActivity(), Urls.GetUser_Verification_Status, jsonObject, new VoleyJsonObjectCallback() {
+           Crop_Post.crop_posting(getActivity(), Urls.Get_Verification_Status, jsonObject, new VoleyJsonObjectCallback() {
                @Override
                public void onSuccessResponse(JSONObject result) {
                    System.out.println("ghdgfd" + result);
@@ -130,13 +147,15 @@ public class Verification_Last_Fragment extends Fragment {
 
                        Boolean user_uploaded = verify_status.getBoolean("IsUserUploaded");
 
-                       if(user_uploaded.equals(true)){
+                       if(user_uploaded.equals(false)){
 
-                           user_status.setText("Succesfull");
+
+                           user_status.setText("In Progress");
 
                        }else{
 
-                           user_status.setText("In Progress");
+
+                           user_status.setText("Successful");
 
                        }
 
@@ -153,8 +172,6 @@ public class Verification_Last_Fragment extends Fragment {
        }catch (Exception e){
            e.printStackTrace();
        }
-
-
 
 
 //        Continue.setOnClickListener(new View.OnClickListener() {

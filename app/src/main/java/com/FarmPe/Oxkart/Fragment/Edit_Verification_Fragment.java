@@ -2,6 +2,8 @@ package com.FarmPe.Oxkart.Fragment;
 
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -176,19 +178,22 @@ public class Edit_Verification_Fragment extends Fragment {
         }
 
 
-//        select_loc.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//
-//                selectedFragment = Shop_Current_Location_Fragment.newInstance();
-//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.frame_layout1, selectedFragment);
-//                transaction.addToBackStack("map_locatn");;
-//                transaction.commit();
-//
-//            }
-//        });
+        select.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Bundle bundle = new Bundle();
+                bundle.putString("Edit_Fragment", "curr_loc_edit");
+                bundle.putString("Edit_Location_Id", location_id);
+                selectedFragment = Shop_Current_Location_Fragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout1, selectedFragment);
+                transaction.addToBackStack("map_locatn");;
+                selectedFragment.setArguments(bundle);
+                transaction.commit();
+
+            }
+        });
 
 
         select_loc_edit.setOnClickListener(new View.OnClickListener() {
@@ -208,7 +213,6 @@ public class Edit_Verification_Fragment extends Fragment {
 
             }
         });
-
 
         click_selfie.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -278,7 +282,6 @@ public class Edit_Verification_Fragment extends Fragment {
             }
         });
 
-
         upload_voter_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -329,7 +332,6 @@ public class Edit_Verification_Fragment extends Fragment {
                         vote_list_array = result.getJSONArray("voterIdfrontLists");
 
                         for (int i = 0; i < vote_list_array.length(); i++) {
-
 
                             JSONObject jsonObject1 = vote_list_array.getJSONObject(i);
                             String image_id = jsonObject1.getString("CVoterId");
@@ -417,7 +419,6 @@ public class Edit_Verification_Fragment extends Fragment {
 
 
                         }
-
 
                          continue_bkground();
 
@@ -521,11 +522,7 @@ public class Edit_Verification_Fragment extends Fragment {
                 @Override
                 public void onClick(View view) {
 
-                    selectedFragment = Verification_Last_Fragment.newInstance();
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout1, selectedFragment);
-                    transaction.commit();
-
+                    AlertMessage();
 
                 }
             });
@@ -533,6 +530,34 @@ public class Edit_Verification_Fragment extends Fragment {
 
         }
 
+    }
+
+    private void AlertMessage() { // alert dialog box
+
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity(),R.style.AppCompatAlertDialogStyle);
+        alertDialogBuilder.setMessage("Do you want to submit the details for verification?");
+        //alertDialogBuilder.setMessage(Html.fromHtml("<font size = '18dp'>Do You want to submit the details for verification?</font>"));
+        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                selectedFragment = Verification_Last_Fragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout1, selectedFragment);
+                transaction.commit();
+
+            }
+        });
+
+        alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        alertDialogBuilder.setCancelable(false);
+        alertDialogBuilder.show();
     }
 }
 

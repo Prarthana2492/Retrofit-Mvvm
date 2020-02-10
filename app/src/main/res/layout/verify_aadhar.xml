@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
-        android:background="@color/green"
+        android:background="@color/menu_green"
         >
 
 
@@ -36,7 +36,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Verify PAN Details"
+            android:text="Verify PAN Details(Optional)"
             android:textSize="20dp"
             android:layout_marginHorizontal="25dp"
             android:layout_marginTop="15dp"
@@ -159,7 +159,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/segoeui"
-            android:textColor="#000"
+            android:textColor="#333333"
             android:text="Pan Card is required to avail Financial Service on Farmpe"/>
 
 
@@ -174,6 +174,10 @@
             android:fontFamily="@font/segoeui"
             android:textColor="#000"
             android:padding="16dp"
+            android:singleLine="true"
+            android:maxLength="30"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+            android:textColorHint ="#9D9D9D"
             android:background="@drawable/border_grey"
             android:hint="Enter name as per PAN Card"/>
 
@@ -188,6 +192,9 @@
             android:fontFamily="@font/segoeui"
             android:textColor="#000"
             android:padding="16dp"
+            android:singleLine="true"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+            android:textColorHint="#9D9D9D"
             android:background="@drawable/border_grey"
             android:hint="Enter PAN Number"/>
 
@@ -208,7 +215,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Proceed"
+            android:text="PROCEED"
             android:textSize="20dp"
             android:padding="15dp"
             android:layout_gravity="center"

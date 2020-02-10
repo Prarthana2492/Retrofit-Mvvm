@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
+        android:layout_weight="9"
         android:orientation="horizontal"
         android:background="@color/menu_green">
 
@@ -57,9 +57,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="81"
+        android:layout_weight="82"
         android:orientation="vertical">
-
 
 
         <LinearLayout
@@ -74,7 +73,7 @@
                 android:text="Phone Number"
                 android:textStyle="bold"
                 android:paddingLeft="15dp"
-                android:textColorHint="#9D9D9D"
+                android:textColorHint="#999999"
                 android:fontFamily="@font/segoeui"
                 android:layout_marginTop="20dp"
                 android:paddingRight="10dp"
@@ -88,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_transperent"
                 android:fontFamily="@font/segoeui"
-                android:hint="1234567890"
+                android:hint=""
                 android:paddingLeft="15dp"
                 android:paddingRight="10dp"
                 android:textColorHint="@color/black"
@@ -101,7 +100,7 @@
                 android:text="Status"
                 android:textStyle="bold"
                 android:paddingLeft="15dp"
-                android:textColorHint="#9D9D9D"
+                android:textColorHint="#999999"
                 android:fontFamily="@font/segoeui"
                 android:paddingRight="10dp"
                 android:textSize="19dp"
@@ -122,7 +121,7 @@
                     android:id="@+id/user_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="In Progress"
+                    android:text=""
                     android:textStyle="bold"
                     android:paddingLeft="15dp"
                     android:textColor="#005474"
@@ -164,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/verification"
                 android:paddingLeft="10dp"
-                android:textColor="@color/black"
+                android:textColor="#000"
                 android:fontFamily="@font/segoeui"
                 android:paddingRight="10dp"
                 android:textSize="19dp"
@@ -181,32 +180,32 @@
 
 
 
-    <!--<LinearLayout-->
-    <!--android:id="@+id/cont_btn"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="0dp"-->
-    <!--android:background="@drawable/border_filled_red_not_curved"-->
-    <!--android:orientation="horizontal"-->
-    <!--android:layout_weight="9"-->
-    <!--android:gravity="center"-->
-    <!--&gt;-->
+    <LinearLayout
+    android:id="@+id/cont_btn"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:background="@drawable/border_filled_red_not_curved"
+    android:orientation="horizontal"
+    android:layout_weight="9"
+    android:gravity="center"
+    >
 
 
-    <!--<TextView-->
-    <!--android:id="@+id/next"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="Continue"-->
-    <!--android:textAllCaps="true"-->
-    <!--android:textSize="20dp"-->
-    <!--android:gravity="bottom"-->
-    <!--android:padding="15dp"-->
-    <!--android:fontFamily="@font/segoeui"-->
-    <!--android:textColor="#ffffff"-->
-    <!--/>-->
+    <TextView
+    android:id="@+id/next"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Proceed"
+    android:textAllCaps="true"
+    android:textSize="20dp"
+    android:gravity="bottom"
+    android:padding="15dp"
+    android:fontFamily="@font/segoeui"
+    android:textColor="#ffffff"
+    />
 
 
-    <!--</LinearLayout>-->
+    </LinearLayout>
 
 
 </LinearLayout>

@@ -97,21 +97,26 @@ public class Selfie_Fragment extends Fragment implements SurfaceHolder.Callback 
             public void onClick(View view) {
 
 
-                if(getArguments().getString("Selfie_Edit").equals("verify_selfie")){
+                if (Verification_Aadhar_Fragment.status.equals("Verify_Page")) {
 
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("verify_selfie", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("verification_status","Verify_Page");
+                    selectedFragment = Verification_Fragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout1, selectedFragment);
+                    selectedFragment.setArguments(bundle);
+                    transaction.commit();
 
 
-
-                }else if(getArguments().getString("Selfie_Edit").equals("edit_selfie")){
-
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("edit_selfie", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
+                } else {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("verification_status","Edit_Page");
+                    selectedFragment = Edit_Verification_Fragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout1, selectedFragment);
+                    transaction.commit();
 
                 }
-
 
             }
         });
@@ -127,17 +132,25 @@ public class Selfie_Fragment extends Fragment implements SurfaceHolder.Callback 
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
-                    if(getArguments().getString("Selfie_Edit").equals("verify_selfie")){
 
-                        FragmentManager fm = getActivity().getSupportFragmentManager();
-                        fm.popBackStack("verify_selfie", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    if (Verification_Aadhar_Fragment.status.equals("Verify_Page")) {
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("verification_status","Verify_Page");
+                        selectedFragment = Verification_Fragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout1, selectedFragment);
+                        selectedFragment.setArguments(bundle);
+                        transaction.commit();
 
 
-
-                    }else if(getArguments().getString("Selfie_Edit").equals("edit_selfie")){
-
-                        FragmentManager fm = getActivity().getSupportFragmentManager();
-                        fm.popBackStack("edit_selfie", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    } else {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("verification_status","Edit_Page");
+                        selectedFragment = Edit_Verification_Fragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout1, selectedFragment);
+                        transaction.commit();
 
                     }
 
@@ -213,52 +226,6 @@ public class Selfie_Fragment extends Fragment implements SurfaceHolder.Callback 
         mBottomSheetDialog.setContentView(sheetView);
         mBottomSheetDialog.show();
 
-
-
-        view.setFocusableInTouchMode(true);
-        view.requestFocus();
-        view.setOnKeyListener(new View.OnKeyListener() {
-
-
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-
-                    if(getArguments().getString("Selfie_Edit").equals("verify_selfie")){
-
-                        FragmentManager fm = getActivity().getSupportFragmentManager();
-                       fm.popBackStack("verify_selfie", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-
-
-                    }else if(getArguments().getString("Selfie_Edit").equals("edit_selfie")){
-
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("edit_selfie", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-
-                    }
-
-
-//                    FragmentManager fm = getActivity().getSupportFragmentManager();
-//                    fm.popBackStack("livestock", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-//
-
-                 /*   Bundle bundle = new Bundle();
-                    bundle.putString("status", "home_page");*/
-//                    selectedFragment = Farms_MapView_Fragment.newInstance();
-//                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                    transaction.replace(R.id.frame_layout, selectedFragment);
-//                    // selectedFragment.setArguments(bundle);
-//                    // transaction.addToBackStack("homepage");
-//                    transaction.commit();
-
-                    return true;
-
-                }
-                return false;
-            }
-        });
 
 
 

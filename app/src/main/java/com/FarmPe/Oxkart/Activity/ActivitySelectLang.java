@@ -84,8 +84,9 @@ public class ActivitySelectLang extends AppCompatActivity {
          recyclerView.setItemAnimator(new DefaultItemAnimator());
          linearLayout= findViewById(R.id.main_layout);
          mAdapter = new AdapterSelectLanguage(ActivitySelectLang.this, newOrderBeansList);
-        recyclerView.setAdapter(mAdapter);
+         recyclerView.setAdapter(mAdapter);
          //Langauges();
+
 
 
         continue_lang.setOnClickListener(new View.OnClickListener() {
@@ -151,11 +152,11 @@ public class ActivitySelectLang extends AppCompatActivity {
             finish();                   }
 
 
-        doubleBackToExitPressedOnce = true;
+          doubleBackToExitPressedOnce = true;
 
-         Toast toast = Toast.makeText(ActivitySelectLang.this,"Please Click Back Again To Exit", Toast.LENGTH_SHORT);
-         toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
-         toast.show();
+//         Toast toast = Toast.makeText(ActivitySelectLang.this,"Please Click Back Again To Exit", Toast.LENGTH_SHORT);
+//         toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+//         toast.show();
 
 //        int duration=1000;
 //        Snackbar snackbar = Snackbar

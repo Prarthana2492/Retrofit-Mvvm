@@ -499,13 +499,13 @@ public class Verification_Aadhar_Fragment extends Fragment {
 
             } else {
                    Bundle bundle = new Bundle();
-                  bundle.putString("verification_status","Edit_Page");
-            status="Edit_Page";
+                   bundle.putString("verification_status","Edit_Page");
+                   status="Edit_Page";
 
-            selectedFragment = Edit_Verification_Fragment.newInstance();
-                  FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                  transaction.replace(R.id.frame_layout1, selectedFragment);
-                  transaction.addToBackStack("verify");
+                   selectedFragment = Edit_Verification_Fragment.newInstance();
+                   FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                   transaction.replace(R.id.frame_layout1, selectedFragment);
+                   transaction.addToBackStack("verify");
                    transaction.commit();
 
             }

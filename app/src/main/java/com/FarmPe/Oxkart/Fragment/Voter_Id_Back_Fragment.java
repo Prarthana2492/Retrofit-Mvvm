@@ -100,22 +100,26 @@ public class Voter_Id_Back_Fragment extends Fragment implements SurfaceHolder.Ca
             @Override
             public void onClick(View view) {
 
-                if(getArguments().getString("VoterBack_Fragment").equals("voter_back")){
+                if (Verification_Aadhar_Fragment.status.equals("Verify_Page")) {
 
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("verify_voter", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("verification_status","Verify_Page");
+                    selectedFragment = Verification_Fragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout1, selectedFragment);
+                    selectedFragment.setArguments(bundle);
+                    transaction.commit();
 
 
-
-
-                }else if(getArguments().getString("VoterBack_Fragment").equals("edit_back_voter")){
-
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("edit_voter", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
+                } else {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("verification_status","Edit_Page");
+                    selectedFragment = Edit_Verification_Fragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout1, selectedFragment);
+                    transaction.commit();
 
                 }
-
             }
         });
 
@@ -130,23 +134,26 @@ public class Voter_Id_Back_Fragment extends Fragment implements SurfaceHolder.Ca
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
+                    if (Verification_Aadhar_Fragment.status.equals("Verify_Page")) {
 
-                    if(getArguments().getString("VoterBack_Fragment").equals("voter_back")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("verification_status","Verify_Page");
+                        selectedFragment = Verification_Fragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout1, selectedFragment);
+                        selectedFragment.setArguments(bundle);
+                        transaction.commit();
 
-                        FragmentManager fm = getActivity().getSupportFragmentManager();
-                        fm.popBackStack("verify_voter", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-
-
-                    }else if(getArguments().getString("VoterBack_Fragment").equals("edit_back_voter")){
-
-                        FragmentManager fm = getActivity().getSupportFragmentManager();
-                        fm.popBackStack("edit_voter", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
+                    } else {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("verification_status","Edit_Page");
+                        selectedFragment = Edit_Verification_Fragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout1, selectedFragment);
+                        transaction.commit();
 
                     }
-
-
                     return true;
 
                 }

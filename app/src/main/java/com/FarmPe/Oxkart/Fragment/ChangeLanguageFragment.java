@@ -28,9 +28,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
 public class ChangeLanguageFragment extends Fragment {
     private List<SelectLanguageBean> newOrderBeansList = new ArrayList<>();
     private RecyclerView recyclerView;
