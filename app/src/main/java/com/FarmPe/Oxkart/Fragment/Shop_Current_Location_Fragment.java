@@ -53,6 +53,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -84,6 +85,7 @@ public class Shop_Current_Location_Fragment extends Fragment implements
     LatLng  latLag,latLng;
     JSONArray get_location_array;
     String location_id;
+    public static JSONObject lngObject;
 
 
 
@@ -128,6 +130,24 @@ public class Shop_Current_Location_Fragment extends Fragment implements
 
 
         sessionManager = new SessionManager(getActivity());
+
+
+
+
+
+        try {
+
+
+            lngObject = new JSONObject(sessionManager.getRegId("language"));
+
+
+            capture_loc.setText(lngObject.getString("CAPTURE"));
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
 
 

@@ -215,6 +215,7 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
                         transaction.replace(R.id.frame_menu, selectedFragment);
                         transaction.commit();
 
+
                     }  else if(getArguments().getString("bank_status").equals("edit_address")){
 
 

@@ -56,6 +56,8 @@ import com.FarmPe.Oxkart.Urls;
 import com.FarmPe.Oxkart.Volly_class.Crop_Post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
 import com.FarmPe.Oxkart.volleypost.VolleyMultipartRequest;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -256,12 +258,20 @@ public class UpdateAccDetailsFragment extends Fragment {
                         profile_phone.setFilters(new InputFilter[]{EMOJI_FILTER});
                         profile_mail.setFilters(new InputFilter[]{EMOJI_FILTER});
 
-                        Glide.with(getActivity()).load(ProfileImage)
 
+                        Glide.with(getActivity()).load(ProfileImage)
                                 .thumbnail(0.5f)
-                                //  .crossFade()
-                                .error(R.drawable.avatarmale)
+                                // .crossFade()
+                                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+                                        .error(R.drawable.avatarmale))
                                 .into(prod_img);
+
+//                        Glide.with(getActivity()).load(ProfileImage)
+//
+//                                .thumbnail(0.5f)
+//                                //  .crossFade()
+//                                .error(R.drawable.avatarmale)
+//                                .into(prod_img);
 
 
                     }catch (Exception e){

@@ -58,6 +58,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -88,6 +89,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     Marker mCurrLocationMarker;
     String map_string;
 
+
     private TextView resutText,currentaddress,addressbook;
     String address_txt;
     protected static final int REQUEST_CHECK_SETTINGS = 0x1;
@@ -105,7 +107,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         View view = inflater.inflate(R.layout.get_lat_long_map_layout, container, false);
 
         Status_bar_change_singleton.getInstance().color_change(getActivity());
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
         displayLocationSettingsRequest(getActivity());
         resutText = (TextView) view.findViewById(R.id.curr_address);
         b_arrow = view.findViewById(R.id.b_arrow);
@@ -128,7 +130,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
 
 
-           view.setFocusableInTouchMode(true);
+
+        view.setFocusableInTouchMode(true);
            view.requestFocus();
            view.setOnKeyListener(new View.OnKeyListener() {
             @Override

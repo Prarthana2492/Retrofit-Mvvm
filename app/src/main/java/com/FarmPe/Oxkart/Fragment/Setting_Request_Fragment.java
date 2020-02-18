@@ -68,6 +68,7 @@ public class Setting_Request_Fragment extends Fragment {
         });
 
 
+
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {

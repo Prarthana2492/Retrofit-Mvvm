@@ -59,7 +59,7 @@ public class Get_Bank_List_Fragment extends Fragment {
 
 
 
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
         recyclerView=view.findViewById(R.id.recycler_what_looking);
         toolbar_title=view.findViewById(R.id.toolbar_title);
         toolbar_title.setText("Bank Accounts");

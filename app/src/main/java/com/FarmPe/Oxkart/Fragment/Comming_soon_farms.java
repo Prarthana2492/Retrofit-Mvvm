@@ -32,7 +32,7 @@ public class Comming_soon_farms extends Fragment {
 
 
         Status_bar_change_singleton.getInstance().color_change(getActivity());
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();

@@ -51,6 +51,7 @@
             />
 
         <TextView
+            android:id="@+id/selfie_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
@@ -98,7 +99,10 @@
             android:fontFamily="@font/segoeui"
           android:gravity="right"
         >
+
+
             <TextView
+                android:id="@+id/selfie_tips1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Place your face within the frame"
@@ -111,6 +115,7 @@
                 android:textSize="14dp"
                 />
             <TextView
+                android:id="@+id/selfie_tips2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Ensure that the room has good lighting"
@@ -124,6 +129,7 @@
                 />
 
             <TextView
+                android:id="@+id/selfie_tips3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Photo should be clear and sharp"
@@ -137,6 +143,7 @@
                 />
 
             <TextView
+                android:id="@+id/selfie_tips4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Don't include objects in the background"
@@ -162,6 +169,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
                 />
+
 
 
             <ImageView

@@ -54,7 +54,7 @@ public class ChangeLanguageFragment extends Fragment {
         Status_bar_change_singleton.getInstance().color_change(getActivity());
 
 
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
 
         back_feed=view.findViewById(R.id.back_feed);
         lang_title=view.findViewById(R.id.lang_title);

@@ -21,9 +21,11 @@ import android.view.ViewGroup;
 
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.FarmPe.Oxkart.Activity.HomePage_With_Bottom_Navigation;
+import com.FarmPe.Oxkart.Activity.New_Login_Activity2;
 import com.FarmPe.Oxkart.Activity.Status_bar_change_singleton;
 import com.FarmPe.Oxkart.Adapter.AddModelAdapter;
 import com.FarmPe.Oxkart.Bean.Add_New_Address_Bean;
@@ -495,9 +497,7 @@ public class Request_Details_New_Fragment extends Fragment {
             userRequestjsonObject.put("LookingForDetailsId", AddBrandFragment.request_looking_id);
 
 
-
             System.out.println("postObjmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"+userRequestjsonObject.toString());
-
 
 
 
@@ -515,30 +515,32 @@ public class Request_Details_New_Fragment extends Fragment {
                         String message=result.getString("Message");
 
 
-                        Snackbar snackbar = Snackbar
-                                .make(linearLayout,"Your Request Added Successfully", Snackbar.LENGTH_LONG);
-                        View snackbarView = snackbar.getView();
-                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                        tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                        tv.setTextColor(Color.WHITE);
+                         Toast toast = Toast.makeText(getActivity(), "Your Request Added Successfully", Toast.LENGTH_SHORT);
+                         toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                         TextView toastMessage1=(TextView) toast.getView().findViewById(android.R.id.message);
+                         toastMessage1.setTextColor(Color.WHITE);
+                         toast.getView().setBackgroundResource(R.drawable.black_curve_background);
+                         toast.show();
 
 
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-
-                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-
-                        } else {
-
-                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                        }
-
-                        snackbar.show();
-
-
-                        HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
-                        HomePage_With_Bottom_Navigation.profile_icon.setImageResource(R.drawable.ic_user_home);
-                        HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
-                        HomePage_With_Bottom_Navigation.profile_text.setTextColor(Color.parseColor("#595959"));
+//                        Snackbar snackbar = Snackbar
+//                                .make(linearLayout,"Your Request Added Successfully", Snackbar.LENGTH_LONG);
+//                        View snackbarView = snackbar.getView();
+//                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+//                        tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+//                        tv.setTextColor(Color.WHITE);
+//
+//
+//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+//
+//                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//
+//                        } else {
+//
+//                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
+//                        }
+//
+//                        snackbar.show();
 
 
                         selectedFragment = Home_Menu_Fragment.newInstance();

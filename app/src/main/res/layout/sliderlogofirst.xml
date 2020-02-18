@@ -32,7 +32,7 @@
         >
 
     <TextView
-        android:id="@+id/banner"
+        android:id="@+id/farmer_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Made for Farming Community"
@@ -46,10 +46,10 @@
         />
 
         <TextView
-            android:id="@+id/banner_descr"
+            android:id="@+id/farmer_descr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="The Confluence of farmers and fair trade"
+            android:text="The Confluence of Farmers and Fair Trade"
             android:textColor="#26A541"
             android:textSize="18dp"
             android:gravity="center"

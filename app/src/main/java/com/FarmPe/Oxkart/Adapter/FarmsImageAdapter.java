@@ -23,6 +23,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.FarmPe.Oxkart.Bean.FarmsImageBean;
 import com.FarmPe.Oxkart.R;
 import com.FarmPe.Oxkart.SessionManager;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -141,13 +142,20 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
         try {
 
             Glide.with(activity).load(products.getModel_image())
-                    //  Glide.with(activity).load(R.drawable.tractor_sonalika)
-
                     .thumbnail(0.5f)
-                    //.crossFade()
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .centerCrop()
-                    .into(holder.image_looking);
+                    // .crossFade()
+                    .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+                            .error(R.drawable.avatarmale))
+                    .into(holder.image);
+
+//            Glide.with(activity).load(products.getModel_image())
+//                    //  Glide.with(activity).load(R.drawable.tractor_sonalika)
+//
+//                    .thumbnail(0.5f)
+//                    //.crossFade()
+//                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                    .centerCrop()
+//                    .into(holder.image_looking);
 
         } catch (
                 Exception e) {

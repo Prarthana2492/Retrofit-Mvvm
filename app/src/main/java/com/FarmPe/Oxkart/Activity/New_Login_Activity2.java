@@ -2,13 +2,18 @@ package com.FarmPe.Oxkart.Activity;
 
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.IntentSender;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
+
 import android.os.Bundle;
 import android.os.Handler;
+
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -23,20 +28,31 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+
+
 import com.FarmPe.Oxkart.R;
 import com.FarmPe.Oxkart.SessionManager;
 import com.FarmPe.Oxkart.Urls;
 import com.FarmPe.Oxkart.Volly_class.Login_post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
 
+import com.google.android.gms.auth.api.Auth;
+
+import com.google.android.gms.auth.api.credentials.Credential;
+import com.google.android.gms.auth.api.credentials.HintRequest;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.firebase.database.annotations.Nullable;
+
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class New_Login_Activity2 extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener{
+public class New_Login_Activity2 extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener,GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener {
 
 
-    TextView register_btn,login_btn,phone_number_visiblity;
+    TextView register_btn,login_btn,phone_number_visiblity,mob_no_details,farmer_desc1,farmer_text1;
     LinearLayout linear_layout;
     public static EditText mobile_no;
     SessionManager sessionManager;
@@ -49,6 +65,12 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
     private int nCounter = 0;
     public static String contact_no,localize;
 
+    GoogleApiClient mGoogleApiClient;
+    private int RESOLVE_HINT = 2;
+    Credential credential;
+    String s1;
+
+
 
     @Override
     protected void onStop()
@@ -57,6 +79,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
         unregisterReceiver(connectivityReceiver);
         super.onStop();
     }
+
 
 
     private void checkConnection() {
@@ -85,6 +108,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
 
                 connectivity_check=false;
             }
+
 
         } else {
             message = "No Internet Connection";
@@ -120,40 +144,62 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
         setContentView(R.layout.new_login_page_screen);
         checkConnection();
         sessionManager = new SessionManager(this);
+        sessionManager.checkLogin();
 
 
 
-         login_btn =findViewById(R.id.login_btn);
-         register_btn =findViewById(R.id.register_btn);
-         linear_layout =findViewById(R.id.linear_layout);
-         mobile_no =findViewById(R.id.mobile_no);
+        login_btn =findViewById(R.id.login_btn);
+        register_btn =findViewById(R.id.register_btn);
+        linear_layout =findViewById(R.id.linear_layout);
+        mobile_no =findViewById(R.id.mobile_no);
+        mob_no_details =findViewById(R.id.mob_no_details);
+        farmer_text1 =findViewById(R.id.farmer_text1);
+        farmer_desc1 =findViewById(R.id.farmer_desc1);
 
         contact_no =  mobile_no.getText().toString();
 
-           setupUI(linear_layout);
 
+        mGoogleApiClient = new GoogleApiClient.Builder(New_Login_Activity2.this)
+                .addConnectionCallbacks(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.CREDENTIALS_API)
+                .build();
+
+
+        setupUI(linear_layout);
+
+
+
+
+        getHintPhoneNumber();
 
 
         try {
 
-            if ((sessionManager.getRegId("language")).equals("")) {
-              //  getLang(1);
 
-            } else {
+            lngObject = new JSONObject(sessionManager.getRegId("language"));
 
+            System.out.println("llllllllllllkkkkkkkkkkkkkkk" + lngObject.getString("EnterPhoneNo"));
 
-                lngObject = new JSONObject(sessionManager.getRegId("language"));
-
-
-                toast_internet = lngObject.getString("GoodConnectedtoInternet");
-                toast_nointernet = lngObject.getString("NoInternetConnection");
+            mob_no_details.setText(lngObject.getString("Enteryourphonenumbertogetstarted").replace("\n",""));
+            farmer_text1.setText(lngObject.getString("MadeforFarmingCommunity"));
+            farmer_desc1.setText(lngObject.getString("Theconfluenceoffarmersandfairtrade"));
 
 
-            }
+
+            //  pass.setHint(lngObject.getString("Password"));
+            //  remember_me.setText(lngObject.getString("RememberMe"));
+
+
+
+
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+
+
 
 
         login_btn.setOnClickListener(new View.OnClickListener() {
@@ -219,17 +265,17 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                 }else if(contact_no.length()<10){
 
                     Toast toast = Toast.makeText(New_Login_Activity2.this, "Please Enter 10 Digit Mobile Number", Toast.LENGTH_SHORT);
-                        toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
-                        TextView toastMessage1=(TextView) toast.getView().findViewById(android.R.id.message);
-                        toastMessage1.setTextColor(Color.WHITE);
-                        toast.getView().setBackgroundResource(R.drawable.black_curve_background);
-                        toast.show();
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    TextView toastMessage1=(TextView) toast.getView().findViewById(android.R.id.message);
+                    toastMessage1.setTextColor(Color.WHITE);
+                    toast.getView().setBackgroundResource(R.drawable.black_curve_background);
+                    toast.show();
 
 
 //                    Toast toast = Toast.makeText(getApplicationContext(), "Please Enter Phone Number To Proceed", Toast.LENGTH_SHORT);
 //                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
 
-                //    toast.show();
+                    //    toast.show();
 
 
                 }else{
@@ -239,6 +285,192 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                 }
             }
         });
+    }
+
+
+    public void getHintPhoneNumber() {
+        HintRequest hintRequest =
+                new HintRequest.Builder()
+                        .setPhoneNumberIdentifierSupported(true)
+                        .build();
+        PendingIntent mIntent = Auth.CredentialsApi.getHintPickerIntent(mGoogleApiClient, hintRequest);
+        try {
+            startIntentSenderForResult(mIntent.getIntentSender(), RESOLVE_HINT, null, 0, 0, 0);
+        } catch (IntentSender.SendIntentException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //Result if we want hint number
+        if (requestCode == RESOLVE_HINT) {
+            if (resultCode == Activity.RESULT_OK) {
+                credential = data.getParcelableExtra(Credential.EXTRA_KEY);
+                System.out.println("fgd"+credential);
+
+                 s1 = credential.getId().substring(3);
+
+                //contact_no = mobile_no.getText().toString();
+                //  System.out.println("uryuewyuwe" + contact_no);
+                check_login_user2();
+                // login_register();
+            }
+            // credential.getId();  <-- will need to process phone number string
+            //  mobile_no.setText(credential.getId());
+        }
+    }
+
+
+    private void check_login_user2() {
+
+
+        try{
+            JSONObject jsonObject = new JSONObject();
+            JSONObject post_Object = new JSONObject();
+            jsonObject.put("PhoneNo",s1);
+            System.out.println("yhynyhnujmju"+credential.getId());
+            post_Object.put("UserRequest",jsonObject);
+
+
+            System.out.println("postobjj"+post_Object);
+
+
+            Login_post.login_posting(New_Login_Activity2.this, Urls.New_Login_Details,post_Object, new VoleyJsonObjectCallback()  {
+                @Override
+                public void onSuccessResponse(JSONObject result) {
+                    System.out.println("111111user" + result);
+
+
+                    try{
+                        JSONObject jsonObject;
+                        JSONObject userObject;
+                        jsonObject = result.getJSONObject("ResultObject");
+
+
+                        if(!(jsonObject.isNull("user"))) {
+                            userObject = jsonObject.getJSONObject("user");
+                            status = jsonObject.getString("Status");
+                            String status1 = jsonObject.getString("OTP");
+                            userId = jsonObject.getString("UserId");
+                            System.out.println("useridddduserId" + userId);
+
+       /*                     sessionManager.save_name(jsonObject.getString("PhoneNo"));
+                            //   sessionManager.save_name(userObject.getString("FullName"),userObject.getString("PhoneNo"),userObject.getString("ProfilePic"));
+                            sessionManager.saveUserId(userId);
+                            System.out.println("useridddd" + mobile_no.getText().toString());
+*/
+
+                            sessionManager.createLoginSession(contact_no);
+                            sessionManager.save_name(userObject.getString("PhoneNo"));
+                            //   sessionManager.save_name(userObject.getString("FullName"),userObject.getString("PhoneNo"),userObject.getString("ProfilePic"));
+                            sessionManager.saveUserId(userId);
+                            System.out.println("useriddddsaveee"+sessionManager);
+
+
+                            if ((status.equals("1"))) {
+                                System.out.println("jdhyusulogin" + status);
+                                Intent intent = new Intent(New_Login_Activity2.this, New_OTP_Page_Activity.class);
+                                intent.putExtra("otpnumber", status1);
+                                intent.putExtra("register_status","login_btn");
+                                startActivity(intent);
+
+                                //    sessionManager.createRegisterSession(contact_no);
+                            }
+                        }
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+
+//        try{
+//
+//            JSONObject jsonObject = new JSONObject();
+//            JSONObject post_Object = new JSONObject();
+//
+//            jsonObject.put("PhoneNo",credential.getId());
+//            post_Object.put("UserRequest",jsonObject);
+//            System.out.println("postobjj"+post_Object);
+//
+//
+//            Login_post.login_posting(New_Login_Activity2.this, Urls.New_Login_Details,post_Object, new VoleyJsonObjectCallback()  {
+//                @Override
+//                public void onSuccessResponse(JSONObject result) {
+//                    System.out.println("111111user" + result);
+//
+//                    try{
+//                        JSONObject jsonObject;
+//                        JSONObject userObject;
+//
+//                        jsonObject = result.getJSONObject("ResultObject");
+//
+//
+//                        if(!(jsonObject.isNull("user"))) {
+//
+//                            userObject = jsonObject.getJSONObject("user");
+//                            status = jsonObject.getString("Status");
+//                            String status1 = jsonObject.getString("OTP");
+//                            userId = jsonObject.getString("UserId");
+//                            System.out.println("useridddduserId" + userId);
+//       /*                     sessionManager.save_name(jsonObject.getString("PhoneNo"));
+//                            //   sessionManager.save_name(userObject.getString("FullName"),userObject.getString("PhoneNo"),userObject.getString("ProfilePic"));
+//                            sessionManager.saveUserId(userId);
+//
+//                            System.out.println("useridddd" + mobile_no.getText().toString());
+//
+//*/
+//                            sessionManager.createLoginSession(contact_no);
+//                            sessionManager.save_name(userObject.getString("PhoneNo"));
+//                            //   sessionManager.save_name(userObject.getString("FullName"),userObject.getString("PhoneNo"),userObject.getString("ProfilePic"));
+//                            sessionManager.saveUserId(userId);
+//                            System.out.println("useriddddsaveee"+sessionManager);
+//
+//
+//
+//                            if ((status.equals("1"))) {
+//
+//                                System.out.println("jdhyusulogin" + status);
+//                                Intent intent = new Intent(New_Login_Activity2.this, New_OTP_Page_Activity.class);
+//                                intent.putExtra("otpnumber", status1);
+//                                intent.putExtra("register_status","login_btn");
+//                                startActivity(intent);
+//
+//                                //    sessionManager.createRegisterSession(contact_no);
+//                            }
+//
+////                        }else{
+//
+//
+////                            Toast toast = Toast.makeText(New_Login_Activity2.this, "User Not Registered", Toast.LENGTH_SHORT);
+////                            toast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 0);
+////                            TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+////                            toastMessage.setTextColor(Color.WHITE);
+////                            toast.getView().setBackgroundResource(R.drawable.black_curve_background);
+////                            toast.show();
+//
+//                        }
+//
+//
+//                    }catch (Exception e){
+//                        e.printStackTrace();
+//                    }
+//
+//                }
+//            });
+//
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+
     }
 
     private void check_login_user() {
@@ -297,17 +529,18 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                                 intent.putExtra("register_status","login_btn");
                                 startActivity(intent);
 
-                            //    sessionManager.createRegisterSession(contact_no);
-                        }
+                                //    sessionManager.createRegisterSession(contact_no);
+                            }
 
-                        }else{
+//                        }else{
 
-                            Toast toast = Toast.makeText(New_Login_Activity2.this, "User Not Registered", Toast.LENGTH_SHORT);
-                            toast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 0);
-                            TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
-                            toastMessage.setTextColor(Color.WHITE);
-                            toast.getView().setBackgroundResource(R.drawable.black_curve_background);
-                            toast.show();
+
+//                            Toast toast = Toast.makeText(New_Login_Activity2.this, "User Not Registered", Toast.LENGTH_SHORT);
+//                            toast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 0);
+//                            TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+//                            toastMessage.setTextColor(Color.WHITE);
+//                            toast.getView().setBackgroundResource(R.drawable.black_curve_background);
+//                            toast.show();
 
                         }
 
@@ -362,7 +595,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                             //  sessionManager.save_name(jsonObject_resp.getString("FullName"),jsonObject_resp.getString("PhoneNo"),jsonObject_resp.getString("ProfilePic"));
 //                            Intent intent = new Intent(New_Login_Activity2.this, FirmShopDetailsActivity.class);
 //                            startActivity(intent);
-                           // sessionManager.createRegistrSession(NewSignUpActivity.contact);
+                            // sessionManager.createRegistrSession(NewSignUpActivity.contact);
 
 
                         } else {
@@ -373,6 +606,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                             String userid = jsonObject.getString("Id");
                             System.out.println("useerrrriidd" + status);
                             //  sessionManager.createRegisterSession(name_text,contact,password_text);
+
                             sessionManager.saveUserId(userid);
                             sessionManager.save_name(jsonObject.getString("PhoneNo"));
 
@@ -520,6 +754,22 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {
         showSnack(isConnected);
+
+    }
+
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
 }

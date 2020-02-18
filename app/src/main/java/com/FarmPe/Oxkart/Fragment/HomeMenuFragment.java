@@ -43,6 +43,8 @@ import com.FarmPe.Oxkart.SessionManager;
 import com.FarmPe.Oxkart.Urls;
 import com.FarmPe.Oxkart.Volly_class.Crop_Post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -451,22 +453,41 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
                         // profile_mail.setText(ProfileEmail);
 
 
-                        Glide.with(getActivity()).load(ProfileImage)
 
+                        Glide.with(getActivity()).load(ProfileImage)
                                 .thumbnail(0.5f)
-                               // .crossFade()
-                                .error(R.drawable.avatarmale)
+                                // .crossFade()
+                                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+                                        .error(R.drawable.avatarmale))
                                 .into(prod_img);
 
 
-
                         Glide.with(getActivity()).load(ProfileImage)
-
                                 .thumbnail(0.5f)
-                               // .crossFade()
-                                .error(R.drawable.avatarmale)
+                                // .crossFade()
+                                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+                                        .error(R.drawable.avatarmale))
                                 .into(prod_img1);
 
+
+
+//
+//                        Glide.with(getActivity()).load(ProfileImage)
+//
+//                                .thumbnail(0.5f)
+//                               // .crossFade()
+//                                .error(R.drawable.avatarmale)
+//                                .into(prod_img);
+
+
+
+//                        Glide.with(getActivity()).load(ProfileImage)
+//
+//                                .thumbnail(0.5f)
+//                               // .crossFade()
+//                                .error(R.drawable.avatarmale)
+//                                .into(prod_img1);
+//
 
 
                     }catch (Exception e){

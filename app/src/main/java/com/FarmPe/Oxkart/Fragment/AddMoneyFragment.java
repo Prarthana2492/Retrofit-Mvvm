@@ -54,6 +54,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.json.JSONObject;
 
@@ -167,13 +168,22 @@ public class AddMoneyFragment extends Fragment {
                         // aboutText.setFilters(new InputFilter[]{EMOJI_FILTER});
 
 
-                        Glide.with(getActivity())
-                                .load(ProfileImage)
-                                .centerCrop()
-                                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                                .skipMemoryCache(true)
-                                .dontAnimate()
+
+                        Glide.with(getActivity()).load(ProfileImage)
+                                .thumbnail(0.5f)
+                                // .crossFade()
+                                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+                                        .error(R.drawable.avatarmale))
                                 .into(profile_image_payment);
+
+
+//                        Glide.with(getActivity())
+//                                .load(ProfileImage)
+//                                .centerCrop()
+//                                .diskCacheStrategy(DiskCacheStrategy.NONE)
+//                                .skipMemoryCache(true)
+//                                .dontAnimate()
+//                                .into(profile_image_payment);
 
 
                     }catch (Exception e){

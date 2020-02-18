@@ -114,7 +114,7 @@ public class Edit_Looking_For_Fragment extends Fragment {
        // getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         Status_bar_change_singleton.getInstance().color_change(getActivity());
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
         farmer_phone=view.findViewById(R.id.phone_no);

@@ -153,6 +153,7 @@
                     >
 
                     <TextView
+                        android:id="@+id/location_edit_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Edit"
@@ -214,6 +215,7 @@
                         >
 
                         <TextView
+                            android:id="@+id/face_verify_selfy_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Face Verification: Selfie"
@@ -255,6 +257,7 @@
                     >
 
                     <TextView
+                        android:id="@+id/edit_selfie_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Edit"
@@ -315,6 +318,7 @@
                         >
 
                         <TextView
+                            android:id="@+id/voter_front_text1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Voter ID: Front"
@@ -357,6 +361,7 @@
 
 
                     <TextView
+                        android:id="@+id/edit_front_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Edit"
@@ -461,6 +466,7 @@
                         >
 
                         <TextView
+                            android:id="@+id/voter_back_text1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Voter ID:Back"
@@ -501,6 +507,7 @@
                     >
 
                     <TextView
+                        android:id="@+id/edit_back_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Edit"
@@ -539,7 +546,7 @@
             android:fontFamily="@font/segoeui"
             android:textColor="#fff"
             android:visibility="visible"
-            android:id="@+id/continue_btn" />
+            android:id="@+id/proceed_btn" />
 
     </LinearLayout>
 

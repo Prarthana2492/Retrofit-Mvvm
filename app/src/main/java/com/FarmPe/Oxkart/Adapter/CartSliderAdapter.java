@@ -16,6 +16,7 @@ import com.FarmPe.Oxkart.R;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -66,12 +67,21 @@ public class CartSliderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
             viewHolder0.loan_text.setText(products1.getName());
 
+//
+//            Glide.with(activity).load(products1.getImage())
+//                    .thumbnail(0.5f)
+//                    .crossFade()
+//                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                    .into(viewHolder0.loan_img);
 
-            Glide.with(activity).load(products1.getImage())
-                    .thumbnail(0.5f)
-                    .crossFade()
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(viewHolder0.loan_img);
+
+        Glide.with(activity).load(products1.getImage())
+                .thumbnail(0.5f)
+                // .crossFade()
+                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+                        .error(R.drawable.avatarmale))
+                .placeholder(R.drawable.avatarmale)
+                .into(viewHolder0.loan_img);
     }
 
     @Override

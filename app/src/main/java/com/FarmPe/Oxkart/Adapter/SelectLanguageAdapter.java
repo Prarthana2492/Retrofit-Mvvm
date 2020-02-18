@@ -92,12 +92,14 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
             holder.lang_txt.setChecked(true);
             holder.lang_txt.setTypeface(null, Typeface.BOLD);
 
+
        } else {
 
             System.out.println("sfdsdfsdxvvvv" + sessionManager.getRegId("language_name"));
 
 
             if((sessionManager.getRegId("language_name").equals(""))){
+
                 if(position == 0){
                     holder.lang_txt.setChecked(true);
                     holder.lang_txt.setTypeface(null, Typeface.NORMAL);

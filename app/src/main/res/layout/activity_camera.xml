@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="170dp"
         android:padding="28dp"
-        android:background="@drawable/border_round_white"
+        android:src="@drawable/ic_optic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"

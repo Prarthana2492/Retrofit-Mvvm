@@ -42,7 +42,7 @@ public class DealerProfile extends Fragment {
         recycler_sales=view.findViewById(R.id.recycler_dealer_prof);
         back_feed=view.findViewById(R.id.back_feed);
      //   status_text=view.findViewById(R.id.status_text);
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
 
 
 

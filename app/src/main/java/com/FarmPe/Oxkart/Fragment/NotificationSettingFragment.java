@@ -48,7 +48,7 @@ public class NotificationSettingFragment extends Fragment {
         View view = inflater.inflate(R.layout.noti_setting_layout, container, false);
 
         Status_bar_change_singleton.getInstance().color_change(getActivity());
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
         back_feed=view.findViewById(R.id.back_feed);
         logout_layout=view.findViewById(R.id.logout_layout);
         accountinfo=view.findViewById(R.id.actninfo);

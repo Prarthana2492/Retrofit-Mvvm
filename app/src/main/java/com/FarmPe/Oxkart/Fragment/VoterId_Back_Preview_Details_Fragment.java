@@ -48,6 +48,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -65,13 +70,14 @@ public class VoterId_Back_Preview_Details_Fragment extends Fragment {
     String packageName;
     EditText farm_name,description,cont_person_name,mobile_no,email_id;
     public static String farm_name_string,cont_name,mob_no,email_id_strg;
-    TextView toolbar_title,take_voter_photo;
+    TextView toolbar_title,take_voter_photo,preview_tips,tips_1,tips_2,tips_3,tips_4,upload_imge;
     ImageView b_arrow;
     public static String FACEBOOK_URL = "https://www.facebook.com/FarmPe-698463080607409/";
     public static String FACEBOOK_PAGE_ID = "FarmPe-698463080607409";
     public static  String imageUri,imageUri1;
     ImageView imageView,correct_icon,dismiss_icon;
     String status,message;
+    public static JSONObject lngObject;
     SessionManager sessionManager;
     BottomSheetDialog mBottomSheetDialog;
     View sheetView;
@@ -104,6 +110,16 @@ public class VoterId_Back_Preview_Details_Fragment extends Fragment {
         tips_voter_layout.setVisibility(View.VISIBLE);
 
 
+        upload_imge=view.findViewById(R.id.upload_imge);
+        preview_tips=view.findViewById(R.id.preview_tips);
+        toolbar_title=view.findViewById(R.id.toolbar_title);
+        tips_1=view.findViewById(R.id.tips_1);
+        tips_2=view.findViewById(R.id.tips_2);
+        tips_3=view.findViewById(R.id.tips_3);
+        tips_4=view.findViewById(R.id.tips_4);
+
+
+
         sessionManager = new SessionManager(getActivity());
 
 
@@ -113,14 +129,57 @@ public class VoterId_Back_Preview_Details_Fragment extends Fragment {
 
 
 
-            Glide.with(getActivity()).load("file://" + back_id)
-                    .thumbnail(0.5f)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(imageView);
+//            Glide.with(getActivity()).load("file://" + back_id)
+//                    .thumbnail(0.5f)
+//                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                    .into(imageView);
+//
+
+        Glide.with(getActivity()).load("file://" + back_id)
+                .thumbnail(0.5f)
+                // .crossFade()
+                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+                        .error(R.drawable.avatarmale))
+                .into(imageView);
 
 
 
-         back_feed.setOnClickListener(new View.OnClickListener() {
+        try {
+
+
+            lngObject = new JSONObject(sessionManager.getRegId("language"));
+
+            System.out.println("llllllllllllkkkkkkkkkkkkkkk" + lngObject.getString("EnterPhoneNo"));
+            toolbar_title.setText(lngObject.getString("ReviewPhoto"));
+            upload_imge.setText(lngObject.getString("UPLOADTHISIMAGE").replace("\n",""));
+            preview_tips.setText(lngObject.getString("Tips"));
+
+            tips_1.setText(lngObject.getString("Youshouldhaveavalidvoterid"));
+            tips_2.setText(lngObject.getString("Placethevoteridwithintheframe"));
+            tips_3.setText(lngObject.getString("Ensurethattheroomhasgoodlighting"));
+            tips_4.setText(lngObject.getString("Textonyourvoteridshouldbeclearandsharpinthephoto").replace("\n",""));
+            take_voter_photo.setText(lngObject.getString("Takephotoagain").replace("\n",""));
+
+
+
+
+            //  pass.setHint(lngObject.getString("Password"));
+            //  remember_me.setText(lngObject.getString("RememberMe"));
+
+
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+
+
+        back_feed.setOnClickListener(new View.OnClickListener() {
           @Override
              public void onClick(View view) {
 

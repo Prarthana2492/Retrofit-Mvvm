@@ -43,9 +43,10 @@ public class AddBrandFragment extends Fragment {
     LinearLayout back_feed,linearLayout;
     TextView continue_button;
     ImageView b_arrow;
-
     public static String price;
     public static String request_looking_id;
+
+
 
 
     public static AddBrandFragment newInstance() {
@@ -53,13 +54,14 @@ public class AddBrandFragment extends Fragment {
         return fragment;
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.brand_recy_layout, container, false);
         Status_bar_change_singleton.getInstance().color_change(getActivity());
 
 
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
 
         recyclerView=view.findViewById(R.id.recycler_what_looking);
         toolbar_title=view.findViewById(R.id.toolbar_title);

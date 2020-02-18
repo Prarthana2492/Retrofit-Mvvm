@@ -54,6 +54,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
+
 import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -93,7 +96,7 @@ public class AaProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.a_a_profile_layout, container, false);
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
 
         Status_bar_change_singleton.getInstance().color_change(getActivity());
 
@@ -522,11 +525,18 @@ public class AaProfileFragment extends Fragment {
                         // profile_phone.setFilters(new InputFilter[]{EMOJI_FILTER});
                         // aboutText.setFilters(new InputFilter[]{EMOJI_FILTER});
 
+//
+//                        Glide.with(getActivity()).load(ProfileImage)
+//                                .thumbnail(0.5f)
+//                                //.crossFade()
+//                                .error(R.drawable.avatarmale)
+//                                .into(prod_img);
 
                         Glide.with(getActivity()).load(ProfileImage)
                                 .thumbnail(0.5f)
-                                //.crossFade()
-                                .error(R.drawable.avatarmale)
+                                // .crossFade()
+                                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+                                        .error(R.drawable.avatarmale))
                                 .into(prod_img);
 
 

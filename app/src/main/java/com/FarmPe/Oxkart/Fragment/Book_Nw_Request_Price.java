@@ -109,7 +109,7 @@ public class Book_Nw_Request_Price extends Fragment  {
 
 
 
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 4);
 
 

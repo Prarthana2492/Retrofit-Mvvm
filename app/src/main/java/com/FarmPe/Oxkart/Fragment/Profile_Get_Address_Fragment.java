@@ -58,7 +58,7 @@ public class Profile_Get_Address_Fragment extends Fragment {
         Status_bar_change_singleton.getInstance().color_change(getActivity());
 
 
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
         recyclerView=view.findViewById(R.id.recycler_what_looking);
         toolbar_title=view.findViewById(R.id.toolbar_title);
         toolbar_title.setText("My Addresses");

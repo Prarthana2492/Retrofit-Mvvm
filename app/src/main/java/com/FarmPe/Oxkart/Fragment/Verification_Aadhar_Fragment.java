@@ -43,10 +43,11 @@ import java.util.regex.Pattern;
 public class Verification_Aadhar_Fragment extends Fragment {
 
     LinearLayout sele_loc, selfie_img, main_layout;
-    TextView submit, verify_btn, verify_aadhar_st;
+    TextView submit,toolbar_title,title_details, verify_btn, verify_aadhar_st;
     EditText aadhar_no, pan_name, pan_num;
-   public static String status;
+    public static String status;
     SessionManager sessionManager;
+    public static JSONObject lngObject;
     JSONArray get_location_array,vote_list_array,vote_bk_list_array,imagelist_array;
     Fragment selectedFragment = null;
     boolean doubleBackToExitPressedOnce = false;
@@ -69,12 +70,44 @@ public class Verification_Aadhar_Fragment extends Fragment {
 
         pan_name = view.findViewById(R.id.pan_name);
         pan_num = view.findViewById(R.id.pan_num);
+
         main_layout = view.findViewById(R.id.main_layout);
+        toolbar_title = view.findViewById(R.id.setting_tittle);
+        title_details = view.findViewById(R.id.title_details);
         // VerifyAadhar.this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         sessionManager = new SessionManager(getActivity());
 
         setupUI(main_layout);
+
+
+
+        try {
+
+
+            lngObject = new JSONObject(sessionManager.getRegId("language"));
+
+            System.out.println("llllllllllllkkkkkkkkkkkkkkk" + lngObject.getString("EnterPhoneNo"));
+
+            toolbar_title.setText(lngObject.getString("PANDetailsoptional").replace("\n",""));
+            title_details.setText(lngObject.getString("PANCardisrequiredtoavailFinancialServiceonFarmPe"));
+            pan_name.setHint(lngObject.getString("EnternameasperPANCard").replace("\n",""));
+            submit.setText(lngObject.getString("PROCEED").replace("\n",""));
+
+
+
+            //  pass.setHint(lngObject.getString("Password"));
+            //  remember_me.setText(lngObject.getString("RememberMe"));
+
+
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
 
 
         view.setFocusableInTouchMode(true);

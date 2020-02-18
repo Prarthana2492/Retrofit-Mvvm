@@ -40,6 +40,8 @@ public class SettingFragment extends Fragment {
     JSONArray get_address_array;
     String pickUPFrom;
 
+
+
     public static SettingFragment newInstance() {
         SettingFragment fragment = new SettingFragment();
         return fragment;

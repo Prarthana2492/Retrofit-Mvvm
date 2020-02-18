@@ -19,6 +19,10 @@ import android.widget.TextView;
 import com.FarmPe.Oxkart.Adapter.SliderPagerAdapter;
 import com.FarmPe.Oxkart.Bean.ListBean2;
 import com.FarmPe.Oxkart.R;
+import com.FarmPe.Oxkart.SessionManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -30,7 +34,9 @@ public class Slider_Activity extends AppCompatActivity {
     int page_position = 0;
     ArrayList<ListBean2>  apply_loan;
     LinearLayout ll_dots, cate1, cate2, cate3;
+    public static JSONObject lngObject;
     TextView proceed;
+    SessionManager sessionManager;
 
 
     @Override
@@ -41,9 +47,7 @@ public class Slider_Activity extends AppCompatActivity {
 
         proceed = findViewById(R.id.proceed);
 
-
-
-
+        sessionManager = new SessionManager(this);
 
         int PERMISSION_ALL = 1;
         String[] PERMISSIONS = {
@@ -51,9 +55,13 @@ public class Slider_Activity extends AppCompatActivity {
                 Manifest.permission.CAMERA,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
         };
+
         ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
         if (!hasPermissions(this, PERMISSIONS)) {
         }
+
+
+
 
 
 
@@ -96,10 +104,13 @@ public class Slider_Activity extends AppCompatActivity {
         final ViewPager vp_slider = (ViewPager) findViewById(R.id.vp_slider);
         ll_dots = (LinearLayout) findViewById(R.id.ll_dots);
 
+
         SliderPagerAdapter sliderPagerAdapter = new SliderPagerAdapter(Slider_Activity.this, apply_loan);
 
 
+
         vp_slider.setAdapter(sliderPagerAdapter);
+
 
 
         vp_slider.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -152,6 +163,7 @@ public class Slider_Activity extends AppCompatActivity {
             dots[i].setTextColor(Color.parseColor("#DFDDDD"));
             ll_dots.addView(dots[i]);
         }
+
         if (dots.length > 0)
             dots[currentPage].setTextColor(Color.parseColor("#E50914"));
     }

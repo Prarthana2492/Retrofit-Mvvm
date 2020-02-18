@@ -10,10 +10,18 @@
     >
 
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="9"
+        android:layout_weight="91"
+        android:weightSum="100"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
         android:orientation="horizontal"
         android:background="@color/menu_green">
 
@@ -54,20 +62,16 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="82"
-        android:orientation="vertical">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="30"
+            android:layout_weight="35"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/mobile_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Phone Number"
@@ -94,19 +98,19 @@
                 android:textSize="19dp"
                 android:textStyle="bold" />
 
+
             <TextView
+                android:id="@+id/user_status_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Status"
-                android:textStyle="bold"
-                android:paddingLeft="15dp"
-                android:textColorHint="#999999"
-                android:fontFamily="@font/segoeui"
-                android:paddingRight="10dp"
-                android:textSize="19dp"
                 android:layout_marginTop="30dp"
-                />
-
+                android:fontFamily="@font/segoeui"
+                android:paddingLeft="15dp"
+                android:paddingRight="10dp"
+                android:text="Status"
+                android:textColorHint="#999999"
+                android:textSize="19dp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -147,23 +151,55 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="51"
+            android:layout_weight="55"
             android:orientation="vertical"
             >
             <ImageView
-                android:layout_width="180dp"
-                android:layout_height="180dp"
+                android:id="@+id/in_progress_image"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
                 android:layout_gravity="center"
+                android:visibility="gone"
                 android:src="@drawable/ic_call_center_agent"
                 android:layout_weight="40"
                 />
 
+
+            <ImageView
+                android:id="@+id/success_image"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:src="@drawable/ic_success"
+                android:layout_weight="40"
+                />
+
             <TextView
+                android:id="@+id/in_progress_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/verification"
                 android:paddingLeft="10dp"
                 android:textColor="#000"
+                android:fontFamily="@font/segoeui"
+                android:paddingRight="10dp"
+                android:visibility="gone"
+                android:textSize="19dp"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:layout_marginBottom="20dp"
+
+                />
+
+            <TextView
+                android:id="@+id/success_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/verification_success"
+                android:paddingLeft="10dp"
+                android:textColor="#000"
+                android:visibility="gone"
                 android:fontFamily="@font/segoeui"
                 android:paddingRight="10dp"
                 android:textSize="19dp"
@@ -174,38 +210,67 @@
                 />
 
 
+
         </LinearLayout>
 
     </LinearLayout>
 
 
 
+
+
     <LinearLayout
-    android:id="@+id/cont_btn"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:background="@drawable/border_filled_red_not_curved"
-    android:orientation="horizontal"
-    android:layout_weight="9"
-    android:gravity="center"
-    >
+        android:id="@+id/cont_btn"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="9"
+        android:background="@drawable/border_filled_red_not_curved"
+        >
 
-
-    <TextView
-    android:id="@+id/next"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Proceed"
-    android:textAllCaps="true"
-    android:textSize="20dp"
-    android:gravity="bottom"
-    android:padding="15dp"
-    android:fontFamily="@font/segoeui"
-    android:textColor="#ffffff"
-    />
-
-
+        <TextView
+            android:id="@+id/proceed_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/segoeui"
+            android:text="PROCEED"
+            android:textAllCaps="true"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:padding="15dp"
+            android:textColor="#ffffff" />
     </LinearLayout>
+
+
+
+
+
+    <!--    <LinearLayout-->
+<!--    android:id="@+id/cont_btn"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="0dp"-->
+<!--    android:background="@drawable/border_filled_red_not_curved"-->
+<!--    android:layout_weight="9"-->
+<!--    android:gravity="center"-->
+<!--    >-->
+
+
+<!--    <TextView-->
+<!--    android:id="@+id/proceed_txt"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:text="Proceed"-->
+<!--    android:textAllCaps="true"-->
+<!--    android:textSize="20dp"-->
+<!--    android:gravity="center"-->
+<!--    android:padding="15dp"-->
+<!--    android:fontFamily="@font/segoeui"-->
+<!--    android:textColor="#ffffff"-->
+<!--    />-->
+
+
+<!--    </LinearLayout>-->
 
 
 </LinearLayout>

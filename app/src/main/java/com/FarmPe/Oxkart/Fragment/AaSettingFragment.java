@@ -52,7 +52,7 @@ public class AaSettingFragment extends Fragment {
 
         Status_bar_change_singleton.getInstance().color_change(getActivity());
 
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
         backfeed=view.findViewById(R.id.back_feed);
         acc_info_lay=view.findViewById(R.id.acc_info_lay);
         not_lay=view.findViewById(R.id.not_lay);
@@ -85,10 +85,6 @@ public class AaSettingFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
-                HomePage_With_Bottom_Navigation.profile_icon.setImageResource(R.drawable.ic_user_home);
-                HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
-                HomePage_With_Bottom_Navigation.profile_text.setTextColor(Color.parseColor("#595959"));
 
                 selectedFragment = Home_Menu_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -108,10 +104,6 @@ public class AaSettingFragment extends Fragment {
 
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
-                    HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
-                    HomePage_With_Bottom_Navigation.profile_icon.setImageResource(R.drawable.ic_user_home);
-                    HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
-                    HomePage_With_Bottom_Navigation.profile_text.setTextColor(Color.parseColor("#595959"));
 
                 //    getFragmentManager().popBackStack("home_menu", android.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     selectedFragment = Home_Menu_Fragment.newInstance();

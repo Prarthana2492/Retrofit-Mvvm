@@ -36,6 +36,10 @@ import android.widget.Toast;
 
 import com.FarmPe.Oxkart.Activity.Status_bar_change_singleton;
 import com.FarmPe.Oxkart.R;
+import com.FarmPe.Oxkart.SessionManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -61,9 +65,11 @@ public class Selfie_Fragment extends Fragment implements SurfaceHolder.Callback 
     SurfaceView surfaceView;
     BottomSheetDialog mBottomSheetDialog;
     View sheetView;
+    public static JSONObject lngObject;
     private static final int REQUEST_PERMISSIONS = 100;
     public  static  Bitmap selectedImage;
     Fragment selectedFragment;
+    SessionManager sessionManager;
 
 
 
@@ -87,6 +93,8 @@ public class Selfie_Fragment extends Fragment implements SurfaceHolder.Callback 
 
          imageView=view.findViewById(R.id.image);
         backfeed=view.findViewById(R.id.backfeed);
+
+        sessionManager = new SessionManager(getActivity());
       //  selfie=view.findViewById(R.id.selfie);
 
 
@@ -163,6 +171,9 @@ public class Selfie_Fragment extends Fragment implements SurfaceHolder.Callback 
 
 
 
+
+
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -190,6 +201,49 @@ public class Selfie_Fragment extends Fragment implements SurfaceHolder.Callback 
         final TextView tips = sheetView.findViewById(R.id.tips);
         final LinearLayout tips_layout = sheetView.findViewById(R.id.tips_layout);
         final TextView title = sheetView.findViewById(R.id.title);
+
+
+
+        final TextView title_details_front = sheetView.findViewById(R.id.selfie_details);
+
+        final TextView  front_tips1 = sheetView.findViewById(R.id.selfie_tips1);
+        final TextView front_tips2 = sheetView.findViewById(R.id.selfie_tips2);
+        final TextView front_tips3 = sheetView.findViewById(R.id.selfie_tips3);
+        final TextView front_tips4 = sheetView.findViewById(R.id.selfie_tips4);
+
+
+        try {
+
+
+            lngObject = new JSONObject(sessionManager.getRegId("language"));
+
+            System.out.println("llllllllllllkkkkkkkkkkkkkkk" + lngObject.getString("EnterPhoneNo"));
+
+
+            tips.setText(lngObject.getString("Tips"));
+            title.setText(lngObject.getString("ClickaSelfie"));
+            title_details_front.setText(lngObject.getString("Weverifyyourselfiebycomparingitwiththephotoonyourvoteridcard"));
+
+            front_tips1.setText(lngObject.getString("Placeyourfacewithintheframe"));
+            front_tips2.setText(lngObject.getString("Ensurethattheroomhasgoodlighting"));
+            front_tips3.setText(lngObject.getString("Photoshouldbeclearandsharp"));
+            front_tips4.setText(lngObject.getString("Dontincludeobjectsinthebackground").replace("\n",""));
+
+
+
+
+            //  pass.setHint(lngObject.getString("Password"));
+            //  remember_me.setText(lngObject.getString("RememberMe"));
+
+
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
 
 
         tips.setOnClickListener(new View.OnClickListener() {
@@ -225,7 +279,6 @@ public class Selfie_Fragment extends Fragment implements SurfaceHolder.Callback 
 
         mBottomSheetDialog.setContentView(sheetView);
         mBottomSheetDialog.show();
-
 
 
 

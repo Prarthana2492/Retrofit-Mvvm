@@ -58,7 +58,7 @@ public class NotificationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.notification_recy, container, false);
         Status_bar_change_singleton.getInstance().color_change(getActivity());
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
         recyclerView=view.findViewById(R.id.recycler_noti);
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
@@ -77,10 +77,6 @@ public class NotificationFragment extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
-                    HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
-                    HomePage_With_Bottom_Navigation.noti_icon.setImageResource(R.drawable.ic_notification_home);
-                    HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
-                    HomePage_With_Bottom_Navigation.noti_text.setTextColor(Color.parseColor("#595959"));
 
 
                     selectedFragment = Home_Menu_Fragment.newInstance();
@@ -101,10 +97,7 @@ public class NotificationFragment extends Fragment {
             public void onClick(View view) {
 
 
-                HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
-                HomePage_With_Bottom_Navigation.noti_icon.setImageResource(R.drawable.ic_notification_home);
-                HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
-                HomePage_With_Bottom_Navigation.noti_text.setTextColor(Color.parseColor("#595959"));
+
               //  back_arrw.setImageDrawable(getResources().getDrawable(R.drawable.ic_whitecancel));
                 selectedFragment = Home_Menu_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();

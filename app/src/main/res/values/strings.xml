@@ -17,4 +17,5 @@
 <string name="title_activity_search_pp">Search_pp</string>
 <string name="something" formatted="false">Son/daughter of the soil.</string>
     <string name="verification">Our agent will call you soon to verify your shop. Please be available over call.</string>
+    <string name="verification_success">Your verification is successful.\n Click proceed to start exploring.</string>
 </resources>

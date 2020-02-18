@@ -1,9 +1,9 @@
 package com.FarmPe.Oxkart.Adapter;
 
+
+
 import android.app.Activity;
-
 import android.graphics.Color;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -32,13 +32,16 @@ import com.FarmPe.Oxkart.SessionManager;
 import com.FarmPe.Oxkart.Urls;
 import com.FarmPe.Oxkart.Volly_class.Crop_Post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
+
+
+import com.FarmPe.Oxkart.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.FarmPe.Oxkart.R;
+import com.bumptech.glide.request.RequestOptions;
+
 import org.json.JSONObject;
-
-
 import java.util.List;
+
 
 
 public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyViewHolder>  {
@@ -73,7 +76,6 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
 
 
-
         public MyViewHolder(View view) {
             super(view);
 
@@ -86,9 +88,6 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
             brochure=view.findViewById(R.id.brochure);
             fav_request=view.findViewById(R.id.fav_request);
             linearLayout=view.findViewById(R.id.layout);
-
-
-
         }
     }
 
@@ -187,13 +186,41 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 //
 //*/
 
-        Glide.with(activity).load(products.getImage())
+//        Glide.with(activity).load(products.getImage())
+//
+//                .thumbnail(0.5f)
+//                //.crossFade()
+//                .centerCrop()
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .into(holder.image);
 
-                .thumbnail(0.5f)
-                //.crossFade()
-                .centerCrop()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(holder.image);
+        if(products.getImage().equalsIgnoreCase("")){
+
+            holder.image.setBackgroundResource(R.drawable.ic_photo);
+
+        }else{
+
+            Glide.with(activity)  //2
+                    .load(products.getImage()) //3
+                    .centerCrop() //4
+                    .placeholder(R.drawable.ic_photo) //5
+                    .error(R.drawable.ic_photo) //6
+                    .fallback(R.drawable.ic_photo) //7
+                    .into(holder.image); //8
+
+//            Glide.with(activity).load(products.getImage())
+//                    .thumbnail(0.5f)
+//                    // .crossFade()
+//                    .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+//                            .error())
+//                    .into(holder.image);
+
+
+
+        }
+
+
+
 
 
         holder.brochure.setOnClickListener(new View.OnClickListener() {
@@ -305,7 +332,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
                     holder.fav_request.setImageResource(R.drawable.ic_star);
                     products.setIsshortlisted(false);
-                    toast_message = "Your Request is unFavorited";
+                    toast_message = "Your Request is removed fromFavorites";
                     shortlisted = false;
 
 
@@ -313,7 +340,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
                     holder.fav_request.setImageResource(R.drawable.ic_star_filled);
                     products.setIsshortlisted(true);
-                    toast_message = "Your Request is Favorited";
+                    toast_message = "Your Request is added to Favorites";
                     shortlisted = true;
 
 

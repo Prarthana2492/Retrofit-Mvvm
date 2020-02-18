@@ -1,5 +1,7 @@
 package com.FarmPe.Oxkart.Activity;
 
+
+
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 
 import com.FarmPe.Oxkart.Bean.FarmsImageBean;
 import com.FarmPe.Oxkart.Fragment.PrivacyPolicyFragment;
+import com.FarmPe.Oxkart.Fragment.Verification_Last_Fragment;
 import com.FarmPe.Oxkart.R;
 import com.FarmPe.Oxkart.SessionManager;
 import org.json.JSONException;
@@ -24,10 +27,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class Privacy_Activity extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener{
 
+
     public static List<FarmsImageBean> newOrderBeansList = new ArrayList<>();
+
     public static RecyclerView recyclerView;
 
     TextView toolbar_title;
@@ -134,13 +138,10 @@ public class Privacy_Activity extends AppCompatActivity implements ConnectivityR
             e.printStackTrace();
         }
 
-        Bundle bundle = new Bundle();
-        bundle.putString("status","sign_Privacy");
-        selectedFragment = PrivacyPolicyFragment.newInstance();
+
+        selectedFragment = Verification_Last_Fragment.newInstance();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        selectedFragment.setArguments(bundle);
         transaction.replace(R.id.frame_layout, selectedFragment);
-        transaction.addToBackStack("signin");
         transaction.commit();
 
     }

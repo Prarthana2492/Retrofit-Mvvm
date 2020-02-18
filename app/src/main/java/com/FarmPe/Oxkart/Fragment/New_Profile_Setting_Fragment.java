@@ -52,6 +52,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -71,24 +72,27 @@ import static com.android.volley.VolleyLog.TAG;
 
 public class New_Profile_Setting_Fragment extends Fragment {
 
+
     public static List<FarmsImageBean> newOrderBeansList = new ArrayList<>();
     public static ArrayList<BankBean> newOrderBeansList1 = new ArrayList<>();
 
+
     public static RecyclerView recyclerView;
-    LinearLayout back_feed,invite,your_addresss,noti_setting,refer_earn,feedback,change_lang,policy,bank_account,verify_kyc,help,change_password,linearLayout,invite_frnd;
+    LinearLayout back_feed,invite,your_addresss,noti_setting,logout,feedback,change_lang,policy,bank_account,verify_kyc,help,change_password,linearLayout,invite_frnd;
     Fragment selectedFragment;
-    TextView notificatn,change_language,acc_info1,lang_setting,feedbk,help_1,abt_frmpe,polic_1,logot,setting_tittle,logout,profname,profile_phone;
+    TextView notificatn,change_language,acc_info1,lang_setting,feedbk,help_1,abt_frmpe,polic_1,logot,setting_tittle,profname,profile_phone;
     SessionManager sessionManager;
     JSONObject lngObject;
-    JSONArray Bank_list_array,new_address_list_array;
+    JSONArray Bank_list_array,new_address_list_array,imagelist_array;
     ImageView b_arrow;
+    LinearLayout linear_profile_image;
     CircleImageView profile_image;
     String profnamestr,ProfilePhone,ProfileImage;
     Bitmap bitmap;
-
     BottomSheetDialog mBottomSheetDialog;
     View sheetView;
     String packageName;
+
 
 
 
@@ -104,7 +108,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.sellersetting_layout, container, false);
 
 
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
 
         Status_bar_change_singleton.getInstance().color_change(getActivity());
 
@@ -134,9 +138,9 @@ public class New_Profile_Setting_Fragment extends Fragment {
         logot=view.findViewById(R.id.logot);
         verify_kyc=view.findViewById(R.id.kyc);
         help=view.findViewById(R.id.help);
-        change_password=view.findViewById(R.id.change_pass);
-        sessionManager = new SessionManager(getActivity());
+        linear_profile_image = view.findViewById(R.id.linear_profile_image);
 
+        sessionManager = new SessionManager(getActivity());
 
         lang_setting.setText(sessionManager.getRegId("language_name"));
 
@@ -149,6 +153,132 @@ public class New_Profile_Setting_Fragment extends Fragment {
         packageName = pm.queryIntentActivities(sendIntent, 0).toString();
 
 
+        if(getArguments().getString("HOME_IMAGE").equals("Selfie_image")){
+
+            try {
+
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("UserId", sessionManager.getRegId("userId"));
+
+
+                Crop_Post.crop_posting(getActivity(), Urls.Get_Image_Details, jsonObject, new VoleyJsonObjectCallback() {
+                    @Override
+                    public void onSuccessResponse(JSONObject result) {
+                        System.out.println("dhfjfjd" + result);
+
+
+                        try {
+
+                            imagelist_array = result.getJSONArray("captureImagelist");
+
+                            for (int i = 0; i < imagelist_array.length(); i++) {
+
+
+                                JSONObject jsonObject1 = imagelist_array.getJSONObject(i);
+                                String image_id = jsonObject1.getString("CImageId");
+                                String image_view = jsonObject1.getString("Image1");
+
+
+
+                                Glide.with(getActivity()).load(image_view)
+                                        .thumbnail(0.5f)
+                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                        .error(R.drawable.avatarmale)
+                                        .into(profile_image);
+                            }
+
+
+
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+
+
+        }else{
+
+
+                    try{
+
+            JSONObject jsonObject = new JSONObject();
+            JSONObject post_object = new JSONObject();
+            jsonObject.put("Id",sessionManager.getRegId("userId"));
+            post_object.put("objUser",jsonObject);
+
+
+            Crop_Post.crop_posting(getActivity(), Urls.Get_Profile_Details, post_object, new VoleyJsonObjectCallback() {
+                @Override
+                public void onSuccessResponse(JSONObject result) {
+                    System.out.println("ggpgpgpg" + result);
+
+
+
+                    try{
+
+                        JSONObject jsonObject1 = result.getJSONObject("user");
+                      //  profnamestr = jsonObject1.getString("FullName");
+                        System.out.println("ggpgpgpg" + profnamestr);
+                        ProfilePhone = jsonObject1.getString("PhoneNo");
+                        //String ProfileEmail = jsonObject1.getString("EmailId");
+                        ProfileImage = jsonObject1.getString("ProfilePic");
+                       // profile_description = jsonObject1.getString("About");
+
+                     //   profname.setText(profnamestr);
+
+
+
+
+                        //phone_no.setText(ProfilePhone.substring(3));
+
+                        profile_phone.setText(ProfilePhone); // masking + deleting last line
+
+
+                        // profname.setFilters(new InputFilter[]{EMOJI_FILTER});
+                        // profile_phone.setFilters(new InputFilter[]{EMOJI_FILTER});
+                        // aboutText.setFilters(new InputFilter[]{EMOJI_FILTER});
+
+
+                        Glide.with(getActivity()).load(ProfileImage)
+                                .thumbnail(0.5f)
+                                // .crossFade()
+                                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+                                        .error(R.drawable.avatarmale))
+                                .into(profile_image);
+
+//                        Glide.with(getActivity())
+//                                .load(ProfileImage)
+//                                .centerCrop()
+//                                .diskCacheStrategy(DiskCacheStrategy.NONE)
+//                                .skipMemoryCache(true)
+//                                .dontAnimate()
+//                                .into(profile_image);
+
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+        }
+
+
 
 
 
@@ -157,7 +287,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
             public void onClick(View v) {
 
                 FragmentManager fm = getActivity().getSupportFragmentManager();
-                fm.popBackStack("settingglist", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fm.popBackStack("home_setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
             }
         });
@@ -173,7 +303,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
                     FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("settingglist", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    fm.popBackStack("home_setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
                     return true;
                 }
@@ -182,7 +312,8 @@ public class New_Profile_Setting_Fragment extends Fragment {
         });
 
 
-        profile_image.setOnClickListener(new View.OnClickListener() {
+
+        linear_profile_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -193,70 +324,12 @@ public class New_Profile_Setting_Fragment extends Fragment {
         });
 
 
-        try{
-
-            JSONObject jsonObject = new JSONObject();
-            JSONObject post_object = new JSONObject();
-            jsonObject.put("Id",sessionManager.getRegId("userId"));
-            post_object.put("objUser",jsonObject);
-
-
-            Crop_Post.crop_posting(getActivity(), Urls.Get_Profile_Details, post_object, new VoleyJsonObjectCallback() {
-                @Override
-                public void onSuccessResponse(JSONObject result) {
-                    System.out.println("ggpgpgpg" + result);
-
-
-                    try{
-
-                        JSONObject jsonObject1 = result.getJSONObject("user");
-                        profnamestr = jsonObject1.getString("FullName");
-                        System.out.println("ggpgpgpg" + profnamestr);
-                        ProfilePhone = jsonObject1.getString("PhoneNo");
-                        //String ProfileEmail = jsonObject1.getString("EmailId");
-                        ProfileImage = jsonObject1.getString("ProfilePic");
-                       // profile_description = jsonObject1.getString("About");
-
-                        profname.setText(profnamestr);
-
-
-
-
-                        //phone_no.setText(ProfilePhone.substring(3));
-
-                        profile_phone.setText(ProfilePhone); // masking + deleting last line
-
-
-                        // profname.setFilters(new InputFilter[]{EMOJI_FILTER});
-                        // profile_phone.setFilters(new InputFilter[]{EMOJI_FILTER});
-                        // aboutText.setFilters(new InputFilter[]{EMOJI_FILTER});
-
-
-                        Glide.with(getActivity())
-                                .load(ProfileImage)
-                                .centerCrop()
-                                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                                .skipMemoryCache(true)
-                                .dontAnimate()
-                                .into(profile_image);
-
-
-
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
-                }
-            });
-
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
 
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
 
                 final TextView yes1,no1,text_desctxt,popup_headingtxt;
@@ -270,6 +343,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
                 yes1 =  dialog.findViewById(R.id.yes_1);
                 no1 =  dialog.findViewById(R.id.no_1);
                 popup_headingtxt =  dialog.findViewById(R.id.popup_heading);
+
 
 
 //                try {
@@ -358,7 +432,6 @@ public class New_Profile_Setting_Fragment extends Fragment {
                                     transaction.addToBackStack("profile_setting");
                                     transaction.commit();
 
-
                                 }
 
 
@@ -394,11 +467,12 @@ public class New_Profile_Setting_Fragment extends Fragment {
             }
         });
 
+
         help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-             selectedFragment = HelpandSupportFragment.newInstance();
+                selectedFragment = HelpandSupportFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.addToBackStack("help_supp");
@@ -407,9 +481,11 @@ public class New_Profile_Setting_Fragment extends Fragment {
         });
 
 
+
         policy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Bundle bundle = new Bundle();
                 bundle.putString("status","setting_privacy");
                 selectedFragment = PrivacyPolicyFragment.newInstance();
@@ -420,6 +496,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
                 transaction.commit();
             }
         });
+
 
 
         change_lang.setOnClickListener(new View.OnClickListener() {
@@ -437,19 +514,22 @@ public class New_Profile_Setting_Fragment extends Fragment {
 
 
 
-        change_password.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-             selectedFragment = ChangePassword_Fragment.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_menu, selectedFragment);
-                transaction.addToBackStack("settingg");
-                transaction.commit();
-            }
-        });
-
-
+//
+//        change_password.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//
+//
+//                selectedFragment = ChangePassword_Fragment.newInstance();
+//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.frame_menu, selectedFragment);
+//                transaction.addToBackStack("settingg");
+//                transaction.commit();
+//            }
+//        });
+//
+//
 
         your_addresss.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -515,16 +595,20 @@ public class New_Profile_Setting_Fragment extends Fragment {
             public void onClick(View v) {
 
 
+
                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.invite_people_bottom_sheet, null);
 
                 TextView cancel = sheetView.findViewById(R.id.cancel_invite);
+
                 LinearLayout whatsapp = sheetView.findViewById(R.id.whatsapp);
                 LinearLayout facebook = sheetView.findViewById(R.id.facebook);
                 LinearLayout instagram = sheetView.findViewById(R.id.instagram);
                 LinearLayout twitter = sheetView.findViewById(R.id.twitter);
                 LinearLayout messenger = sheetView.findViewById(R.id.messenger);
                 LinearLayout message = sheetView.findViewById(R.id.message);
+
+
 
 
 
@@ -538,23 +622,24 @@ public class New_Profile_Setting_Fragment extends Fragment {
                             whatsappIntent.setPackage("com.whatsapp");
                             //whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Text");
                             whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeSellerHub\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farms to download the app!");
+
                             try {
                                 startActivity(whatsappIntent);
                             } catch (android.content.ActivityNotFoundException ex) {
-
-
 
                                 Toast.makeText(getActivity(), "Whatsapp is not installed on this device.", Toast.LENGTH_SHORT);
                             }
 
 
                         }else {
+
                             Toast.makeText(getActivity(), "Whatsapp is not installed on this device.", Toast.LENGTH_SHORT);
 
                         }
 
                     }
                 });
+
 
 
                 facebook.setOnClickListener(new View.OnClickListener() {
@@ -926,7 +1011,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
                 Map<String, String> params = new HashMap<>();
 
                 params.put("UserId",sessionManager.getRegId("userId"));
-                params.put("FullName",sessionManager.getRegId("name"));
+              //  params.put("FullName",sessionManager.getRegId("name"));
                 params.put("PhoneNo",sessionManager.getRegId("phone"));
                 //  params.put("EmailId","abcd@gmail.com");
                 //    params.put("Password",profile_passwrd.getText().toString());
@@ -946,7 +1031,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
 
                 if (bitmap!=null) {
 
-                    params.put("File", new DataPart(imagename + ".png", getFileDataFromDrawable(bitmap)));
+                    params.put("ProfilePic", new DataPart(imagename + ".png", getFileDataFromDrawable(bitmap)));
 
                 }
 

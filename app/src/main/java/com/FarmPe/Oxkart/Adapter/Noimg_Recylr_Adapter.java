@@ -11,6 +11,7 @@ import com.FarmPe.Oxkart.Bean.AddTractorBean2;
 import com.FarmPe.Oxkart.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -60,15 +61,25 @@ public class Noimg_Recylr_Adapter extends RecyclerView.Adapter<Noimg_Recylr_Adap
 
         System.out.println("dddiiiijgh" + products.getImage());
 
-        Glide.with(activity).load(products.getImage())
 
+        Glide.with(activity).load(products.getImage())
                 .thumbnail(0.5f)
-                //  .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .error(R.drawable.avatarmale)
-                .centerCrop()
+                // .crossFade()
+                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+                        .error(R.drawable.avatarmale))
                 .into(holder.image);
+
     }
+
+//        Glide.with(activity).load(products.getImage())
+//
+//                .thumbnail(0.5f)
+//                //  .crossFade()
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .error(R.drawable.avatarmale)
+//                .centerCrop()
+//                .into(holder.image);
+//    }
 
     @Override
     public int getItemCount() {

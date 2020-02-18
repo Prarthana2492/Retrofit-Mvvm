@@ -39,7 +39,7 @@ public class No_Request_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.no_requst_new, container, false);
         Status_bar_change_singleton.getInstance().color_change(getActivity());
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
         make_request = view.findViewById(R.id.make_requesttttt);
         back_feed1 = view.findViewById(R.id.back_feed1);
         b_arrow=view.findViewById(R.id.b_arrow);

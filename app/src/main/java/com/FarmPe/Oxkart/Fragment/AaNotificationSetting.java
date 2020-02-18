@@ -39,7 +39,7 @@ public class AaNotificationSetting extends Fragment {
         View view = inflater.inflate(R.layout.a_n_notisetting_layout, container, false);
 
         Status_bar_change_singleton.getInstance().color_change(getActivity());
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
 
         backfeed=view.findViewById(R.id.back_feed);
         acc_info_lay = view.findViewById(R.id.acc_info_lay);

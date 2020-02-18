@@ -54,6 +54,7 @@ public class Book_Nw_Requirement_Details extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.book_now_details_layout, container, false);
         Status_bar_change_singleton.getInstance().color_change(getActivity());
+
         immediate_btn=view.findViewById(R.id.immediate_btn);
         one_month_btn=view.findViewById(R.id.one_month_btn);
         two_month_btn=view.findViewById(R.id.two_month_btn);

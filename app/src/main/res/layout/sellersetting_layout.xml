@@ -79,17 +79,17 @@
                     android:textSize="20dp" />
 
 
-                <TextView
-                    android:id="@+id/logout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="LOGOUT"
-                    android:textSize="16dp"
-                    android:drawablePadding="10dp"
-                    android:textColor="#fff"
-                    android:layout_gravity="center"
-                    android:drawableRight="@drawable/ic_question_mark"
-                    />
+<!--                <TextView-->
+
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="LOGOUT"-->
+<!--                    android:textSize="16dp"-->
+<!--                    android:drawablePadding="10dp"-->
+<!--                    android:textColor="#fff"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:drawableRight="@drawable/ic_question_mark"-->
+<!--                    />-->
 
 
             </LinearLayout>
@@ -105,7 +105,10 @@
         android:background="#ffffff"
         android:weightSum="100"
         >
+
+
         <LinearLayout
+            android:id="@+id/linear_profile_image"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -120,6 +123,15 @@
                 android:src="@drawable/avatarmale"
                 />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="Change"
+                android:textSize="14dp"
+                android:textColor="#064a8e" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -131,17 +143,22 @@
             android:gravity="center"
             android:layout_marginLeft="5dp"
             >
-            <TextView
-                android:id="@+id/profile_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textStyle="bold"
-                android:fontFamily="@font/segoeui"
-                android:textColor="#000"
-                android:textSize="15dp"
 
-                />
+
+
+<!--            <TextView-->
+<!--                android:id="@+id/profile_name"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text=""-->
+<!--                android:textStyle="bold"-->
+<!--                android:fontFamily="@font/segoeui"-->
+<!--                android:textColor="#000"-->
+<!--                android:textSize="15dp"-->
+
+<!--                />-->
+
+
 
             <TextView
                 android:id="@+id/profile_number"
@@ -202,9 +219,10 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_user_profile"
+                            android:src="@drawable/ic_bank_acc"
                             android:layout_gravity="center_vertical"
                             />
+
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -242,12 +260,12 @@
                         android:paddingVertical="8dp"
 
                         >
+
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_user_profile"
                             android:layout_gravity="center_vertical"
-                            />
+                            android:src="@drawable/ic_correct" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -255,6 +273,7 @@
                             android:orientation="vertical"
                             android:layout_marginLeft="20dp"
                             >
+
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -292,12 +311,12 @@
                         android:orientation="horizontal"
                         android:paddingVertical="8dp"
                         >
+
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_user_profile"
                             android:layout_gravity="center_vertical"
-                            />
+                            android:src="@drawable/ic_place_holder" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -338,12 +357,12 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:paddingVertical="8dp"
-
                         >
+
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_user_profile"
+                            android:src="@drawable/ic_notification_green"
                             android:layout_gravity="center_vertical"
                             />
 
@@ -391,7 +410,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_user_profile"
+                            android:src="@drawable/ic_language"
                             android:layout_gravity="center_vertical"
                             />
 
@@ -418,8 +437,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="30"
                                 android:fontFamily="@font/segoeui"
-                                android:textColor="#064a8e"
                                 android:text="English"
+                                android:textColor="#064a8e"
                                 android:textSize="14dp" />
 
 
@@ -449,51 +468,48 @@
                         />
 
 
-                    <LinearLayout
-                        android:id="@+id/change_pass"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingVertical="8dp"
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/change_pass"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:paddingVertical="8dp"-->
 
-                        >
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_user_profile"
-                            android:layout_gravity="center_vertical"
-                            />
+<!--                        >-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:src="@drawable/ic_user_profile"-->
+<!--                            android:layout_gravity="center_vertical"-->
+<!--                            />-->
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginLeft="20dp"
-                            >
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:layout_marginLeft="20dp"-->
+<!--                            >-->
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/segoeui"
-                                android:paddingVertical="15dp"
-                                android:textColor="@color/black"
-                                android:text="Change Password"
-                                android:textSize="14dp" />
-
-
-                        </LinearLayout>
+<!--                            <TextView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:fontFamily="@font/segoeui"-->
+<!--                                android:paddingVertical="15dp"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                android:text="Change Password"-->
+<!--                                android:textSize="14dp" />-->
 
 
-                    </LinearLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#dcdcdc"
-                        android:layout_marginLeft="45dp"
-                        />
+<!--                        </LinearLayout>-->
 
 
-
+<!--                    </LinearLayout>-->
+<!--                    <View-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="1dp"-->
+<!--                        android:background="#dcdcdc"-->
+<!--                        android:layout_marginLeft="45dp"-->
+<!--                        />-->
 
 
                     <LinearLayout
@@ -504,12 +520,13 @@
                         android:paddingVertical="8dp"
 
                         >
+
+
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_user_profile"
                             android:layout_gravity="center_vertical"
-                            />
+                            android:src="@drawable/ic_question" />
 
                         <LinearLayout
 
@@ -555,7 +572,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_user_profile"
+                            android:src="@drawable/ic_sign_contract"
                             android:layout_gravity="center_vertical"
                             />
 
@@ -629,7 +646,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_user_profile"
+                            android:src="@drawable/ic_friends"
                             android:layout_gravity="center_vertical"
                             />
 
@@ -676,6 +693,54 @@
                         android:layout_marginLeft="45dp"
                         android:background="#dcdcdc"
                         />
+
+
+                    <LinearLayout
+                        android:id="@+id/logout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="8dp"
+
+                        >
+
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_logout" />
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="20dp"
+                            >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/segoeui"
+                                android:paddingVertical="15dp"
+                                android:text="Logout"
+                                android:textColor="@color/black"
+                                android:textSize="14dp" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#dcdcdc"
+                        android:layout_marginLeft="45dp"
+                        />
+
 
 
                     <!--<TextView

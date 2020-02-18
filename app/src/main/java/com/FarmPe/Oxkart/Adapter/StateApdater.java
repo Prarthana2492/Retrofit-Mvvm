@@ -1,5 +1,6 @@
 package com.FarmPe.Oxkart.Adapter;
 
+
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +17,8 @@ import com.FarmPe.Oxkart.Fragment.Add_New_Address_Fragment;
 import com.FarmPe.Oxkart.R;
 
 import java.util.List;
+
+
 
 public class StateApdater extends RecyclerView.Adapter<StateApdater.MyStateHolder> {
     List<StateBean>stateBeans;

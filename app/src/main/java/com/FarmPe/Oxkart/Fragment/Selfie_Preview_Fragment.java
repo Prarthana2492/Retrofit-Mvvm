@@ -48,6 +48,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -65,8 +70,9 @@ public class Selfie_Preview_Fragment extends Fragment {
     String packageName;
     EditText farm_name,description,cont_person_name,mobile_no,email_id;
     public static String farm_name_string,cont_name,mob_no,email_id_strg;
-    TextView toolbar_title,take_photo;
+    TextView toolbar_title,take_photo,upload_imge,tips_selfie,selfie_tips_1,selfie_tips_2,selfie_tips_3,selfie_tips_4;
     ImageView b_arrow;
+    public static JSONObject lngObject;
     public static String FACEBOOK_URL = "https://www.facebook.com/FarmPe-698463080607409/";
     public static String FACEBOOK_PAGE_ID = "FarmPe-698463080607409";
     public static  String imageUri;
@@ -104,7 +110,54 @@ public class Selfie_Preview_Fragment extends Fragment {
         tips_selfie_layout.setVisibility(View.VISIBLE);
 
 
+
+        upload_imge=view.findViewById(R.id.upload_imge);
+
+        tips_selfie=view.findViewById(R.id.tips_selfie);
+        toolbar_title = view.findViewById(R.id.toolbar_title);
+        selfie_tips_1=view.findViewById(R.id.selfie_tips_1);
+        selfie_tips_2=view.findViewById(R.id.selfie_tips_2);
+        selfie_tips_3=view.findViewById(R.id.selfie_tips_3);
+        selfie_tips_4=view.findViewById(R.id.selfie_tips_4);
+
+
         sessionManager = new SessionManager(getActivity());
+
+
+        try {
+
+
+            lngObject = new JSONObject(sessionManager.getRegId("language"));
+
+            System.out.println("llllllllllllkkkkkkkkkkkkkkk" + lngObject.getString("EnterPhoneNo"));
+
+            toolbar_title.setText(lngObject.getString("ReviewPhoto"));
+            upload_imge.setText(lngObject.getString("UPLOADTHISIMAGE").replace("\n",""));
+            tips_selfie.setText(lngObject.getString("Tips"));
+
+            selfie_tips_1.setText(lngObject.getString("Placeyourfacewithintheframe"));
+            selfie_tips_2.setText(lngObject.getString("Ensurethattheroomhasgoodlighting"));
+            selfie_tips_3.setText(lngObject.getString("Photoshouldbeclearandsharp"));
+            selfie_tips_4.setText(lngObject.getString("Dontincludeobjectsinthebackground").replace("\n",""));
+
+            take_photo.setText(lngObject.getString("Takephotoagain"));
+
+
+
+
+            //  pass.setHint(lngObject.getString("Password"));
+            //  remember_me.setText(lngObject.getString("RememberMe"));
+
+
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
 
 
 
@@ -115,8 +168,18 @@ public class Selfie_Preview_Fragment extends Fragment {
 
         Glide.with(getActivity()).load("file://" + id)
                 .thumbnail(0.5f)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                // .crossFade()
+                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+                        .error(R.drawable.avatarmale))
                 .into(imageView);
+
+
+
+//
+//        Glide.with(getActivity()).load("file://" + id)
+//                .thumbnail(0.5f)
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .into(imageView);
 
 
 //

@@ -37,6 +37,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.json.JSONObject;
 
@@ -150,14 +152,23 @@ LinearLayout back_feed;
                         // profile_mail.setText(ProfileEmail);
 
 
-                        Glide.with(getActivity()).load(ProfileImage)
 
+                        Glide.with(getActivity()).load(ProfileImage)
                                 .thumbnail(0.5f)
-                                //.crossFade()
-                                .error(R.drawable.avatarmale)
+                                // .crossFade()
+                                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+                                        .error(R.drawable.avatarmale))
                                 .into(imgFullImage);
 
-
+//
+//                        Glide.with(getActivity()).load(ProfileImage)
+//
+//                                .thumbnail(0.5f)
+//                                //.crossFade()
+//                                .error(R.drawable.avatarmale)
+//                                .into(imgFullImage);
+//
+//
 
                     }catch (Exception e){
                         e.printStackTrace();

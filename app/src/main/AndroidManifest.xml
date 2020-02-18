@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.FarmPe.Oxkart">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -107,6 +108,10 @@
             android:name="com.FarmPe.Oxkart.Activity.Verification_Activity"
             android:screenOrientation="portrait" />
 
+
+        <activity
+            android:name="com.FarmPe.Oxkart.Activity.GetLocationActivity"
+            android:screenOrientation="portrait" />
 
 
 

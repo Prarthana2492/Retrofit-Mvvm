@@ -71,7 +71,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="45"
+        android:layout_weight="35"
         android:orientation="vertical"
         android:layout_marginTop="20dp"
         android:layout_marginHorizontal="16dp"
@@ -118,7 +118,7 @@
             android:id="@+id/resendotp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Verify IFSC"
+            android:text="Enter IFSC Code"
             android:textSize="16dp"
             android:layout_gravity="right"
             android:padding="20dp"
@@ -129,53 +129,50 @@
     </LinearLayout>
 
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="40"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="16dp"
-        >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="55"
+                android:orientation="vertical">
 
 
-        <EditText
-            android:id="@+id/savingsbank"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Savings Bank Account Number"
-            android:paddingLeft="10dp"
-            android:textColorHint="#9D9D9D"
-            android:fontFamily="@font/segoeui"
-            android:paddingVertical="13dp"
-            android:paddingRight="10dp"
-            android:inputType="number"
-            android:maxLength="13"
-            android:background="@drawable/request_price_white_border"
-            android:textSize="16dp"
-            />
+                <EditText
+                    android:id="@+id/savingsbank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/request_price_white_border"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="Savings Bank Account Number"
+                    android:inputType="number"
+                    android:maxLength="13"
+                    android:paddingVertical="13dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColorHint="#9D9D9D"
+                    android:textSize="16dp" />
 
 
-        <EditText
-            android:id="@+id/confirmsavings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Confirm Savings Bank A/c Number"
-            android:textSize="16dp"
-            android:textColorHint="#9D9D9D"
-            android:paddingLeft="10dp"
-            android:layout_marginTop="13dp"
-            android:fontFamily="@font/segoeui"
-            android:paddingVertical="13dp"
-            android:paddingRight="10dp"
-            android:inputType="number"
-            android:maxLength="13"
-            android:background="@drawable/request_price_white_border"
+                <EditText
+                    android:id="@+id/confirmsavings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/request_price_white_border"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="Confirm Savings Bank A/c Number"
+                    android:inputType="number"
+                    android:maxLength="13"
+                    android:paddingVertical="13dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColorHint="#9D9D9D"
+                    android:textSize="16dp"
 
-            />
+                    />
 
-    </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

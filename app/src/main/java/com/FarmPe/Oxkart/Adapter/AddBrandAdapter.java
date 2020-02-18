@@ -28,6 +28,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.FarmPe.Oxkart.Bean.AddTractorBean;
 import com.FarmPe.Oxkart.R;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -65,9 +66,7 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
 
 
         }
-
     }
-
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -132,10 +131,6 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
 
 
 
-
-
-
-
 //           for (int i = 0; i < productList.size(); i++) {
 //                    productList.get(i).setSelected(false);
 //                }
@@ -162,13 +157,25 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
 //
 
 
-        Glide.with(activity).load(products.getImage())
+//        Glide.with(activity).load(products.getImage())
+//
+//                .thumbnail(0.5f)
+//                .centerCrop()
+//              //  .crossFade()
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .into(holder.image);
 
-                .thumbnail(0.5f)
-                .centerCrop()
-              //  .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+
+
+        Glide.with(activity).load(products.getImage())
+                .thumbnail(1.0f)
+                // .crossFade()
+                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+                        .error(R.drawable.ic_photo))
+                .override(50,50)
                 .into(holder.image);
+
+
 
 
 //        if (productList.get(position).isSelected()){

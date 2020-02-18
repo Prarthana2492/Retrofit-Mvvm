@@ -52,6 +52,7 @@
 
 
                 <TextView
+                    android:id="@+id/title_details_front"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
@@ -95,11 +96,12 @@
                 android:background="#ffffff"
                 android:orientation="vertical"
                 android:weightSum="100"
-                android:visibility="gone"
+                  android:visibility="gone"
                 android:fontFamily="@font/segoeui"
                 android:gravity="right"
                 >
                 <TextView
+                    android:id="@+id/front_tips1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="You should have a valid voter id "
@@ -112,6 +114,7 @@
                     android:textSize="14dp"
                     />
                 <TextView
+                    android:id="@+id/front_tips2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Place the voter id within the frame"
@@ -125,6 +128,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/front_tips3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Ensure that the room has good lighting"
@@ -138,6 +142,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/front_tips4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Text on your voter id should be clear and sharp in the photo"

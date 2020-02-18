@@ -73,7 +73,7 @@ public class AddModelFragment extends Fragment {
         View view = inflater.inflate(R.layout.select_model_recy, container, false);
 
         Status_bar_change_singleton.getInstance().color_change(getActivity());
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
 
         recyclerView=view.findViewById(R.id.recycler_what_looking);
         toolbar_title=view.findViewById(R.id.toolbar_title);

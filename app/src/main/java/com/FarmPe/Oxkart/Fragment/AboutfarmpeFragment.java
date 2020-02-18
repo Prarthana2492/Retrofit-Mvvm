@@ -46,7 +46,7 @@ public class AboutfarmpeFragment extends Fragment {
 
 
         Status_bar_change_singleton.getInstance().color_change(getActivity());
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
         back_feed=view.findViewById(R.id.back_feed);
         terms=view.findViewById(R.id.web_terms);
        // privacypolicytxt=view.findViewById(R.id.toolbar_title);

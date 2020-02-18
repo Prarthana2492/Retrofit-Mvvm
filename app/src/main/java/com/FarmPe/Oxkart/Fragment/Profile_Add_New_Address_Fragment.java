@@ -63,7 +63,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
     LinearLayout back_feed,loan_lay,main_layout,continuebtn,linear_layout;
     TextView back_text,next;
     Fragment selectedFragment;
-   public static EditText full_name,mobile_no,address,landmark,pincode,state,district,block,nyaypanchayat,grampanchayath,village ;
+    public static EditText full_name,mobile_no,address,landmark,pincode,state,district,block,nyaypanchayat,grampanchayath,village ;
 
     Calendar myCalendar;
     public static EditText state_txt;
@@ -321,11 +321,13 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
                 // TODO Auto-generated method stub
             }
 
+
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
                 // TODO Auto-generated method stub
             }
+
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -758,6 +760,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
 
                             sorting(stateBeanList);
 
+
                             stateApdater.notifyDataSetChanged();
                             //  grade_dialog.show();
 
@@ -909,13 +912,13 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
             jsonObject.put("BlockId",TalukAdapter1.talukid);
             post_jsonobject.put("Villageobj", jsonObject);
 
-            Crop_Post.crop_posting(getActivity(), Urls.Village_Panchayats_List, post_jsonobject, new VoleyJsonObjectCallback() {
+            Crop_Post.crop_posting(getActivity(), Urls.Village_list, post_jsonobject, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("dddddddddddd11111" + result);
                     try {
                         villageBeanList.clear();
-                        district_array = result.getJSONArray("VillageListByGramP");
+                        district_array = result.getJSONArray("VillageListByBlock");
                         if (district_array != null && district_array.length() > 0) {
                             for (int i = 0; i < district_array.length(); i++) {
                                 JSONObject jsonObject1 = district_array.getJSONObject(i);
@@ -923,9 +926,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
                                 villageBeanList.add(stateBean);
                             }
 
-
                             sorting(villageBeanList);
-
 
                             villageAdapter1.notifyDataSetChanged();
                             // grade_dialog.show();

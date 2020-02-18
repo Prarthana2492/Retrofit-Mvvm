@@ -31,6 +31,7 @@ import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.FarmPe.Oxkart.R;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.json.JSONObject;
 
@@ -130,12 +131,21 @@ public class Request_Favorite_Adapter extends RecyclerView.Adapter<Request_Favor
         System.out.println("fhjhgfdfsdfsdf" + products.getImage());
 
         Glide.with(activity).load(products.getImage())
-
                 .thumbnail(0.5f)
-                //.crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .centerCrop()
+                // .crossFade()
+                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+                        .error(R.drawable.avatarmale))
                 .into(holder.image);
+
+
+
+//        Glide.with(activity).load(products.getImage())
+//
+//                .thumbnail(0.5f)
+//                //.crossFade()
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .centerCrop()
+//                .into(holder.image);
 
 
         holder.fav_request.setOnClickListener(new View.OnClickListener() {

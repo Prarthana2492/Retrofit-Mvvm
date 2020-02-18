@@ -15,12 +15,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.FarmPe.Oxkart.Fragment.AddFirstFragment;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.FarmPe.Oxkart.Bean.AddTractorBean;
 import com.FarmPe.Oxkart.Fragment.AddBrandFragment;
 import com.FarmPe.Oxkart.R;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -79,13 +79,24 @@ public class AddFirstAdapter extends RecyclerView.Adapter<AddFirstAdapter.MyView
 
         purchase_tractor=products.getProd_name();
 
-        Glide.with(activity).load(products.getImage())
 
+
+        Glide.with(activity).load(products.getImage())
                 .thumbnail(0.5f)
-               // .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                // .crossFade()
+                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+                        .error(R.drawable.avatarmale))
                 .into(holder.image);
 
+
+//
+//        Glide.with(activity).load(products.getImage())
+//
+//                .thumbnail(0.5f)
+//               // .crossFade()
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .into(holder.image);
+//
 
 //        if (productList.get(position).isSelected()){
 //            holder.item.setBackgroundResource(R.drawable.grey_background_drawable);

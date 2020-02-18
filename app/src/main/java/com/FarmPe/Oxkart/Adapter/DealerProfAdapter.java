@@ -17,6 +17,7 @@ import com.FarmPe.Oxkart.Fragment.Book_Nw_Requirement_Details;
 import com.FarmPe.Oxkart.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -76,13 +77,22 @@ public class DealerProfAdapter extends RecyclerView.Adapter<DealerProfAdapter.My
 
 
         try {
-            Glide.with(activity).load(products.getImage())
-                    //  Glide.with(activity).load(R.drawable.tractor_sonalika)
 
+            Glide.with(activity).load(products.getImage())
                     .thumbnail(0.5f)
-                    //.crossFade()
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    // .crossFade()
+                    .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+                            .error(R.drawable.avatarmale))
                     .into(holder.image);
+
+
+//            Glide.with(activity).load(products.getImage())
+//                    //  Glide.with(activity).load(R.drawable.tractor_sonalika)
+//
+//                    .thumbnail(0.5f)
+//                    //.crossFade()
+//                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                    .into(holder.image);
         } catch (
                 Exception e) {
             e.printStackTrace();

@@ -78,7 +78,7 @@ public class LookingForFragment extends Fragment {
         View view = inflater.inflate(R.layout.looking_for_recy, container, false);
         Status_bar_change_singleton.getInstance().color_change(getActivity());
 
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
         recyclerView=view.findViewById(R.id.recycler_looking);
         filter_text=view.findViewById(R.id.filter_text);
         delete_req =view.findViewById(R.id.delete_req);
@@ -98,10 +98,7 @@ public class LookingForFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
-                HomePage_With_Bottom_Navigation.mail_icon.setImageResource(R.drawable.ic_mailbox);
-                HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
-                HomePage_With_Bottom_Navigation.mail_text.setTextColor(Color.parseColor("#595959"));
+
 
                 if (getArguments().getString("status").equals("setting_your_request")) {
 
@@ -136,10 +133,6 @@ public class LookingForFragment extends Fragment {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
 
-                    HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
-                    HomePage_With_Bottom_Navigation.mail_icon.setImageResource(R.drawable.ic_mailbox);
-                    HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
-                    HomePage_With_Bottom_Navigation.mail_text.setTextColor(Color.parseColor("#595959"));
 
 
                     if(getArguments().getString("status").equals("setting_your_request")){

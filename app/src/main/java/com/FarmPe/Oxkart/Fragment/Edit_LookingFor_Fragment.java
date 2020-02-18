@@ -23,6 +23,7 @@ import com.FarmPe.Oxkart.Volly_class.Crop_Post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -59,7 +60,6 @@ public class Edit_LookingFor_Fragment extends Fragment {
         // getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         Status_bar_change_singleton.getInstance().color_change(getActivity());
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
 
               back_feed = view.findViewById(R.id.back_feed);
               textView = view.findViewById(R.id.preview);
@@ -162,25 +162,40 @@ public class Edit_LookingFor_Fragment extends Fragment {
                             user_address.setText(model_fullname + "\n" + model_address + "\n" + model_address1 + "\n" + model_district + "," + model_state + " - " + model_pincode);
 
 
-
-                            Glide.with(getActivity()).load(model_image)
-                                    //  Glide.with(activity).load(R.drawable.tractor_sonalika)
-
-                                    .thumbnail(0.5f)
-                                   // .crossFade()
-                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                    .centerCrop()
-                                    .into(image_lookingd);
+                               Glide.with(getActivity()).load(model_image)
+                                       .thumbnail(0.5f)
+                                       // .crossFade()
+                                       .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+                                               .error(R.drawable.avatarmale))
+                                       .into(image_lookingd);
 
 
-                            Glide.with(getActivity()).load(model_image)
-                                    //  Glide.with(activity).load(R.drawable.tractor_sonalika)
+                               Glide.with(getActivity()).load(model_image)
+                                       .thumbnail(0.5f)
+                                       // .crossFade()
+                                       .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+                                               .error(R.drawable.avatarmale))
+                                       .into(image3);
 
-                                    .thumbnail(0.5f)
-                                   // .crossFade()
-                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                    .centerCrop()
-                                    .into(image3);
+//
+//                            Glide.with(getActivity()).load(model_image)
+//                                    //  Glide.with(activity).load(R.drawable.tractor_sonalika)
+//
+//                                    .thumbnail(0.5f)
+//                                   // .crossFade()
+//                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                                    .centerCrop()
+//                                    .into(image_lookingd);
+
+
+//                            Glide.with(getActivity()).load(model_image)
+//                                    //  Glide.with(activity).load(R.drawable.tractor_sonalika)
+//
+//                                    .thumbnail(0.5f)
+//                                   // .crossFade()
+//                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                                    .centerCrop()
+//                                    .into(image3);
                         }
 
 

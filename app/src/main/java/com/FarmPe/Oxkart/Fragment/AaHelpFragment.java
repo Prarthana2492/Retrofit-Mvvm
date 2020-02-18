@@ -62,7 +62,7 @@ public class AaHelpFragment extends Fragment {
         Status_bar_change_singleton.getInstance().color_change(getActivity());
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
         backfeed=view.findViewById(R.id.back_feed);
         feedback_lay=view.findViewById(R.id.feedback_lay);
         main_layout=view.findViewById(R.id.main_layout);

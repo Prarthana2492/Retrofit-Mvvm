@@ -23,6 +23,7 @@ import com.FarmPe.Oxkart.Fragment.AddBrandFragment;
 import com.FarmPe.Oxkart.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -60,11 +61,22 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final  Request_Class_HomePage_Bean products = productList.get(position);
        holder.name.setText(products.getVeg_name());
+
+
+
         Glide.with(activity).load(products.getImage())
                 .thumbnail(0.5f)
-                //.crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                // .crossFade()
+                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+                        .error(R.drawable.avatarmale))
                 .into(holder.pay_img);
+
+
+//        Glide.with(activity).load(products.getImage())
+//                .thumbnail(0.5f)
+//                //.crossFade()
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .into(holder.pay_img);
 
 
         holder.item_layout.setOnClickListener(new View.OnClickListener() {

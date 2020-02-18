@@ -10,17 +10,21 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.FarmPe.Oxkart.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Oxkart.Activity.New_Login_Activity2;
 import com.FarmPe.Oxkart.Activity.New_OTP_Page_Activity;
+import com.FarmPe.Oxkart.Activity.Verification_Activity;
 import com.FarmPe.Oxkart.R;
 import com.FarmPe.Oxkart.SessionManager;
 import com.FarmPe.Oxkart.Urls;
 import com.FarmPe.Oxkart.Volly_class.Crop_Post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
+
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -29,12 +33,14 @@ import org.json.JSONObject;
 public class Verification_Last_Fragment extends Fragment {
 
    Fragment selectedFragment;
-   LinearLayout linear_layout,cont_btn;
+   public static  LinearLayout linear_layout,cont_btn;
    boolean doubleBackToExitPressedOnce = false;
    JSONObject verify_status;
-   TextView user_status,ph_no;
+   TextView toolbar_title,mobile_no,proceed_txt,in_progress_details,success_details;
+   public static  TextView user_status,ph_no,user_status_text;
+   ImageView in_progress_image,success_image;
    SessionManager sessionManager;
-
+    public static JSONObject lngObject;
 
 
 
@@ -43,6 +49,7 @@ public class Verification_Last_Fragment extends Fragment {
        return fragment;
 
    }
+
 
    @Override
    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -54,11 +61,53 @@ public class Verification_Last_Fragment extends Fragment {
        user_status = view.findViewById(R.id.user_status);
        ph_no = view.findViewById(R.id.ph_no);
        cont_btn = view.findViewById(R.id.cont_btn);
+       toolbar_title = view.findViewById(R.id.setting_tittle);
+       mobile_no = view.findViewById(R.id.mobile_no);
+       user_status_text = view.findViewById(R.id.user_status_text);
+       proceed_txt = view.findViewById(R.id.proceed_txt);
+       in_progress_details = view.findViewById(R.id.in_progress_details);
+       success_details = view.findViewById(R.id.success_details);
+       in_progress_image = view.findViewById(R.id.in_progress_image);
+       success_image = view.findViewById(R.id.success_image);
 
        sessionManager = new SessionManager(getActivity());
 
        ph_no.setText(sessionManager.getRegId("phone"));
        System.out.println("dhfgfjh" + sessionManager.getRegId("phone"));
+
+
+
+
+       try {
+
+
+           lngObject = new JSONObject(sessionManager.getRegId("language"));
+
+           System.out.println("llllllllllllkkkkkkkkkkkkkkk" + lngObject.getString("EnterPhoneNo"));
+
+           toolbar_title.setText(lngObject.getString("Verification"));
+           mobile_no.setText(lngObject.getString("PhoneNumber"));
+           user_status_text.setText(lngObject.getString("Status"));
+
+           in_progress_details.setText(lngObject.getString("OuragentwillcallyousoontoverifyDetailsPleasebeavailableovercall").replace("\n",""));
+           success_details.setText(lngObject.getString("YourverificationissuccessfulClickproceedtostartexploring"));
+
+
+           proceed_txt.setText(lngObject.getString("PROCEED").replace("\n",""));
+
+
+
+           //  pass.setHint(lngObject.getString("Password"));
+           //  remember_me.setText(lngObject.getString("RememberMe"));
+
+
+
+
+
+       } catch (JSONException e) {
+           e.printStackTrace();
+       }
+
 
 
        view.setFocusableInTouchMode(true);
@@ -116,15 +165,6 @@ public class Verification_Last_Fragment extends Fragment {
        });
 
 
-       cont_btn.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-
-               Intent intent = new Intent(getActivity(), HomePage_With_Bottom_Navigation.class);
-               startActivity(intent);
-
-           }
-       });
 
 
 
@@ -142,23 +182,51 @@ public class Verification_Last_Fragment extends Fragment {
 
                    try{
 
-
                        verify_status = result.getJSONObject("VerificationStatus");
 
                        Boolean user_uploaded = verify_status.getBoolean("IsUserUploaded");
 
                        if(user_uploaded.equals(false)){
 
-
                            user_status.setText("In Progress");
+                           in_progress_details.setVisibility(View.VISIBLE);
+
+                           user_status.setText(lngObject.getString("InProgress").replace("\n",""));
+                           in_progress_image.setVisibility(View.VISIBLE);
+
+                           cont_btn.setOnClickListener(new View.OnClickListener() {
+                               @Override
+                               public void onClick(View v) {
+
+                                   Intent intent = new Intent(getActivity(), Verification_Activity.class);
+                                   startActivity(intent);
+
+
+                               }
+                           });
 
                        }else{
 
+                           user_status.setText("Successfull");
 
-                           user_status.setText("Successful");
+                           user_status.setText(lngObject.getString("Successful"));
+
+                           success_details.setVisibility(View.VISIBLE);
+                           success_image.setVisibility(View.VISIBLE);
+
+                           cont_btn.setOnClickListener(new View.OnClickListener() {
+                               @Override
+                               public void onClick(View v) {
+
+                                   Intent intent = new Intent(getActivity(),HomePage_With_Bottom_Navigation.class);
+                                   startActivity(intent);
+
+
+
+                               }
+                           });
 
                        }
-
 
 
                    }catch (Exception e){

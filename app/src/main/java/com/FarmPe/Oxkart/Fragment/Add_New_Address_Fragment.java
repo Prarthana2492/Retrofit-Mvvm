@@ -127,8 +127,6 @@ public class  Add_New_Address_Fragment extends Fragment {
         Status_bar_change_singleton.getInstance().color_change(getActivity());
         getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
-
          select_address = view.findViewById(R.id.add_type);
          name = view.findViewById(R.id.full_name);
          mobile = view.findViewById(R.id.mob_no);

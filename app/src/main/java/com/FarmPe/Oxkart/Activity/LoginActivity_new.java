@@ -59,6 +59,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
     public String status,userId;
     boolean doubleBackToExitPressedOnce = false;
     String newfarmpelng,signuplng;
+
     List<SelectLanguageBean>language_arrayBeanList = new ArrayList<>();
     SelectLanguageBean selectLanguageBean;
     SelectLanguageAdapter2 mAdapter;
@@ -67,7 +68,6 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
     public static TextInputLayout text_pass;
     public static EditText text_mobile;
-
 
 
     ConnectivityReceiver connectivityReceiver;
@@ -101,7 +101,6 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
         showSnack(isConnected);
 
     }
-
 
 
     private void showSnack(boolean isConnected) {

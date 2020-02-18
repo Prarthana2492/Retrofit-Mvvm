@@ -13,6 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.FarmPe.Oxkart.R;
+import com.FarmPe.Oxkart.SessionManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class Verification_Fragment extends Fragment {
@@ -20,8 +24,10 @@ public class Verification_Fragment extends Fragment {
 
     Fragment selectedFragment;
   LinearLayout back_feed;
-  TextView voter_id_back,voter_id_front,select_location,selfie_verify;
+    public static JSONObject lngObject;
+  TextView voter_id_back,voter_id_front,select_location,selfie_verify,face_verify_selfy_text,sel_loc_text,voter_front_text,voter_back_text,continue_btn;
   String status_1,status_2;
+  SessionManager sessionManager;
 
 
 
@@ -42,14 +48,57 @@ public class Verification_Fragment extends Fragment {
         voter_id_front = view.findViewById(R.id.voter_id_front);
         select_location = view.findViewById(R.id.select_loc);
         selfie_verify = view.findViewById(R.id.selfie_verify);
+        face_verify_selfy_text = view.findViewById(R.id.face_verify_selfy_text);
+        sel_loc_text = view.findViewById(R.id.sel_loc_text);
+        voter_back_text = view.findViewById(R.id.voter_back_text);
+        voter_front_text = view.findViewById(R.id.voter_front_text);
+        continue_btn = view.findViewById(R.id.continue_btn);
         back_feed = view.findViewById(R.id.back_feed);
+
+
+        sessionManager = new SessionManager(getActivity());
      //   linearLayout = view.findViewById(R.id.main_layout);
 
 
 //           status_1 = getArguments().getString("verification_status");
 
 
-           back_feed.setOnClickListener(new View.OnClickListener() {
+        try {
+
+
+            lngObject = new JSONObject(sessionManager.getRegId("language"));
+
+            System.out.println("llllllllllllkkkkkkkkkkkkkkk" + lngObject.getString("EnterPhoneNo"));
+
+            select_location.setText(lngObject.getString("Select"));
+            voter_id_front.setText(lngObject.getString("Upload"));
+            voter_id_back.setText(lngObject.getString("Upload"));
+            selfie_verify.setText(lngObject.getString("Click"));
+
+            face_verify_selfy_text.setText(lngObject.getString("FaceVerificationSelfie").replace("\n",""));
+            sel_loc_text.setText(lngObject.getString("SelectLocation").replace("\n",""));
+            voter_front_text.setText(lngObject.getString("VoterIDFront").replace("\n",""));
+            voter_back_text.setText(lngObject.getString("VoterIDBack").replace("\n",""));
+
+
+            continue_btn.setText(lngObject.getString("PROCEED").replace("\n",""));
+
+
+
+            //  pass.setHint(lngObject.getString("Password"));
+            //  remember_me.setText(lngObject.getString("RememberMe"));
+
+
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+        back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

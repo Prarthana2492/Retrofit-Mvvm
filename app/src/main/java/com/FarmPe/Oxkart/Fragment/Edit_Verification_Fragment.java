@@ -1,14 +1,13 @@
 package com.FarmPe.Oxkart.Fragment;
 
 
-
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +21,10 @@ import com.FarmPe.Oxkart.Urls;
 import com.FarmPe.Oxkart.Volly_class.Crop_Post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+
+
 
 
 
@@ -32,10 +34,12 @@ public class Edit_Verification_Fragment extends Fragment {
     Fragment selectedFragment;
     LinearLayout continue_btn, back_feed, back_voter_edit, linearLayout, edit_lay_selfie, select_loc_edit, front_voter_edit;
     ImageView capture_photo;
-    TextView edit_location, click_selfie, upload_front, upload_voter_back, select_loc, upload_frnt_image, upload_voter_id, pending_selfie, select, sel_loc_text;
+    TextView face_verify_selfy_text, click_selfie, upload_front, upload_voter_back, voter_back_text1, voter_front_text1,
+            proceed_btn, edit_back_text, edit_front_text,select, sel_loc_text,edit_selfie_text,location_edit_text;
     SessionManager sessionManager;
     JSONArray get_location_array, imagelist_array, vote_list_array, vote_bk_list_array;
     String location_id;
+    public static JSONObject lngObject;
 
 
     public static Edit_Verification_Fragment newInstance() {
@@ -68,6 +72,14 @@ public class Edit_Verification_Fragment extends Fragment {
         upload_voter_back = view.findViewById(R.id.upload_voter_back);
         front_voter_edit = view.findViewById(R.id.front_voter_edit);
         back_voter_edit = view.findViewById(R.id.back_voter_edit);
+        face_verify_selfy_text = view.findViewById(R.id.face_verify_selfy_text);
+        voter_front_text1 = view.findViewById(R.id.voter_front_text1);
+        voter_back_text1 = view.findViewById(R.id.voter_back_text1);
+        proceed_btn = view.findViewById(R.id.proceed_btn);
+        edit_back_text = view.findViewById(R.id.edit_back_text);
+        edit_front_text = view.findViewById(R.id.edit_front_text);
+        edit_selfie_text = view.findViewById(R.id.edit_selfie_text);
+        location_edit_text = view.findViewById(R.id.location_edit_text);
 
         // select_location = view.findViewById(R.id.select_location);
         //        capture_photo = view.findViewById(R.id.capture_photo);
@@ -77,6 +89,47 @@ public class Edit_Verification_Fragment extends Fragment {
 
         linearLayout = view.findViewById(R.id.main_layout);
         sessionManager = new SessionManager(getActivity());
+
+
+
+        try {
+
+
+            lngObject = new JSONObject(sessionManager.getRegId("language"));
+
+            System.out.println("llllllllllllkkkkkkkkkkkkkkk" + lngObject.getString("EnterPhoneNo"));
+
+            select.setText(lngObject.getString("Select"));
+            upload_front.setText(lngObject.getString("Upload"));
+            upload_voter_back.setText(lngObject.getString("Upload"));
+            click_selfie.setText(lngObject.getString("Click"));
+
+            face_verify_selfy_text.setText(lngObject.getString("FaceVerificationSelfie").replace("\n",""));
+            sel_loc_text.setText(lngObject.getString("SelectLocation").replace("\n",""));
+            voter_front_text1.setText(lngObject.getString("VoterIDFront").replace("\n",""));
+            voter_back_text1.setText(lngObject.getString("VoterIDBack").replace("\n",""));
+
+            edit_back_text.setText(lngObject.getString("Edit"));
+            edit_front_text.setText(lngObject.getString("Edit"));
+            edit_selfie_text.setText(lngObject.getString("Edit"));
+            location_edit_text.setText(lngObject.getString("Edit"));
+            location_edit_text.setText(lngObject.getString("Edit"));
+
+
+            proceed_btn.setText(lngObject.getString("PROCEED").replace("\n",""));
+
+
+
+            //  pass.setHint(lngObject.getString("Password"));
+            //  remember_me.setText(lngObject.getString("RememberMe"));
+
+
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
 
         back_feed.setOnClickListener(new View.OnClickListener() {
@@ -154,11 +207,21 @@ public class Edit_Verification_Fragment extends Fragment {
                             select.setVisibility(View.VISIBLE);
                             sel_loc_text.setText("Select Loction");
 
-                        } else {
+                            sel_loc_text.setText(lngObject.getString("SelectLocation").replace("\n",""));
+
+
+
+
+
+                    } else {
 
                             sel_loc_text.setText("Location Captured");
+
                             select.setVisibility(View.GONE);
                             select_loc_edit.setVisibility(View.VISIBLE);
+
+                            sel_loc_text.setText(lngObject.getString("LocationCaptured").replace("\n",""));
+
 
                         }
 
@@ -199,6 +262,7 @@ public class Edit_Verification_Fragment extends Fragment {
         select_loc_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
                 Bundle bundle = new Bundle();
                 bundle.putString("Edit_Fragment", "curr_loc_edit");
@@ -297,6 +361,7 @@ public class Edit_Verification_Fragment extends Fragment {
 
             }
         });
+
 
         back_voter_edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -534,30 +599,87 @@ public class Edit_Verification_Fragment extends Fragment {
 
     private void AlertMessage() { // alert dialog box
 
-        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity(),R.style.AppCompatAlertDialogStyle);
-        alertDialogBuilder.setMessage("Do you want to submit the details for verification?");
-        //alertDialogBuilder.setMessage(Html.fromHtml("<font size = '18dp'>Do You want to submit the details for verification?</font>"));
-        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        final TextView ok_btn,cancel_btn,text_desc;
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.verification_dialog_layout);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCancelable(false);
+        ok_btn =  dialog.findViewById(R.id.ok_btn);
+        cancel_btn =  dialog.findViewById(R.id.cancel_btn);
+        text_desc =  dialog.findViewById(R.id.text_desc);
+
+        try {
+            
+            lngObject = new JSONObject(sessionManager.getRegId("language"));
+
+            text_desc.setText(lngObject.getString("DoyouwanttosubmitthedetailsforVerification"));
+            ok_btn.setText(lngObject.getString("OK").replace("\n",""));
+          //  cancel_btn.setText(lngObject.getString("CANCEL"));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+
+        ok_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+            public void onClick(View v) {
 
                 selectedFragment = Verification_Last_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout1, selectedFragment);
                 transaction.commit();
+                dialog.dismiss();
 
             }
         });
 
-        alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
+        cancel_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
+            public void onClick(View v) {
+                dialog.dismiss();
+
             }
         });
 
-        alertDialogBuilder.setCancelable(false);
-        alertDialogBuilder.show();
+        dialog.show();
+
+
+//
+//
+//CInventory_Adapter.MyViewHolder viewHolder1 =(CInventory_Adapter.MyViewHolder) CInventory_Fragment.recyclerView.findViewHolderForAdapterPosition(CInventory_Adapter.selected_position);
+
+//        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity(),R.style.AppCompatAlertDialogStyle);
+//        alertDialogBuilder.setMessage("Do you want to submit the details for verification?");
+//        //alertDialogBuilder.setMessage(Html.fromHtml("<font size = '18dp'>Do You want to submit the details for verification?</font>"));
+//        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                selectedFragment = Verification_Last_Fragment.newInstance();
+//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.frame_layout1, selectedFragment);
+//                transaction.commit();
+//
+//            }
+//        });
+//
+//        alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                dialogInterface.dismiss();
+//            }
+//        });
+//
+//        alertDialogBuilder.setCancelable(false);
+//        alertDialogBuilder.show();
+
+
     }
 }
 

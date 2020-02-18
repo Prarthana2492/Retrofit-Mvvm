@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import com.FarmPe.Oxkart.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Oxkart.Activity.LoginActivity_new;
 import com.FarmPe.Oxkart.Activity.New_Login_Activity2;
+import com.FarmPe.Oxkart.Activity.Privacy_Activity;
 import com.FarmPe.Oxkart.Activity.Verification_Activity;
 import com.FarmPe.Oxkart.Fragment.Verification_Aadhar_Fragment;
 
@@ -216,9 +217,10 @@ public class SessionManager {
 
     public void checkLogin(){
         // Check login status
+
         if(this.isLoggedIn()){
             // user is not logged in redirect him to Login Activity
-            Intent i = new Intent(_context,Verification_Activity.class);
+            Intent i = new Intent(_context, Privacy_Activity.class);
             // Closing all the Activities
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
@@ -231,10 +233,10 @@ public class SessionManager {
     }
 
 
-
     /**
      * Clear session details
      * */
+
     public void logoutUser(){
         // Clearing all data from Shared Preferences
         editor.clear();
@@ -254,6 +256,8 @@ public class SessionManager {
      * Quick check for login
      * **/
     // Get Login State
+
+
     public boolean isLoggedIn(){
         return pref.getBoolean(IS_LOGIN, false);
     }
@@ -268,12 +272,15 @@ public class SessionManager {
         System.out.println("llllllllllllllllllll"+userpassword);
 
         if (phone.equals(userId)){
+
             rememberMe=userpassword;
         }
 
 
         return rememberMe;
     }
+
+
 
     public String getRegId(String s2){
 

@@ -62,7 +62,7 @@ public class Notification_Recyc_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.notification_recyc, container, false);
         Status_bar_change_singleton.getInstance().color_change(getActivity());
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
         recyclerView=view.findViewById(R.id.recycler_noti);
         recyclerView1=view.findViewById(R.id.recycler_noti1);
         toolbar_title=view.findViewById(R.id.toolbar_title);

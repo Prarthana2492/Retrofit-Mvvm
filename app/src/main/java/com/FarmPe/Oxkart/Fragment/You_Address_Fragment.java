@@ -39,15 +39,13 @@ public class You_Address_Fragment extends Fragment {
 
     Fragment selectedFragment;
     TextView name,add_new_address,select_address_type,filter;
-
     private RecyclerView recyclerView;
     LinearLayout back_feed;
     You_Address_Adapter mAdapter;
-
     SessionManager sessionManager;
-    public static String navigation_all;
     public static String item_list,address;
     public static LinearLayout linearLayout;
+
 
     TextView toolbar_titletxt,noadd_here,add_adrs;
     JSONObject lngObject;
@@ -94,6 +92,7 @@ public class You_Address_Fragment extends Fragment {
         noadd_here = view.findViewById(R.id.text);
         add_adrs = view.findViewById(R.id.make_requesttttt);
         linearLayout = view.findViewById(R.id.linearLayout);
+
         noadd_here.setText("No Address here");
         add_adrs.setText("Add Address");
         sessionManager = new SessionManager(getActivity());

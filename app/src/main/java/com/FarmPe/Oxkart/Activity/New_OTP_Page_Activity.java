@@ -11,8 +11,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Vibrator;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -28,17 +26,19 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.FarmPe.Oxkart.R;
 import com.FarmPe.Oxkart.ReadSms;
 import com.FarmPe.Oxkart.SessionManager;
 import com.FarmPe.Oxkart.SmsListener;
 import com.FarmPe.Oxkart.Urls;
+import com.FarmPe.Oxkart.Volly_class.Crop_Post;
 import com.FarmPe.Oxkart.Volly_class.Login_post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
 import com.chaos.view.PinView;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
 
 
 
@@ -46,10 +46,10 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
 
     String toast_internet,toast_nointernet;
-    JSONObject lngObject;
+    JSONObject lngObject,verify_status;
     SessionManager sessionManager;
-    LinearLayout main_layout,back_feed;
-    TextView register_submit,timer,mobile_number_text,otpsenttxt;
+    LinearLayout main_layout,back_feed,regiter_backgrd;
+    TextView register_submit,timer,mobile_number_text,otpsenttxt,otp_sent_to,enter_otp_here,otp_receive;
     String sessionId;
     EditText edit_tOTP;
     ProgressBar otp_sent;
@@ -68,7 +68,6 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
         unregisterReceiver(connectivityReceiver);
         super.onStop();
     }
-
 
 
     private void checkConnection() {
@@ -171,6 +170,10 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
         otp_sent = findViewById(R.id.otp_sent);
         otpsentimg = findViewById(R.id.otpsent);
         otpsenttxt = findViewById(R.id.otpsenttxt);
+        otp_sent_to = findViewById(R.id.otp_sent_to);
+        enter_otp_here = findViewById(R.id.enter_otp_here);
+        otp_receive = findViewById(R.id.otp_receive);
+        regiter_backgrd = findViewById(R.id.regiter_backgrd);
 
         sessionManager = new SessionManager(this);
 
@@ -178,10 +181,41 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
 
 
+        try {
+
+
+            lngObject = new JSONObject(sessionManager.getRegId("language"));
+
+            System.out.println("llllllllllllkkkkkkkkkkkkkkk" + lngObject.getString("EnterPhoneNo"));
+
+            otp_sent_to.setText(lngObject.getString("OTPSentto"));
+            enter_otp_here.setText(lngObject.getString("EnterOTPhere"));
+            otp_receive.setText(lngObject.getString("DidntreceiveOTP"));
+            otpsenttxt.setText(lngObject.getString("OTPSent").replace("\n",""));
+
+
+
+            //  pass.setHint(lngObject.getString("Password"));
+            //  remember_me.setText(lngObject.getString("RememberMe"));
+
+
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+
         if(getIntent().getExtras().getString("register_status").equals("login_btn")){
 
 
             register_submit.setText("LOGIN");
+
+
 
 
         }else if(getIntent().getExtras().getString("register_status").equals("register_btn")){
@@ -194,9 +228,9 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
         setupUI(main_layout);
 
-        mobile_number_text.setText(sessionManager.getRegId("phone"));
+        mobile_number_text.setText(New_Login_Activity2.contact_no);
 
-        System.out.println("djhfjhvxcv" + sessionManager.getRegId("phone"));
+       // System.out.println("djhfjhvxcv" + sessionManager.getRegId("phone"));
 
 
         vibe = (Vibrator)getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
@@ -216,6 +250,8 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
             }
         }, 7000);
+
+
 
 
 
@@ -251,6 +287,7 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
             @Override
             public void onClick(View view) {
 
+
                 Intent intent=new Intent(New_OTP_Page_Activity.this,New_Login_Activity2.class);
                 startActivity(intent);
 
@@ -278,14 +315,17 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
 
                     otp_sent.setVisibility(View.GONE);
+                    regiter_backgrd.setBackgroundResource(R.drawable.grey_curved_border);
 
 
                 }else if(!(pinView.getText().toString().equals(sessionId))){
 
-
                     otp_sent.setVisibility(View.GONE);
+                    regiter_backgrd.setBackgroundResource(R.drawable.grey_curved_border);
 
                 } else {
+
+                    regiter_backgrd.setBackgroundResource(R.drawable.border_filled_red_not_curved);
 
                    // otp_sent.setVisibility(View.VISIBLE);
                 }
@@ -327,7 +367,6 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
                 if(pinView.getText().toString().equals("")) {
 
-
                     Toast toast = Toast.makeText(New_OTP_Page_Activity.this, "Enter OTP", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     TextView toastMessage=(TextView) toast.getView().findViewById(android.R.id.message);
@@ -340,9 +379,26 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
                 } else if (pinView.getText().toString().equals(sessionId)){
 
-                    Intent intent = new Intent(New_OTP_Page_Activity.this,Verification_Activity.class);
-                    startActivity(intent);
-                    sessionManager.createRegisterSession(New_Login_Activity2.contact_no);
+                    if(getIntent().getExtras().getString("register_status").equals("login_btn")){
+
+
+                        verification_status();
+
+
+                    }else if(getIntent().getExtras().getString("register_status").equals("register_btn")){
+
+
+                        Intent intent = new Intent(New_OTP_Page_Activity.this,Verification_Activity.class);
+                        startActivity(intent);
+                        sessionManager.createRegisterSession(New_Login_Activity2.contact_no);
+
+
+                    }
+
+
+//                    Intent intent = new Intent(New_OTP_Page_Activity.this,Verification_Activity.class);
+//                    startActivity(intent);
+//                    sessionManager.createRegisterSession(New_Login_Activity2.contact_no);
 
 
                 }else{
@@ -358,6 +414,62 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
             }
         });
+
+    }
+
+    private void verification_status() {
+
+
+        try{
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("UserId",sessionManager.getRegId("userId"));
+            System.out.println("deyuiirwe" + sessionManager.getRegId("userId"));
+
+
+
+            Crop_Post.crop_posting(this, Urls.Get_Verification_Status, jsonObject, new VoleyJsonObjectCallback() {
+                @Override
+                public void onSuccessResponse(JSONObject result) {
+                    System.out.println("ghdgfd" + result);
+
+                    try{
+
+                        verify_status = result.getJSONObject("VerificationStatus");
+
+                        Boolean user_uploaded = verify_status.getBoolean("IsUserUploaded");
+
+
+                        if(user_uploaded.equals(false)){
+
+
+                             Intent intent = new Intent(New_OTP_Page_Activity.this,Privacy_Activity.class);
+                             startActivity(intent);
+                            sessionManager.createRegisterSession(New_Login_Activity2.contact_no);
+
+
+
+                             }else{
+
+
+                            Intent intent= new Intent(New_OTP_Page_Activity.this,Privacy_Activity.class);
+                            startActivity(intent);
+                            sessionManager.createRegisterSession(New_Login_Activity2.contact_no);
+
+
+                        }
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+                }
+            });
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 
@@ -390,14 +502,12 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
                         if (status==1){
 
-
                             Toast toast = Toast.makeText(New_OTP_Page_Activity.this, message, Toast.LENGTH_SHORT);
                             toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                             TextView toastMessage=(TextView) toast.getView().findViewById(android.R.id.message);
                             toastMessage.setTextColor(Color.WHITE);
                             toast.getView().setBackgroundResource(R.drawable.black_curve_background);
                             toast.show();
-
 
 
                         } else if (status==2){

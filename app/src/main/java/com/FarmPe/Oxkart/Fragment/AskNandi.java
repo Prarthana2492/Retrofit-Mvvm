@@ -45,7 +45,7 @@ public class AskNandi extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.brochure_webview_layout, container, false);
 
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
+
         Status_bar_change_singleton.getInstance().color_change(getActivity());
 
         back_feed=view.findViewById(R.id.back_feed);
@@ -78,10 +78,7 @@ public class AskNandi extends Fragment {
 
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
-                    HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
-                    HomePage_With_Bottom_Navigation.nandi_icon.setImageResource(R.drawable.ic_agronomy);
-                    HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
-                    HomePage_With_Bottom_Navigation.nandi_text.setTextColor(Color.parseColor("#595959"));
+
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fm.popBackStack("ask_nandi", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
@@ -97,11 +94,6 @@ public class AskNandi extends Fragment {
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                HomePage_With_Bottom_Navigation.home_icon.setImageResource(R.drawable.ic_home_green);
-                HomePage_With_Bottom_Navigation.nandi_icon.setImageResource(R.drawable.ic_agronomy);
-                HomePage_With_Bottom_Navigation.text_home.setTextColor(Color.parseColor("#18a360"));
-                HomePage_With_Bottom_Navigation.nandi_text.setTextColor(Color.parseColor("#595959"));
 
 
                 FragmentManager fm = getActivity().getSupportFragmentManager();

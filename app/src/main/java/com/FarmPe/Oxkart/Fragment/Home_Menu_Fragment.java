@@ -1,5 +1,6 @@
 package com.FarmPe.Oxkart.Fragment;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -23,28 +24,45 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.FarmPe.Oxkart.Activity.GetLocationActivity;
 import com.FarmPe.Oxkart.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Oxkart.Activity.Status_bar_change_singleton;
 
 import com.FarmPe.Oxkart.Adapter.Home_Page_Request_Adapter;
 import com.FarmPe.Oxkart.Bean.Request_Class_HomePage_Bean;
 import com.FarmPe.Oxkart.R;
+import com.FarmPe.Oxkart.SessionManager;
+import com.FarmPe.Oxkart.Urls;
+import com.FarmPe.Oxkart.Volly_class.Crop_Post;
+import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
+
 
 public class Home_Menu_Fragment extends Fragment  {
 
     private List<Request_Class_HomePage_Bean> newOrderBeansList = new ArrayList<>();
     private List<Request_Class_HomePage_Bean> newOrderBeansList2 = new ArrayList<>();
     private RecyclerView recyclerView;
-
+    LinearLayout notificatn_img,your_locatn;
     private Home_Page_Request_Adapter mAdapter;
     //  private Home_Page_Lookinfor_Adapter mAdapter2;
     boolean doubleBackToExitPressedOnce = false;
-    LinearLayout linearLayout,dealer_linear_layout,offers_linear_layout,book_nw_linear,search_linear;
+    LinearLayout linearLayout;
     Fragment selectedFragment;
-    ImageView  legal_for,bussiness_for,consultancy_look,more_icon;
+    CircleImageView prod_imgg;
+    SessionManager sessionManager;
+    String ProfileImage;
+
 
     public static TabLayout tabLayout;
     private ViewPager viewPager;
@@ -65,22 +83,62 @@ public class Home_Menu_Fragment extends Fragment  {
 
         recyclerView = view.findViewById(R.id.recycler_view1);
         linearLayout = view.findViewById(R.id.linearLayout);
-        dealer_linear_layout = view.findViewById(R.id.dealer_linear_layout);
-        offers_linear_layout = view.findViewById(R.id.offers_linear_layout);
-        book_nw_linear = view.findViewById(R.id.book_nw_linear);
-        search_linear = view.findViewById(R.id.search_layout);
+        prod_imgg = view.findViewById(R.id.prod_imgg);
+        notificatn_img = view.findViewById(R.id.notificatn_img);
+        your_locatn = view.findViewById(R.id.your_locatn);
+        sessionManager = new SessionManager(getActivity());
 
-//        legal_for = view.findViewById(R.id.legal_for);
-//        bussiness_for = view.findViewById(R.id.bussiness_for);
-//        consultancy_look = view.findViewById(R.id.consultancy_look);
-//        more_icon = view.findViewById(R.id.more_icon);
-        // upi_send=view.findViewById(R.id.upiSendMoney);
 
-        HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.VISIBLE);
+
+        your_locatn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            Intent intent = new Intent(getActivity(), GetLocationActivity.class);
+             startActivity(intent);
+
+
+            }
+        });
+
+
+
+        prod_imgg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Bundle bundle = new Bundle();
+                bundle.putString("HOME_IMAGE","Selfie_image");
+                selectedFragment = New_Profile_Setting_Fragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_menu, selectedFragment);
+                selectedFragment.setArguments(bundle);
+                transaction.addToBackStack("home_setting");
+                transaction.commit();
+
+            }
+        });
+
+
+
+        notificatn_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                selectedFragment = NotificationFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_menu, selectedFragment);
+                transaction.commit();
+
+            }
+        });
+
+
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 4);
 
 
-        mLayoutManager = new GridLayoutManager(getActivity(),4) {
+        mLayoutManager = new GridLayoutManager(getActivity(),3) {
             @Override
             public boolean canScrollVertically() {
                 return false;
@@ -125,7 +183,8 @@ public class Home_Menu_Fragment extends Fragment  {
         System.out.println("newOrderBeansListvsdvdv"+newOrderBeansList.size());
         mAdapter = new Home_Page_Request_Adapter(getActivity(),newOrderBeansList,"home_menu");
         recyclerView.setAdapter(mAdapter);
-//
+
+
 //        newOrderBeansList2.clear();
 //      //  recyclerView2 = view.findViewById(R.id.recycler_view2);
 //        // GridLayoutManager mLayoutManager2 = new GridLayoutManager(getActivity() ,4, GridLayoutManager.HORIZONTAL, false);
@@ -142,6 +201,8 @@ public class Home_Menu_Fragment extends Fragment  {
 //        System.out.println("newOrderBeansListvsdvdv"+newOrderBeansList.size());
 //        mAdapter2 = new Home_Page_Lookinfor_Adapter(getActivity(),newOrderBeansList2);
 //        recyclerView2.setAdapter(mAdapter2);
+
+
 
 
         view.setFocusableInTouchMode(true);
@@ -200,67 +261,77 @@ public class Home_Menu_Fragment extends Fragment  {
 
 
 
-        book_nw_linear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        try{
+
+            JSONObject jsonObject = new JSONObject();
+            JSONObject post_object = new JSONObject();
+            jsonObject.put("Id",sessionManager.getRegId("userId"));
+            post_object.put("objUser",jsonObject);
 
 
-                selectedFragment = Book_Nw_Request_Price.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_menu, selectedFragment);
-                transaction.addToBackStack("home_page");
-                transaction.commit();
-
-            }
-        });
-
+            Crop_Post.crop_posting(getActivity(), Urls.Get_Profile_Details, post_object, new VoleyJsonObjectCallback() {
+                @Override
+                public void onSuccessResponse(JSONObject result) {
+                    System.out.println("ggpgpgpg" + result);
 
 
 
-        offers_linear_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                    try{
+
+                        JSONObject jsonObject1 = result.getJSONObject("user");
+                      //  profnamestr = jsonObject1.getString("FullName");
+                       // System.out.println("ggpgpgpg" + profnamestr);
+                      //  ProfilePhone = jsonObject1.getString("PhoneNo");
+                        //String ProfileEmail = jsonObject1.getString("EmailId");
+                        ProfileImage = jsonObject1.getString("ProfilePic");
+                        // profile_description = jsonObject1.getString("About");
+
+                        //   profname.setText(profnamestr);
 
 
-                selectedFragment = Comming_soon_looking.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_menu, selectedFragment);
-                transaction.addToBackStack("home_page");
-                transaction.commit();
-
-            }
-        });
 
 
-        dealer_linear_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                        //phone_no.setText(ProfilePhone.substring(3));
 
-                Bundle bundle = new Bundle();
-                bundle.putString("dealer_status","Home_Dealer");
-                selectedFragment = DealerProfile.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_menu, selectedFragment);
-                selectedFragment.setArguments(bundle);
-                transaction.addToBackStack("home_page");
-                transaction.commit();
-
-            }
-        });
+                      //  profile_phone.setText(ProfilePhone); // masking + deleting last line
 
 
-        search_linear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                        // profname.setFilters(new InputFilter[]{EMOJI_FILTER});
+                        // profile_phone.setFilters(new InputFilter[]{EMOJI_FILTER});
+                        // aboutText.setFilters(new InputFilter[]{EMOJI_FILTER});
 
-                selectedFragment = Comming_soon_looking.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_menu, selectedFragment);
-                transaction.addToBackStack("home_page");
-                transaction.commit();
 
-            }
-        });
+                        Glide.with(getActivity()).load(ProfileImage)
+                                .thumbnail(0.5f)
+                                // .crossFade()
+                                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+                                        .error(R.drawable.avatarmale))
+                                .into(prod_imgg);
+
+//                        Glide.with(getActivity())
+//                                .load(ProfileImage)
+//                                .centerCrop()
+//                                .diskCacheStrategy(DiskCacheStrategy.NONE)
+//                                .skipMemoryCache(true)
+//                                .dontAnimate()
+//                                .into(profile_image);
+
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+
+
+
 
 
         return view;

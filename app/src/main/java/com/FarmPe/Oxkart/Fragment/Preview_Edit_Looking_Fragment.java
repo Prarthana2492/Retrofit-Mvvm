@@ -49,7 +49,6 @@ public class Preview_Edit_Looking_Fragment extends Fragment {
         // getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
          Status_bar_change_singleton.getInstance().color_change(getActivity());
-         HomePage_With_Bottom_Navigation.linear_bottom.setVisibility(View.GONE);
 
 
          imageView = view.findViewById(R.id.editimg);

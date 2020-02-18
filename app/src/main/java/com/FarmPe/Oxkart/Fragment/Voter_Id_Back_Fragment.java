@@ -36,6 +36,10 @@ import android.widget.Toast;
 
 import com.FarmPe.Oxkart.Activity.Status_bar_change_singleton;
 import com.FarmPe.Oxkart.R;
+import com.FarmPe.Oxkart.SessionManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -56,6 +60,7 @@ public class Voter_Id_Back_Fragment extends Fragment implements SurfaceHolder.Ca
     ConstraintLayout constraintLayout;
     Camera.PictureCallback jpegCallback;
     int currentCameraId=camBackId;
+    public static JSONObject lngObject;
     public static SurfaceHolder surfaceHolder;
     private static final int MY_CAMERA_REQUEST_CODE = 100;
     SurfaceView surfaceView;
@@ -64,6 +69,7 @@ public class Voter_Id_Back_Fragment extends Fragment implements SurfaceHolder.Ca
     BottomSheetDialog mBottomSheetDialog;
     View sheetView;
     Fragment selectedFragment;
+    SessionManager sessionManager;
 
 
 
@@ -87,6 +93,7 @@ public class Voter_Id_Back_Fragment extends Fragment implements SurfaceHolder.Ca
 
         imageView=view.findViewById(R.id.image);
         backfeed=view.findViewById(R.id.backfeed);
+        sessionManager = new SessionManager(getActivity());
 
 //        selfie=view.findViewById(R.id.selfie);
 //
@@ -99,6 +106,7 @@ public class Voter_Id_Back_Fragment extends Fragment implements SurfaceHolder.Ca
         backfeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
                 if (Verification_Aadhar_Fragment.status.equals("Verify_Page")) {
 
@@ -184,7 +192,49 @@ public class Voter_Id_Back_Fragment extends Fragment implements SurfaceHolder.Ca
         final LinearLayout tips_layout = sheetView.findViewById(R.id.tips_layout);
         final TextView title = sheetView.findViewById(R.id.title);
 
+        final TextView title_details_front = sheetView.findViewById(R.id.title_details_front);
+
+        final TextView  front_tips1 = sheetView.findViewById(R.id.front_tips1);
+        final TextView front_tips2 = sheetView.findViewById(R.id.front_tips2);
+        final TextView front_tips3 = sheetView.findViewById(R.id.front_tips3);
+        final TextView front_tips4 = sheetView.findViewById(R.id.front_tips4);
+
+
         title.setText("Voter ID: Back");
+
+
+        try {
+
+
+            lngObject = new JSONObject(sessionManager.getRegId("language"));
+
+            System.out.println("llllllllllllkkkkkkkkkkkkkkk" + lngObject.getString("EnterPhoneNo"));
+
+
+            tips.setText(lngObject.getString("Tips"));
+            title.setText(lngObject.getString("VoterIDBack").replace("\n",""));
+            title_details_front.setText(lngObject.getString("Placeyourvoteridonatableandholdyourphoneaboveittotakeaclearphoto"));
+
+            front_tips1.setText(lngObject.getString("Youshouldhaveavalidvoterid"));
+            front_tips2.setText(lngObject.getString("Placethevoteridwithintheframe"));
+            front_tips3.setText(lngObject.getString("Ensurethattheroomhasgoodlighting"));
+            front_tips4.setText(lngObject.getString("Textonyourvoteridshouldbeclearandsharpinthephoto").replace("\n",""));
+
+
+
+
+            //  pass.setHint(lngObject.getString("Password"));
+            //  remember_me.setText(lngObject.getString("RememberMe"));
+
+
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
 
 
         tips.setOnClickListener(new View.OnClickListener() {
