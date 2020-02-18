@@ -38,7 +38,9 @@ import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.gson.JsonArray;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -261,7 +263,7 @@ public class Home_Menu_Fragment extends Fragment  {
 
 
 
-        try{
+      /*  try{
 
             JSONObject jsonObject = new JSONObject();
             JSONObject post_object = new JSONObject();
@@ -326,8 +328,53 @@ public class Home_Menu_Fragment extends Fragment  {
 
         }catch (Exception e){
             e.printStackTrace();
-        }
+        }*/
 
+        try {
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("UserId", sessionManager.getRegId("userId"));
+
+
+            Crop_Post.crop_posting(getActivity(), Urls.Get_Image_Details, jsonObject, new VoleyJsonObjectCallback() {
+                @Override
+                public void onSuccessResponse(JSONObject result) {
+                    System.out.println("dhfjfjd" + result);
+
+
+                    try {
+
+                      JSONArray imagelist_array = result.getJSONArray("captureImagelist");
+
+                        for (int i = 0; i < imagelist_array.length(); i++) {
+
+
+                            JSONObject jsonObject1 = imagelist_array.getJSONObject(i);
+                           String image_view = jsonObject1.getString("Image1");
+
+
+
+                            Glide.with(getActivity()).load(image_view)
+                                    .thumbnail(0.5f)
+                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                    .error(R.drawable.avatarmale)
+                                    .into(prod_imgg);
+                        }
+
+
+
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            });
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
 

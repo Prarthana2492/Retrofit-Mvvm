@@ -3,12 +3,12 @@ apply plugin: 'com.android.application'
 
 android {
     signingConfigs {
-        release {
+      /*  release {
             keyAlias 'oxkart_jksfile'
             keyPassword 'oxkart_jksfile'
             storeFile file('C:\\Users\\Renewin\\Desktop\\oxkart_jks_file\\oxkart.jks')
             storePassword 'oxkart_jksfile'
-        }
+        }*/
 
 
     }
@@ -34,7 +34,7 @@ android {
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+           // signingConfig signingConfigs.release
 
         }
     }
@@ -81,7 +81,7 @@ android {
         // implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
-apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.gms.google-services'
 repositories {
     mavenCentral()
 }

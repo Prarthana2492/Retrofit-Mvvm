@@ -93,7 +93,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
     View sheetView;
     String packageName;
 
-
+    String selfie_image_id;
 
 
     public static New_Profile_Setting_Fragment newInstance() {
@@ -175,7 +175,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
 
 
                                 JSONObject jsonObject1 = imagelist_array.getJSONObject(i);
-                                String image_id = jsonObject1.getString("CImageId");
+                                selfie_image_id = jsonObject1.getString("CImageId");
                                 String image_view = jsonObject1.getString("Image1");
 
 
@@ -890,8 +890,12 @@ public class New_Profile_Setting_Fragment extends Fragment {
                    profile_image.setImageBitmap(bitmap);
                //    AddMoneyFragment.profile_image_payment.setImageBitmap(bitmap);
 
-                   uploadImage(getResizedBitmap(bitmap,100,100));
+                if(getArguments().getString("HOME_IMAGE").equals("Selfie_image")){
+                    uploadSelfieImage(getResizedBitmap(bitmap,100,100));
+                }else {
+                    uploadImage(getResizedBitmap(bitmap,100,100));
 
+                }
 
                 int duration = 1000;
                 Snackbar snackbar = Snackbar
@@ -1074,6 +1078,90 @@ public class New_Profile_Setting_Fragment extends Fragment {
 
             return resizedBitmap;
         }
+    }
+    private void uploadSelfieImage(final Bitmap bitmap){
+        final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "",
+                "Loading....Please wait.");
+        progressDialog.show();
+
+
+        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, Urls.Add_Update_Image_Details,
+                new Response.Listener<NetworkResponse>(){
+
+                    @Override
+                    public void onResponse(NetworkResponse response) {
+                        Log.e(TAG,"afaeftagsbillvalue"+response.data);
+                        Log.e(TAG,"afaeftagsbillvalue"+response);
+                        progressDialog.dismiss();
+
+
+
+
+                    }
+                },
+
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
+                    }
+                }) {
+
+
+            @Override
+            protected VolleyError parseNetworkError(VolleyError volleyError){
+                if(volleyError.networkResponse != null && volleyError.networkResponse.data != null){
+                    VolleyError error = new VolleyError(new String(volleyError.networkResponse.data));
+                    progressDialog.dismiss();
+
+                    //Toast.makeText(getActivity(),volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+
+
+                }
+
+                return volleyError;
+            }
+
+
+            @Override
+            protected Map<String, DataPart> getByteData() {
+                Map<String, DataPart> params = new HashMap<>();
+                long imagename = System.currentTimeMillis();
+                Log.e(TAG,"Im here " + params);
+
+                if (bitmap!=null) {
+
+                    params.put("Image1", new DataPart(imagename + ".png",getFileDataFromDrawable(bitmap)));
+
+                }
+
+                Log.e(TAG,"Im here " + params);
+                return params;
+
+            }
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("UserId", sessionManager.getRegId("userId"));
+
+                params.put("CImageId",selfie_image_id);
+
+                //  System.out.println("Latitude11111111"+String.valueOf(Farms_MapView_Fragment.a));
+                //  params.put("FarmDescription", description.getText().toString());
+                Log.e(TAG,"afaeftagsparams"+params);
+                return params;
+            }
+        };
+
+        volleyMultipartRequest.setRetryPolicy(new DefaultRetryPolicy(1000 * 60, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        //adding the request to volley
+
+        Volley.newRequestQueue(getActivity()).add(volleyMultipartRequest);
     }
 
 }
