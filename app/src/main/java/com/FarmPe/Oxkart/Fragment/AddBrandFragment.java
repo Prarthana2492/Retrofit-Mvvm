@@ -35,6 +35,7 @@ import java.util.List;
 
 public class AddBrandFragment extends Fragment {
 
+
     public static List<AddTractorBean> newOrderBeansList = new ArrayList<>();
     public static RecyclerView recyclerView;
     public static AddBrandAdapter farmadapter;
@@ -48,7 +49,6 @@ public class AddBrandFragment extends Fragment {
 
 
 
-
     public static AddBrandFragment newInstance() {
         AddBrandFragment fragment = new AddBrandFragment();
         return fragment;
@@ -59,18 +59,18 @@ public class AddBrandFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.brand_recy_layout, container, false);
-        Status_bar_change_singleton.getInstance().color_change(getActivity());
 
+        Status_bar_change_singleton.getInstance().color_change(getActivity());
 
 
         recyclerView=view.findViewById(R.id.recycler_what_looking);
         toolbar_title=view.findViewById(R.id.toolbar_title);
-        back_feed=view.findViewById(R.id.back_feed);
+
         sub_label = view.findViewById(R.id.sub_label);
         continue_button = view.findViewById(R.id.continue_button);
         linearLayout = view.findViewById(R.id.linearLayout);
         b_arrow = view.findViewById(R.id.b_arrow);
-
+        back_feed=view.findViewById(R.id.back_feed);
 
 
         price = getArguments().getString("status_home");
@@ -92,6 +92,7 @@ public class AddBrandFragment extends Fragment {
         });
 
 
+
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -106,6 +107,8 @@ public class AddBrandFragment extends Fragment {
                 return false;
             }
         });
+
+
 
 //        continue_button.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -154,11 +157,6 @@ public class AddBrandFragment extends Fragment {
 //            }
 //        });
 //
-
-
-
-
-
 
 
 

@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 
 import com.FarmPe.Oxkart.Adapter.AdapterSelectLanguage;
+import com.FarmPe.Oxkart.Bean.First_Language_Bean;
 import com.FarmPe.Oxkart.Bean.SelectLanguageBean;
 import com.FarmPe.Oxkart.R;
 import com.FarmPe.Oxkart.SessionManager;
@@ -37,7 +38,7 @@ public class ActivitySelectLang extends AppCompatActivity {
 
 
 
-    private List<SelectLanguageBean> newOrderBeansList = new ArrayList<>();
+    private List<First_Language_Bean> newOrderBeansList = new ArrayList<>();
     private RecyclerView recyclerView;
     private AdapterSelectLanguage mAdapter;
     boolean doubleBackToExitPressedOnce = false;
@@ -70,17 +71,16 @@ public class ActivitySelectLang extends AppCompatActivity {
         sessionManager = new SessionManager(this);
 
 
-        SelectLanguageBean item1 = new SelectLanguageBean("English", "1", "");
-        SelectLanguageBean item2 = new SelectLanguageBean("हिंदी", "2", "");
-        SelectLanguageBean item3 = new SelectLanguageBean("ಕನ್ನಡ", "3", "");
-        SelectLanguageBean item4 = new SelectLanguageBean("తెలుగు", "4", "");
-        SelectLanguageBean item5 = new SelectLanguageBean("தமிழ்", "5", "");
-        SelectLanguageBean item6 = new SelectLanguageBean("മലയാളം", "6", "");
-        SelectLanguageBean item7 = new SelectLanguageBean("मराठी", "7", "");
-        SelectLanguageBean item8 = new SelectLanguageBean("বাংলা", "8", "");
-        SelectLanguageBean item9 = new SelectLanguageBean("ગુજરાતી", "9", "");
-        SelectLanguageBean item10 = new SelectLanguageBean("বাংলা", "10", "");
-
+        First_Language_Bean item1 = new First_Language_Bean("English", "1",R.drawable.english);
+        First_Language_Bean item2 = new First_Language_Bean("हिंदी", "2",R.drawable.hindi);
+        First_Language_Bean item3 = new First_Language_Bean("ಕನ್ನಡ", "3", R.drawable.kannada);
+        First_Language_Bean item4 = new First_Language_Bean("తెలుగు", "4",R.drawable.telugu);
+        First_Language_Bean item5 = new First_Language_Bean("தமிழ்", "5", R.drawable.tamil);
+        First_Language_Bean item6 = new First_Language_Bean("മലയാളം", "6", R.drawable.malyalam);
+        First_Language_Bean item7 = new First_Language_Bean("मराठी", "7",R.drawable.hindi);
+        First_Language_Bean item8 = new First_Language_Bean("ગુજરાતી", "8",R.drawable.hindi);
+        First_Language_Bean item9 = new First_Language_Bean("ਪੰਜਾਬੀ", "9", R.drawable.hindi);
+        First_Language_Bean item10 = new First_Language_Bean("বাঙালি", "10", R.drawable.hindi);
 
 
         newOrderBeansList.add(item1);
@@ -93,6 +93,7 @@ public class ActivitySelectLang extends AppCompatActivity {
         newOrderBeansList.add(item8);
         newOrderBeansList.add(item9);
         newOrderBeansList.add(item10);
+
 
 
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(ActivitySelectLang.this, 1, GridLayoutManager.VERTICAL, false);
@@ -217,6 +218,7 @@ public class ActivitySelectLang extends AppCompatActivity {
                             //newOrderBeansList.add(stateBean);
 
                         }
+
 
                         mAdapter = new AdapterSelectLanguage(ActivitySelectLang.this, newOrderBeansList);
                         recyclerView.setAdapter(mAdapter);

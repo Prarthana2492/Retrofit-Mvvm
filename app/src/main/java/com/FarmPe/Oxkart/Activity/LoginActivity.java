@@ -557,15 +557,14 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                                             tv.setGravity(Gravity.CENTER_HORIZONTAL);
                                         }
                                         snackbar.show();
-
                                     }
 
                                 }catch (Exception e){
                                     e.printStackTrace();
                                 }
-
                             }
                         });
+
 
                     }catch (Exception e){
                         e.printStackTrace();

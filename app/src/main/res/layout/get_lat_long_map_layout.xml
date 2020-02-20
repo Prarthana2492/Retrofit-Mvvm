@@ -189,13 +189,15 @@
         android:orientation="vertical"
         >
 
+
         <Button
             android:id="@+id/confirm_loc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/black_rectangle_white_filled"
+            android:background="@drawable/map_border_filled_red"
             android:stateListAnimator="@null"
             android:text="Confirm location"
+            android:textColor="@color/white"
 
             />
 

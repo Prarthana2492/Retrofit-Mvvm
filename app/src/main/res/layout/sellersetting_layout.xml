@@ -245,6 +245,7 @@
 
 
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -518,8 +519,8 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:paddingVertical="8dp"
-
                         >
+
 
 
                         <ImageView
@@ -527,6 +528,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:src="@drawable/ic_question" />
+
+
 
                         <LinearLayout
 

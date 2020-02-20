@@ -53,7 +53,7 @@ public class SelectLanguageAdapter2 extends RecyclerView.Adapter<SelectLanguageA
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView language_name;
         public LinearLayout language;
-        public ImageView right_img;
+        public ImageView tick_image;
         public RadioGroup lang_icon;
         public RadioButton lang_txt;
 
@@ -63,8 +63,7 @@ public class SelectLanguageAdapter2 extends RecyclerView.Adapter<SelectLanguageA
             super(view);
             language_name = view.findViewById(R.id.lang_text);
             language = view.findViewById(R.id.language);
-            lang_icon = view.findViewById(R.id.radiogrp);
-            lang_txt = view.findViewById(R.id.radioButton1);
+            tick_image = view.findViewById(R.id.tick_image);
 
             //   right_img = view.findViewById(R.id.right_img);
 

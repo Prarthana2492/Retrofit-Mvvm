@@ -109,6 +109,7 @@ public class Home_Menu_Fragment extends Fragment  {
             @Override
             public void onClick(View v) {
 
+
                 Bundle bundle = new Bundle();
                 bundle.putString("HOME_IMAGE","Selfie_image");
                 selectedFragment = New_Profile_Setting_Fragment.newInstance();

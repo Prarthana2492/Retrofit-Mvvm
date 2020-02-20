@@ -228,7 +228,8 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
         setupUI(main_layout);
 
-        mobile_number_text.setText(New_Login_Activity2.contact_no);
+        mobile_number_text.setText(sessionManager.getRegId("phone"));
+
 
        // System.out.println("djhfjhvxcv" + sessionManager.getRegId("phone"));
 
@@ -250,6 +251,19 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
             }
         }, 7000);
+
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                otpsentimg.setVisibility(View.GONE);
+                otpsenttxt.setVisibility(View.GONE);
+                otp_sent.setVisibility(View.GONE);
+
+
+            }
+        }, 9000);
 
 
 
@@ -445,7 +459,7 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
                              Intent intent = new Intent(New_OTP_Page_Activity.this,Privacy_Activity.class);
                              startActivity(intent);
-                            sessionManager.createRegisterSession(New_Login_Activity2.contact_no);
+                            sessionManager.createRegisterSession(sessionManager.getRegId("phone"));
 
 
 
@@ -454,7 +468,7 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
                             Intent intent= new Intent(New_OTP_Page_Activity.this,Privacy_Activity.class);
                             startActivity(intent);
-                            sessionManager.createRegisterSession(New_Login_Activity2.contact_no);
+                            sessionManager.createRegisterSession(sessionManager.getRegId("phone"));
 
 
                         }
@@ -480,8 +494,8 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
         try{
 
             JSONObject postjsonObject = new JSONObject();
-            postjsonObject.put("PhoneNo", New_Login_Activity2.contact_no );
-            System.out.println("sdfsfhusdff" + New_Login_Activity2.contact_no);
+            postjsonObject.put("PhoneNo", sessionManager.getRegId("phone") );
+            System.out.println("sdfsfhusdff" + sessionManager.getRegId("phone"));
 
 
             Login_post.login_posting(New_OTP_Page_Activity.this, Urls.ResendOTP, postjsonObject, new VoleyJsonObjectCallback() {

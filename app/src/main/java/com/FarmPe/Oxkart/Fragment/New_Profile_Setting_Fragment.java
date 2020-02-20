@@ -70,8 +70,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import static android.app.Activity.RESULT_OK;
 import static com.android.volley.VolleyLog.TAG;
 
-public class New_Profile_Setting_Fragment extends Fragment {
 
+
+public class New_Profile_Setting_Fragment extends Fragment {
 
     public static List<FarmsImageBean> newOrderBeansList = new ArrayList<>();
     public static ArrayList<BankBean> newOrderBeansList1 = new ArrayList<>();
@@ -92,14 +93,16 @@ public class New_Profile_Setting_Fragment extends Fragment {
     BottomSheetDialog mBottomSheetDialog;
     View sheetView;
     String packageName;
-
     String selfie_image_id;
+
+
 
 
     public static New_Profile_Setting_Fragment newInstance() {
         New_Profile_Setting_Fragment fragment = new New_Profile_Setting_Fragment();
         return fragment;
     }
+
 
 
 
@@ -143,6 +146,8 @@ public class New_Profile_Setting_Fragment extends Fragment {
         sessionManager = new SessionManager(getActivity());
 
         lang_setting.setText(sessionManager.getRegId("language_name"));
+        profile_phone.setText(sessionManager.getRegId("phone"));
+
 
 
 
@@ -153,7 +158,8 @@ public class New_Profile_Setting_Fragment extends Fragment {
         packageName = pm.queryIntentActivities(sendIntent, 0).toString();
 
 
-        if(getArguments().getString("HOME_IMAGE").equals("Selfie_image")){
+
+
 
             try {
 
@@ -205,79 +211,79 @@ public class New_Profile_Setting_Fragment extends Fragment {
 
 
 
-        }else{
-
-
-                    try{
-
-            JSONObject jsonObject = new JSONObject();
-            JSONObject post_object = new JSONObject();
-            jsonObject.put("Id",sessionManager.getRegId("userId"));
-            post_object.put("objUser",jsonObject);
-
-
-            Crop_Post.crop_posting(getActivity(), Urls.Get_Profile_Details, post_object, new VoleyJsonObjectCallback() {
-                @Override
-                public void onSuccessResponse(JSONObject result) {
-                    System.out.println("ggpgpgpg" + result);
 
 
 
-                    try{
-
-                        JSONObject jsonObject1 = result.getJSONObject("user");
-                      //  profnamestr = jsonObject1.getString("FullName");
-                        System.out.println("ggpgpgpg" + profnamestr);
-                        ProfilePhone = jsonObject1.getString("PhoneNo");
-                        //String ProfileEmail = jsonObject1.getString("EmailId");
-                        ProfileImage = jsonObject1.getString("ProfilePic");
-                       // profile_description = jsonObject1.getString("About");
-
-                     //   profname.setText(profnamestr);
-
-
-
-
-                        //phone_no.setText(ProfilePhone.substring(3));
-
-                        profile_phone.setText(ProfilePhone); // masking + deleting last line
-
-
-                        // profname.setFilters(new InputFilter[]{EMOJI_FILTER});
-                        // profile_phone.setFilters(new InputFilter[]{EMOJI_FILTER});
-                        // aboutText.setFilters(new InputFilter[]{EMOJI_FILTER});
-
-
-                        Glide.with(getActivity()).load(ProfileImage)
-                                .thumbnail(0.5f)
-                                // .crossFade()
-                                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
-                                        .error(R.drawable.avatarmale))
-                                .into(profile_image);
-
-//                        Glide.with(getActivity())
-//                                .load(ProfileImage)
-//                                .centerCrop()
-//                                .diskCacheStrategy(DiskCacheStrategy.NONE)
-//                                .skipMemoryCache(true)
-//                                .dontAnimate()
+//                    try{
+//
+//            JSONObject jsonObject = new JSONObject();
+//            JSONObject post_object = new JSONObject();
+//            jsonObject.put("Id",sessionManager.getRegId("userId"));
+//            post_object.put("objUser",jsonObject);
+//
+//
+//            Crop_Post.crop_posting(getActivity(), Urls.Get_Profile_Details, post_object, new VoleyJsonObjectCallback() {
+//                @Override
+//                public void onSuccessResponse(JSONObject result) {
+//                    System.out.println("ggpgpgpg" + result);
+//
+//
+//
+//                    try{
+//
+//                        JSONObject jsonObject1 = result.getJSONObject("user");
+//                      //  profnamestr = jsonObject1.getString("FullName");
+//                        System.out.println("ggpgpgpg" + profnamestr);
+//                        ProfilePhone = jsonObject1.getString("PhoneNo");
+//                        //String ProfileEmail = jsonObject1.getString("EmailId");
+//                        ProfileImage = jsonObject1.getString("ProfilePic");
+//                       // profile_description = jsonObject1.getString("About");
+//
+//                     //   profname.setText(profnamestr);
+//
+//
+//
+//
+//                        //phone_no.setText(ProfilePhone.substring(3));
+//
+//                        profile_phone.setText(ProfilePhone); // masking + deleting last line
+//
+//
+//                        // profname.setFilters(new InputFilter[]{EMOJI_FILTER});
+//                        // profile_phone.setFilters(new InputFilter[]{EMOJI_FILTER});
+//                        // aboutText.setFilters(new InputFilter[]{EMOJI_FILTER});
+//
+//
+//                        Glide.with(getActivity()).load(ProfileImage)
+//                                .thumbnail(0.5f)
+//                                // .crossFade()
+//                                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+//                                        .error(R.drawable.avatarmale))
 //                                .into(profile_image);
-
-
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
-                }
-            });
-
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-
-        }
-
+//
+////                        Glide.with(getActivity())
+////                                .load(ProfileImage)
+////                                .centerCrop()
+////                                .diskCacheStrategy(DiskCacheStrategy.NONE)
+////                                .skipMemoryCache(true)
+////                                .dontAnimate()
+////                                .into(profile_image);
+//
+//
+//                    }catch (Exception e){
+//                        e.printStackTrace();
+//                    }
+//                }
+//            });
+//
+//
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//
+//
+//        }
+//
 
 
 
@@ -313,6 +319,8 @@ public class New_Profile_Setting_Fragment extends Fragment {
 
 
 
+
+
         linear_profile_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -325,11 +333,9 @@ public class New_Profile_Setting_Fragment extends Fragment {
 
 
 
-
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
 
                 final TextView yes1,no1,text_desctxt,popup_headingtxt;
@@ -890,12 +896,15 @@ public class New_Profile_Setting_Fragment extends Fragment {
                    profile_image.setImageBitmap(bitmap);
                //    AddMoneyFragment.profile_image_payment.setImageBitmap(bitmap);
 
-                if(getArguments().getString("HOME_IMAGE").equals("Selfie_image")){
-                    uploadSelfieImage(getResizedBitmap(bitmap,100,100));
-                }else {
-                    uploadImage(getResizedBitmap(bitmap,100,100));
+              //  if(getArguments().getString("HOME_IMAGE").equals("Selfie_image")){
 
-                }
+                    uploadSelfieImage(getResizedBitmap(bitmap,100,100));
+
+//                }else {
+
+                 //   uploadImage(getResizedBitmap(bitmap,100,100));
+
+             //   }
 
                 int duration = 1000;
                 Snackbar snackbar = Snackbar
@@ -933,124 +942,207 @@ public class New_Profile_Setting_Fragment extends Fragment {
     }
 
 
+//    private void uploadImage(final Bitmap bitmap){
+//
+//        final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "",
+//                "Loading....Please wait.");
+//        progressDialog.show();
+//
+//
+//        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, Urls.Update_Profile_Details,
+//                new Response.Listener<NetworkResponse>(){
+//                    @Override
+//                    public void onResponse(NetworkResponse response) {
+//
+//                        Log.e(TAG,"afaeftagsbillvalue"+response);
+//                        Log.e(TAG,"afaeftagsbillvalue"+response);
+//
+//                        progressDialog.dismiss();
+//
+///*
+//                        if(profile_passwrd.getText().toString().length()<=12 && profile_passwrd.getText().toString().length()>=6){
+//                            if(myDb.isEmailExists(profile_phone.getText().toString().substring(3))) {
+//                                System.out.println("lhhhhhhhhhhhhhhhhhhhhhhhhp"+profile_passwrd.getText().toString());
+//                                System.out.println("lhhhhhhhhhhhhhhhhhhhhhhhhp"+profile_phone.getText().toString());
+//                                // AddData(profile_phone.getText().toString(), profile_passwrd.getText().toString());
+//                                myDb.updateContact(profile_phone.getText().toString().substring(3),profile_passwrd.getText().toString());
+//                            }
+//                        }
+//                        else{
+//                        }
+//*/
+////                        HomeMenuFragment.prod_img.setImageBitmap(bitmap);
+////                        HomeMenuFragment.prod_img1.setImageBitmap(bitmap);
+//                        // sessionManager.save_name(userObject.getString("FullName"),userObject.getString("PhoneNo"),userObject.getString("ProfilePic"));
+//
+//                        profile_image.setImageBitmap(bitmap);
+//
+//                      //  uploadImage(getResizedBitmap(bitmap,100,100));
+//
+////
+////                        int duration = 1000;
+////                        Snackbar snackbar = Snackbar
+////                                .make(linearLayout, "Profile Details Updated Successfully", duration);
+////                        View snackbarView = snackbar.getView();
+////                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+////                        tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+////                        tv.setTextColor(Color.WHITE);
+////                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+////                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+////                        } else {
+////                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
+////                        }
+////
+////                        snackbar.show();
+//
+//
+//                       // Toast.makeText(getActivity(),"Profile Details Updated Successfully", Toast.LENGTH_SHORT).show();
+//                    /*    selectedFragment = SettingFragment.newInstance();
+//                        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+//                        ft.replace(R.id.frame_layout,selectedFragment);
+//                        ft.commit();*/
+//
+//                    }
+//                },
+//
+//
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_SHORT).show();
+//
+//                        progressDialog.dismiss();
+//
+//                    }
+//
+//                }) {
+//
+//
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String, String> params = new HashMap<>();
+//
+//                params.put("UserId",sessionManager.getRegId("userId"));
+//              //  params.put("FullName",sessionManager.getRegId("name"));
+//                params.put("PhoneNo",sessionManager.getRegId("phone"));
+//                //  params.put("EmailId","abcd@gmail.com");
+//                //    params.put("Password",profile_passwrd.getText().toString());
+//                Log.e(TAG,"afaeftagsparams"+params);
+//
+//                return params;
+//
+//            }
+//
+//
+//            @Override
+//            protected Map<String, DataPart> getByteData() {
+//                Map<String, DataPart> params = new HashMap<>();
+//                long imagename = System.currentTimeMillis();
+//
+//                Log.e(TAG,"Im here " + params);
+//
+//                if (bitmap!=null) {
+//
+//                    params.put("ProfilePic", new DataPart(imagename + ".png", getFileDataFromDrawable(bitmap)));
+//
+//                }
+//
+//                return params;
+//            }
+//        };
+//
+//        volleyMultipartRequest.setRetryPolicy(new DefaultRetryPolicy(1000 * 60, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+//                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+//
+//        //adding the request to volley
+//
+//        Volley.newRequestQueue(getActivity()).add(volleyMultipartRequest);
+//
+//    }
 
-    private void uploadImage(final Bitmap bitmap){
 
+    //upload selfie image
+    private void uploadSelfieImage(final Bitmap bitmap){
         final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "",
                 "Loading....Please wait.");
         progressDialog.show();
 
 
-        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, Urls.Update_Profile_Details,
+        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, Urls.Add_Update_Image_Details,
                 new Response.Listener<NetworkResponse>(){
+
                     @Override
                     public void onResponse(NetworkResponse response) {
-
+                        Log.e(TAG,"afaeftagsbillvalue"+response.data);
                         Log.e(TAG,"afaeftagsbillvalue"+response);
-                        Log.e(TAG,"afaeftagsbillvalue"+response);
-
                         progressDialog.dismiss();
-
-/*
-                        if(profile_passwrd.getText().toString().length()<=12 && profile_passwrd.getText().toString().length()>=6){
-                            if(myDb.isEmailExists(profile_phone.getText().toString().substring(3))) {
-                                System.out.println("lhhhhhhhhhhhhhhhhhhhhhhhhp"+profile_passwrd.getText().toString());
-                                System.out.println("lhhhhhhhhhhhhhhhhhhhhhhhhp"+profile_phone.getText().toString());
-                                // AddData(profile_phone.getText().toString(), profile_passwrd.getText().toString());
-                                myDb.updateContact(profile_phone.getText().toString().substring(3),profile_passwrd.getText().toString());
-                            }
-                        }
-                        else{
-                        }
-*/
-//                        HomeMenuFragment.prod_img.setImageBitmap(bitmap);
-//                        HomeMenuFragment.prod_img1.setImageBitmap(bitmap);
-                        // sessionManager.save_name(userObject.getString("FullName"),userObject.getString("PhoneNo"),userObject.getString("ProfilePic"));
-
-                        profile_image.setImageBitmap(bitmap);
-
-                      //  uploadImage(getResizedBitmap(bitmap,100,100));
-
-//
-//                        int duration = 1000;
-//                        Snackbar snackbar = Snackbar
-//                                .make(linearLayout, "Profile Details Updated Successfully", duration);
-//                        View snackbarView = snackbar.getView();
-//                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-//                        tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-//                        tv.setTextColor(Color.WHITE);
-//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-//                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-//                        } else {
-//                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
-//                        }
-//
-//                        snackbar.show();
-
-
-                       // Toast.makeText(getActivity(),"Profile Details Updated Successfully", Toast.LENGTH_SHORT).show();
-                    /*    selectedFragment = SettingFragment.newInstance();
-                        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                        ft.replace(R.id.frame_layout,selectedFragment);
-                        ft.commit();*/
 
                     }
                 },
-
 
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_SHORT).show();
-
                         progressDialog.dismiss();
-
                     }
-
                 }) {
 
 
+
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
+            protected VolleyError parseNetworkError(VolleyError volleyError){
+                if(volleyError.networkResponse != null && volleyError.networkResponse.data != null){
+                    VolleyError error = new VolleyError(new String(volleyError.networkResponse.data));
+                    progressDialog.dismiss();
 
-                params.put("UserId",sessionManager.getRegId("userId"));
-              //  params.put("FullName",sessionManager.getRegId("name"));
-                params.put("PhoneNo",sessionManager.getRegId("phone"));
-                //  params.put("EmailId","abcd@gmail.com");
-                //    params.put("Password",profile_passwrd.getText().toString());
-                Log.e(TAG,"afaeftagsparams"+params);
+                    //Toast.makeText(getActivity(),volleyError.getMessage(), Toast.LENGTH_SHORT).show();
 
-                return params;
+                }
 
+                return volleyError;
             }
-
 
             @Override
             protected Map<String, DataPart> getByteData() {
                 Map<String, DataPart> params = new HashMap<>();
                 long imagename = System.currentTimeMillis();
-
                 Log.e(TAG,"Im here " + params);
 
                 if (bitmap!=null) {
 
-                    params.put("ProfilePic", new DataPart(imagename + ".png", getFileDataFromDrawable(bitmap)));
+                    params.put("Image1", new DataPart(imagename + ".png",getFileDataFromDrawable(bitmap)));
 
                 }
 
+                Log.e(TAG,"Im here " + params);
+                return params;
+
+            }
+
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("UserId", sessionManager.getRegId("userId"));
+
+                params.put("CImageId",selfie_image_id);
+
+                //  System.out.println("Latitude11111111"+String.valueOf(Farms_MapView_Fragment.a));
+                //  params.put("FarmDescription", description.getText().toString());
+                Log.e(TAG,"afaeftagsparams"+params);
                 return params;
             }
         };
 
+
         volleyMultipartRequest.setRetryPolicy(new DefaultRetryPolicy(1000 * 60, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-
         //adding the request to volley
 
         Volley.newRequestQueue(getActivity()).add(volleyMultipartRequest);
-
     }
+
 
 
     public Bitmap getResizedBitmap(Bitmap bm, int newWidth, int newHeight) {
@@ -1078,90 +1170,6 @@ public class New_Profile_Setting_Fragment extends Fragment {
 
             return resizedBitmap;
         }
-    }
-    private void uploadSelfieImage(final Bitmap bitmap){
-        final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "",
-                "Loading....Please wait.");
-        progressDialog.show();
-
-
-        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, Urls.Add_Update_Image_Details,
-                new Response.Listener<NetworkResponse>(){
-
-                    @Override
-                    public void onResponse(NetworkResponse response) {
-                        Log.e(TAG,"afaeftagsbillvalue"+response.data);
-                        Log.e(TAG,"afaeftagsbillvalue"+response);
-                        progressDialog.dismiss();
-
-
-
-
-                    }
-                },
-
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_SHORT).show();
-                        progressDialog.dismiss();
-                    }
-                }) {
-
-
-            @Override
-            protected VolleyError parseNetworkError(VolleyError volleyError){
-                if(volleyError.networkResponse != null && volleyError.networkResponse.data != null){
-                    VolleyError error = new VolleyError(new String(volleyError.networkResponse.data));
-                    progressDialog.dismiss();
-
-                    //Toast.makeText(getActivity(),volleyError.getMessage(), Toast.LENGTH_SHORT).show();
-
-
-
-
-                }
-
-                return volleyError;
-            }
-
-
-            @Override
-            protected Map<String, DataPart> getByteData() {
-                Map<String, DataPart> params = new HashMap<>();
-                long imagename = System.currentTimeMillis();
-                Log.e(TAG,"Im here " + params);
-
-                if (bitmap!=null) {
-
-                    params.put("Image1", new DataPart(imagename + ".png",getFileDataFromDrawable(bitmap)));
-
-                }
-
-                Log.e(TAG,"Im here " + params);
-                return params;
-
-            }
-
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("UserId", sessionManager.getRegId("userId"));
-
-                params.put("CImageId",selfie_image_id);
-
-                //  System.out.println("Latitude11111111"+String.valueOf(Farms_MapView_Fragment.a));
-                //  params.put("FarmDescription", description.getText().toString());
-                Log.e(TAG,"afaeftagsparams"+params);
-                return params;
-            }
-        };
-
-        volleyMultipartRequest.setRetryPolicy(new DefaultRetryPolicy(1000 * 60, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //adding the request to volley
-
-        Volley.newRequestQueue(getActivity()).add(volleyMultipartRequest);
     }
 
 }

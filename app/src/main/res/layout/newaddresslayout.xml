@@ -13,7 +13,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="100"
+        android:layout_weight="91"
         android:fillViewport="true">
 
 
@@ -22,7 +22,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
-
 
 
             <LinearLayout
@@ -145,7 +144,7 @@
         <RadioButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="others"
+            android:text="Others"
             android:layout_weight="1"
             android:backgroundTint="@color/green"
             android:buttonTint="@color/green"
@@ -340,7 +339,8 @@
     <LinearLayout
         android:id="@+id/continuebtn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="9"
         android:background="@drawable/border_filled_red_not_curved"
         android:orientation="horizontal"
         android:gravity="center"

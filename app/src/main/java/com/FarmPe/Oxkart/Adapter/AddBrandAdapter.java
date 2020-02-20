@@ -32,6 +32,8 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
+
+
 public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyViewHolder>  {
     private List<AddTractorBean> productList;
     Activity activity;
@@ -44,6 +46,7 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
     public static CardView cardView;
     public static String brandId;
 
+
     public AddBrandAdapter(Activity activity, List<AddTractorBean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
@@ -51,7 +54,7 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public ImageView image;
+        public ImageView image,default_image;
         public LinearLayout item;
         public TextView prod_price,prod_name,duration,location;
 
@@ -63,6 +66,7 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
             image=view.findViewById(R.id.prod_img);
             item=view.findViewById(R.id.item);
             linearLayout=view.findViewById(R.id.linear_layout);
+            default_image=view.findViewById(R.id.default_img);
 
 
         }
@@ -76,9 +80,11 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
 
     }
 
+
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final AddTractorBean products = productList.get(position);
+
 
 
         brandId=products.getId();
@@ -165,15 +171,36 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
 //                .diskCacheStrategy(DiskCacheStrategy.ALL)
 //                .into(holder.image);
 
+System.out.println("dsfdsfewr" + products.getImage());
 
 
-        Glide.with(activity).load(products.getImage())
-                .thumbnail(1.0f)
-                // .crossFade()
-                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
-                        .error(R.drawable.ic_photo))
-                .override(50,50)
-                .into(holder.image);
+   if(products.getImage().equalsIgnoreCase("")){
+
+       holder.default_image.setVisibility(View.VISIBLE);
+
+
+     }else{
+
+
+       holder.image.setVisibility(View.VISIBLE);
+
+
+
+       Glide.with(activity).load(products.getImage())
+            .thumbnail(0.5f)
+            //   .crossFade()
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .into(holder.image);
+
+
+    }
+
+//        Glide.with(activity).load(products.getImage())
+//                .thumbnail(1.0f)
+//                // .crossFade()
+//                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+//                        .error(R.drawable.ic_photo))
+//                .into(holder.image);
 
 
 

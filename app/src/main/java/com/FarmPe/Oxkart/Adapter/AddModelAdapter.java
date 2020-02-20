@@ -70,7 +70,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public ImageView image,fav_request;
+        public ImageView image,fav_request,default_img;
 
         public TextView brand_name,select,model,hp_power,brochure;
 
@@ -88,6 +88,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
             brochure=view.findViewById(R.id.brochure);
             fav_request=view.findViewById(R.id.fav_request);
             linearLayout=view.findViewById(R.id.layout);
+            default_img=view.findViewById(R.id.default_img);
         }
     }
 
@@ -99,6 +100,8 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
         return new MyViewHolder(itemView);
 
     }
+
+
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
@@ -196,17 +199,23 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
         if(products.getImage().equalsIgnoreCase("")){
 
-            holder.image.setBackgroundResource(R.drawable.ic_photo);
+            holder.default_img.setVisibility(View.VISIBLE);
+
 
         }else{
 
-            Glide.with(activity)  //2
-                    .load(products.getImage()) //3
-                    .centerCrop() //4
-                    .placeholder(R.drawable.ic_photo) //5
-                    .error(R.drawable.ic_photo) //6
-                    .fallback(R.drawable.ic_photo) //7
-                    .into(holder.image); //8
+            holder.image.setVisibility(View.VISIBLE);
+
+            Glide.with(activity).load(products.getImage())
+                    .thumbnail(0.5f)
+                    //   .crossFade()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(holder.image);
+
+
+        }
+
+
 
 //            Glide.with(activity).load(products.getImage())
 //                    .thumbnail(0.5f)
@@ -216,49 +225,49 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 //                    .into(holder.image);
 
 
+        if(products.getPdf_brochure().equalsIgnoreCase("")) {
+
+            holder.brochure.setVisibility(View.GONE);
+
+        }else {
+
+         holder.brochure.setVisibility(View.VISIBLE);
 
         }
 
 
-
-
-
-        holder.brochure.setOnClickListener(new View.OnClickListener() {
+            holder.brochure.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
 
-                    if(products.getPdf_brochure().equalsIgnoreCase("")){
                     //  Toast.makeText(activity, "No Brochure ", Toast.LENGTH_SHORT).show();
-                    int duration = 1000;
-                    Snackbar snackbar = Snackbar
-                            .make(AddModelFragment.linearLayout, "No Brochure", duration);
-                    View snackbarView2 = snackbar.getView();
-                    TextView tv = (TextView) snackbarView2.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(activity,R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                    }
-                    snackbar.show();
+//                    int duration = 1000;
+//                    Snackbar snackbar = Snackbar
+//                            .make(AddModelFragment.linearLayout, "No Brochure", duration);
+//                    View snackbarView2 = snackbar.getView();
+//                    TextView tv = (TextView) snackbarView2.findViewById(android.support.design.R.id.snackbar_text);
+//                    tv.setBackgroundColor(ContextCompat.getColor(activity,R.color.orange));
+//                    tv.setTextColor(Color.WHITE);
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+//                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//                    else {
+//                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+//                    }
+//                    snackbar.show();
 
 
+                    brochure_pdf = products.getPdf_brochure();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("brochur_status", brochure_pdf);
+                    selectedFragment = Model_Brochure_Fragment.newInstance();
+                    FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_menu, selectedFragment);
+                    selectedFragment.setArguments(bundle);
+                    transaction.addToBackStack("pdf");
+                    transaction.commit();
 
-                }else {
-
-                        brochure_pdf = products.getPdf_brochure();
-                          Bundle bundle = new Bundle();
-                         bundle.putString("brochur_status", brochure_pdf);
-                          selectedFragment = Model_Brochure_Fragment.newInstance();
-                         FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_menu, selectedFragment);
-                        selectedFragment.setArguments(bundle);
-                        transaction.addToBackStack("pdf");
-                        transaction.commit();
                 }
-
 //                Bundle bundle = new Bundle();
 //                bundle.putString("brochur_status",brochure_pdf);
 //                selectedFragment = Model_Brochure_Fragment.newInstance();
@@ -270,8 +279,10 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
 //                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(products.getPdf_brochure()));
 //                activity.startActivity(browserIntent);
-            }
-        });
+
+            });
+
+
 
 
         holder.select.setOnClickListener(new View.OnClickListener() {

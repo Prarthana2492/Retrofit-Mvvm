@@ -34,7 +34,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
+
 public class AddModelFragment extends Fragment {
+
 
 
     public static List<ModelBean> modelBeanArrayList = new ArrayList<>();
@@ -51,6 +54,8 @@ public class AddModelFragment extends Fragment {
     public static JSONArray MiniTruckModelMasterList = null;
     public static JSONArray BackhoeAttachmentModelMasterList = null;
     public static JSONArray PowerTillerModelMasterList = null;
+
+
 
 
      ModelBean modelBean;

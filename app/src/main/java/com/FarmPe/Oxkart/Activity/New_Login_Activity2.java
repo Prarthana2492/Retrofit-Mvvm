@@ -264,12 +264,16 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
 
                 }else if(contact_no.length()<10){
 
-                    Toast toast = Toast.makeText(New_Login_Activity2.this, "Please Enter 10 Digit Mobile Number", Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
-                    TextView toastMessage1=(TextView) toast.getView().findViewById(android.R.id.message);
-                    toastMessage1.setTextColor(Color.WHITE);
-                    toast.getView().setBackgroundResource(R.drawable.black_curve_background);
-                    toast.show();
+//                    Toast toast = Toast.makeText(New_Login_Activity2,"Please Click Back Again To Exit", Toast.LENGTH_SHORT);
+//                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+//                    toast.show();
+////
+//                    Toast toast = Toast.makeText(New_Login_Activity2.this, "Please Enter 10 Digit Mobile Number", Toast.LENGTH_SHORT);
+//                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+//                    TextView toastMessage1=(TextView) toast.getView().findViewById(android.R.id.message);
+//                    toastMessage1.setTextColor(Color.WHITE);
+//                    toast.getView().setBackgroundResource(R.drawable.black_curve_background);
+//                    toast.show();
 
 
 //                    Toast toast = Toast.makeText(getApplicationContext(), "Please Enter Phone Number To Proceed", Toast.LENGTH_SHORT);
@@ -327,14 +331,14 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
     private void check_login_user2() {
 
 
+
         try{
+
             JSONObject jsonObject = new JSONObject();
             JSONObject post_Object = new JSONObject();
+
             jsonObject.put("PhoneNo",s1);
-            System.out.println("yhynyhnujmju"+credential.getId());
             post_Object.put("UserRequest",jsonObject);
-
-
             System.out.println("postobjj"+post_Object);
 
 
@@ -343,34 +347,38 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("111111user" + result);
 
-
                     try{
                         JSONObject jsonObject;
                         JSONObject userObject;
+
                         jsonObject = result.getJSONObject("ResultObject");
 
 
                         if(!(jsonObject.isNull("user"))) {
+
                             userObject = jsonObject.getJSONObject("user");
                             status = jsonObject.getString("Status");
                             String status1 = jsonObject.getString("OTP");
                             userId = jsonObject.getString("UserId");
                             System.out.println("useridddduserId" + userId);
-
        /*                     sessionManager.save_name(jsonObject.getString("PhoneNo"));
                             //   sessionManager.save_name(userObject.getString("FullName"),userObject.getString("PhoneNo"),userObject.getString("ProfilePic"));
                             sessionManager.saveUserId(userId);
-                            System.out.println("useridddd" + mobile_no.getText().toString());
-*/
 
+                            System.out.println("useridddd" + mobile_no.getText().toString());
+
+*/
                             sessionManager.createLoginSession(contact_no);
                             sessionManager.save_name(userObject.getString("PhoneNo"));
+                            System.out.println("useriddddsaveee" + sessionManager.getRegId("phone"));
                             //   sessionManager.save_name(userObject.getString("FullName"),userObject.getString("PhoneNo"),userObject.getString("ProfilePic"));
                             sessionManager.saveUserId(userId);
                             System.out.println("useriddddsaveee"+sessionManager);
 
 
+
                             if ((status.equals("1"))) {
+
                                 System.out.println("jdhyusulogin" + status);
                                 Intent intent = new Intent(New_Login_Activity2.this, New_OTP_Page_Activity.class);
                                 intent.putExtra("otpnumber", status1);
@@ -379,16 +387,31 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
 
                                 //    sessionManager.createRegisterSession(contact_no);
                             }
+
+//                        }else{
+
+
+//                            Toast toast = Toast.makeText(New_Login_Activity2.this, "User Not Registered", Toast.LENGTH_SHORT);
+//                            toast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 0);
+//                            TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+//                            toastMessage.setTextColor(Color.WHITE);
+//                            toast.getView().setBackgroundResource(R.drawable.black_curve_background);
+//                            toast.show();
+
                         }
+
 
                     }catch (Exception e){
                         e.printStackTrace();
                     }
+
                 }
             });
+
         }catch (Exception e){
             e.printStackTrace();
         }
+
 
 
 
@@ -515,6 +538,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
 */
                             sessionManager.createLoginSession(contact_no);
                             sessionManager.save_name(userObject.getString("PhoneNo"));
+                            System.out.println("useriddddsaveee" + sessionManager.getRegId("phone"));
                             //   sessionManager.save_name(userObject.getString("FullName"),userObject.getString("PhoneNo"),userObject.getString("ProfilePic"));
                             sessionManager.saveUserId(userId);
                             System.out.println("useriddddsaveee"+sessionManager);

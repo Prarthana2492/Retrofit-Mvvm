@@ -1,11 +1,24 @@
 package com.FarmPe.Oxkart.Bean;
 
 
-public class SelectLanguageBean {
+
+public class First_Language_Bean {
+
+    String vendor;
+    int imageicon;
+    String languageid;
 
 
 
-    String vendor,imageicon;
+    public int getImageicon() {
+        return imageicon;
+    }
+
+    public void setImageicon(int imageicon) {
+        this.imageicon = imageicon;
+    }
+
+
 
     public String getLanguageid() {
         return languageid;
@@ -15,26 +28,18 @@ public class SelectLanguageBean {
         this.languageid = languageid;
     }
 
-    String languageid;
-
 
     public String getVendor() {
         return vendor;
     }
 
 
-    public String getImageicon() {
-        return imageicon;
-    }
 
-
-
-    public SelectLanguageBean( String vendor, String languageid,String imageicon) {
+    public First_Language_Bean( String vendor, String languageid,int imageicon) {
 
         this.vendor = vendor;
         this.languageid=languageid;
         this.imageicon=imageicon;
-
     }
 }
 

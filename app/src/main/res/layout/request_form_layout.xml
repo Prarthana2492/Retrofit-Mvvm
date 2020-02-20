@@ -20,8 +20,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:padding="8dp"
+            android:layout_weight="10"
             android:orientation="horizontal"
             android:background="@color/menu_green"
             tools:ignore="MissingConstraints">
@@ -51,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Request Details"
-                android:textSize="20dp"
+                android:textSize="22dp"
                 android:textStyle="bold"
                 android:textColor="#fff"
                 android:layout_marginLeft="10dp"
@@ -113,13 +114,12 @@
         <!--</android.support.v7.widget.Toolbar>-->
 
 
-
         <LinearLayout
             android:id="@+id/purchase_linear"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="23dp"
+            android:layout_marginTop="25dp"
             android:layout_weight="27"
             android:orientation="vertical">
 
@@ -130,9 +130,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:fontFamily="@font/segoeui"
+                android:layout_marginTop="10dp"
                 android:text="When are you planning to purchase?"
                 android:textColor="#000"
-                android:textSize="15dp"
+                android:textSize="18dp"
+
 
                 />
 
@@ -140,7 +142,7 @@
             <LinearLayout
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="17dp"
+                android:layout_marginTop="19dp"
                 android:weightSum="3"
                 android:orientation="horizontal">
 
@@ -149,7 +151,7 @@
                 <TextView
                     android:id="@+id/immediate_btn"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="32dp"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/segoeui"
                     android:layout_weight="1"
@@ -157,14 +159,14 @@
                     android:gravity="center"
                     android:background="@drawable/black_bordr_white_filled"
                     android:textColor="#000"
-                    android:textSize="12dp"
+                    android:textSize="13dp"
                     />
 
 
                 <TextView
                     android:id="@+id/one_month_btn"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="32dp"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/segoeui"
                     android:layout_weight="1"
@@ -172,13 +174,13 @@
                     android:gravity="center"
                     android:background="@drawable/black_bordr_white_filled"
                     android:textColor="#000"
-                    android:textSize="12dp"
+                    android:textSize="13dp"
                     />
 
                 <TextView
                     android:id="@+id/two_month_btn"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="32dp"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/segoeui"
                     android:layout_weight="1"
@@ -186,7 +188,7 @@
                     android:gravity="center"
                     android:background="@drawable/black_bordr_white_filled"
                     android:textColor="#000"
-                    android:textSize="12dp"
+                    android:textSize="13dp"
                     />
 
 
@@ -205,7 +207,7 @@
                 <TextView
                     android:id="@+id/three_month_btn"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="32dp"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/segoeui"
                     android:layout_weight="1"
@@ -213,14 +215,14 @@
                     android:gravity="center"
                     android:background="@drawable/black_bordr_white_filled"
                     android:textColor="#000"
-                    android:textSize="12dp"
+                    android:textSize="13dp"
                     />
 
 
                 <TextView
                     android:id="@+id/aftr_three_month_btn"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="32dp"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/segoeui"
                     android:layout_weight="1"
@@ -228,15 +230,11 @@
                     android:gravity="center"
                     android:background="@drawable/black_bordr_white_filled"
                     android:textColor="#000"
-                    android:textSize="12dp"
+                    android:textSize="13dp"
                     />
-
-
-
 
             </LinearLayout>
         </LinearLayout>
-
 
 
         <LinearLayout
@@ -244,7 +242,7 @@
             android:layout_height="0dp"
             android:layout_marginHorizontal="10dp"
             android:layout_weight="20"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="12dp"
             android:orientation="vertical">
 
 
@@ -255,10 +253,9 @@
                 android:fontFamily="@font/segoeui"
                 android:text="Are you looking for finance/loan ?"
                 android:textColor="#000"
-                android:textSize="15dp"
+                android:textSize="18dp"
 
                 />
-
 
             <LinearLayout
                 android:layout_width="320dp"
@@ -271,7 +268,7 @@
                 <TextView
                     android:id="@+id/fin_yes"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="32dp"
                     android:layout_marginLeft="15dp"
                     android:fontFamily="@font/segoeui"
                     android:layout_weight="1"
@@ -279,14 +276,14 @@
                     android:gravity="center"
                     android:background="@drawable/black_bordr_white_filled"
                     android:textColor="#000"
-                    android:textSize="12dp"
+                    android:textSize="13dp"
                     />
 
 
                 <TextView
                     android:id="@+id/fin_no"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="32dp"
                     android:layout_marginLeft="15dp"
                     android:fontFamily="@font/segoeui"
                     android:layout_weight="1"
@@ -294,7 +291,7 @@
                     android:gravity="center"
                     android:background="@drawable/black_bordr_white_filled"
                     android:textColor="#000"
-                    android:textSize="12dp"
+                    android:textSize="13dp"
                     />
 
 
@@ -321,7 +318,7 @@
                 android:fontFamily="@font/segoeui"
                 android:text="Are you looking for Insurance?"
                 android:textColor="#000"
-                android:textSize="15dp"
+                android:textSize="18dp"
 
                 />
 
@@ -337,7 +334,7 @@
                 <TextView
                     android:id="@+id/insuranc_yes"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="32dp"
                     android:layout_marginLeft="15dp"
                     android:fontFamily="@font/segoeui"
                     android:layout_weight="1"
@@ -345,14 +342,14 @@
                     android:gravity="center"
                     android:background="@drawable/black_bordr_white_filled"
                     android:textColor="#000"
-                    android:textSize="12dp"
+                    android:textSize="13dp"
                     />
 
 
                 <TextView
                     android:id="@+id/insuranc_no"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="32dp"
                     android:layout_marginLeft="15dp"
                     android:fontFamily="@font/segoeui"
                     android:layout_weight="1"
@@ -360,7 +357,7 @@
                     android:gravity="center"
                     android:background="@drawable/black_bordr_white_filled"
                     android:textColor="#000"
-                    android:textSize="12dp"
+                    android:textSize="13dp"
                     />
 
 
@@ -375,7 +372,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginHorizontal="10dp"
-            android:layout_weight="15"
+            android:layout_weight="20"
             android:orientation="vertical">
 
 
@@ -386,10 +383,9 @@
                 android:fontFamily="@font/segoeui"
                 android:text="Need Demonstration/Test drive ?"
                 android:textColor="#000"
-                android:textSize="15dp"
+                android:textSize="18dp"
 
                 />
-
 
             <LinearLayout
                 android:layout_width="320dp"
@@ -402,7 +398,7 @@
                 <TextView
                     android:id="@+id/demo_yes"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="32dp"
                     android:layout_marginLeft="15dp"
                     android:fontFamily="@font/segoeui"
                     android:layout_weight="1"
@@ -410,14 +406,14 @@
                     android:gravity="center"
                     android:background="@drawable/black_bordr_white_filled"
                     android:textColor="#000"
-                    android:textSize="12dp"
+                    android:textSize="13dp"
                     />
 
 
                 <TextView
                     android:id="@+id/demo_no"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="32dp"
                     android:layout_marginLeft="15dp"
                     android:fontFamily="@font/segoeui"
                     android:layout_weight="1"
@@ -425,7 +421,7 @@
                     android:gravity="center"
                     android:background="@drawable/black_bordr_white_filled"
                     android:textColor="#000"
-                    android:textSize="12dp"
+                    android:textSize="13dp"
                     />
 
             </LinearLayout>

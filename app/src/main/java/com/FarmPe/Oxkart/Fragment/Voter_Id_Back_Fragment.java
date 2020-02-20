@@ -214,7 +214,6 @@ public class Voter_Id_Back_Fragment extends Fragment implements SurfaceHolder.Ca
             tips.setText(lngObject.getString("Tips"));
             title.setText(lngObject.getString("VoterIDBack").replace("\n",""));
             title_details_front.setText(lngObject.getString("Placeyourvoteridonatableandholdyourphoneaboveittotakeaclearphoto"));
-
             front_tips1.setText(lngObject.getString("Youshouldhaveavalidvoterid"));
             front_tips2.setText(lngObject.getString("Placethevoteridwithintheframe"));
             front_tips3.setText(lngObject.getString("Ensurethattheroomhasgoodlighting"));
@@ -616,7 +615,6 @@ public class Voter_Id_Back_Fragment extends Fragment implements SurfaceHolder.Ca
 
                     Bundle bundle = new Bundle();
                     bundle.putString("name1",getPath(imageUri) );
-
 
                     selectedFragment = VoterId_Back_Preview_Details_Fragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();

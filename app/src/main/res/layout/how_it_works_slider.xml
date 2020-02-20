@@ -65,7 +65,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/segoeui"
                 android:textColor="@color/colorPrimary"
-                android:text="Place an request a price in the app by selecting the required items"/>
+                android:text="Place a request a price in the app by selecting the required items"/>
 
             <TextView
                 android:textSize="22dp"

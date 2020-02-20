@@ -95,7 +95,7 @@ public class SliderPagerAdapter extends PagerAdapter {
                     System.out.println("llllllllllllkkkkkkkkkkkkkkk" + lngObject.getString("EnterPhoneNo"));
 
                     how_it_wrks.setText(lngObject.getString("HowitWorks"));
-                    register.setText(lngObject.getString("Register"));
+                    register.setText("1." + lngObject.getString("Register"));
                     register_details.setText(lngObject.getString("Registerbyenteringtherequireddetails"));
 
                    // farmer_descr.setText(lngObject.getString("Theconfluenceoffarmersandfairtrade"));

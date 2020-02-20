@@ -1,5 +1,7 @@
 package com.FarmPe.Oxkart.Adapter;
 
+
+
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
@@ -16,12 +18,15 @@ import android.widget.TextView;
 
 
 import com.FarmPe.Oxkart.Activity.ActivitySelectLang;
+import com.FarmPe.Oxkart.Bean.First_Language_Bean;
 import com.FarmPe.Oxkart.Bean.SelectLanguageBean;
 import com.FarmPe.Oxkart.R;
 import com.FarmPe.Oxkart.SessionManager;
 import com.FarmPe.Oxkart.Urls;
 import com.FarmPe.Oxkart.Volly_class.Crop_Post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 
 import org.json.JSONObject;
@@ -29,18 +34,21 @@ import org.json.JSONObject;
 import java.util.List;
 
 
+
 public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLanguage.MyViewHolder>  {
-    private List<SelectLanguageBean> productList;
+
+    private List<First_Language_Bean> productList;
     Activity activity;
     Fragment selectedFragment;
     SessionManager sessionManager;
     String lng_list;
 
-
     public static int selected_position=0;
 
+
     public static CardView cardView;
-    public AdapterSelectLanguage(Activity activity, List<SelectLanguageBean> moviesList) {
+
+    public AdapterSelectLanguage(Activity activity, List<First_Language_Bean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
         sessionManager = new SessionManager(activity);
@@ -51,7 +59,7 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         public TextView lang_text;
-        public ImageView tick_image;
+        public ImageView tick_image,lang_icon;
         public LinearLayout language;
 //        public RadioGroup lang_icon;
 //        public RadioButton lang_txt;
@@ -67,6 +75,7 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
 //            right_img = view.findViewById(R.id.right_img);
 
             tick_image=view.findViewById(R.id.tick_image);
+            lang_icon=view.findViewById(R.id.lang_icon);
 
         }
 
@@ -85,12 +94,19 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        final SelectLanguageBean products1 = productList.get(position);
+        final First_Language_Bean products1 = productList.get(position);
 
 
 
         holder.lang_text.setText(products1.getVendor());
         lng_list = products1.getVendor();
+
+        Glide.with(activity).load(products1.getImageicon())
+                .thumbnail(0.5f)
+                //   .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.lang_icon);
+
 
 //
 //        if(selected_position == position){

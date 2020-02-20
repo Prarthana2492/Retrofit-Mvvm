@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.FarmPe.Oxkart.Bean.SelectLanguageBean;
@@ -21,12 +20,18 @@ import com.FarmPe.Oxkart.SessionManager;
 import com.FarmPe.Oxkart.Urls;
 import com.FarmPe.Oxkart.Volly_class.Crop_Post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.json.JSONObject;
 
 import java.util.List;
 
+
+
 public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAdapter.MyViewHolder>  {
+
+
 
     private List<SelectLanguageBean> productList;
     SelectLanguageBean selectLanguageBean;
@@ -35,6 +40,8 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
     SessionManager sessionManager;
     public static int selected_position=0;
     String lng_list;
+
+
 
 
     public static CardView cardView;
@@ -46,21 +53,21 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView language_name;
-        public LinearLayout submit_langu;
-        public RadioGroup lang_icon;
+        public TextView language_name,lang_text;
+        public LinearLayout submit_langu,lang_onclick;
         public RadioButton lang_txt;
+        public ImageView tick_image, lang_icon;
 
-        public ImageView right_img, lang_image;
 
 
         public MyViewHolder(View view) {
             super(view);
 
             language_name = view.findViewById(R.id.lang_text);
-            submit_langu = view.findViewById(R.id.submit_langu_layout);
-            lang_icon = view.findViewById(R.id.radiogrp);
-            lang_txt = view.findViewById(R.id.radioButton1);
+            lang_onclick = view.findViewById(R.id.main_layout);
+            tick_image = view.findViewById(R.id.tick_image);
+            lang_text = view.findViewById(R.id.lang_text);
+            lang_icon = view.findViewById(R.id.lang_icon);
 //            right_img = view.findViewById(R.id.right_img);
 //            lang_image = view.findViewById(R.id.lang_icon);
 
@@ -83,17 +90,55 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
         final SelectLanguageBean products = productList.get(position);
 
 
-        holder.lang_txt.setText(products.getVendor());
+        holder.lang_text.setText(products.getVendor());
 
         lng_list = products.getVendor();
 
+
+        Glide.with(activity).load(products.getImageicon())
+                .thumbnail(0.5f)
+                //   .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.lang_icon);
+
+
+//        if (lng_list.equals(sessionManager.getRegId("language_name"))) {
+//
+////            holder.lang_text.setChecked(true);
+////            holder.lang_text.setTypeface(null, Typeface.BOLD);
+//
+//
+//       } else {
+//
+//            System.out.println("sfdsdfsdxvvvv" + sessionManager.getRegId("language_name"));
+//
+//
+//            if((sessionManager.getRegId("language_name").equals(""))){
+//
+//                if(position == 0){
+//
+////                    holder.lang_txt.setChecked(true);
+////                    holder.lang_txt.setTypeface(null, Typeface.NORMAL);
+//
+//                }
+//
+//
+//
+//           }else{
+////                holder.lang_txt.setChecked(false);
+////                holder.lang_txt.setTypeface(null, Typeface.NORMAL);
+//            }
+//
+//        }
+
+
         if (lng_list.equals(sessionManager.getRegId("language_name"))) {
 
-            holder.lang_txt.setChecked(true);
-            holder.lang_txt.setTypeface(null, Typeface.BOLD);
+            holder.tick_image.setImageResource(R.drawable.ic_verified_green);
+            holder.lang_text.setTypeface(null, Typeface.BOLD);
 
 
-       } else {
+        } else {
 
             System.out.println("sfdsdfsdxvvvv" + sessionManager.getRegId("language_name"));
 
@@ -101,28 +146,31 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
             if((sessionManager.getRegId("language_name").equals(""))){
 
                 if(position == 0){
-                    holder.lang_txt.setChecked(true);
-                    holder.lang_txt.setTypeface(null, Typeface.NORMAL);
+
+                    holder.tick_image.setImageResource(R.drawable.ic_verified_green);
+                    holder.lang_text.setTypeface(null, Typeface.BOLD);
 
                 }
 
 
 
-           }else{
-                holder.lang_txt.setChecked(false);
-                holder.lang_txt.setTypeface(null, Typeface.NORMAL);
+            }else{
+
+                holder.tick_image.setImageResource(R.drawable.ic_verified_grey);
+                holder.lang_text.setTypeface(null, Typeface.NORMAL);
             }
 
         }
 
 
-        holder.lang_txt.setOnClickListener(new View.OnClickListener() {
+
+
+        holder.lang_onclick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
               //  holder.lang_txt.setTypeface(null, Typeface.BOLD);
                 System.out.println("iiiddddddkkkkkkkkkkkkkkkkkkkkkkkkkkk" + products.getLanguageid());
-
                 sessionManager.saveLanguage_name(products.getVendor());
                 getLang(Integer.parseInt(products.getLanguageid()));
                 lng_list = products.getVendor();

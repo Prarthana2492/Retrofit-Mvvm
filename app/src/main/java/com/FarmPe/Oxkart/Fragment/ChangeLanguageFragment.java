@@ -1,5 +1,7 @@
 package com.FarmPe.Oxkart.Fragment;
 
+
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -52,7 +54,6 @@ public class ChangeLanguageFragment extends Fragment {
         View view = inflater.inflate(R.layout.select_language_layout, container, false);
 
         Status_bar_change_singleton.getInstance().color_change(getActivity());
-
 
 
 
