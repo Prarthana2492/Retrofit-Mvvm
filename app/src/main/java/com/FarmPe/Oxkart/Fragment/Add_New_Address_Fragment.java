@@ -40,6 +40,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.FarmPe.Oxkart.Activity.HomePage_With_Bottom_Navigation;
@@ -615,20 +616,12 @@ public class  Add_New_Address_Fragment extends Fragment {
                     prepareDistricData();
 
 
-                }else{
+                }else {
 
-                    Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Please Select State", Snackbar.LENGTH_LONG);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                    }
-                    snackbar.show();
+                    Toast toast = Toast.makeText(getActivity(), "Please Select State", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 0);
+                    toast.show();
+
 
                 }
 
@@ -660,18 +653,11 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                 }else{
 
-                    Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Please Select District", Snackbar.LENGTH_LONG);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                    }
-                    snackbar.show();
+                    Toast toast = Toast.makeText(getActivity(),"Please Select District", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
+
+
 
                 }
             }
@@ -733,20 +719,9 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                 }else {
 
-
-                    Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Please Select Tehsil", Snackbar.LENGTH_LONG);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                    }
-                    snackbar.show();
-
+                    Toast toast = Toast.makeText(getActivity(),"Please Select Tehsil/Block", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
 
 
                 }
@@ -1010,7 +985,6 @@ public class  Add_New_Address_Fragment extends Fragment {
                     }catch (Exception e){
                         e.printStackTrace();
                     }
-
                 }
             });
 
@@ -1531,6 +1505,7 @@ public class  Add_New_Address_Fragment extends Fragment {
             }
         });
     }
+
 
 
     public static InputFilter EMOJI_FILTER1 = new InputFilter() {

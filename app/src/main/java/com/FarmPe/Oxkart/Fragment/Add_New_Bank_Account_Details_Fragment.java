@@ -32,6 +32,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.FarmPe.Oxkart.Activity.Status_bar_change_singleton;
@@ -319,18 +320,11 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
 
                 }else{
 
-                    Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Please Select State", Snackbar.LENGTH_LONG);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                    }
-                    snackbar.show();
+                    Toast toast = Toast.makeText(getActivity(),"Please Select State", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
+
+
 
                 }
 
@@ -349,105 +343,48 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
 
                 if(bank_name.getText().toString().equals("")){
 
-                    int duration = 1000;
-                    Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Enter Bank Name", duration);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-
-
-                    }
-                    snackbar.show();
+                    Toast toast = Toast.makeText(getActivity(),"Enter Bank Name", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
 
 
                 } else if(bank_branch_name.getText().toString().equals("")){
 
-                    int duration = 1000;
-                    Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Enter Bank Branch Name", duration);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                    tv.setTextColor(Color.WHITE);
+                    Toast toast = Toast.makeText(getActivity(),"Enter Bank Branch Name", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-
-
-                    }
-                    snackbar.show();
 
 
 
                 } else if(acc_no.equals("")){
 
-                    int duration = 1000;
-                    Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Enter Account Number", duration);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                    tv.setTextColor(Color.WHITE);
+                    Toast toast = Toast.makeText(getActivity(),"Enter Account Number", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                    }
 
-                    snackbar.show();
 
 
 
                 } else if(confirm_acc_no.equals("")) {
 
 
-                    int duration = 1000;
-                    Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Confirm Account Number", duration);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                    Toast toast = Toast.makeText(getActivity(),"Confirm Account Number", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
 
 
-                    }
-                    snackbar.show();
 
 
 
                 } else if(!(acc_no.equals(confirm_acc_no))) {
 
-                    int duration = 1000;
-                    Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Account number is not matching", duration);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                    Toast toast = Toast.makeText(getActivity(),"Account number is not matching", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
 
 
-                    }
-                    snackbar.show();
 
 
                 }else{
@@ -856,32 +793,18 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
 
                         if(bank_status.equals("1")){
 
-                            int duration = 1000;
-                            Snackbar snackbar = Snackbar
-                                    .make(linearLayout, "Bank Account Added Successfully", duration);
-                            View snackbarView = snackbar.getView();
-                            TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                            tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                            tv.setTextColor(Color.WHITE);
+
+                            Toast toast = Toast.makeText(getActivity(),"Bank Account Added Successfully", Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                            toast.show();
 
 
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
-                                tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-
-
-                            } else {
-
-
-                                tv.setGravity(Gravity.CENTER_HORIZONTAL);
-
-                            }
 
                               selectedFragment = Get_Bank_List_Fragment.newInstance();
                               FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                               transaction.replace(R.id.frame_menu, selectedFragment);
                               transaction.commit();
-                              snackbar.show();
+
 
                         }
 

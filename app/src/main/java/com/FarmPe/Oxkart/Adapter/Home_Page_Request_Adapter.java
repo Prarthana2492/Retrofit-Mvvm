@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +17,12 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.FarmPe.Oxkart.Bean.Request_Class_HomePage_Bean;
 import com.FarmPe.Oxkart.Fragment.AddBrandFragment;
+import com.FarmPe.Oxkart.Fragment.AddModelFragment;
 import com.FarmPe.Oxkart.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -57,6 +60,8 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
                 .inflate(R.layout.homepage_requestprice_adapter_layout, parent, false);
         return new MyViewHolder(itemView);
     }
+
+
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final  Request_Class_HomePage_Bean products = productList.get(position);
@@ -72,6 +77,7 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
                 .into(holder.pay_img);
 
 
+
 //        Glide.with(activity).load(products.getImage())
 //                .thumbnail(0.5f)
 //                //.crossFade()
@@ -79,34 +85,56 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
 //                .into(holder.pay_img);
 
 
+
+
+
         holder.item_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-System.out.println("dfsdfsdf" + classname);
-                v.clearAnimation();
-                Animation mAnimation = new AlphaAnimation(1, 0);
-                mAnimation.setInterpolator(new LinearInterpolator());
-                mAnimation.setRepeatMode(Animation.REVERSE);
-                holder.item_layout.startAnimation(mAnimation);
-             //   AddFirstFragment.tracter_title = holder.name.getText().toString().toLowerCase().replace(" price","");
-                looinkgId = products.getId();
-                System.out.println("asaAAAA" + products.getId());
-                Bundle bundle = new Bundle();
-                if (classname.equals("home_menu")){
-                    bundle.putString("request_status",looinkgId);
-                    bundle.putString("status_home","HOME_REQ_PRICE");
+
+
+
+
+                    System.out.println("dfsdfsdf" + classname);
+                    v.clearAnimation();
+                    Animation mAnimation = new AlphaAnimation(1, 0);
+                    mAnimation.setInterpolator(new LinearInterpolator());
+                    mAnimation.setRepeatMode(Animation.REVERSE);
+                    holder.item_layout.startAnimation(mAnimation);
+                    //   AddFirstFragment.tracter_title = holder.name.getText().toString().toLowerCase().replace(" price","");
+                    looinkgId = products.getId();
+                    System.out.println("asaAAAA" + products.getId());
+
+
+                    Bundle bundle = new Bundle();
+                    if (classname.equals("home_menu")) {
+                        bundle.putString("request_status", looinkgId);
+                        bundle.putString("status_home", "HOME_REQ_PRICE");
+                    } else {
+                        bundle.putString("request_status", looinkgId);
+                        bundle.putString("status_home", "REQ_PRICE");
+                    }
+
+
+                if(products.getId().equals("")){
+
+                    Toast toast = Toast.makeText(activity,"No Requests", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
+
+
                 }else {
-                    bundle.putString("request_status", looinkgId);
-                    bundle.putString("status_home", "REQ_PRICE");
+
+
+
+                    selectedFragment = AddBrandFragment.newInstance();
+                    FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_menu, selectedFragment);
+                    transaction.addToBackStack("req_price");
+                    selectedFragment.setArguments(bundle);
+                    transaction.commit();
+
                 }
-                selectedFragment = AddBrandFragment.newInstance();
-                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_menu, selectedFragment);
-                transaction.addToBackStack("req_price");
-                selectedFragment.setArguments(bundle);
-                transaction.commit();
-
-
 
 //                for (int i = 0; i < productList.size(); i++) {
 //                    productList.get(i).setSelected(false);

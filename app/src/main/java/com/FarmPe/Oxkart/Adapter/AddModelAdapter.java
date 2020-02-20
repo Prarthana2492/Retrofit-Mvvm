@@ -23,6 +23,8 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.FarmPe.Oxkart.Bean.ModelBean;
 import com.FarmPe.Oxkart.Fragment.AddBrandFragment;
 import com.FarmPe.Oxkart.Fragment.AddModelFragment;
@@ -78,7 +80,6 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
         public MyViewHolder(View view) {
             super(view);
-
 
             brand_name=view.findViewById(R.id.brand_name);
             model=view.findViewById(R.id.model);
@@ -343,7 +344,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
                     holder.fav_request.setImageResource(R.drawable.ic_star);
                     products.setIsshortlisted(false);
-                    toast_message = "Your Request is removed fromFavorites";
+                    toast_message = "Your request is removed from favorites";
                     shortlisted = false;
 
 
@@ -351,7 +352,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
                     holder.fav_request.setImageResource(R.drawable.ic_star_filled);
                     products.setIsshortlisted(true);
-                    toast_message = "Your Request is added to Favorites";
+                    toast_message = "Your request is added to favorites";
                     shortlisted = true;
 
 
@@ -382,22 +383,27 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
                                 if(status.equals("1")) {
 
-                                    int duration = 1000;
-                                    Snackbar snackbar = Snackbar
-                                            .make(AddModelFragment.linearLayout, toast_message, duration);
-                                    View snackbarView2 = snackbar.getView();
-                                    TextView tv = (TextView) snackbarView2.findViewById(android.support.design.R.id.snackbar_text);
-                                    tv.setBackgroundColor(ContextCompat.getColor(activity, R.color.orange));
-                                    tv.setTextColor(Color.WHITE);
+                                    Toast toast = Toast.makeText(activity,toast_message, Toast.LENGTH_SHORT);
+                                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                                    toast.show();
 
-                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
-                                    else {
-                                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                                    }
-
-                                    snackbar.show();
+//                                    int duration = 1000;
+//                                    Snackbar snackbar = Snackbar
+//                                            .make(AddModelFragment.linearLayout, toast_message, duration);
+//                                    View snackbarView2 = snackbar.getView();
+//                                    TextView tv = (TextView) snackbarView2.findViewById(android.support.design.R.id.snackbar_text);
+//                                    tv.setBackgroundColor(ContextCompat.getColor(activity, R.color.orange));
+//                                    tv.setTextColor(Color.WHITE);
+//
+//                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+//                                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//
+//                                    else {
+//                                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+//                                    }
+//
+//                                    snackbar.show();
 
                                     //  Toast.makeText(activity, "Your request is favorited", Toast.LENGTH_SHORT).show();
                                 }

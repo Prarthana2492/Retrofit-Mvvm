@@ -59,7 +59,7 @@
                         android:layout_height="80dp"
                         android:visibility="gone"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_photo"
+                        android:src="@drawable/ic_gallery__default"
                         />
 
 
@@ -144,7 +144,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="50"
                         android:text="  View Brochure"
-                        android:layout_gravity="left"
+                      android:layout_gravity="left"
                         android:textColor="#005474"
                         android:drawableLeft="@drawable/ic_pdf"
                         android:padding="10dp"
@@ -170,6 +170,7 @@
                         android:textColor="@color/red"
                         android:textStyle="bold"
                         android:gravity="center"
+                        android:layout_gravity="left"
                         android:layout_marginLeft="30dp"
                         android:paddingVertical="10dp"
                         android:paddingHorizontal="15dp"

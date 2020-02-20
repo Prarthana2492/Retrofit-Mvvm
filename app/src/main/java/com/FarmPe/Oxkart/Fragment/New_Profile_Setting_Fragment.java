@@ -145,9 +145,9 @@ public class New_Profile_Setting_Fragment extends Fragment {
 
         sessionManager = new SessionManager(getActivity());
 
+
         lang_setting.setText(sessionManager.getRegId("language_name"));
         profile_phone.setText(sessionManager.getRegId("phone"));
-
 
 
 
@@ -534,7 +534,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
 //                transaction.commit();
 //            }
 //        });
-//
+//7
 //
 
         your_addresss.setOnClickListener(new View.OnClickListener() {
@@ -600,8 +600,6 @@ public class New_Profile_Setting_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-
-
                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.invite_people_bottom_sheet, null);
 
@@ -627,7 +625,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
                             whatsappIntent.setType("text/plain");
                             whatsappIntent.setPackage("com.whatsapp");
                             //whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Text");
-                            whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeSellerHub\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farms to download the app!");
+                            whatsappIntent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.FarmPe.Oxkart");
 
                             try {
                                 startActivity(whatsappIntent);
@@ -656,7 +654,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
                         if (packageName.contains("com.facebook.katana")) {
                             Intent sendIntent = new Intent();
                             sendIntent.setAction(Intent.ACTION_SEND);
-                            sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeSellerHub\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farms to download the app");
+                            sendIntent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.FarmPe.Oxkart");
                             sendIntent.setType("text/plain");
                             sendIntent.setPackage("com.facebook.katana");
                             try {
@@ -681,7 +679,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
                         if (packageName.contains("com.instagram")) {
                             Intent sendIntent = new Intent();
                             sendIntent.setAction(Intent.ACTION_SEND);
-                            sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeSellerHub\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farms to download the app");
+                            sendIntent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.FarmPe.Oxkart");
 
                             sendIntent.setType("text/plain");
                             sendIntent.setPackage("com.instagram.android");
@@ -711,7 +709,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
                             Intent intent = new Intent(Intent.ACTION_SEND);
                             intent.setClassName("com.twitter.android", "com.twitter.android.composer.ComposerActivity");
                             intent.setType("text/plain");
-                            intent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeSellerHub\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farms to download the app!");
+                            intent.putExtra(Intent.EXTRA_TEXT,"https://play.google.com/store/apps/details?id=com.FarmPe.Oxkart");
 
                             startActivity(intent);
 
@@ -736,7 +734,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
                         if (packageName.contains("com.facebook.orca")) {
                             Intent sendIntent = new Intent();
                             sendIntent.setAction(Intent.ACTION_SEND);
-                            sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeSellerHub\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farms to download the app");
+                            sendIntent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.FarmPe.Oxkart");
                             sendIntent.setType("text/plain");
                             sendIntent.setPackage("com.facebook.orca");
                             try {
@@ -763,7 +761,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
                             messageIntent.setType("text/plain");
                             messageIntent.setPackage("com.android.mms");
                             //whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Text");
-                            messageIntent.putExtra(Intent.EXTRA_TEXT, "Hey , you found one app \"FarmPeSellerHub\" Tap https://play.google.com/store/apps/details?id=com.FarmPe.Farms to download the app");
+                            messageIntent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.FarmPe.Oxkart");
                             try {
                                 startActivity(messageIntent);
                             } catch (android.content.ActivityNotFoundException ex) {

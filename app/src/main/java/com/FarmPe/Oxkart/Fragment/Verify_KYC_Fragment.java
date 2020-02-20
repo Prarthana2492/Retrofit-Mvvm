@@ -26,8 +26,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
+import com.FarmPe.Oxkart.Activity.New_OTP_Page_Activity;
 import com.FarmPe.Oxkart.R;
 
 
@@ -177,69 +179,31 @@ public class Verify_KYC_Fragment extends Fragment {
                 if(select_document_type.getText().toString().equals("")){
 
 
-                    Snackbar snackbar = Snackbar
-                            .make(linear_layout,"Please Select Document Type", Snackbar.LENGTH_LONG);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                    tv.setTextColor(Color.WHITE);
+                    Toast toast = Toast.makeText(getActivity(),"Please Select Document Type", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                    }
-
-                    snackbar.show();
 
 
                 } else if(enter_id_nu.getText().toString().equals("")){
 
 
+                    Toast toast = Toast.makeText(getActivity(),"Please Enter ID Number", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
 
-                    Snackbar snackbar = Snackbar
-                            .make(linear_layout,"Please Enter ID Number", Snackbar.LENGTH_LONG);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                    tv.setTextColor(Color.WHITE);
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
 
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-
-                    } else {
-
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                    }
-
-                    snackbar.show();
 
 
                 } else if(enter_name.getText().toString().equals("")){
 
 
-                    Snackbar snackbar = Snackbar
-                            .make(linear_layout,"Please Enter Name", Snackbar.LENGTH_LONG);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                    tv.setTextColor(Color.WHITE);
+                    Toast toast = Toast.makeText(getActivity(),"Please Enter Name", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
 
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-
-                    } else {
-
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-
-                    }
-
-                    snackbar.show();
 
                 }
 

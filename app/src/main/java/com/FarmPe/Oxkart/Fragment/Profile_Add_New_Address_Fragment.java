@@ -34,6 +34,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.FarmPe.Oxkart.Adapter.Address_Adapter;
 import com.FarmPe.Oxkart.Adapter.DistrictAdapter1;
 import com.FarmPe.Oxkart.Adapter.Gram_Panchayat_Adapter;
@@ -69,6 +71,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
     public static EditText state_txt;
     public static DrawerLayout drawer;
     RecyclerView recyclerView;
+
 
     String account_validate,ifsc_validate,status;
     EditText account_no,ifsc_code;
@@ -161,6 +164,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
         address.setFilters(new InputFilter[] { EMOJI_FILTER,new InputFilter.LengthFilter(50)});
        // street_name.setFilters(new InputFilter[] {EMOJI_FILTER,new InputFilter.LengthFilter(50)});
         landmark.setFilters(new InputFilter[] {EMOJI_FILTER,new InputFilter.LengthFilter(50)});
+
 
 
 
@@ -388,18 +392,10 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
 
                 }else{
 
-                    Snackbar snackbar = Snackbar
-                            .make(linear_layout, "Please Select State", Snackbar.LENGTH_LONG);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                    }
-                    snackbar.show();
+                    Toast toast = Toast.makeText(getActivity(),"Please Select State", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
+
 
                 }
             }
@@ -430,31 +426,21 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
                     prepareBlockData();
 
 
-                }else{
+                }else {
 
-                    Snackbar snackbar = Snackbar
-                            .make(linear_layout, "Please Select District", Snackbar.LENGTH_LONG);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                    }
-                    snackbar.show();
+                    Toast toast = Toast.makeText(getActivity(), "Please Select District", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 0);
+                    toast.show();
+
 
                 }
             }
         });
 
 
-
         village.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
 
                 if(!block.getText().toString().equals("")) {
@@ -476,18 +462,11 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
 
                 }else{
 
-                    Snackbar snackbar = Snackbar
-                            .make(linear_layout, "Please Select Block", Snackbar.LENGTH_LONG);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                    }
-                    snackbar.show();
+                    Toast toast = Toast.makeText(getActivity(),"Please Select Block", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
+
+
 
                 }
             }
@@ -503,108 +482,55 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
 
                 if(full_name.getText().toString().equals("")) {
 
-                    int duration = 1000;
-                    Snackbar snackbar = Snackbar
-                            .make(linear_layout, "Enter Your Name", duration);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                    tv.setTextColor(Color.WHITE);
+                    Toast toast = Toast.makeText(getActivity(),"Enter your name", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
 
-                    }
-
-                    snackbar.show();
 
                 } else if(mobile_no.getText().toString().equals("")) {
 
+                    Toast toast = Toast.makeText(getActivity(),"Enter your mobile number", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
 
-                    int duration = 1000;
-                    Snackbar snackbar = Snackbar
-                            .make(linear_layout, "Enter Your Mobile Number", duration);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                    tv.setTextColor(Color.WHITE);
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
 
-                    }
-                    snackbar.show();
 
 
                 } else if(mobile_no.length()<10) {
 
-                    int duration = 1000;
-                    Snackbar snackbar = Snackbar
-                            .make(linear_layout, "Invalid Mobile Number", duration);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                    tv.setTextColor(Color.WHITE);
+                    Toast toast = Toast.makeText(getActivity(),"Invalid mobile number", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-
-
-                    }
-                    snackbar.show();
 
 
 
                 }else if(address.getText().toString().equals("")){
 
 
-                    int duration = 1000;
-                    Snackbar snackbar = Snackbar
-                            .make(linear_layout, "Enter Your Address", duration);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                    tv.setTextColor(Color.WHITE);
+                    Toast toast = Toast.makeText(getActivity(),"Enter your address", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-
-                    }
-                    snackbar.show();
 
 
                 } else if(pincode.getText().toString().equals("")){
 
-
-                    int duration = 1000;
-                    Snackbar snackbar = Snackbar
-                            .make(linear_layout, "Enter Pincode", duration);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-
-
-                    }
-                    snackbar.show();
+                    Toast toast = Toast.makeText(getActivity(),"Enter pincode", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
 
 
 
                 } else if(state.getText().toString().equals("")){
+
+
+                    Toast toast = Toast.makeText(getActivity(),"Please select state", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
+
 
 
                     int duration = 1000;
@@ -628,42 +554,20 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
 
                 } else if(district.getText().toString().equals("")){
 
-                    int duration = 1000;
-                    Snackbar snackbar = Snackbar
-                            .make(linear_layout, "Select District", duration);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                    tv.setTextColor(Color.WHITE);
+                    Toast toast = Toast.makeText(getActivity(),"Please select district", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-
-
-                    }
-                    snackbar.show();
 
 
                 } else if(block.getText().toString().equals("")){
 
-                    int duration = 1000;
-                    Snackbar snackbar = Snackbar
-                            .make(linear_layout, "Select Block", duration);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                    tv.setTextColor(Color.WHITE);
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                    Toast toast = Toast.makeText(getActivity(),"Please select block", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
 
 
-                    }
-                    snackbar.show();
 
 
 
@@ -758,6 +662,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
 
                             }
 
+
                             sorting(stateBeanList);
 
 
@@ -842,7 +747,6 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
     }
 
 
-
     private void prepareBlockData() {
 
 
@@ -854,6 +758,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
             JSONObject jsonpost = new JSONObject();
             jsonObject.put("DistrictId", DistrictAdapter1.districtid);
             jsonpost.put("Blockobj",jsonObject);
+
 
             Crop_Post.crop_posting(getActivity(), Urls.Block_List, jsonpost, new VoleyJsonObjectCallback() {
                 @Override
@@ -872,8 +777,8 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
                                 JSONObject jsonObject1 = tal_array.getJSONObject(i);
                                 stateBean = new StateBean(jsonObject1.getString("BlockName"), jsonObject1.getString("BlockId"));
                                 blockBeanList.add(stateBean);
-
                             }
+
 
                             sorting(blockBeanList);
 
@@ -945,7 +850,6 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
                 }
             });
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -953,12 +857,11 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
 
 
 
-
-
     public static InputFilter  EMOJI_FILTER = new InputFilter() {
         @Override
         public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
             boolean keepOriginal = true;
+
             String specialChars = ".1/*!@#$%^&*()\"{}_[]|\\?/<>,.:-'';§£¥₹...%&+=€π|";
             StringBuilder sb = new StringBuilder(end - start);
             for (int index = start; index < end; index++) {
@@ -979,7 +882,9 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
             }
             if (keepOriginal)
                 return null;
+
             else {
+
                 if (source instanceof Spanned) {
                     SpannableString sp = new SpannableString(sb);
                     TextUtils.copySpansFrom((Spanned) source, start, sb.length(), null, sp, 0);
@@ -1012,6 +917,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
 
 
             if(getArguments().getString("prof_add_status").equals("edit_add_addressss")){
+
 
                 jsonObject.put("UserId",sessionManager.getRegId("userId"));
                 jsonObject.put("FullName",full_name.getText().toString());
@@ -1046,25 +952,11 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
 
                         if(status.equals("1")){
 
-                          //  Toast.makeText(getActivity(), "added successfully", Toast.LENGTH_SHORT).show();
+                            Toast toast = Toast.makeText(getActivity(),message, Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                            toast.show();
 
-                            int duration = 1000;
-                            Snackbar snackbar = Snackbar
-                                    .make(linear_layout, message, duration);
-                            View snackbarView = snackbar.getView();
-                            TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                            tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                            tv.setTextColor(Color.WHITE);
-
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                            } else {
-                                tv.setGravity(Gravity.CENTER_HORIZONTAL);
-
-
-                            }
-                            snackbar.show();
-
+                            //  Toast.makeText(getActivity(), "added successfully", Toast.LENGTH_SHORT).show();
 
                             selectedFragment = Profile_Get_Address_Fragment.newInstance();
                             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -1123,6 +1015,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
 
 
         else if (search_status.equals("district")) {
+
             searchresultAraaylist.clear();
             for (int i = 0; i < districtBeanList.size(); i++) {
 
@@ -1137,6 +1030,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
                 norecords.setVisibility(View.VISIBLE);
 
             }else {
+
                 recyclerView.setVisibility(View.VISIBLE);
                 norecords.setVisibility(View.GONE);
 
@@ -1145,6 +1039,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
                 recyclerView.setAdapter(districtAdapter);
 
             }
+
 
 //            districtAdapter = new DistrictAdapter(searchresultAraaylist, getActivity());
 //            recyclerView.setAdapter(districtAdapter);

@@ -48,7 +48,6 @@ public class AddBrandFragment extends Fragment {
     public static String request_looking_id;
 
 
-
     public static AddBrandFragment newInstance() {
         AddBrandFragment fragment = new AddBrandFragment();
         return fragment;

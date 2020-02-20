@@ -95,7 +95,6 @@ public class ActivitySelectLang extends AppCompatActivity {
         newOrderBeansList.add(item10);
 
 
-
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(ActivitySelectLang.this, 1, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager_farm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -168,7 +167,7 @@ public class ActivitySelectLang extends AppCompatActivity {
                     try {
                         sessionManager.saveLanguage(result.toString());
 
-                        String lang_title1 = result.getString("SelectYourLanguage");
+                        String lang_title1 = result.getString("SelectYourLanguage".replace("\n",""));
                         String proceed_btn = result.getString("PROCEED").replace("\n","");
 
                         select_your_lang_text.setText(lang_title1);

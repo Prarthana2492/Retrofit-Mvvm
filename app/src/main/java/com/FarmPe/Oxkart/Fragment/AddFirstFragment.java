@@ -55,6 +55,7 @@ public class AddFirstFragment extends Fragment {
         View view = inflater.inflate(R.layout.request_price_recyc_layout, container, false);
 
 
+
         Status_bar_change_singleton.getInstance().color_change(getActivity());
 
         recyclerView=view.findViewById(R.id.recycler_what_looking);

@@ -36,10 +36,6 @@ import com.FarmPe.Oxkart.Urls;
 import com.FarmPe.Oxkart.Volly_class.Login_post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
 
-import com.google.android.gms.auth.api.Auth;
-
-import com.google.android.gms.auth.api.credentials.Credential;
-import com.google.android.gms.auth.api.credentials.HintRequest;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.database.annotations.Nullable;
@@ -58,7 +54,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
     SessionManager sessionManager;
     public static boolean connectivity_check;
     ConnectivityReceiver connectivityReceiver;
-    public static  String toast_internet,toast_nointernet,userId;
+    public static  String toast_internet,toast_nointernet,userId,toast_mob_valid,toast_not_registered;
     public static   JSONObject lngObject;
     String status_resp,status;
     private Handler mHandler = new Handler();
@@ -67,7 +63,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
 
     GoogleApiClient mGoogleApiClient;
     private int RESOLVE_HINT = 2;
-    Credential credential;
+
     String s1;
 
 
@@ -97,13 +93,17 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                 message = "Good! Connected to Internet";
                 color = Color.WHITE;
 
-                int duration=1000;
-                Snackbar snackbar = Snackbar.make(linear_layout,toast_internet, duration);
-                View sbView = snackbar.getView();
-                TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
-                textView.setBackgroundColor(ContextCompat.getColor(New_Login_Activity2.this,R.color.orange));
-                textView.setTextColor(Color.WHITE);
-                snackbar.show();
+                Toast toast = Toast.makeText(New_Login_Activity2.this,toast_internet, Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                toast.show();
+
+//                int duration=1000;
+//                Snackbar snackbar = Snackbar.make(linear_layout,toast_internet, duration);
+//                View sbView = snackbar.getView();
+//                TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+//                textView.setBackgroundColor(ContextCompat.getColor(New_Login_Activity2.this,R.color.orange));
+//                textView.setTextColor(Color.WHITE);
+//                snackbar.show();
 
 
                 connectivity_check=false;
@@ -117,7 +117,12 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
             int duration=1000;
             connectivity_check=true;
 
-            Snackbar.make(findViewById(android.R.id.content),toast_nointernet, duration).show();
+            Toast toast = Toast.makeText(New_Login_Activity2.this,toast_nointernet, Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+            toast.show();
+
+
+//            Snackbar.make(findViewById(android.R.id.content),toast_nointernet, duration).show();
 
 
         }
@@ -159,11 +164,11 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
         contact_no =  mobile_no.getText().toString();
 
 
-        mGoogleApiClient = new GoogleApiClient.Builder(New_Login_Activity2.this)
-                .addConnectionCallbacks(this)
-                .enableAutoManage(this, this)
-                .addApi(Auth.CREDENTIALS_API)
-                .build();
+//        mGoogleApiClient = new GoogleApiClient.Builder(New_Login_Activity2.this)
+//                .addConnectionCallbacks(this)
+//                .enableAutoManage(this, this)
+//                .addApi(Auth.CREDENTIALS_API)
+//                .build();
 
 
         setupUI(linear_layout);
@@ -171,7 +176,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
 
 
 
-        getHintPhoneNumber();
+       // getHintPhoneNumber();
 
 
         try {
@@ -184,6 +189,10 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
             mob_no_details.setText(lngObject.getString("Enteryourphonenumbertogetstarted").replace("\n",""));
             farmer_text1.setText(lngObject.getString("MadeforFarmingCommunity"));
             farmer_desc1.setText(lngObject.getString("Theconfluenceoffarmersandfairtrade"));
+            toast_internet = lngObject.getString("GoodConnectedtoInternet");
+            toast_nointernet = lngObject.getString("NoInternetConnection");
+            toast_mob_valid = lngObject.getString("Pleaseenter10digitsmobilenumber");
+            toast_not_registered = lngObject.getString("Yournumberisnotregistered");
 
 
 
@@ -212,22 +221,30 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
 
                 if(contact_no.equals("")){
 
-                    Toast toast = Toast.makeText(New_Login_Activity2.this, "Please Enter Phone Number To Proceed", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(New_Login_Activity2.this,"Please Enter Phone Number To Proceed", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
-                    TextView toastMessage=(TextView) toast.getView().findViewById(android.R.id.message);
-                    toastMessage.setTextColor(Color.WHITE);
-                    toast.getView().setBackgroundResource(R.drawable.black_curve_background);
                     toast.show();
+
+//                    Toast toast = Toast.makeText(New_Login_Activity2.this, "Please Enter Phone Number To Proceed", Toast.LENGTH_SHORT);
+//                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+//                    TextView toastMessage=(TextView) toast.getView().findViewById(android.R.id.message);
+//                    toastMessage.setTextColor(Color.WHITE);
+//                    toast.getView().setBackgroundResource(R.drawable.black_curve_background);
+//                    toast.show();
 
 
                 }else if(contact_no.length()<10){
 
-                    Toast toast = Toast.makeText(New_Login_Activity2.this, "Please Enter 10 Digit Mobile Number", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(New_Login_Activity2.this,toast_mob_valid, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
-                    TextView toastMessage1=(TextView) toast.getView().findViewById(android.R.id.message);
-                    toastMessage1.setTextColor(Color.WHITE);
-                    toast.getView().setBackgroundResource(R.drawable.black_curve_background);
                     toast.show();
+
+//                    Toast toast = Toast.makeText(New_Login_Activity2.this, "Please Enter 10 Digit Mobile Number", Toast.LENGTH_SHORT);
+//                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+//                    TextView toastMessage1=(TextView) toast.getView().findViewById(android.R.id.message);
+//                    toastMessage1.setTextColor(Color.WHITE);
+//                    toast.getView().setBackgroundResource(R.drawable.black_curve_background);
+//                    toast.show();
 
 
                 }else{
@@ -254,19 +271,24 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
 
                 if(contact_no.equals("")) {
 
-                    Toast toast = Toast.makeText(New_Login_Activity2.this, "Please Enter Phone Number To Proceed", Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 0);
-                    TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
-                    toastMessage.setTextColor(Color.WHITE);
-                    toast.getView().setBackgroundResource(R.drawable.black_curve_background);
+
+                    Toast toast = Toast.makeText(New_Login_Activity2.this,"Please Enter Phone Number To Proceed", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
+
+//                    Toast toast = Toast.makeText(New_Login_Activity2.this, "Please Enter Phone Number To Proceed", Toast.LENGTH_SHORT);
+//                    toast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 0);
+//                    TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+//                    toastMessage.setTextColor(Color.WHITE);
+//                    toast.getView().setBackgroundResource(R.drawable.black_curve_background);
+//                    toast.show();
 
 
                 }else if(contact_no.length()<10){
 
-//                    Toast toast = Toast.makeText(New_Login_Activity2,"Please Click Back Again To Exit", Toast.LENGTH_SHORT);
-//                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
-//                    toast.show();
+                    Toast toast = Toast.makeText(New_Login_Activity2.this,toast_mob_valid, Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
 ////
 //                    Toast toast = Toast.makeText(New_Login_Activity2.this, "Please Enter 10 Digit Mobile Number", Toast.LENGTH_SHORT);
 //                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
@@ -292,45 +314,43 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
     }
 
 
-    public void getHintPhoneNumber() {
-        HintRequest hintRequest =
-                new HintRequest.Builder()
-                        .setPhoneNumberIdentifierSupported(true)
-                        .build();
-        PendingIntent mIntent = Auth.CredentialsApi.getHintPickerIntent(mGoogleApiClient, hintRequest);
-        try {
-            startIntentSenderForResult(mIntent.getIntentSender(), RESOLVE_HINT, null, 0, 0, 0);
-        } catch (IntentSender.SendIntentException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void getHintPhoneNumber() {
+//        HintRequest hintRequest =
+//                new HintRequest.Builder()
+//                        .setPhoneNumberIdentifierSupported(true)
+//                        .build();
+//        PendingIntent mIntent = Auth.CredentialsApi.getHintPickerIntent(mGoogleApiClient, hintRequest);
+//        try {
+//            startIntentSenderForResult(mIntent.getIntentSender(), RESOLVE_HINT, null, 0, 0, 0);
+//        } catch (IntentSender.SendIntentException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        //Result if we want hint number
-        if (requestCode == RESOLVE_HINT) {
-            if (resultCode == Activity.RESULT_OK) {
-                credential = data.getParcelableExtra(Credential.EXTRA_KEY);
-                System.out.println("fgd"+credential);
-
-                 s1 = credential.getId().substring(3);
-
-                //contact_no = mobile_no.getText().toString();
-                //  System.out.println("uryuewyuwe" + contact_no);
-                check_login_user2();
-                // login_register();
-            }
-            // credential.getId();  <-- will need to process phone number string
-            //  mobile_no.setText(credential.getId());
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        //Result if we want hint number
+//        if (requestCode == RESOLVE_HINT) {
+//            if (resultCode == Activity.RESULT_OK) {
+//                credential = data.getParcelableExtra(Credential.EXTRA_KEY);
+//                System.out.println("fgd"+credential);
+//
+//                 s1 = credential.getId().substring(3);
+//
+//                //contact_no = mobile_no.getText().toString();
+//                //  System.out.println("uryuewyuwe" + contact_no);
+//                check_login_user2();
+//                // login_register();
+//            }
+//            // credential.getId();  <-- will need to process phone number string
+//            //  mobile_no.setText(credential.getId());
+//        }
+//    }
 
 
     private void check_login_user2() {
-
-
 
         try{
 
@@ -388,15 +408,12 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                                 //    sessionManager.createRegisterSession(contact_no);
                             }
 
-//                        }else{
+                        }else{
 
+                            Toast toast = Toast.makeText(New_Login_Activity2.this,"User Not Registered", Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                            toast.show();
 
-//                            Toast toast = Toast.makeText(New_Login_Activity2.this, "User Not Registered", Toast.LENGTH_SHORT);
-//                            toast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 0);
-//                            TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
-//                            toastMessage.setTextColor(Color.WHITE);
-//                            toast.getView().setBackgroundResource(R.drawable.black_curve_background);
-//                            toast.show();
 
                         }
 
@@ -556,15 +573,14 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                                 //    sessionManager.createRegisterSession(contact_no);
                             }
 
-//                        }else{
+                        }else{
 
 
-//                            Toast toast = Toast.makeText(New_Login_Activity2.this, "User Not Registered", Toast.LENGTH_SHORT);
-//                            toast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 0);
-//                            TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
-//                            toastMessage.setTextColor(Color.WHITE);
-//                            toast.getView().setBackgroundResource(R.drawable.black_curve_background);
-//                            toast.show();
+                            Toast toast = Toast.makeText(New_Login_Activity2.this,"User Not Registered", Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                            toast.show();
+
+
 
                         }
 
@@ -609,12 +625,12 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                             status_resp = jsonObject_resp.getString("Status");
 
 
-                            Toast toast = Toast.makeText(New_Login_Activity2.this, "User Already Registered", Toast.LENGTH_SHORT);
-                            toast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 0);
-                            TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
-                            toastMessage.setTextColor(Color.WHITE);
-                            toast.getView().setBackgroundResource(R.drawable.black_curve_background);
+                            Toast toast = Toast.makeText(New_Login_Activity2.this,"User Already Registered", Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                             toast.show();
+
+
+
                             // sessionManager.saveUserId(jsonObject_resp.getString("Id"));
                             //  sessionManager.save_name(jsonObject_resp.getString("FullName"),jsonObject_resp.getString("PhoneNo"),jsonObject_resp.getString("ProfilePic"));
 //                            Intent intent = new Intent(New_Login_Activity2.this, FirmShopDetailsActivity.class);

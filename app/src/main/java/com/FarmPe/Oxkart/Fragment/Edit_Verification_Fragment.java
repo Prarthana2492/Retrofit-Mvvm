@@ -605,24 +605,25 @@ public class Edit_Verification_Fragment extends Fragment {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.setCancelable(false);
+
         ok_btn =  dialog.findViewById(R.id.ok_btn);
         cancel_btn =  dialog.findViewById(R.id.cancel_btn);
         text_desc =  dialog.findViewById(R.id.text_desc);
+
 
         try {
             
             lngObject = new JSONObject(sessionManager.getRegId("language"));
 
+
             text_desc.setText(lngObject.getString("DoyouwanttosubmitthedetailsforVerification"));
             ok_btn.setText(lngObject.getString("OK").replace("\n",""));
-          //  cancel_btn.setText(lngObject.getString("CANCEL"));
+            cancel_btn.setText(lngObject.getString("Cancel"));
+
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-
 
 
         ok_btn.setOnClickListener(new View.OnClickListener() {

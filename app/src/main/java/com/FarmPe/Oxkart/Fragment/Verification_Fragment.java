@@ -25,7 +25,7 @@ public class Verification_Fragment extends Fragment {
     Fragment selectedFragment;
   LinearLayout back_feed;
     public static JSONObject lngObject;
-  TextView voter_id_back,voter_id_front,select_location,selfie_verify,face_verify_selfy_text,sel_loc_text,voter_front_text,voter_back_text,continue_btn;
+  TextView setting_tittle,voter_id_back,voter_id_front,select_location,selfie_verify,face_verify_selfy_text,sel_loc_text,voter_front_text,voter_back_text,continue_btn;
   String status_1,status_2;
   SessionManager sessionManager;
 
@@ -54,6 +54,7 @@ public class Verification_Fragment extends Fragment {
         voter_front_text = view.findViewById(R.id.voter_front_text);
         continue_btn = view.findViewById(R.id.continue_btn);
         back_feed = view.findViewById(R.id.back_feed);
+        setting_tittle = view.findViewById(R.id.setting_tittle);
 
 
         sessionManager = new SessionManager(getActivity());
@@ -74,6 +75,7 @@ public class Verification_Fragment extends Fragment {
             voter_id_front.setText(lngObject.getString("Upload"));
             voter_id_back.setText(lngObject.getString("Upload"));
             selfie_verify.setText(lngObject.getString("Click"));
+            setting_tittle.setText(lngObject.getString("Verification"));
 
             face_verify_selfy_text.setText(lngObject.getString("FaceVerificationSelfie").replace("\n",""));
             sel_loc_text.setText(lngObject.getString("SelectLocation").replace("\n",""));
@@ -115,7 +117,6 @@ public class Verification_Fragment extends Fragment {
 
             }
         });
-
 
 
         view.setFocusableInTouchMode(true);

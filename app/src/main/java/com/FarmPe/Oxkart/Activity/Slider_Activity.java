@@ -56,13 +56,35 @@ public class Slider_Activity extends AppCompatActivity {
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
         };
 
+
         ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
         if (!hasPermissions(this, PERMISSIONS)) {
         }
 
 
 
+        try {
 
+
+            lngObject = new JSONObject(sessionManager.getRegId("language"));
+
+            System.out.println("llllllllllllkkkkkkkkkkkkkkk" + lngObject.getString("EnterPhoneNo"));
+
+            proceed.setText(lngObject.getString("PROCEED").replace("\n",""));
+
+
+
+
+
+            //  pass.setHint(lngObject.getString("Password"));
+            //  remember_me.setText(lngObject.getString("RememberMe"));
+
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
 
 
@@ -73,8 +95,6 @@ public class Slider_Activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
 
 
 

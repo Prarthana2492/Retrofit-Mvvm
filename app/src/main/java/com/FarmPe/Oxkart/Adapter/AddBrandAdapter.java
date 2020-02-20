@@ -21,6 +21,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.FarmPe.Oxkart.Fragment.AddBrandFragment;
 import com.FarmPe.Oxkart.Fragment.AddModelFragment;
@@ -106,19 +107,11 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
 
 
                 if(products.getImage().equalsIgnoreCase("")){
-                    int duration = 1000;
-                    Snackbar snackbar = Snackbar
-                            .make(linearLayout, "No Brands", duration);
-                    View snackbarView2 = snackbar.getView();
-                    TextView tv = (TextView) snackbarView2.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(activity,R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                    }
-                    snackbar.show();
+
+                    Toast toast = Toast.makeText(activity,"No Brands", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                    toast.show();
+
 
 
                }else {
