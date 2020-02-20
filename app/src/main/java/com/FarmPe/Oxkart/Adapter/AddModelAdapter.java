@@ -228,7 +228,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
         if(products.getPdf_brochure().equalsIgnoreCase("")) {
 
-            holder.brochure.setVisibility(View.GONE);
+            holder.brochure.setVisibility(View.INVISIBLE);
 
         }else {
 

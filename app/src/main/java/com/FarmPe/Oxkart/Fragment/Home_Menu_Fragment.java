@@ -160,7 +160,7 @@ public class Home_Menu_Fragment extends Fragment  {
         Request_Class_HomePage_Bean item6    =  new Request_Class_HomePage_Bean("Power\nTillers","12",R.drawable.tiller);
         Request_Class_HomePage_Bean item7    =  new Request_Class_HomePage_Bean("Tractor\nImplements","2",R.drawable.tractor_implements);
         Request_Class_HomePage_Bean item8    =  new Request_Class_HomePage_Bean("Backhoe\nAttachment","10",R.drawable.backhoe);
-        Request_Class_HomePage_Bean item9    =  new Request_Class_HomePage_Bean("Irrigation\nSystem","11",R.drawable.sprinkler);
+        Request_Class_HomePage_Bean item9    =  new Request_Class_HomePage_Bean("Irrigation\nSystem","",R.drawable.sprinkler);
         Request_Class_HomePage_Bean item10   =  new Request_Class_HomePage_Bean("Tractor\n Accessories","3",R.drawable.accessories);
         Request_Class_HomePage_Bean item11   =  new Request_Class_HomePage_Bean("Tyres","8",R.drawable.tyre);
         Request_Class_HomePage_Bean item12   =  new Request_Class_HomePage_Bean("Fence\nWires","7",R.drawable.fencing_wire);
