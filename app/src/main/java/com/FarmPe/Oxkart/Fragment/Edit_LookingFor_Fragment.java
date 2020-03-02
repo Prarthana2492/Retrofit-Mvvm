@@ -1,7 +1,5 @@
 package com.FarmPe.Oxkart.Fragment;
 
-
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -30,7 +28,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 public class Edit_LookingFor_Fragment extends Fragment {
@@ -69,7 +66,6 @@ public class Edit_LookingFor_Fragment extends Fragment {
               profile_no = view.findViewById(R.id.profile_no);
               toolbar_title = view.findViewById(R.id.toolbar_title);
               user_address = view.findViewById(R.id.user_address);
-
 
 
         brand_name = view.findViewById(R.id.brand_name);

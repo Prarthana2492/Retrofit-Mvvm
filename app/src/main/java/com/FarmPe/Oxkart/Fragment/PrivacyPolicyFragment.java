@@ -54,6 +54,8 @@ public class PrivacyPolicyFragment extends Fragment {
         sessionManager = new SessionManager(getActivity());
 
 
+
+
     System.out.println("eewqewqe" + getArguments().getString("status"));
 
         view.setFocusableInTouchMode(true);

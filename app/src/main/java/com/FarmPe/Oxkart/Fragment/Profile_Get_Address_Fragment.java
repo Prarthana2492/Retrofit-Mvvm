@@ -29,7 +29,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-
 public class Profile_Get_Address_Fragment extends Fragment {
 
 
@@ -42,7 +41,6 @@ public class Profile_Get_Address_Fragment extends Fragment {
     public static LinearLayout back_feed,linearLayout,Continue;
     JSONArray new_address_list_array;
     SessionManager sessionManager;
-
 
 
 

@@ -69,7 +69,6 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
             linearLayout=view.findViewById(R.id.linear_layout);
             default_image=view.findViewById(R.id.default_img);
 
-
         }
     }
 
@@ -108,7 +107,7 @@ public class AddBrandAdapter extends RecyclerView.Adapter<AddBrandAdapter.MyView
 
                 if(products.getImage().equalsIgnoreCase("")){
 
-                    Toast toast = Toast.makeText(activity,"No Brands", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(activity,"No Brands", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 

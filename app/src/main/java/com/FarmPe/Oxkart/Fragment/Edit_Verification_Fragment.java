@@ -27,19 +27,18 @@ import org.json.JSONObject;
 
 
 
-
-
 public class Edit_Verification_Fragment extends Fragment {
 
     Fragment selectedFragment;
     LinearLayout continue_btn, back_feed, back_voter_edit, linearLayout, edit_lay_selfie, select_loc_edit, front_voter_edit;
     ImageView capture_photo;
     TextView face_verify_selfy_text, click_selfie, upload_front, upload_voter_back, voter_back_text1, voter_front_text1,
-            proceed_btn, edit_back_text, edit_front_text,select, sel_loc_text,edit_selfie_text,location_edit_text;
+    setting_tittle, proceed_btn, edit_back_text, edit_front_text,select, sel_loc_text,edit_selfie_text,location_edit_text;
     SessionManager sessionManager;
     JSONArray get_location_array, imagelist_array, vote_list_array, vote_bk_list_array;
     String location_id;
     public static JSONObject lngObject;
+
 
 
     public static Edit_Verification_Fragment newInstance() {
@@ -80,6 +79,8 @@ public class Edit_Verification_Fragment extends Fragment {
         edit_front_text = view.findViewById(R.id.edit_front_text);
         edit_selfie_text = view.findViewById(R.id.edit_selfie_text);
         location_edit_text = view.findViewById(R.id.location_edit_text);
+        setting_tittle = view.findViewById(R.id.setting_tittle);
+
 
         // select_location = view.findViewById(R.id.select_location);
         //        capture_photo = view.findViewById(R.id.capture_photo);
@@ -103,6 +104,7 @@ public class Edit_Verification_Fragment extends Fragment {
             upload_front.setText(lngObject.getString("Upload"));
             upload_voter_back.setText(lngObject.getString("Upload"));
             click_selfie.setText(lngObject.getString("Click"));
+            setting_tittle.setText(lngObject.getString("Verification"));
 
             face_verify_selfy_text.setText(lngObject.getString("FaceVerificationSelfie").replace("\n",""));
             sel_loc_text.setText(lngObject.getString("SelectLocation").replace("\n",""));
@@ -199,8 +201,11 @@ public class Edit_Verification_Fragment extends Fragment {
                             String location_lat = jsonObject1.getString("Latitude");
                             String location_long = jsonObject1.getString("Longitude");
                             String location_captured_image = jsonObject1.getString("CapturedLocation");
+                            sessionManager.savelocation(location_captured_image);
 
                         }
+
+
                         if (get_location_array.length() == 0) {
 
                             select_loc_edit.setVisibility(View.GONE);

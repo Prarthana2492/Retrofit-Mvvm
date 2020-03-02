@@ -75,6 +75,23 @@ public class CartSliderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 //                    .into(viewHolder0.loan_img);
 
 
+//
+//        Glide.with(activity).load(products1.getImage())
+//                .thumbnail(0.5f)
+//                // .crossFade()
+//                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+//                        .error(R.drawable.avatarmale))
+//                .into(holder.pay_img);
+
+
+//        Glide.with(activity).load(products1.getImage())
+//                .thumbnail(0.5f)
+//                //   .crossFade()
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .placeholder(R.drawable.avatarmale)
+//                .into(viewHolder0.loan_img);
+
+
         Glide.with(activity).load(products1.getImage())
                 .thumbnail(0.5f)
                 // .crossFade()
@@ -82,6 +99,7 @@ public class CartSliderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                         .error(R.drawable.avatarmale))
                 .placeholder(R.drawable.avatarmale)
                 .into(viewHolder0.loan_img);
+
     }
 
     @Override
@@ -96,6 +114,8 @@ public class CartSliderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         else return 0;
         //  return position % 2 * 2;
     }
+
+
 
     @Override
     public int getItemCount() {

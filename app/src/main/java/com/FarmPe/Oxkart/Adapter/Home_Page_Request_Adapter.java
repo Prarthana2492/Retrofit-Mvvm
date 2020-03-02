@@ -38,15 +38,19 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
     public static String looinkgId;
     String classname;
     public static CardView cardView;
+
+
     public Home_Page_Request_Adapter(Activity activity,List< Request_Class_HomePage_Bean> moviesList,String classname) {
         this.productList = moviesList;
         this.activity = activity;
         this.classname =classname;
     }
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView pay_img;
         public TextView name;
           LinearLayout item_layout;
+
         public MyViewHolder(View view) {
             super(view);
             name=view.findViewById(R.id.crop_loan);
@@ -107,9 +111,11 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
 
 
                     Bundle bundle = new Bundle();
+
                     if (classname.equals("home_menu")) {
                         bundle.putString("request_status", looinkgId);
                         bundle.putString("status_home", "HOME_REQ_PRICE");
+
                     } else {
                         bundle.putString("request_status", looinkgId);
                         bundle.putString("status_home", "REQ_PRICE");
@@ -118,7 +124,7 @@ public class Home_Page_Request_Adapter extends RecyclerView.Adapter<Home_Page_Re
 
                 if(products.getId().equals("")){
 
-                    Toast toast = Toast.makeText(activity,"No Requests", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(activity,"No Requests", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 

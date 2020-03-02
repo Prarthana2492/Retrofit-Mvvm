@@ -1,5 +1,7 @@
 package com.FarmPe.Oxkart.Fragment;
 
+
+
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -17,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.FarmPe.Oxkart.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Oxkart.Activity.Status_bar_change_singleton;
 import com.FarmPe.Oxkart.Adapter.AddBrandAdapter;
 
@@ -33,11 +34,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
 public class AddModelFragment extends Fragment {
-
 
 
     public static List<ModelBean> modelBeanArrayList = new ArrayList<>();
@@ -57,7 +54,6 @@ public class AddModelFragment extends Fragment {
 
 
 
-
      ModelBean modelBean;
      Fragment selectedFragment = null;
      TextView toolbar_title,continue_button,sub_label,filter_text,toolbar_title1;
@@ -68,18 +64,21 @@ public class AddModelFragment extends Fragment {
      public static String text_box;
 
 
+
     public static AddModelFragment newInstance() {
         AddModelFragment fragment = new AddModelFragment();
         return fragment;
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.select_model_recy, container, false);
 
+
+
         Status_bar_change_singleton.getInstance().color_change(getActivity());
-
-
         recyclerView=view.findViewById(R.id.recycler_what_looking);
         toolbar_title=view.findViewById(R.id.toolbar_title);
         back_feed=view.findViewById(R.id.back_feed);
@@ -111,6 +110,9 @@ public class AddModelFragment extends Fragment {
 
 
 
+
+
+
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -133,6 +135,7 @@ public class AddModelFragment extends Fragment {
         filter_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 final Dialog dialog = new Dialog(getActivity());
                 dialog.setContentView(R.layout.layout_filterpopup);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -150,10 +153,13 @@ public class AddModelFragment extends Fragment {
                         dialog.dismiss();
                     }
                 });
+
                 dialog.show();
 
             }
         });
+
+
 
 
         ModelList();
@@ -171,6 +177,7 @@ public class AddModelFragment extends Fragment {
 
         return view;
     }
+
 
     private void ModelList() {
 

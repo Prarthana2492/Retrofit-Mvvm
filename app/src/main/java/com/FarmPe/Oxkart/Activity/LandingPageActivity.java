@@ -228,6 +228,7 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
 
 
         sessionManager = new SessionManager(this);
+
         selectedFragment = HomeMenuFragment.newInstance();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout, selectedFragment);

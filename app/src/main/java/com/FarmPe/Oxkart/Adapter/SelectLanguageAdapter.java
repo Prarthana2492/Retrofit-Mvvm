@@ -32,7 +32,6 @@ import java.util.List;
 public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAdapter.MyViewHolder>  {
 
 
-
     private List<SelectLanguageBean> productList;
     SelectLanguageBean selectLanguageBean;
     Activity activity;
@@ -40,7 +39,6 @@ public class SelectLanguageAdapter extends RecyclerView.Adapter<SelectLanguageAd
     SessionManager sessionManager;
     public static int selected_position=0;
     String lng_list;
-
 
 
 

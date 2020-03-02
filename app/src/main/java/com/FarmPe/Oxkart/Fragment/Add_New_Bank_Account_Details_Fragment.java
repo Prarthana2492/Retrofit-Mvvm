@@ -2,11 +2,11 @@ package com.FarmPe.Oxkart.Fragment;
 
 
 import android.app.Activity;
-import android.graphics.Color;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.design.widget.Snackbar;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -33,8 +33,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 import com.FarmPe.Oxkart.Activity.Status_bar_change_singleton;
 import com.FarmPe.Oxkart.Adapter.BankAccount_Adapter;
 import com.FarmPe.Oxkart.Adapter.Bank_District_Adapter;
@@ -45,8 +43,6 @@ import com.FarmPe.Oxkart.SessionManager;
 import com.FarmPe.Oxkart.Urls;
 import com.FarmPe.Oxkart.Volly_class.Crop_Post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
-
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -56,10 +52,12 @@ import java.util.Comparator;
 import java.util.List;
 
 
+
 public class Add_New_Bank_Account_Details_Fragment extends Fragment {
 
 
- LinearLayout back_feed,linearLayout,continuebtn;
+
+    LinearLayout back_feed,linearLayout,continuebtn;
     Fragment selectedFragment;
 
     public static EditText do_u_have_ifsc,state,district,confirm_saving_ac;
@@ -82,13 +80,10 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
 
 
 
-
     public static Add_New_Bank_Account_Details_Fragment newInstance() {
         Add_New_Bank_Account_Details_Fragment fragment = new Add_New_Bank_Account_Details_Fragment();
         return fragment;
     }
-
-
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -320,7 +315,7 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
 
                 }else{
 
-                    Toast toast = Toast.makeText(getActivity(),"Please Select State", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(),"Please Select State", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 
@@ -341,46 +336,41 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
                 String acc_no = account_number.getText().toString();
                 String confirm_acc_no = confirm_saving_ac.getText().toString();
 
+
                 if(bank_name.getText().toString().equals("")){
 
-                    Toast toast = Toast.makeText(getActivity(),"Enter Bank Name", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(),"Enter Bank Name", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
+
 
 
                 } else if(bank_branch_name.getText().toString().equals("")){
 
-                    Toast toast = Toast.makeText(getActivity(),"Enter Bank Branch Name", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(),"Enter Bank Branch Name", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
-
-
 
 
                 } else if(acc_no.equals("")){
 
-                    Toast toast = Toast.makeText(getActivity(),"Enter Account Number", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(),"Enter Account Number", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
-
-
-
 
 
                 } else if(confirm_acc_no.equals("")) {
 
 
-                    Toast toast = Toast.makeText(getActivity(),"Confirm Account Number", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(),"Confirm Account Number", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 
 
 
-
-
                 } else if(!(acc_no.equals(confirm_acc_no))) {
 
-                    Toast toast = Toast.makeText(getActivity(),"Account number is not matching", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(),"Account number is not matching", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 

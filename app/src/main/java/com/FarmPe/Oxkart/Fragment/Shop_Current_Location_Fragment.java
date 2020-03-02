@@ -63,6 +63,7 @@ import static com.android.volley.VolleyLog.TAG;
 
 
 public class Shop_Current_Location_Fragment extends Fragment implements
+
         OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener,View.OnClickListener {

@@ -618,7 +618,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                 }else {
 
-                    Toast toast = Toast.makeText(getActivity(), "Please Select State", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(), "Please Select State", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 0);
                     toast.show();
 
@@ -653,7 +653,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                 }else{
 
-                    Toast toast = Toast.makeText(getActivity(),"Please Select District", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(),"Please Select District", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 
@@ -719,7 +719,7 @@ public class  Add_New_Address_Fragment extends Fragment {
 
                 }else {
 
-                    Toast toast = Toast.makeText(getActivity(),"Please Select Tehsil/Block", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(),"Please Select Tehsil/Block", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 

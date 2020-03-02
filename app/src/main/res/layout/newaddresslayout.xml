@@ -153,185 +153,183 @@
     </RadioGroup>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="16dp"
-        >
-
-        <EditText
-            android:id="@+id/fulname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Full Name"
-            android:layout_marginTop="10dp"
-            android:textSize="16dp"
-            android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ "
-            android:textColorHint="#9D9D9D"
-            android:maxLength="30"
-            android:fontFamily="@font/segoeui"
-            android:paddingLeft="10dp"
-            android:paddingVertical="13dp"
-            android:background="@drawable/request_price_white_border2"
-            />
-
-        <EditText
-            android:id="@+id/mobno"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Mobile Number"
-            android:layout_marginTop="10dp"
-            android:textSize="16dp"
-            android:textColorHint="#9D9D9D"
-            android:fontFamily="@font/segoeui"
-            android:paddingLeft="10dp"
-            android:inputType="number"
-            android:maxLength="10"
-            android:paddingVertical="13dp"
-            android:background="@drawable/request_price_white_border2"
-
-            />
-
-        <EditText
-            android:id="@+id/addressss"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Address"
-            android:layout_marginTop="10dp"
-            android:textSize="16dp"
-            android:textColorHint="#9D9D9D"
-            android:fontFamily="@font/segoeui"
-            android:paddingLeft="10dp"
-            android:paddingVertical="13dp"
-            android:background="@drawable/request_price_white_border2"
-
-            />
-        <EditText
-            android:id="@+id/lnd_mr"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Land Mark"
-            android:layout_marginTop="10dp"
-            android:textSize="16dp"
-            android:textColorHint="#9D9D9D"
-            android:fontFamily="@font/segoeui"
-            android:paddingLeft="10dp"
-            android:paddingVertical="13dp"
-            android:background="@drawable/request_price_white_border2"
-
-            />
-        <EditText
-            android:id="@+id/pincodeee"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Pincode"
-            android:layout_marginTop="10dp"
-            android:textSize="16dp"
-            android:textColorHint="#9D9D9D"
-            android:fontFamily="@font/segoeui"
-            android:inputType="number"
-            android:maxLength="6"
-            android:paddingLeft="10dp"
-            android:paddingVertical="13dp"
-            android:background="@drawable/request_price_white_border2"
-
-            />
-
-
-        <EditText
-            android:id="@+id/st"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="State"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:textColorHint="#9D9D9D"
-            android:fontFamily="@font/segoeui"
-            android:editable="false"
-            android:focusable="false"
-            android:clickable="false"
-            android:paddingVertical="13dp"
-            android:background="@drawable/request_price_white_border2"
-            android:textSize="16dp"
-            android:drawableRight="@drawable/ic_down_arrow"
-            />
-
-
-        <LinearLayout
-            android:id="@+id/loan_lay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="100"
-            >
-
-            <EditText
-                android:id="@+id/dt"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="District"
-                android:paddingLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:paddingRight="10dp"
-                android:editable="false"
-                android:focusable="false"
-                android:clickable="false"
-                android:drawableRight="@drawable/ic_down_arrow"
-                android:textSize="16dp"
-                android:textColorHint="#9D9D9D"
-                android:fontFamily="@font/segoeui"
-                android:paddingVertical="13dp"
-                android:background="@drawable/request_price_white_border2"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
 
-                />
-        </LinearLayout>
+                <EditText
+                    android:id="@+id/fulname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/request_price_white_border2"
+                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:fontFamily="@font/segoeui"
+                    android:hint="Full Name"
+                    android:maxLength="30"
+                    android:paddingVertical="13dp"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="#9D9D9D"
+                    android:textSize="16dp" />
 
-        <EditText
-            android:id="@+id/bk"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Block"
-            android:textSize="16dp"
-            android:layout_marginTop="10dp"
-            android:textColorHint="#9D9D9D"
-            android:editable="false"
-            android:focusable="false"
-            android:clickable="false"
-            android:paddingLeft="10dp"
-            android:fontFamily="@font/segoeui"
-            android:drawableRight="@drawable/ic_down_arrow"
-            android:paddingVertical="13dp"
-            android:paddingRight="10dp"
-            android:background="@drawable/request_price_white_border2"
+                <EditText
+                    android:id="@+id/mobno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/request_price_white_border2"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="Mobile Number"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:paddingVertical="13dp"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="#9D9D9D"
+                    android:textSize="16dp"
 
-            />
+                    />
+
+                <EditText
+                    android:id="@+id/addressss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/request_price_white_border2"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="Address"
+                    android:paddingVertical="13dp"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="#9D9D9D"
+                    android:textSize="16dp"
+
+                    />
+
+                <EditText
+                    android:id="@+id/lnd_mr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/request_price_white_border2"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="Land Mark"
+                    android:paddingVertical="13dp"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="#9D9D9D"
+                    android:textSize="16dp"
+
+                    />
+
+                <EditText
+                    android:id="@+id/pincodeee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/request_price_white_border2"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="Pincode"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:paddingVertical="13dp"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="#9D9D9D"
+                    android:textSize="16dp"
+
+                    />
 
 
-        <EditText
-            android:id="@+id/ve"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Village"
-            android:layout_marginTop="10dp"
-            android:textSize="16dp"
-            android:textColorHint="#9D9D9D"
-            android:fontFamily="@font/segoeui"
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp"
-            android:paddingVertical="13dp"
-            android:editable="false"
-            android:focusable="false"
-            android:clickable="false"
-            android:drawableRight="@drawable/ic_down_arrow"
-            android:background="@drawable/request_price_white_border2"
-            android:layout_marginBottom="30dp"
+                <EditText
+                    android:id="@+id/st"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/request_price_white_border2"
+                    android:clickable="false"
+                    android:drawableRight="@drawable/ic_down_arrow"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="State"
+                    android:paddingVertical="13dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColorHint="#9D9D9D"
+                    android:textSize="16dp" />
 
-            />
 
-    </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/loan_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <EditText
+                        android:id="@+id/dt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/request_price_white_border2"
+                        android:clickable="false"
+                        android:drawableRight="@drawable/ic_down_arrow"
+                        android:editable="false"
+                        android:focusable="false"
+                        android:fontFamily="@font/segoeui"
+                        android:hint="District"
+                        android:paddingVertical="13dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColorHint="#9D9D9D"
+                        android:textSize="16dp"
+
+                        />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/bk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/request_price_white_border2"
+                    android:clickable="false"
+                    android:drawableRight="@drawable/ic_down_arrow"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="Block"
+                    android:paddingVertical="13dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColorHint="#9D9D9D"
+                    android:textSize="16dp"
+
+                    />
+
+
+                <EditText
+                    android:id="@+id/ve"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/request_price_white_border2"
+                    android:clickable="false"
+                    android:drawableRight="@drawable/ic_down_arrow"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="Village"
+                    android:paddingVertical="13dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColorHint="#9D9D9D"
+                    android:textSize="16dp"
+
+                    />
+
+            </LinearLayout>
         </LinearLayout>
 
 </ScrollView>

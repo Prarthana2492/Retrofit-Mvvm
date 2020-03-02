@@ -62,9 +62,10 @@ import static com.android.volley.VolleyLog.TAG;
 
 public class HomeMenuFragment extends Fragment implements  View.OnClickListener, NavigationView.OnNavigationItemSelectedListener{
 
+
+
     Fragment selectedFragment;
     public static DrawerLayout drawer;
-
     RelativeLayout menu;
     JSONArray get_address_array;
     LinearLayout update_acc_layout,your_request,your_farms_tab,nw_request,farmer_title,back_feed;
@@ -91,6 +92,7 @@ public class HomeMenuFragment extends Fragment implements  View.OnClickListener,
         HomeMenuFragment fragment = new HomeMenuFragment();
         return fragment;
     }
+
 
 
     @Override

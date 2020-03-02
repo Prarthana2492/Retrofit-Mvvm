@@ -1,6 +1,5 @@
 package com.FarmPe.Oxkart.Fragment;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -34,6 +33,7 @@ import java.util.ArrayList;
 
 public class Get_Bank_List_Fragment extends Fragment {
 
+
     public static ArrayList<BankBean> newOrderBeansList = new ArrayList<>();
     public static RecyclerView recyclerView;
     public static BankAccount_Adapter bankAccount_adapter;
@@ -43,7 +43,6 @@ public class Get_Bank_List_Fragment extends Fragment {
     public static   LinearLayout back_feed,linearLayout,Continue;
     JSONArray Bank_list_array;
     SessionManager sessionManager;
-
 
 
     public static Get_Bank_List_Fragment newInstance() {

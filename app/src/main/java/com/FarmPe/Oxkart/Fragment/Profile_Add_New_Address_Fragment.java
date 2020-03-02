@@ -117,8 +117,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
         getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
 
-
-       Window window = getActivity().getWindow();
+        Window window = getActivity().getWindow();
         window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.dark_green));
         back_feed=view.findViewById(R.id.back_feed);
         full_name=view.findViewById(R.id.fulname);
@@ -392,7 +391,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
 
                 }else{
 
-                    Toast toast = Toast.makeText(getActivity(),"Please Select State", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(),"Please Select State", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 
@@ -428,7 +427,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
 
                 }else {
 
-                    Toast toast = Toast.makeText(getActivity(), "Please Select District", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(), "Please Select District", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 0);
                     toast.show();
 
@@ -462,7 +461,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
 
                 }else{
 
-                    Toast toast = Toast.makeText(getActivity(),"Please Select Block", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(),"Please Select Block", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 
@@ -482,7 +481,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
 
                 if(full_name.getText().toString().equals("")) {
 
-                    Toast toast = Toast.makeText(getActivity(),"Enter your name", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(),"Enter your name", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 
@@ -490,7 +489,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
 
                 } else if(mobile_no.getText().toString().equals("")) {
 
-                    Toast toast = Toast.makeText(getActivity(),"Enter your mobile number", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(),"Enter your mobile number", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 
@@ -500,7 +499,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
 
                 } else if(mobile_no.length()<10) {
 
-                    Toast toast = Toast.makeText(getActivity(),"Invalid mobile number", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(),"Invalid mobile number", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 
@@ -510,7 +509,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
                 }else if(address.getText().toString().equals("")){
 
 
-                    Toast toast = Toast.makeText(getActivity(),"Enter your address", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(),"Enter your address", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 
@@ -518,7 +517,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
 
                 } else if(pincode.getText().toString().equals("")){
 
-                    Toast toast = Toast.makeText(getActivity(),"Enter pincode", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(),"Enter pincode", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 
@@ -527,34 +526,18 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
                 } else if(state.getText().toString().equals("")){
 
 
-                    Toast toast = Toast.makeText(getActivity(),"Please select state", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(),"Please select state", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 
 
 
-                    int duration = 1000;
-                    Snackbar snackbar = Snackbar
-                            .make(linear_layout, "Select State", duration);
-                    View snackbarView = snackbar.getView();
-                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                    tv.setTextColor(Color.WHITE);
-
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else {
-                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
-
-
-                    }
-                    snackbar.show();
 
 
 
                 } else if(district.getText().toString().equals("")){
 
-                    Toast toast = Toast.makeText(getActivity(),"Please select district", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(),"Please select district", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 
@@ -563,7 +546,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
                 } else if(block.getText().toString().equals("")){
 
 
-                    Toast toast = Toast.makeText(getActivity(),"Please select block", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(),"Please select block", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 
@@ -688,8 +671,6 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
 
 
     }
-
-
 
     private void prepareDistricData() {
 
@@ -821,12 +802,16 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("dddddddddddd11111" + result);
+
                     try {
                         villageBeanList.clear();
                         district_array = result.getJSONArray("VillageListByBlock");
+
                         if (district_array != null && district_array.length() > 0) {
+
                             for (int i = 0; i < district_array.length(); i++) {
                                 JSONObject jsonObject1 = district_array.getJSONObject(i);
+
                                 stateBean = new StateBean(jsonObject1.getString("Village"), jsonObject1.getString("VillagId"));
                                 villageBeanList.add(stateBean);
                             }
@@ -952,7 +937,7 @@ public class Profile_Add_New_Address_Fragment extends Fragment {
 
                         if(status.equals("1")){
 
-                            Toast toast = Toast.makeText(getActivity(),message, Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(getActivity(),message, Toast.LENGTH_LONG);
                             toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                             toast.show();
 

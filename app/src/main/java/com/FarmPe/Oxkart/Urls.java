@@ -33,8 +33,6 @@ package com.FarmPe.Oxkart;
       public static final String New_Login_Details = ROOT_URL + "Auth/ValidateRegisteredUser";
 
 
-
-
     //Get_Address
       public static final String Get_New_Address = ROOT_URL+"MasterTable/GetUserAddress";
 
@@ -48,7 +46,6 @@ package com.FarmPe.Oxkart;
     public static final String Refferal_Code = ROOT_URL +"Auth/GetUserDetails";
 
 
-
     //Wallet balance
     public static final String GetWalletDetails = ROOT_URL +"MasterTable/GetWalletDetails";
 
@@ -58,7 +55,6 @@ package com.FarmPe.Oxkart;
     public static final String Delete_Address_Details = ROOT_URL + "MasterTable/DeleteUserAddress";
     public static final String Default_Address = ROOT_URL + "MasterTable/UpdateUserDefaultAddress";
     public static final String Edit_Address = ROOT_URL + "MasterTable/UpdateUserDefaultAddress";
-
 
 
    //feedback
@@ -92,8 +88,7 @@ package com.FarmPe.Oxkart;
 
 
 
-
-      public static final String Villages=ROOT_URL+"MasterTable/GetVillages";
+         public static final String Villages=ROOT_URL+"MasterTable/GetVillages";
          public static final String State = ROOT_URL+"MasterTable/GetStates";
          public static final String GetBrandList = ROOT_URL+"MasterTable/GetBrandList";
          public static final String ModelList = ROOT_URL+"MasterTable/GetModels";
@@ -107,10 +102,9 @@ package com.FarmPe.Oxkart;
          public static final String Get_RFQ_Details = ROOT_URL + "MasterTable/GetRFQDetails";
 
 
-
        //Favorites
-       public static final String Get_Favorites = ROOT_URL+"MasterTable/GetFarmerFavouriteModelLists";
-       public static final String Add_Favorites = ROOT_URL+"MasterTable/AddUpdateFarmerFavouriteModelList";
+        public static final String Get_Favorites = ROOT_URL+"MasterTable/GetFarmerFavouriteModelLists";
+        public static final String Add_Favorites = ROOT_URL+"MasterTable/AddUpdateFarmerFavouriteModelList";
 
 
         //List Your Farms
@@ -142,8 +136,12 @@ package com.FarmPe.Oxkart;
 
 
         public static final String Add_Update_Aadhar_details = ROOT_URL + "MasterTable/AddUpdateAadhaarDetails";
+        public static final String Get_KYC_details = ROOT_URL + "MasterTable/GetPANDetails";
         public static final String Get_Voter_ID_Details = ROOT_URL + "MasterTable/GetVoterIdList";
         public static final String Get_Verification_Status = ROOT_URL + "MasterTable/GetUserVerificationStatus";
+
+
+
 
 
      //Request Quoatation
@@ -163,8 +161,6 @@ package com.FarmPe.Oxkart;
 
       public static final String Profile_Add_Adress_Details = ROOT_URL + "MasterTable/AddUpdateAddressDetails";
       public static final String Profile_Get_Adress_Details = ROOT_URL + "MasterTable/GetAddressDetailsByUser";
-
-
       public static final String Profile_Delete_Adress_Details =  ROOT_URL +  "MasterTable/DeleteAddressDetails";
       public static final String Block_List =  ROOT_URL +  "MasterTable/GetBlocks";
       public static final String Village_list =  ROOT_URL +  "MasterTable/GetVillagebyBlock";

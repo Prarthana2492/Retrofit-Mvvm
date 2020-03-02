@@ -81,7 +81,6 @@ public class Verification_Aadhar_Fragment extends Fragment {
         setupUI(main_layout);
 
 
-
         try {
 
 
@@ -92,6 +91,7 @@ public class Verification_Aadhar_Fragment extends Fragment {
             toolbar_title.setText(lngObject.getString("PANDetailsoptional").replace("\n",""));
             title_details.setText(lngObject.getString("PANCardisrequiredtoavailFinancialServiceonFarmPe"));
             pan_name.setHint(lngObject.getString("EnternameasperPANCard").replace("\n",""));
+            pan_num.setHint(lngObject.getString("EnterPANNumber"));
             submit.setText(lngObject.getString("PROCEED").replace("\n",""));
 
 
@@ -101,13 +101,9 @@ public class Verification_Aadhar_Fragment extends Fragment {
 
 
 
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
 
 
         view.setFocusableInTouchMode(true);

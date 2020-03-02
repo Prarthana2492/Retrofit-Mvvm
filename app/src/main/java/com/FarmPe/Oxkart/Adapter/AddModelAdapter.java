@@ -198,9 +198,11 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 //                .diskCacheStrategy(DiskCacheStrategy.ALL)
 //                .into(holder.image);
 
-        if(products.getImage().equalsIgnoreCase("")){
+
+        if(products.getImage().equals("")){
 
             holder.default_img.setVisibility(View.VISIBLE);
+
 
 
         }else{
@@ -210,6 +212,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
             Glide.with(activity).load(products.getImage())
                     .thumbnail(0.5f)
                     //   .crossFade()
+                    .error(R.drawable.ic_gallery__default)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(holder.image);
 
@@ -383,7 +386,7 @@ public class AddModelAdapter extends RecyclerView.Adapter<AddModelAdapter.MyView
 
                                 if(status.equals("1")) {
 
-                                    Toast toast = Toast.makeText(activity,toast_message, Toast.LENGTH_SHORT);
+                                    Toast toast = Toast.makeText(activity,toast_message, Toast.LENGTH_LONG);
                                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                                     toast.show();
 

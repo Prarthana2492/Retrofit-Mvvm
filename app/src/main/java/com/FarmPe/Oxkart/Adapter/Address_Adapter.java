@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.FarmPe.Oxkart.Bean.Profile_Address_Bean;
 import com.FarmPe.Oxkart.Fragment.Profile_Add_New_Address_Fragment;
@@ -160,26 +161,32 @@ public class Address_Adapter extends RecyclerView.Adapter<Address_Adapter.MyView
                               if(status.equals("1")){
 
 
-                                  int duration = 1000;
-                                  Snackbar snackbar = Snackbar
-                                          .make(Profile_Get_Address_Fragment.linearLayout, message, duration);
-                                  View snackbarView = snackbar.getView();
-                                  TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                                  tv.setBackgroundColor(ContextCompat.getColor(activity, R.color.orange));
-                                  tv.setTextColor(Color.WHITE);
+                                  Toast toast = Toast.makeText(activity,message, Toast.LENGTH_LONG);
+                                  toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                                  toast.show();
 
 
-                                  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                      tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
-
-                                  } else {
-
-                                      tv.setGravity(Gravity.CENTER_HORIZONTAL);
-
-                                  }
-
-                                  snackbar.show();
+//                                  int duration = 1000;
+//                                  Snackbar snackbar = Snackbar
+//                                          .make(Profile_Get_Address_Fragment.linearLayout, message, duration);
+//                                  View snackbarView = snackbar.getView();
+//                                  TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+//                                  tv.setBackgroundColor(ContextCompat.getColor(activity, R.color.orange));
+//                                  tv.setTextColor(Color.WHITE);
+//
+//
+//                                  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                                      tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//
+//
+//                                  } else {
+//
+//                                      tv.setGravity(Gravity.CENTER_HORIZONTAL);
+//
+//                                  }
+//
+//                                  snackbar.show();
 
 
                                 //  Toast.makeText(activity, "address deleted successfully", Toast.LENGTH_SHORT).show();

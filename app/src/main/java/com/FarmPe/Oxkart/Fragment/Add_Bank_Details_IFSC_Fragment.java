@@ -191,8 +191,8 @@ public class Add_Bank_Details_IFSC_Fragment extends Fragment {
         });
 
         return view;
-    }
 
+    }
 
     public void linear_layout_selection(EditText selectdl1, EditText l2){
 

@@ -159,8 +159,6 @@ public class New_Profile_Setting_Fragment extends Fragment {
 
 
 
-
-
             try {
 
                 JSONObject jsonObject = new JSONObject();
@@ -904,23 +902,23 @@ public class New_Profile_Setting_Fragment extends Fragment {
 
              //   }
 
-                int duration = 1000;
-                Snackbar snackbar = Snackbar
-                        .make(linearLayout, "You Changed Your Profile Photo", duration);
-                View snackbarView = snackbar.getView();
-                TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
-                tv.setTextColor(Color.WHITE);
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                    tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-
-                } else {
-
-                    tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                }
-
-                snackbar.show();
+//                int duration = 1000;
+//                Snackbar snackbar = Snackbar
+//                        .make(linearLayout, "You Changed Your Profile Photo", duration);
+//                View snackbarView = snackbar.getView();
+//                TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+//                tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+//                tv.setTextColor(Color.WHITE);
+//
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+//                    tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//
+//                } else {
+//
+//                    tv.setGravity(Gravity.CENTER_HORIZONTAL);
+//                }
+//
+//                snackbar.show();
 
                 //  Toast.makeText(getActivity(),"Your Changed Your Profile Photo", Toast.LENGTH_SHORT).show();
 
@@ -1150,6 +1148,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
             return null;
 
         } else {
+
             int width = bm.getWidth();
             int height = bm.getHeight();
             float scaleWidth = ((float) newWidth) / width;

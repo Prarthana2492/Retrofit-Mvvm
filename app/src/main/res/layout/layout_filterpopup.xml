@@ -42,6 +42,7 @@
                 />
         </LinearLayout>
 
+
         <LinearLayout
             android:id="@+id/close_popup"
             android:layout_width="30dp"

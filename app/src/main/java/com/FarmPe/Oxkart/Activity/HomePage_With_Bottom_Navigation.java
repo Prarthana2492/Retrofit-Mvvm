@@ -34,11 +34,11 @@ public class HomePage_With_Bottom_Navigation extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_home_page);
-
 
 
         selectedFragment = Home_Menu_Fragment.newInstance();

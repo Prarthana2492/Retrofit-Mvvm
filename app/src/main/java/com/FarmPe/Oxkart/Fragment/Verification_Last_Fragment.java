@@ -1,5 +1,7 @@
 package com.FarmPe.Oxkart.Fragment;
 
+
+
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,14 +25,15 @@ import com.FarmPe.Oxkart.SessionManager;
 import com.FarmPe.Oxkart.Urls;
 import com.FarmPe.Oxkart.Volly_class.Crop_Post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
+import com.google.gson.JsonArray;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
-
-
 public class Verification_Last_Fragment extends Fragment {
+
 
    Fragment selectedFragment;
    public static  LinearLayout linear_layout,cont_btn;
@@ -41,6 +44,7 @@ public class Verification_Last_Fragment extends Fragment {
    ImageView in_progress_image,success_image;
    SessionManager sessionManager;
     public static JSONObject lngObject;
+   JSONArray get_location_array;
 
 
 
@@ -186,13 +190,15 @@ public class Verification_Last_Fragment extends Fragment {
 
                        Boolean user_uploaded = verify_status.getBoolean("IsUserUploaded");
 
+
                        if(user_uploaded.equals(false)){
 
                            user_status.setText("In Progress");
                            in_progress_details.setVisibility(View.VISIBLE);
+                           in_progress_image.setVisibility(View.VISIBLE);
 
                            user_status.setText(lngObject.getString("InProgress").replace("\n",""));
-                           in_progress_image.setVisibility(View.VISIBLE);
+
 
                            cont_btn.setOnClickListener(new View.OnClickListener() {
                                @Override
@@ -207,18 +213,27 @@ public class Verification_Last_Fragment extends Fragment {
 
                        }else{
 
-                           user_status.setText("Successfull");
+                           user_status.setText("In Progress");
 
-                           user_status.setText(lngObject.getString("Successful"));
+                           in_progress_details.setVisibility(View.VISIBLE);
+                           in_progress_image.setVisibility(View.VISIBLE);
 
-                           success_details.setVisibility(View.VISIBLE);
-                           success_image.setVisibility(View.VISIBLE);
+
+                           user_status.setText(lngObject.getString("InProgress").replace("\n",""));
+
+                         //  user_status.setText(lngObject.getString("Successful"));
+//
+//                           success_details.setVisibility(View.VISIBLE);
+//                           success_image.setVisibility(View.VISIBLE);
+
+
 
                            cont_btn.setOnClickListener(new View.OnClickListener() {
                                @Override
                                public void onClick(View v) {
 
                                    Intent intent = new Intent(getActivity(),HomePage_With_Bottom_Navigation.class);
+                                   sessionManager.savelocation(sessionManager.getRegId("location"));
                                    startActivity(intent);
 
 
@@ -259,8 +274,49 @@ public class Verification_Last_Fragment extends Fragment {
 
 
 
-
+       locationcaptured();
        return view;
+   }
+
+   public void locationcaptured(){
+       try {
+
+           JSONObject jsonObject = new JSONObject();
+           jsonObject.put("UserId", sessionManager.getRegId("userId"));
+
+
+           Crop_Post.crop_posting(getActivity(), Urls.Get_Shop_Location, jsonObject, new VoleyJsonObjectCallback() {
+               @Override
+               public void onSuccessResponse(JSONObject result) {
+
+                   System.out.println("dhfjfjd" + result);
+
+
+                   try {
+                       get_location_array = result.getJSONArray("clocationList");
+
+                       for (int i = 0; i < get_location_array.length(); i++) {
+
+                           JSONObject jsonObject1 = get_location_array.getJSONObject(i);
+
+
+                        //   location_id = jsonObject1.getString("CLocationId");
+                        //   String location_lat = jsonObject1.getString("Latitude");
+                        //   String location_long = jsonObject1.getString("Longitude");
+                           String location_captured_image = jsonObject1.getString("CapturedLocation");
+                           sessionManager.savelocation(location_captured_image);
+                       }
+                   } catch (Exception e) {
+                       e.printStackTrace();
+                   }
+
+               }
+           });
+//
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+
    }
 }
 

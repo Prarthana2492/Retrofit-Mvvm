@@ -41,8 +41,9 @@ import org.json.JSONObject;
 
 
 public class ResetPasswordNew extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener{
-   LinearLayout back_reset_pass,linearLayout;
-   TextView pass_submit,reset_text,to_continue_text;
+    LinearLayout back_reset_pass,linearLayout;
+
+    TextView pass_submit,reset_text,to_continue_text;
     EditText passwd,conf_pass;
     SessionManager sessionManager;
     DatabaseHelper myDb;
@@ -52,6 +53,8 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
 
     public static boolean connectivity_check;
     ConnectivityReceiver connectivityReceiver;
+
+
     @Override
     protected void onStop()
     {

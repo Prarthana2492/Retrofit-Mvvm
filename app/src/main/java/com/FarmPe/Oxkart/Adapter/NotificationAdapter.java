@@ -1,5 +1,6 @@
 package com.FarmPe.Oxkart.Adapter;
 
+
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -10,24 +11,27 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.FarmPe.Oxkart.Bean.Notification_Home_Bean;
 import com.FarmPe.Oxkart.R;
-
 import java.util.List;
+
+
+
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.MyViewHolder>  {
     private List<Notification_Home_Bean> productList;
+
     Activity activity;
     Fragment selectedFragment;
-
     public LinearLayout linearLayout;
-
     public static CardView cardView;
+
+
+
+
     public NotificationAdapter(Activity activity, List<Notification_Home_Bean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
-
 
     }
 
@@ -48,7 +52,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
             image=view.findViewById(R.id.image);
 
-
         }
     }
 
@@ -65,7 +68,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final Notification_Home_Bean products = productList.get(position);
 
+
         holder.prod_name.setText(products.getNotiftn_mess());
+
 
         holder.noti_layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +87,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         System.out.println("lengthhhhhhh"+productList.size());
         return productList.size();
     }
-
 
 
 }

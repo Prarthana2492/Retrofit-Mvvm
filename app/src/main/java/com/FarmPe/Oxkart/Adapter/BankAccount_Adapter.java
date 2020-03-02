@@ -16,8 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-
 import com.FarmPe.Oxkart.Bean.BankBean;
 import com.FarmPe.Oxkart.Fragment.Add_New_Bank_Account_Details_Fragment;
 import com.FarmPe.Oxkart.Fragment.Get_Bank_List_Fragment;
@@ -26,12 +24,13 @@ import com.FarmPe.Oxkart.SessionManager;
 import com.FarmPe.Oxkart.Urls;
 import com.FarmPe.Oxkart.Volly_class.Crop_Post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
-
 import org.json.JSONObject;
 
 import java.util.List;
 
+
 public class BankAccount_Adapter extends RecyclerView.Adapter<BankAccount_Adapter.MyViewHolder> {
+
 
     private List<BankBean> productList;
     Activity activity;
@@ -155,6 +154,7 @@ public class BankAccount_Adapter extends RecyclerView.Adapter<BankAccount_Adapte
 
             }
         });
+
 
         holder.edit_bank_details.setOnClickListener(new View.OnClickListener() {
             @Override

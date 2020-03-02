@@ -235,12 +235,14 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
 
                          try{
                              sessionManager.saveLanguage(result.toString());
-                             String select_title = result.getString("SelectYourLanguage");
+                             String select_title = result.getString("SelectYourLanguage").replace("\n","");
                              String continue_btnn = result.getString("PROCEED").replace("\n","");
 
                              ActivitySelectLang.select_your_lang_text.setText(select_title);
                              ActivitySelectLang.continue_lang.setText(continue_btnn);
 
+                             ActivitySelectLang.toast_internet = result.getString("GoodConnectedtoInternet");
+                             ActivitySelectLang.toast_nointernet = result.getString("NoInternetConnection");
 
                              /*
 

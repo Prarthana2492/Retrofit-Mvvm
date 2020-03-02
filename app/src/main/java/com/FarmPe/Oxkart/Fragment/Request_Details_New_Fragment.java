@@ -369,18 +369,15 @@ public class Request_Details_New_Fragment extends Fragment {
                if(purchase_plan == null) {
 
 
-                   Toast toast = Toast.makeText(getActivity(),"Please select purchase plan", Toast.LENGTH_SHORT);
+                   Toast toast = Toast.makeText(getActivity(),"Please select purchase plan", Toast.LENGTH_LONG);
                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                    toast.show();
 
 
 
-
-
-
                }else   if(looking_finance == null){
 
-                   Toast toast = Toast.makeText(getActivity(),"Please select finance", Toast.LENGTH_SHORT);
+                   Toast toast = Toast.makeText(getActivity(),"Please select finance", Toast.LENGTH_LONG);
                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                    toast.show();
 
@@ -389,7 +386,7 @@ public class Request_Details_New_Fragment extends Fragment {
 
                 }else if(looking_insurance == null){
 
-                   Toast toast = Toast.makeText(getActivity(),"Please select insurance", Toast.LENGTH_SHORT);
+                   Toast toast = Toast.makeText(getActivity(),"Please select insurance", Toast.LENGTH_LONG);
                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                    toast.show();
 
@@ -397,7 +394,7 @@ public class Request_Details_New_Fragment extends Fragment {
 
                 }else if(looking_demo == null){
 
-                   Toast toast = Toast.makeText(getActivity(),"Please select demo/test drive", Toast.LENGTH_SHORT);
+                   Toast toast = Toast.makeText(getActivity(),"Please select demo/test drive", Toast.LENGTH_LONG);
                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                    toast.show();
 
@@ -454,12 +451,31 @@ public class Request_Details_New_Fragment extends Fragment {
 
 
                      try {
+
                         String status=result.getString("Status");
                         String message=result.getString("Message");
 
-                         Toast toast = Toast.makeText(getActivity(),"Your Request Added Succesfully", Toast.LENGTH_SHORT);
-                         toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
-                         toast.show();
+                        if(!(status.equals("0"))){
+
+                            Toast toast = Toast.makeText(getActivity(),"Your Request Added Succesfully", Toast.LENGTH_LONG);
+                            toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                            toast.show();
+
+
+                            selectedFragment = Home_Menu_Fragment.newInstance();
+                            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                            transaction.replace(R.id.frame_menu, selectedFragment);
+                            transaction.commit();
+
+
+                        } else{
+
+                            Toast toast = Toast.makeText(getActivity(),"Your Request Not Added", Toast.LENGTH_LONG);
+                            toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                            toast.show();
+                        }
+
+
 
 
 

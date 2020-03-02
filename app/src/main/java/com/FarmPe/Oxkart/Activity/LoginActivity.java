@@ -49,7 +49,7 @@ import com.FarmPe.Oxkart.Urls;
 import com.FarmPe.Oxkart.Volly_class.Crop_Post;
 import com.FarmPe.Oxkart.Volly_class.Login_post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
-import com.google.firebase.messaging.FirebaseMessaging;
+
 
 
 import org.json.JSONArray;
@@ -521,8 +521,8 @@ public class LoginActivity extends AppCompatActivity implements ConnectivityRece
                                             //sessionManager.save_name(userObject.getString("FullName"),userObject.getString("PhoneNo"),userObject.getString("ProfilePic"));
                                             sessionManager.saveUserId(userObject.getString("Id"));
 
-                                            FirebaseMessaging.getInstance().subscribeToTopic("FARMERNEWS");// to register in topic(subcribe)
-                                            FirebaseMessaging.getInstance().subscribeToTopic("NEWS");// to register in topic(subcribe)
+                                        //    FirebaseMessaging.getInstance().subscribeToTopic("FARMERNEWS");// to register in topic(subcribe)
+                                         //   FirebaseMessaging.getInstance().subscribeToTopic("NEWS");// to register in topic(subcribe)
 
 
                                             if(remember_me.isChecked()){

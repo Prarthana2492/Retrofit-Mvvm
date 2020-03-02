@@ -83,7 +83,7 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
             if(connectivity_check) {
 
 
-                Toast toast = Toast.makeText(New_OTP_Page_Activity.this,toast_internet, Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(New_OTP_Page_Activity.this,toast_internet, Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                 toast.show();
 
@@ -112,7 +112,7 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
             connectivity_check=true;
 
 
-            Toast toast = Toast.makeText(New_OTP_Page_Activity.this,toast_nointernet, Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(New_OTP_Page_Activity.this,toast_nointernet, Toast.LENGTH_LONG);
             toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
             toast.show();
 
@@ -173,7 +173,6 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
         checkConnection();
 
 
-
         try {
 
 
@@ -184,11 +183,15 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
             otp_sent_to.setText(lngObject.getString("OTPSentto"));
             enter_otp_here.setText(lngObject.getString("EnterOTPhere"));
             otp_receive.setText(lngObject.getString("DidntreceiveOTP"));
+
+
+
             otpsenttxt.setText(lngObject.getString("OTPSent").replace("\n",""));
+
             toast_internet = lngObject.getString("GoodConnectedtoInternet");
             toast_nointernet = lngObject.getString("NoInternetConnection");
             toast_enter_otp = lngObject.getString("EntertheOTP");
-            toast_invalid_otp = lngObject.getString("InvalidOTP");
+            toast_invalid_otp = lngObject.getString("OTPnotmatching");
 
 
 
@@ -210,7 +213,23 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
         if(getIntent().getExtras().getString("register_status").equals("login_btn")){
 
 
-            register_submit.setText("LOGIN");
+         //   register_submit.setText("LOGIN");
+
+
+            try {
+
+
+                lngObject = new JSONObject(sessionManager.getRegId("language"));
+
+
+                register_submit.setText(lngObject.getString("LOGIN"));
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
 
 
 
@@ -218,10 +237,24 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
         }else if(getIntent().getExtras().getString("register_status").equals("register_btn")){
 
 
-            register_submit.setText("REGISTER");
+          //  register_submit.setText("REGISTER");
+
+
+            try {
+
+
+                lngObject = new JSONObject(sessionManager.getRegId("language"));
+
+
+                register_submit.setText(lngObject.getString("REGISTER"));
+
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
         }
-
 
         setupUI(main_layout);
 
@@ -274,8 +307,23 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
             public void onFinish() {
 
-                timer.setText("RESEND");
-                timer.setBackgroundResource(R.drawable.border_curved_red);
+             //   timer.setText("RESEND");
+
+
+                try {
+
+
+                    lngObject = new JSONObject(sessionManager.getRegId("language"));
+
+                    timer.setText(lngObject.getString("RESEND").replace("\n",""));
+                    timer.setBackgroundResource(R.drawable.border_curved_red);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+
+
+            }
 
 
                 timer.setOnClickListener(new View.OnClickListener() {
@@ -380,7 +428,7 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
 
 
-                    Toast toast = Toast.makeText(New_OTP_Page_Activity.this,toast_enter_otp, Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(New_OTP_Page_Activity.this,toast_enter_otp, Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 
@@ -399,7 +447,7 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
                         Intent intent = new Intent(New_OTP_Page_Activity.this,Verification_Activity.class);
                         startActivity(intent);
-                        sessionManager.createRegisterSession(New_Login_Activity2.contact_no);
+                        sessionManager.createRegisterSession(sessionManager.getRegId("phone"));
 
 
                     }
@@ -413,7 +461,7 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
                 }else{
 
 
-                    Toast toast = Toast.makeText(New_OTP_Page_Activity.this,toast_invalid_otp, Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(New_OTP_Page_Activity.this,toast_invalid_otp, Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 
@@ -511,7 +559,7 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
                         if (status==1){
 
 
-                            Toast toast = Toast.makeText(New_OTP_Page_Activity.this,message, Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(New_OTP_Page_Activity.this,message, Toast.LENGTH_LONG);
                             toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                             toast.show();
 
@@ -520,7 +568,7 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
                         } else if (status==2){
 
 
-                            Toast toast = Toast.makeText(New_OTP_Page_Activity.this,message, Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(New_OTP_Page_Activity.this,message, Toast.LENGTH_LONG);
                             toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                             toast.show();
 

@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -38,7 +39,7 @@ import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.firebase.database.annotations.Nullable;
+
 
 
 import org.json.JSONException;
@@ -54,7 +55,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
     SessionManager sessionManager;
     public static boolean connectivity_check;
     ConnectivityReceiver connectivityReceiver;
-    public static  String toast_internet,toast_nointernet,userId,toast_mob_valid,toast_not_registered;
+    public static  String toast_internet,toast_nointernet,userId,toast_mob_valid,toast_not_registered,toast_enterno,toast_user_registered;
     public static   JSONObject lngObject;
     String status_resp,status;
     private Handler mHandler = new Handler();
@@ -93,7 +94,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                 message = "Good! Connected to Internet";
                 color = Color.WHITE;
 
-                Toast toast = Toast.makeText(New_Login_Activity2.this,toast_internet, Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(New_Login_Activity2.this,toast_internet, Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                 toast.show();
 
@@ -117,7 +118,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
             int duration=1000;
             connectivity_check=true;
 
-            Toast toast = Toast.makeText(New_Login_Activity2.this,toast_nointernet, Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(New_Login_Activity2.this,toast_nointernet, Toast.LENGTH_LONG);
             toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
             toast.show();
 
@@ -140,7 +141,6 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
 
 
     }
-
 
 
     @Override
@@ -175,7 +175,6 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
 
 
 
-
        // getHintPhoneNumber();
 
 
@@ -189,10 +188,17 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
             mob_no_details.setText(lngObject.getString("Enteryourphonenumbertogetstarted").replace("\n",""));
             farmer_text1.setText(lngObject.getString("MadeforFarmingCommunity"));
             farmer_desc1.setText(lngObject.getString("Theconfluenceoffarmersandfairtrade"));
+
+            login_btn.setText(lngObject.getString("LOGIN"));
+            register_btn.setText(lngObject.getString("REGISTER"));
+
+
             toast_internet = lngObject.getString("GoodConnectedtoInternet");
             toast_nointernet = lngObject.getString("NoInternetConnection");
             toast_mob_valid = lngObject.getString("Pleaseenter10digitsmobilenumber");
-            toast_not_registered = lngObject.getString("Yournumberisnotregistered");
+            toast_not_registered = lngObject.getString("UsernotRegistered");
+            toast_enterno = lngObject.getString("PleaseEnterPhoneNumberToProceed");
+            toast_user_registered = lngObject.getString("UserAlreadyRegistered");
 
 
 
@@ -221,7 +227,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
 
                 if(contact_no.equals("")){
 
-                    Toast toast = Toast.makeText(New_Login_Activity2.this,"Please Enter Phone Number To Proceed", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(New_Login_Activity2.this,toast_enterno, Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 
@@ -235,7 +241,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
 
                 }else if(contact_no.length()<10){
 
-                    Toast toast = Toast.makeText(New_Login_Activity2.this,toast_mob_valid, Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(New_Login_Activity2.this,toast_mob_valid, Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 
@@ -272,7 +278,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                 if(contact_no.equals("")) {
 
 
-                    Toast toast = Toast.makeText(New_Login_Activity2.this,"Please Enter Phone Number To Proceed", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(New_Login_Activity2.this,toast_enterno, Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 
@@ -286,7 +292,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
 
                 }else if(contact_no.length()<10){
 
-                    Toast toast = Toast.makeText(New_Login_Activity2.this,toast_mob_valid, Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(New_Login_Activity2.this,toast_mob_valid, Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                     toast.show();
 ////
@@ -350,7 +356,9 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
 //    }
 
 
+
     private void check_login_user2() {
+
 
         try{
 
@@ -410,7 +418,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
 
                         }else{
 
-                            Toast toast = Toast.makeText(New_Login_Activity2.this,"User Not Registered", Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(New_Login_Activity2.this,toast_not_registered, Toast.LENGTH_SHORT);
                             toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                             toast.show();
 
@@ -576,7 +584,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                         }else{
 
 
-                            Toast toast = Toast.makeText(New_Login_Activity2.this,"User Not Registered", Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(New_Login_Activity2.this,toast_not_registered, Toast.LENGTH_SHORT);
                             toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                             toast.show();
 
@@ -625,7 +633,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                             status_resp = jsonObject_resp.getString("Status");
 
 
-                            Toast toast = Toast.makeText(New_Login_Activity2.this,"User Already Registered", Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(New_Login_Activity2.this,toast_user_registered, Toast.LENGTH_SHORT);
                             toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                             toast.show();
 

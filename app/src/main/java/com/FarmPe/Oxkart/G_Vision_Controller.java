@@ -6,9 +6,7 @@ import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.util.Log;
-
 import com.FarmPe.Oxkart.Bean.AddPhotoBean;
-
 import com.FarmPe.Oxkart.Fragment.AaProfileFragment;
 import com.FarmPe.Oxkart.Volly_class.PackageManagerUtils;
 import com.FarmPe.Oxkart.volleypost.VolleyMultipartRequest;
@@ -40,7 +38,6 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
 
 
 public class G_Vision_Controller {

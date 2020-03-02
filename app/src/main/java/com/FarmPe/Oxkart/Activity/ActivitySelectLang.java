@@ -2,6 +2,9 @@ package com.FarmPe.Oxkart.Activity;
 
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +12,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -34,7 +38,7 @@ import java.util.List;
 
 
 
-public class ActivitySelectLang extends AppCompatActivity {
+public class ActivitySelectLang extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
 
 
 
@@ -43,10 +47,13 @@ public class ActivitySelectLang extends AppCompatActivity {
     private AdapterSelectLanguage mAdapter;
     boolean doubleBackToExitPressedOnce = false;
     LinearLayout linearLayout;
+    public static boolean connectivity_check;
+    ConnectivityReceiver connectivityReceiver;
     public static TextView continue_lang, select_your_lang_text;
     public static JSONObject lngObject;
-
     SessionManager sessionManager;
+    public static  String toast_internet,toast_nointernet;
+
 
 
     @Override
@@ -59,10 +66,89 @@ public class ActivitySelectLang extends AppCompatActivity {
     }
 
 
+
+    @Override
+    protected void onStop()
+
+    {
+        unregisterReceiver(connectivityReceiver);
+        super.onStop();
+    }
+
+
+
+    private void checkConnection() {
+        boolean isConnected = ConnectivityReceiver.isConnected();
+        showSnack(isConnected);
+    }
+
+
+    private void showSnack(boolean isConnected) {
+        String message = null;
+        int color=0;
+        if (isConnected) {
+
+            if(connectivity_check) {
+                message = "Good! Connected to Internet";
+                color = Color.WHITE;
+
+
+                Toast toast = Toast.makeText(ActivitySelectLang.this,toast_internet, Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                toast.show();
+
+//                int duration=1000;
+//                Snackbar snackbar = Snackbar.make(linear_layout,toast_internet, duration);
+//                View sbView = snackbar.getView();
+//                TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+//                textView.setBackgroundColor(ContextCompat.getColor(New_Login_Activity2.this,R.color.orange));
+//                textView.setTextColor(Color.WHITE);
+//                snackbar.show();
+
+
+                connectivity_check=false;
+            }
+
+
+        } else {
+            message = "No Internet Connection";
+            color = Color.RED;
+
+            int duration=1000;
+            connectivity_check=true;
+
+            Toast toast = Toast.makeText(ActivitySelectLang.this,toast_nointernet, Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+            toast.show();
+
+
+//            Snackbar.make(findViewById(android.R.id.content),toast_nointernet, duration).show();
+
+
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        final IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+        connectivityReceiver = new ConnectivityReceiver();
+        registerReceiver(connectivityReceiver, intentFilter);
+        MyApplication.getInstance().setConnectivityListener(this);
+
+
+    }
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_a_selectlang);
+        checkConnection();
+
         recyclerView = findViewById(R.id.recycler_view_lang);
         continue_lang = findViewById(R.id.continue_lang);
         select_your_lang_text = findViewById(R.id.select_your_lang_text);
@@ -113,12 +199,16 @@ public class ActivitySelectLang extends AppCompatActivity {
 
             } else {
 
+
                 lngObject = new JSONObject(sessionManager.getRegId("language"));
 
                 System.out.println("llllllllllllkkkkkkkkkkkkkkk" + lngObject.getString("EnterPhoneNo"));
 
-                select_your_lang_text.setText(lngObject.getString("SelectYourLanguage"));
+                select_your_lang_text.setText(lngObject.getString("SelectYourLanguage").replace("\n",""));
                 continue_lang.setText(lngObject.getString("PROCEED").replace("\n",""));
+
+                toast_internet = lngObject.getString("GoodConnectedtoInternet");
+                toast_nointernet = lngObject.getString("NoInternetConnection");
 
 
 
@@ -165,10 +255,15 @@ public class ActivitySelectLang extends AppCompatActivity {
                     System.out.println("qqqqqqvv" + result);
 
                     try {
+
                         sessionManager.saveLanguage(result.toString());
 
                         String lang_title1 = result.getString("SelectYourLanguage".replace("\n",""));
                         String proceed_btn = result.getString("PROCEED").replace("\n","");
+
+                        toast_internet = lngObject.getString("GoodConnectedtoInternet");
+                        toast_nointernet = lngObject.getString("NoInternetConnection");
+
 
                         select_your_lang_text.setText(lang_title1);
                         continue_lang.setText(proceed_btn);
@@ -281,4 +376,8 @@ public class ActivitySelectLang extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+        showSnack(isConnected);
+    }
 }

@@ -21,7 +21,7 @@ import com.FarmPe.Oxkart.SessionManager;
 import com.FarmPe.Oxkart.Urls;
 import com.FarmPe.Oxkart.Volly_class.Crop_Post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
-import com.google.firebase.messaging.FirebaseMessaging;
+
 
 import org.json.JSONObject;
 
@@ -100,11 +100,11 @@ public class Notification_Adapter1 extends RecyclerView.Adapter<Notification_Ada
 
                 if (isChecked) {
                     enable_switch(products.getNoti_id());
-                    FirebaseMessaging.getInstance().subscribeToTopic(products.getNoti_code());// to register in topic(subcribe)
+                   // FirebaseMessaging.getInstance().subscribeToTopic(products.getNoti_code());// to register in topic(subcribe)
                 } else {
                     enable_switch("");
 
-                    FirebaseMessaging.getInstance().unsubscribeFromTopic(products.getNoti_code());// to register in topic(unsubscribe)
+                 //   FirebaseMessaging.getInstance().unsubscribeFromTopic(products.getNoti_code());// to register in topic(unsubscribe)
                 }
 
             }

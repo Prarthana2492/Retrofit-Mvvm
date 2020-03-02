@@ -50,6 +50,7 @@ public class SessionManager {
     public static final String KEY_LNG_SELECTED = "lng";
     public static final String KEY_LANGUAGE = "language";
     public static final String KEY_LANGUAGE_NAME = "language_name";
+    public static final String KEY_LOCATION  = "location";
 
     // Constructor
     public SessionManager(Context context){
@@ -124,6 +125,13 @@ public class SessionManager {
 
 
         // commit changes
+        loginPrefsEditor.commit();
+    }
+
+    public void savelocation(String location) {
+
+        loginPrefsEditor.putString(KEY_LOCATION, location);
+
         loginPrefsEditor.commit();
     }
 

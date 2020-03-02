@@ -27,11 +27,14 @@ public class SliderPagerAdapter extends PagerAdapter {
     Activity activity;
     ArrayList<ListBean2> slider_text;
     RecyclerView recyclerView;
-    TextView farmer_text,farmer_descr,how_it_wrks,what_we_sell,register,register_details;
-    public static JSONObject lngObject;
-    SessionManager sessionManager;
 
-    public static int morecount;
+    TextView farmer_text,farmer_descr,how_it_wrks,what_we_sell,register,register_details,
+            request_price,register_details_2,get_quotes_details,get_quotes,pay_text,pay_text_details,
+            order_text_details,order_text;
+
+      public static JSONObject lngObject;
+      SessionManager sessionManager;
+      public static int morecount;
 
 
     public SliderPagerAdapter(Activity activity, ArrayList<ListBean2> slider_text) {
@@ -86,6 +89,15 @@ public class SliderPagerAdapter extends PagerAdapter {
                 how_it_wrks = view.findViewById(R.id.how_it_wrks);
                 register = view.findViewById(R.id.register);
                 register_details = view.findViewById(R.id.register_details);
+                request_price = view.findViewById(R.id.request_price);
+                register_details_2 = view.findViewById(R.id.register_details_2);
+
+                get_quotes_details = view.findViewById(R.id.get_quotes_details);
+                get_quotes = view.findViewById(R.id.get_quotes);
+                pay_text = view.findViewById(R.id.pay_text);
+                pay_text_details = view.findViewById(R.id.pay_text_details);
+                order_text_details = view.findViewById(R.id.order_text_details);
+                order_text = view.findViewById(R.id.order_text);
 
 
                 try {
@@ -97,6 +109,20 @@ public class SliderPagerAdapter extends PagerAdapter {
                     how_it_wrks.setText(lngObject.getString("HowitWorks"));
                     register.setText("1." + lngObject.getString("Register"));
                     register_details.setText(lngObject.getString("Registerbyenteringtherequireddetails"));
+
+                    request_price.setText("2." + lngObject.getString("RequestaPrice"));
+                    register_details_2.setText(lngObject.getString("Placearequestpriceintheappbyselectingtherequireditems"));
+
+                    get_quotes.setText("3." + lngObject.getString("GetQuotes"));
+                    get_quotes_details.setText(lngObject.getString("Gettherequiredquotesatyourconvinence"));
+
+                    order_text.setText("4." + lngObject.getString("Order"));
+                    order_text_details.setText(lngObject.getString("Placeanorderintheappbyselectingtherequireditems"));
+
+                    pay_text.setText("5." + lngObject.getString("Pay"));
+                    pay_text_details.setText(lngObject.getString("Payonlinepostorderplacement"));
+
+
 
                    // farmer_descr.setText(lngObject.getString("Theconfluenceoffarmersandfairtrade"));
 
@@ -127,6 +153,7 @@ public class SliderPagerAdapter extends PagerAdapter {
 
                     farmer_text.setText(lngObject.getString("MadeforFarmingCommunity"));
                     farmer_descr.setText(lngObject.getString("Theconfluenceoffarmersandfairtrade"));
+                    what_we_sell.setText(lngObject.getString("WhatweSell"));
 
                     //  pass.setHint(lngObject.getString("Password"));
                     //  remember_me.setText(lngObject.getString("RememberMe"));

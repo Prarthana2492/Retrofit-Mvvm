@@ -3,17 +3,21 @@ package com.FarmPe.Oxkart.Activity;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.FarmPe.Oxkart.Adapter.SliderPagerAdapter;
@@ -29,14 +33,94 @@ import java.util.ArrayList;
 
 
 
-public class Slider_Activity extends AppCompatActivity {
+public class Slider_Activity extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener{
 
     int page_position = 0;
     ArrayList<ListBean2>  apply_loan;
     LinearLayout ll_dots, cate1, cate2, cate3;
     public static JSONObject lngObject;
     TextView proceed;
+    public static boolean connectivity_check;
+    ConnectivityReceiver connectivityReceiver;
     SessionManager sessionManager;
+    public static  String toast_internet,toast_nointernet;
+
+
+
+    @Override
+    protected void onStop()
+
+    {
+        unregisterReceiver(connectivityReceiver);
+        super.onStop();
+    }
+
+
+
+    private void checkConnection() {
+        boolean isConnected = ConnectivityReceiver.isConnected();
+        showSnack(isConnected);
+    }
+
+
+
+    private void showSnack(boolean isConnected) {
+        String message = null;
+        int color=0;
+        if (isConnected) {
+            if(connectivity_check) {
+                message = "Good! Connected to Internet";
+                color = Color.WHITE;
+
+                Toast toast = Toast.makeText(Slider_Activity.this,toast_internet, Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+                toast.show();
+
+//                int duration=1000;
+//                Snackbar snackbar = Snackbar.make(linear_layout,toast_internet, duration);
+//                View sbView = snackbar.getView();
+//                TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+//                textView.setBackgroundColor(ContextCompat.getColor(New_Login_Activity2.this,R.color.orange));
+//                textView.setTextColor(Color.WHITE);
+//                snackbar.show();
+
+
+                connectivity_check=false;
+            }
+
+
+        } else {
+            message = "No Internet Connection";
+            color = Color.RED;
+
+            int duration=1000;
+            connectivity_check=true;
+
+            Toast toast = Toast.makeText(Slider_Activity.this,toast_nointernet, Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+            toast.show();
+
+
+//            Snackbar.make(findViewById(android.R.id.content),toast_nointernet, duration).show();
+
+
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        final IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+        connectivityReceiver = new ConnectivityReceiver();
+        registerReceiver(connectivityReceiver, intentFilter);
+        MyApplication.getInstance().setConnectivityListener(this);
+
+
+    }
+
+
 
 
     @Override
@@ -44,6 +128,8 @@ public class Slider_Activity extends AppCompatActivity {
         setContentView(R.layout.sliderlayoutviewpager);
         super.onCreate(savedInstanceState);
 
+
+        checkConnection();
 
         proceed = findViewById(R.id.proceed);
 
@@ -62,15 +148,15 @@ public class Slider_Activity extends AppCompatActivity {
         }
 
 
-
         try {
-
 
             lngObject = new JSONObject(sessionManager.getRegId("language"));
 
             System.out.println("llllllllllllkkkkkkkkkkkkkkk" + lngObject.getString("EnterPhoneNo"));
 
             proceed.setText(lngObject.getString("PROCEED").replace("\n",""));
+            toast_internet = lngObject.getString("GoodConnectedtoInternet");
+            toast_nointernet = lngObject.getString("NoInternetConnection");
 
 
 
@@ -111,11 +197,11 @@ public class Slider_Activity extends AppCompatActivity {
         apply_loan.add(bean11);
         ListBean2 bean8=new ListBean2("Power\nTillers",11,R.drawable.tiller,1);
         apply_loan.add(bean8);
-        ListBean2 bean6=new ListBean2("Tractor\nImplements",7,R.drawable.sprinkler,1);
+        ListBean2 bean6=new ListBean2("Tractor\nImplements",7,R.drawable.tractor_implements,1);
         apply_loan.add(bean6);
         ListBean2 bean7=new ListBean2("Backhoe\nAttachment",8,R.drawable.backhoe,1);
         apply_loan.add(bean7);
-        ListBean2 bean9=new ListBean2("Irrigation\nSystem",9,R.drawable.farm_truck,1);
+        ListBean2 bean9=new ListBean2("Irrigation\nSystem",9,R.drawable.sprinkler,1);
         apply_loan.add(bean9);
         ListBean2 bean14=new ListBean2("Tractor\n Accessories",10,R.drawable.accessories,1);
         apply_loan.add(bean14);
@@ -186,5 +272,11 @@ public class Slider_Activity extends AppCompatActivity {
 
         if (dots.length > 0)
             dots[currentPage].setTextColor(Color.parseColor("#E50914"));
+    }
+
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+        showSnack(isConnected);
+
     }
 }

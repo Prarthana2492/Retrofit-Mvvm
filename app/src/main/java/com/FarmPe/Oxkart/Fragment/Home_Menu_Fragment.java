@@ -24,8 +24,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import com.FarmPe.Oxkart.Activity.GetLocationActivity;
-import com.FarmPe.Oxkart.Activity.HomePage_With_Bottom_Navigation;
+
+
 import com.FarmPe.Oxkart.Activity.Status_bar_change_singleton;
 
 import com.FarmPe.Oxkart.Adapter.Home_Page_Request_Adapter;
@@ -37,8 +37,8 @@ import com.FarmPe.Oxkart.Volly_class.Crop_Post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
-import com.google.gson.JsonArray;
+
+
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -64,7 +64,7 @@ public class Home_Menu_Fragment extends Fragment  {
     CircleImageView prod_imgg;
     SessionManager sessionManager;
     String ProfileImage;
-
+    TextView locationtxt;
 
     public static TabLayout tabLayout;
     private ViewPager viewPager;
@@ -83,16 +83,37 @@ public class Home_Menu_Fragment extends Fragment  {
 
         Status_bar_change_singleton.getInstance().home_change(getActivity());
 
-        recyclerView = view.findViewById(R.id.recycler_view1);
+        recyclerView = view.findViewById(R.id.recycler_view);
         linearLayout = view.findViewById(R.id.linearLayout);
         prod_imgg = view.findViewById(R.id.prod_imgg);
         notificatn_img = view.findViewById(R.id.notificatn_img);
         your_locatn = view.findViewById(R.id.your_locatn);
+        locationtxt = view.findViewById(R.id.locationtxt);
         sessionManager = new SessionManager(getActivity());
 
 
 
+    Bundle bundle=getArguments();
+
+        if (bundle!=null){
+            locationtxt.setText(getArguments().getString("homelocation"));
+
+        }else{
+            locationtxt.setText("Bangalore");
+        }
+
         your_locatn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedFragment = GetLocationFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_menu, selectedFragment);
+                transaction.addToBackStack("home");
+                transaction.commit();
+            }
+        });
+
+        /*your_locatn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -102,13 +123,13 @@ public class Home_Menu_Fragment extends Fragment  {
 
             }
         });
+*/
 
 
 
         prod_imgg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 Bundle bundle = new Bundle();
                 bundle.putString("HOME_IMAGE","Selfie_image");
@@ -121,6 +142,8 @@ public class Home_Menu_Fragment extends Fragment  {
 
             }
         });
+
+
 
 
 
@@ -147,6 +170,8 @@ public class Home_Menu_Fragment extends Fragment  {
                 return false;
             }
         };
+
+
 
 
         // GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3, GridLayoutManager.HORIZONTAL, false);

@@ -1,7 +1,6 @@
 package com.FarmPe.Oxkart.Fragment;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -15,8 +14,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.FarmPe.Oxkart.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Oxkart.Activity.Status_bar_change_singleton;
 import com.FarmPe.Oxkart.Adapter.NotificationAdapter;
 import com.FarmPe.Oxkart.Bean.Notification_Home_Bean;
@@ -32,8 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class NotificationFragment extends Fragment {
+
 
     public static List<Notification_Home_Bean> newOrderBeansList = new ArrayList<>();
     public static RecyclerView recyclerView;
@@ -46,7 +43,7 @@ public class NotificationFragment extends Fragment {
     SessionManager sessionManager;
     JSONObject lngObject;
     JSONArray notifn_array;
-    String location;
+
 
 
     public static NotificationFragment newInstance() {
@@ -125,6 +122,7 @@ public class NotificationFragment extends Fragment {
         }
 
 
+
         try{
 
             final JSONObject jsonObject = new JSONObject();
@@ -146,6 +144,7 @@ public class NotificationFragment extends Fragment {
                             newOrderBeansList.add(notification_home_bean);
 
                         }
+
 
                         if(notifn_array.length()==0){
 

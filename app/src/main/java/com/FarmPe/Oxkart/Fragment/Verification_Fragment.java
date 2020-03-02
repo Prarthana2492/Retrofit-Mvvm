@@ -1,5 +1,6 @@
 package com.FarmPe.Oxkart.Fragment;
 
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -22,13 +23,13 @@ import org.json.JSONObject;
 public class Verification_Fragment extends Fragment {
 
 
-    Fragment selectedFragment;
-  LinearLayout back_feed;
-    public static JSONObject lngObject;
-  TextView setting_tittle,voter_id_back,voter_id_front,select_location,selfie_verify,face_verify_selfy_text,sel_loc_text,voter_front_text,voter_back_text,continue_btn;
-  String status_1,status_2;
-  SessionManager sessionManager;
 
+    Fragment selectedFragment;
+    LinearLayout back_feed;
+    public static JSONObject lngObject;
+    TextView setting_tittle,voter_id_back,voter_id_front,select_location,selfie_verify,face_verify_selfy_text,sel_loc_text,voter_front_text,voter_back_text,continue_btn;
+    String status_1,status_2;
+   SessionManager sessionManager;
 
 
 
@@ -64,6 +65,7 @@ public class Verification_Fragment extends Fragment {
 //           status_1 = getArguments().getString("verification_status");
 
 
+
         try {
 
 
@@ -77,13 +79,14 @@ public class Verification_Fragment extends Fragment {
             selfie_verify.setText(lngObject.getString("Click"));
             setting_tittle.setText(lngObject.getString("Verification"));
 
+
+
             face_verify_selfy_text.setText(lngObject.getString("FaceVerificationSelfie").replace("\n",""));
             sel_loc_text.setText(lngObject.getString("SelectLocation").replace("\n",""));
             voter_front_text.setText(lngObject.getString("VoterIDFront").replace("\n",""));
             voter_back_text.setText(lngObject.getString("VoterIDBack").replace("\n",""));
-
-
             continue_btn.setText(lngObject.getString("PROCEED").replace("\n",""));
+
 
 
 

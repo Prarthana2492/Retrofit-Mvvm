@@ -42,7 +42,7 @@ import com.FarmPe.Oxkart.Urls;
 import com.FarmPe.Oxkart.Volly_class.Crop_Post;
 import com.FarmPe.Oxkart.Volly_class.Login_post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
-import com.google.firebase.messaging.FirebaseMessaging;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -78,6 +78,7 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
         unregisterReceiver(connectivityReceiver);
         super.onStop();
     }
+
 
 
     LinearLayout coordinatorLayout;
@@ -547,8 +548,8 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
                                          //   sessionManager.save_name(userObject.getString("FullName"),userObject.getString("PhoneNo"),userObject.getString("ProfilePic"));
                                             sessionManager.saveUserId(userObject.getString("Id"));
 
-                                            FirebaseMessaging.getInstance().subscribeToTopic("FARMERNEWS");// to register in topic(subcribe)
-                                            FirebaseMessaging.getInstance().subscribeToTopic("NEWS");// to register in topic(subcribe)
+                                         //   FirebaseMessaging.getInstance().subscribeToTopic("FARMERNEWS");// to register in topic(subcribe)
+                                           // FirebaseMessaging.getInstance().subscribeToTopic("NEWS");// to register in topic(subcribe)
 
 
                                             if(!myDb.isEmailExists(mobile_no.getText().toString())){
