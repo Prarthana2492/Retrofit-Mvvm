@@ -111,16 +111,14 @@ public class Privacy_Activity extends AppCompatActivity implements ConnectivityR
                     try{
                         verify_status = result.getJSONObject("VerificationStatus");
                         Boolean user_uploaded = verify_status.getBoolean("IsUserUploaded");
-                        if(user_uploaded.equals(false)){
+                        Bundle bundle=new Bundle();
                             selectedFragment = Verification_Last_Fragment.newInstance();
+                            bundle.putBoolean("VER_SATTUS",user_uploaded);
                             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                             transaction.replace(R.id.frame_layout, selectedFragment);
+                            selectedFragment.setArguments(bundle);
                             transaction.commit();
-                        }else{
-                            Intent intent = new Intent(Privacy_Activity.this,HomePage_With_Bottom_Navigation.class);
-                            sessionManager.savelocation(sessionManager.getRegId("location"));
-                            startActivity(intent);
-                        }
+
                     }catch (Exception e){
                         e.printStackTrace();
                     }

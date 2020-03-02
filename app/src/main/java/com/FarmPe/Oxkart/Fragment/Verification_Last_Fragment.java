@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.FarmPe.Oxkart.Activity.HomePage_With_Bottom_Navigation;
 import com.FarmPe.Oxkart.Activity.New_Login_Activity2;
 import com.FarmPe.Oxkart.Activity.New_OTP_Page_Activity;
+import com.FarmPe.Oxkart.Activity.Privacy_Activity;
 import com.FarmPe.Oxkart.Activity.Verification_Activity;
 import com.FarmPe.Oxkart.R;
 import com.FarmPe.Oxkart.SessionManager;
@@ -68,6 +69,25 @@ public class Verification_Last_Fragment extends Fragment {
        ph_no.setText(sessionManager.getRegId("phone"));
        System.out.println("dhfgfjh" + sessionManager.getRegId("phone"));
        ver_status=getArguments().getBoolean("VER_SATTUS");
+       cont_btn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               if(ver_status){
+
+                   Intent intent = new Intent(getActivity(),HomePage_With_Bottom_Navigation.class);
+                   sessionManager.savelocation(sessionManager.getRegId("location"));
+                   startActivity(intent);
+               }else{
+                   Bundle bundle=new Bundle();
+                   selectedFragment = Verification_Last_Fragment.newInstance();
+                   bundle.putBoolean("VER_SATTUS",ver_status);
+                   FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                   transaction.replace(R.id.frame_layout, selectedFragment);
+                   selectedFragment.setArguments(bundle);
+                   transaction.commit();
+               }
+           }
+       });
        try {
            lngObject = new JSONObject(sessionManager.getRegId("language"));
            toolbar_title.setText(lngObject.getString("Verification"));
@@ -81,9 +101,7 @@ public class Verification_Last_Fragment extends Fragment {
                in_progress_details.setVisibility(View.VISIBLE);
                in_progress_image.setVisibility(View.VISIBLE);
                user_status.setText(lngObject.getString("InProgress").replace("\n",""));
-               Intent intent = new Intent(getActivity(),HomePage_With_Bottom_Navigation.class);
-               sessionManager.savelocation(sessionManager.getRegId("location"));
-               startActivity(intent);
+
            }else{
                user_status.setText("In Progress");
                in_progress_details.setVisibility(View.VISIBLE);
