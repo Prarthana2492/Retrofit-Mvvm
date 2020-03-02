@@ -138,10 +138,12 @@ public class Privacy_Activity extends AppCompatActivity implements ConnectivityR
             e.printStackTrace();
         }
 
-
+        Bundle bundle=new Bundle();
+        bundle.putString("STATUS","FROM_SESSION");
         selectedFragment = Verification_Last_Fragment.newInstance();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout, selectedFragment);
+        selectedFragment.setArguments(bundle);
         transaction.commit();
 
     }

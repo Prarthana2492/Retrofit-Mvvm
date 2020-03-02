@@ -634,10 +634,13 @@ public class Edit_Verification_Fragment extends Fragment {
         ok_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle=new Bundle();
+                bundle.putString("STATUS","FROM_EDIT");
 
                 selectedFragment = Verification_Last_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout1, selectedFragment);
+                selectedFragment.setArguments(bundle);
                 transaction.commit();
                 dialog.dismiss();
 

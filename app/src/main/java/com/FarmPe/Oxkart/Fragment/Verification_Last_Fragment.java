@@ -41,6 +41,7 @@ public class Verification_Last_Fragment extends Fragment {
     ImageView in_progress_image,success_image;
     SessionManager sessionManager;
     public static JSONObject lngObject;
+    public String status;
 
 
 
@@ -74,6 +75,7 @@ public class Verification_Last_Fragment extends Fragment {
 
         ph_no.setText(sessionManager.getRegId("phone"));
         System.out.println("dhfgfjh" + sessionManager.getRegId("phone"));
+        status=getArguments().getString("STATUS");
 
 
 
@@ -218,8 +220,14 @@ public class Verification_Last_Fragment extends Fragment {
 
                             success_details.setVisibility(View.VISIBLE);
                             success_image.setVisibility(View.VISIBLE);
+                            if (status.equals("FROM_SESSION")){
+                                 Intent intent = new Intent(getActivity(),HomePage_With_Bottom_Navigation.class);
+                                 startActivity(intent);
 
+                            }
 
+                           // Intent intent = new Intent(getActivity(),HomePage_With_Bottom_Navigation.class);
+                           // startActivity(intent);
 
                         }
 
