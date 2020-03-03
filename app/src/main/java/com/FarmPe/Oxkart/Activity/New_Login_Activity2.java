@@ -561,7 +561,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                             System.out.println("useridddd" + mobile_no.getText().toString());
 
 */
-                            sessionManager.createLoginSession(contact_no);
+                           // sessionManager.createLoginSession(contact_no);
                             sessionManager.save_name(userObject.getString("PhoneNo"));
                             System.out.println("useriddddsaveee" + sessionManager.getRegId("phone"));
                             //   sessionManager.save_name(userObject.getString("FullName"),userObject.getString("PhoneNo"),userObject.getString("ProfilePic"));

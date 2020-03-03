@@ -437,6 +437,7 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
                 } else if (pinView.getText().toString().equals(sessionId)){
 
                     if(getIntent().getExtras().getString("register_status").equals("login_btn")){
+                        sessionManager.createRegisterSession(sessionManager.getRegId("phone"));
 
 
                         verification_status();
