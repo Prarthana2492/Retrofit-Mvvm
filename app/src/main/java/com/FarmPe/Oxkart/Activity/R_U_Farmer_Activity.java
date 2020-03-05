@@ -148,8 +148,17 @@ public class R_U_Farmer_Activity extends AppCompatActivity implements Connectivi
 
         radio_group_farmer.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (user_name.getText().toString().equals("")) {
 
+                    continuebtn.setBackgroundResource(R.drawable.grey_curved_border);
+
+
+                }else {
+                    continuebtn.setBackgroundResource(R.drawable.border_filled_red_not_curved);
+
+                }
                 RadioButton radioButton = group.findViewById(checkedId);
+
 
                 if (radioButton.getTag().toString().equals("1")) {
                     stat = "1";
@@ -186,16 +195,22 @@ public class R_U_Farmer_Activity extends AppCompatActivity implements Connectivi
             @Override
             public void afterTextChanged(Editable editable) {
 
-                if (user_name.getText().toString().equals("") && radio_group_farmer.getCheckedRadioButtonId() == -1) {
+                if (radio_group_farmer.getCheckedRadioButtonId() != -1)
+                {
+                    // no radio buttons are checked
+                    if (user_name.getText().toString().equals("")) {
 
-                    continuebtn.setBackgroundResource(R.drawable.grey_curved_border);
+                        continuebtn.setBackgroundResource(R.drawable.grey_curved_border);
 
 
-                } else {
+                    } else {
 
-                    continuebtn.setBackgroundResource(R.drawable.border_filled_red_not_curved);
+                        continuebtn.setBackgroundResource(R.drawable.border_filled_red_not_curved);
 
+                    }
                 }
+
+
             }
         });
 
