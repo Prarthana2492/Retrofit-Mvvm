@@ -205,7 +205,6 @@ public class Verification_Fragment extends Fragment {
             }
         });
 
-
         selfie_verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -221,11 +220,6 @@ public class Verification_Fragment extends Fragment {
 
             }
         });
-
-
-
-
-
 
 
         return view;

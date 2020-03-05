@@ -9,14 +9,10 @@ import android.content.IntentFilter;
 import android.content.IntentSender;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
-
 import android.os.Bundle;
 import android.os.Handler;
-
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -27,23 +23,17 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
-
-
 import com.FarmPe.Oxkart.R;
 import com.FarmPe.Oxkart.SessionManager;
 import com.FarmPe.Oxkart.Urls;
 import com.FarmPe.Oxkart.Volly_class.Login_post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
-
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-
-
-
 import org.json.JSONException;
 import org.json.JSONObject;
+
+
 
 
 public class New_Login_Activity2 extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener,GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener {
@@ -58,10 +48,10 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
     public static  String toast_internet,toast_nointernet,userId,toast_mob_valid,toast_not_registered,toast_enterno,toast_user_registered;
     public static   JSONObject lngObject;
     String status_resp,status;
+    Boolean otp_verified;
     private Handler mHandler = new Handler();
     private int nCounter = 0;
     public static String contact_no,localize;
-
     GoogleApiClient mGoogleApiClient;
     private int RESOLVE_HINT = 2;
 
@@ -207,12 +197,9 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
 
 
 
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
 
 
 
@@ -266,7 +253,6 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
 
                 contact_no =  mobile_no.getText().toString();
@@ -523,8 +509,6 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
 
     private void check_login_user() {
 
-
-
         try{
 
             JSONObject jsonObject = new JSONObject();
@@ -553,7 +537,9 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                             status = jsonObject.getString("Status");
                             String status1 = jsonObject.getString("OTP");
                             userId = jsonObject.getString("UserId");
+                            otp_verified = jsonObject.getBoolean("IsOTPverified");
                             System.out.println("useridddduserId" + userId);
+
        /*                     sessionManager.save_name(jsonObject.getString("PhoneNo"));
                             //   sessionManager.save_name(userObject.getString("FullName"),userObject.getString("PhoneNo"),userObject.getString("ProfilePic"));
                             sessionManager.saveUserId(userId);
@@ -570,16 +556,26 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
 
 
 
-                            if ((status.equals("1"))) {
+                            if (status.equals("1")) {
 
                                 System.out.println("jdhyusulogin" + status);
                                 Intent intent = new Intent(New_Login_Activity2.this, New_OTP_Page_Activity.class);
                                 intent.putExtra("otpnumber", status1);
-                                intent.putExtra("register_status","login_btn");
+                                intent.putExtra("register_status", "login_btn");
                                 startActivity(intent);
 
-                                //    sessionManager.createRegisterSession(contact_no);
                             }
+
+                                //    sessionManager.createRegisterSession(contact_no);
+//                            } else if(otp_verified.equals("false")) {
+//
+//                                Toast toast = Toast.makeText(New_Login_Activity2.this,"OTP not Verified", Toast.LENGTH_SHORT);
+//                                toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+//                                toast.show();
+//
+//                           //     Toast.makeText(New_Login_Activity2.this, "OTP is not verified", Toast.LENGTH_SHORT).show();
+//
+//                            }
 
                         }else{
 
@@ -587,7 +583,6 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                             Toast toast = Toast.makeText(New_Login_Activity2.this,toast_not_registered, Toast.LENGTH_SHORT);
                             toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                             toast.show();
-
 
 
                         }
@@ -604,7 +599,6 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
             e.printStackTrace();
         }
 
-
     }
 
     private void login_register() {
@@ -617,6 +611,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
             userRequestjsonObject.put("IsOTPVerified", 1);
             postjsonObject.putOpt("objUser", userRequestjsonObject);
             System.out.println("post_oobject" + postjsonObject);
+
 
 
             Login_post.login_posting(New_Login_Activity2.this, Urls.New_Register_Details, postjsonObject, new VoleyJsonObjectCallback() {
@@ -652,6 +647,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                             status_resp = jsonObject_resp.getString("Status");
                             status = jsonObject.getString("OTP");
                             String userid = jsonObject.getString("Id");
+                            otp_verified = jsonObject.getBoolean("IsOTPVerified");
                             System.out.println("useerrrriidd" + status);
                             //  sessionManager.createRegisterSession(name_text,contact,password_text);
 

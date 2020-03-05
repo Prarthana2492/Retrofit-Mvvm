@@ -1,7 +1,5 @@
 package com.FarmPe.Oxkart.Activity;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -9,9 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.FarmPe.Oxkart.Fragment.AskNandi;
 import com.FarmPe.Oxkart.Fragment.Home_Menu_Fragment;
 import com.FarmPe.Oxkart.Fragment.LookingForFragment;
 import com.FarmPe.Oxkart.Fragment.NotificationFragment;

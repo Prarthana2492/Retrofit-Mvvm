@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ public class Add_Bank_Details_IFSC_Fragment extends Fragment {
     JSONObject lngObject;
     String ifsc_yes;
     EditText ifsc,ifsc2,sav,sav2;
+    public static String Ifsc_text;
 
 
 
@@ -147,10 +149,9 @@ public class Add_Bank_Details_IFSC_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-
-             PopupMenu popupMenu = new PopupMenu(getActivity(),ifsc);
-             popupMenu.getMenu().add("Yes");
-             popupMenu.getMenu().add("No");
+                PopupMenu popupMenu = new PopupMenu(getActivity(),ifsc);
+                popupMenu.getMenu().add("Yes");
+                popupMenu.getMenu().add("No");
 
 
              popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -158,6 +159,22 @@ public class Add_Bank_Details_IFSC_Fragment extends Fragment {
                  public boolean onMenuItemClick(MenuItem item) {
 
                      ifsc.setText(item.getTitle());
+
+
+
+                     if(item.getTitle().equals("No")){
+
+                         Bundle bundle = new Bundle();
+                         bundle.putString("bank_status","bank_test");
+                         bundle.putString("bank_status_text",ifsc.getText().toString());
+                         selectedFragment = Add_New_Bank_Account_Details_Fragment.newInstance();
+                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                         transaction.replace(R.id.frame_menu, selectedFragment);
+                         selectedFragment.setArguments(bundle);
+                         transaction.commit();
+
+                     }
+
 
                      return false;
                  }

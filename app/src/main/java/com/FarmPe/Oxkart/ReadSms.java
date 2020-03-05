@@ -12,6 +12,8 @@ public class ReadSms extends BroadcastReceiver {
     Boolean b;
     String abcd,xyz;
     @Override
+
+
     public void onReceive(Context context, Intent intent) {
         System.out.println("kkkkkkkkkkkkkkkkkkk");
         Bundle data  = intent.getExtras();

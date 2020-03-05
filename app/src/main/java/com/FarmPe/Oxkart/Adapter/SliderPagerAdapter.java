@@ -135,7 +135,6 @@ public class SliderPagerAdapter extends PagerAdapter {
                 }
 
 
-
             break;
 
             case 2: view=  layoutInflater.inflate(R.layout.whatwesell_slider, container, false);

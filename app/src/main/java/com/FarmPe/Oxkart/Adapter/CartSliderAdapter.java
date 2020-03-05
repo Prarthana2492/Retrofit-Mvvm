@@ -60,6 +60,7 @@ public class CartSliderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             return new MyViewHolder(itemView);
         }
 
+
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
             MyViewHolder viewHolder0 = (MyViewHolder)holder;

@@ -28,7 +28,7 @@
 
 
         <activity
-            android:name="com.FarmPe.Oxkart.Activity.ActivitySelectLang"
+            android:name="com.FarmPe.Oxkart.Activity.R_U_Farmer_Activity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -76,7 +76,14 @@
 
 
 
-          <activity
+        <activity
+            android:name="com.FarmPe.Oxkart.Activity.ActivitySelectLang"
+            android:screenOrientation="portrait" />
+
+
+
+
+        <activity
             android:name="com.FarmPe.Oxkart.Activity.Service_Main_Activity"
             android:screenOrientation="portrait" />
 

@@ -27,7 +27,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fitsSystemWindows="true"
                 android:background="@color/menu_green"
                 >
 
@@ -53,7 +52,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fitsSystemWindows="true"
                 android:orientation="vertical"
                 android:layout_marginHorizontal="16dp"
                 >
@@ -137,7 +135,6 @@
 
 
 
-
                 <!--<TextView-->
                 <!--android:id="@+id/verify_aadhar_st"-->
                 <!--android:textSize="16dp"-->
@@ -147,9 +144,6 @@
                 <!--android:fontFamily="@font/segoeui"-->
                 <!--android:textColor="@color/colorPrimary"-->
                 <!--android:text="Aadhar Verification Completed!"/>-->
-
-
-
 
 
 
@@ -177,7 +171,7 @@
                     android:padding="16dp"
                     android:singleLine="true"
                     android:maxLength="30"
-                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                     android:textColorHint ="#9D9D9D"
                     android:background="@drawable/border_grey"
                     android:hint="Enter name as per PAN Card"/>

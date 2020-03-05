@@ -76,6 +76,7 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
     SessionManager sessionManager;
     EditText search;
     TextView norecords,toolbar_title;
+    String Add_ifsc_details;
     public static String search_status="status";
 
 
@@ -118,6 +119,15 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
           continuebtn=view.findViewById(R.id.continuebtn);
           linearLayout=view.findViewById(R.id.main_layout);
           sessionManager = new SessionManager(getActivity());
+
+
+
+
+
+          do_u_have_ifsc.setText(getArguments().getString("bank_status_text"));
+
+
+
 
 
 
@@ -166,6 +176,17 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
                     transaction.commit();
 
 
+                } if(getArguments().getString("bank_status").equals("bank_test")) {
+
+
+                        selectedFragment = New_Profile_Setting_Fragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_menu, selectedFragment);
+                        transaction.commit();
+
+
+
+
 
                 }  else if(getArguments().getString("bank_status").equals("edit_address")){
 
@@ -210,6 +231,17 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frame_menu, selectedFragment);
                         transaction.commit();
+
+
+
+                    } if(getArguments().getString("bank_status").equals("bank_test")) {
+
+
+                        selectedFragment = New_Profile_Setting_Fragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_menu, selectedFragment);
+                        transaction.commit();
+
 
 
                     }  else if(getArguments().getString("bank_status").equals("edit_address")){
@@ -489,7 +521,11 @@ public class Add_New_Bank_Account_Details_Fragment extends Fragment {
                         System.out.println("teeexxtt"+item.getTitle());
 
 
-                        do_u_have_ifsc.setText(item.getTitle());
+
+
+                            do_u_have_ifsc.setText(item.getTitle());
+
+
 
 
                         if (item.getTitle().equals("Yes")) {

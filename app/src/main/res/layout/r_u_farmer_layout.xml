@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:weightSum="100"
+    >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_weight="100"
+                android:layout_marginTop="35dp"
+                android:orientation="vertical">
+
+
+
+                <EditText
+                    android:id="@+id/user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:fontFamily="@font/segoeui"
+                    android:maxLength="30"
+                    android:hint="Name"
+                    android:backgroundTint="#C7C7C7"
+                    android:textColorHint="#000"
+                    android:singleLine="true"
+                    android:textSize="18dp"
+
+                    />
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:orientation="vertical"
+    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Are You a Farmer?"
+                    android:textSize="20dp"
+                    android:textColor="#000"
+                    />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_farmer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+
+
+                    >
+
+
+
+                    <RadioButton
+                        android:id="@+id/month_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:tag="1"
+                        android:text="Yes"
+
+                        />
+
+
+
+                    <RadioButton
+                        android:id="@+id/month_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16dp"
+                        android:tag="2"
+                        android:text="No"
+
+                        />
+
+
+
+                </RadioGroup>
+
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/continuebtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/grey_curved_border"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+
+        <TextView
+            android:id="@+id/apply_loan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Proceed"
+            android:textAllCaps="true"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:padding="15dp"
+            android:fontFamily="@font/segoeui"
+            android:textColor="#ffffff"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

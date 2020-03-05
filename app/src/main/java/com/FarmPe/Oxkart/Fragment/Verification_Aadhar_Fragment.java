@@ -1,43 +1,36 @@
 package com.FarmPe.Oxkart.Fragment;
 
+
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
+
+
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-
-import android.view.Gravity;
-import android.view.KeyEvent;
+import android.text.InputFilter;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.FarmPe.Oxkart.Activity.New_Login_Activity2;
 import com.FarmPe.Oxkart.R;
 import com.FarmPe.Oxkart.SessionManager;
 import com.FarmPe.Oxkart.Urls;
 import com.FarmPe.Oxkart.Volly_class.Crop_Post;
 import com.FarmPe.Oxkart.Volly_class.Login_post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.regex.Pattern;
-
 
 
 public class Verification_Aadhar_Fragment extends Fragment {
@@ -106,62 +99,65 @@ public class Verification_Aadhar_Fragment extends Fragment {
         }
 
 
-        view.setFocusableInTouchMode(true);
-        view.requestFocus();
-        view.setOnKeyListener(new View.OnKeyListener() {
+        pan_num.setFilters(new InputFilter[] { EMOJI_FILTER,new InputFilter.LengthFilter(13)});
+        pan_name.setFilters(new InputFilter[] { EMOJI_FILTER,new InputFilter.LengthFilter(20)});
 
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                        // this.finishAffinity();
-
-                        if (doubleBackToExitPressedOnce) {
-
-                            Intent intent = new Intent(Intent.ACTION_MAIN);
-                            intent.addCategory(Intent.CATEGORY_HOME);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
-                            startActivity(intent);
-                            getActivity().finish();
-                            System.exit(0);
-                        }
-
-
-                        doubleBackToExitPressedOnce = true;
-
-
-                        // Toast.makeText(getActivity().getApplicationContext(), "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-//                        int duration = 1000;
+//        view.setFocusableInTouchMode(true);
+//        view.requestFocus();
+//        view.setOnKeyListener(new View.OnKeyListener() {
 //
-//                        Snackbar snackbar = Snackbar
-//                                .make(main_layout,"Please Click Back To Exit", duration);
-//                        View snackbarView = snackbar.getView();
-//                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-//                        tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-//                        tv.setTextColor(Color.WHITE);
+//            @Override
+//            public boolean onKey(View v, int keyCode, KeyEvent event) {
+//                if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 //
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+//                        // this.finishAffinity();
 //
-//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-//                        } else {
-//                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
+//                        if (doubleBackToExitPressedOnce) {
+//
+//                            Intent intent = new Intent(Intent.ACTION_MAIN);
+//                            intent.addCategory(Intent.CATEGORY_HOME);
+//                          //  intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+//                            startActivity(intent);
+//                            getActivity().finish();
+//                            System.exit(0);
 //                        }
-//                        snackbar.show();
-
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                doubleBackToExitPressedOnce = false;
-                            }
-                        }, 3000);
-                    }
-
-                    return true;
-                }
-                return false;
-            }
-        });
+//
+//
+//                        doubleBackToExitPressedOnce = true;
+//
+//
+//                        // Toast.makeText(getActivity().getApplicationContext(), "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+////                        int duration = 1000;
+////
+////                        Snackbar snackbar = Snackbar
+////                                .make(main_layout,"Please Click Back To Exit", duration);
+////                        View snackbarView = snackbar.getView();
+////                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+////                        tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
+////                        tv.setTextColor(Color.WHITE);
+////
+////
+////                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+////                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+////                        } else {
+////                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
+////                        }
+////                        snackbar.show();
+//
+//                        new Handler().postDelayed(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                doubleBackToExitPressedOnce = false;
+//                            }
+//                        }, 3000);
+//                    }
+//
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
 
 
         submit.setOnClickListener(new View.OnClickListener() {
@@ -208,6 +204,7 @@ public class Verification_Aadhar_Fragment extends Fragment {
 //                    snackbar.show();
 
 //                else {
+
 
                 SubmitDetails();
 
@@ -540,6 +537,48 @@ public class Verification_Aadhar_Fragment extends Fragment {
             }
 
         }
+
+
+
+    public static InputFilter EMOJI_FILTER = new InputFilter() {
+        @Override
+        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+            boolean keepOriginal = true;
+
+            String specialChars = ".1/*!@#$%^&*()\"{}_[]|\\?/<>,.:-'';§£¥₹...%&+=€π|";
+            StringBuilder sb = new StringBuilder(end - start);
+            for (int index = start; index < end; index++) {
+                int type = Character.getType(source.charAt(index));
+                if (type == Character.SURROGATE || type == Character.OTHER_SYMBOL||type==Character.MATH_SYMBOL||specialChars.contains("" + source)) {
+                    return "";
+                }
+                for (int i = start; i < end; i++) {
+                    if (Character.isWhitespace(source.charAt(i))) {
+                        if (dstart == 0)
+                            return "";
+                    }else if(Character.isDigit(source.charAt(i))) {
+                        return "";
+                    }
+                }
+                return null;
+
+            }
+            if (keepOriginal)
+                return null;
+
+            else {
+
+                if (source instanceof Spanned) {
+                    SpannableString sp = new SpannableString(sb);
+                    TextUtils.copySpansFrom((Spanned) source, start, sb.length(), null, sp, 0);
+                    return sp;
+                } else {
+                    return sb;
+                }
+            }
+        }
+    };
+
 
 
 

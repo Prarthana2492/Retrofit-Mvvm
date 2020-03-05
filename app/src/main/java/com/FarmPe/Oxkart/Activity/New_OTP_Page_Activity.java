@@ -297,13 +297,12 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
 
 
-
-
         new CountDownTimer(20000, 1000) {
             public void onTick(long millisUntilFinished) {
 
                 timer.setText("00 :" + millisUntilFinished / 1000);
             }
+
 
             public void onFinish() {
 
@@ -321,7 +320,6 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-
 
             }
 
@@ -349,6 +347,7 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
                 Intent intent=new Intent(New_OTP_Page_Activity.this,New_Login_Activity2.class);
                 startActivity(intent);
+
 
             }
         });
@@ -391,6 +390,7 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
             }
         });
+
 
 
         ReadSms.bindListener(new SmsListener() {
@@ -446,9 +446,15 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
                     }else if(getIntent().getExtras().getString("register_status").equals("register_btn")){
 
 
-                        Intent intent = new Intent(New_OTP_Page_Activity.this,Verification_Activity.class);
+                        Intent intent = new Intent(New_OTP_Page_Activity.this,R_U_Farmer_Activity.class);
                         startActivity(intent);
                         sessionManager.createRegisterSession(sessionManager.getRegId("phone"));
+
+
+
+//                        Intent intent = new Intent(New_OTP_Page_Activity.this,Verification_Activity.class);
+//                        startActivity(intent);
+//                        sessionManager.createRegisterSession(sessionManager.getRegId("phone"));
 
 
                     }
@@ -618,7 +624,6 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
             });
         }
 
-
         if (view instanceof ViewGroup) {
 
             for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
@@ -656,4 +661,21 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
         showSnack(isConnected);
 
     }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        System.out.println("sdfsdfsbbbbbdf");
+
+//
+//            Home_Menu_Fragment.onBack_status = "no_request";
+//            selectedFragment = Home_Menu_Fragment.newInstance();
+//            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//            transaction.replace(R.id.frame_layout, selectedFragment);
+//            transaction.commit();
+
+    }
+
 }

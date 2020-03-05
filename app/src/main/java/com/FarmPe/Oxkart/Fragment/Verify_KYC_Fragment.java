@@ -154,11 +154,9 @@ public class Verify_KYC_Fragment extends Fragment {
                 popupMenu.getMenu().add("Driving License");
 
 
-
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem items) {
-
 
                       select_document_type.setText(items.getTitle());
 

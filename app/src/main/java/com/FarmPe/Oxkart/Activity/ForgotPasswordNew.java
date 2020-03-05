@@ -27,9 +27,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-
-
 public class ForgotPasswordNew extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener{
+
+
 
     TextView forgot_submit, forgot_pass_text, forgt_pass_detail;
     LinearLayout forgot_back;
@@ -41,6 +41,7 @@ public class ForgotPasswordNew extends AppCompatActivity implements Connectivity
 
     public static boolean connectivity_check;
     ConnectivityReceiver connectivityReceiver;
+
 
     @Override
     protected void onStop()
@@ -58,6 +59,7 @@ public class ForgotPasswordNew extends AppCompatActivity implements Connectivity
         boolean isConnected = ConnectivityReceiver.isConnected();
         showSnack(isConnected);
     }
+
 
 
     private void showSnack(boolean isConnected) {

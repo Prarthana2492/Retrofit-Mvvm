@@ -107,9 +107,6 @@ public class Verification_Activity extends AppCompatActivity implements Connecti
     }
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,12 +121,8 @@ public class Verification_Activity extends AppCompatActivity implements Connecti
 
 
             lngObject = new JSONObject(sessionManager.getRegId("language"));
-
-
-
             toast_internet = lngObject.getString("GoodConnectedtoInternet");
             toast_nointernet = lngObject.getString("NoInternetConnection");
-
 
 
 
@@ -137,16 +130,9 @@ public class Verification_Activity extends AppCompatActivity implements Connecti
             //  remember_me.setText(lngObject.getString("RememberMe"));
 
 
-
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-
-
 
 
         selectedFragment = Verification_Aadhar_Fragment.newInstance();
@@ -154,6 +140,7 @@ public class Verification_Activity extends AppCompatActivity implements Connecti
         transaction.replace(R.id.frame_layout1, selectedFragment);
         transaction.commit();
     }
+
 
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {

@@ -51,7 +51,6 @@ public class Verification_Last_Fragment extends Fragment {
 
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.verify_last_layout, container, false);
@@ -70,18 +69,13 @@ public class Verification_Last_Fragment extends Fragment {
         success_details = view.findViewById(R.id.success_details);
         in_progress_image = view.findViewById(R.id.in_progress_image);
         success_image = view.findViewById(R.id.success_image);
-
         sessionManager = new SessionManager(getActivity());
-
         ph_no.setText(sessionManager.getRegId("phone"));
         System.out.println("dhfgfjh" + sessionManager.getRegId("phone"));
         status=getArguments().getString("STATUS");
 
 
-
-
         try {
-
 
             lngObject = new JSONObject(sessionManager.getRegId("language"));
 
@@ -90,19 +84,13 @@ public class Verification_Last_Fragment extends Fragment {
             toolbar_title.setText(lngObject.getString("Verification"));
             mobile_no.setText(lngObject.getString("PhoneNumber"));
             user_status_text.setText(lngObject.getString("Status"));
-
             in_progress_details.setText(lngObject.getString("OuragentwillcallyousoontoverifyDetailsPleasebeavailableovercall").replace("\n",""));
             success_details.setText(lngObject.getString("YourverificationissuccessfulClickproceedtostartexploring"));
-
-
             proceed_txt.setText(lngObject.getString("PROCEED").replace("\n",""));
-
 
 
             //  pass.setHint(lngObject.getString("Password"));
             //  remember_me.setText(lngObject.getString("RememberMe"));
-
-
 
 
 
@@ -112,68 +100,72 @@ public class Verification_Last_Fragment extends Fragment {
 
 
 
-        view.setFocusableInTouchMode(true);
-        view.requestFocus();
-        view.setOnKeyListener(new View.OnKeyListener() {
-
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-
-                if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                        // this.finishAffinity();
-
-                        if (doubleBackToExitPressedOnce) {
-                            Intent intent = new Intent(Intent.ACTION_MAIN);
-                            intent.addCategory(Intent.CATEGORY_HOME);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
-                            startActivity(intent);
-                            getActivity().finish();
-                            System.exit(0);
-                        }
-
-                        doubleBackToExitPressedOnce = true;
-                        // Toast.makeText(getActivity().getApplicationContext(), "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-//                       int duration = 1000;
+//        view.setFocusableInTouchMode(true);
+//        view.requestFocus();
+//        view.setOnKeyListener(new View.OnKeyListener() {
 //
-//                       Snackbar snackbar = Snackbar
-//                               .make(linear_layout,"Please Click Back To Exit", duration);
-//                       View snackbarView = snackbar.getView();
-//                       TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-//                       tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-//                       tv.setTextColor(Color.WHITE);
+//            @Override
+//            public boolean onKey(View v, int keyCode, KeyEvent event) {
 //
+//                if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 //
-//                       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                           tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-//                       } else {
-//                           tv.setGravity(Gravity.CENTER_HORIZONTAL);
-//                       }
-//                       snackbar.show();
-
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                doubleBackToExitPressedOnce = false;
-                            }
-                        }, 3000);
-                    }
-
-                    return true;
-                }
-                return false;
-            }
-        });
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+//                        // this.finishAffinity();
+//
+//                        if (doubleBackToExitPressedOnce) {
+//                            Intent intent = new Intent(Intent.ACTION_MAIN);
+//                            intent.addCategory(Intent.CATEGORY_HOME);
+//                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+//                            startActivity(intent);
+//                            getActivity().finish();
+//                            System.exit(0);
+//                        }
+//
+//                        doubleBackToExitPressedOnce = true;
+//                        // Toast.makeText(getActivity().getApplicationContext(), "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+////                       int duration = 1000;
+////
+////                       Snackbar snackbar = Snackbar
+////                               .make(linear_layout,"Please Click Back To Exit", duration);
+////                       View snackbarView = snackbar.getView();
+////                       TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+////                       tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
+////                       tv.setTextColor(Color.WHITE);
+////
+////
+////                       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+////                           tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+////                       } else {
+////                           tv.setGravity(Gravity.CENTER_HORIZONTAL);
+////                       }
+////                       snackbar.show();
+//
+//                        new Handler().postDelayed(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                doubleBackToExitPressedOnce = false;
+//                            }
+//                        }, 3000);
+//                    }
+//
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
 
 
         cont_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if(user_uploaded.equals(false)){
+
                     Intent intent = new Intent(getActivity(), Verification_Activity.class);
                     startActivity(intent);
+
                 }else {
+
                     Intent intent = new Intent(getActivity(),HomePage_With_Bottom_Navigation.class);
                     startActivity(intent);
                 }
@@ -220,7 +212,9 @@ public class Verification_Last_Fragment extends Fragment {
 
                             success_details.setVisibility(View.VISIBLE);
                             success_image.setVisibility(View.VISIBLE);
+
                             if (status.equals("FROM_SESSION")){
+
                                  Intent intent = new Intent(getActivity(),HomePage_With_Bottom_Navigation.class);
                                  startActivity(intent);
 

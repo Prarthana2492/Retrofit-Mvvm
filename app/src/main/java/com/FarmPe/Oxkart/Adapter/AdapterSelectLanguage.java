@@ -244,6 +244,7 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
                              ActivitySelectLang.toast_internet = result.getString("GoodConnectedtoInternet");
                              ActivitySelectLang.toast_nointernet = result.getString("NoInternetConnection");
 
+
                              /*
 
                         String lang_title1 = result.getString("ChangeLanguage");
