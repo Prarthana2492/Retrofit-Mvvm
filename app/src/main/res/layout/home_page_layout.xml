@@ -92,21 +92,60 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/notificatn_img"
             android:layout_width="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            >
 
 
-            <ImageView
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:layout_margin="15dp"
-                android:src="@drawable/ic_notification"
-                />
+            <LinearLayout
+                android:id="@+id/notificatn_img1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                >
 
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/notification"
+                    android:layout_width="20dp"
+                    android:layout_height="26dp"
+                    android:src="@drawable/ic_notification"
+
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/noti_count"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/border_round_red"
+                android:gravity="center"
+                android:text="0"
+                android:layout_marginTop="10dp"
+                android:textColor="#fff"
+                android:textSize="10dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/notificatn_img"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_gravity="center_vertical"-->
+<!--            android:layout_height="wrap_content">-->
+
+
+<!--            <ImageView-->
+<!--                android:layout_width="26dp"-->
+<!--                android:layout_height="26dp"-->
+<!--                android:layout_margin="15dp"-->
+<!--                android:src="@drawable/ic_notification"-->
+<!--                />-->
+
+<!--        </LinearLayout>-->
     </LinearLayout>
 
 

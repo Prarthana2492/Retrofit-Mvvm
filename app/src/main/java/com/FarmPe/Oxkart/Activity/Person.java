@@ -3,13 +3,11 @@ package com.FarmPe.Oxkart.Activity;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.clustering.ClusterItem;
 
+
 public class Person implements ClusterItem {
 
     private final LatLng mPosition;
     private String name;
-
-
-
 
     public String getId() {
         return id;

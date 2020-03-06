@@ -93,6 +93,7 @@ public class CartSliderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 //                .into(viewHolder0.loan_img);
 
 
+
         Glide.with(activity).load(products1.getImage())
                 .thumbnail(0.5f)
                 // .crossFade()

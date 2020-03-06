@@ -206,12 +206,13 @@ public class Verification_Last_Fragment extends Fragment {
 
                         }else{
 
-                            user_status.setText("Successfull");
+                            user_status.setText("In Progress");
 
-                            user_status.setText(lngObject.getString("Successful"));
+                            user_status.setText(lngObject.getString("InProgress").replace("\n",""));
 
                             success_details.setVisibility(View.VISIBLE);
                             success_image.setVisibility(View.VISIBLE);
+
 
                             if (status.equals("FROM_SESSION")){
 

@@ -18,6 +18,7 @@ import android.provider.Settings;
 
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -49,6 +50,7 @@ import java.util.Locale;
 
 import static android.content.ContentValues.TAG;
 
+
 public class GetLocationFragment extends Fragment {
 
     LocationManager manager;
@@ -56,6 +58,7 @@ public class GetLocationFragment extends Fragment {
     int attempts=0,permission_attempt=0,gps_attempt=0;
 
     Intent intent;
+    LinearLayout back_feed;
     public static String livelocation;
     String loc;
     public static double latitude,longitude;
@@ -67,26 +70,23 @@ public class GetLocationFragment extends Fragment {
 
     LocationListener locationListener;
     boolean valid = true;
-
-    LinearLayout nomap;
-
     boolean loc_frst_set;
 
    // private LatLng currLatLong=null;
 
-    private GoogleMap currentgoogleMap;
+
     Geocoder geocoder;
     List<Address> addresses;
-private  Location location;
+    private  Location location;
     AutocompleteSupportFragment autocompleteFragment;
-    String nav;
-String currentLocation;
+    String currentLocation;
 
 
     public static GetLocationFragment newInstance() {
         GetLocationFragment fragment = new GetLocationFragment();
         return fragment;
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.get_loc_layout, container, false);
@@ -101,7 +101,11 @@ String currentLocation;
         */
         //String nav = intent.getExtras().getString("NavigateFrom");
         //nomap = findViewById(R.id.nomap);
+
+
         current_address= view.findViewById(R.id.curr_address);
+        back_feed= view.findViewById(R.id.back_feed);
+
 
        current_address.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,9 +122,11 @@ String currentLocation;
 
             }
         });*/
+
         if (!Places.isInitialized()) {
             Places.initialize(getActivity(), "AIzaSyB3KUa9_XplyH7iI2CIq3WcGisxvivwhOU");
         }
+
 // Initialize the AutocompleteSupportFragment.
 
      autocompleteFragment = (AutocompleteSupportFragment)
@@ -152,6 +158,14 @@ String currentLocation;
             }
         });
 
+        back_feed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            }
+        });
+
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -159,8 +173,8 @@ String currentLocation;
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
-//                    FragmentManager fm = getActivity().getSupportFragmentManager();
-//                    fm.popBackStack ("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.popBackStack ("home", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
                     return true;
                 }
@@ -317,6 +331,7 @@ current_address.setText(sessionManager.getRegId("location"));
 
             }
             else
+
                 Toast.makeText(getActivity(),"Enter Location Manually", Toast.LENGTH_SHORT).show();
         }
         //don't delete this its required

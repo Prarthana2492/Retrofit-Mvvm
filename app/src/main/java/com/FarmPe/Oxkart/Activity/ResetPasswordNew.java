@@ -185,9 +185,7 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
         }
 
 
-
         forgot_username=ForgotPasswordNew.forgot_mob_no.substring(3);
-
 
          back_reset_pass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -197,8 +195,6 @@ public class ResetPasswordNew extends AppCompatActivity implements ConnectivityR
                 finish();
             }
         });
-
-
 
         final InputFilter filter = new InputFilter() {
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {

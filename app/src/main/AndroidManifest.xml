@@ -28,14 +28,13 @@
 
 
         <activity
-            android:name="com.FarmPe.Oxkart.Activity.R_U_Farmer_Activity"
+            android:name="com.FarmPe.Oxkart.Activity.ActivitySelectLang"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
 
 
 
@@ -77,7 +76,7 @@
 
 
         <activity
-            android:name="com.FarmPe.Oxkart.Activity.ActivitySelectLang"
+            android:name="com.FarmPe.Oxkart.Activity.R_U_Farmer_Activity"
             android:screenOrientation="portrait" />
 
 
@@ -86,7 +85,6 @@
         <activity
             android:name="com.FarmPe.Oxkart.Activity.Service_Main_Activity"
             android:screenOrientation="portrait" />
-
 
 
            <activity

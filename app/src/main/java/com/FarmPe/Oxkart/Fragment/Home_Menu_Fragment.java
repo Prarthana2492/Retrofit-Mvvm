@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -55,11 +56,12 @@ public class Home_Menu_Fragment extends Fragment  {
     private List<Request_Class_HomePage_Bean> newOrderBeansList = new ArrayList<>();
     private List<Request_Class_HomePage_Bean> newOrderBeansList2 = new ArrayList<>();
     private RecyclerView recyclerView;
-    LinearLayout notificatn_img,your_locatn;
+    LinearLayout your_locatn;
     private Home_Page_Request_Adapter mAdapter;
     //  private Home_Page_Lookinfor_Adapter mAdapter2;
     boolean doubleBackToExitPressedOnce = false;
     LinearLayout linearLayout;
+    RelativeLayout notificatn_img;
     Fragment selectedFragment;
     CircleImageView prod_imgg;
     SessionManager sessionManager;
@@ -101,6 +103,7 @@ public class Home_Menu_Fragment extends Fragment  {
         }else{
             locationtxt.setText("Bangalore");
         }
+
 
         your_locatn.setOnClickListener(new View.OnClickListener() {
             @Override

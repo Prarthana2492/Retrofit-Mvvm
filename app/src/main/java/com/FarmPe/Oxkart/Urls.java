@@ -70,6 +70,10 @@ package com.FarmPe.Oxkart;
 
        public static final String Update_Profile_Details= ROOT_URL + "Auth/UpdateRegProfile";
 
+       //r_u_farmer
+       public static final String R_U_Farmer_Details= ROOT_URL + "MasterTable/AddUpdateUserDetails";
+
+
 
 
    //Notification
@@ -84,6 +88,9 @@ package com.FarmPe.Oxkart;
          public static final String Taluks=ROOT_URL+"MasterTable/GetTaluks";
          public static final String Hoblis=ROOT_URL+"MasterTable/GetHoblis";
          public static final String Block_list=ROOT_URL+"MasterTable/GetBlocks";
+
+
+
 
 
 

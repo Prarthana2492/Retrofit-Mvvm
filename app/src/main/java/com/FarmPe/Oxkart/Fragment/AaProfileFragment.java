@@ -142,7 +142,6 @@ public class AaProfileFragment extends Fragment {
             }
         });
 
-
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -339,9 +338,9 @@ public class AaProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+
                 mBottomSheetDialog = new BottomSheetDialog(getActivity());
                 sheetView = getActivity().getLayoutInflater().inflate(R.layout.general_layout, null);
-
                 new KeyboardUtil(getActivity(), sheetView);
                 TextView positiveText = sheetView.findViewById(R.id.positive_text);
                 TextView titleText = sheetView.findViewById(R.id.bottom_sheet_title);
