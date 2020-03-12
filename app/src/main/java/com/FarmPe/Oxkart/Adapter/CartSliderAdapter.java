@@ -38,7 +38,9 @@ public class CartSliderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         private TextView loan_text;
         private LinearLayout loan_lay;
         private ImageView loan_img;
+
         public MyViewHolder(View view) {
+
             super(view);
 
             loan_text=view.findViewById(R.id.loan_text);

@@ -71,6 +71,7 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
             super(view);
             lang_text=view.findViewById(R.id.lang_text);
             language=view.findViewById(R.id.main_layout);
+
 //            lang_img=view.findViewById(R.id.lang_icon);
 //            right_img = view.findViewById(R.id.right_img);
 
@@ -96,17 +97,15 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final First_Language_Bean products1 = productList.get(position);
 
-
-
         holder.lang_text.setText(products1.getVendor());
         lng_list = products1.getVendor();
+
 
         Glide.with(activity).load(products1.getImageicon())
                 .thumbnail(0.5f)
                 //   .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.lang_icon);
-
 
 //
 //        if(selected_position == position){
@@ -142,8 +141,6 @@ public class AdapterSelectLanguage extends RecyclerView.Adapter<AdapterSelectLan
                     holder.lang_text.setTypeface(null, Typeface.BOLD);
 
                 }
-
-
 
             }else{
 

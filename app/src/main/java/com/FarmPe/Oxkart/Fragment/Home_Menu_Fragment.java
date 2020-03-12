@@ -108,6 +108,7 @@ public class Home_Menu_Fragment extends Fragment  {
         your_locatn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 selectedFragment = GetLocationFragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);

@@ -122,9 +122,7 @@ public class VoterId_Front_Preview_Fragment extends Fragment {
 
         try {
 
-
             lngObject = new JSONObject(sessionManager.getRegId("language"));
-
             System.out.println("llllllllllllkkkkkkkkkkkkkkk" + lngObject.getString("EnterPhoneNo"));
 
             toolbar_title.setText(lngObject.getString("ReviewPhoto"));
@@ -137,12 +135,8 @@ public class VoterId_Front_Preview_Fragment extends Fragment {
             take_voter_photo.setText(lngObject.getString("Takephotoagain").replace("\n",""));
 
 
-
-
             //  pass.setHint(lngObject.getString("Password"));
             //  remember_me.setText(lngObject.getString("RememberMe"));
-
-
 
 
 

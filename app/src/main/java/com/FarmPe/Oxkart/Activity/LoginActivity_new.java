@@ -31,8 +31,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-
 import com.FarmPe.Oxkart.Adapter.SelectLanguageAdapter2;
 import com.FarmPe.Oxkart.Bean.SelectLanguageBean;
 import com.FarmPe.Oxkart.DB.DatabaseHelper;
@@ -42,17 +40,16 @@ import com.FarmPe.Oxkart.Urls;
 import com.FarmPe.Oxkart.Volly_class.Crop_Post;
 import com.FarmPe.Oxkart.Volly_class.Login_post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
-
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class LoginActivity_new extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener{
+
     public static TextView  log_in, forgot_pass,new_farmpe,service;
     public static EditText mobile_no, pass;
     public static String mobile,loc_text;
@@ -415,8 +412,6 @@ public class LoginActivity_new extends AppCompatActivity implements Connectivity
 
 
 */
-
-
 
         log_in.setOnClickListener(new View.OnClickListener() {
             @Override

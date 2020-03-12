@@ -163,7 +163,6 @@ public class SliderPagerAdapter extends PagerAdapter {
                 }
 
 
-
                 CartSliderAdapter madapter = new CartSliderAdapter(activity, slider_text);
                 recyclerView=view.findViewById(R.id.rv);
                 System.out.println("size "+slider_text.size());

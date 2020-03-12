@@ -182,7 +182,6 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
             login_btn.setText(lngObject.getString("LOGIN"));
             register_btn.setText(lngObject.getString("REGISTER"));
 
-
             toast_internet = lngObject.getString("GoodConnectedtoInternet");
             toast_nointernet = lngObject.getString("NoInternetConnection");
             toast_mob_valid = lngObject.getString("Pleaseenter10digitsmobilenumber");
@@ -611,7 +610,6 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
             userRequestjsonObject.put("IsOTPVerified", 1);
             postjsonObject.putOpt("objUser", userRequestjsonObject);
             System.out.println("post_oobject" + postjsonObject);
-
 
 
             Login_post.login_posting(New_Login_Activity2.this, Urls.New_Register_Details, postjsonObject, new VoleyJsonObjectCallback() {

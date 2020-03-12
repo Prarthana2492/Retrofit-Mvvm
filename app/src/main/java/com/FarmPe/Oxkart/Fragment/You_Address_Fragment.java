@@ -64,14 +64,13 @@ public class You_Address_Fragment extends Fragment {
 
     }
 
+
     @SuppressLint("NewApi")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.address_recyc_layout, container, false);
         Status_bar_change_singleton.getInstance().color_change(getActivity());
       //  getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-
-
         // getActivity().getActionBar().hide();
 
         name = view.findViewById(R.id.name1);

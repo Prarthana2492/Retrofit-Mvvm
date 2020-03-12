@@ -27,6 +27,7 @@
         android:theme="@style/AppTheme">
 
 
+
         <activity
             android:name="com.FarmPe.Oxkart.Activity.ActivitySelectLang"
             android:screenOrientation="portrait">
@@ -111,6 +112,8 @@
             android:screenOrientation="portrait" />
 
 
+
+
         <activity
             android:name="com.FarmPe.Oxkart.Activity.GetLocationActivity"
             android:screenOrientation="portrait" />
@@ -138,12 +141,12 @@
                android:screenOrientation="portrait" />
 
 
+
            <activity
             android:name="com.FarmPe.Oxkart.Activity.FirmShopDetailsActivity"
             android:screenOrientation="portrait" />
 
 
-        
               <activity
                android:name="com.FarmPe.Oxkart.Activity.Privacy_Activity"
                android:screenOrientation="portrait" />
@@ -165,19 +168,19 @@
 
         <service android:name="com.FarmPe.Oxkart.Activity.Service_Activity" />
 
-<!--        <service android:name="com.FarmPe.Oxkart.MyFirebaseMessagingService">-->
+        <service android:name="com.FarmPe.Oxkart.MyFirebaseMessagingService">
 
-<!--            <intent-filter>-->
-<!--                <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
-<!--            </intent-filter>-->
-<!--        </service>-->
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
 
-<!--        <service android:name="com.FarmPe.Oxkart.MyFirebaseInstanceIDService">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />-->
-<!--            </intent-filter>-->
-<!--        </service>-->
+        <service android:name="com.FarmPe.Oxkart.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
 
     </application>
 

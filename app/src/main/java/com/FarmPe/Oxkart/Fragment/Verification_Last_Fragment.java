@@ -1,12 +1,13 @@
 package com.FarmPe.Oxkart.Fragment;
 
+
+
 import android.content.Intent;
-import android.os.Build;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.view.KeyEvent;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.FarmPe.Oxkart.Activity.HomePage_With_Bottom_Navigation;
-import com.FarmPe.Oxkart.Activity.New_Login_Activity2;
-import com.FarmPe.Oxkart.Activity.New_OTP_Page_Activity;
+
 import com.FarmPe.Oxkart.Activity.Verification_Activity;
 import com.FarmPe.Oxkart.R;
 import com.FarmPe.Oxkart.SessionManager;
@@ -28,9 +28,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-
-
 public class Verification_Last_Fragment extends Fragment {
+
+
     Boolean user_uploaded;
     Fragment selectedFragment;
     public static  LinearLayout linear_layout,cont_btn;
@@ -70,9 +70,11 @@ public class Verification_Last_Fragment extends Fragment {
         in_progress_image = view.findViewById(R.id.in_progress_image);
         success_image = view.findViewById(R.id.success_image);
         sessionManager = new SessionManager(getActivity());
+
         ph_no.setText(sessionManager.getRegId("phone"));
         System.out.println("dhfgfjh" + sessionManager.getRegId("phone"));
         status=getArguments().getString("STATUS");
+
 
 
         try {
@@ -226,14 +228,12 @@ public class Verification_Last_Fragment extends Fragment {
 
                         }
 
-
                     }catch (Exception e){
                         e.printStackTrace();
                     }
 
                 }
             });
-
 
         }catch (Exception e){
             e.printStackTrace();

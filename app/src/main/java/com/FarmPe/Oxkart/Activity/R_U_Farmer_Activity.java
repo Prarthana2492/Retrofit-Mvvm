@@ -261,8 +261,8 @@ public class R_U_Farmer_Activity extends AppCompatActivity implements Connectivi
 
     }
 
-    private void AddUpdateUserDetails() {
 
+    private void AddUpdateUserDetails() {
 
 
         try {
@@ -273,6 +273,7 @@ public class R_U_Farmer_Activity extends AppCompatActivity implements Connectivi
             jsonObject.put("CreatedBy",sessionManager.getRegId("userId"));
 
             System.out.println("nnnnnnnnnnnnnnnaaaaaaaaannnnnnnnnnnnnnnaaaaaaaaa" + jsonObject);
+
 
             Crop_Post.crop_posting(R_U_Farmer_Activity.this, Urls.R_U_Farmer_Details, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
@@ -288,6 +289,7 @@ public class R_U_Farmer_Activity extends AppCompatActivity implements Connectivi
                         if (status.equals("1")) {
 
                             Toast.makeText(R_U_Farmer_Activity.this, message, Toast.LENGTH_SHORT).show();
+
 
                         }
 

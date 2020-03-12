@@ -11,24 +11,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 import com.FarmPe.Oxkart.Adapter.AdapterSelectLanguage;
 import com.FarmPe.Oxkart.Bean.First_Language_Bean;
-import com.FarmPe.Oxkart.Bean.SelectLanguageBean;
 import com.FarmPe.Oxkart.R;
 import com.FarmPe.Oxkart.SessionManager;
 import com.FarmPe.Oxkart.Urls;
 import com.FarmPe.Oxkart.Volly_class.Crop_Post;
 import com.FarmPe.Oxkart.Volly_class.Login_post;
 import com.FarmPe.Oxkart.Volly_class.VoleyJsonObjectCallback;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -241,9 +236,9 @@ public class ActivitySelectLang extends AppCompatActivity implements Connectivit
 
         try {
 
-
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("Id", id);
+
 
             System.out.print("iiidddddd" + id);
 

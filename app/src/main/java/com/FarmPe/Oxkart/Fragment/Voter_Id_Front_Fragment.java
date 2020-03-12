@@ -84,7 +84,6 @@ public class Voter_Id_Front_Fragment extends Fragment implements SurfaceHolder.C
 
         View view = inflater.inflate(R.layout.activity_camera, container, false);
         //  getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         Status_bar_change_singleton.getInstance().color_change(getActivity());
         //  HomePage_With_Bottom_Navigation.linear_bottonsheet.setVisibility(View.GONE);
 
@@ -127,9 +126,6 @@ public class Voter_Id_Front_Fragment extends Fragment implements SurfaceHolder.C
                     transaction.commit();
 
                 }
-
-
-
 
 
 
@@ -227,21 +223,14 @@ public class Voter_Id_Front_Fragment extends Fragment implements SurfaceHolder.C
             front_tips4.setText(lngObject.getString("Textonyourvoteridshouldbeclearandsharpinthephoto").replace("\n",""));
 
 
-
-
             //  pass.setHint(lngObject.getString("Password"));
             //  remember_me.setText(lngObject.getString("RememberMe"));
-
-
 
 
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-
 
 
         tips.setOnClickListener(new View.OnClickListener() {

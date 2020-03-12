@@ -567,15 +567,13 @@ public class Edit_Verification_Fragment extends Fragment {
         }
 
 
-
-
-
         return view;
 
     }
 
 
     private void continue_bkground() {
+
 
         if (get_location_array.length() == 0 || imagelist_array.length() == 0 || vote_bk_list_array.length() == 0 || vote_list_array.length() == 0) {
 
@@ -584,6 +582,7 @@ public class Edit_Verification_Fragment extends Fragment {
 
 
         } else {
+
 
             continue_btn.setBackgroundResource(R.drawable.border_filled_red_not_curved);
 
@@ -597,19 +596,21 @@ public class Edit_Verification_Fragment extends Fragment {
                 }
             });
 
-
         }
 
     }
 
     private void AlertMessage() { // alert dialog box
 
+
         final TextView ok_btn,cancel_btn,text_desc;
         final Dialog dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.verification_dialog_layout);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+     //   dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.setCancelable(false);
+
+
 
         ok_btn =  dialog.findViewById(R.id.ok_btn);
         cancel_btn =  dialog.findViewById(R.id.cancel_btn);
@@ -617,13 +618,13 @@ public class Edit_Verification_Fragment extends Fragment {
 
 
         try {
-            
+
+
             lngObject = new JSONObject(sessionManager.getRegId("language"));
-
-
             text_desc.setText(lngObject.getString("DoyouwanttosubmitthedetailsforVerification"));
             ok_btn.setText(lngObject.getString("OK").replace("\n",""));
             cancel_btn.setText(lngObject.getString("Cancel"));
+
 
 
         } catch (JSONException e) {
