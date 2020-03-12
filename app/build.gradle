@@ -76,9 +76,9 @@ dependencies {
 
     implementation 'com.chaos.view:pinview:1.4.2'
 
-//        implementation 'com.google.android.gms:play-services-auth:16.0.0'
-//        implementation 'com.google.android.gms:play-services-auth-api-phone:16.0.0'
-//        implementation 'org.jetbrains:annotations-java5:15.0'
+       implementation 'com.google.android.gms:play-services-auth:16.0.0'
+       implementation 'com.google.android.gms:play-services-auth-api-phone:16.0.0'
+       implementation 'org.jetbrains:annotations-java5:15.0'
 
     // implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
