@@ -111,8 +111,6 @@ public class New_Profile_Setting_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.sellersetting_layout, container, false);
 
 
-
-
         Status_bar_change_singleton.getInstance().color_change(getActivity());
 
         back_feed=view.findViewById(R.id.back_feed);
@@ -315,6 +313,71 @@ public class New_Profile_Setting_Fragment extends Fragment {
             }
         });
 
+
+        try{
+
+            JSONObject jsonObject = new JSONObject();
+            JSONObject post_object = new JSONObject();
+            jsonObject.put("Id",sessionManager.getRegId("userId"));
+            post_object.put("objUser",jsonObject);
+
+
+            Crop_Post.crop_posting(getActivity(), Urls.Get_Profile_Details, post_object, new VoleyJsonObjectCallback() {
+                @Override
+                public void onSuccessResponse(JSONObject result) {
+                    System.out.println("ggpgpgpg" + result);
+
+
+                    try{
+
+                        JSONObject jsonObject1 = result.getJSONObject("user");
+                        profnamestr = jsonObject1.getString("UserName");
+                        System.out.println("ggpgpgpg" + profnamestr);
+                        ProfilePhone = jsonObject1.getString("PhoneNo");
+                        //String ProfileEmail = jsonObject1.getString("EmailId");
+                      //  ProfileImage = jsonObject1.getString("ProfilePic");
+                     //   profile_description = jsonObject1.getString("About");
+
+                        profname.setText(profnamestr);
+
+
+
+
+                        //phone_no.setText(ProfilePhone.substring(3));
+
+
+                      // masking + deleting last line
+
+
+                        // profname.setFilters(new InputFilter[]{EMOJI_FILTER});
+                        // profile_phone.setFilters(new InputFilter[]{EMOJI_FILTER});
+                        // aboutText.setFilters(new InputFilter[]{EMOJI_FILTER});
+
+//
+//                        Glide.with(getActivity()).load(ProfileImage)
+//                                .thumbnail(0.5f)
+//                                //.crossFade()
+//                                .error(R.drawable.avatarmale)
+//                                .into(prod_img);
+
+//                        Glide.with(getActivity()).load(ProfileImage)
+//                                .thumbnail(0.5f)
+//                                // .crossFade()
+//                                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
+//                                        .error(R.drawable.avatarmale))
+//                                .into(prod_img);
+
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
 
 

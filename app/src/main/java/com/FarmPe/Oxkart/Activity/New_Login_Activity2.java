@@ -59,7 +59,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
     GoogleApiClient mGoogleApiClient;
     private int RESOLVE_HINT = 2;
 
-    Credential credential;
+ //   Credential credential;
 
     String s1;
 
@@ -160,18 +160,18 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
         contact_no =  mobile_no.getText().toString();
 
 
-        mGoogleApiClient = new GoogleApiClient.Builder(New_Login_Activity2.this)
-                .addConnectionCallbacks(this)
-                .enableAutoManage(this, this)
-                .addApi(Auth.CREDENTIALS_API)
-                .build();
+//        mGoogleApiClient = new GoogleApiClient.Builder(New_Login_Activity2.this)
+//                .addConnectionCallbacks(this)
+//                .enableAutoManage(this, this)
+//                .addApi(Auth.CREDENTIALS_API)
+//                .build();
 
 
         setupUI(linear_layout);
 
 
 
-        getHintPhoneNumber();
+   //     getHintPhoneNumber();
 
 
         try {
@@ -311,120 +311,120 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
     }
 
 
-    public void getHintPhoneNumber() {
-        HintRequest hintRequest =
-                new HintRequest.Builder()
-                        .setPhoneNumberIdentifierSupported(true)
-                        .build();
-        PendingIntent mIntent = Auth.CredentialsApi.getHintPickerIntent(mGoogleApiClient, hintRequest);
-        try {
-            startIntentSenderForResult(mIntent.getIntentSender(), RESOLVE_HINT, null, 0, 0, 0);
-        } catch (IntentSender.SendIntentException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        //Result if we want hint number
-        if (requestCode == RESOLVE_HINT) {
-            if (resultCode == Activity.RESULT_OK) {
-                credential = data.getParcelableExtra(Credential.EXTRA_KEY);
-                System.out.println("fgd"+credential);
-
-                 s1 = credential.getId().substring(3);
-
-                //contact_no = mobile_no.getText().toString();
-                //  System.out.println("uryuewyuwe" + contact_no);
-                check_register2();
-                // login_register();
-            }
-            //credential.getId();  <-- will need to process phone number string
-            //  mobile_no.setText(credential.getId());
-        }
-    }
-
-    private void check_register2() {
-
-
-
-        try {
-            JSONObject userRequestjsonObject = new JSONObject();
-            JSONObject postjsonObject = new JSONObject();
-
-            userRequestjsonObject.put("PhoneNo",s1);
-            userRequestjsonObject.put("IsOTPVerified", 1);
-            postjsonObject.putOpt("objUser", userRequestjsonObject);
-            System.out.println("post_oobject" + postjsonObject);
-
-
-            Login_post.login_posting(New_Login_Activity2.this, Urls.New_Register_Details, postjsonObject, new VoleyJsonObjectCallback() {
-                @Override
-                public void onSuccessResponse(JSONObject result) {
-                    System.out.println("statusssssslllll" + result);
-                    JSONObject jsonObject = new JSONObject();
-                    JSONObject jsonObject_resp = new JSONObject();
-
-
-                    try {
-//                        if (result.isNull("user")) {
-//                            jsonObject_resp = result.getJSONObject("Response");
-//                            status_resp = jsonObject_resp.getString("Status");
+//    public void getHintPhoneNumber() {
+//        HintRequest hintRequest =
+//                new HintRequest.Builder()
+//                        .setPhoneNumberIdentifierSupported(true)
+//                        .build();
+//        PendingIntent mIntent = Auth.CredentialsApi.getHintPickerIntent(mGoogleApiClient, hintRequest);
+//        try {
+//            startIntentSenderForResult(mIntent.getIntentSender(), RESOLVE_HINT, null, 0, 0, 0);
+//        } catch (IntentSender.SendIntentException e) {
+//            e.printStackTrace();
+//        }
+//    }
 //
-//                            Intent intent = new Intent(New_Login_Activity2.this, New_OTP_Page_Activity.class);
-//                            intent.putExtra("otpnumber", status);
-//                            intent.putExtra("register_status","register_btn");
-//                            startActivity(intent);
 
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        //Result if we want hint number
+//        if (requestCode == RESOLVE_HINT) {
+//            if (resultCode == Activity.RESULT_OK) {
+//                credential = data.getParcelableExtra(Credential.EXTRA_KEY);
+//                System.out.println("fgd"+credential);
+//
+//                 s1 = credential.getId().substring(3);
+//
+//                //contact_no = mobile_no.getText().toString();
+//                //  System.out.println("uryuewyuwe" + contact_no);
+//                check_register2();
+//                // login_register();
+//            }
+//            //credential.getId();  <-- will need to process phone number string
+//            //  mobile_no.setText(credential.getId());
+//        }
+//    }
 
-                         /*   Toast toast = Toast.makeText(New_Login_Activity2.this,toast_user_registered, Toast.LENGTH_SHORT);
-                            toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
-                            toast.show();
-*/
-
-
-                        // sessionManager.saveUserId(jsonObject_resp.getString("Id"));
-                        //  sessionManager.save_name(jsonObject_resp.getString("FullName"),jsonObject_resp.getString("PhoneNo"),jsonObject_resp.getString("ProfilePic"));
-//                            Intent intent = new Intent(New_Login_Activity2.this, FirmShopDetailsActivity.class);
-//                            startActivity(intent);
-                        // sessionManager.createRegistrSession(NewSignUpActivity.contact);
-
-
-//                        } else {
-                        jsonObject = result.getJSONObject("user");
-                        //  jsonObject_resp = result.getJSONObject("Response");
-                        // status_resp = jsonObject_resp.getString("Status");
-                        status = jsonObject.getString("OTP");
-                        String userid = jsonObject.getString("Id");
-                        otp_verified = jsonObject.getBoolean("IsOTPVerified");
-                        System.out.println("useerrrriidd" + status);
-                        //  sessionManager.createRegisterSession(name_text,contact,password_text);
-
-                        sessionManager.saveUserId(userid);
-                        sessionManager.save_name(jsonObject.getString("PhoneNo"));
-
-                        System.out.println("weyfhjxdbfv" + jsonObject.getString("PhoneNo"));
-                        // sessionManager.save_name(jsonObject.getString("FullName"), jsonObject.getString("PhoneNo"),jsonObject.getString("ProfilePic"));
-
-                        Intent intent = new Intent(New_Login_Activity2.this, New_OTP_Page_Activity.class);
-                        intent.putExtra("otpnumber", status);
-                        intent.putExtra("register_status","register_btn");
-                        startActivity(intent);
-                        // }
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
+//    private void check_register2() {
+//
+//
+//
+//        try {
+//            JSONObject userRequestjsonObject = new JSONObject();
+//            JSONObject postjsonObject = new JSONObject();
+//
+//            userRequestjsonObject.put("PhoneNo",s1);
+//            userRequestjsonObject.put("IsOTPVerified", 1);
+//            postjsonObject.putOpt("objUser", userRequestjsonObject);
+//            System.out.println("post_oobject" + postjsonObject);
+//
+//
+//            Login_post.login_posting(New_Login_Activity2.this, Urls.New_Register_Details, postjsonObject, new VoleyJsonObjectCallback() {
+//                @Override
+//                public void onSuccessResponse(JSONObject result) {
+//                    System.out.println("statusssssslllll" + result);
+//                    JSONObject jsonObject = new JSONObject();
+//                    JSONObject jsonObject_resp = new JSONObject();
+//
+//
+//                    try {
+////                        if (result.isNull("user")) {
+////                            jsonObject_resp = result.getJSONObject("Response");
+////                            status_resp = jsonObject_resp.getString("Status");
+////
+////                            Intent intent = new Intent(New_Login_Activity2.this, New_OTP_Page_Activity.class);
+////                            intent.putExtra("otpnumber", status);
+////                            intent.putExtra("register_status","register_btn");
+////                            startActivity(intent);
+//
+//
+//                         /*   Toast toast = Toast.makeText(New_Login_Activity2.this,toast_user_registered, Toast.LENGTH_SHORT);
+//                            toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
+//                            toast.show();
+//*/
+//
+//
+//                        // sessionManager.saveUserId(jsonObject_resp.getString("Id"));
+//                        //  sessionManager.save_name(jsonObject_resp.getString("FullName"),jsonObject_resp.getString("PhoneNo"),jsonObject_resp.getString("ProfilePic"));
+////                            Intent intent = new Intent(New_Login_Activity2.this, FirmShopDetailsActivity.class);
+////                            startActivity(intent);
+//                        // sessionManager.createRegistrSession(NewSignUpActivity.contact);
+//
+//
+////                        } else {
+//                        jsonObject = result.getJSONObject("user");
+//                        //  jsonObject_resp = result.getJSONObject("Response");
+//                        // status_resp = jsonObject_resp.getString("Status");
+//                        status = jsonObject.getString("OTP");
+//                        String userid = jsonObject.getString("Id");
+//                        otp_verified = jsonObject.getBoolean("IsOTPVerified");
+//                        System.out.println("useerrrriidd" + status);
+//                        //  sessionManager.createRegisterSession(name_text,contact,password_text);
+//
+//                        sessionManager.saveUserId(userid);
+//                        sessionManager.save_name(jsonObject.getString("PhoneNo"));
+//
+//                        System.out.println("weyfhjxdbfv" + jsonObject.getString("PhoneNo"));
+//                        // sessionManager.save_name(jsonObject.getString("FullName"), jsonObject.getString("PhoneNo"),jsonObject.getString("ProfilePic"));
+//
+//                        Intent intent = new Intent(New_Login_Activity2.this, New_OTP_Page_Activity.class);
+//                        intent.putExtra("otpnumber", status);
+//                        intent.putExtra("register_status","register_btn");
+//                        startActivity(intent);
+//                        // }
+//
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            });
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
 
 
     private void check_login_user() {
@@ -542,33 +542,27 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
 
 
                     try {
-//                        if (result.isNull("user")) {
-//                            jsonObject_resp = result.getJSONObject("Response");
-//                            status_resp = jsonObject_resp.getString("Status");
-//
-//                            Intent intent = new Intent(New_Login_Activity2.this, New_OTP_Page_Activity.class);
-//                            intent.putExtra("otpnumber", status);
-//                            intent.putExtra("register_status","register_btn");
-//                            startActivity(intent);
+                        if (result.isNull("user")) {
+                            jsonObject_resp = result.getJSONObject("Response");
+                            status_resp = jsonObject_resp.getString("Status");
 
 
-                         /*   Toast toast = Toast.makeText(New_Login_Activity2.this,toast_user_registered, Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(New_Login_Activity2.this,toast_user_registered, Toast.LENGTH_SHORT);
                             toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
                             toast.show();
-*/
 
 
                             // sessionManager.saveUserId(jsonObject_resp.getString("Id"));
                             //  sessionManager.save_name(jsonObject_resp.getString("FullName"),jsonObject_resp.getString("PhoneNo"),jsonObject_resp.getString("ProfilePic"));
-//                            Intent intent = new Intent(New_Login_Activity2.this, FirmShopDetailsActivity.class);
+//                           Intent intent = new Intent(New_Login_Activity2.this, FirmShopDetailsActivity.class);
 //                            startActivity(intent);
                             // sessionManager.createRegistrSession(NewSignUpActivity.contact);
 
 
-//                        } else {
+                        } else {
                             jsonObject = result.getJSONObject("user");
-                          //  jsonObject_resp = result.getJSONObject("Response");
-                           // status_resp = jsonObject_resp.getString("Status");
+                            jsonObject_resp = result.getJSONObject("Response");
+                            status_resp = jsonObject_resp.getString("Status");
                             status = jsonObject.getString("OTP");
                             String userid = jsonObject.getString("Id");
                             otp_verified = jsonObject.getBoolean("IsOTPVerified");
@@ -585,7 +579,7 @@ public class New_Login_Activity2 extends AppCompatActivity implements Connectivi
                             intent.putExtra("otpnumber", status);
                             intent.putExtra("register_status","register_btn");
                             startActivity(intent);
-                       // }
+                        }
 
                     } catch (JSONException e) {
                         e.printStackTrace();

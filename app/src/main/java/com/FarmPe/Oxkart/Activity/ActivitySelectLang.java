@@ -49,7 +49,7 @@ public class ActivitySelectLang extends AppCompatActivity implements Connectivit
     SessionManager sessionManager;
     public static  String toast_internet,toast_nointernet;
 
-
+ArrayList<String> a1 = new ArrayList<>();
 
     @Override
     protected void onStart() {
@@ -143,6 +143,22 @@ public class ActivitySelectLang extends AppCompatActivity implements Connectivit
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_a_selectlang);
         checkConnection();
+
+        a1.add("jhjh");
+        a1.add("jhjh");
+        a1.add("jhjh");
+        a1.add("jhjh");
+        a1.add("jhjh");
+        a1.add("jhjh");
+        a1.add("jhjh");
+        a1.add("jhjh");
+        a1.add("jhjh");
+        a1.add("jhjh");
+        System.out.println("njxnjn"+a1.size());
+        a1.add("kncdnjcnc");
+        System.out.println("njxnjngffg"+a1.size());
+
+
 
         recyclerView = findViewById(R.id.recycler_view_lang);
         continue_lang = findViewById(R.id.continue_lang);

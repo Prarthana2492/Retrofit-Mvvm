@@ -146,17 +146,17 @@
 
 
 
-<!--            <TextView-->
-<!--                android:id="@+id/profile_name"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text=""-->
-<!--                android:textStyle="bold"-->
-<!--                android:fontFamily="@font/segoeui"-->
-<!--                android:textColor="#000"-->
-<!--                android:textSize="15dp"-->
+            <TextView
+                android:id="@+id/profile_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textStyle="bold"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#000"
+                android:textSize="15dp"
 
-<!--                />-->
+                />
 
 
 
