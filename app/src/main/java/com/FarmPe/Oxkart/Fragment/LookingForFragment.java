@@ -99,23 +99,20 @@ public class LookingForFragment extends Fragment {
             public void onClick(View view) {
 
 
-
-                if (getArguments().getString("status").equals("setting_your_request")) {
-
                     FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("setting_req", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 
-                } else if (getArguments().getString("status").equals("hme_request")) {
+//                } else if (getArguments().getString("status").equals("hme_request")) {
+//
+//                    //  HomeMenuFragment.onBack_status="no_request";
+//                    selectedFragment = Home_Menu_Fragment.newInstance();
+//                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                    transaction.replace(R.id.frame_menu, selectedFragment);
+//                    transaction.addToBackStack("home");
+//                    transaction.commit();
 
-                    //  HomeMenuFragment.onBack_status="no_request";
-                    selectedFragment = Home_Menu_Fragment.newInstance();
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_menu, selectedFragment);
-                    transaction.addToBackStack("home");
-                    transaction.commit();
 
-                }
             }
         });
 
@@ -133,24 +130,20 @@ public class LookingForFragment extends Fragment {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
 
 
-
-
-                    if(getArguments().getString("status").equals("setting_your_request")){
-
                         FragmentManager fm = getActivity().getSupportFragmentManager();
-                        fm.popBackStack("setting_req", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                        fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 
-                    } else if(getArguments().getString("status").equals("hme_request")){
-
-                    //    HomeMenuFragment.onBack_status="no_request";
-                        selectedFragment = Home_Menu_Fragment.newInstance();
-                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_menu, selectedFragment);
-                        transaction.addToBackStack("home");
-                        transaction.commit();
-
-                    }
+//                    } else if(getArguments().getString("status").equals("hme_request")){
+//
+//                    //    HomeMenuFragment.onBack_status="no_request";
+//                        selectedFragment = Home_Menu_Fragment.newInstance();
+//                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                        transaction.replace(R.id.frame_menu, selectedFragment);
+//                        transaction.addToBackStack("home");
+//                        transaction.commit();
+//
+//                    }
 
 //                    }else{
 //

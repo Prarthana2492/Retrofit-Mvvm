@@ -145,15 +145,8 @@ ArrayList<String> a1 = new ArrayList<>();
         checkConnection();
 
         a1.add("jhjh");
-        a1.add("jhjh");
-        a1.add("jhjh");
-        a1.add("jhjh");
-        a1.add("jhjh");
-        a1.add("jhjh");
-        a1.add("jhjh");
-        a1.add("jhjh");
-        a1.add("jhjh");
-        a1.add("jhjh");
+       // a1.add("jhjh");
+
         System.out.println("njxnjn"+a1.size());
         a1.add("kncdnjcnc");
         System.out.println("njxnjngffg"+a1.size());

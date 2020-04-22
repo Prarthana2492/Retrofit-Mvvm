@@ -587,7 +587,6 @@ public class AaProfileFragment extends Fragment {
                         selectedFragment.setArguments(bundle);
                         transaction.commit();
                     }
-
                 },
                 new Response.ErrorListener() {
                     @Override
@@ -622,6 +621,7 @@ public class AaProfileFragment extends Fragment {
 
             //getting the image Uri
             Uri imageUri = data.getData();
+
             try {
                 g_vision_controller = G_Vision_Controller.getInstance( );
 //getting the image Uri
@@ -677,10 +677,12 @@ public class AaProfileFragment extends Fragment {
                 "Loading....Please wait.");
         progressDialog.show();
 
+
         VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, Urls.Update_Profile_Details,
                 new Response.Listener<NetworkResponse>(){
                     @Override
                     public void onResponse(NetworkResponse response) {
+
                         Log.e(TAG,"afaeftagsbillvalue"+response);
                         Log.e(TAG,"afaeftagsbillvalue"+response);
 
@@ -733,6 +735,7 @@ public class AaProfileFragment extends Fragment {
                     }
                 }) {
 
+
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
@@ -744,6 +747,8 @@ public class AaProfileFragment extends Fragment {
                 Log.e(TAG,"afaeftagsparams"+params);
                 return params;
             }
+
+
             @Override
             protected Map<String, DataPart> getByteData() {
                 Map<String, DataPart> params = new HashMap<>();

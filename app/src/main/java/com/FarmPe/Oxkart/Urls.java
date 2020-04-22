@@ -91,10 +91,6 @@ package com.FarmPe.Oxkart;
 
 
 
-
-
-
-
          public static final String Villages=ROOT_URL+"MasterTable/GetVillages";
          public static final String State = ROOT_URL+"MasterTable/GetStates";
          public static final String GetBrandList = ROOT_URL+"MasterTable/GetBrandList";
@@ -107,6 +103,7 @@ package com.FarmPe.Oxkart;
          public static final String YourRequest = ROOT_URL+"MasterTable/GetLookingForListsById";
          public static final String Model_List = ROOT_URL+"MasterTable/GetRFQModelMasterList";
          public static final String Get_RFQ_Details = ROOT_URL + "MasterTable/GetRFQDetails";
+
 
 
        //Favorites

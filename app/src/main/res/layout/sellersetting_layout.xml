@@ -210,7 +210,7 @@
                     >
 
                     <LinearLayout
-                        android:id="@+id/acc_info"
+                        android:id="@+id/mail_box"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -237,7 +237,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/segoeui"
                                 android:paddingVertical="15dp"
-                                android:text="Bank Accounts"
+                                android:text="Mailbox"
                                 android:textColor="@color/black"
                                 android:textSize="14dp" />
 
@@ -255,7 +255,7 @@
                         />
 
                     <LinearLayout
-                        android:id="@+id/kyc"
+                        android:id="@+id/favo_list"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -283,7 +283,7 @@
                                 android:fontFamily="@font/segoeui"
                                 android:paddingVertical="15dp"
                                 android:textColor="@color/black"
-                                android:text="Verify KYC"
+                                android:text="Favorites"
                                 android:textSize="14dp" />
 
 
@@ -298,10 +298,6 @@
                         android:background="#dcdcdc"
                         android:layout_marginLeft="45dp"
                         />
-
-
-
-
 
 
 

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.FarmPe.Oxkart">
 
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permisssion.ACCESS_COARSE_LOCATION" />
@@ -27,13 +28,15 @@
         android:theme="@style/AppTheme">
 
 
-
         <activity
             android:name="com.FarmPe.Oxkart.Activity.ActivitySelectLang"
             android:screenOrientation="portrait">
+
             <intent-filter>
+
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
         </activity>
 
@@ -49,13 +52,12 @@
             android:value="AIzaSyB3KUa9_XplyH7iI2CIq3WcGisxvivwhOU" />
 
 
-        <activity
+          <activity
             android:name="com.FarmPe.Oxkart.Activity.LoginActivity_new"
             android:screenOrientation="portrait" />
 
 
-
-        <activity
+           <activity
             android:name="com.FarmPe.Oxkart.Activity.ForgotPasswordNew"
             android:screenOrientation="portrait" />
 
@@ -65,12 +67,13 @@
             android:screenOrientation="portrait" />
 
 
-         <activity
+           <activity
             android:name="com.FarmPe.Oxkart.Activity.EnterOTP"
             android:screenOrientation="portrait" />
 
 
-          <activity
+
+        <activity
             android:name="com.FarmPe.Oxkart.Activity.Thank_U_New"
             android:screenOrientation="portrait" />
 
@@ -82,13 +85,13 @@
 
 
 
-
         <activity
             android:name="com.FarmPe.Oxkart.Activity.Service_Main_Activity"
             android:screenOrientation="portrait" />
 
 
-           <activity
+
+        <activity
             android:name="com.FarmPe.Oxkart.Activity.LandingPageActivity"
             android:resizeableActivity="false"
             android:screenOrientation="portrait" />
@@ -110,7 +113,6 @@
            <activity
             android:name="com.FarmPe.Oxkart.Activity.Verification_Activity"
             android:screenOrientation="portrait" />
-
 
 
 
@@ -166,21 +168,22 @@
         </receiver> <!-- Firebase Notifications -->
 
 
-        <service android:name="com.FarmPe.Oxkart.Activity.Service_Activity" />
+<!--        <service android:name="com.FarmPe.Oxkart.Activity.Service_Activity" />-->
 
-        <service android:name="com.FarmPe.Oxkart.MyFirebaseMessagingService">
+<!--        <service android:name="com.FarmPe.Oxkart.MyFirebaseMessagingService">-->
 
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
+<!--            <intent-filter>-->
+<!--                <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
+<!--            </intent-filter>-->
+<!--        </service>-->
 
 
-        <service android:name="com.FarmPe.Oxkart.MyFirebaseInstanceIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-            </intent-filter>
-        </service>
+
+<!--        <service android:name="com.FarmPe.Oxkart.MyFirebaseInstanceIDService">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />-->
+<!--            </intent-filter>-->
+<!--        </service>-->
 
     </application>
 

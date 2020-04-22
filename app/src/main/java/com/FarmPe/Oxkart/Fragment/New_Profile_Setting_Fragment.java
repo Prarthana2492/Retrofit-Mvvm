@@ -79,7 +79,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
 
 
     public static RecyclerView recyclerView;
-    LinearLayout back_feed,invite,your_addresss,noti_setting,logout,feedback,change_lang,policy,bank_account,verify_kyc,help,change_password,linearLayout,invite_frnd;
+    LinearLayout back_feed,invite,your_addresss,noti_setting,logout,feedback,change_lang,policy,favorites,verify_kyc,help,change_password,linearLayout,invite_frnd,mailbox_btn;
     Fragment selectedFragment;
     TextView notificatn,change_language,acc_info1,lang_setting,feedbk,help_1,abt_frmpe,polic_1,logot,setting_tittle,profname,profile_phone;
     SessionManager sessionManager;
@@ -126,7 +126,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
         invite=view.findViewById(R.id.invite);
         profile_image=view.findViewById(R.id.profile_image);
         linearLayout=view.findViewById(R.id.linearLayout);
-        bank_account=view.findViewById(R.id.acc_info);
+        mailbox_btn=view.findViewById(R.id.mail_box);
         lang_setting=view.findViewById(R.id.lang_setting);
      //   your_address=view.findViewById(R.id.ur_address);
         notificatn=view.findViewById(R.id.notificatn);
@@ -137,7 +137,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
         feedbk=view.findViewById(R.id.feedbk);
         polic_1=view.findViewById(R.id.polic_1);
         logot=view.findViewById(R.id.logot);
-        verify_kyc=view.findViewById(R.id.kyc);
+        favorites=view.findViewById(R.id.favo_list);
         help=view.findViewById(R.id.help);
         linear_profile_image = view.findViewById(R.id.linear_profile_image);
 
@@ -452,74 +452,101 @@ public class New_Profile_Setting_Fragment extends Fragment {
             }
         });
 
-
-
-           bank_account.setOnClickListener(new View.OnClickListener() {
+        mailbox_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-
-
-                try{
-
-                    newOrderBeansList1.clear();
-
-
-                    JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("UserId",sessionManager.getRegId("userId"));
-                    System.out.println("ghdfvghsfh" +sessionManager.getRegId("userId"));
-
-                    Crop_Post.crop_posting(getActivity(), Urls.Get_Bank_Details, jsonObject, new VoleyJsonObjectCallback() {
-                        @Override
-                        public void onSuccessResponse(JSONObject result) {
-                            System.out.println("hjgfhsfjksd" + result);
-                            try{
-
-                                Bank_list_array = result.getJSONArray("BankDetails");
-
-                                if(Bank_list_array.length()==0){
-
-                                    Bundle bundle = new Bundle();
-                                    bundle.putString("bank_status","Profile_Add_Bank_Details");
-                                    selectedFragment = Add_New_Bank_Account_Details_Fragment.newInstance();
-                                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                    transaction.replace(R.id.frame_menu, selectedFragment);
-                                    selectedFragment.setArguments(bundle);
-                                    transaction.addToBackStack("profile_setting");
-                                    transaction.commit();
-
-
-
-                                }else{
-
-                                    selectedFragment = Get_Bank_List_Fragment.newInstance();
-                                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                    transaction.replace(R.id.frame_menu, selectedFragment);
-                                    transaction.addToBackStack("profile_setting");
-                                    transaction.commit();
-
-                                }
-
-
-
-                            }catch (Exception e){
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-
-
-
-
-
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-
+                selectedFragment = LookingForFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_menu, selectedFragment);
+                transaction.addToBackStack("setting");
+                transaction.commit();
 
             }
         });
+
+
+        favorites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                selectedFragment = Request_Favorite_Fragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_menu, selectedFragment);
+                transaction.addToBackStack("setting");
+                transaction.commit();
+
+            }
+        });
+
+
+//
+//           bank_account.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//
+//
+//
+//                try{
+//
+//                    newOrderBeansList1.clear();
+//
+//
+//                    JSONObject jsonObject = new JSONObject();
+//                    jsonObject.put("UserId",sessionManager.getRegId("userId"));
+//                    System.out.println("ghdfvghsfh" +sessionManager.getRegId("userId"));
+//
+//                    Crop_Post.crop_posting(getActivity(), Urls.Get_Bank_Details, jsonObject, new VoleyJsonObjectCallback() {
+//                        @Override
+//                        public void onSuccessResponse(JSONObject result) {
+//                            System.out.println("hjgfhsfjksd" + result);
+//                            try{
+//
+//                                Bank_list_array = result.getJSONArray("BankDetails");
+//
+//                                if(Bank_list_array.length()==0){
+//
+//                                    Bundle bundle = new Bundle();
+//                                    bundle.putString("bank_status","Profile_Add_Bank_Details");
+//                                    selectedFragment = Add_New_Bank_Account_Details_Fragment.newInstance();
+//                                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                                    transaction.replace(R.id.frame_menu, selectedFragment);
+//                                    selectedFragment.setArguments(bundle);
+//                                    transaction.addToBackStack("profile_setting");
+//                                    transaction.commit();
+//
+//
+//
+//                                }else{
+//
+//                                    selectedFragment = Get_Bank_List_Fragment.newInstance();
+//                                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                                    transaction.replace(R.id.frame_menu, selectedFragment);
+//                                    transaction.addToBackStack("profile_setting");
+//                                    transaction.commit();
+//
+//                                }
+//
+//
+//
+//                            }catch (Exception e){
+//                                e.printStackTrace();
+//                            }
+//                        }
+//                    });
+//
+//
+//
+//
+//
+//                }catch (Exception e){
+//                    e.printStackTrace();
+//                }
+//
+//
+//            }
+//        });
 
 
         verify_kyc.setOnClickListener(new View.OnClickListener() {

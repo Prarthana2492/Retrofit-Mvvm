@@ -67,8 +67,8 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
             image_looking=view.findViewById(R.id.image_looking);
             edit=view.findViewById(R.id.edit);
             selectt=view.findViewById(R.id.selectt);
-            edit_looking=view.findViewById(R.id.edit_looking);
-            preview_model=view.findViewById(R.id.preview_model);
+//            edit_looking=view.findViewById(R.id.edit_looking);
+//            preview_model=view.findViewById(R.id.preview_model);
 
         }
     }
@@ -101,43 +101,43 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
 
         }
 
-        holder.edit_looking.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+//        holder.edit_looking.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//
+//                model_id = products.getModelid();
+//                id = products.getId();
+//                address = products.getLocation();
+//                looking_forId = products.getLookingfordetails_id();
+//                System.out.println("dhfuifuisah" + products.getId());
+//                selectedFragment = Edit_LookingFor_Fragment.newInstance();
+//                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.frame_menu, selectedFragment);
+//                transaction.addToBackStack("edit_looking");
+//                transaction.commit();
+//            }
+//        });
+//
 
-
-                model_id = products.getModelid();
-                id = products.getId();
-                address = products.getLocation();
-                looking_forId = products.getLookingfordetails_id();
-                System.out.println("dhfuifuisah" + products.getId());
-                selectedFragment = Edit_LookingFor_Fragment.newInstance();
-                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_menu, selectedFragment);
-                transaction.addToBackStack("edit_looking");
-                transaction.commit();
-            }
-        });
-
-
-
-        holder.preview_model.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                Bundle bundle = new Bundle();
-                bundle.putString("status","lookng_for");
-                selectedFragment = Preview_Edit_Looking_Fragment.newInstance();
-                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_menu, selectedFragment);
-                transaction.addToBackStack("looking_for_edit");
-                selectedFragment.setArguments(bundle);
-                transaction.commit();
-
-            }
-        });
-
+//
+//        holder.preview_model.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//
+//                Bundle bundle = new Bundle();
+//                bundle.putString("status","lookng_for");
+//                selectedFragment = Preview_Edit_Looking_Fragment.newInstance();
+//                FragmentTransaction transaction = ((FragmentActivity) activity).getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.frame_menu, selectedFragment);
+//                transaction.addToBackStack("looking_for_edit");
+//                selectedFragment.setArguments(bundle);
+//                transaction.commit();
+//
+//            }
+//        });
+//
 
         try {
 
@@ -184,15 +184,6 @@ public class  FarmsImageAdapter extends RecyclerView.Adapter<FarmsImageAdapter.M
                  }
 
 
-        try {
-
-            lngObject = new JSONObject(session.getRegId("language"));
-
-           // holder.connect.setText(lngObject.getString("connect"));
-
-             } catch (JSONException e) {
-              e.printStackTrace();
-        }
 
     }
 

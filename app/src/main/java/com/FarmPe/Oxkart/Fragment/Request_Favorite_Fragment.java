@@ -93,11 +93,12 @@ public class Request_Favorite_Fragment extends Fragment {
 
 
         b_arrow=view.findViewById(R.id.b_arrow);
+
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
-                fm.popBackStack("req_fav", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
 
@@ -110,7 +111,7 @@ public class Request_Favorite_Fragment extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if( keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack("req_fav", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    fm.popBackStack("setting", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     return true;
                 }
                 return false;

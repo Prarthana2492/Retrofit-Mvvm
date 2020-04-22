@@ -446,9 +446,7 @@ public class Request_Details_New_Fragment extends Fragment {
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("cropsresult"+result);
 
-
                      newOrderBeansList.clear();
-
 
                      try {
 

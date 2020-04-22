@@ -79,7 +79,6 @@ public class Crop_Post {
 
 
 
-
         jobReq.setRetryPolicy(new DefaultRetryPolicy(
                 60000,
 
