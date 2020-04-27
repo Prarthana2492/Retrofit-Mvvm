@@ -103,6 +103,8 @@ package com.FarmPe.Oxkart;
          public static final String YourRequest = ROOT_URL+"MasterTable/GetLookingForListsById";
          public static final String Model_List = ROOT_URL+"MasterTable/GetRFQModelMasterList";
          public static final String Get_RFQ_Details = ROOT_URL + "MasterTable/GetRFQDetails";
+         public static final String Get_RFQ_Model_Details = ROOT_URL + "MasterTable/GetRFQDetailsfromList";
+
 
 
 

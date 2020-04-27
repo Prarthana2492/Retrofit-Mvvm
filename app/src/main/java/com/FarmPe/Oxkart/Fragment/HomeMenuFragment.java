@@ -63,7 +63,6 @@ import static com.android.volley.VolleyLog.TAG;
 public class HomeMenuFragment extends Fragment implements  View.OnClickListener, NavigationView.OnNavigationItemSelectedListener{
 
 
-
     Fragment selectedFragment;
     public static DrawerLayout drawer;
     RelativeLayout menu;

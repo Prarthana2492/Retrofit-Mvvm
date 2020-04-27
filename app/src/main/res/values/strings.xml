@@ -1,5 +1,5 @@
 <resources>
-<string name="app_name">Oxkart</string>
+<string name="app_name">Oxcart</string>
 <string name="forgtpass">Please enter your mobile number so that we can look up your password</string>
 <string name="thankpage">Please enter the OTP below for Reset Password.</string>
 <string name="enterotp">Please enter the OTP below for registration.</string>

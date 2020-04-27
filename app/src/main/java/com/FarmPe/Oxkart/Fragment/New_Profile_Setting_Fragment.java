@@ -456,7 +456,7 @@ public class New_Profile_Setting_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                selectedFragment = LookingForFragment.newInstance();
+                selectedFragment = Mail_Box_Fragment.newInstance();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_menu, selectedFragment);
                 transaction.addToBackStack("setting");
@@ -549,17 +549,17 @@ public class New_Profile_Setting_Fragment extends Fragment {
 //        });
 
 
-        verify_kyc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            selectedFragment = Verify_KYC_Fragment.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_menu, selectedFragment);
-                transaction.addToBackStack("settingg");
-                transaction.commit();
-            }
-        });
+//        verify_kyc.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            selectedFragment = Verify_KYC_Fragment.newInstance();
+//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.frame_menu, selectedFragment);
+//                transaction.addToBackStack("settingg");
+//                transaction.commit();
+//            }
+//        });
 
 
         help.setOnClickListener(new View.OnClickListener() {
