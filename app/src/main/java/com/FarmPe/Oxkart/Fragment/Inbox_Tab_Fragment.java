@@ -68,7 +68,7 @@ public class Inbox_Tab_Fragment extends Fragment implements TabLayout.OnTabSelec
         //  toolbar.setNavigationIcon(R.drawable.ic_left_arrow);
         tabFavLayout = view.findViewById(R.id.simpleTabLayout_1);
 
-        tabFavLayout.addTab(tabFavLayout.newTab().setText("Pending"));
+
         tabFavLayout.addTab(tabFavLayout.newTab().setText("Accepted"));
         tabFavLayout.addTab(tabFavLayout.newTab().setText("Declined"));
         /*tabFilterLayout1.addTab(tabFilterLayout.newTab().setText(R.string.tutors));

@@ -4,6 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.FarmPe.Oxkart.Fragment.Accepted_Fragment;
+import com.FarmPe.Oxkart.Fragment.Declined_Fragment;
 import com.FarmPe.Oxkart.Fragment.Inbox_Pending_Fragment;
 import com.FarmPe.Oxkart.Fragment.LookingForFragment;
 
@@ -27,16 +29,14 @@ public class Inbox_Tab_Adapter extends FragmentStatePagerAdapter {
         switch (position) {
 
             case 0:
-               Inbox_Pending_Fragment tab1 = new Inbox_Pending_Fragment();
+               Accepted_Fragment tab1 = new Accepted_Fragment();
                 return tab1;
 
             case 1:
-                Inbox_Pending_Fragment tab2 = new Inbox_Pending_Fragment();
+                Declined_Fragment tab2 = new Declined_Fragment();
                 return tab2;
 
-            case 2:
-                Inbox_Pending_Fragment tab3 = new Inbox_Pending_Fragment();
-                return tab3;
+
 
 
 

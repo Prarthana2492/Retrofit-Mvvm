@@ -156,6 +156,8 @@ package com.FarmPe.Oxkart;
        public static final String Delete_Request = ROOT_URL + "MasterTable/DeleteRequestForQuotation";
 
 
+       public static final String Get_Accepted_Request = ROOT_URL + "MasterTable/GetAcceptedRFQfromDealer";
+
     //Bank_Account_Details
 
       public static final String Add_Bank_Details =  ROOT_URL + "MasterTable/AddUpdatBankDetails";

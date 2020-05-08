@@ -13,9 +13,11 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.FarmPe.Oxkart.Activity.HomePage_With_Bottom_Navigation;
@@ -49,6 +51,7 @@ public class Mail_Box_Fragment extends Fragment {
     Fragment selectedFragment = null;
     boolean doubleBackToExitPressedOnce = false;
     String location;
+    LinearLayout dropdown_txt;
     TextView filter_text,delete_req;
     SessionManager sessionManager;
 
@@ -69,8 +72,8 @@ public class Mail_Box_Fragment extends Fragment {
 
 
 
-    public static Inbox_Pending_Fragment newInstance() {
-        Inbox_Pending_Fragment fragment = new Inbox_Pending_Fragment();
+    public static Mail_Box_Fragment newInstance() {
+        Mail_Box_Fragment fragment = new Mail_Box_Fragment();
         return fragment;
     }
 
@@ -81,9 +84,8 @@ public class Mail_Box_Fragment extends Fragment {
         Status_bar_change_singleton.getInstance().color_change(getActivity());
 
 
-        recyclerView=view.findViewById(R.id.recycler_looking);
-        filter_text=view.findViewById(R.id.filter_text);
-        delete_req =view.findViewById(R.id.delete_req);
+        recyclerView=view.findViewById(R.id.recyc_mailbox);
+        dropdown_txt = view.findViewById(R.id.dropdown_txt);
 
         newOrderBeansList.clear();
 
@@ -95,7 +97,7 @@ public class Mail_Box_Fragment extends Fragment {
 
 
 
-        LookingForList();
+
 
 
         view.setFocusableInTouchMode(true);
@@ -118,31 +120,69 @@ public class Mail_Box_Fragment extends Fragment {
             }
         });
 
-        filter_text.setOnClickListener(new View.OnClickListener() {
+
+
+        dropdown_txt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                final Dialog dialog = new Dialog(getActivity());
-                dialog.setContentView(R.layout.layout_filterpopup);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                final TextView inbox = (TextView) dialog.findViewById(R.id.recen_added);
-                final TextView sent = (TextView)dialog.findViewById(R.id.sort_ascendi) ;
-                final TextView filtered = (TextView)dialog.findViewById(R.id.sort_desendi) ;
+                PopupMenu popupMenu = new PopupMenu(getActivity(),dropdown_txt);
+                popupMenu.getMenu().add("INBOX");
+                popupMenu.getMenu().add("SENT");
+                popupMenu.getMenu().add("FILTERED");
 
 
-                //   final TextView popuptxt = (TextView)dialog.findViewById(R.id.popup_heading) ;
-                LinearLayout image = (LinearLayout) dialog.findViewById(R.id.close_popup);
-                image.setOnClickListener(new View.OnClickListener() {
+
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
+                    public boolean onMenuItemClick(MenuItem items) {
+
+                        if(items.getTitle().equals("INBOX")){
+
+
+
+
+                            selectedFragment = Inbox_Tab_Fragment.newInstance();
+                            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                            transaction.replace(R.id.frame_menu, selectedFragment);
+                            transaction.addToBackStack("inbox_fragm");
+                            transaction.commit();
+
+
+                        }else if(items.getTitle().equals("SENT")) {
+
+
+                            selectedFragment = ComingSoonFragment.newInstance();
+                            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                            transaction.replace(R.id.frame_menu, selectedFragment);
+                            transaction.commit();
+
+
+                        }else if(items.getTitle().equals("FILTERED")) {
+
+                            selectedFragment = ComingSoonFragment.newInstance();
+                            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                            transaction.replace(R.id.frame_menu, selectedFragment);
+                            transaction.commit();
+
+
+                        }
+
+
+                        //  select_document_type.setText(items.getTitle());
+
+
+                        return false;
                     }
                 });
-                dialog.show();
 
+                popupMenu.show();
 
             }
         });
+
+        LookingForList();
+
 
         return view;
     }

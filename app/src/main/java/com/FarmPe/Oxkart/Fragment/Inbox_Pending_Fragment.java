@@ -80,7 +80,7 @@ public class Inbox_Pending_Fragment extends Fragment {
         Status_bar_change_singleton.getInstance().color_change(getActivity());
 
 
-        recyclerView=view.findViewById(R.id.recycler_looking);
+        recyclerView=view.findViewById(R.id.recyc_mailbox);
         filter_text=view.findViewById(R.id.filter_text);
         delete_req =view.findViewById(R.id.delete_req);
 

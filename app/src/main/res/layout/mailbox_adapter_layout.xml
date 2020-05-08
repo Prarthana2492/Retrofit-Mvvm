@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="#f1f1f1">
+
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardElevation="8dp">
+
+
+            <LinearLayout
+                android:id="@+id/itemmm"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="100">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="right"
+                    android:layout_gravity="right"
+                    android:orientation="vertical"
+                    android:layout_weight="100">
+
+
+
+                    <ImageView
+                        android:id="@+id/model_image"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/tractor_red"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+
+
+                    <ImageView
+                        android:id="@+id/default_img"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+
+                        />
+
+
+
+
+                </FrameLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="bottom">
+
+
+                    <TextView
+                        android:id="@+id/brand_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeui"
+                        android:layout_marginLeft="12dp"
+                        android:text="hhjkjkjkjk"
+                        android:gravity="bottom"
+                        android:layout_marginTop="5dp"
+                        android:textColor="#000"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/model"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:fontFamily="@font/segoeui"-->
+                    <!--                        android:layout_marginLeft="12dp"-->
+                    <!--                        android:text="ghhhh"-->
+                    <!--                        android:layout_marginTop="2dp"-->
+                    <!--                        android:singleLine="true"-->
+                    <!--                        android:textColor="#000"-->
+                    <!--                        android:textStyle="bold"-->
+                    <!--                        android:textSize="14dp" />-->
+
+
+
+                    <!--<TextView-->
+                    <!--android:id="@+id/hp_power"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:fontFamily="@font/segoeui"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:singleLine="true"-->
+                    <!--android:layout_marginTop="2dp"-->
+                    <!--android:text="ghghjg"-->
+                    <!--android:textColor="#000"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:textSize="14dp" />-->
+
+                </LinearLayout>
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="100"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp">
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile_image"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/avatarmale"
+                        />
+
+
+
+                    <TextView
+                        android:id="@+id/location_txt"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="50"
+                        android:text="Bangalore"
+                        android:layout_gravity="center"
+                        android:textColor="#000"
+                        android:padding="10dp"
+                        android:textSize="14dp" />
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/contact_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="15dp"
+
+
+                    >
+
+                    <TextView
+                        android:id="@+id/accepted_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Accepted"
+                        android:textColor="#fff"
+                        android:textStyle="bold"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:background="@drawable/border_red2"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="20dp"
+                        android:textSize="14dp"
+                        android:textAllCaps="true"
+                        />
+
+
+
+                    <TextView
+                        android:id="@+id/declined_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Declined"
+                        android:textColor="#fff"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:paddingVertical="10dp"
+                        android:background="@drawable/border_red2"
+                        android:paddingHorizontal="20dp"
+                        android:textSize="14dp"
+                        android:textAllCaps="true"
+                        />
+
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+
+    </LinearLayout>
+</LinearLayout>
