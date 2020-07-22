@@ -260,6 +260,8 @@ public class New_OTP_Page_Activity extends AppCompatActivity implements Connecti
 
         mobile_number_text.setText(sessionManager.getRegId("phone"));
 
+        System.out.println("ejfhjkfh" + sessionManager.getRegId("phone"));
+
 
        // System.out.println("djhfjhvxcv" + sessionManager.getRegId("phone"));
 
